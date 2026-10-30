@@ -170,7 +170,7 @@ function renderPareto(){
   const host=$('#paretoChart');const chart=echarts.getInstanceByDom(host)||echarts.init(host);if(!state.charts.includes(chart))state.charts.push(chart);
   const byProvider={};
   gpqa.models.forEach(m=>(byProvider[m.provider] ||= []).push({name:m.model,value:[m.costPerQuestion,m.score,m.model,m.timePerQuestion,m.routing]}));
-  const series=Object.entries(byProvider).map(([provider,data])=>({name:provider,type:'scatter',data,symbolSize:13,itemStyle:{color:providerColor(provider),borderColor:'#fff',borderWidth:1.5},label:{show:true,position:'top',formatter:p=>p.data[2].replace('Claude ','').replace('GPT-','GPT '),fontSize:9,color:'#656d78'}}));
+  const series=Object.entries(byProvider).map(([provider,data])=>({name:provider,type:'scatter',data,symbolSize:13,itemStyle:{color:providerColor(provider),borderColor:'#fff',borderWidth:1.5},label:{show:true,position:'top',formatter:p=>p.data.value[2].replace('Claude ','').replace('GPT-','GPT '),fontSize:9,color:'#656d78'}}));
   const ordered=gpqa.models.slice().sort((a,b)=>a.costPerQuestion-b.costPerQuestion);
   let best=-Infinity;const frontier=[];
   ordered.forEach(m=>{if(m.score>best){best=m.score;frontier.push([m.costPerQuestion,m.score]);}});
