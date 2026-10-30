@@ -161,14 +161,13 @@ function renderProfile(){
   $('#profileTitle').textContent=m.model+' · benchmark profile';
   $('#profileRank').textContent='#'+(state.composite.indexOf(m)+1)+' / '+state.composite.length+' · '+fmt(m.index,2);
   if(!window.echarts){$('#profileChart').textContent='Chart library unavailable. Use the score table above.';return;}
-  const chart=echarts.init($('#profileChart'));
+  const host=$('#profileChart');const chart=echarts.getInstanceByDom(host)||echarts.init(host);if(!state.charts.includes(chart))state.charts.push(chart);
   chart.setOption({animationDuration:350,grid:{left:105,right:35,top:15,bottom:24},xAxis:{type:'value',min:0,max:100,axisLabel:{color:'#8a929d',fontSize:9},splitLine:{lineStyle:{color:'rgba(130,140,150,.16)'}},axisLine:{show:false},axisTick:{show:false}},yAxis:{type:'category',data:FAMILY_LABELS.slice().reverse(),axisLabel:{color:'#656d78',fontSize:10},axisLine:{show:false},axisTick:{show:false}},series:[{type:'bar',data:m.scores.slice().reverse().map((v,i)=>({value:v,itemStyle:{color:['#7b70ad','#7a8799','#4285d4','#16866f','#c76b4c'][i]}})),barWidth:13,label:{show:true,position:'right',color:'#656d78',fontSize:10,formatter:p=>fmt(p.value,1)},showBackground:true,backgroundStyle:{color:'rgba(130,140,150,.09)',borderRadius:2},itemStyle:{borderRadius:[0,3,3,0]}}],tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:p=>p[0].name+': <b>'+fmt(p[0].value,2)+'</b>'}});
-  state.charts.push(chart);
-}
+  }
 function renderPareto(){
   const gpqa=get('gpqa-diamond');
   if(!window.echarts){$('#paretoChart').textContent='Chart library unavailable. GPQA source table remains available below.';return;}
-  const chart=echarts.init($('#paretoChart'));
+  const host=$('#paretoChart');const chart=echarts.getInstanceByDom(host)||echarts.init(host);if(!state.charts.includes(chart))state.charts.push(chart);
   const byProvider={};
   gpqa.models.forEach(m=>(byProvider[m.provider] ||= []).push({name:m.model,value:[m.costPerQuestion,m.score,m.model,m.timePerQuestion,m.routing]}));
   const series=Object.entries(byProvider).map(([provider,data])=>({name:provider,type:'scatter',data,symbolSize:13,itemStyle:{color:providerColor(provider),borderColor:'#fff',borderWidth:1.5},label:{show:true,position:'top',formatter:p=>p.data[2].replace('Claude ','').replace('GPT-','GPT '),fontSize:9,color:'#656d78'}}));
@@ -177,7 +176,6 @@ function renderPareto(){
   ordered.forEach(m=>{if(m.score>best){best=m.score;frontier.push([m.costPerQuestion,m.score]);}});
   series.push({name:'Pareto frontier',type:'line',data:frontier,symbol:'none',lineStyle:{color:'#a78b45',width:1.8,type:'dashed'},tooltip:{show:false},z:1});
   chart.setOption({animationDuration:350,grid:{left:50,right:25,top:45,bottom:48},legend:{top:7,textStyle:{color:'#7b8490',fontSize:9},itemWidth:9,itemHeight:9},xAxis:{type:'value',name:'USD / question',nameLocation:'middle',nameGap:29,axisLabel:{color:'#8a929d',fontSize:9,formatter:v=>'$'+fmt(v,2)},splitLine:{lineStyle:{color:'rgba(130,140,150,.16)'}},nameTextStyle:{color:'#8a929d',fontSize:9}},yAxis:{type:'value',name:'Accuracy (%)',min:85,max:100,axisLabel:{color:'#8a929d',fontSize:9},splitLine:{lineStyle:{color:'rgba(130,140,150,.16)'}},nameTextStyle:{color:'#8a929d',fontSize:9}},series,tooltip:{trigger:'item',formatter:p=>{if(p.seriesName==='Pareto frontier')return '';const v=p.data.value;return '<b>'+esc(v[2])+'</b><br>Accuracy: '+fmt(v[1],1)+'%<br>Cost / question: $'+fmt(v[0],3)+'<br>Time / question: '+esc(v[3])+'<br><span style="color:#8a929d">'+esc(v[4])+'</span>';}}});
-  state.charts.push(chart);
 }
 function renderHeatmap(){
   const rows=state.composite;
@@ -197,7 +195,7 @@ function renderBenchmark(){
   $('#benchmarkMeta').textContent=b.unit+' · Snapshot '+snapshotText(b.snapshotDate)+' · '+b.models.length+' published model results';
   $('#benchmarkHead').innerHTML='<tr><th>Model</th><th>Score</th><th>Additional source details</th></tr>';
   const models=b.models.slice().sort((a,c)=>c.score-a.score);
-  $('#benchmarkRows').innerHTML=models.map(m=>'<tr>'+modelCell({model:m.model,provider:m.provider},b.models.indexOf(m))+'<td class="num">'+fmt(m.score,2)+' <span class="family-label">'+esc(b.unit)+'</span></td><td style="text-align:left;white-space:normal;min-width:230px;color:var(--muted)">'+esc(detailValue(m))+'</td></tr>').join('');
+  $('#benchmarkRows').innerHTML=models.map((m,i)=>'<tr>'+modelCell({model:m.model,provider:m.provider},i)+'<td class="num">'+fmt(m.score,2)+' <span class="family-label">'+esc(b.unit)+'</span></td><td style="text-align:left;white-space:normal;min-width:230px;color:var(--muted)">'+esc(detailValue(m))+'</td></tr>').join('');
   $('#benchmarkFoot').innerHTML='Source: <a class="link" href="'+esc(b.source)+'" target="_blank" rel="noopener noreferrer">'+esc(b.source)+'</a> · Snapshot: '+snapshotText(b.snapshotDate)+'. Values are shown as published in the stored snapshot.';
 }
 function renderBenchmarkCards(){
