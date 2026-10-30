@@ -242,7 +242,7 @@ document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>{d
 window.addEventListener('resize',()=>state.charts.forEach(c=>c.resize()));
 document.querySelectorAll('[data-export]').forEach(b=>b.addEventListener('click',()=>exportChart(b.dataset.export)));
 const savedTheme=localStorage.getItem('qbench-theme');if(savedTheme){document.documentElement.dataset.theme=savedTheme;$('#themeBtn').innerHTML=savedTheme==='dark'?'<i class="bi bi-sun"></i>':'<i class="bi bi-moon-stars"></i>';}
-fetch('./data/external-benchmarks.json').then(r=>{if(!r.ok)throw new Error('Could not load external benchmark data ('+r.status+').');return r.json();}).then(data=>{
+fetch('./data/external-benchmarks.json').then(r=>{if(!r.ok)throw new Error('Could not load external benchmark data ('+r.status+').');return r.json();}).then(async data=>{
   if(!Array.isArray(data.benchmarks))throw new Error('Benchmark data is malformed.');
   state.data=data;buildComposite();if(document.fonts&&document.fonts.ready)await document.fonts.ready;
   $('#modelSelect').innerHTML=state.composite.map(m=>'<option value="'+esc(m.model)+'">'+esc(m.model)+'</option>').join('');
