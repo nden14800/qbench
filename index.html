@@ -53,6 +53,27 @@ main{padding:34px 0 70px}.intro{display:flex;justify-content:space-between;align
   <section id="leaderboard">
     <div class="section-head"><div><h2>Overall leaderboard</h2><p>Equal-weight composite of five independent benchmark families · 0–100 source scores</p></div><span class="section-kicker">COMPARABLE COHORT / <span id="cohortLabel">6 MODELS</span></span></div>
     <div class="dashboard-grid">
+      <article class="panel">
+        <div class="panel-head">
+          <div><div class="panel-title">Comparable model results</div><div class="panel-sub">Six models with exact-name coverage across all five benchmark families</div></div>
+          <div class="toolbar">
+            <input class="control search" id="modelSearch" type="search" placeholder="Search models" aria-label="Search models">
+            <select class="control" id="providerFilter" aria-label="Filter by provider">
+              <option value="all">All providers</option>
+              <option value="Anthropic">Anthropic</option>
+              <option value="OpenAI">OpenAI</option>
+              <option value="Google">Google</option>
+            </select>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="table" aria-label="Overall model leaderboard">
+            <thead><tr><th>Model</th><th>LiveBench</th><th>GPQA</th><th>FrontierMath</th><th>ProofBench</th><th>Furniture</th><th>Composite</th></tr></thead>
+            <tbody id="leaderboardRows"><tr><td colspan="7" class="empty">Loading benchmark data…</td></tr></tbody>
+          </table>
+        </div>
+        <div class="table-foot">Click a model row to open its profile. Search and provider filters only change the displayed rows; the composite cohort and scores remain unchanged.</div>
+      </article>
     </div>
   </section>
 
