@@ -12,32 +12,80 @@
         {
           "model": "Claude Fable 5.1",
           "provider": "Anthropic",
-          "score": 85.7
+          "score": 85.7,
+          "overall": 85.7,
+          "agentic": 77.9,
+          "design": 83.4,
+          "coding": 97.7,
+          "browserUse": 89.8,
+          "dataAnalysis": 80.3,
+          "research": 82,
+          "reasoning": 91.7
         },
         {
           "model": "GPT-6 Astra",
           "provider": "OpenAI",
-          "score": 85.6
+          "score": 85.6,
+          "overall": 85.6,
+          "agentic": 77.5,
+          "design": 82,
+          "coding": 93.7,
+          "browserUse": 91.3,
+          "dataAnalysis": 83,
+          "research": 85.2,
+          "reasoning": 92.7
         },
         {
           "model": "Claude Opus 5.5",
           "provider": "Anthropic",
-          "score": 85.1
+          "score": 85.1,
+          "overall": 85.1,
+          "agentic": 72.8,
+          "design": 86.9,
+          "coding": 96.3,
+          "browserUse": 88.4,
+          "dataAnalysis": 80.3,
+          "research": 85,
+          "reasoning": 92.2
         },
         {
           "model": "GPT-6.1 Sol",
           "provider": "OpenAI",
-          "score": 84.1
+          "score": 84.1,
+          "overall": 84.1,
+          "agentic": 68.7,
+          "design": 82.1,
+          "coding": 96,
+          "browserUse": 93.3,
+          "dataAnalysis": 82.7,
+          "research": 83.5,
+          "reasoning": 92.6
         },
         {
           "model": "Claude Sonnet 5.5",
           "provider": "Anthropic",
-          "score": 80
+          "score": 80,
+          "overall": 80,
+          "agentic": 63.4,
+          "design": 85,
+          "coding": 94.7,
+          "browserUse": 89.3,
+          "dataAnalysis": 59.5,
+          "research": 83.6,
+          "reasoning": 91.6
         },
         {
           "model": "Gemini 4 Argon",
           "provider": "Google",
-          "score": 79.3
+          "score": 79.3,
+          "overall": 79.3,
+          "agentic": 61.2,
+          "design": 73.7,
+          "coding": 89.7,
+          "browserUse": 82.8,
+          "dataAnalysis": 85.2,
+          "research": 83.1,
+          "reasoning": 95.1
         }
       ]
     },
