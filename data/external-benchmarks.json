@@ -1,16 +1,13 @@
 {
   "schemaVersion": "0.1",
-  "note": "External third-party benchmark snapshots. These are not QBench-run scores. No Artificial Analysis / AA Intelligence Index data is included.",
+  "note": "External third-party benchmark snapshots, not QBench-run results. No AA Intelligence Index data included.",
   "benchmarks": [
     {
       "id": "livebench-2.0",
       "name": "LiveBench 2.0",
       "snapshotDate": "2026-10-25",
       "source": "https://livebench.ai/",
-      "sourceLabel": "LiveBench official leaderboard",
-      "scoreLabel": "Overall",
       "unit": "points",
-      "direction": "higher",
       "models": [
         {
           "model": "Claude Fable 5.1",
@@ -91,10 +88,7 @@
       "name": "GPQA Diamond",
       "snapshotDate": "2026-10-30",
       "source": "https://openrouter.ai/benchmarks/gpqa-diamond/",
-      "sourceLabel": "OpenRouter benchmark leaderboard",
-      "scoreLabel": "Accuracy",
       "unit": "%",
-      "direction": "higher",
       "models": [
         {
           "model": "Gemini 4 Argon",
@@ -151,10 +145,7 @@
       "name": "SWE-bench Verified",
       "snapshotDate": "2026-09-24",
       "source": "https://evals.report/benchmarks/swe-bench-verified?tab=scores",
-      "sourceLabel": "evals.report snapshot (official/verified status tracked)",
-      "scoreLabel": "Resolved",
       "unit": "% resolved",
-      "direction": "higher",
       "models": [
         {
           "model": "Claude Fable 5",
@@ -202,17 +193,16 @@
     }
   ],
   "composite": {
-    "id": "qbench-external-reference-index-0.1",
     "name": "External Reference Index",
     "eligibleBenchmarks": [
       "livebench-2.0",
       "gpqa-diamond"
     ],
-    "weights": {
-      "livebench-2.0": 0.5,
-      "gpqa-diamond": 0.5
-    },
-    "method": "For exact model-name matches only, calculate descending average-tie percentile rank within the six-model intersection separately for LiveBench 2.0 Overall and GPQA Diamond; average the two percentiles equally. The cohort is limited to the six models published in both selected snapshots. This is a descriptive external reference, not a QBench-native score or universal capability measure.",
-    "cohortSize": 6
+    "weights": [
+      0.5,
+      0.5
+    ],
+    "cohortSize": 6,
+    "method": "Exact model-name intersection only. Rank descending within the six-model cohort for LiveBench Overall and GPQA Diamond separately; ties receive average rank. Convert to 0–100 percentiles and average equally. This is a descriptive external reference, not a QBench score or universal model capability measure."
   }
 }

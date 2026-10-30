@@ -113,3 +113,17 @@ Included snapshots:
 The External Reference Index is a descriptive, equal-weight average of within-cohort percentile ranks from LiveBench 2.0 Overall and GPQA Diamond. It is calculated only for exact model-name matches in the six-model intersection. Ties use average rank. It is not a universal model score and must not be presented as a QBench-native result. SWE-bench Verified remains a separate coding-specialist reference because its model coverage does not match the two-source cohort.
 
 No Artificial Analysis or AA Intelligence Index scores are included. Source values, snapshot dates, URLs, and status labels are retained in the external data file.
+
+
+## External benchmark snapshots
+
+The separate External benchmarks view reads `data/external-benchmarks.json`; these records are not mixed into QBench-native `data/results.json`.
+
+Included public snapshots:
+- LiveBench 2.0 (2026-10-25)
+- GPQA Diamond via OpenRouter (2026-10-30)
+- SWE-bench Verified as tracked by evals.report (2026-09-24)
+
+The External Reference Index is a descriptive equal-weight average of within-cohort percentile ranks from LiveBench 2.0 Overall and GPQA Diamond. It is calculated only for exact model-name matches in the six-model intersection; ties use average rank. It is not a universal model score and must not be presented as a QBench-native result. SWE-bench Verified remains a separate specialist reference because its model coverage does not match the two-source cohort.
+
+No Artificial Analysis / AA Intelligence Index scores are included. Source values, snapshot dates, URLs and status labels are retained in the external data file.
