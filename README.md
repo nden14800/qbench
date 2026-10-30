@@ -1,144 +1,61 @@
 # QBench
 
-**Independent model evaluation, built around traceable evidence.**
+**Independent AI model benchmark comparison, built around traceable public evidence.**
 
-QBench is an original, early-stage model-evaluation dashboard. It takes visual and interaction inspiration from the information density and chart-led exploration patterns of Artificial Analysis, while maintaining its own identity, data model and evaluation methodology.
+Production: https://qbench.pages.dev  
+Repository: https://github.com/nden14800/qbench
 
-- Repository: https://github.com/nden14800/qbench
-- Live data file: `data/results.json`
-- Entry point: `index.html`
+QBench brings together published results from benchmark providers and presents a transparent cross-benchmark reference view. Its primary interface is the comparable-model leaderboard, model analysis, GPQA cost/performance frontier, and source-level benchmark explorer.
 
-## Current status
+## What is included
 
-This repository is the foundation of the project, not a published benchmark leaderboard.
+The external composite uses the exact model-name intersection across five benchmark families:
 
-- No Artificial Analysis scores, rankings, datasets, or benchmark results are included.
-- No invented model scores or sample records are included.
-- The initial dataset is intentionally empty.
-- No QBench-native composite score or weighting system has been defined; the separate external reference index is not a QBench evaluation result.
-- Imported records remain unreviewed unless explicitly marked otherwise in the source dataset and verified through a documented process.
+- LiveBench 2.0
+- GPQA Diamond
+- FrontierMath family (Tiers 1–3 v2 and Tier 4 v2 averaged as one family)
+- ProofBench
+- Furniture Assembly Benchmark
 
-## Design and implementation
+Each family contributes 20%. Source-published 0–100 values are retained. The composite is the arithmetic mean of those five family scores. Missing results are not imputed and model aliases are not inferred.
 
-- Self-contained `index.html` with inline CSS and JavaScript; no build step.
-- Custom select controls using the `tenmei-choice` structure and keyboard/accessibility behavior established in the current tenmei-mori site.
-- Input styling follows the same restrained surface, border, focus and spacing language used by tenmei-mori controls.
-- Bootstrap Icons 1.13.1 and Google Fonts (DM Sans / IBM Plex Mono).
-- Original QBench SVG favicon and wordmark.
-- Responsive layout, light/dark theme, searchable results table, filters, chart-type switching, JSON import and export.
-- Task library with 12 original Japanese-first prompts, task-specific criteria, and a shared 0–4 scoring anchor.
-- Charts are drawn with native SVG; no charting dependency is required for the foundation.
+The GPQA Pareto chart uses only the source-reported GPQA accuracy and cost-per-question values. SWE-bench Pro V2 and SWE-bench Verified are displayed as separate coding references because their model coverage does not match the composite cohort.
 
-The UI references Artificial Analysis as a design benchmark only. QBench does not copy its brand, data, scoring system, methodology or results.
+## Data provenance and interpretation
 
-## Data format
+All source snapshots, model-level values, units, dates and source URLs are stored in `data/external-benchmarks.json`.
 
-The results explorer reads `data/results.json`. Original task definitions are stored separately in `data/benchmark-suite.json`; task definitions are not model results.
+This composite is a descriptive aggregation of third-party public benchmark snapshots. It is not a QBench-run evaluation, not a universal capability measure, and not an official ranking. Benchmarks differ in task design, difficulty, tools, reasoning effort and harness; small gaps should be interpreted cautiously.
 
-The results file starts as:
+No evaluation used by Artificial Analysis Intelligence Index v5 is included in the composite. QBench does not copy AA's scores, weights, methodology or branding. AA is referenced only as an interface-quality benchmark.
 
-```json
-{
-  "schemaVersion": "0.1",
-  "records": []
-}
-```
+## Interface
 
-Each observation must include:
+- Responsive, data-first layout with leaderboard, model profile, benchmark score matrix, GPQA Pareto frontier and source explorer.
+- Inter + Noto Sans JP typography with tabular numeric figures and a restrained mono face for metrics.
+- ECharts visualizations with interactive tooltips and responsive resizing.
+- Light/dark theme.
+- Static HTML; no build command or package installation.
 
-| Field | Meaning |
-| --- | --- |
-| `model` | Exact model name / evaluated configuration |
-| `provider` | Model provider |
-| `evaluation` | Evaluation name |
-| `evaluationVersion` | Evaluation version |
-| `metric` | Native metric name |
-| `unit` | Native measurement unit |
-| `score` | Finite numeric result |
-| `direction` | `higher` or `lower` |
-| `date` | Run or publication date, `YYYY-MM-DD` |
-| `source` | Direct source URL |
-| `configuration` | Relevant run settings / configuration identifier |
-| `review` | `unreviewed`, `verified`, or `disputed` |
+## Cloudflare Pages
 
-Optional source-reported fields: `sampleSize`, `ciLow`, `ciHigh`, `latencyMs`.
-
-## Comparability rules
-
-QBench groups observations by evaluation name, evaluation version, metric, unit, direction and configuration. It does not silently combine incompatible cohorts or convert different metrics into a universal score.
-
-A composite index may be considered only after the benchmark suite, aggregation, weighting, missing-data policy, uncertainty treatment and sensitivity analysis have been documented and checked.
-
-## Run locally
-
-Open `index.html` through a static web server so the browser can load `data/results.json`. For example:
-
-```sh
-python -m http.server 8000
-```
-
-Then visit `http://localhost:8000`.
-
-No package installation or build process is required.
-
-## References
-
-- Artificial Analysis — [Intelligence Index v5 announcement](https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5)
-- Artificial Analysis — [Intelligence benchmarking methodology](https://artificialanalysis.ai/methodology/intelligence-benchmarking)
-- tenmei-mori — [source repository](https://github.com/nden14800/tenmei-mori)
-
-These references inform interface and research practices only. QBench's scores and evaluation methodology are independent.
-
-
-## QBench Core JP v0.1.0
-
-The first task bank is a Japanese-first general-purpose draft containing 12 original tasks across instruction following, reasoning, quantitative work, summarization, coding, debugging, factual calibration, structured extraction, translation, planning, safety judgment, and multi-step planning.
-
-Each task has three task-specific criteria. Each criterion is scored independently from 0 to 4 using the shared anchors in the suite file. Keep criterion-level scores and evaluator notes; do not collapse them into a cross-task model score until aggregation, weighting, missing-data treatment, and uncertainty have been specified and tested.
-
-Execution defaults are three repetitions, fresh context per task, randomized model order, and explicit recording of sampling/tool settings.
-
-Task definitions are not model evaluation results. `data/results.json` remains empty until model responses have actually been collected and reviewed. No third-party benchmark scores are imported.
-
-
-## External benchmark snapshots
-
-Third-party results are displayed separately from QBench's own evaluation data in `data/external-benchmarks.json`. They are not imported into `data/results.json`, and they are not QBench-run results.
-
-### External composite
-
-The six-model cohort is the exact model-name intersection across five benchmark families:
-
-- LiveBench 2.0 (snapshot 2026-10-25): https://livebench.ai/
-- GPQA Diamond (snapshot 2026-10-30): https://openrouter.ai/benchmarks/gpqa-diamond/
-- FrontierMath family: Tiers 1–3 v2 and Tier 4 v2 (snapshot 2026-10-15): https://epoch.ai/benchmarks/frontiermath-tiers-1-3-v2 and https://epoch.ai/benchmarks/frontiermath-tier-4-v2
-- ProofBench (snapshot 2026-10-12): https://epoch.ai/benchmarks/proofbench
-- Furniture Assembly Benchmark (snapshot 2026-10-15): https://epoch.ai/benchmarks/furniture-assembly
-
-Each family contributes 20%. The FrontierMath family score is the arithmetic mean of its Tiers 1–3 and Tier 4 results, so those two tiers do not count as separate top-level weights. The composite is the arithmetic mean of the five published 0–100 scores. Model identity must match exactly across all five families; missing results are not imputed.
-
-The composite is a descriptive summary of this six-model cohort. Benchmark tasks, difficulty, tools, reasoning effort and harnesses differ, so small score gaps should be interpreted cautiously. It is not a universal capability measure and does not represent QBench's own testing.
-
-### Separate coding references
-
-- SWE-bench Pro V2 (snapshot 2026-10-29): https://llmbenchmark.ai/benchmarks/swe-bench-pro
-- SWE-bench Verified historical snapshot (2026-09-24): https://evals.report/benchmarks/swe-bench-verified?tab=scores
-
-These remain outside the composite because their exact model coverage does not match the six-model cohort. In particular, Claude Opus 5 is not treated as Claude Opus 5.5.
-
-No evaluation used by Artificial Analysis Intelligence Index v5 is included in the composite. The nine v5 evaluations are AA-Briefcase, AutomationBench-AA, GDP.pdf, FrontierCode 2.0, Terminal-Bench 4.0, Terminal-Bench-Science, CritPt v2 (Hard Subset), AA-Omniscience v1.1 and HLE-Diamond. Source values, snapshot dates and URLs are retained in the external data file.
-
-
-## Cloudflare Pages deployment
-
-Production site: https://qbench.pages.dev
-
+- Project: `qbench`
+- Production URL: https://qbench.pages.dev
 - Git repository: `nden14800/qbench`
 - Production branch: `main`
-- Build command: none (static HTML)
-- Build output directory: repository root
-- Root directory: repository root
-- Production deployments: enabled on pushes to `main`
+- Root directory and output directory: repository root
+- Build command: none
+- Production deployments: automatic on pushes to `main`
 - Preview deployments: disabled
 
-Cloudflare Pages is connected to this repository through Git integration. Every push to `main` should publish the repository-root static site.
+## Sources
+
+- [LiveBench](https://livebench.ai/)
+- [GPQA Diamond / OpenRouter](https://openrouter.ai/benchmarks/gpqa-diamond/)
+- [Epoch AI FrontierMath Tiers 1–3 v2](https://epoch.ai/benchmarks/frontiermath-tiers-1-3-v2)
+- [Epoch AI FrontierMath Tier 4 v2](https://epoch.ai/benchmarks/frontiermath-tier-4-v2)
+- [Epoch AI ProofBench](https://epoch.ai/benchmarks/proofbench)
+- [Epoch AI Furniture Assembly](https://epoch.ai/benchmarks/furniture-assembly)
+- [SWE-bench Pro V2](https://llmbenchmark.ai/benchmarks/swe-bench-pro)
+- [SWE-bench Verified](https://evals.report/benchmarks/swe-bench-verified?tab=scores)
+- [Artificial Analysis Intelligence Index v5](https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index?stream=top) — reference for interface quality only; its evaluations are excluded.
