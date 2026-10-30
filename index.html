@@ -67,7 +67,7 @@ main{padding:34px 0 70px}.intro{display:flex;justify-content:space-between;align
   </section>
 
   <section id="landscape">
-    <div class="section-head"><div><h2>Model analysis</h2><p>Inspect how each model performs across the five composite inputs.</p></div><select class="control model-select" id="modelSelect" aria-label="Select model for analysis"></select></div>
+    <div class="section-head"><div><h2>Model analysis</h2><p>Inspect one model or compare two models across the five composite inputs.</p></div><div class="toolbar"><select class="control model-select" id="modelSelect" aria-label="Select primary model"></select><select class="control model-select" id="compareSelect" aria-label="Compare with another model"><option value="">No comparison</option></select></div></div>
     <div class="lower-grid">
       <article class="panel"><div class="panel-head"><div><div class="panel-title" id="profileTitle">Benchmark profile</div><div class="panel-sub">Published scores retained on their original 0–100 scale</div></div><span class="section-kicker" id="profileRank">—</span></div><div id="profileChart" class="chart chart-short" role="img" aria-label="Selected model benchmark profile"></div></article>
       <article class="panel"><div class="panel-head"><div><div class="panel-title">Benchmark score matrix</div><div class="panel-sub">Same six-model cohort · source values</div></div></div><div class="heatmap-wrap"><div class="table-wrap"><table class="heatmap" aria-label="Heatmap of model benchmark scores"><thead id="heatHead"></thead><tbody id="heatRows"></tbody></table></div></div><div class="chart-note">FrontierMath column is the mean of its two published tiers. No missing scores are filled or estimated.</div></article>
@@ -158,12 +158,17 @@ function renderProfile(){
   if(!m)return;
   state.selected=m.model;
   $('#modelSelect').value=m.model;
-  $('#profileTitle').textContent=m.model+' · benchmark profile';
+  const other=state.composite.find(x=>x.model===$('#compareSelect').value);
+  const compared=other&&other.model!==m.model?other:null;
+  const selected=[m,...(compared?[compared]:[])];
+  $('#profileTitle').textContent=compared?m.model+' vs '+compared.model:m.model+' · benchmark profile';
   $('#profileRank').textContent='#'+(state.composite.indexOf(m)+1)+' / '+state.composite.length+' · '+fmt(m.index,2);
   if(!window.echarts){$('#profileChart').textContent='Chart library unavailable. Use the score table above.';return;}
   const host=$('#profileChart');const chart=echarts.getInstanceByDom(host)||echarts.init(host);if(!state.charts.includes(chart))state.charts.push(chart);
-  chart.setOption({animationDuration:350,grid:{left:105,right:35,top:15,bottom:24},xAxis:{type:'value',min:0,max:100,axisLabel:{color:'#8a929d',fontSize:9},splitLine:{lineStyle:{color:'rgba(130,140,150,.16)'}},axisLine:{show:false},axisTick:{show:false}},yAxis:{type:'category',data:FAMILY_LABELS.slice().reverse(),axisLabel:{color:'#656d78',fontSize:10},axisLine:{show:false},axisTick:{show:false}},series:[{type:'bar',data:m.scores.slice().reverse().map((v,i)=>({value:v,itemStyle:{color:['#7b70ad','#7a8799','#4285d4','#16866f','#c76b4c'][i]}})),barWidth:13,label:{show:true,position:'right',color:'#656d78',fontSize:10,formatter:p=>fmt(p.value,1)},showBackground:true,backgroundStyle:{color:'rgba(130,140,150,.09)',borderRadius:2},itemStyle:{borderRadius:[0,3,3,0]}}],tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:p=>p[0].name+': <b>'+fmt(p[0].value,2)+'</b>'}});
-  }
+  const familyColors=['#c76b4c','#4285d4','#7b70ad','#16866f','#7a8799'];
+  const series=selected.map(x=>({name:x.model,type:'bar',barMaxWidth:20,barGap:'25%',data:x.scores.map((v,i)=>({value:v,itemStyle:{color:compared?providerColor(x.provider):familyColors[i]}})),label:{show:true,position:'right',color:'#656d78',fontSize:9,formatter:p=>fmt(p.value,1)},showBackground:true,backgroundStyle:{color:'rgba(130,140,150,.08)'},itemStyle:{borderRadius:[0,3,3,0]}}));
+  chart.setOption({animationDuration:300,legend:{show:!!compared,top:3,textStyle:{color:'#7b8490',fontSize:9}},grid:{left:105,right:35,top:compared?31:12,bottom:22},xAxis:{type:'value',min:0,max:100,axisLabel:{color:'#8a929d',fontSize:9},splitLine:{lineStyle:{color:'rgba(130,140,150,.16)'}},axisLine:{show:false},axisTick:{show:false}},yAxis:{type:'category',data:FAMILY_LABELS,axisLabel:{color:'#656d78',fontSize:10},axisLine:{show:false},axisTick:{show:false}},series,tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:p=>p.map(x=>x.seriesName+'<br><b>'+x.name+': '+fmt(x.value,2)+'</b>').join('<br><br>')}},true);
+}
 function renderPareto(){
   const gpqa=get('gpqa-diamond');
   if(!window.echarts){$('#paretoChart').textContent='Chart library unavailable. GPQA source table remains available below.';return;}
@@ -211,6 +216,7 @@ function renderAll(){
 $('#modelSearch').addEventListener('input',e=>{state.query=e.target.value.trim();renderLeaderboard();});
 $('#providerFilter').addEventListener('change',e=>{state.provider=e.target.value;renderLeaderboard();});
 $('#modelSelect').addEventListener('change',e=>selectModel(e.target.value));
+$('#compareSelect').addEventListener('change',renderProfile);
 $('#benchmarkSelect').addEventListener('change',e=>{state.benchmark=e.target.value;renderBenchmark();});
 $('#themeBtn').addEventListener('click',()=>{const dark=document.documentElement.dataset.theme!=='dark';document.documentElement.dataset.theme=dark?'dark':'light';localStorage.setItem('qbench-theme',dark?'dark':'light');$('#themeBtn').innerHTML=dark?'<i class="bi bi-sun"></i>':'<i class="bi bi-moon-stars"></i>';state.charts.forEach(c=>c.dispose());state.charts=[];renderPareto();renderProfile();});
 $('#menuBtn').addEventListener('click',()=>{document.querySelector('#benchmarks').scrollIntoView({behavior:'smooth'});});
@@ -221,6 +227,7 @@ fetch('./data/external-benchmarks.json').then(r=>{if(!r.ok)throw new Error('Coul
   if(!Array.isArray(data.benchmarks))throw new Error('Benchmark data is malformed.');
   state.data=data;buildComposite();
   $('#modelSelect').innerHTML=state.composite.map(m=>'<option value="'+esc(m.model)+'">'+esc(m.model)+'</option>').join('');
+  $('#compareSelect').innerHTML='<option value="">No comparison</option>'+state.composite.map(m=>'<option value="'+esc(m.model)+'">'+esc(m.model)+'</option>').join('');
   renderAll();
 }).catch(err=>{
   $('#leaderboardRows').innerHTML='<tr><td colspan="7" class="empty">Benchmark data could not be loaded. '+esc(err.message)+'</td></tr>';
