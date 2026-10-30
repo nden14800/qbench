@@ -212,7 +212,7 @@ const taskSet={"schemaVersion":"0.1","suite":{"id":"qbench-core-jp","name":"QBen
 $('#downloadSuite')?.addEventListener('click',()=>download('qbench-core-jp-v0.1.0.json',taskSet));
 setTheme();syncChoices();render();
 let loadedLocalRecords=false;try{const saved=localStorage.getItem('qbench-records');if(saved){state.records=validate(JSON.parse(saved));loadedLocalRecords=true;render();}}catch(storageError){console.warn('Saved local QBench data could not be loaded.',storageError);}if(!loadedLocalRecords)fetch('./data/results.json').then(r=>{if(!r.ok)throw new Error('not available');return r.json();}).then(data=>{state.records=validate(data);render();}).catch(()=>{ /* The app remains usable with an empty local dataset. */ });
-fetch('./data/external-benchmarks.json').then(r=>{if(!r.ok)throw new Error('external data unavailable');return r.json();}).then(d=>{externalData=d;renderExternal();}).catch(()=>{const x=$('#externalCompositeRows');if(x)x.innerHTML='<tr><td colspan="5">External data unavailable.</td></tr>';});
+fetch('./data/external-benchmarks.json').then(r=>{if(!r.ok)throw new Error('external data unavailable');return r.json();}).then(d=>{externalData=d;renderExternal();}).catch(()=>{const x=$('#externalCompositeRows');if(x)x.innerHTML='<tr><td colspan="8">External data unavailable.</td></tr>';});
 fetch('./data/benchmark-suite.json').then(r=>{if(!r.ok)throw new Error('task set unavailable');return r.json();}).then(data=>{if(!Array.isArray(data.tasks))throw new Error('invalid task set');state.tasks=data.tasks;renderTasks();}).catch(()=>{const g=$('#taskGrid');if(g)g.textContent='Task definitions could not be loaded.';});
 })();
 </script>
