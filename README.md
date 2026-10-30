@@ -31,9 +31,11 @@ No evaluation used by Artificial Analysis Intelligence Index v5 is included in t
 
 ## Interface
 
-- Responsive, data-first layout with leaderboard, model profile, benchmark score matrix, GPQA Pareto frontier and source explorer.
-- Inter + Noto Sans JP typography with tabular numeric figures and a restrained mono face for metrics.
-- ECharts visualizations with interactive tooltips and responsive resizing.
+- Responsive, data-first layout with leaderboard, model profile, benchmark score matrix, source explorer and a dedicated visual analytics gallery.
+- IBM Plex Sans / IBM Plex Sans JP with Noto Sans JP fallback; IBM Plex Mono for aligned numeric values.
+- Apache ECharts SVG renderer for vector-sharp labels and geometry at any zoom level.
+- Bar profile, radar comparison, parallel coordinates, cohort box plots, GPQA cost/accuracy scatter with Pareto frontier, and score heatmap.
+- Per-chart SVG export, interactive tooltips, responsive resizing and side-by-side model comparison.
 - Light/dark theme.
 - Static HTML; no build command or package installation.
 
