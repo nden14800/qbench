@@ -9,11 +9,11 @@
 <link rel="icon" href="./favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;450;500;550;600;650;700;750&family=IBM+Plex+Sans+JP:wght@400;450;500;550;600;650;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;450;500;550;600;650;700;750&family=IBM+Plex+Sans+JP:wght@400;450;500;550;600;650;700&family=Noto+Sans+JP:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
 <style>
-:root{color-scheme:light;--bg:#f7f8fa;--paper:#fff;--paper-alt:#fafbfc;--ink:#17191d;--muted:#656d78;--soft:#8a929d;--line:#e5e8ec;--line-strong:#d5dae0;--accent:#315caa;--accent-soft:#edf2fa;--anthropic:#c76b4c;--openai:#16866f;--google:#4285d4;--other:#7b70ad;--shadow:0 1px 2px rgba(20,28,40,.025);--radius:7px;--sans:"IBM Plex Sans","IBM Plex Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;--mono:"IBM Plex Mono","SFMono-Regular",monospace}
+:root{color-scheme:light;--bg:#f7f8fa;--paper:#fff;--paper-alt:#fafbfc;--ink:#17191d;--muted:#656d78;--soft:#8a929d;--line:#e5e8ec;--line-strong:#d5dae0;--accent:#315caa;--accent-soft:#edf2fa;--anthropic:#c76b4c;--openai:#16866f;--google:#4285d4;--other:#7b70ad;--shadow:0 1px 2px rgba(20,28,40,.025);--radius:7px;--sans:"IBM Plex Sans","IBM Plex Sans JP","Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;--mono:"IBM Plex Mono","SFMono-Regular",monospace}
 :root[data-theme="dark"]{color-scheme:dark;--bg:#111419;--paper:#171c22;--paper-alt:#1c2229;--ink:#edf0f4;--muted:#a4adb8;--soft:#7f8995;--line:#2a323c;--line-strong:#3a4551;--accent:#8eafe6;--accent-soft:#202d41;--shadow:0 1px 2px rgba(0,0,0,.2)}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:86px}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.62 var(--sans);font-feature-settings:"ss01" 1;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}button,input,select{font:inherit}button,a,select{-webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}button{color:inherit}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}.mono,.num{font-family:var(--mono);font-variant-numeric:tabular-nums lining-nums}.shell{max-width:1600px;margin:auto;padding:0 38px}.masthead{height:64px;background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}.mast-inner{height:100%;display:flex;align-items:center;gap:34px}.brand{display:flex;align-items:center;gap:10px;min-width:190px}.brand img{width:27px;height:27px}.brand-name{font-size:16px;font-weight:750;letter-spacing:-.7px}.brand-tag{font-size:9px;color:var(--soft);letter-spacing:1.1px;text-transform:uppercase;margin-top:-2px}.nav{display:flex;align-items:center;gap:25px;height:100%;flex:1}.nav a{height:100%;display:flex;align-items:center;position:relative;color:var(--muted);font-size:12px;font-weight:550;white-space:nowrap}.nav a:hover,.nav a.active{color:var(--ink)}.nav a.active:after{content:"";position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--accent)}.mast-actions{display:flex;align-items:center;gap:10px}.updated{font:10px var(--mono);color:var(--soft);white-space:nowrap}.icon-btn{width:33px;height:33px;border:1px solid var(--line);border-radius:5px;background:var(--paper);display:grid;place-items:center;color:var(--muted);cursor:pointer}.icon-btn:hover{border-color:var(--line-strong);color:var(--ink)}.mobile-menu{display:none}
 main{padding:34px 0 70px}.intro{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;padding:7px 0 25px;border-bottom:1px solid var(--line)}.eyebrow{font:600 10px var(--mono);letter-spacing:1.1px;text-transform:uppercase;color:var(--accent);margin-bottom:9px}.intro h1{font-size:31px;line-height:1.15;letter-spacing:-1.4px;margin:0;font-weight:650}.intro p{font-size:13px;color:var(--muted);margin:9px 0 0;max-width:660px}.intro-meta{text-align:right;white-space:nowrap}.intro-meta strong{display:block;font:600 11px var(--mono)}.intro-meta span{font-size:10px;color:var(--soft)}
@@ -59,7 +59,7 @@ main{padding:34px 0 70px}.intro{display:flex;justify-content:space-between;align
   <section id="landscape">
     <div class="section-head"><div><h2>Model analysis</h2><p>Inspect one model or compare two models across the five composite inputs.</p></div><div class="toolbar"><select class="control model-select" id="modelSelect" aria-label="Select primary model"></select><select class="control model-select" id="compareSelect" aria-label="Compare with another model"><option value="">No comparison</option></select></div></div>
     <div class="lower-grid">
-      <article class="panel"><div class="panel-head"><div><div class="panel-title" id="profileTitle">Benchmark profile</div><div class="panel-sub">Published scores retained on their original 0–100 scale</div></div><span class="section-kicker" id="profileRank">—</span></div><div id="profileChart" class="chart chart-short" role="img" aria-label="Selected model benchmark profile"></div></article>
+      <article class="panel"><div class="panel-head"><div><div class="panel-title" id="profileTitle">Benchmark profile</div><div class="panel-sub">Published scores retained on their original 0–100 scale</div></div><span class="section-kicker" id="profileRank">—</span></div><div class="chart-actions" style="justify-content:flex-end;padding:7px 14px 0"><button class="chart-action" data-export="profileChart">Export SVG</button></div><div id="profileChart" class="chart chart-short" role="img" aria-label="Selected model benchmark profile"></div></article>
       <article class="panel"><div class="panel-head"><div><div class="panel-title">Benchmark score matrix</div><div class="panel-sub">Same six-model cohort · source values</div></div></div><div class="heatmap-wrap"><div class="table-wrap"><table class="heatmap" aria-label="Heatmap of model benchmark scores"><thead id="heatHead"></thead><tbody id="heatRows"></tbody></table></div></div><div class="chart-note">FrontierMath column is the mean of its two published tiers. No missing scores are filled or estimated.</div></article>
     </div>
     <div class="section-head"><div><h2>Visual analytics</h2><p>Different views of the same published results — no synthetic or imputed scores.</p></div><span class="section-kicker">VECTOR SVG / INTERACTIVE</span></div>
@@ -111,7 +111,7 @@ const esc = v => String(v ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;',
 const get = id => state.data.benchmarks.find(b=>b.id===id);
 const providerColor = p => COLORS[p] || '#7b70ad';
 const CHART_FONT = 'IBM Plex Sans, IBM Plex Sans JP, sans-serif';
-function chartFor(id){const host=$('#'+id);let c=echarts.getInstanceByDom(host);if(!c){c=echarts.init(host,null,{renderer:'svg'});state.charts.push(c);}return c;}
+function chartFor(id){const host=$('#'+id);let c=echarts.getInstanceByDom(host);if(!c){c=echarts.init(host,null,{renderer:'svg'});c.setOption({textStyle:{fontFamily:CHART_FONT,fontSize:12}});state.charts.push(c);}return c;}
 function axisText(){return {fontFamily:CHART_FONT,fontSize:12,color:'#707985'};}
 const snapshotText = d => new Date(d+'T00:00:00Z').toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric',timeZone:'UTC'});
 function buildComposite(){
@@ -151,7 +151,7 @@ function renderLeaderboard(){
 function selectModel(name){
   state.selected=name;
   $('#modelSelect').value=name;
-  renderProfile();
+  renderProfile();renderRadar();
 }
 function renderProfile(){
   const m=state.composite.find(x=>x.model===state.selected)||state.composite[0];
@@ -218,7 +218,7 @@ function renderRadar(){
 }
 function renderParallel(){
   const chart=chartFor('parallelChart');
-  chart.setOption({animationDuration:250,parallel:{left:58,right:30,top:35,bottom:35,parallelAxisDefault:{type:'value',nameTextStyle:axisText(),axisLine:{lineStyle:{color:'rgba(125,135,145,.45)'}},axisTick:{show:false},splitLine:{show:true,lineStyle:{color:'rgba(125,135,145,.14)'}},axisLabel:{...axisText(),fontSize:11}}},parallelAxis:FAMILY_LABELS.map((name,dim)=>({dim,name,min:0,max:100,axisLabel:{...axisText(),fontSize:11}})),series:[{type:'parallel',smooth:.18,lineStyle:{width:2,opacity:.78},emphasis:{lineStyle:{width:4,opacity:1}},data:state.composite.map(x=>({name:x.model,values:x.scores,lineStyle:{color:providerColor(x.provider),width:2,opacity:.72}}))}]},true);
+  chart.setOption({animationDuration:250,parallel:{left:58,right:30,top:35,bottom:35,parallelAxisDefault:{type:'value',nameTextStyle:axisText(),axisLine:{lineStyle:{color:'rgba(125,135,145,.45)'}},axisTick:{show:false},splitLine:{show:true,lineStyle:{color:'rgba(125,135,145,.14)'}},axisLabel:{...axisText(),fontSize:11}}},parallelAxis:FAMILY_LABELS.map((name,dim)=>({dim,name,min:0,max:100,axisLabel:{...axisText(),fontSize:11}})),series:state.composite.map(x=>({type:'parallel',name:x.model,smooth:.18,lineStyle:{color:providerColor(x.provider),width:2,opacity:.78},emphasis:{lineStyle:{width:4,opacity:1}},data:[x.scores]}))},true);
 }
 function quantile(a,p){const n=(a.length-1)*p,i=Math.floor(n),r=n-i;return a[i+1]===undefined?a[i]:a[i]+r*(a[i+1]-a[i]);}
 function renderDistribution(){
@@ -234,7 +234,7 @@ function renderAll(){
 $('#modelSearch').addEventListener('input',e=>{state.query=e.target.value.trim();renderLeaderboard();});
 $('#providerFilter').addEventListener('change',e=>{state.provider=e.target.value;renderLeaderboard();});
 $('#modelSelect').addEventListener('change',e=>selectModel(e.target.value));
-$('#compareSelect').addEventListener('change',renderProfile);
+$('#compareSelect').addEventListener('change',()=>{renderProfile();renderRadar();});
 $('#benchmarkSelect').addEventListener('change',e=>{state.benchmark=e.target.value;renderBenchmark();});
 $('#themeBtn').addEventListener('click',()=>{const dark=document.documentElement.dataset.theme!=='dark';document.documentElement.dataset.theme=dark?'dark':'light';localStorage.setItem('qbench-theme',dark?'dark':'light');$('#themeBtn').innerHTML=dark?'<i class="bi bi-sun"></i>':'<i class="bi bi-moon-stars"></i>';state.charts.forEach(c=>c.dispose());state.charts=[];renderCharts();});
 $('#menuBtn').addEventListener('click',()=>{document.querySelector('#benchmarks').scrollIntoView({behavior:'smooth'});});
