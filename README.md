@@ -26,13 +26,16 @@ This repository is the foundation of the project, not a published benchmark lead
 - Bootstrap Icons 1.13.1 and Google Fonts (DM Sans / IBM Plex Mono).
 - Original QBench SVG favicon and wordmark.
 - Responsive layout, light/dark theme, searchable results table, filters, chart-type switching, JSON import and export.
+- Task library with 12 original Japanese-first prompts, task-specific criteria, and a shared 0–4 scoring anchor.
 - Charts are drawn with native SVG; no charting dependency is required for the foundation.
 
 The UI references Artificial Analysis as a design benchmark only. QBench does not copy its brand, data, scoring system, methodology or results.
 
 ## Data format
 
-The application reads `data/results.json`:
+The results explorer reads `data/results.json`. Original task definitions are stored separately in `data/benchmark-suite.json`; task definitions are not model results.
+
+The results file starts as:
 
 ```json
 {
@@ -85,3 +88,14 @@ No package installation or build process is required.
 - tenmei-mori — [source repository](https://github.com/nden14800/tenmei-mori)
 
 These references inform interface and research practices only. QBench's scores and evaluation methodology are independent.
+
+
+## QBench Core JP v0.1.0
+
+The first task bank is a Japanese-first general-purpose draft containing 12 original tasks across instruction following, reasoning, quantitative work, summarization, coding, debugging, factual calibration, structured extraction, translation, planning, safety judgment, and multi-step planning.
+
+Each task has three task-specific criteria. Each criterion is scored independently from 0 to 4 using the shared anchors in the suite file. Keep criterion-level scores and evaluator notes; do not collapse them into a cross-task model score until aggregation, weighting, missing-data treatment, and uncertainty have been specified and tested.
+
+Execution defaults are three repetitions, fresh context per task, randomized model order, and explicit recording of sampling/tool settings.
+
+Task definitions are not model evaluation results. `data/results.json` remains empty until model responses have actually been collected and reviewed. No third-party benchmark scores are imported.
