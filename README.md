@@ -99,3 +99,17 @@ Each task has three task-specific criteria. Each criterion is scored independent
 Execution defaults are three repetitions, fresh context per task, randomized model order, and explicit recording of sampling/tool settings.
 
 Task definitions are not model evaluation results. `data/results.json` remains empty until model responses have actually been collected and reviewed. No third-party benchmark scores are imported.
+
+
+## External benchmark snapshots
+
+The application includes a separate external evidence view backed by `data/external-benchmarks.json`. This file is deliberately separate from `data/results.json` and the QBench Core JP task bank.
+
+Included snapshots:
+- LiveBench 2.0 (2026-10-25)
+- GPQA Diamond via OpenRouter (2026-10-30)
+- SWE-bench Verified snapshot tracked by evals.report (2026-09-24)
+
+The External Reference Index is a descriptive, equal-weight average of within-cohort percentile ranks from LiveBench 2.0 Overall and GPQA Diamond. It is calculated only for exact model-name matches in the six-model intersection. Ties use average rank. It is not a universal model score and must not be presented as a QBench-native result. SWE-bench Verified remains a separate coding-specialist reference because its model coverage does not match the two-source cohort.
+
+No Artificial Analysis or AA Intelligence Index scores are included. Source values, snapshot dates, URLs, and status labels are retained in the external data file.
