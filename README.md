@@ -15,7 +15,7 @@ This repository is the foundation of the project, not a published benchmark lead
 - No Artificial Analysis scores, rankings, datasets, or benchmark results are included.
 - No invented model scores or sample records are included.
 - The initial dataset is intentionally empty.
-- No universal composite score or weighting system has been defined.
+- No QBench-native composite score or weighting system has been defined; the separate external reference index is not a QBench evaluation result.
 - Imported records remain unreviewed unless explicitly marked otherwise in the source dataset and verified through a documented process.
 
 ## Design and implementation
@@ -103,27 +103,27 @@ Task definitions are not model evaluation results. `data/results.json` remains e
 
 ## External benchmark snapshots
 
-The application includes a separate external evidence view backed by `data/external-benchmarks.json`. This file is deliberately separate from `data/results.json` and the QBench Core JP task bank.
+Third-party results are displayed separately from QBench's own evaluation data in `data/external-benchmarks.json`. They are not imported into `data/results.json`, and they are not QBench-run results.
 
-Included snapshots:
-- LiveBench 2.0 (2026-10-25)
-- GPQA Diamond via OpenRouter (2026-10-30)
-- SWE-bench Verified snapshot tracked by evals.report (2026-09-24)
+### External composite
 
-The External Reference Index is a descriptive, equal-weight average of within-cohort percentile ranks from LiveBench 2.0 Overall and GPQA Diamond. It is calculated only for exact model-name matches in the six-model intersection. Ties use average rank. It is not a universal model score and must not be presented as a QBench-native result. SWE-bench Verified remains a separate coding-specialist reference because its model coverage does not match the two-source cohort.
+The six-model cohort is the exact model-name intersection across five benchmark families:
 
-No Artificial Analysis or AA Intelligence Index scores are included. Source values, snapshot dates, URLs, and status labels are retained in the external data file.
+- LiveBench 2.0 (snapshot 2026-10-25): https://livebench.ai/
+- GPQA Diamond (snapshot 2026-10-30): https://openrouter.ai/benchmarks/gpqa-diamond/
+- FrontierMath family: Tiers 1–3 v2 and Tier 4 v2 (snapshot 2026-10-15): https://epoch.ai/benchmarks/frontiermath-tiers-1-3-v2 and https://epoch.ai/benchmarks/frontiermath-tier-4-v2
+- ProofBench (snapshot 2026-10-12): https://epoch.ai/benchmarks/proofbench
+- Furniture Assembly Benchmark (snapshot 2026-10-15): https://epoch.ai/benchmarks/furniture-assembly
 
+Each family contributes 20%. The FrontierMath family score is the arithmetic mean of its Tiers 1–3 and Tier 4 results, so those two tiers do not count as separate top-level weights. The composite is the arithmetic mean of the five published 0–100 scores. Model identity must match exactly across all five families; missing results are not imputed.
 
-## External benchmark snapshots
+The composite is a descriptive summary of this six-model cohort. Benchmark tasks, difficulty, tools, reasoning effort and harnesses differ, so small score gaps should be interpreted cautiously. It is not a universal capability measure and does not represent QBench's own testing.
 
-The separate External benchmarks view reads `data/external-benchmarks.json`; these records are not mixed into QBench-native `data/results.json`.
+### Separate coding references
 
-Included public snapshots:
-- LiveBench 2.0 (2026-10-25)
-- GPQA Diamond via OpenRouter (2026-10-30)
-- SWE-bench Verified as tracked by evals.report (2026-09-24)
+- SWE-bench Pro V2 (snapshot 2026-10-29): https://llmbenchmark.ai/benchmarks/swe-bench-pro
+- SWE-bench Verified historical snapshot (2026-09-24): https://evals.report/benchmarks/swe-bench-verified?tab=scores
 
-The External Reference Index is a descriptive equal-weight average of within-cohort percentile ranks from LiveBench 2.0 Overall and GPQA Diamond. It is calculated only for exact model-name matches in the six-model intersection; ties use average rank. It is not a universal model score and must not be presented as a QBench-native result. SWE-bench Verified remains a separate specialist reference because its model coverage does not match the two-source cohort.
+These remain outside the composite because their exact model coverage does not match the six-model cohort. In particular, Claude Opus 5 is not treated as Claude Opus 5.5.
 
-No Artificial Analysis / AA Intelligence Index scores are included. Source values, snapshot dates, URLs and status labels are retained in the external data file.
+No evaluation used by Artificial Analysis Intelligence Index v5 is included in the composite. The nine v5 evaluations are AA-Briefcase, AutomationBench-AA, GDP.pdf, FrontierCode 2.0, Terminal-Bench 4.0, Terminal-Bench-Science, CritPt v2 (Hard Subset), AA-Omniscience v1.1 and HLE-Diamond. Source values, snapshot dates and URLs are retained in the external data file.
