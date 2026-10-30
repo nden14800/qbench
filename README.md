@@ -127,3 +127,18 @@ The composite is a descriptive summary of this six-model cohort. Benchmark tasks
 These remain outside the composite because their exact model coverage does not match the six-model cohort. In particular, Claude Opus 5 is not treated as Claude Opus 5.5.
 
 No evaluation used by Artificial Analysis Intelligence Index v5 is included in the composite. The nine v5 evaluations are AA-Briefcase, AutomationBench-AA, GDP.pdf, FrontierCode 2.0, Terminal-Bench 4.0, Terminal-Bench-Science, CritPt v2 (Hard Subset), AA-Omniscience v1.1 and HLE-Diamond. Source values, snapshot dates and URLs are retained in the external data file.
+
+
+## Cloudflare Pages deployment
+
+Production site: https://qbench.pages.dev
+
+- Git repository: `nden14800/qbench`
+- Production branch: `main`
+- Build command: none (static HTML)
+- Build output directory: repository root
+- Root directory: repository root
+- Production deployments: enabled on pushes to `main`
+- Preview deployments: disabled
+
+Cloudflare Pages is connected to this repository through Git integration. Every push to `main` should publish the repository-root static site.
