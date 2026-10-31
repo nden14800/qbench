@@ -2856,7 +2856,7 @@
       "snapshotDate": "2026-10-31",
       "source": "https://labs.scale.com/leaderboard/hle-diamond",
       "unit": "% accuracy",
-      "quality": "Scale AI / CAIS official leaderboard · 1,000 frozen questions · reasoning and knowledge partitions",
+      "quality": "Scale AI HLE-Diamond official leaderboard. Same benchmark version as AA v5, but source scoring/harness is not guaranteed to match AA's internal evaluation.",
       "models": [
         {
           "model": "GPT-6 Astra",
@@ -3075,7 +3075,7 @@
       "snapshotDate": "2026-10-31",
       "source": "https://www.tbench.ai/?version=4.0",
       "unit": "% resolution rate",
-      "quality": "Official tbench.ai leaderboard · native agent harnesses · 66 tasks · three repeats per task",
+      "quality": "Official Terminal-Bench 4.0 public leaderboard. Same benchmark version as AA v5, but public harness/configuration may differ from AA's private Stirrup evaluation; not an exact reproduction of AA's run.",
       "models": [
         {
           "model": "Claude Opus 5.5",
@@ -3338,7 +3338,7 @@
       "snapshotDate": "2026-10-25",
       "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
       "unit": "% pass@1",
-      "quality": "Vals AI independent leaderboard · 70 expert-authored research tasks · Mini-SWE-agent · one run per model",
+      "quality": "Vals AI third-party leaderboard · Mini-SWE-agent · single run per task. Same benchmark version as AA v5, but not AA's Stirrup harness or three-run protocol; not directly comparable to AA's internal scores.",
       "models": [
         {
           "model": "GPT-6 Astra",
@@ -4329,6 +4329,14 @@
       "source": "https://epoch.ai/benchmarks/deepswe",
       "status": "research-pipeline",
       "note": "Not used in QBench Index: Epoch AI currently labels this benchmark Flawed. Reconsider only after the benchmark authors resolve the review findings."
+    },
+    {
+      "id": "arc-agi-3",
+      "name": "ARC-AGI-3",
+      "group": "Additional evaluations",
+      "source": "https://arcprize.org/leaderboard",
+      "status": "research-pipeline",
+      "note": "Novel interactive environments and adaptive agentic reasoning. Public standings are competition teams/systems rather than a comparable base-model score table; monitored separately, not mixed into QBench Index."
     }
   ],
   "composite": {
