@@ -5725,7 +5725,7 @@
           "score": 0,
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent",
-          "source": "https://www.vals-ai.com/benchmarks/terminal-bench-4",
+          "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-29",
           "evidence": "Rank 58 on the Vals AI Terminal-Bench 4.0 publisher leaderboard, updated 2026-10-29.",
@@ -5745,7 +5745,7 @@
       "id": "terminal-bench-science-0-1",
       "name": "Terminal-Bench-Science 0.1",
       "snapshotDate": "2026-10-25",
-      "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+      "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
       "unit": "% pass@1",
       "quality": "Third-party run (vals.ai, Mini-SWE-agent). One row uses Terminus 2 harness.",
       "models": [
@@ -5756,7 +5756,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -5767,7 +5767,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -5778,7 +5778,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -5789,7 +5789,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -5800,7 +5800,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -5811,7 +5811,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -5822,7 +5822,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
           "providerEvidence": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/",
@@ -5835,7 +5835,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -5846,7 +5846,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -5857,7 +5857,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -5868,7 +5868,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
           "providerEvidence": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/",
@@ -5881,7 +5881,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -5892,7 +5892,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -5903,7 +5903,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -5914,7 +5914,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -5925,7 +5925,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -5936,7 +5936,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -5947,7 +5947,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -5958,7 +5958,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -5969,7 +5969,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -5980,7 +5980,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -5991,7 +5991,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -6002,7 +6002,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -6013,7 +6013,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -6024,7 +6024,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
           "providerEvidence": "https://fireworks.ai/models/fireworks/ember-1"
@@ -6036,7 +6036,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -6047,7 +6047,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -6058,7 +6058,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -6069,7 +6069,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -6080,7 +6080,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -6091,7 +6091,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -6102,7 +6102,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -6113,7 +6113,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -6124,7 +6124,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -6135,7 +6135,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -6146,7 +6146,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -6157,7 +6157,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
           "providerEvidence": "https://reflection.ai/blog/introducing-beam"
@@ -6169,7 +6169,7 @@
           "configuration": "Terminus 2",
           "harness": "Terminus 2",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -6180,7 +6180,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -6191,7 +6191,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
           "providerEvidence": "https://www.inceptionlabs.ai/models"
@@ -6203,7 +6203,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -6214,7 +6214,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         },
@@ -6225,7 +6225,7 @@
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
-          "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25"
         }
@@ -10130,7 +10130,7 @@
         },
         {
           "label": "Vals AI — Terminal-Bench-Science 0.1",
-          "url": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "url": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "snapshotDate": "2026-10-25"
         },
         {
