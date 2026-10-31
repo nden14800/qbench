@@ -414,7 +414,7 @@ function renderSummaryCards(ranked,top,baseModels,full,broad,limited,unranked){
   });
   $('#stats').innerHTML=
     '<div class="col"><div class="card h-100"><div class="card-body"><div class="stat-k">Index 1.4 · top 5</div>'+
-      '<div id="sum-top" style="height:200px"></div></div></div></div>'+
+      '<div id="sum-top" style="height:260px"></div></div></div></div>'+
     '<div class="col"><div class="card h-100"><div class="card-body"><div class="stat-k">Leader per evaluation</div>'+
       '<ul class="list-unstyled small mb-0 mt-2">'+leaders.map(function(l){return '<li class="d-flex justify-content-between gap-2 py-1 border-bottom"><span class="text-muted-qb">'+esc(l.name)+'</span><span class="text-end fw-semibold">'+(l.lead?esc(scatterLabel(l.lead))+' · '+fmt(l.lead.score,1):'—')+'</span></li>';}).join('')+'</ul>'+
     '</div></div></div>'+
@@ -428,12 +428,12 @@ function renderSummaryCards(ranked,top,baseModels,full,broad,limited,unranked){
     '</div></div></div>';
   var chart=chartInit('sum-top');
   if(chart&&top5.length){
-    chart.setOption({animation:false,grid:{left:150,right:44,top:6,bottom:22},
+    chart.setOption({animation:false,grid:{left:40,right:12,top:26,bottom:96},
       tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(ps){var r=top5[ps[0].dataIndex];return esc(r.variantLabel)+'<br>Index '+fmt(r.index,1);}},
-      xAxis:Object.assign({type:'value',min:0,max:100},axisStyle(p)),
-      yAxis:Object.assign({type:'category',inverse:true,data:top5.map(scatterLabel)},axisStyle(p)),
-      series:[{type:'bar',barWidth:12,data:top5.map(function(r){return {value:+Number(r.index).toFixed(1),itemStyle:{color:providerColor(r.provider)}};}),
-        label:{show:true,position:'right',formatter:function(e){return fmt(e.value,1);},color:p.ink,fontSize:10}}]});
+      xAxis:catAxis(p,{type:'category',data:top5.map(scatterLabel)},{rotate:40,interval:0,fontSize:10,width:110,overflow:'truncate'}),
+      yAxis:Object.assign({type:'value',min:0,max:100},axisStyle(p)),
+      series:[{type:'bar',barWidth:'50%',data:top5.map(function(r){return {value:+Number(r.index).toFixed(1),itemStyle:{color:providerColor(r.provider)}};}),
+        label:{show:true,position:'top',formatter:function(e){return fmt(e.value,1);},color:p.ink,fontSize:10}}]});
   }
 }
 
@@ -500,6 +500,11 @@ function chartInit(id){
 }
 window.addEventListener('resize',function(){Object.keys(ECH).forEach(function(k){if(ECH[k]&&!ECH[k].isDisposed())ECH[k].resize();});});
 if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){Object.keys(ECH).forEach(function(k){if(ECH[k]&&!ECH[k].isDisposed())ECH[k].resize();});});}
+/* Category axis for vertical bars: style from axisStyle, but keep our own label rotation and interval. */
+function catAxis(p,axis,label){
+  var base=axisStyle(p);
+  return Object.assign({},base,axis,{axisLabel:Object.assign({},base.axisLabel,label)});
+}
 function axisStyle(p){
   var family=getComputedStyle(document.body).fontFamily||'DM Sans, Zen Kaku Gothic New, sans-serif';
   return {axisLabel:{color:p.muted,fontSize:12,fontFamily:family},axisLine:{lineStyle:{color:p.grid}},splitLine:{lineStyle:{color:p.grid}}};
@@ -551,18 +556,18 @@ function renderEvalGrid(host){
     return '<div class="col"><div class="card h-100"><div class="card-body">'+
       '<div class="fw-semibold">'+esc(c.e.name)+'</div>'+
       '<div class="text-muted-qb small mb-2">'+esc(c.e.domain||'')+' · top '+c.rows.length+' of '+c.total+' model/effort variants</div>'+
-      '<div id="eg-'+i+'" style="height:'+Math.max(220,c.rows.length*22+44)+'px"></div>'+
+      '<div id="eg-'+i+'" style="height:320px"></div>'+
       '</div></div></div>';
   }).join('')+'</div>'+
   '<div class="notice-qb mt-3">Each panel uses that evaluation\'s native percentage. Panels are not averaged together; use the Index bars view for the composite.</div>';
   panels.forEach(function(c,i){
     var chart=chartInit('eg-'+i); if(!chart)return;
-    chart.setOption({animation:false,grid:{left:200,right:48,top:8,bottom:26},
+    chart.setOption({animation:false,grid:{left:44,right:12,top:26,bottom:118},
       tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(ps){var r=c.rows[ps[0].dataIndex];return esc(scatterLabel(r))+'<br>'+esc(c.e.name)+': '+fmt(r.score,1)+'%';}},
-      xAxis:Object.assign({type:'value',min:0,max:100,axisLabel:{formatter:'{value}%'}},axisStyle(p)),
-      yAxis:Object.assign({type:'category',inverse:true,data:c.rows.map(scatterLabel)},axisStyle(p)),
-      series:[{type:'bar',barWidth:11,data:c.rows.map(function(r){return {value:+Number(r.score).toFixed(1),itemStyle:{color:providerColor(r.provider)}};}),
-        label:{show:true,position:'right',formatter:function(e){return fmt(e.value,1);},color:p.ink,fontSize:10}}]});
+      xAxis:catAxis(p,{type:'category',data:c.rows.map(scatterLabel)},{rotate:50,interval:0,fontSize:10,width:120,overflow:'truncate'}),
+      yAxis:Object.assign({type:'value',min:0,max:100,axisLabel:{formatter:'{value}%'}},axisStyle(p)),
+      series:[{type:'bar',barWidth:'55%',data:c.rows.map(function(r){return {value:+Number(r.score).toFixed(1),itemStyle:{color:providerColor(r.provider)}};}),
+        label:{show:true,position:'top',formatter:function(e){return fmt(e.value,1);},color:p.ink,fontSize:10}}]});
   });
 }
 /* Short point label: model name, plus effort only when the source reports it. */
