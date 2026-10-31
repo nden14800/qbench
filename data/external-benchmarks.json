@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.6",
-  "note": "Snapshot 2026-10-31: 37 result datasets, 900 model-result/configuration rows, 191 exact model names, 683 model/configuration/harness combinations, 37 provider labels, and 74 directory entries. AA's official 38-entry evaluation directory is represented; several standalone leaderboard mirrors now have model-level results. QBench 1.0 uses six domains; partial mirrors remain labelled.",
+  "note": "Snapshot 2026-10-31: 22 result datasets, 664 model-result/configuration rows, 151 exact model names, 553 model/configuration/harness combinations, 27 provider labels, and 74 directory entries. QBench Composite Index 1.0 uses four domains and eight eligible evaluations. AA published scores and index values are not used.",
   "benchmarks": [
     {
       "id": "livebench-2.0",
@@ -27,7 +27,7 @@
           "source": "https://livebench.ai/",
           "sourceType": "official-publisher",
           "snapshotDate": "2026-10-25",
-          "costPerTaskUSD": 6.904
+          "costPerSuccessfulTaskUSD": 6.904
         },
         {
           "model": "GPT-6 Astra",
@@ -47,7 +47,7 @@
           "source": "https://livebench.ai/",
           "sourceType": "official-publisher",
           "snapshotDate": "2026-10-25",
-          "costPerTaskUSD": 4.548
+          "costPerSuccessfulTaskUSD": 4.548
         },
         {
           "model": "Claude Opus 5.5",
@@ -67,7 +67,7 @@
           "source": "https://livebench.ai/",
           "sourceType": "official-publisher",
           "snapshotDate": "2026-10-25",
-          "costPerTaskUSD": 4.291
+          "costPerSuccessfulTaskUSD": 4.291
         },
         {
           "model": "GPT-6.1 Sol",
@@ -87,7 +87,7 @@
           "source": "https://livebench.ai/",
           "sourceType": "official-publisher",
           "snapshotDate": "2026-10-25",
-          "costPerTaskUSD": 0.761
+          "costPerSuccessfulTaskUSD": 0.761
         },
         {
           "model": "Claude Sonnet 5.5",
@@ -107,7 +107,7 @@
           "configuration": "max",
           "harness": "LiveBench 2.0 official leaderboard; one run per suite",
           "sourceType": "official-publisher",
-          "costPerTaskUSD": 3.718
+          "costPerSuccessfulTaskUSD": 3.718
         },
         {
           "model": "Gemini 4 Argon",
@@ -127,288 +127,316 @@
           "configuration": "max",
           "harness": "LiveBench 2.0 official leaderboard; one run per suite",
           "sourceType": "official-publisher",
-          "costPerTaskUSD": 2.073
+          "costPerSuccessfulTaskUSD": 2.073
         },
         {
           "model": "GPT-6.1 Terra",
           "provider": "OpenAI",
           "score": 77.8,
-          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench",
-          "source": "https://livebench.ai/",
+          "evidence": "BenchLeader's LiveBench 2.0 global mirror, retrieved 2026-10-30; underlying publisher release dated 2026-10-25. Publisher leaderboard is JavaScript-rendered.",
+          "source": "https://www.benchleader.com/benchmarks/livebench2_global",
           "snapshotDate": "2026-10-25",
           "configuration": "Not reported",
           "harness": "Not reported",
-          "sourceType": "source-documented"
+          "sourceType": "secondary-mirror",
+          "retrievedAt": "2026-10-30"
         },
         {
           "model": "Muse Wonder",
           "provider": "Meta",
           "score": 74.2,
-          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench",
-          "source": "https://livebench.ai/",
+          "evidence": "BenchLeader's LiveBench 2.0 global mirror, retrieved 2026-10-30; underlying publisher release dated 2026-10-25. Publisher leaderboard is JavaScript-rendered.",
+          "source": "https://www.benchleader.com/benchmarks/livebench2_global",
           "snapshotDate": "2026-10-25",
           "configuration": "Not reported",
           "harness": "Not reported",
-          "sourceType": "source-documented"
+          "sourceType": "secondary-mirror",
+          "retrievedAt": "2026-10-30"
         },
         {
           "model": "DeepSeek V4.1 Flash 1017",
           "provider": "DeepSeek",
           "score": 74,
-          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench",
-          "source": "https://livebench.ai/",
+          "evidence": "BenchLeader's LiveBench 2.0 global mirror, retrieved 2026-10-30; underlying publisher release dated 2026-10-25. Publisher leaderboard is JavaScript-rendered.",
+          "source": "https://www.benchleader.com/benchmarks/livebench2_global",
           "snapshotDate": "2026-10-25",
           "configuration": "Not reported",
           "harness": "Not reported",
-          "sourceType": "source-documented"
+          "sourceType": "secondary-mirror",
+          "retrievedAt": "2026-10-30"
         },
         {
           "model": "Kimi K3.1 Pro",
           "provider": "Moonshot AI",
           "score": 71.3,
-          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench",
-          "source": "https://livebench.ai/",
+          "evidence": "BenchLeader's LiveBench 2.0 global mirror, retrieved 2026-10-30; underlying publisher release dated 2026-10-25. Publisher leaderboard is JavaScript-rendered.",
+          "source": "https://www.benchleader.com/benchmarks/livebench2_global",
           "snapshotDate": "2026-10-25",
           "configuration": "Not reported",
           "harness": "Not reported",
-          "sourceType": "source-documented"
+          "sourceType": "secondary-mirror",
+          "retrievedAt": "2026-10-30"
         },
         {
           "model": "Grok 4.7",
           "provider": "xAI",
           "score": 70.1,
-          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench",
-          "source": "https://livebench.ai/",
+          "evidence": "BenchLeader's LiveBench 2.0 global mirror, retrieved 2026-10-30; underlying publisher release dated 2026-10-25. Publisher leaderboard is JavaScript-rendered.",
+          "source": "https://www.benchleader.com/benchmarks/livebench2_global",
           "snapshotDate": "2026-10-25",
           "configuration": "Not reported",
           "harness": "Not reported",
-          "sourceType": "source-documented"
+          "sourceType": "secondary-mirror",
+          "retrievedAt": "2026-10-30"
         },
         {
           "model": "Claude Haiku 5.5",
           "provider": "Anthropic",
           "score": 69.8,
-          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench",
-          "source": "https://livebench.ai/",
+          "evidence": "BenchLeader's LiveBench 2.0 global mirror, retrieved 2026-10-30; underlying publisher release dated 2026-10-25. Publisher leaderboard is JavaScript-rendered.",
+          "source": "https://www.benchleader.com/benchmarks/livebench2_global",
           "snapshotDate": "2026-10-25",
           "configuration": "Not reported",
           "harness": "Not reported",
-          "sourceType": "source-documented"
+          "sourceType": "secondary-mirror",
+          "retrievedAt": "2026-10-30"
         },
         {
           "model": "MiMo V2.6 Pro",
           "provider": "Xiaomi",
           "score": 68.5,
-          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench",
-          "source": "https://livebench.ai/",
+          "evidence": "BenchLeader's LiveBench 2.0 global mirror, retrieved 2026-10-30; underlying publisher release dated 2026-10-25. Publisher leaderboard is JavaScript-rendered.",
+          "source": "https://www.benchleader.com/benchmarks/livebench2_global",
           "snapshotDate": "2026-10-25",
           "configuration": "Not reported",
           "harness": "Not reported",
-          "sourceType": "source-documented"
+          "sourceType": "secondary-mirror",
+          "retrievedAt": "2026-10-30"
         },
         {
           "model": "GPT-5.6 Terra",
           "provider": "OpenAI",
           "score": 67.8,
-          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench",
-          "source": "https://livebench.ai/",
+          "evidence": "BenchLeader's LiveBench 2.0 global mirror, retrieved 2026-10-30; underlying publisher release dated 2026-10-25. Publisher leaderboard is JavaScript-rendered.",
+          "source": "https://www.benchleader.com/benchmarks/livebench2_global",
           "snapshotDate": "2026-10-25",
           "configuration": "Not reported",
           "harness": "Not reported",
-          "sourceType": "source-documented"
+          "sourceType": "secondary-mirror",
+          "retrievedAt": "2026-10-30"
         },
         {
           "model": "Grok 4.6",
           "provider": "xAI",
           "score": 67.8,
-          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench",
-          "source": "https://livebench.ai/",
+          "evidence": "BenchLeader's LiveBench 2.0 global mirror, retrieved 2026-10-30; underlying publisher release dated 2026-10-25. Publisher leaderboard is JavaScript-rendered.",
+          "source": "https://www.benchleader.com/benchmarks/livebench2_global",
           "snapshotDate": "2026-10-25",
           "configuration": "Not reported",
           "harness": "Not reported",
-          "sourceType": "source-documented"
+          "sourceType": "secondary-mirror",
+          "retrievedAt": "2026-10-30"
         },
         {
           "model": "MiniMax M3.1 Flash",
           "provider": "MiniMax",
           "score": 66.9,
-          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench",
-          "source": "https://livebench.ai/",
+          "evidence": "BenchLeader's LiveBench 2.0 global mirror, retrieved 2026-10-30; underlying publisher release dated 2026-10-25. Publisher leaderboard is JavaScript-rendered.",
+          "source": "https://www.benchleader.com/benchmarks/livebench2_global",
           "snapshotDate": "2026-10-25",
           "configuration": "Not reported",
           "harness": "Not reported",
-          "sourceType": "source-documented"
+          "sourceType": "secondary-mirror",
+          "retrievedAt": "2026-10-30"
         },
         {
           "model": "GPT-6 Luna",
           "provider": "OpenAI",
           "score": 64.6,
-          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench",
-          "source": "https://livebench.ai/",
+          "evidence": "BenchLeader's LiveBench 2.0 global mirror, retrieved 2026-10-30; underlying publisher release dated 2026-10-25. Publisher leaderboard is JavaScript-rendered.",
+          "source": "https://www.benchleader.com/benchmarks/livebench2_global",
           "snapshotDate": "2026-10-25",
           "configuration": "Not reported",
           "harness": "Not reported",
-          "sourceType": "source-documented"
+          "sourceType": "secondary-mirror",
+          "retrievedAt": "2026-10-30"
         },
         {
           "model": "Kimi K3",
           "provider": "Moonshot AI",
           "score": 64.6,
-          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench",
-          "source": "https://livebench.ai/",
+          "evidence": "BenchLeader's LiveBench 2.0 global mirror, retrieved 2026-10-30; underlying publisher release dated 2026-10-25. Publisher leaderboard is JavaScript-rendered.",
+          "source": "https://www.benchleader.com/benchmarks/livebench2_global",
           "snapshotDate": "2026-10-25",
           "configuration": "Not reported",
           "harness": "Not reported",
-          "sourceType": "source-documented"
+          "sourceType": "secondary-mirror",
+          "retrievedAt": "2026-10-30"
         },
         {
           "model": "Mistral Large 4",
           "provider": "Mistral AI",
           "score": 63.5,
-          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench",
-          "source": "https://livebench.ai/",
+          "evidence": "BenchLeader's LiveBench 2.0 global mirror, retrieved 2026-10-30; underlying publisher release dated 2026-10-25. Publisher leaderboard is JavaScript-rendered.",
+          "source": "https://www.benchleader.com/benchmarks/livebench2_global",
           "snapshotDate": "2026-10-25",
           "configuration": "Not reported",
           "harness": "Not reported",
-          "sourceType": "source-documented"
+          "sourceType": "secondary-mirror",
+          "retrievedAt": "2026-10-30"
         },
         {
           "model": "Muse Spark 1.3",
           "provider": "Meta",
           "score": 63,
-          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench",
-          "source": "https://livebench.ai/",
+          "evidence": "BenchLeader's LiveBench 2.0 global mirror, retrieved 2026-10-30; underlying publisher release dated 2026-10-25. Publisher leaderboard is JavaScript-rendered.",
+          "source": "https://www.benchleader.com/benchmarks/livebench2_global",
           "snapshotDate": "2026-10-25",
           "configuration": "Not reported",
           "harness": "Not reported",
-          "sourceType": "source-documented"
+          "sourceType": "secondary-mirror",
+          "retrievedAt": "2026-10-30"
         },
         {
           "model": "GLM 5.3 Flash",
           "provider": "Z.ai",
           "score": 62.1,
-          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench",
-          "source": "https://livebench.ai/",
+          "evidence": "BenchLeader's LiveBench 2.0 global mirror, retrieved 2026-10-30; underlying publisher release dated 2026-10-25. Publisher leaderboard is JavaScript-rendered.",
+          "source": "https://www.benchleader.com/benchmarks/livebench2_global",
           "snapshotDate": "2026-10-25",
           "configuration": "Not reported",
           "harness": "Not reported",
-          "sourceType": "source-documented"
+          "sourceType": "secondary-mirror",
+          "retrievedAt": "2026-10-30"
         },
         {
           "model": "Qwen3.8 Max",
           "provider": "Alibaba",
           "score": 61.6,
-          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench",
-          "source": "https://livebench.ai/",
+          "evidence": "BenchLeader's LiveBench 2.0 global mirror, retrieved 2026-10-30; underlying publisher release dated 2026-10-25. Publisher leaderboard is JavaScript-rendered.",
+          "source": "https://www.benchleader.com/benchmarks/livebench2_global",
           "snapshotDate": "2026-10-25",
           "configuration": "Not reported",
           "harness": "Not reported",
-          "sourceType": "source-documented"
+          "sourceType": "secondary-mirror",
+          "retrievedAt": "2026-10-30"
         },
         {
           "model": "Gemini 3.8 Flash",
           "provider": "Google",
           "score": 59.2,
-          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench",
-          "source": "https://livebench.ai/",
+          "evidence": "BenchLeader's LiveBench 2.0 global mirror, retrieved 2026-10-30; underlying publisher release dated 2026-10-25. Publisher leaderboard is JavaScript-rendered.",
+          "source": "https://www.benchleader.com/benchmarks/livebench2_global",
           "snapshotDate": "2026-10-25",
           "configuration": "Not reported",
           "harness": "Not reported",
-          "sourceType": "source-documented"
+          "sourceType": "secondary-mirror",
+          "retrievedAt": "2026-10-30"
         },
         {
           "model": "Step 5 Preview",
           "provider": "StepFun",
           "score": 58.6,
-          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench",
-          "source": "https://livebench.ai/",
+          "evidence": "BenchLeader's LiveBench 2.0 global mirror, retrieved 2026-10-30; underlying publisher release dated 2026-10-25. Publisher leaderboard is JavaScript-rendered.",
+          "source": "https://www.benchleader.com/benchmarks/livebench2_global",
           "snapshotDate": "2026-10-25",
           "configuration": "Not reported",
           "harness": "Not reported",
-          "sourceType": "source-documented"
+          "sourceType": "secondary-mirror",
+          "retrievedAt": "2026-10-30"
         },
         {
           "model": "Qwen3.8 27B",
           "provider": "Alibaba",
           "score": 58.4,
-          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench",
-          "source": "https://livebench.ai/",
+          "evidence": "BenchLeader's LiveBench 2.0 global mirror, retrieved 2026-10-30; underlying publisher release dated 2026-10-25. Publisher leaderboard is JavaScript-rendered.",
+          "source": "https://www.benchleader.com/benchmarks/livebench2_global",
           "snapshotDate": "2026-10-25",
           "configuration": "Not reported",
           "harness": "Not reported",
-          "sourceType": "source-documented"
+          "sourceType": "secondary-mirror",
+          "retrievedAt": "2026-10-30"
         },
         {
           "model": "Muse Spark Open",
           "provider": "Meta",
           "score": 51.6,
-          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench",
-          "source": "https://livebench.ai/",
+          "evidence": "BenchLeader's LiveBench 2.0 global mirror, retrieved 2026-10-30; underlying publisher release dated 2026-10-25. Publisher leaderboard is JavaScript-rendered.",
+          "source": "https://www.benchleader.com/benchmarks/livebench2_global",
           "snapshotDate": "2026-10-25",
           "configuration": "Not reported",
           "harness": "Not reported",
-          "sourceType": "source-documented"
+          "sourceType": "secondary-mirror",
+          "retrievedAt": "2026-10-30"
         },
         {
           "model": "Smaug Nemotron 3.5 NVFP4",
           "provider": "NVIDIA",
           "score": 50.3,
-          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench",
-          "source": "https://livebench.ai/",
+          "evidence": "BenchLeader's LiveBench 2.0 global mirror, retrieved 2026-10-30; underlying publisher release dated 2026-10-25. Publisher leaderboard is JavaScript-rendered.",
+          "source": "https://www.benchleader.com/benchmarks/livebench2_global",
           "snapshotDate": "2026-10-25",
           "configuration": "Not reported",
           "harness": "Not reported",
-          "sourceType": "source-documented"
+          "sourceType": "secondary-mirror",
+          "retrievedAt": "2026-10-30"
         },
         {
           "model": "Nemotron Super VL 3.5",
           "provider": "NVIDIA",
           "score": 50.2,
-          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench",
-          "source": "https://livebench.ai/",
+          "evidence": "BenchLeader's LiveBench 2.0 global mirror, retrieved 2026-10-30; underlying publisher release dated 2026-10-25. Publisher leaderboard is JavaScript-rendered.",
+          "source": "https://www.benchleader.com/benchmarks/livebench2_global",
           "snapshotDate": "2026-10-25",
           "configuration": "Not reported",
           "harness": "Not reported",
-          "sourceType": "source-documented"
+          "sourceType": "secondary-mirror",
+          "retrievedAt": "2026-10-30"
         },
         {
           "model": "T Inkling",
           "provider": "Thinking Machines",
           "score": 47,
-          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench",
-          "source": "https://livebench.ai/",
+          "evidence": "BenchLeader's LiveBench 2.0 global mirror, retrieved 2026-10-30; underlying publisher release dated 2026-10-25. Publisher leaderboard is JavaScript-rendered.",
+          "source": "https://www.benchleader.com/benchmarks/livebench2_global",
           "snapshotDate": "2026-10-25",
           "configuration": "Not reported",
           "harness": "Not reported",
-          "sourceType": "source-documented"
+          "sourceType": "secondary-mirror",
+          "retrievedAt": "2026-10-30"
         },
         {
           "model": "Nemotron Super VL 3.5 NVFP4",
           "provider": "NVIDIA",
           "score": 46.5,
-          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench",
-          "source": "https://livebench.ai/",
+          "evidence": "BenchLeader's LiveBench 2.0 global mirror, retrieved 2026-10-30; underlying publisher release dated 2026-10-25. Publisher leaderboard is JavaScript-rendered.",
+          "source": "https://www.benchleader.com/benchmarks/livebench2_global",
           "snapshotDate": "2026-10-25",
           "configuration": "Not reported",
           "harness": "Not reported",
-          "sourceType": "source-documented"
+          "sourceType": "secondary-mirror",
+          "retrievedAt": "2026-10-30"
         },
         {
           "model": "Gemma 4 31B",
           "provider": "Google",
           "score": 38.7,
-          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench",
-          "source": "https://livebench.ai/",
+          "evidence": "BenchLeader's LiveBench 2.0 global mirror, retrieved 2026-10-30; underlying publisher release dated 2026-10-25. Publisher leaderboard is JavaScript-rendered.",
+          "source": "https://www.benchleader.com/benchmarks/livebench2_global",
           "snapshotDate": "2026-10-25",
           "configuration": "Not reported",
           "harness": "Not reported",
-          "sourceType": "source-documented"
+          "sourceType": "secondary-mirror",
+          "retrievedAt": "2026-10-30"
         }
       ],
       "indexEligible": true,
       "indexDomain": "Reasoning & Generalization",
       "saturationStatus": "ceiling-watch",
-      "quality": "LiveBench 2.0 official release 2026-10-25. Overall is the publisher's weighted mean across seven suites; Long Agentic ×2, Design ×1.5 and Coding ×1.5, other suites ×1. Publisher discloses Abacus AI sponsorship. Six top model rows and per-suite breakdowns/cost per successful task are imported directly from the publisher; remaining rows are secondary mirror results."
+      "quality": "LiveBench 2.0 publisher release 2026-10-25. The first six overall rows and their published Cost per successful task values are taken directly from LiveBench; the remaining model scores are explicitly attributed to BenchLeader's 2026-10-30 mirror and are not presented as directly publisher-verified.",
+      "costMetric": "Cost per successful task",
+      "costMetricUnit": "USD per successful task",
+      "costMetricSource": "https://livebench.ai/"
     },
     {
       "id": "gpqa-diamond",
@@ -2069,518 +2097,828 @@
     },
     {
       "id": "proofbench",
-      "name": "ProofBench",
+      "name": "ProofBench 1.1",
       "snapshotDate": "2026-10-29",
-      "source": "https://epoch.ai/benchmarks/proofbench",
+      "source": "https://www.vals.ai/benchmarks/proof_bench",
       "unit": "% proof success",
       "models": [
         {
-          "model": "Claude Fable 5.1",
+          "model": "Claude Sonnet 5.5",
           "provider": "Anthropic",
           "score": 100,
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/proofbench",
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
           "snapshotDate": "2026-10-29",
-          "evidence": "Imported from ProofBench source snapshot 2026-10-29.",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.56,
+          "tokensPerTestDisplay": "420.28k",
+          "durationPerTestDisplay": "5m48s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
           "model": "Claude Opus 5.5",
           "provider": "Anthropic",
           "score": 100,
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/proofbench",
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
           "snapshotDate": "2026-10-29",
-          "evidence": "Imported from ProofBench source snapshot 2026-10-29.",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.96,
+          "tokensPerTestDisplay": "261.87k",
+          "durationPerTestDisplay": "5m51s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
-          "model": "Claude Sonnet 5.5",
+          "model": "Claude Fable 5.1",
           "provider": "Anthropic",
           "score": 100,
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/proofbench",
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
           "snapshotDate": "2026-10-29",
-          "evidence": "Imported from ProofBench source snapshot 2026-10-29.",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 2.7,
+          "tokensPerTestDisplay": "297.51k",
+          "durationPerTestDisplay": "7m58s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
-          "model": "GPT-6 Astra",
-          "provider": "OpenAI",
-          "score": 99,
-          "configuration": "unknown thinking",
-          "source": "https://epoch.ai/benchmarks/proofbench",
+          "model": "AlephProver",
+          "provider": "Logical Intelligence",
+          "score": 100,
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
           "snapshotDate": "2026-10-29",
-          "evidence": "Imported from ProofBench source snapshot 2026-10-29.",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 9.35,
+          "tokensPerTestDisplay": "—",
+          "durationPerTestDisplay": "18m28s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
           "model": "GPT-6.1 Sol",
           "provider": "OpenAI",
           "score": 99,
-          "configuration": "unknown thinking",
-          "source": "https://epoch.ai/benchmarks/proofbench",
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
           "snapshotDate": "2026-10-29",
-          "evidence": "Imported from ProofBench source snapshot 2026-10-29.",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.23,
+          "tokensPerTestDisplay": "338.81k",
+          "durationPerTestDisplay": "4m45s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 99,
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 1.71,
+          "tokensPerTestDisplay": "366.39k",
+          "durationPerTestDisplay": "5m08s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
           "model": "Gemini 4 Argon",
           "provider": "Google",
           "score": 99,
-          "configuration": "unknown",
-          "source": "https://epoch.ai/benchmarks/proofbench",
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
           "snapshotDate": "2026-10-29",
-          "evidence": "Imported from ProofBench source snapshot 2026-10-29.",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.78,
+          "tokensPerTestDisplay": "389.33k",
+          "durationPerTestDisplay": "6m20s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
           "model": "Claude Opus 5",
           "provider": "Anthropic",
           "score": 99,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/proofbench",
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
           "snapshotDate": "2026-10-29",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 1.79,
+          "tokensPerTestDisplay": "557.88k",
+          "durationPerTestDisplay": "9m51s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
           "model": "Claude Fable 5",
           "provider": "Anthropic",
           "score": 95,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/proofbench",
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
           "snapshotDate": "2026-10-29",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 5.23,
+          "tokensPerTestDisplay": "434.89k",
+          "durationPerTestDisplay": "13m43s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
+        },
+        {
+          "model": "Wonder Full",
+          "provider": "Other",
+          "score": 94,
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.86,
+          "tokensPerTestDisplay": "654.27k",
+          "durationPerTestDisplay": "11m36s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
           "model": "Kimi K3.1 Pro",
           "provider": "Moonshot AI",
           "score": 91,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "source": "https://epoch.ai/benchmarks/proofbench",
-          "snapshotDate": "2026-10-29",
           "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.47,
+          "tokensPerTestDisplay": "757.55k",
+          "durationPerTestDisplay": "8m16s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
           "model": "Claude Haiku 5.5",
           "provider": "Anthropic",
           "score": 89,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/proofbench",
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
           "snapshotDate": "2026-10-29",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.17,
+          "tokensPerTestDisplay": "519.74k",
+          "durationPerTestDisplay": "6m58s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
           "model": "Kimi K3",
           "provider": "Moonshot AI",
           "score": 87,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "source": "https://epoch.ai/benchmarks/proofbench",
-          "snapshotDate": "2026-10-29",
           "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 1.65,
+          "tokensPerTestDisplay": "1.12m",
+          "durationPerTestDisplay": "34m31s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
-          "model": "Muse Wonder",
-          "provider": "Meta",
-          "score": 84,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "source": "https://epoch.ai/benchmarks/proofbench",
-          "snapshotDate": "2026-10-29",
+          "model": "Aristotle",
+          "provider": "Harmonic",
+          "score": 86,
           "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": null,
+          "tokensPerTestDisplay": "—",
+          "durationPerTestDisplay": "—",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
+        },
+        {
+          "model": "Wonder",
+          "provider": "Other",
+          "score": 84,
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 1.31,
+          "tokensPerTestDisplay": "871.96k",
+          "durationPerTestDisplay": "15m29s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
           "model": "GPT-6 Sol",
           "provider": "OpenAI",
           "score": 83,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "source": "https://epoch.ai/benchmarks/proofbench",
-          "snapshotDate": "2026-10-29",
           "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.48,
+          "tokensPerTestDisplay": "1.00m",
+          "durationPerTestDisplay": "5m05s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
+        },
+        {
+          "model": "GPT-5.6 Sol",
+          "provider": "OpenAI",
+          "score": 83,
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 1.44,
+          "tokensPerTestDisplay": "1.26m",
+          "durationPerTestDisplay": "8m40s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
           "model": "Claude Sonnet 5",
           "provider": "Anthropic",
           "score": 77,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/proofbench",
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
           "snapshotDate": "2026-10-29",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 1.37,
+          "tokensPerTestDisplay": "1.69m",
+          "durationPerTestDisplay": "14m58s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
           "model": "Hy4 Preview",
           "provider": "Tencent",
           "score": 75,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "source": "https://epoch.ai/benchmarks/proofbench",
-          "snapshotDate": "2026-10-29",
           "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.34,
+          "tokensPerTestDisplay": "1.42m",
+          "durationPerTestDisplay": "22m54s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
           "model": "GPT-5.6 Terra",
           "provider": "OpenAI",
           "score": 74,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "configuration": "xhigh",
-          "source": "https://epoch.ai/benchmarks/proofbench",
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
           "snapshotDate": "2026-10-29",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 1.27,
+          "tokensPerTestDisplay": "2.45m",
+          "durationPerTestDisplay": "12m57s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
           "model": "MiMo V2.6 Pro",
           "provider": "Xiaomi",
           "score": 70,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "source": "https://epoch.ai/benchmarks/proofbench",
-          "snapshotDate": "2026-10-29",
           "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
-        },
-        {
-          "model": "Claude Opus 4.8",
-          "provider": "Anthropic",
-          "score": 69,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/proofbench",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
           "snapshotDate": "2026-10-29",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.25,
+          "tokensPerTestDisplay": "2.30m",
+          "durationPerTestDisplay": "1h02m",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
           "model": "GPT-6 Luna",
           "provider": "OpenAI",
           "score": 64,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "source": "https://epoch.ai/benchmarks/proofbench",
-          "snapshotDate": "2026-10-29",
           "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.04,
+          "tokensPerTestDisplay": "1.29m",
+          "durationPerTestDisplay": "7m31s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
           "model": "MiMo V2.6 Flash",
           "provider": "Xiaomi",
           "score": 63,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "source": "https://epoch.ai/benchmarks/proofbench",
-          "snapshotDate": "2026-10-29",
           "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.12,
+          "tokensPerTestDisplay": "4.22m",
+          "durationPerTestDisplay": "1h03m",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
+        },
+        {
+          "model": "Ember-1",
+          "provider": "Other",
+          "score": 61,
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 1.74,
+          "tokensPerTestDisplay": "1.19m",
+          "durationPerTestDisplay": "21m09s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
           "model": "GPT-5.6 Luna",
           "provider": "OpenAI",
           "score": 60,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/proofbench",
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
           "snapshotDate": "2026-10-29",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
-        },
-        {
-          "model": "Muse Spark 1.3",
-          "provider": "Meta",
-          "score": 58,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/proofbench",
-          "snapshotDate": "2026-10-29",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
-        },
-        {
-          "model": "Qwen3.8 Max",
-          "provider": "Alibaba",
-          "score": 58,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/proofbench",
-          "snapshotDate": "2026-10-29",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.12,
+          "tokensPerTestDisplay": "2.11m",
+          "durationPerTestDisplay": "8m34s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
           "model": "Gemini 3.7 Flash",
           "provider": "Google",
           "score": 58,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "source": "https://epoch.ai/benchmarks/proofbench",
-          "snapshotDate": "2026-10-29",
           "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
-        },
-        {
-          "model": "GPT-5.4",
-          "provider": "OpenAI",
-          "score": 56,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "configuration": "xhigh",
-          "source": "https://epoch.ai/benchmarks/proofbench",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
           "snapshotDate": "2026-10-29",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.56,
+          "tokensPerTestDisplay": "598.08k",
+          "durationPerTestDisplay": "7m04s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
-          "model": "DeepSeek V4 Flash",
+          "model": "Muse Spark 1.3 Max",
+          "provider": "Meta",
+          "score": 58,
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.48,
+          "tokensPerTestDisplay": "1.15m",
+          "durationPerTestDisplay": "9m29s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
+        },
+        {
+          "model": "Qwen3.8 Max",
+          "provider": "Alibaba",
+          "score": 58,
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 1.5,
+          "tokensPerTestDisplay": "2.27m",
+          "durationPerTestDisplay": "31m08s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
+        },
+        {
+          "model": "DeepSeek V4 Flash 0731",
           "provider": "DeepSeek",
           "score": 56,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/proofbench",
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
           "snapshotDate": "2026-10-29",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.16,
+          "tokensPerTestDisplay": "1.76m",
+          "durationPerTestDisplay": "15m34s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
-          "model": "Claude Opus 4.7",
-          "provider": "Anthropic",
-          "score": 54,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/proofbench",
+          "model": "Muse Spark 1.3",
+          "provider": "Meta",
+          "score": 55,
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
           "snapshotDate": "2026-10-29",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.43,
+          "tokensPerTestDisplay": "1.11m",
+          "durationPerTestDisplay": "8m54s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
           "model": "DeepSeek V4.1 Flash",
           "provider": "DeepSeek",
           "score": 54,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "source": "https://epoch.ai/benchmarks/proofbench",
-          "snapshotDate": "2026-10-29",
           "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.13,
+          "tokensPerTestDisplay": "1.91m",
+          "durationPerTestDisplay": "9m07s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
           "model": "Grok 4.6",
           "provider": "xAI",
           "score": 51,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "source": "https://epoch.ai/benchmarks/proofbench",
-          "snapshotDate": "2026-10-29",
           "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
-        },
-        {
-          "model": "GPT-5.5",
-          "provider": "OpenAI",
-          "score": 50,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "configuration": "xhigh",
-          "source": "https://epoch.ai/benchmarks/proofbench",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
           "snapshotDate": "2026-10-29",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.82,
+          "tokensPerTestDisplay": "899.07k",
+          "durationPerTestDisplay": "14m22s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
-          "model": "Claude Opus 4.6",
-          "provider": "Anthropic",
-          "score": 50,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/proofbench",
-          "snapshotDate": "2026-10-29",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
-        },
-        {
-          "model": "DeepSeek V4 Pro",
+          "model": "DeepSeek V4 Pro 0813",
           "provider": "DeepSeek",
           "score": 50,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "source": "https://epoch.ai/benchmarks/proofbench",
-          "snapshotDate": "2026-10-29",
           "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.26,
+          "tokensPerTestDisplay": "1.36m",
+          "durationPerTestDisplay": "12m12s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
           "model": "GLM 5.3",
           "provider": "Z.ai",
           "score": 49,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/proofbench",
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
           "snapshotDate": "2026-10-29",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 2.08,
+          "tokensPerTestDisplay": "2.98m",
+          "durationPerTestDisplay": "42m23s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
           "model": "Gemini 3.8 Flash",
           "provider": "Google",
           "score": 48,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "source": "https://epoch.ai/benchmarks/proofbench",
-          "snapshotDate": "2026-10-29",
           "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
-        },
-        {
-          "model": "Claude Sonnet 4.6",
-          "provider": "Anthropic",
-          "score": 45,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/proofbench",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
           "snapshotDate": "2026-10-29",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.6,
+          "tokensPerTestDisplay": "722.62k",
+          "durationPerTestDisplay": "6m09s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
           "model": "Muse Spark 1.2",
           "provider": "Meta",
           "score": 43,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "source": "https://epoch.ai/benchmarks/proofbench",
-          "snapshotDate": "2026-10-29",
           "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.44,
+          "tokensPerTestDisplay": "1.13m",
+          "durationPerTestDisplay": "7m49s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
           "model": "Step 5 Preview",
           "provider": "StepFun",
           "score": 42,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "source": "https://epoch.ai/benchmarks/proofbench",
-          "snapshotDate": "2026-10-29",
           "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
-        },
-        {
-          "model": "Muse Spark 1.1",
-          "provider": "Meta",
-          "score": 39,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "source": "https://epoch.ai/benchmarks/proofbench",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
           "snapshotDate": "2026-10-29",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
-        },
-        {
-          "model": "Claude Opus 4.5",
-          "provider": "Anthropic",
-          "score": 36,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "source": "https://epoch.ai/benchmarks/proofbench",
-          "snapshotDate": "2026-10-29",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
-        },
-        {
-          "model": "Gemini 3.6 Flash",
-          "provider": "Google",
-          "score": 36,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "source": "https://epoch.ai/benchmarks/proofbench",
-          "snapshotDate": "2026-10-29",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
-        },
-        {
-          "model": "GLM 5.2",
-          "provider": "Z.ai",
-          "score": 35,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/proofbench",
-          "snapshotDate": "2026-10-29",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.71,
+          "tokensPerTestDisplay": "2.72m",
+          "durationPerTestDisplay": "38m34s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
           "model": "Gemini 3.5 Flash",
           "provider": "Google",
           "score": 31,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "configuration": "high",
-          "source": "https://epoch.ai/benchmarks/proofbench",
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
           "snapshotDate": "2026-10-29",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.57,
+          "tokensPerTestDisplay": "715.95k",
+          "durationPerTestDisplay": "6m34s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
           "model": "Grok 4.5",
           "provider": "xAI",
           "score": 31,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "configuration": "high",
-          "source": "https://epoch.ai/benchmarks/proofbench",
-          "snapshotDate": "2026-10-29",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
-        },
-        {
-          "model": "Gemini 3.1 Pro",
-          "provider": "Google",
-          "score": 26,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "source": "https://epoch.ai/benchmarks/proofbench",
-          "snapshotDate": "2026-10-29",
           "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
-        },
-        {
-          "model": "Qwen3.7",
-          "provider": "Alibaba",
-          "score": 26,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/proofbench",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
           "snapshotDate": "2026-10-29",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.57,
+          "tokensPerTestDisplay": "766.46k",
+          "durationPerTestDisplay": "11m09s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
           "model": "Grok 4.7",
           "provider": "xAI",
           "score": 26,
-          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
-          "source": "https://epoch.ai/benchmarks/proofbench",
-          "snapshotDate": "2026-10-29",
           "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented"
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.79,
+          "tokensPerTestDisplay": "722.19k",
+          "durationPerTestDisplay": "12m47s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
+        },
+        {
+          "model": "Gemini 3.1 Pro Preview (02/26)",
+          "provider": "Google",
+          "score": 26,
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.78,
+          "tokensPerTestDisplay": "703.60k",
+          "durationPerTestDisplay": "14m49s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
+        },
+        {
+          "model": "MiMo V2.5 Pro",
+          "provider": "Xiaomi",
+          "score": 22,
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.09,
+          "tokensPerTestDisplay": "1.15m",
+          "durationPerTestDisplay": "19m37s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
+        },
+        {
+          "model": "GLM 5.3 Flash",
+          "provider": "Z.ai",
+          "score": 21,
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.22,
+          "tokensPerTestDisplay": "7.36m",
+          "durationPerTestDisplay": "1h11m",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
+        },
+        {
+          "model": "Beam 1.0",
+          "provider": "Other",
+          "score": 18,
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": null,
+          "tokensPerTestDisplay": "659.65k",
+          "durationPerTestDisplay": "4m27s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
+        },
+        {
+          "model": "MiniMax-M3",
+          "provider": "MiniMax",
+          "score": 18,
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.42,
+          "tokensPerTestDisplay": "1.68m",
+          "durationPerTestDisplay": "11m59s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
+        },
+        {
+          "model": "DeepSeek V4",
+          "provider": "DeepSeek",
+          "score": 16,
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.14,
+          "tokensPerTestDisplay": "627.03k",
+          "durationPerTestDisplay": "7m03s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
+        },
+        {
+          "model": "MiMo V2.5",
+          "provider": "Xiaomi",
+          "score": 16,
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.06,
+          "tokensPerTestDisplay": "1.54m",
+          "durationPerTestDisplay": "20m56s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
+        },
+        {
+          "model": "Qwen3.8 27B",
+          "provider": "Alibaba",
+          "score": 16,
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 2.3,
+          "tokensPerTestDisplay": "3.75m",
+          "durationPerTestDisplay": "24m14s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
+        },
+        {
+          "model": "Mistral Large 4",
+          "provider": "Mistral AI",
+          "score": 10,
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.33,
+          "tokensPerTestDisplay": "613.67k",
+          "durationPerTestDisplay": "20m59s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
+        },
+        {
+          "model": "Mistral Medium 3.5",
+          "provider": "Mistral AI",
+          "score": 9,
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 1.3,
+          "tokensPerTestDisplay": "783.49k",
+          "durationPerTestDisplay": "7m59s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
+        },
+        {
+          "model": "Inkling Small",
+          "provider": "Thinking Machines",
+          "score": 6,
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.08,
+          "tokensPerTestDisplay": "654.29k",
+          "durationPerTestDisplay": "8m27s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
+        },
+        {
+          "model": "Mercury 2.5",
+          "provider": "Inception",
+          "score": 3,
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.04,
+          "tokensPerTestDisplay": "558.30k",
+          "durationPerTestDisplay": "3m22s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
+        },
+        {
+          "model": "Inkling",
+          "provider": "Thinking Machines",
+          "score": 0,
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.2,
+          "tokensPerTestDisplay": "582.42k",
+          "durationPerTestDisplay": "7m16s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
+        },
+        {
+          "model": "Nemotron 3.5 Lightning",
+          "provider": "NVIDIA",
+          "score": 0,
+          "configuration": "Not reported",
+          "harness": "Lean 4 proof checker",
+          "source": "https://www.vals.ai/benchmarks/proof_bench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.02,
+          "tokensPerTestDisplay": "490.76k",
+          "durationPerTestDisplay": "15m19s",
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         }
-      ]
+      ],
+      "indexEligible": false,
+      "saturationStatus": "ceiling-watch",
+      "costMetric": "Cost / Test",
+      "costMetricUnit": "USD per full benchmark test",
+      "costMetricSource": "https://www.vals.ai/benchmarks/proof_bench",
+      "quality": "Vals AI ProofBench v1.1 publisher leaderboard, updated 2026-10-29. 54 rows are shown with Cost / Test, Tokens / Test and Duration / Test where reported. Kept outside the composite because the top four models reach 100%, creating a ceiling-watch condition."
     },
     {
       "id": "furniture-assembly",
@@ -4461,7 +4799,7 @@
       "snapshotDate": "2026-10-29",
       "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
       "unit": "% resolution rate",
-      "quality": "Third-party run (vals.ai, Mini-SWE-agent harness). The official tbench.ai table was not readable; values are not the official Terminal-Bench leaderboard.",
+      "quality": "Vals AI's 2026-10-29 leaderboard lists 59 model runs using Mini-SWE-agent. Cost / Test, Tokens / Test and Duration / Test are copied as published; these are full benchmark-test metrics, not per-task prices.",
       "models": [
         {
           "model": "Claude Opus 5.5",
@@ -4472,7 +4810,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 13.2,
+          "tokensPerTestDisplay": "28.27m",
+          "durationPerTestDisplay": "1h04m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Claude Sonnet 5.5",
@@ -4483,7 +4825,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 16.51,
+          "tokensPerTestDisplay": "58.53m",
+          "durationPerTestDisplay": "1h22m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Kimi K3.1 Pro",
@@ -4494,7 +4840,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 4.57,
+          "tokensPerTestDisplay": "16.57m",
+          "durationPerTestDisplay": "49m21s",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Gemini 4 Carbon",
@@ -4505,7 +4855,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 7.45,
+          "tokensPerTestDisplay": "12.46m",
+          "durationPerTestDisplay": "45m07s",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "GPT-6 Astra",
@@ -4516,7 +4870,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 9.58,
+          "tokensPerTestDisplay": "3.01m",
+          "durationPerTestDisplay": "35m42s",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Claude Fable 5.1",
@@ -4527,7 +4885,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 17.18,
+          "tokensPerTestDisplay": "18.82m",
+          "durationPerTestDisplay": "1h00m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Wonder Full",
@@ -4538,7 +4900,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 10.53,
+          "tokensPerTestDisplay": "31.82m",
+          "durationPerTestDisplay": "1h12m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Gemini 4 Argon",
@@ -4549,7 +4915,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 17.64,
+          "tokensPerTestDisplay": "16.66m",
+          "durationPerTestDisplay": "53m35s",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "GPT-6.1 Sol",
@@ -4560,7 +4930,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 1.72,
+          "tokensPerTestDisplay": "2.86m",
+          "durationPerTestDisplay": "45m12s",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Claude Opus 5",
@@ -4571,7 +4945,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 18.6,
+          "tokensPerTestDisplay": "23.71m",
+          "durationPerTestDisplay": "1h07m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "GPT-6.1 Terra",
@@ -4582,7 +4960,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 2.16,
+          "tokensPerTestDisplay": "16.82m",
+          "durationPerTestDisplay": "33m53s",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Wonder",
@@ -4593,7 +4975,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 14.66,
+          "tokensPerTestDisplay": "34.66m",
+          "durationPerTestDisplay": "54m41s",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "GPT-6 Sol",
@@ -4604,7 +4990,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 5.79,
+          "tokensPerTestDisplay": "13.79m",
+          "durationPerTestDisplay": "34m56s",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Claude Fable 5",
@@ -4615,7 +5005,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 30.34,
+          "tokensPerTestDisplay": "19.75m",
+          "durationPerTestDisplay": "1h08m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "GLM 5.3",
@@ -4626,7 +5020,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 9.37,
+          "tokensPerTestDisplay": "31.54m",
+          "durationPerTestDisplay": "1h23m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Qwen3.8 Max (0902)",
@@ -4637,7 +5035,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 12.15,
+          "tokensPerTestDisplay": "39.16m",
+          "durationPerTestDisplay": "2h23m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "GPT-5.6 Sol",
@@ -4648,7 +5050,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 7.98,
+          "tokensPerTestDisplay": "10.49m",
+          "durationPerTestDisplay": "33m46s",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "GLM 5.3 Flash",
@@ -4659,7 +5065,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 1.22,
+          "tokensPerTestDisplay": "35.66m",
+          "durationPerTestDisplay": "1h01m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Claude Haiku 5.5",
@@ -4670,7 +5080,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 3.12,
+          "tokensPerTestDisplay": "45.50m",
+          "durationPerTestDisplay": "51m56s",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Qwen3.8 Max",
@@ -4681,7 +5095,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 10.63,
+          "tokensPerTestDisplay": "33.91m",
+          "durationPerTestDisplay": "2h28m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "DeepSeek V4.1 Flash 1017",
@@ -4692,7 +5110,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 0.54,
+          "tokensPerTestDisplay": "39.65m",
+          "durationPerTestDisplay": "41m10s",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Step 5 Preview",
@@ -4703,7 +5125,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 3.11,
+          "tokensPerTestDisplay": "40.82m",
+          "durationPerTestDisplay": "1h58m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "MiMo V2.6 Pro",
@@ -4714,7 +5140,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 0.46,
+          "tokensPerTestDisplay": "26.60m",
+          "durationPerTestDisplay": "2h42m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Grok 4.7",
@@ -4725,7 +5155,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 18.01,
+          "tokensPerTestDisplay": "18.23m",
+          "durationPerTestDisplay": "50m08s",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Mistral Large 4",
@@ -4736,7 +5170,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 5.18,
+          "tokensPerTestDisplay": "41.07m",
+          "durationPerTestDisplay": "1h40m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Mistral Large 4 OSS",
@@ -4747,7 +5185,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 2.73,
+          "tokensPerTestDisplay": "25.04m",
+          "durationPerTestDisplay": "1h05m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "MiniMax M3.1 Flash",
@@ -4758,7 +5200,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 0.73,
+          "tokensPerTestDisplay": "38.09m",
+          "durationPerTestDisplay": "50m31s",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Muse Spark 1.3 Max",
@@ -4769,7 +5215,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 6.65,
+          "tokensPerTestDisplay": "32.43m",
+          "durationPerTestDisplay": "52m56s",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "MiMo V2.6 Flash",
@@ -4780,7 +5230,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 0.21,
+          "tokensPerTestDisplay": "33.20m",
+          "durationPerTestDisplay": "2h25m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Claude Opus 4.8",
@@ -4791,7 +5245,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 17.14,
+          "tokensPerTestDisplay": "17.17m",
+          "durationPerTestDisplay": "1h11m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "GPT-5.6 Terra",
@@ -4802,7 +5260,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 5.6,
+          "tokensPerTestDisplay": "13.66m",
+          "durationPerTestDisplay": "31m29s",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Ember-1",
@@ -4813,7 +5275,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 19.48,
+          "tokensPerTestDisplay": "46.75m",
+          "durationPerTestDisplay": "1h55m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "DeepSeek V4.1 Flash",
@@ -4824,7 +5290,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 0.5,
+          "tokensPerTestDisplay": "31.53m",
+          "durationPerTestDisplay": "48m22s",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Gemini 3.8 Flash",
@@ -4835,7 +5305,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 8.65,
+          "tokensPerTestDisplay": "36.56m",
+          "durationPerTestDisplay": "1h47m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "DeepSeek V4 Flash 0731",
@@ -4846,7 +5320,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 0.77,
+          "tokensPerTestDisplay": "30.13m",
+          "durationPerTestDisplay": "1h46m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Grok 4.6",
@@ -4857,7 +5335,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 5.06,
+          "tokensPerTestDisplay": "8.40m",
+          "durationPerTestDisplay": "29m25s",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Kimi K3",
@@ -4868,7 +5350,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 12.48,
+          "tokensPerTestDisplay": "27.56m",
+          "durationPerTestDisplay": "3h09m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "DeepSeek V4 Pro 0813",
@@ -4879,7 +5365,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 3.31,
+          "tokensPerTestDisplay": "54.70m",
+          "durationPerTestDisplay": "1h32m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "GPT-6 Luna",
@@ -4890,7 +5380,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 0.35,
+          "tokensPerTestDisplay": "15.38m",
+          "durationPerTestDisplay": "32m46s",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Gemini 3.7 Flash",
@@ -4901,7 +5395,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 8.71,
+          "tokensPerTestDisplay": "23.32m",
+          "durationPerTestDisplay": "1h24m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "GPT-5.6 Luna",
@@ -4912,7 +5410,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 0.73,
+          "tokensPerTestDisplay": "19.00m",
+          "durationPerTestDisplay": "35m55s",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "DeepSeek V4",
@@ -4923,7 +5425,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 3.45,
+          "tokensPerTestDisplay": "56.99m",
+          "durationPerTestDisplay": "1h26m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Claude Sonnet 5",
@@ -4934,7 +5440,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 26.05,
+          "tokensPerTestDisplay": "67.55m",
+          "durationPerTestDisplay": "1h45m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Muse Spark 1.3",
@@ -4945,7 +5455,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 7.04,
+          "tokensPerTestDisplay": "33.50m",
+          "durationPerTestDisplay": "1h59m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Grok 4.5",
@@ -4956,7 +5470,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 5.52,
+          "tokensPerTestDisplay": "9.64m",
+          "durationPerTestDisplay": "33m43s",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Hy4 Preview",
@@ -4967,7 +5485,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 3.07,
+          "tokensPerTestDisplay": "41.06m",
+          "durationPerTestDisplay": "2h10m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Muse Spark Open",
@@ -4978,7 +5500,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 7.26,
+          "tokensPerTestDisplay": "13.99m",
+          "durationPerTestDisplay": "2h04m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Gemini 3.5 Flash",
@@ -4989,7 +5515,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 5.98,
+          "tokensPerTestDisplay": "18.68m",
+          "durationPerTestDisplay": "1h11m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Muse Spark 1.2",
@@ -5000,7 +5530,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 4.14,
+          "tokensPerTestDisplay": "21.55m",
+          "durationPerTestDisplay": "1h18m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Beam 1.0",
@@ -5011,7 +5545,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": null,
+          "tokensPerTestDisplay": "12.27m",
+          "durationPerTestDisplay": "19m15s",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Mercury 3",
@@ -5022,7 +5560,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 0.42,
+          "tokensPerTestDisplay": "18.93m",
+          "durationPerTestDisplay": "33m07s",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Gemini 3.1 Pro Preview (02/26)",
@@ -5033,7 +5575,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 4.11,
+          "tokensPerTestDisplay": "7.96m",
+          "durationPerTestDisplay": "18m44s",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "GPT-5.4 Mini",
@@ -5044,7 +5590,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 1.44,
+          "tokensPerTestDisplay": "7.38m",
+          "durationPerTestDisplay": "29m30s",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "MiniMax M3",
@@ -5055,7 +5605,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 7.23,
+          "tokensPerTestDisplay": "50.32m",
+          "durationPerTestDisplay": "1h16m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Inkling",
@@ -5066,7 +5620,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 2.5,
+          "tokensPerTestDisplay": "11.93m",
+          "durationPerTestDisplay": "22m59s",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "MiMo V2.5 Pro",
@@ -5077,7 +5635,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 0.23,
+          "tokensPerTestDisplay": "9.12m",
+          "durationPerTestDisplay": "2h07m",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Inkling Small",
@@ -5088,7 +5650,11 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 0.32,
+          "tokensPerTestDisplay": "3.97m",
+          "durationPerTestDisplay": "11m45s",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
           "model": "Mercury 2.5",
@@ -5099,11 +5665,33 @@
           "evidence": "Terminal-Bench 4.0 from https://www.vals.ai/benchmarks/terminal-bench-4 (snapshot 2026-10-29)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "costPerTestUSD": 0.37,
+          "tokensPerTestDisplay": "3.85m",
+          "durationPerTestDisplay": "15m14s",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
+        },
+        {
+          "model": "Nemotron 3.5 Super VL",
+          "provider": "NVIDIA",
+          "score": 0,
+          "configuration": "Mini-SWE-agent",
+          "harness": "Mini-SWE-agent",
+          "source": "https://www.vals-ai.com/benchmarks/terminal-bench-4",
+          "sourceType": "third-party-evaluator",
+          "snapshotDate": "2026-10-29",
+          "evidence": "Rank 58 on the Vals AI Terminal-Bench 4.0 publisher leaderboard, updated 2026-10-29.",
+          "costPerTestUSD": 0.86,
+          "tokensPerTestDisplay": "14.87m",
+          "durationPerTestDisplay": "14m56s",
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         }
       ],
       "indexEligible": true,
-      "saturationStatus": "not saturated (top 65.2%)"
+      "saturationStatus": "not saturated (top 65.2%)",
+      "costMetric": "Cost / Test",
+      "costMetricUnit": "USD per full benchmark test",
+      "costMetricSource": "https://www.vals-ai.com/benchmarks/terminal-bench-4"
     },
     {
       "id": "terminal-bench-science-0-1",
@@ -7020,7 +7608,7 @@
         },
         {
           "model": "GLM-4.6",
-          "provider": "Other",
+          "provider": "Z.ai",
           "score": 9.67,
           "configuration": "harness not shown",
           "harness": "not shown",
@@ -8877,20 +9465,18 @@
     "name": "QBench Composite Index",
     "version": "1.0",
     "snapshotAsOf": "2026-10-31",
-    "basis": "Four categories with equal weight, using the Artificial Analysis Intelligence Index v5 category structure and evaluation criteria as a reference. Only non-AA values are used. Saturated benchmarks are excluded. QBench does not reproduce AA's native score.",
+    "basis": "Four equal-weight domains (Knowledge Work, Coding, Science, General), using AA's category structure only as a taxonomy reference. QBench applies its own public-evaluation percentile method and does not reproduce AA's per-evaluation weighting or native score.",
     "minimumModelsPerEvaluation": 8,
-    "minimumCategoryCoverage": 4,
-    "minimumOfficialWeight": 50,
+    "minimumCategoryCoverage": 3,
     "componentBenchmarks": [
-      "aa-briefcase-v1-1",
-      "automationbench-aa",
-      "gdp-pdf",
-      "frontiercode-2-0",
+      "osworld-2-0",
+      "gdpval",
       "terminal-bench-4-0",
+      "swe-bench-pro",
       "terminal-bench-science-0-1",
-      "critpt-v2-hard",
-      "aa-omniscience-v1-1",
-      "hle-diamond"
+      "hle-diamond",
+      "arc-agi-3",
+      "livebench-2.0"
     ],
     "eligibleBenchmarks": [
       "osworld-2-0",
@@ -8903,15 +9489,16 @@
       "livebench-2.0"
     ],
     "insufficientCoverage": [],
-    "normalization": "Within each eligible benchmark, the best published score per exact model name is converted to a midrank percentile. Category scores are equal-weighted averages of benchmark percentiles; the index is the equal-weighted average of available category scores. Missing results are never imputed.",
-    "configurationPolicy": "Best reported configuration per model and evaluation. Not a controlled same-effort or same-harness comparison.",
+    "normalization": "Within each eligible benchmark, the best published score per exact model name is converted to a midrank percentile. Domain scores are equal averages of eligible benchmark percentiles available within that domain; the provisional Index is the equal average of available domain scores. Missing scores are never imputed.",
+    "configurationPolicy": "Best published configuration per exact model name within each evaluation. Effort settings, harnesses and tool access are not normalized; model-level Index scores therefore summarize observed best configurations, not controlled same-setting comparisons.",
     "domains": [
       {
         "name": "Knowledge Work",
         "benchmarks": [
-          "osworld-2-0"
+          "osworld-2-0",
+          "gdpval"
         ],
-        "note": "Gap: AA-Briefcase v1.1, AutomationBench-AA and GDP.pdf have no non-AA values yet."
+        "note": "OSWorld 2.0 is a self-reported aggregate mirrored from llm-stats; GDPval has exactly eight published models."
       },
       {
         "name": "Coding",
@@ -8919,15 +9506,14 @@
           "terminal-bench-4-0",
           "swe-bench-pro"
         ],
-        "note": "SWE-Bench Pro public set substitutes for AA FrontierCode 2.0 (no non-AA values yet)."
+        "note": "Terminal-Bench 4.0 uses Vals AI's Mini-SWE-agent leaderboard; SWE-Bench Pro is the public Scale AI split."
       },
       {
         "name": "Science",
         "benchmarks": [
-          "terminal-bench-science-0-1",
-          "frontiermath-tiers-1-3-v2"
+          "terminal-bench-science-0-1"
         ],
-        "note": "FrontierMath Tiers 1-3 substitutes for AA CritPt v2 (Hard) (no non-AA values yet)."
+        "note": "One eligible evaluation is available; FrontierMath Tiers 1–3 remains a separate ceiling-watch dataset."
       },
       {
         "name": "General",
@@ -8936,15 +9522,16 @@
           "arc-agi-3",
           "livebench-2.0"
         ],
-        "note": "ARC-AGI-3 and LiveBench substitute for AA-Omniscience v1.1 (no non-AA values yet)."
+        "note": "HLE-Diamond is publisher-reported; ARC-AGI-3 and part of LiveBench 2.0 use secondary mirrors."
       }
     ],
-    "method": "An evaluation contributes only if it has at least eight unique model names. Available component percentiles are weighted by official relative weights and renormalized within each category; the four categories receive equal 25% weight. A model is ranked only with all four categories and at least 50% official total weight. Missing scores are never imputed and model aliases are not inferred.",
+    "method": "QBench Composite Index 1.0 is independent of Artificial Analysis. Each eligible evaluation needs at least eight unique model names. Within an evaluation, the best published score per exact model name is converted to a midrank percentile. Each domain score is the equal average of the eligible evaluation percentiles available in that domain. The provisional Index is the equal average of the available domain scores. A formal rank requires at least four eligible evaluations spanning at least three of four domains. Models with two or more eligible results but insufficient coverage are shown as coverage-only and are not ranked. Missing scores are never imputed. QBench does not use AA's individual evaluation weights or AA values.",
     "caveats": [
-      "Saturated and excluded: GPQA Diamond, SWE-bench Verified, SWE-Bench Pro V2 Full (top 99.4%), ARC-AGI-2 (top 95%), FrontierMath Tiers 1-3 (top 93.7%).",
-      "Knowledge Work rests on OSWorld 2.0 (self-reported aggregate) and GDPval (8 models, OpenAI-published).",
-      "Science rests on one evaluation (Terminal-Bench-Science 0.1); CritPt has no non-AA values.",
-      "Terminal-Bench 4.0 and Terminal-Bench-Science values come from vals.ai (third-party, Mini-SWE-agent harness), not the official tbench.ai table."
+      "Coverage-only Index values are provisional: they average only the domains with observed data and are not directly equivalent to a complete four-domain score.",
+      "Knowledge Work includes OSWorld 2.0 (secondary self-reported aggregate) and GDPval (eight models exactly).",
+      "Science currently has one eligible evaluation, so that domain is less robust than the others.",
+      "Terminal-Bench 4.0 is a third-party Vals AI evaluation using Mini-SWE-agent, not the official tbench.ai benchmark leaderboard.",
+      "LiveBench 2.0's 25 non-top-six model rows are explicitly sourced to a secondary mirror; six top rows and their per-successful-task costs are sourced directly from the publisher."
     ],
     "sourceNotes": [
       {
@@ -9009,7 +9596,7 @@
       "modelsWithAtLeastTwoCategories": 53,
       "eligibleEvaluationCount": 8,
       "excludedEvaluationCount": 0,
-      "note": "Verified against the rendered QBench 1.0 page on 2026-10-31. Uncertain rows are excluded from the index. Name variants and provider labels were normalized."
+      "note": "Recomputed from the current benchmark rows using the published QBench 1.0 rules. Uncertain rows are excluded. Coverage-only scores are provisional and not formal ranks."
     },
     "supplementaryInputsExcluded": [
       "aa-omniscience-v1-1-accuracy-atlas"
@@ -9027,7 +9614,7 @@
             "osworld-2-0",
             "gdpval"
           ],
-          "note": "GDPval has exactly 8 unique models, which meets the minimum. Adding more verified rows is the next step. AA-Briefcase, AutomationBench-AA and GDP.pdf have no non-AA values."
+          "note": "OSWorld 2.0 is a self-reported aggregate mirrored from llm-stats; GDPval has exactly eight published models."
         },
         {
           "name": "Coding",
@@ -9035,14 +9622,14 @@
             "terminal-bench-4-0",
             "swe-bench-pro"
           ],
-          "note": "SWE-Bench Pro substitutes for AA FrontierCode 2.0."
+          "note": "Terminal-Bench 4.0 uses Vals AI's Mini-SWE-agent leaderboard; SWE-Bench Pro is the public Scale AI split."
         },
         {
           "name": "Science",
           "benchmarks": [
             "terminal-bench-science-0-1"
           ],
-          "note": "Only one non-saturated evaluation; FrontierMath excluded as saturated. CritPt has no non-AA values."
+          "note": "One eligible evaluation is available; FrontierMath Tiers 1–3 remains a separate ceiling-watch dataset."
         },
         {
           "name": "General",
@@ -9051,7 +9638,7 @@
             "arc-agi-3",
             "livebench-2.0"
           ],
-          "note": "HLE-Diamond (top 60.6%), ARC-AGI-3 (top 62.7%) and LiveBench 2.0 (top 85.7%) substitute for AA-Omniscience v1.1 (no non-AA values)."
+          "note": "HLE-Diamond is publisher-reported; ARC-AGI-3 and part of LiveBench 2.0 use secondary mirrors."
         }
       ],
       "excludedFromExtendedIndex": [
@@ -9078,15 +9665,22 @@
         {
           "id": "metr-time-horizons",
           "reason": "METR public page says the board is no longer actively updated; last model result is dated 2026-04-07."
+        },
+        {
+          "id": "frontiermath-tiers-1-3-v2",
+          "reason": "Ceiling-watch: current published scores are high and clustered; kept visible as a separate math benchmark pending a documented inclusion rule and full source-level verification."
         }
       ],
-      "methodology": "QBench Composite Index 3.5: best published configuration per exact model within each eligible benchmark is converted to a midrank percentile. Each benchmark contributes equally inside its single primary domain; six domain means are then averaged equally. A model is ranked only with results in at least four eligible evaluations spanning at least three of six domains. Every contributing evaluation must have at least eight unique model names. Missing scores are not imputed. This broad percentile index is independent of AA's native index and does not claim identical harnesses.",
+      "methodology": "QBench Composite Index 1.0 is independent of Artificial Analysis. Each eligible evaluation needs at least eight unique model names. Within an evaluation, the best published score per exact model name is converted to a midrank percentile. Each domain score is the equal average of the eligible evaluation percentiles available in that domain. The provisional Index is the equal average of the available domain scores. A formal rank requires at least four eligible evaluations spanning at least three of four domains. Models with two or more eligible results but insufficient coverage are shown as coverage-only and are not ranked. Missing scores are never imputed. QBench does not use AA's individual evaluation weights or AA values.",
       "version": "1.0",
       "snapshotAsOf": "2026-10-31",
-      "basis": "Four categories, equal weight, mirroring the structure of the Artificial Analysis Intelligence Index v5 (Knowledge Work, Coding, Science, General). Evaluation criteria follow AA where a comparable public benchmark exists, plus current non-saturated benchmarks. No Artificial Analysis values are used; QBench does not reproduce AA native scores.",
+      "basis": "Four equal-weight domains (Knowledge Work, Coding, Science, General), using AA's category structure only as a taxonomy reference. QBench applies its own public-evaluation percentile method and does not reproduce AA's per-evaluation weighting or native score.",
       "caveats": [
-        "Saturated benchmarks are excluded (GPQA Diamond, SWE-bench Verified, SWE-Bench Pro V2 Full, ARC-AGI-2).",
-        " Knowledge Work currently rests on a single benchmark."
+        "Coverage-only Index values are provisional: they average only the domains with observed data and are not directly equivalent to a complete four-domain score.",
+        "Knowledge Work includes OSWorld 2.0 (secondary self-reported aggregate) and GDPval (eight models exactly).",
+        "Science currently has one eligible evaluation, so that domain is less robust than the others.",
+        "Terminal-Bench 4.0 is a third-party Vals AI evaluation using Mini-SWE-agent, not the official tbench.ai benchmark leaderboard.",
+        "LiveBench 2.0's 25 non-top-six model rows are explicitly sourced to a secondary mirror; six top rows and their per-successful-task costs are sourced directly from the publisher."
       ],
       "insufficientCoverage": [],
       "eligibleBenchmarks": [
@@ -9101,7 +9695,18 @@
       ]
     },
     "minimumEvaluationsPerModel": 4,
-    "minimumDomainsPerModel": 3
+    "minimumDomainsPerModel": 3,
+    "aaReferenceEvaluations": [
+      "aa-briefcase-v1-1",
+      "automationbench-aa",
+      "gdp-pdf",
+      "frontiercode-2-0",
+      "terminal-bench-4-0",
+      "terminal-bench-science-0-1",
+      "critpt-v2-hard",
+      "aa-omniscience-v1-1",
+      "hle-diamond"
+    ]
   },
   "apiPricing": {
     "snapshotDate": "2026-10-31",
