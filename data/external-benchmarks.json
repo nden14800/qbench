@@ -581,30 +581,6 @@
           "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
           "costPerQuestion": 0.008,
           "timePerQuestion": "80s"
-        },
-        {
-          "model": "Muse Wonder",
-          "provider": "Meta",
-          "score": 88.1,
-          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
-          "costPerQuestion": 0.04,
-          "timePerQuestion": "1.1m"
-        },
-        {
-          "model": "Mistral Large 4",
-          "provider": "Mistral AI",
-          "score": 88,
-          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
-          "costPerQuestion": 0.08,
-          "timePerQuestion": "2.0m"
-        },
-        {
-          "model": "Grok 4.7",
-          "provider": "xAI",
-          "score": 88.2,
-          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
-          "costPerQuestion": 0.06,
-          "timePerQuestion": "2.3m"
         }
       ]
     },
