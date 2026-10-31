@@ -436,7 +436,8 @@ function renderIndex(){
 
 /* ---------- charts (ECharts, same library as omikuji-bench) ---------- */
 var ECH={};
-function chartInit(id){var el=document.getElementById(id);if(!el)return null;if(!ECH[id]){ECH[id]=echarts.init(el,null,{renderer:'svg'});window.addEventListener('resize',function(){ECH[id]&&ECH[id].resize();});}return ECH[id];}
+function chartInit(id){var el=document.getElementById(id);if(!el)return null;var cur=ECH[id];if(cur&&(cur.getDom()!==el||cur.isDisposed())){if(!cur.isDisposed())cur.dispose();cur=null;}if(!cur){cur=echarts.init(el,null,{renderer:'svg'});ECH[id]=cur;}return cur;}
+window.addEventListener('resize',function(){Object.keys(ECH).forEach(function(k){if(ECH[k]&&!ECH[k].isDisposed())ECH[k].resize();});});
 function cssVar(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();}
 function textColor(){return cssVar('--muted')||'#667085';}
 function gridColor(){return cssVar('--grid')||'#eceff3';}
