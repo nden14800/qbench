@@ -5,7 +5,7 @@
 Production: https://qbench.pages.dev  
 Repository: https://github.com/nden14800/qbench
 
-QBench Index 2.0 combines published model results from independent benchmark providers. The current snapshot contains **129 unique model names**, **335 model-result entries**, and **10 benchmark datasets**. The core composite currently has a **10-model exact-name cohort**; additional frontier stress tests remain separate until coverage supports a fair comparison.
+QBench Index 2.0 combines published model results from independent benchmark providers. The current snapshot contains **129 unique model names**, **355 model-result entries**, and **11 benchmark datasets**. The core composite currently has a **10-model exact-name cohort**; additional frontier stress tests remain separate until coverage supports a fair comparison.
 
 ## Index 2.0 core composite
 
@@ -21,12 +21,15 @@ Each family contributes 20%. Published source scores are retained on their origi
 
 ## Frontier stress tests and specialist datasets
 
-Two additional high-difficulty datasets are tracked separately:
+Frontier stress tests are tracked separately from the core composite:
 
 - **ARC-AGI-2** — 80 published catalog rows in the 26 October 2026 snapshot; original benchmark results attributed to Epoch AI. This tests abstract visual reasoning and remains separate from the core index until cross-family coverage is adequate.
 - **FrontierMath Erdős** — 7 official Epoch AI evaluation rows on 68 research-level open problems, snapshot 29 October 2026. The top published score is 2.9% (±2.1%), making it a useful frontier stress test rather than a conventional broad leaderboard.
+- **Mystery Game Puzzles** — 20 visible official leaderboard rows imported from an Epoch AI benchmark tested on 140 models. The benchmark uses 100 game-state puzzles with a hidden game identity to reduce benchmark-specific training.
 
 SWE-bench Pro V2 and SWE-bench Verified remain separate coding references because their model coverage does not match the core cohort.
+
+A separate watchlist tracks SpireClimb, Earthborne Rangers (EBR-bench), FrontierCode 2.0 and GraphWalks. These are not counted as imported datasets or given synthetic scores: the current public result extract is incomplete, the protocol is still evolving, or the benchmark is private. SpireClimb is especially promising for long-horizon computer-use evaluation; EBR-bench is useful for continual learning but requires careful handling of its v4 protocol changes.
 
 ## Evaluation discipline
 
@@ -60,6 +63,10 @@ This is a descriptive aggregation of third-party public benchmark snapshots, not
 - [Epoch AI FrontierMath Tiers 1–3 v2](https://epoch.ai/benchmarks/frontiermath-tiers-1-3-v2)
 - [Epoch AI FrontierMath Tier 4 v2](https://epoch.ai/benchmarks/frontiermath-tier-4-v2)
 - [Epoch AI FrontierMath Erdős](https://epoch.ai/benchmarks/frontiermath-erdos)
+- [Epoch AI Mystery Game Puzzles](https://epoch.ai/benchmarks/mystery-game-puzzles)
+- [Epoch AI SpireClimb](https://epoch.ai/benchmarks/spireclimb)
+- [Epoch AI Earthborne Rangers](https://epoch.ai/benchmarks/ebr-bench)
+- [Epoch AI GraphWalks review](https://epoch.ai/benchmarks/graphwalks/review)
 - [Epoch AI ProofBench](https://epoch.ai/benchmarks/proofbench)
 - [Epoch AI Furniture Assembly](https://epoch.ai/benchmarks/furniture-assembly)
 - [ARC-AGI-2 catalog snapshot](https://llmbenchmark.ai/benchmarks/epoch-arc-agi-2)
