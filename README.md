@@ -69,7 +69,9 @@ QBench keeps benchmark costs separate because they measure different things.
 - **Terminal-Bench 4.0 — Cost / Test:** all 59 Vals AI model rows include publisher-listed Cost / Test, Tokens / Test and Duration / Test where available. This is the cost of a full benchmark test, not a universal task cost.
 - **ProofBench 1.1 — Cost / Test:** the 54 Vals AI third-party evaluation rows include the same evaluation-specific metrics where reported.
 - **LiveBench 2.0 — Cost per successful task:** the first six model rows and costs come from the publisher's leaderboard. The remaining 25 model scores are explicitly attributed to the BenchLeader mirror; no publisher cost is invented for them.
-- **API token prices:** a separate searchable catalog lists input/output rates per 1M tokens for 44 model entries. First-party provider prices and OpenRouter route prices are separately labelled; the scatter uses first-party rates only and is not a task-cost metric.
+- **API token prices:** a separate searchable catalog lists input/output rates per 1M tokens for 61 model entries. First-party provider prices and OpenRouter route prices are separately labelled; the scatter uses first-party rates only and is not a task-cost metric.
+
+The API price catalog currently covers 57 of 98 models with eligible Index results; unpriced models remain blank rather than receiving estimated or invented rates.
 
 The benchmark detail view labels the native metric, displays all stored model/configuration rows, and plots cost against score only within the relevant evaluation. Cost metrics from different benchmarks are never pooled.
 
@@ -79,10 +81,10 @@ The benchmark detail view labels the native metric, displays all stored model/co
 |---|---:|
 | Benchmark datasets with model values | 22 |
 | Model-result / configuration rows | 664 |
-| Exact model names across all datasets | 148 |
+| Exact model names across all datasets | 147 |
 | Model + configuration + harness combinations | 553 |
 | Provider labels | 28 |
-| API price entries | 44 |
+| API price entries | 61 |
 | Benchmark directory entries | 74 |
 
 Counts come from the checked-in `data/external-benchmarks.json`. A model may have multiple configurations, harnesses or benchmark results.

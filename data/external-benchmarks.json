@@ -9960,6 +9960,17 @@
       },
       {
         "currency": "USD",
+        "model": "Claude Opus 4.1",
+        "provider": "Anthropic",
+        "inputUSDPerMillion": 15,
+        "outputUSDPerMillion": 75,
+        "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "Anthropic API",
+        "note": "Legacy/deprecated price reference; partner platforms may have independent pricing."
+      },
+      {
+        "currency": "USD",
         "model": "Claude Opus 4.5",
         "provider": "Anthropic",
         "inputUSDPerMillion": 5,
@@ -10019,6 +10030,17 @@
         "sourceType": "official-provider",
         "pricePlatform": "Anthropic API",
         "currency": "USD"
+      },
+      {
+        "currency": "USD",
+        "model": "Claude Sonnet 4",
+        "provider": "Anthropic",
+        "inputUSDPerMillion": 3,
+        "outputUSDPerMillion": 15,
+        "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "Anthropic API",
+        "note": "Legacy price reference; model is deprecated on the direct Claude API except partner platforms such as Bedrock and Google Cloud."
       },
       {
         "currency": "USD",
@@ -10109,6 +10131,17 @@
         "sourceType": "openrouter-route",
         "pricePlatform": "OpenRouter",
         "note": "OpenRouter listed Fireworks route price; model is a specialized reasoning model built on Kimi K3."
+      },
+      {
+        "currency": "USD",
+        "model": "Gemini 3.1 Pro Preview (02/26)",
+        "provider": "Google",
+        "inputUSDPerMillion": 2,
+        "outputUSDPerMillion": 12,
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "Gemini API",
+        "note": "Standard tier up to 200k input tokens; over 200k, input is $4 and output $18 per 1M tokens."
       },
       {
         "currency": "USD",
@@ -10255,6 +10288,61 @@
         "sourceType": "openrouter-route",
         "pricePlatform": "OpenRouter",
         "note": "OpenRouter displayed standard route price; provider-specific endpoints vary."
+      },
+      {
+        "currency": "USD",
+        "model": "GPT-5",
+        "provider": "OpenAI",
+        "inputUSDPerMillion": 1.25,
+        "outputUSDPerMillion": 10,
+        "source": "https://developers.openai.com/api/docs/models/gpt-5",
+        "sourceType": "official-provider",
+        "pricePlatform": "OpenAI API",
+        "note": "Deprecated model; retained as a reference price for benchmark snapshots."
+      },
+      {
+        "currency": "USD",
+        "model": "GPT-5.4",
+        "provider": "OpenAI",
+        "inputUSDPerMillion": 2.5,
+        "outputUSDPerMillion": 15,
+        "source": "https://developers.openai.com/api/docs/models/gpt-5.4",
+        "sourceType": "official-provider",
+        "pricePlatform": "OpenAI API",
+        "note": "Standard API text-token price; prompts over 272k input tokens have long-context multipliers."
+      },
+      {
+        "currency": "USD",
+        "model": "GPT-5.4 Mini",
+        "provider": "OpenAI",
+        "inputUSDPerMillion": 0.75,
+        "outputUSDPerMillion": 4.5,
+        "source": "https://developers.openai.com/api/docs/models/gpt-5.4-mini",
+        "sourceType": "official-provider",
+        "pricePlatform": "OpenAI API",
+        "note": "Standard API text-token price."
+      },
+      {
+        "currency": "USD",
+        "model": "GPT-5.4 Pro",
+        "provider": "OpenAI",
+        "inputUSDPerMillion": 30,
+        "outputUSDPerMillion": 180,
+        "source": "https://developers.openai.com/api/docs/models/gpt-5.4-pro",
+        "sourceType": "official-provider",
+        "pricePlatform": "OpenAI API",
+        "note": "Standard API text-token price; prompts over 272k input tokens have long-context multipliers."
+      },
+      {
+        "currency": "USD",
+        "model": "GPT-5.5",
+        "provider": "OpenAI",
+        "inputUSDPerMillion": 5,
+        "outputUSDPerMillion": 30,
+        "source": "https://developers.openai.com/api/docs/models/gpt-5.5",
+        "sourceType": "official-provider",
+        "pricePlatform": "OpenAI API",
+        "note": "Standard API text-token price; prompts over 272k input tokens have long-context multipliers."
       },
       {
         "currency": "USD",
@@ -10488,8 +10576,8 @@
       }
     ],
     "diagnostics": {
-      "modelEntries": 53,
-      "officialProviderEntries": 36,
+      "modelEntries": 61,
+      "officialProviderEntries": 44,
       "aggregatorRouteEntries": 17,
       "hostedPlatformEntries": 0
     }
