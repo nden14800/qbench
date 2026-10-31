@@ -14,14 +14,14 @@ Independent AI benchmark leaderboards and model-performance analysis.
 | Model configurations (model + configuration + harness) | 362 |
 | Published result rows | 549 |
 | Datasets with model-level results | 21 |
-| Providers | 31 |
+| Provider labels | 34 |
 | Benchmark directory entries | 48 |
 
 Counts are derived from data/external-benchmarks.json. A result row is not necessarily a unique model: a source may publish several reasoning efforts, harnesses, or routing configurations for one model. Individual benchmark leaderboards retain the source rows; the main leaderboard groups each model once and shows its best reported configuration. CSV export retains the raw rows.
 
 ## QBench Composite Index 3.0
 
-QBench Index 3.0 is aligned to the **nine evaluations, four categories, and official per-evaluation weights** published for Artificial Analysis Intelligence Index v5. The index does not claim to reproduce AA's native 0–100 score: QBench independently normalizes eligible source results to within-evaluation percentiles.
+QBench Index 3.0 references the **nine evaluation components, four categories, and published component weights** used by Artificial Analysis Intelligence Index v5. QBench applies its own eligibility rules, percentile normalization, and aggregation; it does not reproduce AA's native score or interface.
 
 ### Core evaluation suite and official weights
 
@@ -51,7 +51,7 @@ This is a best-reported-configuration index, not a controlled same-effort or sam
 
 ### Data adequacy on 2026-10-31
 
-Four of the nine AA v5 evaluations currently meet the minimum eight-model threshold in QBench's imported data: AA-Briefcase v1.1, Terminal-Bench 4.0, Terminal-Bench-Science 0.1, and HLE-Diamond. The other five remain in the directory but do not affect the composite until sufficient model-level coverage is available. In the current eligible data, 29 models have results in at least two categories; 5 satisfy the strict rank rule and 24 are displayed as coverage-only. Terminal-Bench 4.0 and HLE-Diamond are also imported from public leaderboards rather than AA's private run pipeline. Terminal-Bench-Science comes from Vals AI / Mini-SWE-agent single-run results, not AA's Stirrup three-run evaluation. These rows match the named benchmark versions, not necessarily AA's internal run configurations.
+Four of the nine AA v5 reference components currently meet QBench's minimum of eight unique model names: AA-Briefcase v1.1 (38), Terminal-Bench 4.0 (23), Terminal-Bench-Science 0.1 (43), and HLE-Diamond (19). The other five remain visible but do not affect the composite: AutomationBench-AA (3), GDP.pdf (3), FrontierCode 2.0 (5), CritPt v2 (Hard Subset) (4), and the full AA-Omniscience v1.1 component (1). The separate 40-row accuracy-only Atlas import is not the full Omniscience component and is excluded. In the eligible core data, 29 models have results in at least two categories; 5 satisfy the strict rank rule and 24 are displayed as coverage-only. This is why the composite has fewer ranked models than the raw model explorer. Official AA evaluation pages also state that their full leaderboards have no public API, so QBench does not invent the unexposed scores. Terminal-Bench 4.0 and HLE-Diamond are imported from public leaderboards rather than AA's private run pipeline. Terminal-Bench-Science comes from Vals AI / Mini-SWE-agent single-run results, not AA's Stirrup three-run evaluation. These rows match the named benchmark versions, not necessarily AA's internal run configurations.
 
 ### Frontier extensions (monitored separately)
 
@@ -76,17 +76,12 @@ ARC-AGI-3 public competition standings are team/system submissions, not a compar
 
 ## Supplementary score imports
 
-- AA-Omniscience v1.1 Accuracy: 40 third-party Benchmark Atlas results from 2026-10-27. This is accuracy-only; the paired hallucination-rate measure is absent, so it is not a substitute for the full AA component and is excluded from QBench Composite Index 3.0.
-- GDP.pdf: three published all-pass results imported from the official Artificial Analysis evaluation page. The page lists 28 of 238 models and states that no public API is available; the import is therefore explicitly a top-three summary, not a complete leaderboard.
-
-## Supplementary score imports
-
-- AA-Omniscience v1.1 Accuracy: 40 third-party Benchmark Atlas results from 2026-10-27. This is accuracy-only; the paired hallucination-rate measure is absent, so it is not a substitute for the full AA component and is excluded from QBench Composite Index 3.0.
-- GDP.pdf: three published all-pass results imported from the official Artificial Analysis evaluation page. The page lists 28 of 238 models and states that no public API is available; the import is a top-three summary, not a complete leaderboard.
+- **AA-Omniscience v1.1 Accuracy:** 40 third-party Benchmark Atlas results from 2026-10-27. This is accuracy-only; the paired hallucination-rate measure is absent, so it is not a substitute for the full AA component and is excluded from QBench Composite Index 3.0.
+- **GDP.pdf:** three published all-pass results imported from the official Artificial Analysis evaluation page (32.6%, 32.2%, 32.0%). The page lists 28 of 238 models and states that no public API is available; this is a top-three summary, not a complete leaderboard.
 
 ## Model explorer and analytics
 
-- Search and filter the full imported model set (165 exact model names across 20 result datasets).
+- Search and filter the full imported model set (176 exact model names across 21 result datasets).
 - Expand a model to inspect each available native score, source URL, snapshot date, configuration, and harness.
 - Compare up to five models in a dataset-by-dataset matrix. Values keep each benchmark's native unit; missing results remain blank rather than being inferred.
 - Export the complete model-result table as CSV.
