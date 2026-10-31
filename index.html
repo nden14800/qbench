@@ -628,6 +628,10 @@ function renderModelDetail(id){
  var dates=Array.from(new Set(all.map(function(x){return x.row.releaseDate;}).filter(Boolean)));
  var familyRows=RESULT.domains.map(function(d){return '<tr><td>'+esc(d)+'</td><td class="text-end num">'+fmt(r.domains[d],1)+'</td></tr>';}).join('');
  var effortMap={};all.forEach(function(x){(effortMap[x.effort]=effortMap[x.effort]||[]).push(x);});
+ var harnessMap={};all.filter(function(x){return x.benchmark.id==='arc-agi-3'||x.benchmark.id==='arc-agi-3-provider-adapter';}).forEach(function(x){var e=harnessMap[x.effort]=harnessMap[x.effort]||{};e[x.benchmark.id]=scoreOf(x.row);});
+ var harnessRows=Object.keys(harnessMap).map(function(e){var h=harnessMap[e],a=h['arc-agi-3'],b=h['arc-agi-3-provider-adapter'];return '<tr><td>'+esc(e==='not-reported'?'Not reported':e)+'</td><td class="text-end num">'+fmt(a,2)+'</td><td class="text-end num">'+fmt(b,2)+'</td><td class="text-end num">'+(a!=null&&b!=null?fmt(b-a,2):'—')+'</td></tr>';}).join('');
+ var harnessHtml=harnessRows?'<h3 class="card-title-qb mb-2">ARC-AGI-3 harness comparison</h3><div class="table-responsive mb-4"><table class="table table-sm"><thead><tr><th>Effort</th><th class="text-end">Standard</th><th class="text-end">Provider Adapter</th><th class="text-end">Adapter − Standard</th></tr></thead><tbody>'+harnessRows+'</tbody></table></div><div class="notice-qb mb-4">The two harnesses have materially different execution semantics. This table is diagnostic only; Provider Adapter scores are never pooled with Standard-harness scores in Index 1.3.</div>':'';
+
  var effortRows=Object.keys(effortMap).map(function(e){var items=effortMap[e];return '<tr><td>'+esc(e==='not-reported'?'Not reported':e)+'</td><td class="text-end num">'+items.length+'</td></tr>';}).join('');
  var resultRows=all.map(function(x){
   var m=x.row,b=x.benchmark,unc=m.scoreUncertainty;
@@ -647,7 +651,7 @@ function renderModelDetail(id){
    '<div class="col"><div class="qb-detail-stat"><div class="k">Provider</div><div class="v">'+esc(r.provider)+'</div></div></div>'+
   '</div><div class="row row-cols-1 row-cols-lg-2 g-2 mb-4"><div class="col">'+price+'</div><div class="col"><div class="qb-detail-stat"><div class="k">Evidence coverage</div><div class="v">'+r.coverage+' / '+RESULT.evals.length+'</div><div class="small text-muted-qb">'+r.domainCount+' / '+RESULT.domains.length+' capability families</div></div></div></div>'+
   '<h3 class="card-title-qb mb-2">Capability family scores</h3><div class="table-responsive mb-4"><table class="table table-sm"><thead><tr><th>Family</th><th class="text-end">Score</th></tr></thead><tbody>'+familyRows+'</tbody></table></div>'+
-  '<h3 class="card-title-qb mb-2">Available effort variants</h3><div class="table-responsive mb-4"><table class="table table-sm"><thead><tr><th>Effort</th><th class="text-end">Evaluations</th></tr></thead><tbody>'+effortRows+'</tbody></table></div>'+
+  '<h3 class="card-title-qb mb-2">Available effort variants</h3><div class="table-responsive mb-4"><table class="table table-sm"><thead><tr><th>Effort</th><th class="text-end">Evaluations</th></tr></thead><tbody>'+effortRows+'</tbody></table></div>'+harnessHtml+
   '<h3 class="card-title-qb mb-2">Source-level evaluation results</h3><div class="table-responsive"><table class="table table-sm align-middle"><thead><tr><th>Benchmark</th><th>Effort</th><th class="text-end">Score (±)</th><th>Harness</th><th>Configuration</th><th>Release date</th><th>Cost/test</th><th>Cost/success</th><th>Tokens/test</th><th>Time/test</th><th>Source</th></tr></thead><tbody>'+resultRows+'</tbody></table></div><div class="small text-muted-qb mt-2">* Cost per successful test is derived from reported cost per test and success rate when no publisher-reported value exists. API token pricing is not task cost.</div>';
 }
 
