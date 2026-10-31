@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.5",
-  "note": "Snapshot 2026-10-31. The nine AA v5 evaluation components are represented. Four have independent published leaderboards imported; five currently have only AA-published leader-summary values. This is not full nine-component model coverage: no AA-compatible aggregate is computed unless the same model configuration has all nine component scores. Extra benchmarks are maintained separately.",
+  "note": "Snapshot 2026-10-31. 20 datasets with model-level result rows; 34 catalogued evaluation families. The nine AA v5 component names and weights are registered; source coverage ranges from full leaderboard extracts to official leader summaries. No AA-equivalent total score is computed without complete per-configuration coverage.",
   "benchmarks": [
     {
       "id": "livebench-2.0",
@@ -4220,7 +4220,7 @@
       "note": "Hidden-identity game-state reasoning"
     },
     {
-      "id": "spieclimb",
+      "id": "spireclimb",
       "name": "SpireClimb",
       "group": "Frontier extensions",
       "source": "https://epoch.ai/benchmarks/spireclimb",
@@ -4346,6 +4346,118 @@
       "source": "https://artificialanalysis.ai/evaluations/aa-3d",
       "status": "research-pipeline",
       "note": "Interactive 3D generation evaluated by blind pairwise preference"
+    },
+    {
+      "id": "chess-puzzles",
+      "name": "Chess Puzzles",
+      "group": "Frontier extensions",
+      "source": "https://epoch.ai/benchmarks",
+      "status": "research-pipeline",
+      "note": "Game reasoning benchmark with creator-administered results"
+    },
+    {
+      "id": "mock-aime-2024-2025",
+      "name": "Mock AIME 2024–2025",
+      "group": "Frontier extensions",
+      "source": "https://epoch.ai/benchmarks",
+      "status": "research-pipeline",
+      "note": "Fresh olympiad-style mathematics questions; higher difficulty than saturated MATH Level 5"
+    },
+    {
+      "id": "remote-labor-index",
+      "name": "Remote Labor Index",
+      "group": "Frontier extensions",
+      "source": "https://epoch.ai/benchmarks",
+      "status": "research-pipeline",
+      "note": "Real-world task and economic-work capability evaluation"
+    },
+    {
+      "id": "surface-evolver-bench",
+      "name": "Surface Evolver Bench",
+      "group": "Frontier extensions",
+      "source": "https://epoch.ai/benchmarks",
+      "status": "research-pipeline",
+      "note": "Scientific software and numerical problem-solving"
+    },
+    {
+      "id": "simpleqa-verified",
+      "name": "SimpleQA Verified",
+      "group": "Frontier extensions",
+      "source": "https://epoch.ai/benchmarks",
+      "status": "research-pipeline",
+      "note": "Factual accuracy and verifiable short-answer knowledge"
+    },
+    {
+      "id": "spatialviz-bench",
+      "name": "SpatialViz-Bench",
+      "group": "Frontier extensions",
+      "source": "https://epoch.ai/benchmarks",
+      "status": "research-pipeline",
+      "note": "Spatial reasoning and visual-spatial understanding"
+    },
+    {
+      "id": "weirdml-v2",
+      "name": "WeirdML V2",
+      "group": "Frontier extensions",
+      "source": "https://epoch.ai/benchmarks",
+      "status": "research-pipeline",
+      "note": "Out-of-distribution reasoning and unusual task generalization"
+    },
+    {
+      "id": "the-agent-company",
+      "name": "The Agent Company",
+      "group": "Frontier extensions",
+      "source": "https://epoch.ai/benchmarks",
+      "status": "research-pipeline",
+      "note": "Long-horizon workplace task execution"
+    },
+    {
+      "id": "osworld-2-0",
+      "name": "OSWorld 2.0",
+      "group": "Frontier extensions",
+      "source": "https://epoch.ai/benchmarks",
+      "status": "research-pipeline",
+      "note": "Computer-use and desktop interaction benchmark"
+    },
+    {
+      "id": "deepswe-v1-1",
+      "name": "DeepSWE v1.1",
+      "group": "Frontier extensions",
+      "source": "https://epoch.ai/benchmarks",
+      "status": "research-pipeline",
+      "note": "Agentic software engineering and repository issue resolution"
+    },
+    {
+      "id": "aa-analystagent",
+      "name": "AA-AnalystAgent",
+      "group": "Frontier extensions",
+      "source": "https://artificialanalysis.ai/evaluations",
+      "status": "research-pipeline",
+      "note": "Spreadsheet and document analysis for professional quantitative workflows"
+    },
+    {
+      "id": "code2video-aa",
+      "name": "Code2Video-AA",
+      "group": "Frontier extensions",
+      "source": "https://artificialanalysis.ai/evaluations",
+      "status": "research-pipeline",
+      "note": "Generate short product and brand videos from 114 design briefs"
+    },
+    {
+      "id": "aa-personalitybench",
+      "name": "AA-PersonalityBench",
+      "group": "Frontier extensions",
+      "source": "https://artificialanalysis.ai/evaluations",
+      "status": "research-pipeline",
+      "note": "Communication-style and personality measurement; descriptive, not factual capability"
+    },
+    {
+      "id": "mlcr-aa",
+      "name": "MLCR-AA",
+      "group": "Frontier extensions",
+      "source": "https://artificialanalysis.ai/evaluations",
+      "status": "research-pipeline",
+      "note": "Long-context medical-record synthesis and fragmented-document reasoning"
     }
   ],
   "aaIndexReference": {
