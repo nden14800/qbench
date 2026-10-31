@@ -394,7 +394,7 @@
           "retrievedAt": "2026-10-30"
         },
         {
-          "model": "T Inkling",
+          "model": "Inkling",
           "provider": "Thinking Machines",
           "score": 47,
           "evidence": "BenchLeader's LiveBench 2.0 global mirror, retrieved 2026-10-30; underlying publisher release dated 2026-10-25. Publisher leaderboard is JavaScript-rendered.",
@@ -403,7 +403,8 @@
           "configuration": "Not reported",
           "harness": "Not reported",
           "sourceType": "secondary-mirror",
-          "retrievedAt": "2026-10-30"
+          "retrievedAt": "2026-10-30",
+          "originalModelName": "T Inkling"
         },
         {
           "model": "Nemotron Super VL 3.5 NVFP4",
@@ -566,7 +567,10 @@
           "snapshotDate": "2026-10-30",
           "configuration": "Not reported",
           "harness": "Not reported",
-          "sourceType": "source-documented"
+          "sourceType": "source-documented",
+          "modelKind": "agent-system",
+          "excludeFromIndex": true,
+          "exclusionReason": "Sakana multi-agent system rather than one base model."
         },
         {
           "model": "Gemini 3.1 Pro Preview",
@@ -631,7 +635,10 @@
           "snapshotDate": "2026-10-30",
           "configuration": "Not reported",
           "harness": "Not reported",
-          "sourceType": "source-documented"
+          "sourceType": "source-documented",
+          "modelKind": "agent-system",
+          "excludeFromIndex": true,
+          "exclusionReason": "Sakana multi-agent system rather than one base model."
         },
         {
           "model": "Jev Router",
@@ -644,7 +651,10 @@
           "snapshotDate": "2026-10-30",
           "configuration": "Not reported",
           "harness": "Not reported",
-          "sourceType": "source-documented"
+          "sourceType": "source-documented",
+          "modelKind": "router",
+          "excludeFromIndex": true,
+          "exclusionReason": "Multi-provider routing system rather than a single fixed base model."
         },
         {
           "model": "Grok 4.6",
@@ -699,7 +709,7 @@
           "sourceType": "source-documented"
         },
         {
-          "model": "Unbiased 26.10 Preview",
+          "model": "Pareto 26.10 Preview",
           "provider": "Unbiased",
           "score": 92.4,
           "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
@@ -709,7 +719,8 @@
           "snapshotDate": "2026-10-30",
           "configuration": "Not reported",
           "harness": "Not reported",
-          "sourceType": "source-documented"
+          "sourceType": "source-documented",
+          "originalModelName": "Unbiased 26.10 Preview"
         },
         {
           "model": "GPT-6 Sol",
@@ -790,7 +801,7 @@
           "sourceType": "source-documented"
         },
         {
-          "model": "NVIDIA Switchyard",
+          "model": "Switchyard",
           "provider": "NVIDIA",
           "score": 90.7,
           "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
@@ -800,7 +811,11 @@
           "snapshotDate": "2026-10-30",
           "configuration": "Not reported",
           "harness": "Not reported",
-          "sourceType": "source-documented"
+          "sourceType": "source-documented",
+          "originalModelName": "NVIDIA Switchyard",
+          "modelKind": "router",
+          "excludeFromIndex": true,
+          "exclusionReason": "Multi-provider routing system rather than a single fixed base model."
         },
         {
           "model": "Muse Spark Open",
@@ -1735,7 +1750,7 @@
           "resultDate": "2025-08-07"
         },
         {
-          "model": "Inkling Small",
+          "model": "Inkling-Small",
           "provider": "Thinking Machines",
           "score": 46.3,
           "configuration": "xhigh",
@@ -1745,7 +1760,8 @@
           "sourceType": "curated-secondary",
           "snapshotDate": "2026-10-30",
           "publisherSource": "https://epoch.ai/benchmarks/frontiermath-tiers-1-3-v2",
-          "resultDate": "2026-07-15"
+          "resultDate": "2026-07-15",
+          "originalModelName": "Inkling Small"
         },
         {
           "model": "Grok 4.20",
@@ -2160,7 +2176,10 @@
           "costPerTestUSD": 9.35,
           "tokensPerTestDisplay": "—",
           "durationPerTestDisplay": "18m28s",
-          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard",
+          "modelKind": "specialist-system",
+          "excludeFromIndex": true,
+          "exclusionReason": "Specialist formal-proof system; excluded from the general-purpose Index."
         },
         {
           "model": "GPT-6.1 Sol",
@@ -2238,7 +2257,7 @@
           "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
-          "model": "Wonder Full",
+          "model": "Muse Wonder Full",
           "provider": "Meta",
           "score": 94,
           "configuration": "Not reported",
@@ -2251,7 +2270,8 @@
           "tokensPerTestDisplay": "654.27k",
           "durationPerTestDisplay": "11m36s",
           "costMetricSource": "Vals AI ProofBench 1.1 leaderboard",
-          "providerEvidence": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/"
+          "providerEvidence": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/",
+          "originalModelName": "Wonder Full"
         },
         {
           "model": "Kimi K3.1 Pro",
@@ -2311,10 +2331,13 @@
           "costPerTestUSD": null,
           "tokensPerTestDisplay": "—",
           "durationPerTestDisplay": "—",
-          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard",
+          "modelKind": "specialist-system",
+          "excludeFromIndex": true,
+          "exclusionReason": "Specialist formal-math system using its own harness; excluded from the general-purpose Index."
         },
         {
-          "model": "Wonder",
+          "model": "Muse Wonder",
           "provider": "Meta",
           "score": 84,
           "configuration": "Not reported",
@@ -2327,7 +2350,8 @@
           "tokensPerTestDisplay": "871.96k",
           "durationPerTestDisplay": "15m29s",
           "costMetricSource": "Vals AI ProofBench 1.1 leaderboard",
-          "providerEvidence": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/"
+          "providerEvidence": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/",
+          "originalModelName": "Wonder"
         },
         {
           "model": "GPT-6 Sol",
@@ -2767,7 +2791,7 @@
           "providerEvidence": "https://reflection.ai/blog/introducing-beam"
         },
         {
-          "model": "MiniMax-M3",
+          "model": "MiniMax M3",
           "provider": "MiniMax",
           "score": 18,
           "configuration": "Not reported",
@@ -2779,7 +2803,8 @@
           "costPerTestUSD": 0.42,
           "tokensPerTestDisplay": "1.68m",
           "durationPerTestDisplay": "11m59s",
-          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard",
+          "originalModelName": "MiniMax-M3"
         },
         {
           "model": "DeepSeek V4",
@@ -2857,7 +2882,7 @@
           "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
-          "model": "Inkling Small",
+          "model": "Inkling-Small",
           "provider": "Thinking Machines",
           "score": 6,
           "configuration": "Not reported",
@@ -2869,7 +2894,8 @@
           "costPerTestUSD": 0.08,
           "tokensPerTestDisplay": "654.29k",
           "durationPerTestDisplay": "8m27s",
-          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard",
+          "originalModelName": "Inkling Small"
         },
         {
           "model": "Mercury 2.5",
@@ -2917,12 +2943,13 @@
           "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         }
       ],
-      "indexEligible": false,
+      "indexEligible": true,
       "saturationStatus": "ceiling-watch",
       "costMetric": "Cost / Test",
       "costMetricUnit": "USD per full benchmark test",
       "costMetricSource": "https://www.vals.ai/benchmarks/proof_bench",
-      "quality": "Vals AI third-party ProofBench 1.1 evaluation leaderboard, updated 2026-10-29. 54 model rows include Cost / Test, Tokens / Test and Duration / Test where reported. Kept outside the composite because the top four models reach 100%, creating a ceiling-watch condition."
+      "quality": "Vals AI ProofBench v1.1 snapshot 2026-10-29. Complete 54-row leaderboard; public and private splits each contain 100 problems, expert-vetted Lean 4 formalizations and up to 40 interaction turns. Four entries tie at 100%; AlephProver and Aristotle are specialist formal-proof systems retained in details but excluded from the general-purpose Index.",
+      "indexDomain": "Science"
     },
     {
       "id": "furniture-assembly",
@@ -3934,7 +3961,7 @@
           "snapshotDate": "2026-09-24"
         },
         {
-          "model": "Inkling Small",
+          "model": "Inkling-Small",
           "provider": "Thinking Machines",
           "score": 40.14,
           "configuration": "XHigh",
@@ -3942,7 +3969,8 @@
           "evidence": "evals.report snapshot 2026-09-24; source status: Official; exact model/configuration shown in source row",
           "source": "https://evals.report/benchmarks/arc-agi-2?tab=scores",
           "sourceType": "source-cited-secondary",
-          "snapshotDate": "2026-09-24"
+          "snapshotDate": "2026-09-24",
+          "originalModelName": "Inkling Small"
         },
         {
           "model": "Claude Opus 4.5",
@@ -4896,7 +4924,7 @@
           "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
-          "model": "Wonder Full",
+          "model": "Muse Wonder Full",
           "provider": "Meta",
           "score": 58.08,
           "configuration": "Mini-SWE-agent",
@@ -4909,7 +4937,8 @@
           "tokensPerTestDisplay": "31.82m",
           "durationPerTestDisplay": "1h12m",
           "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard",
-          "providerEvidence": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/"
+          "providerEvidence": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/",
+          "originalModelName": "Wonder Full"
         },
         {
           "model": "Gemini 4 Argon",
@@ -4972,7 +5001,7 @@
           "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
-          "model": "Wonder",
+          "model": "Muse Wonder",
           "provider": "Meta",
           "score": 49.49,
           "configuration": "Mini-SWE-agent",
@@ -4985,7 +5014,8 @@
           "tokensPerTestDisplay": "34.66m",
           "durationPerTestDisplay": "54m41s",
           "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard",
-          "providerEvidence": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/"
+          "providerEvidence": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/",
+          "originalModelName": "Wonder"
         },
         {
           "model": "GPT-6 Sol",
@@ -5651,7 +5681,7 @@
           "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
         },
         {
-          "model": "Inkling Small",
+          "model": "Inkling-Small",
           "provider": "Thinking Machines",
           "score": 0,
           "configuration": "Mini-SWE-agent",
@@ -5663,7 +5693,8 @@
           "costPerTestUSD": 0.32,
           "tokensPerTestDisplay": "3.97m",
           "durationPerTestDisplay": "11m45s",
-          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard",
+          "originalModelName": "Inkling Small"
         },
         {
           "model": "Mercury 2.5",
@@ -5778,7 +5809,7 @@
           "snapshotDate": "2026-10-25"
         },
         {
-          "model": "Wonder Full",
+          "model": "Muse Wonder Full",
           "provider": "Meta",
           "score": 37.14,
           "configuration": "Mini-SWE-agent",
@@ -5787,7 +5818,8 @@
           "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
-          "providerEvidence": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/"
+          "providerEvidence": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/",
+          "originalModelName": "Wonder Full"
         },
         {
           "model": "Kimi K3.1 Pro",
@@ -5823,7 +5855,7 @@
           "snapshotDate": "2026-10-25"
         },
         {
-          "model": "Wonder",
+          "model": "Muse Wonder",
           "provider": "Meta",
           "score": 22.86,
           "configuration": "Mini-SWE-agent",
@@ -5832,7 +5864,8 @@
           "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
-          "providerEvidence": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/"
+          "providerEvidence": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/",
+          "originalModelName": "Wonder"
         },
         {
           "model": "GPT-5.6 Sol",
@@ -9502,6 +9535,7 @@
       "terminal-bench-4-0",
       "swe-bench-pro",
       "terminal-bench-science-0-1",
+      "proofbench",
       "hle-diamond",
       "arc-agi-3",
       "livebench-2.0"
@@ -9511,6 +9545,7 @@
       "terminal-bench-4-0",
       "swe-bench-pro",
       "terminal-bench-science-0-1",
+      "proofbench",
       "hle-diamond",
       "arc-agi-3",
       "livebench-2.0"
@@ -9537,9 +9572,10 @@
       {
         "name": "Science",
         "benchmarks": [
-          "terminal-bench-science-0-1"
+          "terminal-bench-science-0-1",
+          "proofbench"
         ],
-        "note": "One eligible evaluation is available; FrontierMath Tiers 1–3 remains a separate ceiling-watch dataset."
+        "note": "Terminal-Bench-Science 0.1 plus ProofBench 1.1. Four entries tie at 100%; specialist formal-proof systems are excluded."
       },
       {
         "name": "General",
@@ -9553,11 +9589,14 @@
     ],
     "method": "QBench Composite Index 1.0 is independent of Artificial Analysis. Each eligible evaluation needs at least eight unique model names. Within an evaluation, the best published score per exact model name is converted to a midrank percentile. Each domain score is the equal average of the eligible evaluation percentiles available in that domain. The provisional Index is the equal average of the available domain scores. A formal rank requires at least four eligible evaluations spanning at least three of four domains. Models with two or more eligible results but insufficient coverage are shown as coverage-only and are not ranked. Missing scores are never imputed. QBench does not use AA's individual evaluation weights or AA values.",
     "caveats": [
-      "Coverage-only Index values are provisional: they average only the domains with observed data and are not directly equivalent to a complete four-domain score.",
-      "Science currently has one eligible evaluation, so that domain is less robust than the others.",
-      "Terminal-Bench 4.0 is a third-party Vals AI evaluation using Mini-SWE-agent, not the official tbench.ai benchmark leaderboard.",
-      "LiveBench 2.0's 25 non-top-six model rows are explicitly sourced to a secondary mirror; six top rows and their per-successful-task costs are sourced directly from the publisher.",
-      "Knowledge Work currently has GDPval as its only eligible evaluation. OSWorld 2.0's secondary 0–1 aggregate is kept separate because its metric cannot be confirmed as binary accuracy rather than partial reward."
+      "Coverage-limited Index values average only available domains and are not equivalent to complete four-domain scores.",
+      "Knowledge Work has one eligible evaluation (GDPval); Science has two and includes ProofBench 1.1, whose top end is compressed by four 100% ties.",
+      "ProofBench 1.1 is a third-party Vals AI run using two 100-problem splits and Lean 4 checking; specialist proof systems are excluded from the general-purpose composite.",
+      "GPQA Diamond remains standalone because the stored 42-row OpenRouter extract is partial compared with its 167-row public leaderboard.",
+      "FrontierMath Tiers 1–3 remains standalone because the stored 60 rows are a partial extract of 120 published configurations.",
+      "OSWorld 2.0 aggregate does not identify binary completion versus partial reward and remains excluded.",
+      "Third-party evaluation runs and secondary leaderboard mirrors are explicitly distinguished from publisher-reported results.",
+      "Missing scores are never imputed; formal ranks require four eligible evaluations across at least three domains."
     ],
     "sourceNotes": [
       {
@@ -9617,14 +9656,14 @@
       }
     ],
     "currentDiagnostics": {
-      "rankedModels": 17,
-      "coverageOnlyModels": 37,
-      "modelsWithAtLeastTwoCategories": 53,
-      "eligibleEvaluationCount": 7,
+      "rankedModels": 27,
+      "coverageOnlyModels": 31,
+      "modelsWithAtLeastTwoCategories": 58,
+      "eligibleEvaluationCount": 8,
       "excludedEvaluationCount": 1,
-      "note": "Recomputed after excluding OSWorld 2.0's ambiguous secondary aggregate: 17 formal ranks, 37 provisional Index values and 44 single-evaluation models (98 models with at least one eligible result).",
-      "allEligibleModels": 98,
-      "singleEvaluationModels": 44
+      "allEligibleModels": 99,
+      "singleEvaluationModels": 41,
+      "note": "Recomputed after canonical model-name audit, router/agent/specialist exclusion and inclusion of full ProofBench v1.1. GPQA (42/167) and FrontierMath (60/120) partial extracts remain standalone."
     },
     "supplementaryInputsExcluded": [
       "aa-omniscience-v1-1-accuracy-atlas"
@@ -9654,9 +9693,10 @@
         {
           "name": "Science",
           "benchmarks": [
-            "terminal-bench-science-0-1"
+            "terminal-bench-science-0-1",
+            "proofbench"
           ],
-          "note": "One eligible evaluation is available; FrontierMath Tiers 1–3 remains a separate ceiling-watch dataset."
+          "note": "Terminal-Bench-Science 0.1 plus ProofBench 1.1. Four entries tie at 100%; specialist formal-proof systems are excluded."
         },
         {
           "name": "General",
@@ -9707,11 +9747,14 @@
       "snapshotAsOf": "2026-10-31",
       "basis": "Four equal-weight domains (Knowledge Work, Coding, Science, General), using AA's category structure only as a taxonomy reference. QBench applies its own public-evaluation percentile method and does not reproduce AA's per-evaluation weighting or native score.",
       "caveats": [
-        "Coverage-only Index values are provisional: they average only the domains with observed data and are not directly equivalent to a complete four-domain score.",
-        "Science currently has one eligible evaluation, so that domain is less robust than the others.",
-        "Terminal-Bench 4.0 is a third-party Vals AI evaluation using Mini-SWE-agent, not the official tbench.ai benchmark leaderboard.",
-        "LiveBench 2.0's 25 non-top-six model rows are explicitly sourced to a secondary mirror; six top rows and their per-successful-task costs are sourced directly from the publisher.",
-        "Knowledge Work currently has GDPval as its only eligible evaluation. OSWorld 2.0's secondary 0–1 aggregate is kept separate because its metric cannot be confirmed as binary accuracy rather than partial reward."
+        "Coverage-limited Index values average only available domains and are not equivalent to complete four-domain scores.",
+        "Knowledge Work has one eligible evaluation (GDPval); Science has two and includes ProofBench 1.1, whose top end is compressed by four 100% ties.",
+        "ProofBench 1.1 is a third-party Vals AI run using two 100-problem splits and Lean 4 checking; specialist proof systems are excluded from the general-purpose composite.",
+        "GPQA Diamond remains standalone because the stored 42-row OpenRouter extract is partial compared with its 167-row public leaderboard.",
+        "FrontierMath Tiers 1–3 remains standalone because the stored 60 rows are a partial extract of 120 published configurations.",
+        "OSWorld 2.0 aggregate does not identify binary completion versus partial reward and remains excluded.",
+        "Third-party evaluation runs and secondary leaderboard mirrors are explicitly distinguished from publisher-reported results.",
+        "Missing scores are never imputed; formal ranks require four eligible evaluations across at least three domains."
       ],
       "insufficientCoverage": [],
       "eligibleBenchmarks": [
@@ -9719,6 +9762,7 @@
         "terminal-bench-4-0",
         "swe-bench-pro",
         "terminal-bench-science-0-1",
+        "proofbench",
         "hle-diamond",
         "arc-agi-3",
         "livebench-2.0"
@@ -9740,63 +9784,94 @@
   },
   "apiPricing": {
     "snapshotDate": "2026-10-31",
-    "method": "Equal-token API list-price proxy = (standard uncached input price + standard output price) / 2, per 1 million tokens. Assumes exactly equal input and output token volumes. This is not observed task cost, not cost per task, and excludes caching, batch discounts, tool charges, regional uplifts, negotiated rates and taxes.",
+    "method": "List prices per 1M input/output tokens. First-party provider API and OpenRouter route rates are separately labelled. The Index scatter uses first-party USD rates only and assumes equal input/output volumes; this is not cost per task. Context, regional, promotional and time-of-day conditions remain in each model note. Caching, batch discounts, tools, negotiated rates and taxes are excluded.",
     "sources": [
       {
         "provider": "OpenAI",
         "url": "https://developers.openai.com/api/docs/pricing",
-        "tier": "Standard",
+        "sourceType": "official-provider",
         "checkedDate": "2026-10-31"
       },
       {
         "provider": "Anthropic",
         "url": "https://platform.claude.com/docs/en/about-claude/pricing",
-        "tier": "Standard API",
+        "sourceType": "official-provider",
         "checkedDate": "2026-10-31"
       },
       {
         "provider": "Google",
         "url": "https://ai.google.dev/gemini-api/docs/pricing",
-        "tier": "Standard paid tier",
+        "sourceType": "official-provider",
+        "checkedDate": "2026-10-31"
+      },
+      {
+        "provider": "xAI",
+        "url": "https://docs.x.ai/developers/pricing",
+        "sourceType": "official-provider",
+        "checkedDate": "2026-10-31"
+      },
+      {
+        "provider": "Alibaba",
+        "url": "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
+        "sourceType": "official-provider",
+        "checkedDate": "2026-10-31"
+      },
+      {
+        "provider": "DeepSeek",
+        "url": "https://api-docs.deepseek.com/quick_start/pricing/",
+        "sourceType": "official-provider",
+        "checkedDate": "2026-10-31"
+      },
+      {
+        "provider": "Mistral AI",
+        "url": "https://docs.mistral.ai/inference/pricing",
+        "sourceType": "official-provider",
+        "checkedDate": "2026-10-31"
+      },
+      {
+        "provider": "OpenRouter",
+        "url": "https://openrouter.ai/api/v1/models",
+        "sourceType": "aggregator-route",
+        "checkedDate": "2026-10-31"
+      },
+      {
+        "provider": "Unbiased",
+        "url": "https://unbiased.ai/changelog/",
+        "sourceType": "aggregator-route",
         "checkedDate": "2026-10-31"
       }
     ],
     "models": [
       {
-        "model": "GPT-6 Astra",
-        "provider": "OpenAI",
+        "currency": "USD",
+        "model": "Qwen3.8 Flash",
+        "provider": "Alibaba",
+        "inputUSDPerMillion": 0.113,
+        "outputUSDPerMillion": 0.382,
+        "source": "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "Alibaba Cloud Model Studio"
+      },
+      {
+        "currency": "USD",
+        "model": "Qwen3.8 Max",
+        "provider": "Alibaba",
+        "inputUSDPerMillion": 1.65,
+        "outputUSDPerMillion": 4.951,
+        "source": "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "Alibaba Cloud Model Studio",
+        "note": "Global deployment price; region-specific rates differ."
+      },
+      {
+        "currency": "USD",
+        "model": "Claude Fable 5",
+        "provider": "Anthropic",
         "inputUSDPerMillion": 10,
         "outputUSDPerMillion": 50,
-        "source": "https://developers.openai.com/api/docs/pricing",
-        "tier": "Standard",
-        "effectiveDate": "2026-10-31"
-      },
-      {
-        "model": "GPT-6.1 Sol",
-        "provider": "OpenAI",
-        "inputUSDPerMillion": 2,
-        "outputUSDPerMillion": 10,
-        "source": "https://developers.openai.com/api/docs/pricing",
-        "tier": "Standard",
-        "effectiveDate": "2026-10-31"
-      },
-      {
-        "model": "GPT-6.1 Terra",
-        "provider": "OpenAI",
-        "inputUSDPerMillion": 1,
-        "outputUSDPerMillion": 5,
-        "source": "https://developers.openai.com/api/docs/pricing",
-        "tier": "Standard",
-        "effectiveDate": "2026-10-31"
-      },
-      {
-        "model": "GPT-6 Luna",
-        "provider": "OpenAI",
-        "inputUSDPerMillion": 0.1,
-        "outputUSDPerMillion": 0.5,
-        "source": "https://developers.openai.com/api/docs/pricing",
-        "tier": "Standard",
-        "effectiveDate": "2026-10-31"
+        "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "Anthropic API"
       },
       {
         "model": "Claude Fable 5.1",
@@ -9805,25 +9880,20 @@
         "outputUSDPerMillion": 50,
         "source": "https://platform.claude.com/docs/en/about-claude/pricing",
         "tier": "Standard API",
-        "effectiveDate": "2026-10-31"
+        "effectiveDate": "2026-10-31",
+        "sourceType": "official-provider",
+        "pricePlatform": "Anthropic API",
+        "currency": "USD"
       },
       {
-        "model": "Claude Opus 5.5",
+        "currency": "USD",
+        "model": "Claude Haiku 4.5",
         "provider": "Anthropic",
-        "inputUSDPerMillion": 4,
-        "outputUSDPerMillion": 20,
+        "inputUSDPerMillion": 1,
+        "outputUSDPerMillion": 5,
         "source": "https://platform.claude.com/docs/en/about-claude/pricing",
-        "tier": "Standard API",
-        "effectiveDate": "2026-10-31"
-      },
-      {
-        "model": "Claude Sonnet 5.5",
-        "provider": "Anthropic",
-        "inputUSDPerMillion": 2,
-        "outputUSDPerMillion": 10,
-        "source": "https://platform.claude.com/docs/en/about-claude/pricing",
-        "tier": "Standard API",
-        "effectiveDate": "2026-10-31"
+        "sourceType": "official-provider",
+        "pricePlatform": "Anthropic API"
       },
       {
         "model": "Claude Haiku 5.5",
@@ -9832,16 +9902,143 @@
         "outputUSDPerMillion": 0.5,
         "source": "https://platform.claude.com/docs/en/about-claude/pricing",
         "tier": "Standard API; prompts up to 100k input tokens",
-        "effectiveDate": "2026-10-31"
+        "effectiveDate": "2026-10-31",
+        "sourceType": "official-provider",
+        "pricePlatform": "Anthropic API",
+        "currency": "USD",
+        "longContextInputUSDPerMillion": 0.5,
+        "longContextOutputUSDPerMillion": 2.5,
+        "note": "Prompts up to 100k tokens: $0.10/$0.50; over 100k tokens: $0.50/$2.50."
       },
       {
-        "model": "Gemini 4 Argon",
-        "provider": "Google",
+        "currency": "USD",
+        "model": "Claude Opus 4.5",
+        "provider": "Anthropic",
+        "inputUSDPerMillion": 5,
+        "outputUSDPerMillion": 25,
+        "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "Anthropic API"
+      },
+      {
+        "currency": "USD",
+        "model": "Claude Opus 4.6",
+        "provider": "Anthropic",
+        "inputUSDPerMillion": 5,
+        "outputUSDPerMillion": 25,
+        "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "Anthropic API"
+      },
+      {
+        "currency": "USD",
+        "model": "Claude Opus 4.7",
+        "provider": "Anthropic",
+        "inputUSDPerMillion": 5,
+        "outputUSDPerMillion": 25,
+        "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "Anthropic API"
+      },
+      {
+        "currency": "USD",
+        "model": "Claude Opus 4.8",
+        "provider": "Anthropic",
+        "inputUSDPerMillion": 5,
+        "outputUSDPerMillion": 25,
+        "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "Anthropic API"
+      },
+      {
+        "currency": "USD",
+        "model": "Claude Opus 5",
+        "provider": "Anthropic",
+        "inputUSDPerMillion": 5,
+        "outputUSDPerMillion": 25,
+        "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "Anthropic API"
+      },
+      {
+        "model": "Claude Opus 5.5",
+        "provider": "Anthropic",
+        "inputUSDPerMillion": 4,
+        "outputUSDPerMillion": 20,
+        "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+        "tier": "Standard API",
+        "effectiveDate": "2026-10-31",
+        "sourceType": "official-provider",
+        "pricePlatform": "Anthropic API",
+        "currency": "USD"
+      },
+      {
+        "currency": "USD",
+        "model": "Claude Sonnet 4.5",
+        "provider": "Anthropic",
+        "inputUSDPerMillion": 3,
+        "outputUSDPerMillion": 15,
+        "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "Anthropic API"
+      },
+      {
+        "currency": "USD",
+        "model": "Claude Sonnet 4.6",
+        "provider": "Anthropic",
+        "inputUSDPerMillion": 3,
+        "outputUSDPerMillion": 15,
+        "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "Anthropic API"
+      },
+      {
+        "currency": "USD",
+        "model": "Claude Sonnet 5",
+        "provider": "Anthropic",
         "inputUSDPerMillion": 2,
         "outputUSDPerMillion": 10,
-        "source": "https://ai.google.dev/gemini-api/docs/pricing",
-        "tier": "Standard paid tier",
-        "effectiveDate": "2026-10-31"
+        "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "Anthropic API"
+      },
+      {
+        "model": "Claude Sonnet 5.5",
+        "provider": "Anthropic",
+        "inputUSDPerMillion": 2,
+        "outputUSDPerMillion": 10,
+        "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+        "tier": "Standard API",
+        "effectiveDate": "2026-10-31",
+        "sourceType": "official-provider",
+        "pricePlatform": "Anthropic API",
+        "currency": "USD"
+      },
+      {
+        "currency": "USD",
+        "model": "DeepSeek V4 Pro 0813",
+        "provider": "DeepSeek",
+        "inputUSDPerMillion": 1.32,
+        "outputUSDPerMillion": 3.96,
+        "offPeakInputUSDPerMillion": 0.66,
+        "offPeakOutputUSDPerMillion": 1.98,
+        "source": "https://api-docs.deepseek.com/quick_start/pricing/",
+        "sourceType": "official-provider",
+        "pricePlatform": "DeepSeek API",
+        "note": "Peak rate shown; off-peak rate is half. See official UTC schedule."
+      },
+      {
+        "currency": "USD",
+        "model": "DeepSeek V4.1 Flash 1017",
+        "provider": "DeepSeek",
+        "inputUSDPerMillion": 0.3,
+        "outputUSDPerMillion": 1.2,
+        "offPeakInputUSDPerMillion": 0.15,
+        "offPeakOutputUSDPerMillion": 0.6,
+        "source": "https://api-docs.deepseek.com/quick_start/pricing/",
+        "sourceType": "official-provider",
+        "pricePlatform": "DeepSeek API",
+        "note": "Peak rate shown; off-peak rate is half. See official UTC schedule."
       },
       {
         "model": "Gemini 3.8 Flash",
@@ -9850,8 +10047,364 @@
         "outputUSDPerMillion": 3.75,
         "source": "https://ai.google.dev/gemini-api/docs/pricing",
         "tier": "Standard paid tier",
-        "effectiveDate": "2026-10-31"
+        "effectiveDate": "2026-10-31",
+        "sourceType": "official-provider",
+        "pricePlatform": "Google API",
+        "currency": "USD",
+        "note": "Current rate through 2026-12-31: $0.75/$3.75; from 2027-01-01: $1.50/$7.50."
+      },
+      {
+        "model": "Gemini 4 Argon",
+        "provider": "Google",
+        "inputUSDPerMillion": 2,
+        "outputUSDPerMillion": 10,
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "tier": "Standard paid tier",
+        "effectiveDate": "2026-10-31",
+        "sourceType": "official-provider",
+        "pricePlatform": "Google API",
+        "currency": "USD",
+        "note": "Current rate through 2026-11-30: $2/$10; from 2026-12-01: $4/$20."
+      },
+      {
+        "currency": "USD",
+        "model": "Muse Wonder",
+        "provider": "Meta",
+        "inputUSDPerMillion": 4,
+        "outputUSDPerMillion": 20,
+        "source": "https://openrouter.ai/api/v1/models",
+        "sourceType": "openrouter-route",
+        "pricePlatform": "OpenRouter",
+        "note": "OpenRouter route, not Meta direct API price."
+      },
+      {
+        "currency": "USD",
+        "model": "MiniMax M3.1 Flash",
+        "provider": "MiniMax",
+        "inputUSDPerMillion": 0.15,
+        "outputUSDPerMillion": 0.6,
+        "offPeakInputUSDPerMillion": 0.075,
+        "offPeakOutputUSDPerMillion": 0.3,
+        "source": "https://openrouter.ai/api/v1/models",
+        "sourceType": "openrouter-route",
+        "pricePlatform": "OpenRouter",
+        "note": "UTC tier schedule: lower $0.075/$0.30 applies 01:00–15:00 UTC."
+      },
+      {
+        "currency": "USD",
+        "model": "Mistral Large 4",
+        "provider": "Mistral AI",
+        "inputUSDPerMillion": 0.7,
+        "outputUSDPerMillion": 2.1,
+        "source": "https://docs.mistral.ai/inference/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "Mistral API"
+      },
+      {
+        "currency": "USD",
+        "model": "Mistral Small 4",
+        "provider": "Mistral AI",
+        "inputUSDPerMillion": 0.15,
+        "outputUSDPerMillion": 0.6,
+        "source": "https://docs.mistral.ai/inference/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "Mistral API"
+      },
+      {
+        "currency": "USD",
+        "model": "Kimi K3.1 Pro",
+        "provider": "Moonshot AI",
+        "inputUSDPerMillion": 2,
+        "outputUSDPerMillion": 10,
+        "source": "https://openrouter.ai/api/v1/models",
+        "sourceType": "openrouter-route",
+        "pricePlatform": "OpenRouter"
+      },
+      {
+        "currency": "USD",
+        "model": "GPT-5.6 Sol",
+        "provider": "OpenAI",
+        "inputUSDPerMillion": 4,
+        "outputUSDPerMillion": 20,
+        "source": "https://developers.openai.com/api/docs/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "OpenAI API",
+        "effectiveUntil": "2026-11-21",
+        "note": "Promotional standard price; available at least through 2026-11-21."
+      },
+      {
+        "model": "GPT-6 Astra",
+        "provider": "OpenAI",
+        "inputUSDPerMillion": 10,
+        "outputUSDPerMillion": 50,
+        "source": "https://developers.openai.com/api/docs/pricing",
+        "tier": "Standard",
+        "effectiveDate": "2026-10-31",
+        "sourceType": "official-provider",
+        "pricePlatform": "OpenAI API",
+        "currency": "USD"
+      },
+      {
+        "model": "GPT-6 Luna",
+        "provider": "OpenAI",
+        "inputUSDPerMillion": 0.1,
+        "outputUSDPerMillion": 0.5,
+        "source": "https://developers.openai.com/api/docs/pricing",
+        "tier": "Standard",
+        "effectiveDate": "2026-10-31",
+        "sourceType": "official-provider",
+        "pricePlatform": "OpenAI API",
+        "currency": "USD"
+      },
+      {
+        "currency": "USD",
+        "model": "GPT-6 Sol",
+        "provider": "OpenAI",
+        "inputUSDPerMillion": 2,
+        "outputUSDPerMillion": 10,
+        "source": "https://openrouter.ai/api/v1/models",
+        "sourceType": "openrouter-route",
+        "pricePlatform": "OpenRouter",
+        "note": "OpenRouter route; prompts over 272k tokens have a higher tier."
+      },
+      {
+        "model": "GPT-6.1 Sol",
+        "provider": "OpenAI",
+        "inputUSDPerMillion": 2,
+        "outputUSDPerMillion": 10,
+        "source": "https://developers.openai.com/api/docs/pricing",
+        "tier": "Standard",
+        "effectiveDate": "2026-10-31",
+        "sourceType": "official-provider",
+        "pricePlatform": "OpenAI API",
+        "currency": "USD"
+      },
+      {
+        "model": "GPT-6.1 Terra",
+        "provider": "OpenAI",
+        "inputUSDPerMillion": 1,
+        "outputUSDPerMillion": 5,
+        "source": "https://developers.openai.com/api/docs/pricing",
+        "tier": "Standard",
+        "effectiveDate": "2026-10-31",
+        "sourceType": "official-provider",
+        "pricePlatform": "OpenAI API",
+        "currency": "USD"
+      },
+      {
+        "currency": "USD",
+        "model": "Inkling-Small",
+        "provider": "Thinking Machines",
+        "inputUSDPerMillion": 0.45,
+        "outputUSDPerMillion": 1.2,
+        "source": "https://openrouter.ai/api/v1/models",
+        "sourceType": "openrouter-route",
+        "pricePlatform": "OpenRouter"
+      },
+      {
+        "currency": "USD",
+        "model": "Pareto 26.10 Preview",
+        "provider": "Unbiased",
+        "inputUSDPerMillion": 0.8,
+        "outputUSDPerMillion": 3.2,
+        "source": "https://unbiased.ai/changelog/",
+        "sourceType": "official-provider",
+        "pricePlatform": "Unbiased API",
+        "note": "Preview measurement from 2026-10-01; price unchanged at 2026-10-15 GA. Current stable IDs: pareto and pareto-26.10."
+      },
+      {
+        "currency": "USD",
+        "model": "Grok 4.5",
+        "provider": "xAI",
+        "inputUSDPerMillion": 2,
+        "outputUSDPerMillion": 6,
+        "longContextInputUSDPerMillion": 4,
+        "longContextOutputUSDPerMillion": 12,
+        "source": "https://docs.x.ai/developers/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "xAI API",
+        "note": "Short context <200k tokens $2/$6; long context >=200k tokens $4/$12."
+      },
+      {
+        "currency": "USD",
+        "model": "Grok 4.6",
+        "provider": "xAI",
+        "inputUSDPerMillion": 2,
+        "outputUSDPerMillion": 6,
+        "longContextInputUSDPerMillion": 4,
+        "longContextOutputUSDPerMillion": 12,
+        "source": "https://docs.x.ai/developers/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "xAI API",
+        "note": "Short context <200k tokens $2/$6; long context >=200k tokens $4/$12."
+      },
+      {
+        "currency": "USD",
+        "model": "Grok 4.7",
+        "provider": "xAI",
+        "inputUSDPerMillion": 2,
+        "outputUSDPerMillion": 6,
+        "longContextInputUSDPerMillion": 4,
+        "longContextOutputUSDPerMillion": 12,
+        "source": "https://docs.x.ai/developers/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "xAI API",
+        "note": "Short context <200k tokens $2/$6; long context >=200k tokens $4/$12."
+      },
+      {
+        "currency": "USD",
+        "model": "GLM 5.3",
+        "provider": "Z.ai",
+        "inputUSDPerMillion": 0.0699,
+        "outputUSDPerMillion": 1.4,
+        "source": "https://openrouter.ai/api/v1/models",
+        "sourceType": "openrouter-route",
+        "pricePlatform": "OpenRouter",
+        "note": "OpenRouter route, not Z.ai direct API price."
       }
+    ],
+    "diagnostics": {
+      "modelEntries": 37,
+      "officialProviderEntries": 31,
+      "aggregatorRouteEntries": 6
+    }
+  },
+  "modelNameAudit": {
+    "snapshotDate": "2026-10-31",
+    "canonicalAliases": [
+      {
+        "from": "T Inkling",
+        "to": "Inkling",
+        "benchmark": "livebench-2.0"
+      },
+      {
+        "from": "Unbiased 26.10 Preview",
+        "to": "Pareto 26.10 Preview",
+        "benchmark": "gpqa-diamond"
+      },
+      {
+        "from": "NVIDIA Switchyard",
+        "to": "Switchyard",
+        "benchmark": "gpqa-diamond"
+      },
+      {
+        "from": "Inkling Small",
+        "to": "Inkling-Small",
+        "benchmark": "frontiermath-tiers-1-3-v2"
+      },
+      {
+        "from": "Wonder Full",
+        "to": "Muse Wonder Full",
+        "benchmark": "proofbench"
+      },
+      {
+        "from": "Wonder",
+        "to": "Muse Wonder",
+        "benchmark": "proofbench"
+      },
+      {
+        "from": "MiniMax-M3",
+        "to": "MiniMax M3",
+        "benchmark": "proofbench"
+      },
+      {
+        "from": "Inkling Small",
+        "to": "Inkling-Small",
+        "benchmark": "proofbench"
+      },
+      {
+        "from": "Inkling Small",
+        "to": "Inkling-Small",
+        "benchmark": "arc-agi-2"
+      },
+      {
+        "from": "Wonder Full",
+        "to": "Muse Wonder Full",
+        "benchmark": "terminal-bench-4-0"
+      },
+      {
+        "from": "Wonder",
+        "to": "Muse Wonder",
+        "benchmark": "terminal-bench-4-0"
+      },
+      {
+        "from": "Inkling Small",
+        "to": "Inkling-Small",
+        "benchmark": "terminal-bench-4-0"
+      },
+      {
+        "from": "Wonder Full",
+        "to": "Muse Wonder Full",
+        "benchmark": "terminal-bench-science-0-1"
+      },
+      {
+        "from": "Wonder",
+        "to": "Muse Wonder",
+        "benchmark": "terminal-bench-science-0-1"
+      }
+    ],
+    "modelKinds": [
+      {
+        "name": "Switchyard",
+        "kind": "router",
+        "label": "Router",
+        "excludeFromIndex": true,
+        "reason": "Multi-provider routing system rather than a single fixed base model."
+      },
+      {
+        "name": "Jev Router",
+        "kind": "router",
+        "label": "Router",
+        "excludeFromIndex": true,
+        "reason": "Multi-provider routing system rather than a single fixed base model."
+      },
+      {
+        "name": "Auto Router",
+        "kind": "router",
+        "label": "Router",
+        "excludeFromIndex": true,
+        "reason": "Automatic routing system; selected underlying model varies by request."
+      },
+      {
+        "name": "Fugu Ultra",
+        "kind": "agent-system",
+        "label": "Agent system",
+        "excludeFromIndex": true,
+        "reason": "Sakana multi-agent system rather than one base model."
+      },
+      {
+        "name": "Fugu Ultra V2",
+        "kind": "agent-system",
+        "label": "Agent system",
+        "excludeFromIndex": true,
+        "reason": "Sakana multi-agent system rather than one base model."
+      },
+      {
+        "name": "Fugu Max",
+        "kind": "agent-system",
+        "label": "Agent system",
+        "excludeFromIndex": true,
+        "reason": "Sakana multi-agent system rather than one base model."
+      },
+      {
+        "name": "AlephProver",
+        "kind": "specialist-system",
+        "label": "Formal prover",
+        "excludeFromIndex": true,
+        "reason": "Specialist formal-proof system; excluded from the general-purpose Index."
+      },
+      {
+        "name": "Aristotle",
+        "kind": "specialist-system",
+        "label": "Formal prover",
+        "excludeFromIndex": true,
+        "reason": "Specialist formal-math system using its own harness; excluded from the general-purpose Index."
+      }
+    ],
+    "notes": [
+      "Original source spellings are retained as originalModelName after canonical normalization.",
+      "Routers, multi-agent systems and specialist formal provers remain visible in benchmark details but are excluded from the general-purpose composite.",
+      "Pareto 26.10 Preview remains a historical preview result; stable model IDs are pareto and pareto-26.10."
     ]
   }
 }

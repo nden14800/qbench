@@ -195,7 +195,7 @@ footer{font-size:.8rem;color:var(--qb-muted)}
       <div class="card-header d-flex flex-wrap align-items-center justify-content-between gap-2 py-3">
         <div>
           <h2 class="card-title-qb">Models</h2>
-          <div class="text-muted-qb small mt-1">All models with at least one eligible result. Provisional Index needs two or more results; formal ranks need four evaluations across three domains.</div>
+          <div class="text-muted-qb small mt-1">Models with at least one eligible result. Routers and specialist systems are identified separately. The API price catalog below also includes priced models outside the composite Index.</div>
         </div>
         <div class="d-flex gap-2">
           <input class="form-control form-control-sm" id="mq" type="search" placeholder="Search model" aria-label="Search models" style="min-width:200px">
@@ -208,6 +208,14 @@ footer{font-size:.8rem;color:var(--qb-muted)}
           <tbody id="models-body"></tbody>
         </table>
       </div>
+    </div>
+    <div class="card mt-3" id="price-catalog-card">
+      <div class="card-header d-flex flex-wrap align-items-center justify-content-between gap-2 py-3">
+        <div><h2 class="card-title-qb">API price catalog</h2><div class="text-muted-qb small mt-1">Per 1M input/output tokens. Official provider API and OpenRouter route prices are labelled separately.</div></div>
+        <input class="form-control form-control-sm" id="price-search" type="search" placeholder="Search priced models" aria-label="Search priced models" style="min-width:200px">
+      </div>
+      <div class="table-responsive"><table class="table table-hover align-middle mb-0"><thead><tr><th>Model</th><th>Provider</th><th class="text-end">Input / 1M</th><th class="text-end">Output / 1M</th><th>Price source</th><th>Conditions</th></tr></thead><tbody id="price-table-body"></tbody></table></div>
+      <div class="card-body pt-2 small text-muted-qb" id="price-catalog-note"></div>
     </div>
     <div class="card" id="compare-card" hidden>
       <div class="card-header py-3">
@@ -275,51 +283,29 @@ function pal(){return {ink:cssVar('--bs-body-color')||'#14171f',muted:cssVar('--
 var DATA=null,RESULT=null;
 
 function compute(data){
-  var spec=data.composite.extendedIndex, byId={};
+  var spec=data.composite.extendedIndex,byId={},kinds={};
   data.benchmarks.forEach(function(b){byId[b.id]=b;});
-  var min=spec.minimumModelsPerEvaluation, evals=[], pct={};
-  spec.domains.forEach(function(dom){
-    dom.benchmarks.forEach(function(id){
-      var b=byId[id]; if(!b||b.indexEligible!==true) return;
-      var best=new Map();
-      (b.models||[]).forEach(function(r){
-        var v=scoreOf(r); if(!r.model||v===null||r.uncertain===true) return;
-        var o=best.get(r.model); if(!o||v>o.value) best.set(r.model,{value:v,row:r});
-      });
-      if(best.size<min) return;
-      var vals=[]; best.forEach(function(e){vals.push(e.value);});
-      var m=new Map();
-      best.forEach(function(e,name){
-        var less=0,eq=0; vals.forEach(function(v){if(v<e.value)less++;if(v===e.value)eq++;});
-        var p=vals.length<=1?50:100*(less+(eq-1)/2)/(vals.length-1);
-        m.set(name,{pct:p,value:e.value,config:e.row.configuration||'',provider:e.row.provider||'Unknown'});
-      });
-      pct[id]=m;
-      evals.push({id:id,name:b.name,domain:dom.name,unique:best.size,snapshot:b.snapshotDate,source:b.source});
-    });
+  (data.modelNameAudit&&data.modelNameAudit.modelKinds||[]).forEach(function(x){kinds[x.name]=x;});
+  var min=spec.minimumModelsPerEvaluation,evals=[],pct={};
+  spec.domains.forEach(function(dom){dom.benchmarks.forEach(function(id){
+    var b=byId[id];if(!b||b.indexEligible!==true)return;var best=new Map();
+    (b.models||[]).forEach(function(r){var v=scoreOf(r);if(!r.model||v===null||r.uncertain===true||r.excludeFromIndex===true)return;var o=best.get(r.model);if(!o||v>o.value)best.set(r.model,{value:v,row:r});});
+    if(best.size<min)return;var vals=[];best.forEach(function(e){vals.push(e.value);});var m=new Map();
+    best.forEach(function(e,name){var less=0,eq=0;vals.forEach(function(v){if(v<e.value)less++;if(v===e.value)eq++;});var p=vals.length<=1?50:100*(less+(eq-1)/2)/(vals.length-1);m.set(name,{pct:p,value:e.value,config:e.row.configuration||'',provider:e.row.provider||'Unknown'});});
+    pct[id]=m;evals.push({id:id,name:b.name,domain:dom.name,unique:best.size,snapshot:b.snapshotDate,source:b.source});
+  });});
+  var names=new Map();Object.keys(pct).forEach(function(id){pct[id].forEach(function(e,n){if(!names.has(n))names.set(n,e.provider);});});
+  var priceMap={};((data.apiPricing&&data.apiPricing.models)||[]).forEach(function(p){var old=priceMap[p.model];if(!old||(p.sourceType==='official-provider'&&old.sourceType!=='official-provider'))priceMap[p.model]=p;});
+  var rows=[];names.forEach(function(provider,name){
+    var ds={},coverage=0,domainCount=0,detail={};
+    spec.domains.forEach(function(dom){var a=[];dom.benchmarks.forEach(function(id){if(pct[id]&&pct[id].has(name)){a.push(pct[id].get(name).pct);coverage++;detail[id]=pct[id].get(name);}});ds[dom.name]=a.length?a.reduce(function(x,y){return x+y;},0)/a.length:null;if(ds[dom.name]!==null)domainCount++;});
+    if(!coverage)return;var vals=Object.keys(ds).map(function(k){return ds[k];}).filter(function(v){return v!==null;}),provisional=vals.reduce(function(x,y){return x+y;},0)/vals.length;
+    var p=priceMap[name]||{},cur=p.currency||'USD',input=cur==='USD'?p.inputUSDPerMillion:p.inputLocalPerMillion,output=cur==='USD'?p.outputUSDPerMillion:p.outputLocalPerMillion;
+    var type=p.sourceType||'',label=type==='official-provider'?'Official API':type==='openrouter-route'?'OpenRouter route':'Hosted API';
+    var avg=type==='official-provider'&&cur==='USD'&&input!=null&&output!=null?(Number(input)+Number(output))/2:null,kind=kinds[name]||{};
+    rows.push({model:name,provider:provider||'Unknown',modelKind:kind.kind||'foundation-model',modelKindLabel:kind.label||'',domains:ds,coverage:coverage,domainCount:domainCount,ranked:coverage>=spec.minimumEvaluationsPerModel&&domainCount>=spec.minimumDomainsPerModel,index:coverage>=2?provisional:null,provisionalIndex:provisional,price:avg,priceInput:input==null?null:Number(input),priceOutput:output==null?null:Number(output),priceCurrency:cur,priceSource:p.source||null,priceSourceType:type,priceSourceLabel:label,priceNote:p.note||'',detail:detail});
   });
-  var names=new Map();
-  Object.keys(pct).forEach(function(id){pct[id].forEach(function(e,name){if(!names.has(name))names.set(name,e.provider);});});
-  var prices={};
-  ((data.apiPricing&&data.apiPricing.models)||[]).forEach(function(p){prices[p.model]={input:p.inputUSDPerMillion,output:p.outputUSDPerMillion,provider:p.provider};});
-  var rows=[];
-  names.forEach(function(provider,name){
-    var domainScores={}, cover=0, nd=0, detail={};
-    spec.domains.forEach(function(dom){
-      var a=[];
-      dom.benchmarks.forEach(function(id){ if(pct[id]&&pct[id].has(name)){a.push(pct[id].get(name).pct);cover++;detail[id]=pct[id].get(name);} });
-      domainScores[dom.name]=a.length?a.reduce(function(x,y){return x+y;},0)/a.length:null;
-      if(domainScores[dom.name]!==null) nd++;
-    });
-    if(cover<1) return;
-    var vs=Object.keys(domainScores).map(function(k){return domainScores[k];}).filter(function(v){return v!==null;});
-    var provisional=vs.length?vs.reduce(function(x,y){return x+y;},0)/vs.length:null;
-    var idx=cover>=2?provisional:null;
-    var price=prices[name]?(prices[name].input+prices[name].output)/2:null;
-    rows.push({model:name,provider:(prices[name]&&prices[name].provider)||provider||'Unknown',domains:domainScores,coverage:cover,domainCount:nd,
-      ranked:cover>=spec.minimumEvaluationsPerModel&&nd>=spec.minimumDomainsPerModel,index:idx,provisionalIndex:provisional,price:price,detail:detail});
-  });
-  rows.sort(function(a,b){return (Number(b.ranked)-Number(a.ranked))||((b.coverage>=2)-(a.coverage>=2))||((b.index||0)-(a.index||0))||a.model.localeCompare(b.model);});
+  rows.sort(function(a,b){return(Number(b.ranked)-Number(a.ranked))||((b.coverage>=2)-(a.coverage>=2))||((b.index||0)-(a.index||0))||a.model.localeCompare(b.model);});
   rows.filter(function(r){return r.ranked;}).forEach(function(r,i){r.rank=i+1;});
   return {evals:evals,rows:rows,domains:spec.domains.map(function(d){return d.name;}),spec:spec,byId:byId,pct:pct};
 }
@@ -388,13 +374,16 @@ function renderStats(){
 function indexColumns(){
   return [{k:'rank',l:'#',num:true},{k:'model',l:'Model'},{k:'provider',l:'Provider'},{k:'index',l:'Index 1.0',num:true}]
     .concat(RESULT.domains.map(function(d){return {k:'d:'+d,l:d,num:true};}))
-    .concat([{k:'coverage',l:'Evals',num:true},{k:'price',l:'API token price',num:true}]);
+    .concat([{k:'coverage',l:'Evals',num:true},{k:'inputPrice',l:'Input / 1M',num:true},{k:'outputPrice',l:'Output / 1M',num:true}]);
 }
 function sortVal(r,k){
-  if(k==='model')return r.model; if(k==='provider')return r.provider; if(k==='index')return r.index; if(k==='coverage')return r.coverage; if(k==='price')return r.price;
+  if(k==='model')return r.model; if(k==='provider')return r.provider; if(k==='index')return r.index; if(k==='coverage')return r.coverage; if(k==='inputPrice')return r.priceInput;if(k==='outputPrice')return r.priceOutput;
   if(k.indexOf('d:')===0)return r.domains[k.slice(2)];
   return null;
 }
+function priceText(v,c){if(v==null||!isFinite(v))return '—';var n=Number(v),d=n<0.001?6:n<0.01?5:n<1?4:3;return(c==='CNY'?'¥':'$')+n.toFixed(d);}
+function priceSourceNote(r){return r.priceSourceLabel?'<small class="d-block text-muted-qb">'+esc(r.priceSourceLabel)+'</small>':'';}
+function modelKindBadge(r){return r.modelKindLabel?'<span class="badge rounded-pill text-bg-light text-secondary border ms-1">'+esc(r.modelKindLabel)+'</span>':'';}
 function renderIndex(){
   var cols=indexColumns();
   var rows=RESULT.rows.filter(function(r){
@@ -420,13 +409,14 @@ function renderIndex(){
       var w=Math.max(0,Math.min(100,r.index||0))*0.6;
       var cells=[
         '<td class="text-end num">'+(r.ranked?r.rank:'—')+'</td>',
-        '<td class="fw-semibold">'+esc(r.model)+(r.ranked?'':' <span class="badge rounded-pill text-bg-secondary fw-normal">coverage only</span>')+'</td>',
+        '<td class="fw-semibold">'+esc(r.model)+modelKindBadge(r)+(r.ranked?'':' <span class="badge rounded-pill text-bg-secondary fw-normal">coverage only</span>')+'</td>',
         '<td>'+esc(r.provider)+'</td>',
         '<td class="text-end num"><strong>'+fmt(r.index,1)+'</strong><span class="index-bar" style="width:'+w+'px"></span></td>'
       ];
       RESULT.domains.forEach(function(d){cells.push('<td class="text-end num">'+fmt(r.domains[d],1)+'</td>');});
       cells.push('<td class="text-end num">'+r.coverage+' / '+RESULT.evals.length+'</td>');
-      cells.push('<td class="text-end num">'+(r.price==null?'—':'$'+fmt(r.price,2))+'</td>');
+      cells.push('<td class="text-end num" title="'+esc(r.priceNote||r.priceSource||'')+'">'+priceText(r.priceInput,r.priceCurrency)+priceSourceNote(r)+'</td>');
+      cells.push('<td class="text-end num" title="'+esc(r.priceNote||r.priceSource||'')+'">'+priceText(r.priceOutput,r.priceCurrency)+priceSourceNote(r)+'</td>');
       return '<tr class="'+(r.ranked?'':'is-unranked')+'">'+cells.join('')+'</tr>';
     }).join('');
   }
@@ -469,7 +459,7 @@ function renderScatter(host){
   var p=pal();
   host.innerHTML='<div id="chart-main-el" style="height:440px"></div>'+
     '<div class="chart-legend" id="scatter-legend"></div>'+
-    '<div class="notice-qb">Dashed line: Pareto frontier (highest index at each price level). The price proxy assumes equal input and output tokens; it is not cost per task.</div>';
+    '<div class="notice-qb">Dashed line: Pareto frontier (highest index at each price level). The scatter uses first-party provider API rates only, assumes equal input/output volumes and is not cost per task.</div>';
   var c=chartInit('chart-main-el');
   var front=[],best=-1;
   pts.slice().sort(function(a,b){return a.price-b.price||b.index-a.index;}).forEach(function(q){if(q.index>best){front.push([q.price,q.index]);best=q.index;}});
@@ -488,7 +478,7 @@ function renderScatter(host){
     animation:false,
     grid:{left:56,right:24,top:16,bottom:50},
     tooltip:{trigger:'item',formatter:function(e){var d=e.data;return d[2]?esc(d[2])+'<br>Index '+Number(d[1]).toFixed(1)+'<br>$'+Number(d[0]).toFixed(2)+' / 1M tokens':e.seriesName;}},
-    xAxis:Object.assign({type:'log',name:'API price proxy, USD per 1M tokens',nameLocation:'middle',nameGap:32,nameTextStyle:{color:p.muted}},axisStyle(p)),
+    xAxis:Object.assign({type:'log',name:'Official API price proxy, USD per 1M tokens',nameLocation:'middle',nameGap:32,nameTextStyle:{color:p.muted}},axisStyle(p)),
     yAxis:Object.assign({type:'value',min:0,max:100,name:'QBench Index 1.0',nameTextStyle:{color:p.muted}},axisStyle(p)),
     series:series
   },true);
@@ -556,8 +546,20 @@ function renderChart(){
 }
 
 /* ---------- models ---------- */
+function renderPriceCatalog(){
+  var list=((DATA.apiPricing&&DATA.apiPricing.models)||[]).slice();
+  var q=($('#price-search')&&$('#price-search').value||'').trim().toLowerCase();
+  if(q)list=list.filter(function(p){return(p.model+' '+p.provider+' '+(p.pricePlatform||'')).toLowerCase().indexOf(q)>=0;});
+  list.sort(function(a,b){return a.provider.localeCompare(b.provider)||a.model.localeCompare(b.model);});
+  $('#price-table-body').innerHTML=list.length?list.map(function(p){
+    var c=p.currency||'USD',input=c==='USD'?p.inputUSDPerMillion:p.inputLocalPerMillion,output=c==='USD'?p.outputUSDPerMillion:p.outputLocalPerMillion;
+    var label=p.sourceType==='official-provider'?'Official provider API':p.sourceType==='openrouter-route'?'OpenRouter route':'Hosted platform';
+    return '<tr><td class="fw-semibold">'+esc(p.model)+'</td><td>'+esc(p.provider)+'</td><td class="text-end num">'+priceText(input,c)+'</td><td class="text-end num">'+priceText(output,c)+'</td><td><a href="'+esc(p.source||'#')+'" target="_blank" rel="noopener">'+esc(label)+'</a></td><td class="small text-muted-qb">'+esc(p.note||p.pricePlatform||'Standard list price')+'</td></tr>';
+  }).join(''):'<tr><td colspan="6" class="empty-qb">No priced model matches.</td></tr>';
+  $('#price-catalog-note').textContent=list.length+' priced model entries · snapshot '+(DATA.apiPricing.snapshotDate||'—')+'. Index scatter uses first-party provider API prices only; route prices are separate.';
+}
 function renderModels(){
-  var cols=[{k:'sel',l:'Compare'},{k:'model',l:'Model'},{k:'provider',l:'Provider'},{k:'index',l:'Index 1.0',num:true},{k:'coverage',l:'Evals',num:true}];
+  var cols=[{k:'sel',l:'Compare'},{k:'model',l:'Model'},{k:'provider',l:'Provider'},{k:'index',l:'Index 1.0',num:true},{k:'coverage',l:'Evals',num:true},{k:'inputPrice',l:'Input / 1M',num:true},{k:'outputPrice',l:'Output / 1M',num:true}];
   var rows=RESULT.rows.filter(function(r){return !S.mq||r.model.toLowerCase().indexOf(S.mq.toLowerCase())>=0;});
   rows=rows.slice().sort(function(a,b){
     var va=S.mSort==='model'?a.model:S.mSort==='provider'?a.provider:S.mSort==='coverage'?a.coverage:(a.index==null?-1:a.index);
@@ -570,8 +572,8 @@ function renderModels(){
   $('#models-head').innerHTML=cols.map(function(c){return '<th'+(c.num?' class="text-end"':'')+'>'+(c.k==='sel'?esc(c.l):'<button type="button" class="sort-btn" data-msort="'+c.k+'">'+esc(c.l)+'</button>')+'</th>';}).join('');
   $('#models-body').innerHTML=rows.length?rows.map(function(r){
     var on=S.selected.indexOf(r.model)>=0;
-    return '<tr><td><input class="form-check-input" type="checkbox" data-sel="'+esc(r.model)+'"'+(on?' checked':'')+(r.coverage<2?' disabled':'')+' aria-label="Compare '+esc(r.model)+'"></td><td class="fw-semibold">'+esc(r.model)+(r.ranked?' <span class="badge rounded-pill text-bg-success model-status">ranked</span>':r.coverage>=2?' <span class="badge rounded-pill text-bg-secondary model-status">provisional</span>':' <span class="badge rounded-pill text-bg-light text-secondary border model-status">single result</span>')+'</td><td>'+esc(r.provider)+'</td><td class="text-end num">'+fmt(r.index,1)+'</td><td class="text-end num">'+r.coverage+' / '+RESULT.evals.length+'</td></tr>'
-  }).join(''):'<tr><td colspan="5" class="empty-qb">No models match.</td></tr>';
+    return '<tr><td><input class="form-check-input" type="checkbox" data-sel="'+esc(r.model)+'"'+(on?' checked':'')+(r.coverage<2?' disabled':'')+' aria-label="Compare '+esc(r.model)+'"></td><td class="fw-semibold">'+esc(r.model)+modelKindBadge(r)+(r.ranked?' <span class="badge rounded-pill text-bg-success model-status">ranked</span>':r.coverage>=2?' <span class="badge rounded-pill text-bg-secondary model-status">provisional</span>':' <span class="badge rounded-pill text-bg-light text-secondary border model-status">single result</span>')+'</td><td>'+esc(r.provider)+'</td><td class="text-end num">'+fmt(r.index,1)+'</td><td class="text-end num">'+r.coverage+' / '+RESULT.evals.length+'</td><td class="text-end num">'+priceText(r.priceInput,r.priceCurrency)+priceSourceNote(r)+'</td><td class="text-end num">'+priceText(r.priceOutput,r.priceCurrency)+priceSourceNote(r)+'</td></tr>'
+  }).join(''):'<tr><td colspan="7" class="empty-qb">No models match.</td></tr>';
   renderCompare();
 }
 function renderCompare(){
@@ -597,8 +599,8 @@ function renderCompare(){
   $('#cmp-body').innerHTML=body;
 }
 function csvOut(){
-  var head=['model','provider','index_1_0','coverage','ranked'].concat(RESULT.domains).join(',');
-  var lines=RESULT.rows.map(function(r){return [JSON.stringify(r.model),JSON.stringify(r.provider),fmt(r.index,2),r.coverage,r.ranked].concat(RESULT.domains.map(function(d){return fmt(r.domains[d],2);})).join(',');});
+  var head=['model','provider','model_kind','index_1_0','coverage','ranked','api_input_price','api_output_price','price_currency','price_source'].concat(RESULT.domains).join(',');
+  var lines=RESULT.rows.map(function(r){return [JSON.stringify(r.model),JSON.stringify(r.provider),JSON.stringify(r.modelKind),fmt(r.index,2),r.coverage,r.ranked,fmt(r.priceInput,6),fmt(r.priceOutput,6),JSON.stringify(r.priceCurrency),JSON.stringify(r.priceSource)].concat(RESULT.domains.map(function(d){return fmt(r.domains[d],2);})).join(',');});
   var blob=new Blob([head+'\n'+lines.join('\n')],{type:'text/csv'});
   var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='qbench-index-1.0.csv';a.click();
 }
@@ -640,7 +642,10 @@ function renderBench(){
   var body=allRows.map(function(r){
     var cost=r.costPerTestUSD!=null?r.costPerTestUSD:r.costPerSuccessfulTaskUSD;
     var src=r.source||source,evidence=r.evidence||'No row-level evidence provided.';
-    return '<tr><td>'+esc(r.model)+(r.uncertain===true?' †':'')+'</td><td class="text-end num">'+fmt(scoreOf(r),2)+' <span class="text-muted-qb">'+esc(b.unit||'')+'</span></td><td>'+esc(r.configuration||'Not reported')+'</td><td>'+esc(r.harness||'Not reported')+'</td><td class="num">'+(cost==null?'—':'$'+fmt(cost,3))+'</td><td class="num">'+esc(r.tokensPerTestDisplay||'—')+'</td><td class="num">'+esc(r.durationPerTestDisplay||'—')+'</td><td>'+esc(r.snapshotDate||b.snapshotDate||'Not stated')+'</td><td><span class="badge rounded-pill text-bg-light text-secondary border">'+esc(r.sourceType||'unspecified')+'</span><br><a href="'+esc(src)+'" target="_blank" rel="noopener">Source</a><details class="mt-1"><summary>Evidence</summary><small>'+esc(evidence)+'</small></details></td></tr>';
+    var kind=(DATA.modelNameAudit&&DATA.modelNameAudit.modelKinds||[]).filter(function(x){return x.name===r.model;})[0];
+    var kindLabel=kind?'<span class="badge rounded-pill text-bg-light text-secondary border ms-1">'+esc(kind.label)+'</span>':'';
+    var sourceLabel=r.originalModelName?'<small class="d-block text-muted-qb">source label: '+esc(r.originalModelName)+'</small>':'';
+    return '<tr><td>'+esc(r.model)+kindLabel+sourceLabel+(r.uncertain===true?' †':'')+'</td><td class="text-end num">'+fmt(scoreOf(r),2)+' <span class="text-muted-qb">'+esc(b.unit||'')+'</span></td><td>'+esc(r.configuration||'Not reported')+'</td><td>'+esc(r.harness||'Not reported')+'</td><td class="num">'+(cost==null?'—':'$'+fmt(cost,3))+'</td><td class="num">'+esc(r.tokensPerTestDisplay||'—')+'</td><td class="num">'+esc(r.durationPerTestDisplay||'—')+'</td><td>'+esc(r.snapshotDate||b.snapshotDate||'Not stated')+'</td><td><span class="badge rounded-pill text-bg-light text-secondary border">'+esc(r.sourceType||'unspecified')+'</span><br><a href="'+esc(src)+'" target="_blank" rel="noopener">Source</a><details class="mt-1"><summary>Evidence</summary><small>'+esc(evidence)+'</small></details></td></tr>';
   }).join('');
   host.innerHTML='<div id="bench-plot-el" style="height:'+(80+top.length*26)+'px"></div>'+
     '<div class="notice-qb">Chart: best score per exact model name. Table: all '+allRows.length+' stored model/configuration rows. † = uncertain and excluded from the composite index.</div>'+costHtml+
@@ -680,16 +685,16 @@ function renderMethod(){
     '<div class="row row-cols-2 row-cols-lg-4 g-2 my-3"><div class="col"><div class="card p-3"><div class="small text-muted-qb">Formal ranks</div><div class="fs-3 fw-bold num">'+ranked+'</div></div></div><div class="col"><div class="card p-3"><div class="small text-muted-qb">Provisional</div><div class="fs-3 fw-bold num">'+provisional+'</div></div></div><div class="col"><div class="card p-3"><div class="small text-muted-qb">Single evaluation</div><div class="fs-3 fw-bold num">'+single+'</div></div></div><div class="col"><div class="card p-3"><div class="small text-muted-qb">Eligible evaluations</div><div class="fs-3 fw-bold num">'+RESULT.evals.length+'</div></div></div></div>'+
     '<h3>Four domains</h3><ul>'+cats+'</ul>'+
     '<h3>How the score is calculated</h3><ol><li>Only datasets marked index-eligible and containing at least eight unique model names contribute.</li><li>For each exact model name in each evaluation, QBench takes the highest published configuration. Model aliases are not merged by guesswork.</li><li>Scores are converted to midrank percentiles within that evaluation\'s observed cohort. Different native units can be summarized, but the tests do not become equivalent.</li><li>A domain score is the equal-weighted mean of available eligible evaluation percentiles inside that domain. The provisional Index is the equal-weighted mean of available domain scores.</li><li>A formal rank requires at least four eligible evaluations across at least three of four domains. Two or more evaluations produce a provisional value; one evaluation is shown as a benchmark result, not as a composite Index.</li><li>Missing results are never imputed. An available-domain average is coverage-limited and is not a complete four-domain score.</li></ol>'+
-    '<h3>Evidence and uncertainty</h3><ul><li>Publisher-reported results are identified separately from third-party evaluator runs and secondary leaderboard mirrors.</li><li>Configuration, harness, source URL, evidence note and snapshot date are retained where the source provides them.</li><li>Rows marked uncertain are retained in benchmark details but excluded from the composite.</li><li>Evaluation-specific costs (Cost / Test or Cost per successful task) remain attached to their own evaluation. They are not interchangeable or combined into a universal task-cost score.</li></ul>'+
+    '<h3>Evidence and uncertainty</h3><ul><li>Publisher-reported results are identified separately from third-party evaluator runs and secondary leaderboard mirrors.</li><li>Configuration, harness, source URL, evidence note and snapshot date are retained where the source provides them.</li><li>Rows marked uncertain are retained in benchmark details but excluded from the composite.</li><li>Evaluation-specific costs (Cost / Test or Cost per successful task) remain attached to their own evaluation. They are not interchangeable or combined into a universal task-cost score.</li><li>API prices show input/output separately per million tokens. First-party provider API and OpenRouter route prices are labelled separately; the Index scatter uses first-party prices only.</li><li>Routers, agent systems and specialist proof systems remain visible in benchmark details but are excluded from the general-purpose composite where they are not comparable to a single base model.</li></ul>'+
     '<h3>Current eligible evaluations</h3><p>'+RESULT.evals.map(function(e){return '<span class="metric-chip">'+esc(e.name)+' · '+e.unique+' models</span>';}).join(' ')+'</p>'+
-    '<h3>Limitations</h3><ul><li>Knowledge Work currently has one eligible evaluation (GDPval), Coding has two, Science has one and General has three. Knowledge Work and Science are the least stable domains.</li><li>OSWorld 2.0 results from the LLM Stats aggregate are retained for reference but excluded from the Index: the 0–1 metric is not identified as binary completion or partial reward. ARC-AGI-3 and 25 LiveBench 2.0 rows use labelled secondary sources.</li><li>Terminal-Bench 4.0 and Terminal-Bench-Science 0.1 are third-party Vals AI runs using Mini-SWE-agent, not the official tbench.ai leaderboard.</li><li>Provider configurations, effort settings, tools and harnesses are not controlled head-to-head comparisons. Scores do not establish statistical significance.</li><li>Models with one eligible evaluation remain visible in Models and the benchmark directory, but are not assigned a composite score.</li></ul>'+
+    '<h3>Limitations</h3><ul><li>Knowledge Work currently has one eligible evaluation (GDPval), Coding has two, Science has two (including ProofBench 1.1) and General has three. Knowledge Work remains the least broad domain; Science has a ceiling-compression caveat because four ProofBench entries tie at 100%.</li><li>GPQA Diamond stays outside the Index because the stored 42-row OpenRouter extract is partial against its 167-row leaderboard. FrontierMath Tiers 1–3 stays outside because 60 of 120 published configurations are stored.</li><li>OSWorld 2.0 aggregate does not identify binary completion versus partial reward and remains excluded. ARC-AGI-3 and 25 LiveBench 2.0 rows use labelled secondary sources.</li><li>Terminal-Bench 4.0 and Terminal-Bench-Science 0.1 are third-party Vals AI runs using Mini-SWE-agent, not the official tbench.ai leaderboard.</li><li>Provider configurations, effort settings, tools and harnesses are not controlled head-to-head comparisons. Scores do not establish statistical significance.</li><li>Models with one eligible evaluation remain visible in Models and the benchmark directory, but are not assigned a composite score.</li></ul>'+
     '<h3>Reference documents</h3><ul><li><a href="https://artificialanalysis.ai/methodology/intelligence-benchmarking" target="_blank" rel="noopener">Artificial Analysis methodology</a> — taxonomy reference only; AA weights are not copied.</li><li><a href="https://www.vals.ai/benchmarks/terminal-bench-4" target="_blank" rel="noopener">Vals AI Terminal-Bench 4.0</a> and <a href="https://www.vals.ai/benchmarks/proof_bench" target="_blank" rel="noopener">ProofBench 1.1</a>.</li><li><a href="https://livebench.ai/" target="_blank" rel="noopener">LiveBench 2.0 publisher leaderboard</a>.</li><li><a href="https://epoch.ai/benchmarks/osworld-2" target="_blank" rel="noopener">Epoch AI — OSWorld 2.0 methodology</a> — distinguishes binary accuracy from partial reward; QBench excludes the ambiguous third-party aggregate.</li></ul>'+
     '<h3>Version</h3><p class="text-muted-qb">'+esc(sp.name||'QBench Composite Index')+' '+esc(sp.version)+' · snapshot '+esc(sp.snapshotAsOf||'—')+'</p>';
 }
 
 /* ---------- navigation ---------- */
 function renderAll(){
-  renderIndex(); renderChart(); renderModels(); renderBenchGrid(); renderBench();
+  renderIndex(); renderChart(); renderModels(); renderPriceCatalog(); renderBenchGrid(); renderBench();
 }
 function show(view){
   $$('[data-nav]').forEach(function(b){var on=b.dataset.nav===view;b.classList.toggle('active',on);if(on)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
@@ -719,6 +724,7 @@ document.addEventListener('change',function(e){
 });
 $('#q').addEventListener('input',function(e){S.q=e.target.value;renderIndex();});
 $('#mq').addEventListener('input',function(e){S.mq=e.target.value;renderModels();});
+$('#price-search').addEventListener('input',function(){renderPriceCatalog();});
 $('#ranked-only').addEventListener('change',function(e){S.rankedOnly=e.target.checked;renderIndex();});
 $('#pareto').addEventListener('change',function(e){S.pareto=e.target.checked;renderChart();});
 $('#quadrant').addEventListener('change',function(e){S.quadrant=e.target.checked;renderChart();});
