@@ -19,7 +19,7 @@ QBench keeps every result attached to its publisher, model variant, reasoning ef
 | Base model names with at least one eligible result | 84 |
 | Exact model/effort variants | 145 |
 | Ranked variants | 52 |
-| Full evidence (7 families) | 0 |
+| Full evidence (6 families) | 0 |
 | Broad evidence (4–5 families) | 1 |
 | Limited evidence (2–3 families) | 51 |
 | Unranked variants | 93 |
