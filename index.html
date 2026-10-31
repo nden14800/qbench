@@ -131,7 +131,7 @@ body{font-size:16px;line-height:1.7}
     <div class="toolbar" style="margin-bottom:12px">
       <input class="control search" id="catalogSearch" type="search" placeholder="Search benchmarks" aria-label="Search benchmarks">
       <select class="control" id="catalogGroupFilter"><option value="all">All benchmark groups</option><option value="Core evaluations">Core evaluations</option><option value="Additional evaluations">Additional evaluations</option></select>
-      <select class="control" id="catalogStatusFilter"><option value="all">All statuses</option><option value="results-imported">Full result table imported</option><option value="leader-summary-imported">Leader summary only</option><option value="public-summary-only">Public summary only</option><option value="private-results">Private / unavailable</option><option value="research-pipeline">Research pipeline</option></select>
+      <select class="control" id="catalogStatusFilter"><option value="all">All statuses</option><option value="results-imported">Results imported</option><option value="leader-summary-imported">Leader summary only</option><option value="public-summary-only">Public summary only</option><option value="private-results">Private / unavailable</option><option value="research-pipeline">Research pipeline</option></select>
     </div>
     <div class="benchmark-list" id="benchmarkCards"></div>
     
@@ -309,7 +309,7 @@ function renderBenchmark(){
  $('#benchmarkFoot').innerHTML='Source: <a class="link" href="'+esc(b.source)+'" target="_blank" rel="noopener noreferrer">'+esc(b.source)+'</a> · '+snapshot(b.snapshotDate)+'. '+esc(b.quality||'Published benchmark results')+'. Raw rows: '+b.models.length+'; unique model names: '+unique+'. The displayed score is the best published configuration, not a same-settings comparison.';
  renderSourceRank();
 }
-function statusLabel(s){return ({'results-imported':'Full results imported','leader-summary-imported':'Leader summary only','public-summary-only':'Public summary only','private-results':'Private / unavailable','leaderboard-access-limited':'Leaderboard access limited','research-pipeline':'Research pipeline'})[s]||s||'Catalogued';}
+function statusLabel(s){return ({'results-imported':'Results imported','leader-summary-imported':'Leader summary only','public-summary-only':'Public summary only','private-results':'Private / unavailable','leaderboard-access-limited':'Leaderboard access limited','research-pipeline':'Research pipeline'})[s]||s||'Catalogued';}
 function renderBenchmarkCards(){
  const list=state.data.benchmarkCatalog||[],q=state.catalogQuery.toLowerCase();
  const rows=list.filter(x=>(state.catalogGroup==='all'||x.group===state.catalogGroup)&&(state.catalogStatus==='all'||x.status===state.catalogStatus)&&(!q||[x.name,x.note,x.group].join(' ').toLowerCase().includes(q)));
