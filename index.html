@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>QBench — AI Model Benchmark Index</title>
-<meta name="description" content="QBench: source-audited AI model benchmarks, transparent Index 1.2 scoring, model comparison, evaluation details and API price data.">
+<meta name="description" content="QBench: source-audited AI model benchmarks, transparent Index 1.3 scoring, model comparison, evaluation details and API price data.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -132,7 +132,7 @@ footer{font-size:.8rem;color:var(--qb-muted)}
   </header>
 
   <!-- INDEX -->
-  <section class="view" data-view="index" aria-label="QBench Index 1.2">
+  <section class="view" data-view="index" aria-label="QBench Index 1.3">
     <div class="card mb-3">
       <div class="card-header d-flex flex-wrap align-items-start justify-content-between gap-2 py-3">
         <div>
@@ -616,12 +616,16 @@ function csvOut(){
 /* ---------- benchmarks ---------- */
 
 function benchStatus(id){
-  var b=RESULT.byId[id]||{}, n=new Set((b.models||[]).filter(function(m){return m.uncertain!==true&&scoreOf(m)!==null;}).map(function(m){return m.model;})).size;
-  if(RESULT.evals.some(function(e){return e.id===id;}))return {t:'In Index 1.2',c:'text-bg-success',n:n};
-  if(!n)return {t:'No verified results',c:'text-bg-warning',n:0};
-  if(b.indexEligible!==true)return {t:'Not in index',c:'text-bg-danger',n:n};
-  return {t:'Below 12-model minimum',c:'text-bg-warning',n:n};
+ var b=RESULT.byId[id]||{},rows=(b.models||[]).filter(function(m){return m.uncertain!==true&&scoreOf(m)!==null;});
+ var n=new Set(rows.map(function(m){return variantId(m.model,effortOf(m));})).size;
+ if(RESULT.evals.some(function(e){return e.id===id;}))return {t:'In Index 1.3',c:'text-bg-success',n:n};
+ if(!n)return {t:'No verified results',c:'text-bg-warning',n:0};
+ if(b.indexEligible!==true)return {t:'Standalone evaluation',c:'text-bg-secondary',n:n};
+ return {t:'Below 12-variant minimum',c:'text-bg-warning',n:n};
 }
+function renderBenchGrid(){
+
+
 function renderBenchGrid(){
   var list=(DATA.benchmarks||[]).slice().sort(function(a,b){
     var ia=RESULT.evals.some(function(e){return e.id===a.id;})?0:1, ib=RESULT.evals.some(function(e){return e.id===b.id;})?0:1;
@@ -632,114 +636,75 @@ function renderBenchGrid(){
     return '<div class="col"><button type="button" class="bcard" data-bench="'+esc(b.id)+'" aria-pressed="'+(S.bench===b.id)+'"><div class="bt">'+esc(b.name)+'</div><div class="bm">'+st.n+' unique models · snapshot '+esc(b.snapshotDate||'—')+'</div><div class="mt-2"><span class="badge '+st.c+'">'+esc(st.t)+'</span></div></button></div>';
   }).join('');
 }
+function parseTokens(s){
+ if(s==null)return null;var t=String(s).trim().toLowerCase().replace(/,/g,''),m=t.match(/^([0-9]+(?:\.[0-9]+)?)\s*([km]?)$/);
+ return m?Number(m[1])*(m[2]==='k'?1000:m[2]==='m'?1000000:1):null;
+}
+function parseDuration(s){
+ if(s==null)return null;var t=String(s).trim().toLowerCase(),total=0,matched=false,m,re=/([0-9]+(?:\.[0-9]+)?)\s*(h|hr|hours?|m|min|minutes?|s|sec|seconds?)/g;
+ while((m=re.exec(t))!==null){matched=true;var n=Number(m[1]),u=m[2];total+=n*(u[0]==='h'?3600:u[0]==='m'?60:1);}
+ return matched?total:null;
+}
 function renderBench(){
-  var host=document.getElementById('bench-chart');
-  if(!S.bench){$('#bench-title').textContent='Select a benchmark';$('#bench-sub').textContent='';host.innerHTML='';return;}
-  var b=RESULT.byId[S.bench]; if(!b)return;
-  var st=benchStatus(b.id),source=b.source||'',costName=b.costMetric||'Cost';
-  $('#bench-title').textContent=b.name;
-  $('#bench-sub').innerHTML='Unit: '+esc(b.unit||'—')+' · '+esc(st.t)+' · '+st.n+' unique models · snapshot '+esc(b.snapshotDate||'not stated')+' · <a href="'+esc(source)+'" target="_blank" rel="noopener">Benchmark source</a>';
-  var best=new Map();
-  (b.models||[]).forEach(function(r){var v=scoreOf(r);if(!r.model||v===null)return;var o=best.get(r.model);if(!o||v>o.value)best.set(r.model,{value:v,c:r.configuration||'',u:r.uncertain===true,s:r.scoreUncertainty});});
-  var arr=[];best.forEach(function(e,k){arr.push({m:k,v:e.value,c:e.c,u:e.u,s:e.s});});arr.sort(function(a,c){return c.v-a.v;});
-  var allRows=(b.models||[]).filter(function(r){return !!r.model&&scoreOf(r)!==null;}).slice().sort(function(a,c){return scoreOf(c)-scoreOf(a);});
-  if(!arr.length){host.innerHTML='<div class="empty-qb">No model values are stored for this benchmark.'+(b.valueNote?' '+esc(b.valueNote):'')+'</div>';return;}
-  var top=arr.slice(0,25),p=pal();
-  var costRows=allRows.filter(function(r){return Number(r.costPerTestUSD)>0||Number(r.costPerSuccessfulTaskUSD)>0;});
-  var costHtml=costRows.length>=3?'<h3 class="card-title-qb mt-4 mb-2">'+esc(costName)+' vs. score</h3><div id="bench-cost-el" style="height:360px"></div><div class="notice-qb">Reported evaluation-specific costs are shown only within this benchmark. Cost metrics are not combined across evaluations.</div>':'';
-  var hasHleParts=allRows.some(function(r){return r.reasoningScore!=null||r.knowledgeScore!=null;}),hasCalib=allRows.some(function(r){return r.calibrationError!=null;});
-  var header='<tr><th>Model</th><th class="text-end">Score (± if reported)</th>'+(hasHleParts?'<th class="text-end">Reasoning</th><th class="text-end">Knowledge</th>':'')+(hasCalib?'<th class="text-end">Calibration error</th>':'')+'<th>Configuration</th><th>Harness</th><th>'+esc(costName)+'</th><th>Tokens / test</th><th>Duration / test</th><th>Snapshot</th><th>Evidence / source</th></tr>';
-  var body=allRows.map(function(r){
-    var cost=r.costPerTestUSD!=null?r.costPerTestUSD:r.costPerSuccessfulTaskUSD;
-    var src=r.source||source,evidence=r.evidence||'No row-level evidence provided.';
-    var scoreText=fmt(scoreOf(r),2)+(r.scoreUncertainty!=null?' ± '+fmt(r.scoreUncertainty,2):'');
-    var extraMetrics=(hasHleParts?'<td class="text-end num">'+fmt(r.reasoningScore,2)+'</td><td class="text-end num">'+fmt(r.knowledgeScore,2)+'</td>':'')+(hasCalib?'<td class="text-end num">'+fmt(r.calibrationError,2)+'</td>':'');
-    var kind=(DATA.modelNameAudit&&DATA.modelNameAudit.modelKinds||[]).filter(function(x){return x.name===r.model;})[0];
-    var kindLabel=kind?'<span class="badge rounded-pill text-bg-light text-secondary border ms-1">'+esc(kind.label)+'</span>':'';
-    var sourceLabel=r.originalModelName?'<small class="d-block text-muted-qb">source label: '+esc(r.originalModelName)+'</small>':'';
-    return '<tr><td>'+esc(r.model)+kindLabel+sourceLabel+(r.uncertain===true?' †':'')+'</td><td class="text-end num">'+scoreText+' <span class="text-muted-qb">'+esc(b.unit||'')+'</span></td>'+extraMetrics+'<td>'+esc(r.configuration||'Not reported')+'</td><td>'+esc(r.harness||'Not reported')+'</td><td class="num">'+(cost==null?'—':'$'+fmt(cost,3))+'</td><td class="num">'+esc(r.tokensPerTestDisplay||'—')+'</td><td class="num">'+esc(r.durationPerTestDisplay||'—')+'</td><td>'+esc(r.snapshotDate||b.snapshotDate||'Not stated')+'</td><td><span class="badge rounded-pill text-bg-light text-secondary border">'+esc(r.sourceType||'unspecified')+'</span><br><a href="'+esc(src)+'" target="_blank" rel="noopener">Source</a><details class="mt-1"><summary>Evidence</summary><small>'+esc(evidence)+'</small></details></td></tr>';
-  }).join('');
-  host.innerHTML='<div id="bench-plot-el" style="height:'+(80+top.length*26)+'px"></div>'+
-    '<div class="notice-qb">Chart: point estimates per exact model name. Publisher-reported ± values are preserved in the table where available. Table: all '+allRows.length+' stored model/configuration rows. † = uncertain and excluded from the composite index.</div>'+costHtml+
-    '<h3 class="card-title-qb mt-4 mb-2">All model results <span class="metric-chip">'+allRows.length+' rows</span></h3><div class="table-responsive"><table class="table table-hover align-middle bench-results mb-0"><thead>'+header+'</thead><tbody>'+body+'</tbody></table></div>';
-  var c=chartInit('bench-plot-el');
-  if(c)c.setOption({animation:false,grid:{left:260,right:60,top:6,bottom:6},tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(items){var t=top[items[0].dataIndex];return esc(t.m)+'<br>Score: '+fmt(t.v,2)+(t.s!=null?' ± '+fmt(t.s,2):'')+' '+esc(b.unit||'');}},
-    xAxis:Object.assign({type:'value'},axisStyle(p)),
-    yAxis:{type:'category',inverse:true,data:top.map(function(t){return t.m+(t.c?' ('+t.c+')':'')+(t.u?' †':'');}),axisLabel:{color:p.ink,fontSize:11,width:235,overflow:'truncate'},axisLine:{show:false},axisTick:{show:false}},
-    series:[{type:'bar',barWidth:14,itemStyle:{color:p.accent,borderRadius:[0,4,4,0]},label:{show:true,position:'right',color:p.ink,fontSize:11,formatter:function(e){return Number(e.value).toFixed(1);}},data:top.map(function(t){return t.v;})}]
-  },true);
-  if(costRows.length>=3){
-    var providers=[];costRows.forEach(function(r){var pv=r.provider||'Unknown';if(providers.indexOf(pv)<0)providers.push(pv);});
-    var cc=chartInit('bench-cost-el');
-    if(cc)cc.setOption({animation:false,grid:{left:70,right:30,top:20,bottom:55},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2])+'<br>'+esc(costName)+': $'+Number(e.data[0]).toFixed(3)+'<br>Score: '+Number(e.data[1]).toFixed(2)+' '+esc(b.unit||'');}},
-      xAxis:Object.assign({type:'log',name:costName+' (USD)',nameLocation:'middle',nameGap:34},axisStyle(p)),
-      yAxis:Object.assign({type:'value',name:b.unit||'Score',nameTextStyle:{color:p.muted}},axisStyle(p)),
-      series:providers.map(function(pv){return {name:pv,type:'scatter',symbolSize:11,itemStyle:{color:providerColor(pv)},data:costRows.filter(function(r){return (r.provider||'Unknown')===pv;}).map(function(r){return [r.costPerTestUSD||r.costPerSuccessfulTaskUSD,scoreOf(r),r.model];})};})
-    },true);
-  }
+ var host=document.getElementById('bench-chart');
+ if(!S.bench){$('#bench-title').textContent='Select a benchmark';$('#bench-sub').textContent='';host.innerHTML='';return;}
+ var b=RESULT.byId[S.bench];if(!b)return;var st=benchStatus(b.id),source=b.source||'',costName=b.costMetric||'Cost per test';
+ $('#bench-title').textContent=b.name;
+ $('#bench-sub').innerHTML='Unit: '+esc(b.unit||'—')+' · '+esc(st.t)+' · '+st.n+' model/effort variants · '+(b.taskCount?b.taskCount+' tasks · ':'')+'snapshot '+esc(b.snapshotDate||'not stated')+' · <a href="'+esc(source)+'" target="_blank" rel="noopener">Benchmark source</a>';
+ var allRows=(b.models||[]).filter(function(r){return !!r.model&&scoreOf(r)!==null;}).slice().sort(function(a,c){return scoreOf(c)-scoreOf(a);});
+ if(!allRows.length){host.innerHTML='<div class="empty-qb">No model values are stored for this benchmark.'+(b.valueNote?' '+esc(b.valueNote):'')+'</div>';return;}
+ var top=allRows.slice(0,25),p=pal(),costRows=allRows.filter(function(r){return Number(r.costPerTestUSD)>0||Number(r.costPerSuccessfulTaskUSD)>0;});
+ var tokenRows=allRows.map(function(r){return {r:r,v:parseTokens(r.tokensPerTestDisplay)};}).filter(function(x){return x.v!=null&&x.v>0;});
+ var timeRows=allRows.map(function(r){return {r:r,v:parseDuration(r.durationPerTestDisplay)};}).filter(function(x){return x.v!=null&&x.v>0;});
+ var effortGroups={};allRows.forEach(function(r){var e=effortOf(r);if(e!=='not-reported')(effortGroups[r.model]=effortGroups[r.model]||[]).push({effort:e,score:scoreOf(r)});});
+ var effortSeries=Object.keys(effortGroups).filter(function(n){return effortGroups[n].length>1;});
+ var costHtml=costRows.length>=3?'<h3 class="card-title-qb mt-4 mb-2">Cost per test vs. score</h3><div id="bench-cost-el" style="height:350px"></div><div class="notice-qb">Only publisher-reported benchmark-specific cost per test is plotted. This is not cross-benchmark Index cost per task.</div>':'';
+ var tokenHtml=tokenRows.length>=3?'<h3 class="card-title-qb mt-4 mb-2">Output tokens per test vs. score</h3><div id="bench-token-el" style="height:350px"></div>':'';
+ var timeHtml=timeRows.length>=3?'<h3 class="card-title-qb mt-4 mb-2">Time per test vs. score</h3><div id="bench-time-el" style="height:350px"></div>':'';
+ var effortHtml=effortSeries.length?'<h3 class="card-title-qb mt-4 mb-2">Reasoning effort vs. score</h3><div id="bench-effort-el" style="height:350px"></div><div class="notice-qb">Each line is one exact model with multiple published effort variants. Missing effort labels are not inferred.</div>':'';
+ var hasHleParts=allRows.some(function(r){return r.reasoningScore!=null||r.knowledgeScore!=null;}),hasCalib=allRows.some(function(r){return r.calibrationError!=null;});
+ var header='<tr><th>Model</th><th>Effort</th><th class="text-end">Score (± if reported)</th>'+(hasHleParts?'<th class="text-end">Reasoning</th><th class="text-end">Knowledge</th>':'')+(hasCalib?'<th class="text-end">Calibration error</th>':'')+'<th>Configuration</th><th>Harness</th><th>'+esc(costName)+'</th><th>Derived cost / successful test</th><th>Tokens / test</th><th>Duration / test</th><th>Snapshot</th><th>Evidence / source</th></tr>';
+ var body=allRows.map(function(r){
+  var cost=r.costPerTestUSD!=null?r.costPerTestUSD:r.costPerSuccessfulTaskUSD,derived=cost!=null&&scoreOf(r)>0?Number(cost)/(scoreOf(r)/100):null;
+  var src=r.source||source,evidence=r.evidence||'No row-level evidence provided.',unc=r.scoreUncertainty;
+  if(unc==null&&r.uncertainty){var um=String(r.uncertainty).match(/([0-9]+(?:\.[0-9]+)?)/);if(um)unc=Number(um[1]);}
+  var scoreText=fmt(scoreOf(r),2)+(unc!=null?' ± '+fmt(unc,2):'');
+  var extra=(hasHleParts?'<td class="text-end num">'+fmt(r.reasoningScore,2)+'</td><td class="text-end num">'+fmt(r.knowledgeScore,2)+'</td>':'')+(hasCalib?'<td class="text-end num">'+fmt(r.calibrationError,2)+'</td>':'');
+  var kind=(DATA.modelNameAudit&&DATA.modelNameAudit.modelKinds||[]).filter(function(x){return x.name===r.model;})[0],kindLabel=kind?'<span class="badge rounded-pill text-bg-light text-secondary border ms-1">'+esc(kind.label)+'</span>':'';
+  var effort=effortOf(r);
+  return '<tr><td>'+esc(r.model)+kindLabel+(r.originalModelName?'<small class="d-block text-muted-qb">source label: '+esc(r.originalModelName)+'</small>':'')+'</td><td>'+esc(effort==='not-reported'?'Not reported':effort)+'</td><td class="text-end num">'+scoreText+' <span class="text-muted-qb">'+esc(b.unit||'')+'</span></td>'+extra+'<td>'+esc(r.configuration||'Not reported')+'</td><td>'+esc(r.harness||'Not reported')+'</td><td class="num">'+(cost==null?'—':'$'+fmt(cost,3))+'</td><td class="num">'+(derived==null?'—':'$'+fmt(derived,3))+'</td><td class="num">'+esc(r.tokensPerTestDisplay||'—')+'</td><td class="num">'+esc(r.durationPerTestDisplay||'—')+'</td><td>'+esc(r.snapshotDate||b.snapshotDate||'Not stated')+'</td><td><span class="badge rounded-pill text-bg-light text-secondary border">'+esc(r.sourceType||'unspecified')+'</span><br><a href="'+esc(src)+'" target="_blank" rel="noopener">Source</a><details class="mt-1"><summary>Evidence</summary><small>'+esc(evidence)+'</small></details></td></tr>';
+ }).join('');
+ var example=b.exampleTask?'<div class="card bg-body-tertiary border-0 p-3 mb-3"><div class="fw-semibold mb-1">Example task / task design</div><div class="small">'+esc(b.exampleTask)+'</div></div>':'';
+ var note=b.valueNote?'<div class="notice-qb mb-3">'+esc(b.valueNote)+'</div>':'';
+ host.innerHTML=example+note+'<div id="bench-plot-el" style="height:'+(80+top.length*26)+'px"></div><div class="notice-qb">Each bar is a separate model/effort result. No best-effort collapse is applied. Publisher-reported uncertainty is preserved; source-specific meanings are not merged.</div>'+costHtml+tokenHtml+timeHtml+effortHtml+
+ '<h3 class="card-title-qb mt-4 mb-2">All model/effort results <span class="metric-chip">'+allRows.length+' rows</span></h3><div class="table-responsive"><table class="table table-hover align-middle bench-results mb-0"><thead>'+header+'</thead><tbody>'+body+'</tbody></table></div>';
+ var c=chartInit('bench-plot-el');
+ if(c)c.setOption({animation:false,grid:{left:270,right:65,top:6,bottom:6},tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(items){var t=top[items[0].dataIndex],unc=t.scoreUncertainty;return esc(variantLabel({model:t.model,effort:effortOf(t)}))+'<br>Score: '+fmt(scoreOf(t),2)+(unc!=null?' ± '+fmt(unc,2):'')+' '+esc(b.unit||'');}},
+ xAxis:Object.assign({type:'value'},axisStyle(p)),yAxis:{type:'category',inverse:true,data:top.map(function(t){return variantLabel({model:t.model,effort:effortOf(t)});}),axisLabel:{color:p.ink,fontSize:11,width:245,overflow:'truncate'},axisLine:{show:false},axisTick:{show:false}},
+ series:[{type:'bar',barWidth:14,itemStyle:{color:p.accent,borderRadius:[0,4,4,0]},label:{show:true,position:'right',color:p.ink,fontSize:11,formatter:function(e){return Number(e.value).toFixed(1);}},data:top.map(function(t){return scoreOf(t);})}]},true);
+ if(costRows.length>=3){var cc=chartInit('bench-cost-el');if(cc)cc.setOption({animation:false,grid:{left:72,right:28,top:20,bottom:52},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2])+'<br>Cost/test: $'+Number(e.data[0]).toFixed(3)+'<br>Score: '+Number(e.data[1]).toFixed(2);}},xAxis:Object.assign({type:'log',name:'Cost per test (USD)',nameLocation:'middle',nameGap:34},axisStyle(p)),yAxis:Object.assign({type:'value',name:b.unit||'Score'},axisStyle(p)),series:[{type:'scatter',symbolSize:11,itemStyle:{color:p.accent},data:costRows.map(function(r){return [r.costPerTestUSD||r.costPerSuccessfulTaskUSD,scoreOf(r),variantLabel({model:r.model,effort:effortOf(r)})];})}]},true);}
+ if(tokenRows.length>=3){var tc=chartInit('bench-token-el');if(tc)tc.setOption({animation:false,grid:{left:72,right:28,top:20,bottom:52},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2])+'<br>Tokens/test: '+Math.round(e.data[0]).toLocaleString()+'<br>Score: '+Number(e.data[1]).toFixed(2);}},xAxis:Object.assign({type:'log',name:'Output tokens per test',nameLocation:'middle',nameGap:34},axisStyle(p)),yAxis:Object.assign({type:'value',name:b.unit||'Score'},axisStyle(p)),series:[{type:'scatter',symbolSize:11,itemStyle:{color:p.accent},data:tokenRows.map(function(x){return [x.v,scoreOf(x.r),variantLabel({model:x.r.model,effort:effortOf(x.r)})];})}]},true);}
+ if(timeRows.length>=3){var tm=chartInit('bench-time-el');if(tm)tm.setOption({animation:false,grid:{left:72,right:28,top:20,bottom:52},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2])+'<br>Seconds/test: '+Math.round(e.data[0])+'<br>Score: '+Number(e.data[1]).toFixed(2);}},xAxis:Object.assign({type:'log',name:'Duration per test (seconds)',nameLocation:'middle',nameGap:34},axisStyle(p)),yAxis:Object.assign({type:'value',name:b.unit||'Score'},axisStyle(p)),series:[{type:'scatter',symbolSize:11,itemStyle:{color:p.accent},data:timeRows.map(function(x){return [x.v,scoreOf(x.r),variantLabel({model:x.r.model,effort:effortOf(x.r)})];})}]},true);}
+ if(effortSeries.length){var order={none:0,low:1,medium:2,high:3,xhigh:4,max:5},ec=chartInit('bench-effort-el');if(ec)ec.setOption({animation:false,grid:{left:70,right:25,top:20,bottom:55},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2])+'<br>Effort: '+esc(e.data[3])+'<br>Score: '+fmt(e.data[1],2);}},xAxis:Object.assign({type:'value',min:0,max:5,interval:1,name:'Reasoning effort (ordered)',nameLocation:'middle',nameGap:34,axisLabel:{formatter:function(v){return ['None','Low','Medium','High','Xhigh','Max'][v]||'';}}},axisStyle(p)),yAxis:Object.assign({type:'value',name:b.unit||'Score'},axisStyle(p)),series:effortSeries.map(function(name){return {name:name,type:'line',symbol:'circle',symbolSize:8,connectNulls:false,data:effortGroups[name].map(function(x){return {value:[order[x.effort],x.score,name,x.effort]};}).sort(function(a,c){return a.value[0]-c.value[0];})};})},true);}
 }
-
 function renderMethod(){
-  var sp=DATA.composite,ext=sp.extendedIndex;
-  var evalsByDomain={};
-  RESULT.evals.forEach(function(e){(evalsByDomain[e.domain]=evalsByDomain[e.domain]||[]).push(e);});
-  var ranked=RESULT.rows.filter(function(r){return r.ranked;});
-  var full=ranked.filter(function(r){return r.domainCount===4;}).length;
-  var broad=ranked.filter(function(r){return r.domainCount===3;}).length;
-  var limited=ranked.filter(function(r){return r.domainCount===2;}).length;
-  var insufficient=RESULT.rows.filter(function(r){return !r.ranked;}).length;
-  var cats=ext.domains.map(function(dom){
-    var items=evalsByDomain[dom.name]||[];
-    var list=items.length?items.map(function(e){return '<span class="metric-chip">'+esc(e.name)+' · '+e.unique+' models</span>';}).join(' '):'<span class="text-muted-qb">No eligible evaluation</span>';
-    return '<li><strong>'+esc(dom.name)+'</strong><div class="mt-1">'+list+'</div><div class="small text-muted-qb mt-1">'+esc(dom.note||'')+'</div></li>';
-  }).join('');
-  var excluded=(ext.excludedFromExtendedIndex||[]).map(function(x){return '<li><strong>'+esc((RESULT.byId[x.id]||{}).name||x.id)+'</strong>: '+esc(x.reason)+'</li>';}).join('');
-  var sources=(ext.sourceNotes||[]).map(function(x){return '<li><a href="'+esc(x.url)+'" target="_blank" rel="noopener">'+esc(x.label)+'</a> <span class="text-muted-qb">· '+esc(x.snapshotDate||'date not stated')+'</span></li>';}).join('');
-  $('#method').innerHTML=
-    '<h2 class="font-serif-jp mb-3">QBench Index 1.2 · Methodology</h2>'+
-    '<p>Index 1.2 is a source-audited composite of five current evaluations. Its four task families are designed around the work being tested: software and terminal execution, formal mathematics, scientific workflows, and expert knowledge and reasoning. No external composite scores or proprietary index weights are imported.</p>'+
-    '<div class="row row-cols-2 row-cols-lg-4 g-2 my-3">'+
-      '<div class="col"><div class="card p-3"><div class="small text-muted-qb">Ranked models</div><div class="fs-3 fw-bold num">'+ranked.length+'</div></div></div>'+
-      '<div class="col"><div class="card p-3"><div class="small text-muted-qb">Full evidence</div><div class="fs-3 fw-bold num">'+full+'</div></div></div>'+
-      '<div class="col"><div class="card p-3"><div class="small text-muted-qb">Broad / limited</div><div class="fs-3 fw-bold num">'+(broad+limited)+'</div></div></div>'+
-      '<div class="col"><div class="card p-3"><div class="small text-muted-qb">Insufficient evidence</div><div class="fs-3 fw-bold num">'+insufficient+'</div></div></div>'+
-    '</div>'+
-    '<h3>Task families</h3><ol>'+cats+'</ol>'+
-    '<h3>How the score is calculated</h3><ol>'+
-      '<li><strong>Source gate:</strong> an evaluation must have at least '+ext.minimumModelsPerEvaluation+' distinct model names and a current publisher or independent-evaluator result set.</li>'+
-      '<li><strong>Within-benchmark normalization:</strong> for each model, QBench takes one result under the benchmark’s comparable harness and converts it to a midrank percentile within that benchmark’s evaluated cohort. Different native units are never directly averaged.</li>'+
-      '<li><strong>Task-family score:</strong> eligible benchmark percentiles are averaged within each of the four QBench task families. Each family contributes equally to the raw mean.</li>'+
-      '<li><strong>Evidence adjustment:</strong> results with fewer observed task families are pulled toward 50 rather than being treated as equally certain as complete coverage.</li>'+
-    '</ol>'+
-    '<div class="card p-3 my-3"><div class="fw-semibold mb-2">Index 1.2 formula</div>'+
-      '<div class="num mb-2">Raw mean = average of observed task-family percentiles</div>'+
-      '<div class="num">Index = 50 + (Raw mean − 50) × √(Observed task families ÷ 4)</div>'+
-      '<div class="small text-muted-qb mt-2">50 is the neutral midpoint of the within-benchmark percentile scale. Four task families give a factor of 1.00; three give 0.87; two give 0.71. This is an evidence adjustment, not a statistical confidence interval.</div></div>'+
-    '<h3>Ranking and evidence labels</h3><ul>'+
-      '<li><strong>Ranked:</strong> at least '+ext.minimumEvaluationsPerModel+' eligible benchmark results spanning '+ext.minimumDomainsPerModel+' or more task families.</li>'+
-      '<li><strong>Full evidence:</strong> all four task families are represented.</li><li><strong>Broad evidence:</strong> three task families are represented.</li><li><strong>Limited evidence:</strong> two task families are represented; the score receives a larger adjustment toward 50.</li>'+
-      '<li><strong>Insufficient evidence:</strong> models with fewer than two task families remain visible in Models and benchmark details but receive no composite Index score.</li>'+
-      '<li>Missing values are never imputed. Aliases are not merged unless the source explicitly identifies the same model.</li>'+
-    '</ul>'+
-    '<h3>Data-quality rules</h3><ul>'+
-      '<li>Each benchmark keeps its native score, snapshot date, model configuration, harness and source URL.</li>'+
-      '<li>For DrugDiscoveryBench, only mini-SWE-agent runs enter the Index, using each model’s highest listed effort setting. Effort labels remain visible because they vary by model family; this is best-reported capability, not equal-compute head-to-head. Other native-harness runs are not mixed into the composite.</li>'+
-      '<li>Specialist systems and routers are excluded from the general-purpose Index when the source identifies them as non-comparable systems.</li>'+
-      '<li>Benchmark-specific cost per test, tokens per test and duration per test stay attached to their own benchmark. Publisher-reported ± values, calibration errors and partition scores are displayed in benchmark details, but the composite uses point estimates only; incompatible uncertainty definitions are not pooled. API token prices remain a separate catalog and are not task-cost estimates.</li>'+
-      '<li>Scores from different benchmark versions are not treated as directly comparable time series.</li>'+
-    '</ul>'+
-    '<h3>Evaluations excluded from Index 1.2</h3><ul>'+excluded+'</ul>'+
-    '<h3>Publisher and evaluator sources</h3><ul>'+sources+'</ul>'+
-    '<h3>Limitations</h3><ul>'+
-      '<li>Percentiles are cohort-relative: adding or removing evaluated models can change a model’s percentile even when its raw result stays fixed.</li>'+
-      '<li>Task families cover distinct capabilities and do not replace use-case-specific evaluation.</li>'+
-      '<li>ProofBench is formal Lean 4 proof verification, not a complete measure of mathematical reasoning. Its top scores are monitored for ceiling effects.</li>'+
-      '<li>HLE-Diamond uses a frozen 1,000-question set; Scale Labs reports that the strongest measured score remains below its noise ceiling and expects useful headroom for 6–12 months.</li>'+
-      '<li>DrugDiscoveryBench is a specialist pharmaceutical workflow benchmark, not a universal science score.</li>'+
-      '<li>Third-party leaderboard results may use different model effort settings. The configuration and harness are shown in each benchmark record and should be checked before drawing close comparisons.</li>'+
-    '</ul>'+
-    '<h3>Version</h3><p class="text-muted-qb">QBench Index '+esc(sp.version||'1.2')+' · data snapshot '+esc(sp.snapshotAsOf||'—')+' · '+RESULT.evals.length+' eligible evaluations.</p>';
+ var sp=DATA.composite,ext=sp.extendedIndex,ranked=RESULT.rows.filter(function(r){return r.ranked;}),full=ranked.filter(function(r){return r.domainCount===6;}).length;
+ var broad=ranked.filter(function(r){return r.domainCount>=4&&r.domainCount<6;}).length,insufficient=RESULT.rows.filter(function(r){return !r.ranked;}).length;
+ var baseModels=new Set(RESULT.rows.map(function(r){return r.model;})).size,evalsByDomain={};RESULT.evals.forEach(function(e){(evalsByDomain[e.domain]=evalsByDomain[e.domain]||[]).push(e);});
+ var cats=ext.domains.map(function(dom){var items=evalsByDomain[dom.name]||[],list=items.length?items.map(function(e){return '<span class="metric-chip">'+esc(e.name)+' · '+e.unique+' variants</span>';}).join(' '):'<span class="text-muted-qb">No eligible evaluation</span>';return '<li><strong>'+esc(dom.name)+'</strong><div class="mt-1">'+list+'</div><div class="small text-muted-qb mt-1">'+esc(dom.note||'')+'</div></li>';}).join('');
+ var excluded=(ext.excludedFromExtendedIndex||[]).map(function(x){return '<li><strong>'+esc((RESULT.byId[x.id]||{}).name||x.id)+'</strong>: '+esc(x.reason)+'</li>';}).join('');
+ var sources=(ext.sourceNotes||[]).map(function(x){return '<li><a href="'+esc(x.url)+'" target="_blank" rel="noopener">'+esc(x.label)+'</a> <span class="text-muted-qb">· '+esc(x.snapshotDate||'date not stated')+'</span></li>';}).join('');
+ var caveats=(ext.caveats||[]).map(function(x){return '<li>'+esc(x)+'</li>';}).join('');
+ $('#method').innerHTML='<h2 class="font-serif-jp mb-3">QBench Index 1.3 · Methodology</h2><p>Index 1.3 is a source-audited composite of seven evaluations across six capability families. It uses publisher-reported task-success or accuracy percentages rather than within-cohort ranks. Each exact model/effort variant is a separate entry. No external composite score or proprietary weight is imported.</p>'+
+ '<div class="row row-cols-2 row-cols-lg-4 g-2 my-3"><div class="col"><div class="card p-3"><div class="small text-muted-qb">Ranked variants</div><div class="fs-3 fw-bold num">'+ranked.length+'</div></div></div><div class="col"><div class="card p-3"><div class="small text-muted-qb">Base models</div><div class="fs-3 fw-bold num">'+baseModels+'</div></div></div><div class="col"><div class="card p-3"><div class="small text-muted-qb">Full / broad evidence</div><div class="fs-3 fw-bold num">'+(full+broad)+'</div></div></div><div class="col"><div class="card p-3"><div class="small text-muted-qb">Insufficient variants</div><div class="fs-3 fw-bold num">'+insufficient+'</div></div></div></div>'+
+ '<h3>Capability families</h3><ol>'+cats+'</ol><h3>How the score is calculated</h3><ol><li><strong>Source gate:</strong> each evaluation needs at least '+ext.minimumModelsPerEvaluation+' distinct model/effort variants with usable source-reported scores.</li><li><strong>Keep the native percentage:</strong> scores remain on their reported 0–100 percentage-point scale. QBench does not turn a benchmark rank into a high percentile score.</li><li><strong>Family aggregation:</strong> evaluations in the same family are averaged; the six observed family scores are then averaged equally.</li><li><strong>Evidence adjustment:</strong> incomplete six-family coverage is pulled toward 50. This is a transparent coverage adjustment, not a confidence interval.</li></ol>'+
+ '<div class="card p-3 my-3"><div class="fw-semibold mb-2">Index 1.3 formula</div><div class="num mb-2">Raw family mean = average of observed family percentages</div><div class="num">Index = 50 + (Raw family mean − 50) × √(Observed families ÷ 6)</div><div class="small text-muted-qb mt-2">Six families: factor 1.00 · Five: 0.91 · Four: 0.82 · Three: 0.71. The score is a composite, not a human intelligence percentage.</div></div>'+
+ '<h3>Model and effort handling</h3><ul><li>Each exact model name and effort level (none, low, medium, high, xhigh, max) is a separate variant.</li><li>Effort is extracted only when the source explicitly reports it. Otherwise it is shown as <strong>Not reported</strong>.</li><li>QBench never selects the highest score from multiple effort settings to represent the base model.</li><li>Harness, routing, fallback and execution conditions remain visible in benchmark details. Mixed-harness rows are not silently combined.</li><li>Ranking requires at least '+ext.minimumEvaluationsPerModel+' evaluations across '+ext.minimumDomainsPerModel+' or more families. Full evidence means six families; broad means four or five; limited means three.</li><li>Missing scores are never imputed. Aliases are not merged without explicit source evidence.</li></ul>'+
+ '<h3>AA feature reference and boundaries</h3><p>QBench adds effort-variant comparison, Pareto and efficiency analysis, confidence/uncertainty display, score-versus-token and score-versus-time charts, and task-design examples where the source provides them. AA-only private results are not invented or silently imported. Cross-index cost per task, model size and release-date trends are not shown unless source-level inputs are available.</p>'+
+ '<h3>Evaluations excluded from Index 1.3</h3><ul>'+excluded+'</ul><h3>Publisher and evaluator sources</h3><ul>'+sources+'</ul><h3>Limitations</h3><ul>'+caveats+'</ul><h3>Version</h3><p class="text-muted-qb">QBench Index '+esc(sp.version||'1.3')+' · snapshot '+esc(sp.snapshotAsOf||'—')+' · '+RESULT.evals.length+' eligible evaluations.</p>';
 }
+/* ---------- navigation ---------- */
+
 
 /* ---------- navigation ---------- */
 
@@ -796,6 +761,7 @@ fetch('data/external-benchmarks.json',{cache:'no-store'})
     window.QBench={get result(){return RESULT;},get state(){return S;}};
     var provs=[]; RESULT.rows.forEach(function(r){if(provs.indexOf(r.provider)<0)provs.push(r.provider);}); provs.sort();
     makeChoice($('#provider-choice'),[{value:'all',label:'All providers'}].concat(provs.map(function(pv){return {value:pv,label:pv};})),'all',function(v){S.provider=v;renderIndex();},'Filter by provider');
+    var efforts=['not-reported','none','low','medium','high','xhigh','max'];makeChoice($('#effort-choice'),[{value:'all',label:'All effort levels'}].concat(efforts.map(function(e){return {value:e,label:e==='not-reported'?'Effort not reported':e};})),'all',function(v){S.effort=v;renderIndex();},'Filter by reasoning effort');
     renderStats(); renderMethod();
     var h=(location.hash||'').replace('#','');
     show(['index','models','benchmarks','methodology'].indexOf(h)>=0?h:'index');
