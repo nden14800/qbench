@@ -136,7 +136,7 @@ footer{font-size:.8rem;color:var(--qb-muted)}
     <div class="card mb-3">
       <div class="card-header d-flex flex-wrap align-items-start justify-content-between gap-2 py-3">
         <div>
-          <h2 class="card-title-qb">QBench Index 1.2 leaderboard</h2>
+          <h2 class="card-title-qb">QBench Index 1.3 leaderboard</h2>
           <div class="text-muted-qb small mt-1" id="index-sub"></div>
         </div>
         <div class="d-flex flex-wrap align-items-center gap-2 toolbar-qb">
@@ -149,7 +149,7 @@ footer{font-size:.8rem;color:var(--qb-muted)}
         </div>
       </div>
       <div class="index-explainer mx-3 mt-2 mb-1">
-        <div class="fw-semibold mb-1">How QBench Index 1.2 works</div>
+        <div class="fw-semibold mb-1">How QBench Index 1.3 works</div>
         <div>Each benchmark keeps its reported 0–100 accuracy or task-success percentage. Results are averaged inside six capability families, then averaged equally. Model effort variants are separate entries; unreported effort is never guessed.</div>
         <div class="mt-1"><strong>Rank:</strong> at least 3 eligible evaluations across 3+ capability families · <strong>Evidence:</strong> full (6 families), broad (4–5), or limited (3) · <strong>Insufficient evidence:</strong> retained in Models, without an Index score.</div>
       </div>
@@ -452,12 +452,12 @@ function renderComposition(host){
   var p=pal();
   host.innerHTML='<div id="chart-main-el" style="height:'+(90+top.length*34)+'px"></div>'+
     '<div class="chart-legend">'+RESULT.domains.map(function(d,i){return '<span><i style="background:'+p.c[i]+'"></i>'+esc(d)+'</span>';}).join('')+'</div>'+
-    '<div class="notice-qb">Bar length = unadjusted mean of the observed task-family percentiles. The table Index is evidence-adjusted toward 50 when fewer than four task families are present.</div>';
+    '<div class="notice-qb">Bar length = raw mean of the observed capability-family percentages. The table Index is adjusted toward 50 when fewer than six families are observed.</div>';
   var c=chartInit('chart-main-el');
   c.setOption({animation:false,grid:{left:170,right:50,top:8,bottom:8},
     tooltip:{trigger:'axis',axisPointer:{type:'shadow'},valueFormatter:function(v){return fmt(v,1);}},
     xAxis:Object.assign({type:'value',max:100},axisStyle(p)),
-    yAxis:{type:'category',inverse:true,data:top.map(function(r){return r.model;}),axisLabel:{color:p.ink,fontSize:12,width:150,overflow:'truncate'},axisLine:{show:false},axisTick:{show:false}},
+    yAxis:{type:'category',inverse:true,data:top.map(function(r){return r.variantLabel;}),axisLabel:{color:p.ink,fontSize:12,width:150,overflow:'truncate'},axisLine:{show:false},axisTick:{show:false}},
     series:RESULT.domains.map(function(d,i){return {name:d,type:'bar',stack:'idx',barWidth:18,itemStyle:{color:p.c[i]},
       data:top.map(function(r){return r.domains[d]==null?0:r.domains[d]/r.domainCount;})};})
   },true);
@@ -501,15 +501,15 @@ function renderHeatmap(host){
   if(!rows.length||!evs.length){emptyChart(host,'No ranked models yet.');return;}
   var p=pal(), dark=isDark();
   host.innerHTML='<div id="chart-main-el" style="height:'+(rows.length*24+130)+'px"></div>'+
-    '<div class="notice-qb">Cell = percentile (0 to 100) within each benchmark cohort. Blank = no reported result. Top 25 ranked models by index.</div>';
+    '<div class="notice-qb">Cell = source-reported score (0–100). Blank = no reported result. Top 25 ranked model/effort variants by Index.</div>';
   var c=chartInit('chart-main-el');
   var data=[];
   rows.forEach(function(r,i){evs.forEach(function(e,j){
-    var m=RESULT.pct[e.id], x=m&&m.get(r.model);
+    var m=RESULT.pct[e.id], x=m&&m.get(r.variantId);
     if(x){var v=Math.round(x.pct);data.push({value:[j,i,v],label:{color:v>=60?'#ffffff':p.ink}});}
   });});
   c.setOption({animation:false,
-    tooltip:{position:'top',formatter:function(e){var r=rows[e.data.value[1]],ev=evs[e.data.value[0]];return esc(r.model)+'<br>'+esc(ev.name)+': '+e.data.value[2]+' pct';}},
+    tooltip:{position:'top',formatter:function(e){var r=rows[e.data.value[1]],ev=evs[e.data.value[0]];return esc(r.variantLabel)+'<br>'+esc(ev.name)+': '+e.data.value[2]+' '+esc((RESULT.byId[ev.id]||{}).unit||'');}},
     grid:{left:170,right:20,top:8,bottom:96},
     xAxis:{type:'category',data:evs.map(function(e){return e.name;}),axisLabel:Object.assign({rotate:30,interval:0,fontSize:11},{color:p.muted}),axisLine:{show:false},axisTick:{show:false}},
     yAxis:{type:'category',inverse:true,data:rows.map(function(r){return r.variantLabel;}),axisLabel:{color:p.ink,fontSize:11,width:150,overflow:'truncate'},axisLine:{show:false},axisTick:{show:false}},
@@ -535,7 +535,7 @@ function renderCoverage(host){
   if(!evs.length){emptyChart(host,'No eligible evaluation.');return;}
   var p=pal();
   host.innerHTML='<div id="chart-main-el" style="height:'+(evs.length*34+90)+'px"></div>'+
-    '<div class="notice-qb">Unique models with a source-verified result in each eligible evaluation. The dashed line marks the 12-model minimum. Evaluations are included only when they meet it.</div>';
+    '<div class="notice-qb">Unique model/effort variants with a source-verified result in each eligible evaluation. The dashed line marks the 12-variant minimum.</div>';
   var c=chartInit('chart-main-el');
   c.setOption({animation:false,grid:{left:230,right:50,top:8,bottom:24},
     tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
@@ -543,7 +543,7 @@ function renderCoverage(host){
     yAxis:{type:'category',inverse:true,data:evs.map(function(e){return e.name;}),axisLabel:{color:p.ink,fontSize:12,width:210,overflow:'truncate'},axisLine:{show:false},axisTick:{show:false}},
     series:[{type:'bar',barWidth:16,label:{show:true,position:'right',color:p.ink,fontSize:11},
       itemStyle:{borderRadius:[0,4,4,0]},
-      data:evs.map(function(e){return {value:e.unique,itemStyle:{color:p.c[RESULT.domains.indexOf(e.domain)%4]||p.accent,borderRadius:[0,4,4,0]}};}),
+      data:evs.map(function(e){return {value:e.unique,itemStyle:{color:p.c[RESULT.domains.indexOf(e.domain)%6]||p.accent,borderRadius:[0,4,4,0]}};}),
       markLine:{symbol:'none',silent:true,label:{formatter:'minimum 12',color:p.muted,fontSize:11},lineStyle:{type:'dashed',color:p.muted},data:[{xAxis:12}]}}]
   },true);
 }
@@ -552,12 +552,12 @@ function renderConsistency(host){
   var rows=RESULT.rows.filter(function(r){return r.ranked&&r.spread!=null;});
   if(!rows.length){emptyChart(host,'No consistency data available.');return;}
   var p=pal(),family=getComputedStyle(document.body).fontFamily||'DM Sans, sans-serif';
-  host.innerHTML='<div id="chart-main-el" style="height:460px"></div><div class="notice-qb">Each point is a model. Horizontal position is the standard deviation of its within-benchmark percentiles (lower = more consistent across tests); vertical position is the evidence-adjusted Index. This is descriptive variation, not a confidence interval.</div>';
+  host.innerHTML='<div id="chart-main-el" style="height:460px"></div><div class="notice-qb">Each point is a model/effort variant. Horizontal position is the standard deviation of its reported benchmark percentages (lower = less variation across tests); vertical position is the coverage-adjusted Index. This is descriptive variation, not a confidence interval.</div>';
   var c=chartInit('chart-main-el');
   c.setOption({animation:false,grid:{left:70,right:30,top:24,bottom:64},
     tooltip:{trigger:'item',textStyle:{fontFamily:family},formatter:function(e){var r=e.data.row;return esc(r.variantLabel)+'<br>Index: '+fmt(r.index,1)+'<br>Benchmark spread: '+fmt(r.spread,1)+' pct points<br>Coverage: '+r.coverage+' / '+RESULT.evals.length+' evaluations';}},
     xAxis:Object.assign({type:'value',name:'Across-benchmark spread (lower is steadier)',nameLocation:'middle',nameGap:38},axisStyle(p)),
-    yAxis:Object.assign({type:'value',min:0,max:100,name:'QBench Index 1.2',nameTextStyle:{color:p.muted}},axisStyle(p)),
+    yAxis:Object.assign({type:'value',min:0,max:100,name:'QBench Index 1.3',nameTextStyle:{color:p.muted}},axisStyle(p)),
     series:[{type:'scatter',symbolSize:11,itemStyle:{color:p.accent,opacity:.8},data:rows.map(function(r){return {value:[r.spread,r.index],row:r};})}]
   },true);
 }
@@ -630,7 +630,7 @@ function renderBenchGrid(){
   });
   $('#bgrid').innerHTML=list.map(function(b){
     var st=benchStatus(b.id);
-    return '<div class="col"><button type="button" class="bcard" data-bench="'+esc(b.id)+'" aria-pressed="'+(S.bench===b.id)+'"><div class="bt">'+esc(b.name)+'</div><div class="bm">'+st.n+' unique models · snapshot '+esc(b.snapshotDate||'—')+'</div><div class="mt-2"><span class="badge '+st.c+'">'+esc(st.t)+'</span></div></button></div>';
+    return '<div class="col"><button type="button" class="bcard" data-bench="'+esc(b.id)+'" aria-pressed="'+(S.bench===b.id)+'"><div class="bt">'+esc(b.name)+'</div><div class="bm">'+st.n+' model/effort variants · snapshot '+esc(b.snapshotDate||'—')+'</div><div class="mt-2"><span class="badge '+st.c+'">'+esc(st.t)+'</span></div></button></div>';
   }).join('');
 }
 function parseTokens(s){
@@ -700,9 +700,6 @@ function renderMethod(){
  '<h3>AA feature reference and boundaries</h3><p>QBench adds effort-variant comparison, Pareto and efficiency analysis, confidence/uncertainty display, score-versus-token and score-versus-time charts, and task-design examples where the source provides them. AA-only private results are not invented or silently imported. Cross-index cost per task, model size and release-date trends are not shown unless source-level inputs are available.</p>'+
  '<h3>Evaluations excluded from Index 1.3</h3><ul>'+excluded+'</ul><h3>Publisher and evaluator sources</h3><ul>'+sources+'</ul><h3>Limitations</h3><ul>'+caveats+'</ul><h3>Version</h3><p class="text-muted-qb">QBench Index '+esc(sp.version||'1.3')+' · snapshot '+esc(sp.snapshotAsOf||'—')+' · '+RESULT.evals.length+' eligible evaluations.</p>';
 }
-/* ---------- navigation ---------- */
-
-
 /* ---------- navigation ---------- */
 
 function renderAll(){
