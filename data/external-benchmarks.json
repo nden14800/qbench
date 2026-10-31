@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.6",
-  "note": "Snapshot 2026-10-31: 22 result datasets, 664 model-result/configuration rows, 151 exact model names, 553 model/configuration/harness combinations, 27 provider labels, and 74 directory entries. QBench Composite Index 1.0 uses four domains and eight eligible evaluations. AA published scores and index values are not used.",
+  "note": "QBench Index 1.2 rebuild, snapshot 2026-10-31. Composite recalculated from five selected source-audited evaluations; legacy and partial datasets remain standalone and do not contribute. No AA scores or index values are used.",
   "benchmarks": [
     {
       "id": "livebench-2.0",
@@ -432,7 +432,7 @@
           "retrievedAt": "2026-10-30"
         }
       ],
-      "indexEligible": true,
+      "indexEligible": false,
       "indexDomain": "Reasoning & Generalization",
       "saturationStatus": "ceiling-watch",
       "quality": "LiveBench 2.0 publisher release 2026-10-25. The first six overall rows and their published Cost per successful task values are taken directly from LiveBench; the remaining model scores are explicitly attributed to BenchLeader's 2026-10-30 mirror and are not presented as directly publisher-verified.",
@@ -1013,7 +1013,8 @@
           "harness": "Not reported",
           "sourceType": "source-documented"
         }
-      ]
+      ],
+      "indexEligible": false
     },
     {
       "id": "frontiermath-tiers-1-3-v2",
@@ -2110,7 +2111,8 @@
           "harness": "Not reported",
           "sourceType": "source-documented"
         }
-      ]
+      ],
+      "indexEligible": false
     },
     {
       "id": "proofbench",
@@ -3328,7 +3330,8 @@
           "harness": "Not reported",
           "sourceType": "source-documented"
         }
-      ]
+      ],
+      "indexEligible": false
     },
     {
       "id": "swe-bench-verified",
@@ -3415,7 +3418,8 @@
           "harness": "Not reported",
           "sourceType": "source-documented"
         }
-      ]
+      ],
+      "indexEligible": false
     },
     {
       "id": "swe-bench-pro-v2",
@@ -4266,7 +4270,8 @@
           "harness": "Not reported",
           "sourceType": "source-documented"
         }
-      ]
+      ],
+      "indexEligible": false
     },
     {
       "id": "mystery-game-puzzles",
@@ -4516,7 +4521,8 @@
           "harness": "Not reported",
           "sourceType": "source-documented"
         }
-      ]
+      ],
+      "indexEligible": false
     },
     {
       "id": "aa-briefcase-v1-1",
@@ -7408,7 +7414,7 @@
       "unit": "% issues resolved",
       "quality": "Scale AI SEAL public-set leaderboard (publisher). Snapshot date not shown; harness not stated for most rows.",
       "coverageLevel": "24-of-24-traceable-secondary-snapshot",
-      "indexEligible": true,
+      "indexEligible": false,
       "indexDomain": "Coding & Engineering",
       "saturationStatus": "not saturated (top 61.5%)",
       "models": [
@@ -7991,7 +7997,7 @@
       "unit": "% (semi-private)",
       "quality": "69 configuration rows mirrored from BenchLM (secondary). Values are ARC Prize semi-private scores as shown by BenchLM on 2026-10-28; verify against the ARC Prize leaderboard before citing as official.",
       "coverageLevel": "source-cited-secondary-mirror",
-      "indexEligible": true,
+      "indexEligible": false,
       "indexDomain": "General",
       "saturationStatus": "not-saturated (top 62.7%)",
       "methodology": "Interactive abstract reasoning benchmark administered by ARC Prize. Rows keep the reasoning-effort setting as configuration.",
@@ -8834,7 +8840,7 @@
       "unit": "% wins or ties vs industry expert",
       "quality": "OpenAI GDPval headline metric as shown on OpenAI pages. Claude Opus 4.7 and Gemini 3.1 Pro values come from OpenAI's chart. Only 8 models.",
       "coverageLevel": "source-cited-publisher-chart",
-      "indexEligible": true,
+      "indexEligible": false,
       "indexDomain": "Knowledge Work",
       "saturationStatus": "not saturated (top 84.9%)",
       "methodology": "Expert-produced economically valuable tasks graded against industry professionals.",
@@ -8926,6 +8932,174 @@
           "source": "https://openai.com/index/introducing-gpt-5-5/",
           "sourceType": "publisher-reported-via-chart",
           "snapshotDate": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "drug-discovery-bench",
+      "name": "DrugDiscoveryBench",
+      "snapshotDate": "2026-10-31",
+      "source": "https://labs.scale.com/leaderboard/drugdiscoverybench",
+      "unit": "Pass rate (%)",
+      "version": "1.0",
+      "taskCount": 82,
+      "indexEligible": true,
+      "costMetric": "Mean output tokens per task",
+      "valueNote": "Index uses only mini-SWE-agent rows to keep the harness constant. Native Codex, Claude Code and Gemini CLI runs remain outside the composite.",
+      "models": [
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 68.7,
+          "configuration": "max",
+          "harness": "mini-SWE-agent",
+          "source": "https://labs.scale.com/leaderboard/drugdiscoverybench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Scale Labs DrugDiscoveryBench leaderboard; mini-SWE-agent harness only. The benchmark has 82 expert-authored tasks; each setting averages three runs with a 120-minute agent timeout."
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "provider": "Google",
+          "score": 65.4,
+          "configuration": "high",
+          "harness": "mini-SWE-agent",
+          "source": "https://labs.scale.com/leaderboard/drugdiscoverybench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Scale Labs DrugDiscoveryBench leaderboard; mini-SWE-agent harness only. The benchmark has 82 expert-authored tasks; each setting averages three runs with a 120-minute agent timeout."
+        },
+        {
+          "model": "Muse Spark 1.3",
+          "provider": "Meta",
+          "score": 62.2,
+          "configuration": "high",
+          "harness": "mini-SWE-agent",
+          "source": "https://labs.scale.com/leaderboard/drugdiscoverybench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Scale Labs DrugDiscoveryBench leaderboard; mini-SWE-agent harness only. The benchmark has 82 expert-authored tasks; each setting averages three runs with a 120-minute agent timeout."
+        },
+        {
+          "model": "DeepSeek V4.1 Flash 1017",
+          "provider": "DeepSeek",
+          "score": 60.6,
+          "configuration": "xhigh",
+          "harness": "mini-SWE-agent",
+          "source": "https://labs.scale.com/leaderboard/drugdiscoverybench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Scale Labs DrugDiscoveryBench leaderboard; mini-SWE-agent harness only. The benchmark has 82 expert-authored tasks; each setting averages three runs with a 120-minute agent timeout."
+        },
+        {
+          "model": "GPT-5.5",
+          "provider": "OpenAI",
+          "score": 51.6,
+          "configuration": "xhigh",
+          "harness": "mini-SWE-agent",
+          "source": "https://labs.scale.com/leaderboard/drugdiscoverybench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Scale Labs DrugDiscoveryBench leaderboard; mini-SWE-agent harness only. The benchmark has 82 expert-authored tasks; each setting averages three runs with a 120-minute agent timeout."
+        },
+        {
+          "model": "Claude Sonnet 5",
+          "provider": "Anthropic",
+          "score": 50.04,
+          "configuration": "max",
+          "harness": "mini-SWE-agent",
+          "source": "https://labs.scale.com/leaderboard/drugdiscoverybench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Scale Labs DrugDiscoveryBench leaderboard; mini-SWE-agent harness only. The benchmark has 82 expert-authored tasks; each setting averages three runs with a 120-minute agent timeout."
+        },
+        {
+          "model": "Gemini 3.5 Flash",
+          "provider": "Google",
+          "score": 48.8,
+          "configuration": "high",
+          "harness": "mini-SWE-agent",
+          "source": "https://labs.scale.com/leaderboard/drugdiscoverybench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Scale Labs DrugDiscoveryBench leaderboard; mini-SWE-agent harness only. The benchmark has 82 expert-authored tasks; each setting averages three runs with a 120-minute agent timeout."
+        },
+        {
+          "model": "Claude Opus 4.8",
+          "provider": "Anthropic",
+          "score": 46.8,
+          "configuration": "max",
+          "harness": "mini-SWE-agent",
+          "source": "https://labs.scale.com/leaderboard/drugdiscoverybench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Scale Labs DrugDiscoveryBench leaderboard; mini-SWE-agent harness only. The benchmark has 82 expert-authored tasks; each setting averages three runs with a 120-minute agent timeout."
+        },
+        {
+          "model": "GLM 5.2",
+          "provider": "Z.ai",
+          "score": 36.2,
+          "configuration": "xhigh",
+          "harness": "mini-SWE-agent",
+          "source": "https://labs.scale.com/leaderboard/drugdiscoverybench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Scale Labs DrugDiscoveryBench leaderboard; mini-SWE-agent harness only. The benchmark has 82 expert-authored tasks; each setting averages three runs with a 120-minute agent timeout."
+        },
+        {
+          "model": "Kimi K2.7 Code",
+          "provider": "Moonshot AI",
+          "score": 35.3,
+          "configuration": "xhigh",
+          "harness": "mini-SWE-agent",
+          "source": "https://labs.scale.com/leaderboard/drugdiscoverybench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Scale Labs DrugDiscoveryBench leaderboard; mini-SWE-agent harness only. The benchmark has 82 expert-authored tasks; each setting averages three runs with a 120-minute agent timeout."
+        },
+        {
+          "model": "DeepSeek V4 Pro",
+          "provider": "DeepSeek",
+          "score": 31.7,
+          "configuration": "xhigh",
+          "harness": "mini-SWE-agent",
+          "source": "https://labs.scale.com/leaderboard/drugdiscoverybench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Scale Labs DrugDiscoveryBench leaderboard; mini-SWE-agent harness only. The benchmark has 82 expert-authored tasks; each setting averages three runs with a 120-minute agent timeout."
+        },
+        {
+          "model": "Claude Sonnet 4.6",
+          "provider": "Anthropic",
+          "score": 31.3,
+          "configuration": "max",
+          "harness": "mini-SWE-agent",
+          "source": "https://labs.scale.com/leaderboard/drugdiscoverybench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Scale Labs DrugDiscoveryBench leaderboard; mini-SWE-agent harness only. The benchmark has 82 expert-authored tasks; each setting averages three runs with a 120-minute agent timeout."
+        },
+        {
+          "model": "Qwen 3.7 Max",
+          "provider": "Alibaba",
+          "score": 29.3,
+          "configuration": "xhigh",
+          "harness": "mini-SWE-agent",
+          "source": "https://labs.scale.com/leaderboard/drugdiscoverybench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Scale Labs DrugDiscoveryBench leaderboard; mini-SWE-agent harness only. The benchmark has 82 expert-authored tasks; each setting averages three runs with a 120-minute agent timeout."
+        },
+        {
+          "model": "MiniMax M3",
+          "provider": "MiniMax",
+          "score": 22.8,
+          "configuration": "xhigh",
+          "harness": "mini-SWE-agent",
+          "source": "https://labs.scale.com/leaderboard/drugdiscoverybench",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Scale Labs DrugDiscoveryBench leaderboard; mini-SWE-agent harness only. The benchmark has 82 expert-authored tasks; each setting averages three runs with a 120-minute agent timeout."
         }
       ]
     }
@@ -9525,70 +9699,61 @@
     }
   ],
   "composite": {
-    "name": "QBench Composite Index",
-    "version": "1.1",
+    "name": "QBench Index",
+    "version": "1.2",
     "snapshotAsOf": "2026-10-31",
-    "basis": "Four equal-weight domains (Knowledge Work, Coding, Science, General), using AA's category structure only as a taxonomy reference. QBench applies its own public-evaluation percentile method and does not reproduce AA's per-evaluation weighting or native score.",
-    "minimumModelsPerEvaluation": 8,
-    "minimumCategoryCoverage": 3,
+    "basis": "Four QBench task families: software and terminal execution, formal mathematics, scientific workflows, and expert knowledge/reasoning. No Artificial Analysis scores, rankings or weights are used.",
+    "minimumModelsPerEvaluation": 12,
+    "minimumCategoryCoverage": 2,
     "componentBenchmarks": [
-      "gdpval",
       "terminal-bench-4-0",
-      "swe-bench-pro",
-      "terminal-bench-science-0-1",
       "proofbench",
+      "terminal-bench-science-0-1",
       "hle-diamond",
-      "arc-agi-3",
-      "livebench-2.0"
+      "drug-discovery-bench"
     ],
     "eligibleBenchmarks": [
-      "gdpval",
       "terminal-bench-4-0",
-      "swe-bench-pro",
-      "terminal-bench-science-0-1",
       "proofbench",
+      "terminal-bench-science-0-1",
       "hle-diamond",
-      "arc-agi-3",
-      "livebench-2.0"
+      "drug-discovery-bench"
     ],
     "insufficientCoverage": [],
-    "normalization": "Within each eligible benchmark, the best published score per exact model name is converted to a midrank percentile. Category scores are equal-weighted averages of benchmark percentiles; the index is the equal-weighted average of available category scores. Missing results are never imputed.",
-    "configurationPolicy": "Best published configuration per exact model name within each evaluation. Effort settings, harnesses and tool access are not normalized; model-level Index scores therefore summarize observed best configurations, not controlled same-setting comparisons.",
+    "normalization": "For each eligible benchmark, take one score per exact model under the benchmark's stated comparable harness and convert it to a midrank percentile within that benchmark's observed cohort. Average benchmark percentiles within each task family; average the observed task-family scores equally. Then apply an evidence adjustment: Index = 50 + (raw mean − 50) × sqrt(observed task families / 4). No missing scores are imputed. This shrinks thin-coverage results toward the cohort midpoint without suppressing their visibility.",
+    "configurationPolicy": "Do not merge aliases unless the source explicitly identifies the same model. Use one comparable harness per benchmark. For DrugDiscoveryBench, only mini-SWE-agent results are included; other native-harness runs remain standalone. For other benchmarks, use the publisher's listed model result and preserve its reported configuration. Do not select a model's best score across different harnesses.",
     "domains": [
       {
-        "name": "Knowledge Work",
+        "name": "Software & terminal execution",
         "benchmarks": [
-          "gdpval"
+          "terminal-bench-4-0"
         ],
-        "note": "GDPval is currently the only eligible Knowledge Work evaluation; OSWorld 2.0 is retained separately because the third-party aggregate's 0–1 metric cannot be confirmed as binary accuracy rather than partial reward."
+        "note": "A common Mini-SWE-agent harness on 66 new terminal tasks across software, operations, science, security and hardware."
       },
       {
-        "name": "Coding",
+        "name": "Formal mathematics",
         "benchmarks": [
-          "terminal-bench-4-0",
-          "swe-bench-pro"
-        ],
-        "note": "Terminal-Bench 4.0 uses Vals AI's Mini-SWE-agent leaderboard; SWE-Bench Pro is the public Scale AI split."
-      },
-      {
-        "name": "Science",
-        "benchmarks": [
-          "terminal-bench-science-0-1",
           "proofbench"
         ],
-        "note": "Terminal-Bench-Science 0.1 plus ProofBench 1.1. Four entries tie at 100%; specialist formal-proof systems are excluded."
+        "note": "Lean 4 machine-checked proof success; specialist formal-prover systems are excluded."
       },
       {
-        "name": "General",
+        "name": "Scientific workflows",
         "benchmarks": [
-          "hle-diamond",
-          "arc-agi-3",
-          "livebench-2.0"
+          "terminal-bench-science-0-1",
+          "drug-discovery-bench"
         ],
-        "note": "HLE-Diamond is publisher-reported; ARC-AGI-3 and part of LiveBench 2.0 use secondary mirrors."
+        "note": "Reproducible terminal-based scientific research plus expert-authored drug-discovery workflows. DrugDiscoveryBench uses mini-SWE-agent rows only."
+      },
+      {
+        "name": "Expert knowledge & reasoning",
+        "benchmarks": [
+          "hle-diamond"
+        ],
+        "note": "A frozen 1,000-question set split evenly between reasoning and expert knowledge."
       }
     ],
-    "method": "QBench Composite Index 1.1 is independent of Artificial Analysis. Each eligible evaluation needs at least eight unique model names. Within an evaluation, the best published score per exact model name is converted to a midrank percentile. Each domain score is the equal average of eligible evaluation percentiles available in that domain. The provisional Index is the equal-weighted average of available domain scores. A model receives a published rank after at least three eligible evaluations across at least two of four domains; ranks that do not meet the former 4-evaluation/3-domain breadth threshold are explicitly marked limited coverage. Models with two eligible evaluations receive a provisional value but no rank. Missing scores are never imputed.",
+    "method": "QBench Index 1.2 is a source-audited composite built from five current evaluations grouped by the tasks they measure, not by another provider's index taxonomy. A benchmark must have at least 12 distinct model names and a current publisher or independent-evaluator result set. A model receives a rank only with at least two eligible benchmark results spanning at least two task families. Every eligible model receives a rank; the score is evidence-adjusted for the number of task families observed. Raw benchmark values, percentiles, configuration, harness and source remain visible in the benchmark details.",
     "caveats": [
       "Rank threshold: at least three eligible evaluations across at least two of four domains. Ranks with fewer than four evaluations or fewer than three domains are explicitly marked limited coverage.",
       "Coverage-limited Index values average only available domains and are not equivalent to complete four-domain scores.",
@@ -9657,118 +9822,127 @@
         "snapshotDate": "2026-10-31"
       }
     ],
-    "currentDiagnostics": {
-      "rankedModels": 48,
-      "coverageOnlyModels": 10,
-      "modelsWithAtLeastTwoCategories": 58,
-      "eligibleEvaluationCount": 8,
-      "excludedEvaluationCount": 1,
-      "allEligibleModels": 99,
-      "singleEvaluationModels": 41,
-      "note": "Index 1.1 rank threshold: >=3 eligible evaluations across >=2 domains. Limited-coverage ranks are visibly marked; GPQA and FrontierMath remain standalone due partial extracts."
-    },
+    "currentDiagnostics": null,
     "supplementaryInputsExcluded": [
       "aa-omniscience-v1-1-accuracy-atlas"
     ],
     "extendedIndex": {
-      "name": "QBench Composite Index",
-      "normalization": "Within each eligible benchmark, the best published score per exact model name is converted to a midrank percentile. Category scores are equal-weighted averages of benchmark percentiles; the index is the equal-weighted average of available category scores. Missing results are never imputed.",
-      "minimumModelsPerEvaluation": 8,
-      "minimumEvaluationsPerModel": 3,
+      "version": "1.2",
+      "snapshotAsOf": "2026-10-31",
+      "minimumModelsPerEvaluation": 12,
+      "minimumEvaluationsPerModel": 2,
       "minimumDomainsPerModel": 2,
       "domains": [
         {
-          "name": "Knowledge Work",
+          "name": "Software & terminal execution",
           "benchmarks": [
-            "gdpval"
+            "terminal-bench-4-0"
           ],
-          "note": "GDPval is currently the only eligible Knowledge Work evaluation; OSWorld 2.0 is retained separately because the third-party aggregate's 0–1 metric cannot be confirmed as binary accuracy rather than partial reward."
+          "note": "A common Mini-SWE-agent harness on 66 new terminal tasks across software, operations, science, security and hardware."
         },
         {
-          "name": "Coding",
+          "name": "Formal mathematics",
           "benchmarks": [
-            "terminal-bench-4-0",
-            "swe-bench-pro"
-          ],
-          "note": "Terminal-Bench 4.0 uses Vals AI's Mini-SWE-agent leaderboard; SWE-Bench Pro is the public Scale AI split."
-        },
-        {
-          "name": "Science",
-          "benchmarks": [
-            "terminal-bench-science-0-1",
             "proofbench"
           ],
-          "note": "Terminal-Bench-Science 0.1 plus ProofBench 1.1. Four entries tie at 100%; specialist formal-proof systems are excluded."
+          "note": "Lean 4 machine-checked proof success; specialist formal-prover systems are excluded."
         },
         {
-          "name": "General",
+          "name": "Scientific workflows",
           "benchmarks": [
-            "hle-diamond",
-            "arc-agi-3",
-            "livebench-2.0"
+            "terminal-bench-science-0-1",
+            "drug-discovery-bench"
           ],
-          "note": "HLE-Diamond is publisher-reported; ARC-AGI-3 and part of LiveBench 2.0 use secondary mirrors."
+          "note": "Reproducible terminal-based scientific research plus expert-authored drug-discovery workflows. DrugDiscoveryBench uses mini-SWE-agent rows only."
+        },
+        {
+          "name": "Expert knowledge & reasoning",
+          "benchmarks": [
+            "hle-diamond"
+          ],
+          "note": "A frozen 1,000-question set split evenly between reasoning and expert knowledge."
         }
+      ],
+      "eligibleBenchmarks": [
+        "terminal-bench-4-0",
+        "proofbench",
+        "terminal-bench-science-0-1",
+        "hle-diamond",
+        "drug-discovery-bench"
       ],
       "excludedFromExtendedIndex": [
         {
-          "id": "aa-omniscience-v1-1-accuracy-atlas",
-          "reason": "Accuracy-only third-party subset lacks paired hallucination-rate component."
-        },
-        {
-          "id": "swe-bench-pro-v2",
-          "reason": "Near-ceiling watch and leaderboard split selection is not explicit in the extracted public table."
-        },
-        {
-          "id": "frontiermath-tier-4-v2",
-          "reason": "Published top score reaches 100%; ceiling risk and very small hard-tier set."
-        },
-        {
           "id": "gpqa-diamond",
-          "reason": "Public set is near ceiling; retained for standalone tracking only."
-        },
-        {
-          "id": "healthbench-professional",
-          "reason": "Third-party compilation of provider/system-card runs, not a single controlled independent rerun."
-        },
-        {
-          "id": "metr-time-horizons",
-          "reason": "METR public page says the board is no longer actively updated; last model result is dated 2026-04-07."
+          "reason": "Ceiling/saturation watch; excluded from the composite."
         },
         {
           "id": "frontiermath-tiers-1-3-v2",
-          "reason": "Ceiling-watch: current published scores are high and clustered; kept visible as a separate math benchmark pending a documented inclusion rule and full source-level verification."
+          "reason": "The checked-in 60-row extract is only half of Epoch AI's 120 evaluated model results; excluded until the complete publisher export replaces it."
         },
         {
-          "id": "osworld-2-0",
-          "reason": "LLM Stats 0–1 aggregate does not clearly distinguish the official binary-completion metric from partial reward. Epoch AI confirms these are separate metrics; exclude until the official binary-accuracy export is used."
+          "id": "swe-bench-pro-v2-full",
+          "reason": "Near-ceiling results and mixed harnesses make the public aggregate unsuitable for a fair cross-model composite."
+        },
+        {
+          "id": "swe-bench-pro-v2-hard",
+          "reason": "Small 51-task subset with mixed harnesses; retained as standalone reference only."
+        },
+        {
+          "id": "livebench-2.0",
+          "reason": "The stored snapshot mixes six publisher rows with secondary-mirror values; insufficient source uniformity."
+        },
+        {
+          "id": "arc-agi-3",
+          "reason": "The stored scores are from a secondary mirror and collapse multiple settings; excluded pending a complete publisher export."
+        },
+        {
+          "id": "gdpval",
+          "reason": "Only eight model entries and an insufficiently documented snapshot; retained as a separate benchmark."
+        },
+        {
+          "id": "swe-bench-pro",
+          "reason": "Older public split and unknown snapshot date; replaced for tracking by the refreshed V2 family."
         }
       ],
-      "methodology": "QBench Composite Index 1.1 is independent of Artificial Analysis. Each eligible evaluation needs at least eight unique model names. Within an evaluation, the best published score per exact model name is converted to a midrank percentile. Each domain score is the equal average of eligible evaluation percentiles available in that domain. The provisional Index is the equal-weighted average of available domain scores. A model receives a published rank after at least three eligible evaluations across at least two of four domains; ranks that do not meet the former 4-evaluation/3-domain breadth threshold are explicitly marked limited coverage. Models with two eligible evaluations receive a provisional value but no rank. Missing scores are never imputed.",
-      "version": "1.1",
-      "snapshotAsOf": "2026-10-31",
-      "basis": "Four equal-weight domains (Knowledge Work, Coding, Science, General), using AA's category structure only as a taxonomy reference. QBench applies its own public-evaluation percentile method and does not reproduce AA's per-evaluation weighting or native score.",
+      "normalization": "For each eligible benchmark, take one score per exact model under the benchmark's stated comparable harness and convert it to a midrank percentile within that benchmark's observed cohort. Average benchmark percentiles within each task family; average the observed task-family scores equally. Then apply an evidence adjustment: Index = 50 + (raw mean − 50) × sqrt(observed task families / 4). No missing scores are imputed. This shrinks thin-coverage results toward the cohort midpoint without suppressing their visibility.",
+      "methodology": "QBench Index 1.2 is a source-audited composite built from five current evaluations grouped by the tasks they measure, not by another provider's index taxonomy. A benchmark must have at least 12 distinct model names and a current publisher or independent-evaluator result set. A model receives a rank only with at least two eligible benchmark results spanning at least two task families. Every eligible model receives a rank; the score is evidence-adjusted for the number of task families observed. Raw benchmark values, percentiles, configuration, harness and source remain visible in the benchmark details.",
+      "configurationPolicy": "Do not merge aliases unless the source explicitly identifies the same model. Use one comparable harness per benchmark. For DrugDiscoveryBench, only mini-SWE-agent results are included; other native-harness runs remain standalone. For other benchmarks, use the publisher's listed model result and preserve its reported configuration. Do not select a model's best score across different harnesses.",
       "caveats": [
-        "Rank threshold: at least three eligible evaluations across at least two of four domains. Ranks with fewer than four evaluations or fewer than three domains are explicitly marked limited coverage.",
-        "Coverage-limited Index values average only available domains and are not equivalent to complete four-domain scores.",
-        "Knowledge Work has one eligible evaluation (GDPval); Science has two, including ProofBench 1.1. Knowledge Work remains the least broad domain.",
-        "ProofBench 1.1 has four entries tied at 100%; specialist formal-proof systems are excluded from the general-purpose composite.",
-        "GPQA Diamond remains standalone because the checked-in 42-row extract is partial against the 167-row OpenRouter leaderboard.",
-        "FrontierMath Tiers 1–3 remains standalone because the checked-in 60 rows are a partial extract of 120 published configurations.",
-        "OSWorld 2.0 aggregate does not identify binary completion versus partial reward and remains excluded.",
-        "Third-party evaluation runs and secondary leaderboard mirrors are explicitly distinguished from publisher-reported results.",
-        "Missing scores are never imputed."
+        "The Index is a cross-benchmark orientation score, not a confidence interval or a claim of statistical significance.",
+        "Percentiles are relative to each benchmark's evaluated cohort; changing cohort membership can change the percentile even if the raw score does not change.",
+        "The four task families are not interchangeable. Each family contributes equally, not each individual task or benchmark row.",
+        "HLE-Diamond has 19 model results in the current source snapshot; its fixed 1,000-question set is expected to retain headroom for 6–12 months according to Scale Labs.",
+        "ProofBench 1.1 has a small group at 100%; its ceiling risk is monitored, but the broader 54-model distribution remains informative.",
+        "Terminal-Bench 4.0 and Terminal-Bench-Science are independent Vals AI runs, not results copied from AA's composite.",
+        "DrugDiscoveryBench covers a specialized pharmaceutical workflow; it is one component of Scientific workflows, not a universal measure of science ability.",
+        "Older, saturated, partial, mixed-source or mixed-harness datasets remain visible as standalone references and do not affect Index 1.2."
       ],
-      "insufficientCoverage": [],
-      "eligibleBenchmarks": [
-        "gdpval",
-        "terminal-bench-4-0",
-        "swe-bench-pro",
-        "terminal-bench-science-0-1",
-        "proofbench",
-        "hle-diamond",
-        "arc-agi-3",
-        "livebench-2.0"
+      "sourceNotes": [
+        {
+          "label": "Vals AI — Terminal-Bench 4.0",
+          "url": "https://www.vals.ai/benchmarks/terminal-bench-4",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "label": "Vals AI — ProofBench 1.1",
+          "url": "https://www.vals.ai/benchmarks/proof_bench",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "label": "Vals AI — Terminal-Bench-Science 0.1",
+          "url": "https://www.vals.ai/benchmarks/terminal-bench-science",
+          "snapshotDate": "2026-10-25"
+        },
+        {
+          "label": "Scale Labs — HLE-Diamond",
+          "url": "https://labs.scale.com/leaderboard/hle-diamond",
+          "snapshotDate": "2026-10-31"
+        },
+        {
+          "label": "Scale Labs — DrugDiscoveryBench",
+          "url": "https://labs.scale.com/leaderboard/drugdiscoverybench",
+          "snapshotDate": "2026-10-31"
+        }
       ]
     },
     "minimumEvaluationsPerModel": 4,
