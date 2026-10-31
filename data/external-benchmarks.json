@@ -4347,5 +4347,30 @@
       "status": "research-pipeline",
       "note": "Interactive 3D generation evaluated by blind pairwise preference"
     }
-  ]
+  ],
+  "aaIndexReference": {
+    "source": "https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index",
+    "snapshotDate": "2026-10-31",
+    "note": "Official Artificial Analysis Index v5 overall scores, shown as a source reference only; not QBench-calculated.",
+    "models": [
+      {
+        "model": "Gemini 4 Carbon",
+        "provider": "Google",
+        "configuration": "High",
+        "score": 59
+      },
+      {
+        "model": "Claude Opus 5.5",
+        "provider": "Anthropic",
+        "configuration": "Max · Default Fallback",
+        "score": 58
+      },
+      {
+        "model": "Claude Opus 5.5",
+        "provider": "Anthropic",
+        "configuration": "Xhigh · Default Fallback",
+        "score": 57
+      }
+    ]
+  }
 }
