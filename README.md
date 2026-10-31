@@ -79,7 +79,7 @@ The benchmark detail view labels the native metric, displays all stored model/co
 | Model-result / configuration rows | 664 |
 | Exact model names across all datasets | 151 |
 | Model + configuration + harness combinations | 553 |
-| Provider labels | 27 |
+| Provider labels | 28 |
 | Benchmark directory entries | 74 |
 
 Counts come from the checked-in `data/external-benchmarks.json`. A model may have multiple configurations, harnesses or benchmark results.
