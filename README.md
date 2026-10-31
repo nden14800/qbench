@@ -2,6 +2,10 @@
 
 Independent AI model benchmark explorer and performance analytics platform.
 
+**公開URL:** https://qbench.pages.dev/ （Cloudflare Pages、`main` ブランチから自動デプロイ）
+
+QBench は、公開されているベンチマーク結果を元に、モデルごとの成績・実行条件・出典・取得日を一覧し、比較・分析できる独立した閲覧ツールです。Artificial Analysis の画面や機能を参考にしていますが、同社の指数（Intelligence Index）を再現・公式化するものではありません。
+
 QBench collects model-level results from public benchmark publishers and source-traceable leaderboard mirrors. It keeps native benchmark units, run configurations, harnesses, snapshot dates and source notes visible. It does not manufacture missing scores or claim to reproduce Artificial Analysis' native Intelligence Index.
 
 ## Data snapshot — 2026-10-31
