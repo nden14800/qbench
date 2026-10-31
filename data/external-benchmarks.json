@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.6",
-  "note": "Snapshot 2026-10-31. 20 datasets with source-backed model-result rows and 44 catalogued evaluations. The QBench Index keeps its original scored leaderboard; all nine AA v5 evaluations and independent benchmarks are shown together in one compact registry. No AA-compatible aggregate is invented from incomplete same-configuration coverage.",
+  "note": "Snapshot 2026-10-31. 20 datasets contain 507 published model-result rows across 165 unique model names, 330 configurations, and 31 providers. The composite score is calculated only for the 10 models with complete coverage across its six source tables; each individual benchmark leaderboard shows its full available model set.",
   "benchmarks": [
     {
       "id": "livebench-2.0",
@@ -4109,7 +4109,7 @@
     {
       "id": "aa-briefcase-v1-1",
       "name": "AA-Briefcase v1.1",
-      "group": "AA Index v5",
+      "group": "Core evaluations",
       "source": "https://artificialanalysis.ai/evaluations/aa-briefcase",
       "status": "results-imported",
       "note": "91-task knowledge-work evaluation; private main dataset"
@@ -4117,7 +4117,7 @@
     {
       "id": "automationbench-aa",
       "name": "AutomationBench-AA",
-      "group": "AA Index v5",
+      "group": "Core evaluations",
       "source": "https://artificialanalysis.ai/evaluations/automationbench-aa",
       "status": "leader-summary-imported",
       "note": "657 cross-app workflow tasks; objective completion with guardrail penalties"
@@ -4125,7 +4125,7 @@
     {
       "id": "gdp-pdf",
       "name": "GDP.pdf",
-      "group": "AA Index v5",
+      "group": "Core evaluations",
       "source": "https://artificialanalysis.ai/evaluations/gdp-pdf",
       "status": "leader-summary-imported",
       "note": "Long professional documents and evidence-based deliverables"
@@ -4133,7 +4133,7 @@
     {
       "id": "terminal-bench-4-0",
       "name": "Terminal-Bench 4.0",
-      "group": "AA Index v5",
+      "group": "Core evaluations",
       "source": "https://www.tbench.ai/?version=4.0",
       "status": "results-imported",
       "note": "66 terminal-agent tasks; three trials per task on official board"
@@ -4141,7 +4141,7 @@
     {
       "id": "frontiercode-2-0",
       "name": "FrontierCode 2.0",
-      "group": "AA Index v5",
+      "group": "Core evaluations",
       "source": "https://artificialanalysis.ai/evaluations/frontiercode-2-0",
       "status": "leader-summary-imported",
       "note": "132 real repository tasks graded for maintainer mergeability"
@@ -4149,7 +4149,7 @@
     {
       "id": "terminal-bench-science-0-1",
       "name": "Terminal-Bench-Science 0.1",
-      "group": "AA Index v5",
+      "group": "Core evaluations",
       "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
       "status": "results-imported",
       "note": "70 expert-authored research workflows"
@@ -4157,7 +4157,7 @@
     {
       "id": "critpt-v2-hard",
       "name": "CritPt v2 (Hard Subset)",
-      "group": "AA Index v5",
+      "group": "Core evaluations",
       "source": "https://artificialanalysis.ai/evaluations/critpt-v2?critpt-subset=hard",
       "status": "leader-summary-imported",
       "note": "40 hardest research physics tasks, code execution enabled"
@@ -4165,7 +4165,7 @@
     {
       "id": "aa-omniscience-v1-1",
       "name": "AA-Omniscience v1.1",
-      "group": "AA Index v5",
+      "group": "Core evaluations",
       "source": "https://artificialanalysis.ai/evaluations/omniscience",
       "status": "leader-summary-imported",
       "note": "Knowledge reliability; correct answers rewarded, hallucinations penalized, abstention not penalized"
@@ -4173,7 +4173,7 @@
     {
       "id": "hle-diamond",
       "name": "HLE-Diamond",
-      "group": "AA Index v5",
+      "group": "Core evaluations",
       "source": "https://labs.scale.com/leaderboard/hle-diamond",
       "status": "results-imported",
       "note": "1,000 fixed questions: 500 reasoning + 500 knowledge; calibration error retained"
@@ -4181,7 +4181,7 @@
     {
       "id": "arc-agi-2",
       "name": "ARC-AGI-2",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/arc-agi-2",
       "status": "results-imported",
       "note": "Abstract reasoning; creator-administered results"
@@ -4189,7 +4189,7 @@
     {
       "id": "frontiermath-tiers-1-3-v2",
       "name": "FrontierMath Tiers 1–3 v2",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/frontiermath-tiers-1-3-v2",
       "status": "results-imported",
       "note": "Unpublished difficult mathematics problems"
@@ -4197,7 +4197,7 @@
     {
       "id": "frontiermath-tier-4-v2",
       "name": "FrontierMath Tier 4 v2",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
       "status": "results-imported",
       "note": "Research-level mathematics"
@@ -4205,7 +4205,7 @@
     {
       "id": "frontiermath-erdos",
       "name": "FrontierMath Erdős",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/frontiermath-erdos",
       "status": "results-imported",
       "note": "68 open Erdős problems formalized in Lean"
@@ -4213,7 +4213,7 @@
     {
       "id": "mystery-game-puzzles",
       "name": "Mystery Game Puzzles",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/mystery-game-puzzles",
       "status": "results-imported",
       "note": "Hidden-identity game-state reasoning"
@@ -4221,7 +4221,7 @@
     {
       "id": "spireclimb",
       "name": "SpireClimb",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/spireclimb",
       "status": "research-pipeline",
       "note": "Long-horizon game/computer-use tasks; awaiting a complete, auditable model-level extract"
@@ -4229,7 +4229,7 @@
     {
       "id": "ebr-bench",
       "name": "Earthborne Rangers (EBR-bench)",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/ebr-bench",
       "status": "research-pipeline",
       "note": "Continual learning and long-horizon planning; protocol versions must be separated"
@@ -4237,7 +4237,7 @@
     {
       "id": "mirrorcode",
       "name": "MirrorCode",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/mirrorcode",
       "status": "research-pipeline",
       "note": "Coding benchmark administered by Epoch AI; import full leaderboard with source metadata"
@@ -4245,7 +4245,7 @@
     {
       "id": "swe-bench-verified",
       "name": "SWE-bench Verified",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/swe-bench-verified",
       "status": "results-imported",
       "note": "Real GitHub issue resolution"
@@ -4253,7 +4253,7 @@
     {
       "id": "furniture-assembly",
       "name": "Furniture Assembly Benchmark",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/furniture-assembly",
       "status": "results-imported",
       "note": "Multi-step physical-world task planning"
@@ -4261,7 +4261,7 @@
     {
       "id": "gpqa-diamond",
       "name": "GPQA Diamond",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/gpqa-diamond",
       "status": "results-imported",
       "note": "Graduate-level science reasoning"
@@ -4269,7 +4269,7 @@
     {
       "id": "proofbench",
       "name": "ProofBench",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/proofbench",
       "status": "results-imported",
       "note": "Mathematical proof generation"
@@ -4277,7 +4277,7 @@
     {
       "id": "mmlu-pro",
       "name": "MMLU-Pro",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://artificialanalysis.ai/evaluations/mmlu-pro",
       "status": "research-pipeline",
       "note": "Graduate-level multi-domain knowledge and reasoning"
@@ -4285,7 +4285,7 @@
     {
       "id": "mmmu-pro",
       "name": "MMMU-Pro",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://artificialanalysis.ai/evaluations/mmmu-pro",
       "status": "research-pipeline",
       "note": "Multimodal reasoning across 30 academic disciplines"
@@ -4293,7 +4293,7 @@
     {
       "id": "ifbench",
       "name": "IFBench",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://artificialanalysis.ai/evaluations/ifbench",
       "status": "research-pipeline",
       "note": "Verifiable instruction-following generalization"
@@ -4301,7 +4301,7 @@
     {
       "id": "apex-agents-aa",
       "name": "APEX-Agents-AA",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://artificialanalysis.ai/evaluations/apex-agents-aa",
       "status": "research-pipeline",
       "note": "Long-horizon professional-services workflows"
@@ -4309,7 +4309,7 @@
     {
       "id": "harvey-lab-aa",
       "name": "Harvey LAB-AA v1.1",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://artificialanalysis.ai/evaluations/harvey-lab-aa",
       "status": "research-pipeline",
       "note": "120 private legal tasks across 24 practice areas; source-grounded grading"
@@ -4317,7 +4317,7 @@
     {
       "id": "enterpriseops-gym-aa",
       "name": "EnterpriseOps-Gym-AA",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://artificialanalysis.ai/evaluations/enterpriseops-gym-aa",
       "status": "research-pipeline",
       "note": "Stateful enterprise workflows across eight domains"
@@ -4325,7 +4325,7 @@
     {
       "id": "itbench-aa",
       "name": "ITBench-AA",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://artificialanalysis.ai/evaluations/itbench-aa",
       "status": "research-pipeline",
       "note": "Kubernetes incident diagnosis from offline snapshots"
@@ -4333,7 +4333,7 @@
     {
       "id": "healthbench",
       "name": "HealthBench",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://artificialanalysis.ai/evaluations/healthbench",
       "status": "research-pipeline",
       "note": "5,000 physician-rubric health conversations"
@@ -4341,7 +4341,7 @@
     {
       "id": "aa-3d",
       "name": "AA-3D",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://artificialanalysis.ai/evaluations/aa-3d",
       "status": "research-pipeline",
       "note": "Interactive 3D generation evaluated by blind pairwise preference"
@@ -4349,7 +4349,7 @@
     {
       "id": "chess-puzzles",
       "name": "Chess Puzzles",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks",
       "status": "research-pipeline",
       "note": "Game reasoning benchmark with creator-administered results"
@@ -4357,7 +4357,7 @@
     {
       "id": "mock-aime-2024-2025",
       "name": "Mock AIME 2024–2025",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks",
       "status": "research-pipeline",
       "note": "Fresh olympiad-style mathematics questions; higher difficulty than saturated MATH Level 5"
@@ -4365,7 +4365,7 @@
     {
       "id": "remote-labor-index",
       "name": "Remote Labor Index",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks",
       "status": "research-pipeline",
       "note": "Real-world task and economic-work capability evaluation"
@@ -4373,7 +4373,7 @@
     {
       "id": "surface-evolver-bench",
       "name": "Surface Evolver Bench",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks",
       "status": "research-pipeline",
       "note": "Scientific software and numerical problem-solving"
@@ -4381,7 +4381,7 @@
     {
       "id": "simpleqa-verified",
       "name": "SimpleQA Verified",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks",
       "status": "research-pipeline",
       "note": "Factual accuracy and verifiable short-answer knowledge"
@@ -4389,7 +4389,7 @@
     {
       "id": "spatialviz-bench",
       "name": "SpatialViz-Bench",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks",
       "status": "research-pipeline",
       "note": "Spatial reasoning and visual-spatial understanding"
@@ -4397,7 +4397,7 @@
     {
       "id": "weirdml-v2",
       "name": "WeirdML V2",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks",
       "status": "research-pipeline",
       "note": "Out-of-distribution reasoning and unusual task generalization"
@@ -4405,7 +4405,7 @@
     {
       "id": "the-agent-company",
       "name": "The Agent Company",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks",
       "status": "research-pipeline",
       "note": "Long-horizon workplace task execution"
@@ -4413,7 +4413,7 @@
     {
       "id": "osworld-2-0",
       "name": "OSWorld 2.0",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks",
       "status": "research-pipeline",
       "note": "Computer-use and desktop interaction benchmark"
@@ -4421,7 +4421,7 @@
     {
       "id": "deepswe-v1-1",
       "name": "DeepSWE v1.1",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks",
       "status": "research-pipeline",
       "note": "Agentic software engineering and repository issue resolution"
@@ -4429,7 +4429,7 @@
     {
       "id": "aa-analystagent",
       "name": "AA-AnalystAgent",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://artificialanalysis.ai/evaluations",
       "status": "research-pipeline",
       "note": "Spreadsheet and document analysis for professional quantitative workflows"
@@ -4437,7 +4437,7 @@
     {
       "id": "code2video-aa",
       "name": "Code2Video-AA",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://artificialanalysis.ai/evaluations",
       "status": "research-pipeline",
       "note": "Generate short product and brand videos from 114 design briefs"
@@ -4445,7 +4445,7 @@
     {
       "id": "aa-personalitybench",
       "name": "AA-PersonalityBench",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://artificialanalysis.ai/evaluations",
       "status": "research-pipeline",
       "note": "Communication-style and personality measurement; descriptive, not factual capability"
@@ -4453,7 +4453,7 @@
     {
       "id": "mlcr-aa",
       "name": "MLCR-AA",
-      "group": "Independent benchmarks",
+      "group": "Additional evaluations",
       "source": "https://artificialanalysis.ai/evaluations",
       "status": "research-pipeline",
       "note": "Long-context medical-record synthesis and fragmented-document reasoning"
