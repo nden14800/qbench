@@ -6,52 +6,67 @@ Evidence-first AI model benchmark explorer.
 **Repository:** https://github.com/nden14800/qbench  
 **Deployment:** Cloudflare Pages, production branch `main`.
 
-QBench keeps every result attached to its publisher, model variant, reasoning effort, harness, configuration, metric and snapshot. **QBench Index 1.3** is a source-audited composite of seven evaluations across six capability families. It does not import Artificial Analysis' composite scores or private results.
+QBench keeps every result attached to its publisher, model variant, reasoning effort, harness, configuration, metric and snapshot. **QBench Index 1.4** is a source-audited composite of six evaluations across five capability families. It does not import Artificial Analysis' composite scores or private results.
 
-## QBench Index 1.3
+## QBench Index 1.4
 
 ### Current coverage — 2026-10-31
 
 | Metric | Result |
 |---|---:|
-| Eligible evaluations | 7 |
-| Capability families | 6 |
+| Eligible evaluations | 6 |
+| Capability families | 5 |
 | Base model names with at least one eligible result | 84 |
-| Exact model/effort variants | 145 |
-| Ranked variants | 52 |
-| Full evidence (6 families) | 0 |
-| Broad evidence (4–5 families) | 1 |
-| Limited evidence (2–3 families) | 51 |
-| Unranked variants | 93 |
+| Exact model/effort variants with at least one eligible result | 134 |
+| Ranked variants (3+ evaluations across 3+ families) | 14 |
+| Full evidence (5 families) | 0 |
+| Broad evidence (4 families) | 0 |
+| Limited evidence (3 families) | 14 |
+| Unranked variants | 120 |
 
 A base model may appear as several independent effort variants. The leaderboard is therefore a model-variant ranking, not a single best-effort score per model family.
+
+### What changed from 1.3
+
+- **Family count:** five families. Strategic reasoning (Mystery Game Puzzles) is removed from the Index.
+- **Mystery Game Puzzles is standalone:** the imported table holds 20 of the 140 models Epoch AI tested, so it is not a complete publisher table.
+- **No shrinkage toward 50:** Index 1.3 pulled incomplete results toward 50 with a square-root factor. Index 1.4 averages only the observed families. Missing families are left out, not imputed.
+- **Stricter ranking:** a variant is ranked only with at least three evaluations across three families. Index 1.3 required two evaluations across two families.
+- **Removed:** the Index 1.3 evidence factor (`√(observed families ÷ 6)`), the 1.3 extended-index methodology text, and the 1.3 evidence-factor columns and CSV field. The CSV field is now `family_share`.
 
 ### Eligible evaluations and source snapshots
 
 | Capability family | Evaluation | Variants | Source / snapshot |
 |---|---|---:|---|
 | Software engineering | Terminal-Bench 4.0 | 59 | Vals AI · 2026-10-29 |
-| Scientific workflows | Terminal-Bench-Science 0.1 | 42 | Artificial Analysis · 2026-10-31 |
+| Scientific workflows | Terminal-Bench-Science 0.1 | 42 | Vals AI (Mini-SWE-agent rows only) · 2026-10-25 |
 | Scientific workflows | DrugDiscoveryBench | 14 | Scale Labs · 2026-10-31 |
 | Expert knowledge | HLE-Diamond | 19 | Scale Labs · 2026-10-31 |
-| Strategic reasoning | Mystery Game Puzzles | 20 | Epoch AI · 2026-10-14 |
 | Tool use | MCP Atlas — Pass Rate (All 1,000 tasks) | 20 | Scale Labs · 2026-04-08 |
 | Adaptive interactive reasoning | ARC-AGI-3 Standard harness | 40 | ARC Prize · 2026-10-31 |
 
-MCP Atlas contains 1,000 human-authored tasks across 36 MCP servers and 220 tools, including 500 held-out tasks. QBench uses only the source's explicitly labeled All 1,000 Pass Rate table (20 rows) and preserves Public 500 companion scores separately. The page headline (83.6%) does not match the displayed All 1,000 table maximum (82.2%), so the discrepancy is documented; a separate 34-row Performance Comparison table with an unclear metric label remains standalone. HiL-Bench is currently standalone: the official 30-row comparison table does not identify its score metric, while the paper's clearly labeled Pass@3 and ASK-F1 results cover only four models, below the 12-variant source gate. DrugDiscoveryBench uses the common mini-SWE-agent harness, three-run averages and a 120-minute timeout. Mystery Game Puzzles is a 100-position hidden-identity evaluation; the imported snapshot contains 20 exact model/effort rows from Epoch AI's larger 140-model leaderboard.
+### Index 1.4 gates
 
-ARC-AGI-3 uses 40 official Standard-harness model/effort variants from ten base models. The Provider Adapter results are stored as a separate standalone evaluation because the harness materially changes scores. For example, GPT-6 Astra's max-effort result is 62.7% on Standard and 98.6% on Provider Adapter; high effort is 54.8% vs 99.9%. These are not mixed in the Index.
+1. **Complete publisher table:** the evaluation must be a full publisher-reported table. Partial mirrors and visible-row extracts stay standalone.
+2. **Variant count:** at least 12 distinct model/effort variants.
+3. **One stated harness:** a single harness or configuration per evaluation. Mixed-harness sets stay standalone.
+4. **Not ceiling-saturated:** the top score must be below the saturation threshold recorded in the dataset.
+5. **Explicit metric:** the score metric is explicitly labeled. Ambiguous comparison tables stay standalone.
 
 ### Calculation
 
-1. **Source gate:** each eligible evaluation needs at least 12 distinct model/effort variants with usable publisher-reported results.
-2. **Native score:** retain the source's 0–100 task-success or accuracy percentage. Do not convert within-cohort rank into a percentile.
-3. **Family aggregation:** average multiple evaluations within the same capability family. Average the six observed family scores equally.
-4. **Evidence adjustment:** require at least two eligible evaluations across two distinct families for a rank. Incomplete seven-family coverage is adjusted toward 50.
+1. **Native score:** retain each evaluation's publisher-reported 0–100 percentage. Do not convert within-cohort rank into a percentile.
+2. **Family mean:** average the evaluations inside each capability family.
+3. **Index:** average the observed family means with equal weight.
+4. **Ranking rule:** a variant is ranked only with at least three evaluations across three families.
 
-`Index = 50 + (Raw family mean − 50) × sqrt(Observed families / 6)`
+$$
+\mathrm{Index}_{1.4} = \frac{1}{F_{\text{obs}}} \sum_{f \in \text{observed}} \left( \frac{1}{n_f} \sum_{i=1}^{n_f} s_{f,i} \right)
+$$
 
-The adjustment is an evidence-coverage convention, not a confidence interval, human-equivalence score or IQ score. Missing values are not imputed. Benchmark metrics remain distinct in the detail view even though the composite uses their reported percentage-point scores; task formats, graders, chance levels and harnesses are not psychometrically interchangeable.
+where $s_{f,i}$ is the native score of evaluation $i$ in family $f$, $n_f$ is the number of evaluations in that family, and $F_{\text{obs}}$ is the number of observed families. Missing families are not imputed.
+
+The composite is a benchmark-percentage average. It is not a confidence interval, a human-equivalence score or an IQ score. Task formats, graders, chance levels and harnesses are not psychometrically interchangeable, so the benchmark metrics remain distinct in the detail view.
 
 ### Model identity and reasoning effort
 
@@ -60,38 +75,45 @@ The adjustment is an evidence-coverage convention, not a confidence interval, hu
 - `Not reported` is not interpreted as low, default or high effort.
 - QBench never selects the highest effort result to represent a base model.
 - Harnesses, routes, fallback settings and other configurations remain visible.
-- Duplicate model/effort rows were audited in the seven eligible datasets; no duplicates were found within an evaluation.
+
+### Artificial Analysis reference (checked 2026-10-31)
+
+Artificial Analysis Intelligence Index v5.0 weights nine evaluations in four categories at 25% each: Knowledge Work, Coding, Science and General ([methodology](https://artificialanalysis.ai/methodology/intelligence-benchmarking)). QBench 1.4 does not import that composite, its private evaluations, or any partial AA leaderboard mirror. The AA composite is used only as a reference for how a composite can be structured.
+
+### Candidates reviewed and not yet added
+
+- **FrontierSWE v2 (Proximal):** the official page at [frontierswe.com](https://www.frontierswe.com/) lists 34 tasks and Mean@5 scores under a single proximus harness. Only ten rows were visible in the page's default view, and the total model count (23) comes from a mirror. It stays out of Index 1.4 until the full table is confirmed.
 
 ### Standalone evaluations and exclusions
 
-These remain visible in the benchmark directory but do not contribute to the composite:
+These remain visible in the benchmark directory but do not contribute to the Index:
 
-- **ARC-AGI-1 and ARC-AGI-2 semi-private:** retained as ceiling-watch series; high-end results approach saturation.
+- **Mystery Game Puzzles:** 20 of 140 tested models are visible, so the table is incomplete.
+- **ARC-AGI-1 and ARC-AGI-2 semi-private:** ceiling-watch series; high-end results approach saturation.
 - **ARC-AGI-3 Provider Adapter:** separate harness from Standard; never pooled into the Index.
-- **HiL-Bench:** the official leaderboard's 30-row Performance Comparison table does not explicitly label its score metric; it conflicts with the paper's clearly labeled Pass@3 results. The paper reports Pass@3 and ASK-F1 for only four models, below the 12-variant source gate; it remains standalone.
-- **MCP Atlas Performance Comparison:** the publisher's 34-row score ± table does not explicitly label the metric; retained separately. The Index uses only the clearly labeled All 1,000-task Pass Rate table.
-- **ProofBench 1.1:** upper-end tie at 100% creates ceiling risk.
+- **HiL-Bench:** the official 30-row table does not explicitly label its score metric, and the paper's Pass@3 results cover four models only.
+- **MCP Atlas Performance Comparison:** the 34-row table does not label its metric; the Index uses only the All 1,000-task Pass Rate table.
+- **ProofBench 1.1:** several top models tie at 100%, creating ceiling risk.
 - **GPQA Diamond:** near-ceiling and incomplete checked-in snapshot.
-- **FrontierMath Tiers 1–3 v2:** the checked-in extract is partial, not a complete publisher export.
-- **FrontierMath Tier 4 v2:** source audit found a mismatch between checked-in values and Epoch AI's currently visible official results; six visible rows remain standalone pending complete export reconciliation.
-- **Furniture Assembly:** only three values could be independently confirmed from the official launch analysis; below the 12-variant gate.
-- **SWE-Bench Pro V2 / Hard:** mixed Claude Code, Codex and mini-SWE-agent harnesses.
-- **LiveBench 2.0:** imported snapshot mixes official and secondary-mirror rows; official-only subset is below the source gate.
-- **GDPval:** eight current model entries, below the source gate.
-- **OSWorld 2.0:** available rows are self-reported and do not yet provide a common verified harness snapshot.
-- **METR Time Horizons:** METR states that its page is no longer actively updated; last update 2026-09-08.
+- **FrontierMath Tiers 1–3 v2 and Tier 4 v2:** incomplete extracts, or a source mismatch under reconciliation.
+- **SWE-Bench Pro (public and V2) and V2 Hard:** mixed harnesses, saturation, or variant ambiguity.
+- **LiveBench 2.0:** the snapshot mixes official rows with secondary-mirror rows.
+- **Partial Artificial Analysis mirrors (GDP.pdf, AA-Omniscience, AA-Analyst, APEX, EnterpriseOps, MLCR, Code2Video and others):** visible-row extracts, below the source gate.
+- **METR Time Horizons:** METR says the page is no longer actively updated.
 
 A larger leaderboard is not automatically a better composite. Incomplete exports, stale data, saturated tests and mixed harnesses remain standalone until a comparable publisher dataset is available.
 
 ## Model and benchmark analysis features
 
+- Index bars: ranked variants sorted by Index 1.4 in a leaderboard-style bar chart.
+- PNG export on every chart from the toolbar icon, on a theme-aware background.
 - Model detail view: release date, provider, API token pricing, family scores, all available effort variants and source-level benchmark results.
 - Effort filter and separate model/effort leaderboard rows.
 - Comparison radar and per-evaluation comparison table.
 - ARC-AGI-3 Standard vs Provider Adapter harness comparison by effort.
 - Benchmark result bars, uncertainty values, reasoning/knowledge splits and calibration error where published.
 - Benchmark-specific cost-per-test, cost-per-successful-test, output tokens per test and duration per test where source data exists.
-- Efficiency scatter charts and benchmark-specific Pareto frontier.
+- Efficiency scatter charts and benchmark-specific Pareto frontier. Index-level scatter labels show the model name, with the effort level only when it is reported.
 - Score vs model release-date chart when a source reports the release date.
 - Reasoning-effort vs score chart when a model has multiple published effort settings.
 - Task-design examples where the publisher provides enough public information.

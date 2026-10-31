@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.6",
-  "note": "QBench Index 1.2 rebuild, snapshot 2026-10-31: 24 result datasets, 694 model-result/configuration rows, 149 exact model names, 583 model/configuration/harness combinations, 28 provider labels, and 43 benchmark directory entries. Five selected source-audited evaluations contribute to Index 1.2; legacy and partial datasets remain standalone. Index 1.3 source-audit continuation: excluded FrontierMath Tier 4 and Furniture Assembly from the composite pending source reconciliation; added Scale Labs MCP Atlas and HiL-Bench.",
+  "note": "QBench Index 1.4 rebuild, snapshot 2026-10-31. Six source-audited evaluations across five capability families contribute to Index 1.4. Mystery Game Puzzles is standalone because its visible table is partial. Partial mirrors, mixed-harness sets, ceiling-watch series and ambiguous metric tables remain standalone.",
   "benchmarks": [
     {
       "id": "livebench-2.0",
@@ -4062,7 +4062,7 @@
           "scoreUncertaintyNote": "Publisher-reported ± value; retain source-specific interpretation."
         }
       ],
-      "indexEligible": true,
+      "indexEligible": false,
       "taskCount": 100,
       "scoreScale": {
         "minimum": 0,
@@ -13080,16 +13080,15 @@
   ],
   "composite": {
     "name": "QBench Index",
-    "version": "1.3",
+    "version": "1.4",
     "snapshotAsOf": "2026-10-31",
-    "basis": "Seven source-audited evaluations across six capability families. Scores are publisher-reported percentages, not within-cohort rank percentiles. Exact model/effort variants are separate. Ambiguous metric tables and below-gate paper results remain standalone.",
+    "basis": "Six source-audited evaluations across five capability families. Each contributing evaluation must be a complete publisher-reported table with at least 12 distinct model/effort variants, one stated harness, and a top score that is not ceiling-saturated. Scores are publisher-reported percentages, not within-cohort rank percentiles. Exact model/effort variants are separate. Partial mirrors, ambiguous metric tables and below-gate sources remain standalone.",
     "minimumModelsPerEvaluation": 12,
     "minimumCategoryCoverage": 2,
     "componentBenchmarks": [
       "terminal-bench-4-0",
       "terminal-bench-science-0-1",
       "hle-diamond",
-      "mystery-game-puzzles",
       "drug-discovery-bench",
       "mcp-atlas",
       "arc-agi-3"
@@ -13098,13 +13097,12 @@
       "terminal-bench-4-0",
       "terminal-bench-science-0-1",
       "hle-diamond",
-      "mystery-game-puzzles",
       "drug-discovery-bench",
       "mcp-atlas",
       "arc-agi-3"
     ],
     "insufficientCoverage": [],
-    "normalization": "Each evaluation retains its publisher-reported 0–100 percentage-point score. Results are averaged within six capability families; observed family means are averaged equally. Index = 50 + (Raw family mean − 50) × sqrt(Observed families / 6). Exact model/effort variants remain separate; missing values are not imputed.",
+    "normalization": "Each evaluation retains its publisher-reported 0–100 percentage-point score. Results are averaged within each capability family. The observed family means are averaged with equal weight: Index = (sum of observed family means) ÷ (number of observed families). Missing families are not imputed.",
     "configurationPolicy": "Create a separate model variant for each exact model name and reported reasoning effort. Never select the highest score across effort levels. Keep unreported effort separate. Preserve harness, routing, fallback, release date and model metadata. ARC-AGI-3 Standard and Provider Adapter are separate evaluations; only Standard contributes to the Index.",
     "domains": [
       {
@@ -13130,13 +13128,6 @@
         "note": "1,000 expert-level questions split evenly between reasoning and knowledge."
       },
       {
-        "name": "Strategic reasoning",
-        "benchmarks": [
-          "mystery-game-puzzles"
-        ],
-        "note": "100 hidden-identity game positions; 140 models tested by Epoch AI, with 20 exact model/effort variants in the imported source snapshot."
-      },
-      {
         "name": "Tool use",
         "benchmarks": [
           "mcp-atlas"
@@ -13151,15 +13142,15 @@
         "note": "40 verified model/effort variants from eight official model pages. Semi-private Standard-harness scores only; Provider Adapter remains separate."
       }
     ],
-    "method": "QBench Index 1.3 uses seven source-audited evaluations across six capability families. It retains publisher-reported percentages, exact model/effort variants and comparable harnesses; ambiguous publisher comparison scores remain standalone.",
+    "method": "QBench Index 1.4 averages publisher-reported percentages within five capability families, then averages the observed families with equal weight. Incomplete family coverage is not shrunk toward 50. A variant is ranked only with at least three evaluations across three capability families.",
     "caveats": [
-      "The Index is a seven-family composite of source-reported percentages, not an IQ score, human-equivalence score, or confidence interval.",
+      "The Index is a five-family composite of source-reported percentages, not an IQ score, human-equivalence score, or confidence interval.",
       "Direct percentage-point scoring avoids within-cohort rank-percentile inflation. Benchmark difficulty, graders, task formats and guessing opportunities still differ; equal family weights are a transparent convention, not a psychometric equivalence claim.",
       "Effort variants are separate rows. 'Not reported' means the publisher did not identify the reasoning effort; it is never inferred from a harness.",
       "Harness differences are preserved. ARC-AGI-3 Standard and Provider Adapter are separate; only Standard contributes to the Index.",
-      "Coverage adjustment shrinks incomplete seven-family results toward 50. This is an evidence adjustment, not a confidence interval.",
-      "Ranking requires at least two evaluations across two distinct families to improve coverage without allowing single-benchmark results to become an Index rank. Rows with less evidence remain visible but unranked.",
-      "Mystery Game Puzzles has 140 tested models on Epoch AI's page; this snapshot contains 20 exact model/effort variants surfaced in the official results extract, not all 140.",
+      "Incomplete family coverage is not shrunk toward 50. The Index averages only the observed families, and a variant is ranked only with three or more families.",
+      "Ranking requires at least three evaluations across three distinct capability families. Rows with less evidence remain visible but unranked.",
+      "Mystery Game Puzzles has 140 tested models on Epoch AI's page; this snapshot contains 20 exact model/effort variants surfaced in the official results extract, not all 140. It is excluded from Index 1.4 because the visible table is incomplete.",
       "DrugDiscoveryBench uses mini-SWE-agent results only. Its 82 expert-authored tasks are averaged over three runs with a 120-minute timeout.",
       "MCP Atlas is updated April 8, 2026; it remains a useful held-out tool-use evaluation but is older than the October 2026 snapshots.",
       "HiL-Bench remains standalone: its official leaderboard's 30-row comparison table does not explicitly label the score metric, while the paper's clearly labeled Pass@3 and ASK-F1 results cover only four models, below the 12-variant source gate.",
@@ -13291,17 +13282,17 @@
       "broadEvidenceVariants": 1,
       "limitedEvidenceVariants": 51,
       "insufficientEvidenceVariants": 93,
-      "note": "Recomputed from current eligible data, exact model/effort identities and the Index 1.3 runtime."
+      "note": "Recomputed for Index 1.4 from the current eligible data (see methodology page for the live counts)."
     },
     "supplementaryInputsExcluded": [
       "aa-omniscience-v1-1-accuracy-atlas"
     ],
     "extendedIndex": {
-      "version": "1.3",
+      "version": "1.4",
       "snapshotAsOf": "2026-10-31",
       "minimumModelsPerEvaluation": 12,
-      "minimumEvaluationsPerModel": 2,
-      "minimumDomainsPerModel": 2,
+      "minimumEvaluationsPerModel": 3,
+      "minimumDomainsPerModel": 3,
       "domains": [
         {
           "name": "Software engineering",
@@ -13326,13 +13317,6 @@
           "note": "1,000 expert-level questions split evenly between reasoning and knowledge."
         },
         {
-          "name": "Strategic reasoning",
-          "benchmarks": [
-            "mystery-game-puzzles"
-          ],
-          "note": "100 hidden-identity game positions; 140 models tested by Epoch AI, with 20 exact model/effort variants in the imported source snapshot."
-        },
-        {
           "name": "Tool use",
           "benchmarks": [
             "mcp-atlas"
@@ -13351,12 +13335,15 @@
         "terminal-bench-4-0",
         "terminal-bench-science-0-1",
         "hle-diamond",
-        "mystery-game-puzzles",
         "drug-discovery-bench",
         "mcp-atlas",
         "arc-agi-3"
       ],
       "excludedFromExtendedIndex": [
+        {
+          "id": "mystery-game-puzzles",
+          "reason": "Standalone in Index 1.4: the imported table holds 20 of the 140 models Epoch AI tested, so the publisher table is incomplete."
+        },
         {
           "id": "proofbench",
           "reason": "Standalone only: several leading general-purpose models tie at 100%, so it is excluded from the frontier composite to reduce ceiling bias."
@@ -13576,19 +13563,49 @@
         "note": "Recomputed from current eligible data, exact model/effort identities and the Index 1.3 runtime."
       }
     },
-    "minimumEvaluationsPerModel": 2,
-    "minimumDomainsPerModel": 2,
-    "aaReferenceEvaluations": [
-      "aa-briefcase-v1-1",
-      "automationbench-aa",
-      "gdp-pdf",
-      "frontiercode-2-0",
-      "terminal-bench-4-0",
-      "terminal-bench-science-0-1",
-      "critpt-v2-hard",
-      "aa-omniscience-v1-1",
-      "hle-diamond"
-    ]
+    "minimumEvaluationsPerModel": 3,
+    "minimumDomainsPerModel": 3,
+    "aaReferenceEvaluations": {
+      "source": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
+      "version": "Intelligence Index v5.0",
+      "structure": "nine evaluations in four categories, 25% each",
+      "categories": [
+        {
+          "name": "Knowledge Work",
+          "weight": 0.25,
+          "evaluations": [
+            "AA-Briefcase v1.1 (15%)",
+            "AutomationBench-AA (5%)",
+            "GDP.pdf (5%)"
+          ]
+        },
+        {
+          "name": "Coding",
+          "weight": 0.25,
+          "evaluations": [
+            "FrontierCode 2.0 (15%)",
+            "Terminal-Bench 4.0 (10%)"
+          ]
+        },
+        {
+          "name": "Science",
+          "weight": 0.25,
+          "evaluations": [
+            "Terminal-Bench-Science 0.1 (15%)",
+            "CritPt v2 Hard subset (10%)"
+          ]
+        },
+        {
+          "name": "General",
+          "weight": 0.25,
+          "evaluations": [
+            "AA-Omniscience v1.1 (15%)",
+            "HLE-Diamond (10%)"
+          ]
+        }
+      ],
+      "note": "Reference only. QBench does not import the AA composite or AA-private results."
+    }
   },
   "apiPricing": {
     "snapshotDate": "2026-10-31",
