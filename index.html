@@ -724,11 +724,13 @@ function renderBench(){
   var top=arr.slice(0,25),p=pal();
   var costRows=allRows.filter(function(r){return Number(r.costPerTestUSD)>0||Number(r.costPerSuccessfulTaskUSD)>0;});
   var costHtml=costRows.length>=3?'<h3 class="card-title-qb mt-4 mb-2">'+esc(costName)+' vs. score</h3><div id="bench-cost-el" style="height:360px"></div><div class="notice-qb">Reported evaluation-specific costs are shown only within this benchmark. Cost metrics are not combined across evaluations.</div>':'';
-  var hasHleParts=allRows.some(function(r){return r.reasoningScore!=null||r.knowledgeScore!=null;}),hasCalib=allRows.some(function(r){return r.calibrationError!=null;});\n  var header='<tr><th>Model</th><th class="text-end">Score (± if reported)</th>'+(hasHleParts?'<th class="text-end">Reasoning</th><th class="text-end">Knowledge</th>':'')+(hasCalib?'<th class="text-end">Calibration error</th>':'')+'<th>Configuration</th><th>Harness</th><th>'+esc(costName)+'</th><th>Tokens / test</th><th>Duration / test</th><th>Snapshot</th><th>Evidence / source</th></tr>';
+  var hasHleParts=allRows.some(function(r){return r.reasoningScore!=null||r.knowledgeScore!=null;}),hasCalib=allRows.some(function(r){return r.calibrationError!=null;});
+  var header='<tr><th>Model</th><th class="text-end">Score (± if reported)</th>'+(hasHleParts?'<th class="text-end">Reasoning</th><th class="text-end">Knowledge</th>':'')+(hasCalib?'<th class="text-end">Calibration error</th>':'')+'<th>Configuration</th><th>Harness</th><th>'+esc(costName)+'</th><th>Tokens / test</th><th>Duration / test</th><th>Snapshot</th><th>Evidence / source</th></tr>';
   var body=allRows.map(function(r){
     var cost=r.costPerTestUSD!=null?r.costPerTestUSD:r.costPerSuccessfulTaskUSD;
     var src=r.source||source,evidence=r.evidence||'No row-level evidence provided.';
-    var scoreText=fmt(scoreOf(r),2)+(r.scoreUncertainty!=null?' ± '+fmt(r.scoreUncertainty,2):'');\n    var extraMetrics=(hasHleParts?'<td class="text-end num">'+fmt(r.reasoningScore,2)+'</td><td class="text-end num">'+fmt(r.knowledgeScore,2)+'</td>':'')+(hasCalib?'<td class="text-end num">'+fmt(r.calibrationError,2)+'</td>':'');
+    var scoreText=fmt(scoreOf(r),2)+(r.scoreUncertainty!=null?' ± '+fmt(r.scoreUncertainty,2):'');
+    var extraMetrics=(hasHleParts?'<td class="text-end num">'+fmt(r.reasoningScore,2)+'</td><td class="text-end num">'+fmt(r.knowledgeScore,2)+'</td>':'')+(hasCalib?'<td class="text-end num">'+fmt(r.calibrationError,2)+'</td>':'');
     var kind=(DATA.modelNameAudit&&DATA.modelNameAudit.modelKinds||[]).filter(function(x){return x.name===r.model;})[0];
     var kindLabel=kind?'<span class="badge rounded-pill text-bg-light text-secondary border ms-1">'+esc(kind.label)+'</span>':'';
     var sourceLabel=r.originalModelName?'<small class="d-block text-muted-qb">source label: '+esc(r.originalModelName)+'</small>':'';
