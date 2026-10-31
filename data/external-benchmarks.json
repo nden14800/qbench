@@ -1,6 +1,6 @@
 {
-  "schemaVersion": "0.5",
-  "note": "Snapshot 2026-10-31. 20 datasets with model-level result rows; 34 catalogued evaluation families. The nine AA v5 component names and weights are registered; source coverage ranges from full leaderboard extracts to official leader summaries. No AA-equivalent total score is computed without complete per-configuration coverage.",
+  "schemaVersion": "0.6",
+  "note": "Snapshot 2026-10-31. 20 datasets with source-backed model-result rows and 44 catalogued evaluations. All nine AA v5 components have some sourced values, but only four have full public model-level leaderboard extracts; five are leader-summary-only. QBench does not calculate an AA-compatible overall score until all nine scores exist for the same model configuration. Extra frontier benchmarks are kept separate.",
   "benchmarks": [
     {
       "id": "livebench-2.0",
@@ -3986,27 +3986,6 @@
       ]
     }
   ],
-  "composite": {
-    "name": "QBench External Composite",
-    "eligibleBenchmarks": [
-      "livebench-2.0",
-      "gpqa-diamond",
-      "frontiermath-family",
-      "proofbench",
-      "furniture-assembly"
-    ],
-    "weights": {
-      "livebench-2.0": 0.2,
-      "gpqa-diamond": 0.2,
-      "frontiermath-family": 0.2,
-      "proofbench": 0.2,
-      "furniture-assembly": 0.2
-    },
-    "cohortSize": 10,
-    "method": "Exact model-name intersection across the five benchmark families. Preserve each source's published 0–100 score; FrontierMath family score is the arithmetic mean of Tiers 1–3 (v2) and Tier 4 (v2), so the two tiers count as one family. The composite is the equal-weight arithmetic mean of LiveBench 2.0, GPQA Diamond, FrontierMath family, ProofBench and Furniture Assembly. This is a descriptive external composite, not a universal capability measure or a QBench-run score. SWE-bench snapshots remain separate because their model coverage is not the same exact-match composite cohort.",
-    "modelCount": 92,
-    "snapshotAsOf": "2026-10-30"
-  },
   "watchlist": [
     {
       "name": "SpireClimb",
