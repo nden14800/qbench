@@ -113,6 +113,8 @@ main{padding:34px 0 70px}.intro{display:flex;justify-content:space-between;align
     </div>
     <div class="section-head"><div><h2>Included benchmark families</h2><p>Sources used by the cross-benchmark composite. Coding specialist datasets remain separate.</p></div></div>
     <div class="benchmark-list" id="benchmarkCards"></div>
+    <div class="section-head"><div><h2>Frontier benchmark watchlist</h2><p>High-value evaluations queued for structured imports when full model-level results and compatible protocols are available.</p></div><span class="section-kicker">RESEARCH PIPELINE / NOT SCORED</span></div>
+    <div class="benchmark-list" id="benchmarkWatchlist"></div>
   </section>
 
   <section id="methodology">
@@ -244,6 +246,7 @@ function renderBenchmark(){
   if(window.echarts && echarts.getInstanceByDom($('#sourceRankChart')))renderSourceRank();
   $('#benchmarkFoot').innerHTML='Source: <a class="link" href="'+esc(b.source)+'" target="_blank" rel="noopener noreferrer">'+esc(b.source)+'</a> · Snapshot: '+snapshotText(b.snapshotDate)+'. Values are shown as published in the stored snapshot.';
 }
+function renderWatchlist(){const items=state.data.watchlist||[];$('#benchmarkWatchlist').innerHTML=items.map(x=>'<article class="benchmark-card"><div class="benchmark-card-top"><div><h3>'+esc(x.name)+'</h3><p>'+esc(x.category)+'</p></div><span class="badge">'+esc(x.status)+'</span></div><p>'+esc(x.reason)+'</p><div class="benchmark-card-meta"><span>Research candidate</span><a href="'+esc(x.source)+'" target="_blank" rel="noopener noreferrer">View source ↗</a></div></article>').join('');}
 function renderBenchmarkCards(){
   const compositeIds=new Set(['livebench-2.0','gpqa-diamond','frontiermath-tiers-1-3-v2','frontiermath-tier-4-v2','proofbench','furniture-assembly']);
   $('#benchmarkCards').innerHTML=state.data.benchmarks.map(b=>{
@@ -286,7 +289,7 @@ function renderFrontierMap(){const c=chartFor('frontierMapChart'),rows=state.dat
 function renderCharts(){renderPareto();renderProfile();renderRadar();renderParallel();renderDistribution();renderRankTrajectory();renderSourceRank();renderCoverage();renderLeaders();renderProviders();renderProviderScores();renderHistogram();renderCorrelation();renderProviderDepth();renderWeakness();renderIndexHistogram();renderFrontierMap();}
 function exportChart(id){const c=echarts.getInstanceByDom($('#'+id));if(!c)return;const a=document.createElement('a');a.href=c.getDataURL({type:'svg',backgroundColor:'#fff'});a.download='qbench-'+id+'.svg';a.click();}
 function renderAll(){
-  renderSummary();renderLeaderboard();renderHeatmap();renderBenchmarkSelect();renderBenchmarkCards();renderBenchmark();renderCharts();
+  renderSummary();renderLeaderboard();renderHeatmap();renderBenchmarkSelect();renderBenchmarkCards();renderWatchlist();renderBenchmark();renderCharts();
 }
 $('#modelSearch').addEventListener('input',e=>{state.query=e.target.value.trim();renderLeaderboard();});
 $('#providerFilter').addEventListener('change',e=>{state.provider=e.target.value;renderLeaderboard();});
