@@ -10106,7 +10106,7 @@
       ],
       "normalization": "For each eligible benchmark, take one score per exact model under the benchmark's stated comparable harness and convert it to a midrank percentile within that benchmark's observed cohort. Average benchmark percentiles within each task family; average the observed task-family scores equally. Then apply an evidence adjustment: Index = 50 + (raw mean − 50) × sqrt(observed task families / 4). No missing scores are imputed. This shrinks thin-coverage results toward the cohort midpoint without suppressing their visibility.",
       "methodology": "QBench Index 1.2 is a source-audited composite built from five current evaluations grouped by the tasks they measure, not by another provider's index taxonomy. A benchmark must have at least 12 distinct model names and a current publisher or independent-evaluator result set. A model receives a rank only with at least two eligible benchmark results spanning at least two task families. Every eligible model receives a rank; the score is evidence-adjusted for the number of task families observed. Raw benchmark values, percentiles, configuration, harness and source remain visible in the benchmark details.",
-      "configurationPolicy": "Do not merge aliases unless the source explicitly identifies the same model. Use one comparable harness per benchmark. For DrugDiscoveryBench, only mini-SWE-agent results are included; other native-harness runs remain standalone. For other benchmarks, use the publisher's listed model result and preserve its reported configuration. Do not select a model's best score across different harnesses.",
+      "configurationPolicy": "Do not merge aliases unless the source explicitly identifies the same model. Use one comparable harness per benchmark. For DrugDiscoveryBench, include only mini-SWE-agent runs and select the highest listed effort setting for each model; preserve the effort label because effort levels vary and this is best-reported capability, not equal-compute head-to-head. For other benchmarks, use the publisher's listed model result and preserve its reported configuration. Do not select a model's best score across different harnesses.",
       "caveats": [
         "The Index is a cross-benchmark orientation score, not a confidence interval or a claim of statistical significance.",
         "Percentiles are relative to each benchmark's evaluated cohort; changing cohort membership can change the percentile even if the raw score does not change.",
@@ -10115,7 +10115,8 @@
         "ProofBench 1.1 has a small group at 100%; its ceiling risk is monitored, but the broader 54-model distribution remains informative.",
         "Terminal-Bench 4.0 and Terminal-Bench-Science are independent Vals AI runs, not results copied from AA's composite.",
         "DrugDiscoveryBench covers a specialized pharmaceutical workflow; it is one component of Scientific workflows, not a universal measure of science ability.",
-        "Older, saturated, partial, mixed-source or mixed-harness datasets remain visible as standalone references and do not affect Index 1.2."
+        "Older, saturated, partial, mixed-source or mixed-harness datasets remain visible as standalone references and do not affect Index 1.2.",
+        "DrugDiscoveryBench uses each model's highest listed mini-SWE-agent effort setting; reasoning effort is not identical across model families, so that component is a best-reported-capability signal rather than an equal-compute comparison."
       ],
       "sourceNotes": [
         {
