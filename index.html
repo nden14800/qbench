@@ -717,24 +717,24 @@ function renderBench(){
   $('#bench-title').textContent=b.name;
   $('#bench-sub').innerHTML='Unit: '+esc(b.unit||'—')+' · '+esc(st.t)+' · '+st.n+' unique models · snapshot '+esc(b.snapshotDate||'not stated')+' · <a href="'+esc(source)+'" target="_blank" rel="noopener">Benchmark source</a>';
   var best=new Map();
-  (b.models||[]).forEach(function(r){var v=scoreOf(r);if(!r.model||v===null)return;var o=best.get(r.model);if(!o||v>o.value)best.set(r.model,{value:v,c:r.configuration||'',u:r.uncertain===true});});
-  var arr=[];best.forEach(function(e,k){arr.push({m:k,v:e.value,c:e.c,u:e.u});});arr.sort(function(a,c){return c.v-a.v;});
+  (b.models||[]).forEach(function(r){var v=scoreOf(r);if(!r.model||v===null)return;var o=best.get(r.model);if(!o||v>o.value)best.set(r.model,{value:v,c:r.configuration||'',u:r.uncertain===true,s:r.scoreUncertainty});});
+  var arr=[];best.forEach(function(e,k){arr.push({m:k,v:e.value,c:e.c,u:e.u,s:e.s});});arr.sort(function(a,c){return c.v-a.v;});
   var allRows=(b.models||[]).filter(function(r){return !!r.model&&scoreOf(r)!==null;}).slice().sort(function(a,c){return scoreOf(c)-scoreOf(a);});
   if(!arr.length){host.innerHTML='<div class="empty-qb">No model values are stored for this benchmark.'+(b.valueNote?' '+esc(b.valueNote):'')+'</div>';return;}
   var top=arr.slice(0,25),p=pal();
   var costRows=allRows.filter(function(r){return Number(r.costPerTestUSD)>0||Number(r.costPerSuccessfulTaskUSD)>0;});
   var costHtml=costRows.length>=3?'<h3 class="card-title-qb mt-4 mb-2">'+esc(costName)+' vs. score</h3><div id="bench-cost-el" style="height:360px"></div><div class="notice-qb">Reported evaluation-specific costs are shown only within this benchmark. Cost metrics are not combined across evaluations.</div>':'';
-  var header='<tr><th>Model</th><th class="text-end">Score</th><th>Configuration</th><th>Harness</th><th>'+esc(costName)+'</th><th>Tokens / test</th><th>Duration / test</th><th>Snapshot</th><th>Evidence / source</th></tr>';
+  var header='<tr><th>Model</th><th class="text-end">Score (± if reported)</th><th>Configuration</th><th>Harness</th><th>'+esc(costName)+'</th><th>Tokens / test</th><th>Duration / test</th><th>Snapshot</th><th>Evidence / source</th></tr>';
   var body=allRows.map(function(r){
     var cost=r.costPerTestUSD!=null?r.costPerTestUSD:r.costPerSuccessfulTaskUSD;
-    var src=r.source||source,evidence=r.evidence||'No row-level evidence provided.';
+    var src=r.source||source,evidence=r.evidence||'No row-level evidence provided.';\n    var scoreText=fmt(scoreOf(r),2)+(r.scoreUncertainty!=null?' ± '+fmt(r.scoreUncertainty,2):'');
     var kind=(DATA.modelNameAudit&&DATA.modelNameAudit.modelKinds||[]).filter(function(x){return x.name===r.model;})[0];
     var kindLabel=kind?'<span class="badge rounded-pill text-bg-light text-secondary border ms-1">'+esc(kind.label)+'</span>':'';
     var sourceLabel=r.originalModelName?'<small class="d-block text-muted-qb">source label: '+esc(r.originalModelName)+'</small>':'';
-    return '<tr><td>'+esc(r.model)+kindLabel+sourceLabel+(r.uncertain===true?' †':'')+'</td><td class="text-end num">'+fmt(scoreOf(r),2)+' <span class="text-muted-qb">'+esc(b.unit||'')+'</span></td><td>'+esc(r.configuration||'Not reported')+'</td><td>'+esc(r.harness||'Not reported')+'</td><td class="num">'+(cost==null?'—':'$'+fmt(cost,3))+'</td><td class="num">'+esc(r.tokensPerTestDisplay||'—')+'</td><td class="num">'+esc(r.durationPerTestDisplay||'—')+'</td><td>'+esc(r.snapshotDate||b.snapshotDate||'Not stated')+'</td><td><span class="badge rounded-pill text-bg-light text-secondary border">'+esc(r.sourceType||'unspecified')+'</span><br><a href="'+esc(src)+'" target="_blank" rel="noopener">Source</a><details class="mt-1"><summary>Evidence</summary><small>'+esc(evidence)+'</small></details></td></tr>';
+    return '<tr><td>'+esc(r.model)+kindLabel+sourceLabel+(r.uncertain===true?' †':'')+'</td><td class="text-end num">'+scoreText+' <span class="text-muted-qb">'+esc(b.unit||'')+'</span></td><td>'+esc(r.configuration||'Not reported')+'</td><td>'+esc(r.harness||'Not reported')+'</td><td class="num">'+(cost==null?'—':'$'+fmt(cost,3))+'</td><td class="num">'+esc(r.tokensPerTestDisplay||'—')+'</td><td class="num">'+esc(r.durationPerTestDisplay||'—')+'</td><td>'+esc(r.snapshotDate||b.snapshotDate||'Not stated')+'</td><td><span class="badge rounded-pill text-bg-light text-secondary border">'+esc(r.sourceType||'unspecified')+'</span><br><a href="'+esc(src)+'" target="_blank" rel="noopener">Source</a><details class="mt-1"><summary>Evidence</summary><small>'+esc(evidence)+'</small></details></td></tr>';
   }).join('');
   host.innerHTML='<div id="bench-plot-el" style="height:'+(80+top.length*26)+'px"></div>'+
-    '<div class="notice-qb">Chart: best score per exact model name. Table: all '+allRows.length+' stored model/configuration rows. † = uncertain and excluded from the composite index.</div>'+costHtml+
+    '<div class="notice-qb">Chart: point estimates per exact model name. Publisher-reported ± values are preserved in the table where available. Table: all '+allRows.length+' stored model/configuration rows. † = uncertain and excluded from the composite index.</div>'+costHtml+
     '<h3 class="card-title-qb mt-4 mb-2">All model results <span class="metric-chip">'+allRows.length+' rows</span></h3><div class="table-responsive"><table class="table table-hover align-middle bench-results mb-0"><thead>'+header+'</thead><tbody>'+body+'</tbody></table></div>';
   var c=chartInit('bench-plot-el');
   if(c)c.setOption({animation:false,grid:{left:260,right:60,top:6,bottom:6},tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
