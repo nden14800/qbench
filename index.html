@@ -166,13 +166,14 @@ footer{font-size:.8rem;color:var(--qb-muted)}
       <div class="card-header py-2">
         <ul class="nav nav-tabs card-header-tabs" id="chart-tabs" role="tablist">
           <li class="nav-item"><button class="nav-link active" type="button" data-chart="composition" role="tab">Composition</button></li>
-          <li class="nav-item"><button class="nav-link" type="button" data-chart="scatter" role="tab">Index vs. API price</button></li>
+          <li class="nav-item"><button class="nav-link" type="button" data-chart="scatter" role="tab">Index vs. API price + Pareto</button></li>
           <li class="nav-item"><button class="nav-link" type="button" data-chart="heatmap" role="tab">Heatmap</button></li>
           <li class="nav-item"><button class="nav-link" type="button" data-chart="distribution" role="tab">Index distribution</button></li>
           <li class="nav-item"><button class="nav-link" type="button" data-chart="coverage" role="tab">Evaluation coverage</button></li>
         </ul>
       </div>
       <div class="card-body">
+        <div class="small text-muted-qb mb-2">Pareto frontier: open “Index vs. API price + Pareto”. The dashed frontier is on by default; the API token-price proxy is not cost per task.</div>
         <div class="d-flex flex-wrap gap-3 mb-2" id="chart-controls" hidden>
           <div class="form-check form-switch m-0">
             <input class="form-check-input" type="checkbox" id="pareto" checked>

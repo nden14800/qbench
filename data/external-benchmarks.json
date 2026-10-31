@@ -9498,7 +9498,6 @@
     "minimumModelsPerEvaluation": 8,
     "minimumCategoryCoverage": 3,
     "componentBenchmarks": [
-      "osworld-2-0",
       "gdpval",
       "terminal-bench-4-0",
       "swe-bench-pro",
@@ -9508,7 +9507,6 @@
       "livebench-2.0"
     ],
     "eligibleBenchmarks": [
-      "osworld-2-0",
       "gdpval",
       "terminal-bench-4-0",
       "swe-bench-pro",
@@ -9518,16 +9516,15 @@
       "livebench-2.0"
     ],
     "insufficientCoverage": [],
-    "normalization": "Within each eligible benchmark, the best published score per exact model name is converted to a midrank percentile. Domain scores are equal averages of eligible benchmark percentiles available within that domain; the provisional Index is the equal average of available domain scores. Missing scores are never imputed.",
+    "normalization": "Within each eligible benchmark, the best published score per exact model name is converted to a midrank percentile. Category scores are equal-weighted averages of benchmark percentiles; the index is the equal-weighted average of available category scores. Missing results are never imputed.",
     "configurationPolicy": "Best published configuration per exact model name within each evaluation. Effort settings, harnesses and tool access are not normalized; model-level Index scores therefore summarize observed best configurations, not controlled same-setting comparisons.",
     "domains": [
       {
         "name": "Knowledge Work",
         "benchmarks": [
-          "osworld-2-0",
           "gdpval"
         ],
-        "note": "OSWorld 2.0 is a self-reported aggregate mirrored from llm-stats; GDPval has exactly eight published models."
+        "note": "GDPval is currently the only eligible Knowledge Work evaluation; OSWorld 2.0 is retained separately because the third-party aggregate's 0–1 metric cannot be confirmed as binary accuracy rather than partial reward."
       },
       {
         "name": "Coding",
@@ -9557,10 +9554,10 @@
     "method": "QBench Composite Index 1.0 is independent of Artificial Analysis. Each eligible evaluation needs at least eight unique model names. Within an evaluation, the best published score per exact model name is converted to a midrank percentile. Each domain score is the equal average of the eligible evaluation percentiles available in that domain. The provisional Index is the equal average of the available domain scores. A formal rank requires at least four eligible evaluations spanning at least three of four domains. Models with two or more eligible results but insufficient coverage are shown as coverage-only and are not ranked. Missing scores are never imputed. QBench does not use AA's individual evaluation weights or AA values.",
     "caveats": [
       "Coverage-only Index values are provisional: they average only the domains with observed data and are not directly equivalent to a complete four-domain score.",
-      "Knowledge Work includes OSWorld 2.0 (secondary self-reported aggregate) and GDPval (eight models exactly).",
       "Science currently has one eligible evaluation, so that domain is less robust than the others.",
       "Terminal-Bench 4.0 is a third-party Vals AI evaluation using Mini-SWE-agent, not the official tbench.ai benchmark leaderboard.",
-      "LiveBench 2.0's 25 non-top-six model rows are explicitly sourced to a secondary mirror; six top rows and their per-successful-task costs are sourced directly from the publisher."
+      "LiveBench 2.0's 25 non-top-six model rows are explicitly sourced to a secondary mirror; six top rows and their per-successful-task costs are sourced directly from the publisher.",
+      "Knowledge Work currently has GDPval as its only eligible evaluation. OSWorld 2.0's secondary 0–1 aggregate is kept separate because its metric cannot be confirmed as binary accuracy rather than partial reward."
     ],
     "sourceNotes": [
       {
