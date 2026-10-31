@@ -1799,7 +1799,7 @@
       "furniture-assembly": 0.2
     },
     "cohortSize": 10,
-    "method": "Exact model-name intersection across the five benchmark families. Preserve each source's published 0–100 score; FrontierMath family score is the arithmetic mean of Tiers 1–3 (v2) and Tier 4 (v2), so the two tiers count as one family. The composite is the equal-weight arithmetic mean of LiveBench 2.0, GPQA Diamond, FrontierMath family, ProofBench and Furniture Assembly. This is a descriptive external composite, not a universal capability measure or a QBench-run score. SWE-bench snapshots remain separate because their model coverage is not the same six-model cohort.",
+    "method": "Exact model-name intersection across the five benchmark families. Preserve each source's published 0–100 score; FrontierMath family score is the arithmetic mean of Tiers 1–3 (v2) and Tier 4 (v2), so the two tiers count as one family. The composite is the equal-weight arithmetic mean of LiveBench 2.0, GPQA Diamond, FrontierMath family, ProofBench and Furniture Assembly. This is a descriptive external composite, not a universal capability measure or a QBench-run score. SWE-bench snapshots remain separate because their model coverage is not the same exact-match composite cohort.",
     "modelCount": 92,
     "snapshotAsOf": "2026-10-30"
   }
