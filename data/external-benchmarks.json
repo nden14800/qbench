@@ -1,6 +1,6 @@
 {
-  "schemaVersion": "0.2",
-  "note": "External third-party benchmark snapshots, not QBench-run results. AA Intelligence Index v5 evaluations are excluded.",
+  "schemaVersion": "0.3",
+  "note": "QBench Index 2.0 source catalog. Third-party snapshots only; all source rows retain provenance and snapshot dates. AA Intelligence Index v5 inputs remain excluded from the QBench composite.",
   "benchmarks": [
     {
       "id": "livebench-2.0",
@@ -1778,6 +1778,558 @@
           "provider": "Anthropic",
           "score": 95.8,
           "evidence": "Published result"
+        }
+      ]
+    },
+    {
+      "id": "arc-agi-2",
+      "name": "ARC-AGI-2",
+      "snapshotDate": "2026-10-26",
+      "source": "https://llmbenchmark.ai/benchmarks/epoch-arc-agi-2",
+      "unit": "% accuracy",
+      "quality": "Curated public leaderboard snapshot; original benchmark administered by Epoch AI",
+      "models": [
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 95,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "GPT-6.1 Sol",
+          "provider": "OpenAI",
+          "score": 94.2,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 93.3,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "GPT-5.6 Sol",
+          "provider": "OpenAI",
+          "score": 92.5,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "provider": "Google",
+          "score": 91.3,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Claude Opus 5",
+          "provider": "Anthropic",
+          "score": 90.4,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "provider": "Anthropic",
+          "score": 90,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "GPT-6 Sol",
+          "provider": "OpenAI",
+          "score": 89.6,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Claude Fable 5",
+          "provider": "Anthropic",
+          "score": 89.2,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Gemini 3.8 Flash",
+          "provider": "Google",
+          "score": 89.2,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "GPT-5.5",
+          "provider": "OpenAI",
+          "score": 85,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Gemini 3.7 Flash",
+          "provider": "Google",
+          "score": 84.6,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "GPT-5.5 Pro",
+          "provider": "OpenAI",
+          "score": 84.6,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "GPT-5.6 Terra",
+          "provider": "OpenAI",
+          "score": 83.9,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "GPT-5.4 Pro",
+          "provider": "OpenAI",
+          "score": 83.3,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Gemini 3.1 Pro Preview",
+          "provider": "Google",
+          "score": 77.1,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Claude Opus 4.7",
+          "provider": "Anthropic",
+          "score": 75.8,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "GPT-5.4",
+          "provider": "OpenAI",
+          "score": 74,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "DeepSeek V4.1 Flash",
+          "provider": "DeepSeek",
+          "score": 72.9,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Claude Opus 4.8",
+          "provider": "Anthropic",
+          "score": 72.1,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Gemini 3.5 Flash",
+          "provider": "Google",
+          "score": 72.1,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Claude Opus 4.6",
+          "provider": "Anthropic",
+          "score": 69.2,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Grok 4.6",
+          "provider": "xAI",
+          "score": 67.1,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "GLM 5.3 Flash",
+          "provider": "Z.ai",
+          "score": 65.8,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Grok 4.20",
+          "provider": "xAI",
+          "score": 65.1,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "DeepSeek V4 Flash 0731",
+          "provider": "DeepSeek",
+          "score": 61.4,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Grok 4.7",
+          "provider": "xAI",
+          "score": 61.4,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Claude Haiku 5.5",
+          "provider": "Anthropic",
+          "score": 61.3,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "DeepSeek V4 Pro 0813",
+          "provider": "DeepSeek",
+          "score": 61.3,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Claude Sonnet 4.6",
+          "provider": "Anthropic",
+          "score": 60.4,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Gemini 3.6 Flash",
+          "provider": "Google",
+          "score": 60.4,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Kimi K3",
+          "provider": "Moonshot AI",
+          "score": 60.4,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "GPT-5.6 Luna",
+          "provider": "OpenAI",
+          "score": 59.5,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "GPT-6 Luna",
+          "provider": "OpenAI",
+          "score": 59.3,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "GPT-5.2 Pro",
+          "provider": "OpenAI",
+          "score": 54.2,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "GPT-5.2",
+          "provider": "OpenAI",
+          "score": 52.9,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Grok 4.5",
+          "provider": "xAI",
+          "score": 52.6,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Qwen3.8 27B",
+          "provider": "Qwen",
+          "score": 42.4,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Inkling Small",
+          "provider": "Thinking Machines",
+          "score": 40.1,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Claude Opus 4.5",
+          "provider": "Anthropic",
+          "score": 37.6,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Inkling",
+          "provider": "Thinking Machines",
+          "score": 36.5,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Gemini 3 Flash Preview",
+          "provider": "Google",
+          "score": 33.6,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "GLM 5.2",
+          "provider": "Z.ai",
+          "score": 22.8,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "GPT-5.4 Mini",
+          "provider": "OpenAI",
+          "score": 18.9,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "GPT-5 Pro",
+          "provider": "OpenAI",
+          "score": 18.3,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "GPT-5.1",
+          "provider": "OpenAI",
+          "score": 17.6,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Claude Sonnet 4.5",
+          "provider": "Anthropic",
+          "score": 13.6,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Kimi K2.5",
+          "provider": "Moonshot AI",
+          "score": 11.8,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Gemini 3.5 Flash Lite",
+          "provider": "Google",
+          "score": 10.3,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "GPT-5",
+          "provider": "OpenAI",
+          "score": 9.9,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Claude Opus 4",
+          "provider": "Anthropic",
+          "score": 8.6,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "o3",
+          "provider": "OpenAI",
+          "score": 6.5,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "o4 Mini",
+          "provider": "OpenAI",
+          "score": 6.1,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Claude Sonnet 4",
+          "provider": "Anthropic",
+          "score": 5.9,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "GPT-5.4 Nano",
+          "provider": "OpenAI",
+          "score": 5.7,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Gemini 2.5 Pro",
+          "provider": "Google",
+          "score": 4.9,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "MiniMax M2.5",
+          "provider": "MiniMax",
+          "score": 4.9,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "o3 Pro",
+          "provider": "OpenAI",
+          "score": 4.9,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "GLM 5",
+          "provider": "Z.ai",
+          "score": 4.9,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "GPT-5 Mini",
+          "provider": "OpenAI",
+          "score": 4.4,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Claude Haiku 4.5",
+          "provider": "Anthropic",
+          "score": 4,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "DeepSeek V3.2",
+          "provider": "DeepSeek",
+          "score": 4,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "o3 Mini",
+          "provider": "OpenAI",
+          "score": 3,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "GPT-5 Nano",
+          "provider": "OpenAI",
+          "score": 2.6,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Gemini 2.5 Flash",
+          "provider": "Google",
+          "score": 2.5,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "R1",
+          "provider": "DeepSeek",
+          "score": 1.3,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Gemini 2.0 Flash",
+          "provider": "Google",
+          "score": 1.3,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Qwen3 235B A22B Instruct 2507",
+          "provider": "Qwen",
+          "score": 1.3,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "R1 0528",
+          "provider": "DeepSeek",
+          "score": 1.1,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Claude 3.7 Sonnet",
+          "provider": "Anthropic",
+          "score": 0.9,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "o1-mini",
+          "provider": "OpenAI",
+          "score": 0.8,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Gemini 1.5 Pro",
+          "provider": "Google",
+          "score": 0.8,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "GPT-4.1",
+          "provider": "OpenAI",
+          "score": 0.4,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Llama 4 Maverick",
+          "provider": "Meta",
+          "score": 0,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Llama 4 Scout",
+          "provider": "Meta",
+          "score": 0,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "GPT-4.1 Mini",
+          "provider": "OpenAI",
+          "score": 0,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "GPT-4.1 Nano",
+          "provider": "OpenAI",
+          "score": 0,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "GPT-4o",
+          "provider": "OpenAI",
+          "score": 0,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "GPT-4o-mini",
+          "provider": "OpenAI",
+          "score": 0,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        },
+        {
+          "model": "Grok 3",
+          "provider": "xAI",
+          "score": 0,
+          "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
+        }
+      ]
+    },
+    {
+      "id": "frontiermath-erdos",
+      "name": "FrontierMath Erdős",
+      "snapshotDate": "2026-10-29",
+      "source": "https://epoch.ai/benchmarks/frontiermath-erdos",
+      "unit": "% accuracy",
+      "quality": "Epoch AI administered · 68 research-level open problems · extremely low solved rate",
+      "models": [
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 2.9,
+          "uncertainty": "±2.1%",
+          "configuration": "max",
+          "evidence": "Epoch AI official benchmark leaderboard, retrieved 2026-10-29"
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 2.9,
+          "uncertainty": "±2.1%",
+          "configuration": "max",
+          "evidence": "Epoch AI official benchmark leaderboard, retrieved 2026-10-29"
+        },
+        {
+          "model": "Claude Sonnet 5.5",
+          "provider": "Anthropic",
+          "score": 2.9,
+          "uncertainty": "±2.1%",
+          "configuration": "max",
+          "evidence": "Epoch AI official benchmark leaderboard, retrieved 2026-10-29"
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "provider": "Anthropic",
+          "score": 0,
+          "configuration": "max",
+          "evidence": "Epoch AI official benchmark leaderboard, retrieved 2026-10-29"
+        },
+        {
+          "model": "GPT-5.5",
+          "provider": "OpenAI",
+          "score": 0,
+          "configuration": "xhigh",
+          "evidence": "Epoch AI official benchmark leaderboard, retrieved 2026-10-29"
+        },
+        {
+          "model": "Claude Fable 5",
+          "provider": "Anthropic",
+          "score": 0,
+          "configuration": "max",
+          "evidence": "Epoch AI official benchmark leaderboard, retrieved 2026-10-29"
+        },
+        {
+          "model": "GPT-5.6 Sol",
+          "provider": "OpenAI",
+          "score": 0,
+          "configuration": "max",
+          "evidence": "Epoch AI official benchmark leaderboard, retrieved 2026-10-29"
         }
       ]
     }
