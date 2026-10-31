@@ -92,6 +92,9 @@ main{padding:34px 0 70px}.intro{display:flex;justify-content:space-between;align
       <article class="panel"><div class="panel-head"><div><div class="panel-title">Result depth by benchmark</div><div class="panel-sub">Number of stored model-result observations per dataset</div></div><button class="chart-action" data-export="benchmarkDepthChart">Export SVG</button></div><div id="benchmarkDepthChart" class="chart chart-tall"></div></article>
       <article class="panel"><div class="panel-head"><div><div class="panel-title">Model-to-model comparison</div><div class="panel-sub">Two selected configurations · one benchmark · native score unit</div></div><button class="chart-action" data-export="modelCompareChart">Export SVG</button></div><div id="modelCompareChart" class="chart chart-tall"></div></article>
       <article class="panel"><div class="panel-head"><div><div class="panel-title">Configuration mix by provider</div><div class="panel-sub">Distinct model / reasoning-effort / harness combinations</div></div><button class="chart-action" data-export="configurationMixChart">Export SVG</button></div><div id="configurationMixChart" class="chart chart-tall"></div></article>
+      <article class="panel"><div class="panel-head"><div><div class="panel-title">Provider-to-benchmark flow</div><div class="panel-sub">Sankey view of where published model results are concentrated</div></div><button class="chart-action" data-export="benchmarkFlowChart">Export SVG</button></div><div id="benchmarkFlowChart" class="chart chart-tall"></div></article>
+      <article class="panel"><div class="panel-head"><div><div class="panel-title">AA v5 evidence coverage funnel</div><div class="panel-sub">Component availability → full tables → complete model-level coverage</div></div><button class="chart-action" data-export="coverageFunnelChart">Export SVG</button></div><div id="coverageFunnelChart" class="chart chart-tall"></div></article>
+      <article class="panel"><div class="panel-head"><div><div class="panel-title">Benchmark registry taxonomy</div><div class="panel-sub">Hierarchical view by AA suite, extension family and evidence status</div></div><button class="chart-action" data-export="benchmarkSunburstChart">Export SVG</button></div><div id="benchmarkSunburstChart" class="chart chart-tall"></div></article>
     </div>
   </section>
 
@@ -306,8 +309,28 @@ function renderConfigurationMix(){
  const groups={};map.forEach(v=>{groups[v.provider]=(groups[v.provider]||0)+1;});
  setChart('configurationMixChart',{textStyle:{fontFamily:chartFont},series:[{type:'treemap',data:Object.entries(groups).map(([name,value])=>({name,value,itemStyle:{borderColor:'#fff',borderWidth:2,color:color(name)}})),leafDepth:1,roam:true,nodeClick:false,breadcrumb:{show:false},label:{show:true,formatter:p=>p.name+'\\n'+p.value+' configs',fontSize:11},upperLabel:{show:true,height:24,fontSize:11},itemStyle:{borderColor:'#fff',gapWidth:2}}],tooltip:{formatter:p=>p.name+': '+p.value+' unique model configurations'}});
 }
+function renderBenchmarkFlow(){
+ const nodes=[],links=[],providerSet=new Set(),benchSet=new Set();
+ state.data.benchmarks.forEach(b=>b.models.forEach(m=>{providerSet.add(m.provider);benchSet.add(b.name);}));
+ [...providerSet].forEach(p=>nodes.push({name:p,itemStyle:{color:color(p)}}));
+ [...benchSet].forEach(n=>nodes.push({name:n,itemStyle:{color:'#9a9eaa'}}));
+ state.data.benchmarks.forEach(b=>{const counts={};b.models.forEach(m=>counts[m.provider]=(counts[m.provider]||0)+1);Object.entries(counts).forEach(([p,v])=>links.push({source:p,target:b.name,value:v}));});
+ setChart('benchmarkFlowChart',{textStyle:{fontFamily:chartFont},series:[{type:'sankey',data:nodes,links,orient:'horizontal',nodeAlign:'justify',nodeWidth:13,nodeGap:9,layoutIterations:24,emphasis:{focus:'adjacency'},lineStyle:{color:'gradient',curveness:.5,opacity:.22},label:{fontFamily:chartFont,fontSize:9,color:'#68717d'},levels:[{depth:0,itemStyle:{borderWidth:0}},{depth:1,itemStyle:{borderWidth:0}}]}],tooltip:{trigger:'item',formatter:p=>p.dataType==='edge'?p.data.source+' → '+p.data.target+'<br>'+p.data.value+' result rows':p.name}});
+}
+function renderCoverageFunnel(){
+ const aa=aaOrder(),present=aa.filter(id=>(get(id)?.models.length||0)>0).length;
+ const full=['aa-briefcase-v1-1','hle-diamond','terminal-bench-4-0','terminal-bench-science-0-1'].filter(id=>(get(id)?.models.length||0)>0).length;
+ const complete=0;
+ setChart('coverageFunnelChart',{textStyle:{fontFamily:chartFont},series:[{type:'funnel',left:'12%',top:25,bottom:25,width:'76%',min:0,max:9,minSize:'0%',maxSize:'100%',sort:'descending',gap:5,label:{show:true,position:'inside',formatter:p=>p.name+' · '+p.value,fontSize:11,color:'#fff'},labelLine:{show:false},itemStyle:{borderColor:'#fff',borderWidth:2},data:[{name:'AA v5 components',value:9,itemStyle:{color:'#416f8c'}},{name:'Components with results',value:present,itemStyle:{color:'#548a9e'}},{name:'Full model tables',value:full,itemStyle:{color:'#7d9c9d'}},{name:'Complete 9/9 model configs',value:complete,itemStyle:{color:'#b3b8be'}}]}],tooltip:{trigger:'item',formatter:p=>p.name+': '+p.value}});
+}
+function renderBenchmarkSunburst(){
+ const catalog=state.data.benchmarkCatalog||[],groups={};
+ catalog.forEach(x=>{const group=x.group||'Other',status=x.status||'Catalogued';groups[group]??={};groups[group][status]??=[];groups[group][status].push(x);});
+ const data=Object.entries(groups).map(([group,statuses])=>({name:group,children:Object.entries(statuses).map(([status,items])=>({name:statusLabel(status),children:items.map(x=>({name:x.name,value:1,itemStyle:{color:status==='results-imported'?'#3d8b78':status==='leader-summary-imported'?'#7396aa':status==='research-pipeline'?'#b18a58':'#9299a2'}}))}))}));
+ setChart('benchmarkSunburstChart',{textStyle:{fontFamily:chartFont},series:[{type:'sunburst',data,sort:null,radius:['10%','88%'],nodeClick:'rootToNode',emphasis:{focus:'ancestor'},label:{rotate:'radial',fontFamily:chartFont,fontSize:9},levels:[{},{r0:'10%',r:'36%',itemStyle:{borderWidth:2},label:{rotate:0,fontSize:11}},{r0:'36%',r:'62%',label:{fontSize:9}},{r0:'62%',r:'88%',label:{fontSize:8}}]}],tooltip:{formatter:p=>p.name+(p.value!=null?' · '+p.value:'')}});
+}
 function renderCharts(){
- renderWeightChart();renderBriefcaseForest();renderHLEPartition();renderHLECalibration();renderCostPerformance();renderScoreDistribution();renderAACoverage();renderProviderCoverage();renderScoreSlope();renderSourceRank();renderProviderMix();renderBenchmarkDepth();renderModelCompare();renderConfigurationMix();
+ renderWeightChart();renderBriefcaseForest();renderHLEPartition();renderHLECalibration();renderCostPerformance();renderScoreDistribution();renderAACoverage();renderProviderCoverage();renderScoreSlope();renderSourceRank();renderProviderMix();renderBenchmarkDepth();renderModelCompare();renderConfigurationMix();renderBenchmarkFlow();renderCoverageFunnel();renderBenchmarkSunburst();
 }
 function renderAll(){
  renderSummary();renderAAFilter();renderLeaderboard();renderAAReference();renderBenchmarkSelect();renderBenchmark();renderBenchmarkCards();renderWatchlist();renderCharts();
