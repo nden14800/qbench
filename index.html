@@ -237,7 +237,7 @@ function renderBenchmarkCards(){
  const rows=list.filter(x=>(state.catalogGroup==='all'||x.group===state.catalogGroup)&&(state.catalogStatus==='all'||x.status===state.catalogStatus)&&(!q||[x.name,x.note,x.group].join(' ').toLowerCase().includes(q)));
  $('#benchmarkCards').innerHTML=rows.map(x=>{
   const b=get(x.id),count=b?.models.length||0,models=b?new Set(b.models.map(m=>m.model)).size:0;
-  return '<article class="benchmark-card"><div class="benchmark-card-top"><div><h3>'+esc(x.name)+'</h3><p>'+esc(x.note||'Description not yet added.')+'</p></div><span class="badge">'+esc(statusLabel(x.status))+'</span></div><div class="benchmark-card-meta"><span>'+(count?models+' models · '+count+' results':'No imported model results')+'</span><a href="'+esc(x.source)+'" target="_blank" rel="noopener noreferrer">Official source ↗</a></div></article>';
+  return '<article class="benchmark-card"><div class="benchmark-card-top"><div><h3>'+esc(x.name)+'</h3><p>'+esc(x.note||'Description not yet added.')+'</p></div><span class="badge">'+esc(statusLabel(x.status))+'</span></div><div class="benchmark-card-meta"><span>'+(count?models+' models · '+count+' results':'No imported model results')+'</span><span><a href="'+esc(x.source)+'" target="_blank" rel="noopener noreferrer">Source ↗</a>'+(count?' · <button class="chart-action" type="button" data-open-benchmark="'+esc(x.id)+'">View ranking</button>':'')+'</span></div></article>';
  }).join('')||'<div class="empty">No benchmarks match this filter.</div>';
 }
 function renderProviderMix(){
@@ -280,6 +280,7 @@ $('#benchmarkSelect').addEventListener('change',e=>{state.benchmark=e.target.val
 $('#catalogSearch').addEventListener('input',e=>{state.catalogQuery=e.target.value.trim();renderBenchmarkCards();});
 $('#catalogGroupFilter').addEventListener('change',e=>{state.catalogGroup=e.target.value;renderBenchmarkCards();});
 $('#catalogStatusFilter').addEventListener('change',e=>{state.catalogStatus=e.target.value;renderBenchmarkCards();});
+$('#benchmarkCards').addEventListener('click',e=>{const btn=e.target.closest('[data-open-benchmark]');if(!btn)return;state.benchmark=btn.dataset.openBenchmark;state.benchmarkProvider='all';state.benchmarkQuery='';$('#benchmarkSearch').value='';$('#benchmarkSelect').value=state.benchmark;renderBenchmark();$('#leaderboard').scrollIntoView({behavior:'smooth'});});
 $('#exportBenchmarkCSV').addEventListener('click',exportBenchmarkResults);
 $('#exportAllJSON').addEventListener('click',exportAllJSON);
 $('#themeBtn').addEventListener('click',()=>{const dark=document.documentElement.dataset.theme!=='dark';document.documentElement.dataset.theme=dark?'dark':'light';localStorage.setItem('qbench-theme',dark?'dark':'light');$('#themeBtn').innerHTML=dark?'<i class="bi bi-sun"></i>':'<i class="bi bi-moon-stars"></i>';state.charts.forEach(c=>c.dispose());state.charts=[];renderCharts();});
