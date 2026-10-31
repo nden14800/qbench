@@ -8,7 +8,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Old+Mincho:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
 <script>
@@ -28,9 +28,9 @@ html[data-bs-theme="dark"]{
   --qb-good:#4cc38a; --qb-warn:#f0b04a; --qb-bad:#ff8a80; --qb-grid:#273042;
   --qb-c1:#8b96ff; --qb-c2:#4cc38a; --qb-c3:#f0b04a; --qb-c4:#c3a2ff;
 }
-body{font-family:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",system-ui,sans-serif;font-weight:400;overflow-x:hidden}
-.font-serif-jp{font-family:"Zen Old Mincho","Hiragino Mincho ProN",serif;font-weight:700;letter-spacing:.02em}
-.num{font-variant-numeric:tabular-nums}
+body{font-family:"Inter","Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif;font-weight:400;overflow-x:hidden;background:var(--bs-tertiary-bg);letter-spacing:-.012em}
+.font-serif-jp{font-family:"DM Sans","Inter","Noto Sans JP",sans-serif;font-weight:800;letter-spacing:-.045em}
+.num{font-family:"IBM Plex Mono","Noto Sans JP",monospace;font-variant-numeric:tabular-nums;letter-spacing:-.025em}
 .text-muted-qb{color:var(--qb-muted)!important}
 .brand-mark{width:28px;height:28px}
 .navbar{background:var(--bs-body-bg)}
@@ -38,7 +38,10 @@ body{font-family:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",system-ui,san
 .nav-pills .nav-link:hover{color:var(--bs-body-color)}
 .nav-pills .nav-link.active{background:var(--qb-accent-soft);color:var(--qb-accent)}
 .hero-title{font-size:clamp(1.5rem,3.2vw,2.1rem);line-height:1.25;margin:0 0 .4rem}
-.card{border-radius:14px;border-color:var(--bs-border-color);box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.card{border-radius:16px;border-color:var(--bs-border-color);box-shadow:0 3px 14px rgba(16,24,40,.045)}
+.hero-title{font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.12;letter-spacing:-.045em}
+.stat-card{box-shadow:none}
+.stat-card .stat-v{font-family:"DM Sans","Inter",sans-serif;font-size:1.7rem;letter-spacing:-.04em}
 .card-header{background:transparent;border-bottom-color:var(--bs-border-color)}
 .card-title-qb{font-size:1rem;font-weight:700;margin:0}
 .stat-card .stat-k{font-size:.75rem;color:var(--qb-muted);letter-spacing:.04em}
@@ -49,7 +52,9 @@ body{font-family:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",system-ui,san
 .form-check-input:checked{background-color:var(--qb-accent);border-color:var(--qb-accent)}
 .table{--bs-table-bg:transparent;--bs-table-hover-bg:var(--qb-accent-soft);font-size:.875rem}
 .table thead th{font-size:.75rem;font-weight:500;color:var(--qb-muted);white-space:nowrap;border-bottom-color:var(--bs-border-color);background:var(--bs-body-bg)}
-.table td{white-space:nowrap;vertical-align:middle;border-bottom-color:var(--bs-border-color)}
+.table td{white-space:normal;vertical-align:middle;border-bottom-color:var(--bs-border-color);overflow-wrap:anywhere}
+.table td.num,.table th.text-end{white-space:nowrap}
+.table tbody td{padding-top:.7rem;padding-bottom:.7rem}
 .table tr.is-unranked td{color:var(--qb-muted)}
 .sort-btn{background:none;border:0;padding:0;color:inherit;font:inherit;font-weight:inherit;white-space:nowrap}
 .sort-btn:hover{color:var(--qb-accent)}
@@ -66,7 +71,16 @@ body{font-family:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",system-ui,san
 .bcard[aria-pressed="true"]{border-color:var(--qb-accent);box-shadow:0 0 0 .2rem var(--qb-accent-soft)}
 .bcard .bt{font-weight:700;font-size:.95rem}
 .bcard .bm{color:var(--qb-muted);font-size:.78rem;margin-top:.2rem}
-.prose-qb{max-width:52rem;line-height:1.8}
+.prose-qb{max-width:68rem;line-height:1.8}
+.metric-chip{display:inline-flex;align-items:center;border:1px solid var(--bs-border-color);border-radius:999px;padding:.22rem .55rem;font-size:.72rem;color:var(--qb-muted);white-space:nowrap}
+.model-status{font-size:.68rem}
+.bench-results{font-size:.78rem}
+.bench-results th{position:sticky;top:0;z-index:2}
+.bench-results td{font-size:.76rem;min-width:82px}
+.bench-results td:first-child{min-width:145px;font-weight:600}
+.bench-results td:last-child{min-width:170px}
+.bench-results details summary{cursor:pointer;color:var(--qb-accent)}
+@media(max-width:767.98px){main.container-xl{padding-left:12px;padding-right:12px}.navbar .nav{width:100%;order:3;flex-wrap:nowrap;overflow-x:auto;white-space:nowrap}.navbar .ms-auto{position:absolute;right:12px;top:12px}#index-table-wrap{overflow-x:visible}#index-table{table-layout:fixed;width:100%}#index-head th:nth-child(3),#index-body td:nth-child(3),#index-head th:nth-child(5),#index-body td:nth-child(5),#index-head th:nth-child(6),#index-body td:nth-child(6),#index-head th:nth-child(7),#index-body td:nth-child(7),#index-head th:nth-child(8),#index-body td:nth-child(8),#index-head th:nth-child(10),#index-body td:nth-child(10){display:none}#index-head th:nth-child(1),#index-body td:nth-child(1){width:2.5rem}#index-head th:nth-child(2),#index-body td:nth-child(2){width:44%}#index-head th:nth-child(4),#index-body td:nth-child(4){width:5.4rem}#index-head th:nth-child(9),#index-body td:nth-child(9){width:4rem}#chart-tabs{flex-wrap:nowrap;overflow-x:auto}#chart-tabs .nav-link{white-space:nowrap;font-size:.78rem;padding:.45rem .58rem}.table{font-size:.78rem}}
 .prose-qb h3{font-size:1.05rem;font-weight:700;margin:1.6rem 0 .5rem}
 .prose-qb li{margin:.3rem 0}
 .empty-qb{padding:2.5rem 1rem;text-align:center;color:var(--qb-muted)}
@@ -112,7 +126,7 @@ footer{font-size:.8rem;color:var(--qb-muted)}
 <main class="container-xl py-4">
   <header class="mb-4">
     <h1 class="hero-title font-serif-jp">Independent analysis of AI models</h1>
-    <p class="text-muted-qb mb-0" style="max-width:48rem">QBench compares models on public benchmark results. The QBench Composite Index 1.0 keeps the four-category structure and evaluation criteria of the Artificial Analysis Intelligence Index v5 as a reference. No Artificial Analysis values are used.</p>
+    <p class="text-muted-qb mb-0" style="max-width:48rem">Independent, source-traceable benchmark analysis. QBench Composite Index 1.0 uses public benchmark percentiles and four equal-weight domains. It is not an Artificial Analysis score or reproduction.</p>
     <div class="row row-cols-2 row-cols-lg-4 g-2 g-md-3 mt-3" id="stats"></div>
   </header>
 
@@ -128,7 +142,7 @@ footer{font-size:.8rem;color:var(--qb-muted)}
           <input class="form-control form-control-sm" id="q" type="search" placeholder="Search model" aria-label="Search model" style="min-width:200px">
           <div id="provider-choice"></div>
           <div class="form-check form-switch m-0">
-            <input class="form-check-input" type="checkbox" id="ranked-only" checked>
+            <input class="form-check-input" type="checkbox" id="ranked-only">
             <label class="form-check-label small" for="ranked-only">Ranked only</label>
           </div>
         </div>
@@ -148,6 +162,7 @@ footer{font-size:.8rem;color:var(--qb-muted)}
           <li class="nav-item"><button class="nav-link active" type="button" data-chart="composition" role="tab">Composition</button></li>
           <li class="nav-item"><button class="nav-link" type="button" data-chart="scatter" role="tab">Index vs. API price</button></li>
           <li class="nav-item"><button class="nav-link" type="button" data-chart="heatmap" role="tab">Heatmap</button></li>
+          <li class="nav-item"><button class="nav-link" type="button" data-chart="distribution" role="tab">Index distribution</button></li>
           <li class="nav-item"><button class="nav-link" type="button" data-chart="coverage" role="tab">Evaluation coverage</button></li>
         </ul>
       </div>
@@ -173,7 +188,7 @@ footer{font-size:.8rem;color:var(--qb-muted)}
       <div class="card-header d-flex flex-wrap align-items-center justify-content-between gap-2 py-3">
         <div>
           <h2 class="card-title-qb">Models</h2>
-          <div class="text-muted-qb small mt-1">Every model with at least two results. Select up to five to compare.</div>
+          <div class="text-muted-qb small mt-1">All models with at least one eligible result. Provisional Index needs two or more results; formal ranks need four evaluations across three domains.</div>
         </div>
         <div class="d-flex gap-2">
           <input class="form-control form-control-sm" id="mq" type="search" placeholder="Search model" aria-label="Search models" style="min-width:200px">
@@ -289,14 +304,16 @@ function compute(data){
       domainScores[dom.name]=a.length?a.reduce(function(x,y){return x+y;},0)/a.length:null;
       if(domainScores[dom.name]!==null) nd++;
     });
-    if(cover<2) return;
+    if(cover<1) return;
     var vs=Object.keys(domainScores).map(function(k){return domainScores[k];}).filter(function(v){return v!==null;});
-    var idx=vs.length?vs.reduce(function(x,y){return x+y;},0)/vs.length:null;
+    var provisional=vs.length?vs.reduce(function(x,y){return x+y;},0)/vs.length:null;
+    var idx=cover>=2?provisional:null;
     var price=prices[name]?(prices[name].input+prices[name].output)/2:null;
     rows.push({model:name,provider:(prices[name]&&prices[name].provider)||provider||'Unknown',domains:domainScores,coverage:cover,domainCount:nd,
-      ranked:cover>=spec.minimumEvaluationsPerModel&&nd>=spec.minimumDomainsPerModel,index:idx,price:price,detail:detail});
+      ranked:cover>=spec.minimumEvaluationsPerModel&&nd>=spec.minimumDomainsPerModel,index:idx,provisionalIndex:provisional,price:price,detail:detail});
   });
-  rows.sort(function(a,b){return (Number(b.ranked)-Number(a.ranked))||((b.index||0)-(a.index||0));});
+  rows.sort(function(a,b){return (Number(b.ranked)-Number(a.ranked))||((b.coverage>=2)-(a.coverage>=2))||((b.index||0)-(a.index||0))||a.model.localeCompare(b.model);});
+  rows.filter(function(r){return r.ranked;}).forEach(function(r,i){r.rank=i+1;});
   return {evals:evals,rows:rows,domains:spec.domains.map(function(d){return d.name;}),spec:spec,byId:byId,pct:pct};
 }
 
@@ -340,20 +357,22 @@ function makeChoice(host,options,value,onChange,label){
 }
 
 /* ---------- state ---------- */
-var S={sort:'index',dir:-1,provider:'all',q:'',rankedOnly:true,mq:'',mSort:'index',mDir:-1,selected:[],bench:null,pareto:true,quadrant:false,chart:'composition'};
+var S={sort:'index',dir:-1,provider:'all',q:'',rankedOnly:false,mq:'',mSort:'index',mDir:-1,selected:[],bench:null,pareto:true,quadrant:false,chart:'composition'};
 
 /* ---------- stats & static text ---------- */
 function renderStats(){
   var ranked=RESULT.rows.filter(function(r){return r.ranked;});
   var top=ranked[0];
+  var provisional=RESULT.rows.filter(function(r){return r.coverage>=2&&!r.ranked;}).length;
+  var single=RESULT.rows.filter(function(r){return r.coverage===1;}).length;
   var items=[
-    ['Top model, Index 1.0', top?esc(top.model):'—', top?'Index '+fmt(top.index,1)+' / 100':''],
-    ['Ranked models', String(ranked.length), '4+ evaluations in 3+ categories'],
-    ['Eligible evaluations', String(RESULT.evals.length), 'At least 8 unique models each'],
-    ['Models with results', String(RESULT.rows.length), (RESULT.rows.length-ranked.length)+' coverage-only, not ranked']
+    ['Top-ranked model', top?esc(top.model):'—', top?'Index '+fmt(top.index,1)+' / 100':''],
+    ['Formal ranks', String(ranked.length), '4+ evaluations across 3+ domains'],
+    ['Eligible evaluations', String(RESULT.evals.length), '8+ unique models per evaluation'],
+    ['Models with results', String(RESULT.rows.length), provisional+' provisional · '+single+' single-evaluation']
   ];
   $('#stats').innerHTML=items.map(function(it){return '<div class="col"><div class="card stat-card h-100"><div class="card-body py-3"><div class="stat-k">'+it[0]+'</div><div class="stat-v">'+it[1]+'</div><div class="stat-s">'+it[2]+'</div></div></div></div>';}).join('');
-  $('#index-sub').textContent='Version '+DATA.composite.version+' · snapshot '+(DATA.composite.snapshotAsOf||'—')+' · percentile-based, not an Artificial Analysis score';
+  $('#index-sub').textContent=ranked.length+' formal ranks · '+provisional+' provisional values · '+RESULT.evals.length+' eligible evaluations · snapshot '+(DATA.composite.snapshotAsOf||'—');
   var snaps=(DATA.benchmarks||[]).map(function(b){return b.snapshotDate;}).filter(function(d){return d&&/^\d{4}-/.test(d);}).sort();
   $('#footer').innerHTML='Data as of '+esc(snaps[snaps.length-1]||'—')+'. QBench stores publisher-reported values and does not reproduce the Artificial Analysis Intelligence Index. Sources are listed per benchmark.';
 }
@@ -372,6 +391,7 @@ function sortVal(r,k){
 function renderIndex(){
   var cols=indexColumns();
   var rows=RESULT.rows.filter(function(r){
+    if(r.coverage<2)return false;
     if(S.rankedOnly&&!r.ranked)return false;
     if(S.provider!=='all'&&r.provider!==S.provider)return false;
     if(S.q&&r.model.toLowerCase().indexOf(S.q.toLowerCase())<0)return false;
@@ -389,12 +409,10 @@ function renderIndex(){
   }).join('');
   if(!rows.length){$('#index-body').innerHTML='<tr><td colspan="'+cols.length+'" class="empty-qb">No models match.</td></tr>';}
   else{
-    var rank=0;
     $('#index-body').innerHTML=rows.map(function(r){
-      rank++;
       var w=Math.max(0,Math.min(100,r.index||0))*0.6;
       var cells=[
-        '<td class="text-end num">'+(r.ranked?rank:'—')+'</td>',
+        '<td class="text-end num">'+(r.ranked?r.rank:'—')+'</td>',
         '<td class="fw-semibold">'+esc(r.model)+(r.ranked?'':' <span class="badge rounded-pill text-bg-secondary fw-normal">coverage only</span>')+'</td>',
         '<td>'+esc(r.provider)+'</td>',
         '<td class="text-end num"><strong>'+fmt(r.index,1)+'</strong><span class="index-bar" style="width:'+w+'px"></span></td>'
@@ -405,7 +423,7 @@ function renderIndex(){
       return '<tr class="'+(r.ranked?'':'is-unranked')+'">'+cells.join('')+'</tr>';
     }).join('');
   }
-  $('#index-note').textContent='Ranked = 4+ evaluations across 3+ categories. Coverage-only models (2+ results) are shown for reference and are not ranked. Category columns show percentiles (0 to 100) within each benchmark cohort. Uncertain rows are excluded from the index.';
+  $('#index-note').innerHTML='<strong>How to read this table.</strong> Index and domain values are average within-cohort midrank percentiles (0–100), not raw benchmark scores. Formal ranks require 4+ eligible evaluations across 3+ domains. Provisional values (2+ evaluations) are visible but unranked; single-evaluation models appear in Models and Benchmarks, not as a composite score. Missing results are never imputed.';
 }
 
 /* ---------- charts (ECharts, same library as omikuji-bench) ---------- */
@@ -494,6 +512,16 @@ function renderHeatmap(host){
   },true);
 }
 
+function renderDistribution(host){
+  var rows=RESULT.rows.filter(function(r){return r.coverage>=2&&r.index!=null;});
+  if(!rows.length){emptyChart(host,'No provisional Index values yet.');return;}
+  var p=pal(),labels=[],rankedBins=[],provisionalBins=[];
+  for(var i=0;i<10;i++){labels.push((i*10)+'–'+((i+1)*10));rankedBins.push(0);provisionalBins.push(0);}
+  rows.forEach(function(r){var bin=Math.max(0,Math.min(9,Math.floor(r.index/10)));if(r.ranked)rankedBins[bin]++;else provisionalBins[bin]++;});
+  host.innerHTML='<div id="chart-main-el" style="height:360px"></div><div class="chart-legend"><span><i style="background:'+p.c[0]+'"></i>Formal ranks</span><span><i style="background:'+p.c[2]+'"></i>Provisional</span></div><div class="notice-qb">Distribution of two-or-more-evaluation Index values. Provisional values have incomplete domain coverage and are not formal ranks.</div>';
+  var c=chartInit('chart-main-el');if(!c)return;
+  c.setOption({animation:false,grid:{left:48,right:18,top:18,bottom:48},tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},xAxis:Object.assign({type:'category',data:labels,name:'Index band'},axisStyle(p)),yAxis:Object.assign({type:'value',minInterval:1,name:'Models'},axisStyle(p)),series:[{name:'Formal ranks',type:'bar',stack:'total',barWidth:28,itemStyle:{color:p.c[0]},data:rankedBins},{name:'Provisional',type:'bar',stack:'total',barWidth:28,itemStyle:{color:p.c[2]},data:provisionalBins}]},true);
+}
 function renderCoverage(host){
   var evs=RESULT.evals.slice().sort(function(a,b){return b.unique-a.unique;});
   if(!evs.length){emptyChart(host,'No eligible evaluation.');return;}
@@ -516,24 +544,26 @@ function renderChart(){
   var host=$('#chart-main');
   $('#chart-controls').style.display=S.chart==='scatter'?'':'none';
   $$('#chart-tabs [data-chart]').forEach(function(b){var on=b.dataset.chart===S.chart;b.classList.toggle('active',on);b.setAttribute('aria-selected',String(on));});
-  var fn={composition:renderComposition,scatter:renderScatter,heatmap:renderHeatmap,coverage:renderCoverage}[S.chart]||renderComposition;
+  var fn={composition:renderComposition,scatter:renderScatter,heatmap:renderHeatmap,distribution:renderDistribution,coverage:renderCoverage}[S.chart]||renderComposition;
   fn(host);
 }
 
 /* ---------- models ---------- */
 function renderModels(){
   var cols=[{k:'sel',l:'Compare'},{k:'model',l:'Model'},{k:'provider',l:'Provider'},{k:'index',l:'Index 1.0',num:true},{k:'coverage',l:'Evals',num:true}];
-  var rows=RESULT.rows.filter(function(r){return r.coverage>=2&&(!S.mq||r.model.toLowerCase().indexOf(S.mq.toLowerCase())>=0);});
+  var rows=RESULT.rows.filter(function(r){return !S.mq||r.model.toLowerCase().indexOf(S.mq.toLowerCase())>=0;});
   rows=rows.slice().sort(function(a,b){
     var va=S.mSort==='model'?a.model:S.mSort==='provider'?a.provider:S.mSort==='coverage'?a.coverage:(a.index==null?-1:a.index);
     var vb=S.mSort==='model'?b.model:S.mSort==='provider'?b.provider:S.mSort==='coverage'?b.coverage:(b.index==null?-1:b.index);
     if(typeof va==='string')return S.mDir*va.localeCompare(vb,'en');
+    if(va==null&&vb==null)return a.model.localeCompare(b.model);
+    if(va==null)return 1;if(vb==null)return -1;
     return S.mDir*(va-vb);
   });
   $('#models-head').innerHTML=cols.map(function(c){return '<th'+(c.num?' class="text-end"':'')+'>'+(c.k==='sel'?esc(c.l):'<button type="button" class="sort-btn" data-msort="'+c.k+'">'+esc(c.l)+'</button>')+'</th>';}).join('');
   $('#models-body').innerHTML=rows.length?rows.map(function(r){
     var on=S.selected.indexOf(r.model)>=0;
-    return '<tr><td><input class="form-check-input" type="checkbox" data-sel="'+esc(r.model)+'"'+(on?' checked':'')+' aria-label="Compare '+esc(r.model)+'"></td><td class="fw-semibold">'+esc(r.model)+(r.ranked?'':' <span class="badge rounded-pill text-bg-secondary fw-normal">coverage only</span>')+'</td><td>'+esc(r.provider)+'</td><td class="text-end num">'+fmt(r.index,1)+'</td><td class="text-end num">'+r.coverage+'</td></tr>';
+    return '<tr><td><input class="form-check-input" type="checkbox" data-sel="'+esc(r.model)+'"'+(on?' checked':'')+(r.coverage<2?' disabled':'')+' aria-label="Compare '+esc(r.model)+'"></td><td class="fw-semibold">'+esc(r.model)+(r.ranked?' <span class="badge rounded-pill text-bg-success model-status">ranked</span>':r.coverage>=2?' <span class="badge rounded-pill text-bg-secondary model-status">provisional</span>':' <span class="badge rounded-pill text-bg-light text-secondary border model-status">single result</span>')+'</td><td>'+esc(r.provider)+'</td><td class="text-end num">'+fmt(r.index,1)+'</td><td class="text-end num">'+r.coverage+' / '+RESULT.evals.length+'</td></tr>'
   }).join(''):'<tr><td colspan="5" class="empty-qb">No models match.</td></tr>';
   renderCompare();
 }
@@ -619,12 +649,15 @@ function renderMethod(){
     return '<li><strong>'+esc(dom.name)+'</strong> ('+names.length+'): '+list+(dom.note?' <span class="text-muted-qb">— '+esc(dom.note)+'</span>':'')+'</li>';
   }).join('');
   $('#method').innerHTML=
-    '<h3>What QBench 1.0 is</h3><p>QBench Composite Index 1.0 is an independent, percentile-based index. It keeps the four-category structure of the Artificial Analysis Intelligence Index v5 (Knowledge Work, Coding, Science, General; equal weight) as a reference. Where an AA evaluation has no non-AA values, it uses a current, non-saturated public benchmark instead.</p>'+
-    '<h3>Policy</h3><ul><li>No Artificial Analysis values (scores, Elo, rankings or index numbers) are stored or displayed.</li><li>Evaluation names and definitions may follow AA where they are public.</li><li>Missing values are never imputed or filled with zero.</li><li>Rows marked uncertain are shown in the benchmark directory but excluded from the index.</li></ul>'+
-    '<h3>Categories and evaluations in 1.0</h3><ul>'+cats+'</ul>'+
-    '<h3>Rules</h3><ol><li>For each eligible benchmark, the best published score per exact model name is used.</li><li>Each benchmark is converted to a midrank percentile within its cohort, so Elo, percentages and accuracy do not share a raw scale.</li><li>A benchmark needs at least 8 unique models and must be marked index-eligible.</li><li>Category score = average of its benchmarks’ percentiles. Index = average of the available category scores.</li><li>A model is ranked with 4+ evaluations across 3+ categories. Currently '+ranked+' models meet this.</li></ol>'+
-    '<h3>Excluded</h3><ul><li>Saturated benchmarks: GPQA Diamond, SWE-bench Verified, SWE-Bench Pro V2 Full (top 99.4%), ARC-AGI-2 (top 95%), FrontierMath Tiers 1–3 (top 93.7%).</li><li>AA evaluations with no non-AA values yet: AA-Briefcase v1.1, AutomationBench-AA, GDP.pdf, FrontierCode 2.0, CritPt v2 (Hard), AA-Omniscience v1.1.</li></ul>'+
-    '<h3>Limitations</h3><ul><li>Some values come from secondary mirrors (llm-stats, BenchLM, vals.ai, and others). Each row keeps its source and snapshot date.</li><li>Science rests on one evaluation, so that category is the least stable.</li><li>This is a comparative percentile index, not a controlled head-to-head test. Harness, effort settings and tools differ between sources.</li><li>The model count is limited by which sources could be read. A missing value does not mean a model failed the benchmark.</li></ul>'+
+    '<h2 class="font-serif-jp mb-3">Methodology & data quality</h2>'+
+    '<p>QBench Composite Index 1.0 is an independent percentile-based summary of public evaluations. It borrows the four-domain taxonomy of Artificial Analysis Intelligence Index v5 only; it does <strong>not</strong> use AA scores, rankings, index values or AA\'s internal per-evaluation weights.</p>'+
+    '<div class="row row-cols-2 row-cols-lg-4 g-2 my-3"><div class="col"><div class="card p-3"><div class="small text-muted-qb">Formal ranks</div><div class="fs-3 fw-bold num">'+ranked+'</div></div></div><div class="col"><div class="card p-3"><div class="small text-muted-qb">Provisional</div><div class="fs-3 fw-bold num">'+provisional+'</div></div></div><div class="col"><div class="card p-3"><div class="small text-muted-qb">Single evaluation</div><div class="fs-3 fw-bold num">'+single+'</div></div></div><div class="col"><div class="card p-3"><div class="small text-muted-qb">Eligible evaluations</div><div class="fs-3 fw-bold num">'+RESULT.evals.length+'</div></div></div></div>'+
+    '<h3>Four domains</h3><ul>'+cats+'</ul>'+
+    '<h3>How the score is calculated</h3><ol><li>Only datasets marked index-eligible and containing at least eight unique model names contribute.</li><li>For each exact model name in each evaluation, QBench takes the highest published configuration. Model aliases are not merged by guesswork.</li><li>Scores are converted to midrank percentiles within that evaluation\'s observed cohort. Different native units can be summarized, but the tests do not become equivalent.</li><li>A domain score is the equal-weighted mean of available eligible evaluation percentiles inside that domain. The provisional Index is the equal-weighted mean of available domain scores.</li><li>A formal rank requires at least four eligible evaluations across at least three of four domains. Two or more evaluations produce a provisional value; one evaluation is shown as a benchmark result, not as a composite Index.</li><li>Missing results are never imputed. An available-domain average is coverage-limited and is not a complete four-domain score.</li></ol>'+
+    '<h3>Evidence and uncertainty</h3><ul><li>Publisher-reported results are identified separately from third-party evaluator runs and secondary leaderboard mirrors.</li><li>Configuration, harness, source URL, evidence note and snapshot date are retained where the source provides them.</li><li>Rows marked uncertain are retained in benchmark details but excluded from the composite.</li><li>Evaluation-specific costs (Cost / Test or Cost per successful task) remain attached to their own evaluation. They are not interchangeable or combined into a universal task-cost score.</li></ul>'+
+    '<h3>Current eligible evaluations</h3><p>'+RESULT.evals.map(function(e){return '<span class="metric-chip">'+esc(e.name)+' · '+e.unique+' models</span>';}).join(' ')+'</p>'+
+    '<h3>Limitations</h3><ul><li>Knowledge Work has two eligible evaluations, Coding has two, Science has one and General has three. Science is the least stable domain.</li><li>OSWorld 2.0 is a self-reported aggregate mirror; ARC-AGI-3 and 25 LiveBench 2.0 rows use labelled secondary sources.</li><li>Terminal-Bench 4.0 and Terminal-Bench-Science 0.1 are third-party Vals AI runs using Mini-SWE-agent, not the official tbench.ai leaderboard.</li><li>Provider configurations, effort settings, tools and harnesses are not controlled head-to-head comparisons. Scores do not establish statistical significance.</li><li>Models with one eligible evaluation remain visible in Models and the benchmark directory, but are not assigned a composite score.</li></ul>'+
+    '<h3>Reference documents</h3><ul><li><a href="https://artificialanalysis.ai/methodology/intelligence-benchmarking" target="_blank" rel="noopener">Artificial Analysis methodology</a> — taxonomy reference only; AA weights are not copied.</li><li><a href="https://www.vals.ai/benchmarks/terminal-bench-4" target="_blank" rel="noopener">Vals AI Terminal-Bench 4.0</a> and <a href="https://www.vals.ai/benchmarks/proof_bench" target="_blank" rel="noopener">ProofBench 1.1</a>.</li><li><a href="https://livebench.ai/" target="_blank" rel="noopener">LiveBench 2.0 publisher leaderboard</a>.</li></ul>'+
     '<h3>Version</h3><p class="text-muted-qb">'+esc(sp.name||'QBench Composite Index')+' '+esc(sp.version)+' · snapshot '+esc(sp.snapshotAsOf||'—')+'</p>';
 }
 
