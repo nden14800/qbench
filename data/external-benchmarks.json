@@ -12388,5 +12388,121 @@
       ],
       "methodology": "QBench Composite Index 3.5: best published configuration per exact model within each eligible benchmark is converted to a midrank percentile. Each benchmark contributes equally inside its single primary domain; six domain means are then averaged equally. A model is ranked only with results in at least four eligible evaluations spanning at least three of six domains. Every contributing evaluation must have at least eight unique model names. Missing scores are not imputed. This broad percentile index is independent of AA's native index and does not claim identical harnesses."
     }
+  },
+  "apiPricing": {
+    "snapshotDate": "2026-10-31",
+    "method": "Equal-token API list-price proxy = (standard uncached input price + standard output price) / 2, per 1 million tokens. Assumes exactly equal input and output token volumes. This is not observed task cost, not cost per task, and excludes caching, batch discounts, tool charges, regional uplifts, negotiated rates and taxes.",
+    "sources": [
+      {
+        "provider": "OpenAI",
+        "url": "https://developers.openai.com/api/docs/pricing",
+        "tier": "Standard",
+        "checkedDate": "2026-10-31"
+      },
+      {
+        "provider": "Anthropic",
+        "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+        "tier": "Standard API",
+        "checkedDate": "2026-10-31"
+      },
+      {
+        "provider": "Google",
+        "url": "https://ai.google.dev/gemini-api/docs/pricing",
+        "tier": "Standard paid tier",
+        "checkedDate": "2026-10-31"
+      }
+    ],
+    "models": [
+      {
+        "model": "GPT-6 Astra",
+        "provider": "OpenAI",
+        "inputUSDPerMillion": 10,
+        "outputUSDPerMillion": 50,
+        "source": "https://developers.openai.com/api/docs/pricing",
+        "tier": "Standard",
+        "effectiveDate": "2026-10-31"
+      },
+      {
+        "model": "GPT-6.1 Sol",
+        "provider": "OpenAI",
+        "inputUSDPerMillion": 2,
+        "outputUSDPerMillion": 10,
+        "source": "https://developers.openai.com/api/docs/pricing",
+        "tier": "Standard",
+        "effectiveDate": "2026-10-31"
+      },
+      {
+        "model": "GPT-6.1 Terra",
+        "provider": "OpenAI",
+        "inputUSDPerMillion": 1,
+        "outputUSDPerMillion": 5,
+        "source": "https://developers.openai.com/api/docs/pricing",
+        "tier": "Standard",
+        "effectiveDate": "2026-10-31"
+      },
+      {
+        "model": "GPT-6 Luna",
+        "provider": "OpenAI",
+        "inputUSDPerMillion": 0.1,
+        "outputUSDPerMillion": 0.5,
+        "source": "https://developers.openai.com/api/docs/pricing",
+        "tier": "Standard",
+        "effectiveDate": "2026-10-31"
+      },
+      {
+        "model": "Claude Fable 5.1",
+        "provider": "Anthropic",
+        "inputUSDPerMillion": 10,
+        "outputUSDPerMillion": 50,
+        "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+        "tier": "Standard API",
+        "effectiveDate": "2026-10-31"
+      },
+      {
+        "model": "Claude Opus 5.5",
+        "provider": "Anthropic",
+        "inputUSDPerMillion": 4,
+        "outputUSDPerMillion": 20,
+        "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+        "tier": "Standard API",
+        "effectiveDate": "2026-10-31"
+      },
+      {
+        "model": "Claude Sonnet 5.5",
+        "provider": "Anthropic",
+        "inputUSDPerMillion": 2,
+        "outputUSDPerMillion": 10,
+        "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+        "tier": "Standard API",
+        "effectiveDate": "2026-10-31"
+      },
+      {
+        "model": "Claude Haiku 5.5",
+        "provider": "Anthropic",
+        "inputUSDPerMillion": 0.1,
+        "outputUSDPerMillion": 0.5,
+        "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+        "tier": "Standard API; prompts up to 100k input tokens",
+        "effectiveDate": "2026-10-31"
+      },
+      {
+        "model": "Gemini 4 Argon",
+        "provider": "Google",
+        "inputUSDPerMillion": 2,
+        "outputUSDPerMillion": 10,
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "tier": "Standard paid tier",
+        "effectiveDate": "2026-10-31"
+      },
+      {
+        "model": "Gemini 3.8 Flash",
+        "provider": "Google",
+        "inputUSDPerMillion": 0.75,
+        "outputUSDPerMillion": 3.75,
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "tier": "Standard paid tier",
+        "effectiveDate": "2026-10-31"
+      }
+    ]
   }
 }
