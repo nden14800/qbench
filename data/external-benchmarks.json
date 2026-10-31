@@ -13130,13 +13130,13 @@
     "currentDiagnostics": {
       "snapshotAsOf": "2026-10-31",
       "eligibleEvaluationCount": 8,
-      "modelsWithEligibleResults": 114,
-      "totalVariants": 175,
+      "modelsWithEligibleResults": 98,
+      "totalVariants": 162,
       "rankedVariants": 54,
       "fullEvidenceVariants": 0,
-      "broadEvidenceVariants": 8,
-      "limitedEvidenceVariants": 46,
-      "insufficientEvidenceVariants": 121,
+      "broadEvidenceVariants": 7,
+      "limitedEvidenceVariants": 47,
+      "insufficientEvidenceVariants": 108,
       "note": "Recomputed at runtime from exact model/effort variants and publisher-reported scores."
     },
     "supplementaryInputsExcluded": [
@@ -13411,13 +13411,13 @@
       "currentDiagnostics": {
         "snapshotAsOf": "2026-10-31",
         "eligibleEvaluationCount": 8,
-        "modelsWithEligibleResults": 114,
-        "totalVariants": 175,
+        "modelsWithEligibleResults": 98,
+        "totalVariants": 162,
         "rankedVariants": 54,
         "fullEvidenceVariants": 0,
-        "broadEvidenceVariants": 8,
-        "limitedEvidenceVariants": 46,
-        "insufficientEvidenceVariants": 121,
+        "broadEvidenceVariants": 7,
+        "limitedEvidenceVariants": 47,
+        "insufficientEvidenceVariants": 108,
         "note": "Recomputed at runtime from exact model/effort variants and publisher-reported scores."
       }
     },
