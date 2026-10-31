@@ -50,6 +50,12 @@ body{font-size:16px;line-height:1.7}
 @media(max-width:900px){.expanded-summary{grid-template-columns:1fr 1fr}.expanded-summary-note{grid-column:1/-1}.index-method-strip{grid-template-columns:repeat(2,minmax(0,1fr))}.extension-grid{grid-template-columns:1fr}}
 @media(max-width:760px){.shell{padding:0 14px}.intro h1{font-size:32px}.metric-value{font-size:26px}.index-method-strip{grid-template-columns:repeat(2,minmax(0,1fr))}.index-method-strip>div{padding:12px}.expanded-summary{grid-template-columns:1fr 1fr}.expanded-summary-note{grid-column:1/-1}.table{font-size:12px}.table th{font-size:10px}.table td{padding:11px 9px}.section-head h2{font-size:26px}.panel-head{align-items:flex-start;flex-direction:column}.toolbar{width:100%}.search{width:100%}.analytics-details>summary{font-size:13px;padding:14px}.index-chart{height:320px}}
 
+
+/* AA-inspired analytical layout: compact hierarchy, source-led data and interactive comparisons. */
+.aa-index{margin:28px 0 38px}.aa-title-row{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;padding:8px 0 20px;border-bottom:1px solid var(--line)}.aa-title-row h2{font:500 clamp(30px,3.6vw,43px)/1.08 var(--display);letter-spacing:-.7px;margin:0}.aa-title-row h2 span{font:500 .52em var(--mono);color:var(--muted);vertical-align:middle}.aa-title-row p{max-width:760px;color:var(--muted);font-size:13px;margin:9px 0 0}.aa-source-meta{text-align:right;display:flex;flex-direction:column;gap:4px;white-space:nowrap}.aa-source-meta strong{font:600 11px var(--mono)}.aa-source-meta span{font-size:10px;color:var(--muted)}.aa-source-meta a{font-size:11px;color:var(--accent)}.aa-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid var(--line);margin-bottom:15px}.aa-kpis>div{padding:15px 16px 16px 0;min-width:0}.aa-kpis>div+div{border-left:1px solid var(--line);padding-left:18px}.aa-kpis span,.aa-kpis small{display:block;color:var(--muted);font-size:10px}.aa-kpis strong{display:block;font:500 clamp(19px,2.2vw,27px)/1.25 var(--display);margin:5px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.aa-kpis small{color:var(--soft)}.aa-toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:14px 0}.aa-toolbar .search{width:min(300px,100%)}.aa-source-note{font-size:10px;color:var(--soft);margin-left:auto}.aa-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(300px,.8fr);gap:13px;margin:13px 0}.aa-grid-equal{grid-template-columns:repeat(2,minmax(0,1fr))}.aa-main-chart{height:520px}.aa-small-chart{height:260px}.aa-breakdown-chart{height:390px}.aa-side-stack{display:grid;grid-template-rows:1fr 1fr;gap:13px;min-width:0}.aa-main-panel{min-width:0}.aa-model-table{min-width:850px}.aa-eval-table{min-width:1180px}.aa-eval-table th{text-align:center!important;white-space:normal;min-width:90px}.aa-eval-table th:first-child{text-align:left!important;min-width:180px}.aa-eval-table td{text-align:right;white-space:nowrap}.aa-eval-table td:first-child{text-align:left}.aa-table-panel{margin-top:13px}.aa-method-note{padding:13px 15px;margin-top:13px;background:var(--paper-alt);border-left:2px solid var(--accent);font-size:11px;line-height:1.7;color:var(--muted)}.aa-method-note a{color:var(--accent)}.aa-main-panel .chart-actions{flex-wrap:wrap;justify-content:flex-end}.aa-main-panel .chart-action.is-active{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}.aa-model-table td{font-size:11px}.aa-model-table .model-name{font-size:12px}.aa-model-table .provider-name{font-size:10px}
+@media(max-width:1050px){.aa-grid{grid-template-columns:1fr}.aa-side-stack{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none}.aa-small-chart{height:280px}}
+@media(max-width:700px){.aa-title-row{display:block}.aa-source-meta{text-align:left;margin-top:13px}.aa-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.aa-kpis>div:nth-child(3){border-left:0;padding-left:0;border-top:1px solid var(--line)}.aa-kpis>div:nth-child(4){border-top:1px solid var(--line)}.aa-toolbar .search{width:100%;flex:1 1 100%}.aa-source-note{width:100%;margin:0}.aa-side-stack,.aa-grid-equal{grid-template-columns:1fr}.aa-main-chart{height:460px}.aa-breakdown-chart{height:350px}.aa-main-panel .panel-head{align-items:flex-start;flex-direction:column}.aa-main-panel .chart-actions{justify-content:flex-start}.aa-eval-table{min-width:1100px}}
+
 </style>
 </head>
 <body>
@@ -57,7 +63,7 @@ body{font-size:16px;line-height:1.7}
   <div class="shell mast-inner">
     <a class="brand" href="#top" aria-label="QBench home"><img src="./favicon.svg" alt=""><span><span class="brand-name">QBench</span><span class="brand-tag">Independent benchmark intelligence</span></span></a>
     <nav class="nav" aria-label="Main navigation">
-      <a class="active" href="#leaderboard">Leaderboard</a><a href="#qbench-index">QBench Index</a><a href="#benchmarks">Benchmarks</a><a href="#landscape">Statistical analysis</a>
+      <a class="active" href="#aa-index">Intelligence Index</a><a href="#leaderboard">Benchmark results</a><a href="#qbench-index">QBench Index</a><a href="#benchmarks">Benchmarks</a><a href="#landscape">Analysis</a>
     </nav>
     <div class="mast-actions"><span class="updated" id="updatedAt">DATA SNAPSHOT · 30 OCT 2026</span><button class="icon-btn mobile-menu" id="menuBtn" aria-label="Jump to benchmarks"><i class="bi bi-list"></i></button><button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode" title="Toggle dark mode"><i class="bi bi-moon-stars"></i></button></div>
   </div>
@@ -73,6 +79,53 @@ body{font-size:16px;line-height:1.7}
     <div class="metric"><div class="metric-label">Results</div><div class="metric-value" id="resultCount">—</div><div class="metric-note">Published model scores</div></div>
     <div class="metric"><div class="metric-label">Datasets</div><div class="metric-value" id="snapshotCount">—</div><div class="metric-note">With model-level results</div></div>
     <div class="metric"><div class="metric-label">Configurations</div><div class="metric-value" id="familyCount">—</div><div class="metric-note">Model and harness variants</div></div>
+  </section>
+
+
+  <section id="aa-index" class="aa-index">
+    <div class="aa-title-row">
+      <div><div class="eyebrow">ARTIFICIAL ANALYSIS · SOURCE REFERENCE</div><h2>Intelligence Index <span>v5.0</span></h2><p>Artificial Analysisの公開スナップショットを基準に、総合スコア・コスト・処理時間・トークン使用量を比較。QBench独自スコアとは分離しています。</p></div>
+      <div class="aa-source-meta"><strong id="aaSnapshotDate">31 OCT 2026</strong><span id="aaCoverage">28 of 717 models in supplied source snapshot</span><a href="https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index" target="_blank" rel="noopener">AA official leaderboard ↗</a></div>
+    </div>
+    <div class="aa-kpis">
+      <div><span>Leading model</span><strong id="aaLeader">—</strong><small id="aaLeaderScore">Intelligence Index</small></div>
+      <div><span>Models with AA score</span><strong id="aaModelCount">—</strong><small>Source snapshot only</small></div>
+      <div><span>Lowest cost · top 10</span><strong id="aaLowestCost">—</strong><small id="aaLowestCostModel">Intelligence Index task</small></div>
+      <div><span>Median output tokens</span><strong id="aaMedianTokens">—</strong><small>Tokens per task · available values</small></div>
+    </div>
+    <div class="aa-toolbar">
+      <input class="control search" id="aaSearch" type="search" placeholder="Search models or providers" aria-label="Search AA models">
+      <select class="control" id="aaProvider"><option value="all">All providers</option></select>
+      <select class="control" id="aaWeights"><option value="all">All model types</option><option value="proprietary">Proprietary</option><option value="open">Open weights</option></select>
+      <button class="chart-action" id="aaExportCSV" type="button"><i class="bi bi-download"></i> Export CSV</button>
+      <span class="aa-source-note">Source snapshot: user-provided AA HTML · 31 Oct 2026</span>
+    </div>
+    <div class="aa-grid">
+      <article class="panel aa-main-panel">
+        <div class="panel-head"><div><div class="panel-title">Model comparison</div><div class="panel-sub" id="aaMainSubtitle">Artificial Analysis Intelligence Index · higher is better</div></div><div class="chart-actions"><button class="chart-action" data-aa-view="index">Index</button><button class="chart-action" data-aa-view="cost">Cost</button><button class="chart-action" data-aa-view="time">Time</button><button class="chart-action" data-aa-view="tokens">Tokens</button><button class="chart-action" data-aa-view="score-cost">Score vs cost</button><button class="chart-action" data-aa-view="score-release">Score vs release</button><button class="chart-action" data-aa-export="aaMainChart" title="Export chart"><i class="bi bi-image"></i></button></div></div>
+        <div id="aaMainChart" class="chart aa-main-chart"></div>
+        <div class="chart-note" id="aaMainNote">Scores copied from the supplied Artificial Analysis reference HTML. No missing scores are estimated.</div>
+      </article>
+      <div class="aa-side-stack">
+        <article class="panel"><div class="panel-head"><div><div class="panel-title">Provider distribution</div><div class="panel-sub">Models in the visible AA source snapshot</div></div><button class="chart-action" data-aa-export="aaProviderChart"><i class="bi bi-image"></i></button></div><div id="aaProviderChart" class="chart aa-small-chart"></div></article>
+        <article class="panel"><div class="panel-head"><div><div class="panel-title">Time per task</div><div class="panel-sub">Weighted average · seconds · lower is better</div></div><button class="chart-action" data-aa-export="aaTimeChart"><i class="bi bi-image"></i></button></div><div id="aaTimeChart" class="chart aa-small-chart"></div></article>
+      </div>
+    </div>
+    <div class="aa-grid aa-grid-equal">
+      <article class="panel"><div class="panel-head"><div><div class="panel-title">Output token breakdown</div><div class="panel-sub">Reasoning and answer tokens per task</div></div><button class="chart-action" data-aa-export="aaTokenChart"><i class="bi bi-image"></i></button></div><div id="aaTokenChart" class="chart aa-breakdown-chart"></div></article>
+      <article class="panel"><div class="panel-head"><div><div class="panel-title">Cost per task breakdown</div><div class="panel-sub">USD · input, cache, reasoning and answer</div></div><button class="chart-action" data-aa-export="aaCostChart"><i class="bi bi-image"></i></button></div><div id="aaCostChart" class="chart aa-breakdown-chart"></div></article>
+    </div>
+    <div class="panel aa-table-panel">
+      <div class="panel-head"><div><div class="panel-title">Intelligence Index leaderboard</div><div class="panel-sub">Exact source scores · configuration variants are preserved as displayed model names</div></div><span class="section-kicker" id="aaFilteredCount">— MODELS</span></div>
+      <div class="table-wrap"><table class="table aa-model-table"><thead><tr><th>Rank / Model</th><th>Provider</th><th>Index</th><th>Cost / task</th><th>Time / task</th><th>Output tokens</th><th>Release</th></tr></thead><tbody id="aaModelRows"><tr><td colspan="7" class="empty">Loading AA reference snapshot…</td></tr></tbody></table></div>
+      <div class="table-foot" id="aaTableFoot">Missing source metrics are displayed as —. They are not inferred or imputed.</div>
+    </div>
+    <div class="panel aa-table-panel">
+      <div class="panel-head"><div><div class="panel-title">AA v5 evaluation breakdown</div><div class="panel-sub">Native published units from the supplied reference snapshot · blanks mean no value in the source</div></div><span class="section-kicker">9 EVALUATIONS</span></div>
+      <div class="table-wrap"><table class="table aa-eval-table"><thead><tr><th>Model</th><th>AA-Briefcase<br><small>Elo</small></th><th>AutomationBench<br><small>Score</small></th><th>GDP.pdf<br><small>All-pass</small></th><th>FrontierCode 2.0<br><small>Pass rate</small></th><th>Terminal-Bench 4.0<br><small>Pass rate</small></th><th>Terminal-Bench Science<br><small>Pass rate</small></th><th>CritPt v2 Hard<br><small>Pass rate</small></th><th>AA-Omniscience<br><small>Accuracy</small></th><th>HLE-Diamond<br><small>Accuracy</small></th></tr></thead><tbody id="aaEvalRows"><tr><td colspan="10" class="empty">Loading evaluation results…</td></tr></tbody></table></div>
+      <div class="table-foot">Percentages are displayed as published proportions × 100; AA-Briefcase remains Elo. This table contains only values present in the supplied AA source snapshot.</div>
+    </div>
+    <div class="aa-method-note"><strong>Data integrity:</strong> This panel is an imported snapshot from the AA HTML reference you supplied, not a live API feed. The 28 visible models are not the full AA model catalogue. QBench will not assign AA Intelligence Index scores to models absent from this source. The separate QBench Index uses its own benchmark-level calculations and must not be confused with AA's native 0–100 score. <a href="https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5" target="_blank" rel="noopener">AA v5 methodology and weights ↗</a></div>
   </section>
 
   <section id="leaderboard">
@@ -341,6 +394,133 @@ function renderBenchmarkDepth(){
  setChart('benchmarkDepthChart',{textStyle:{fontFamily:chartFont},grid:{left:185,right:45,top:15,bottom:25},xAxis:{type:'value',minInterval:1,axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'category',data:rows.map(b=>b.name),axisLabel:{...axis(),fontSize:10}},series:[{type:'bar',data:rows.map(b=>({value:new Set(b.models.map(m=>m.model)).size,itemStyle:{color:'#587e9d'}})),barMaxWidth:19,label:{show:true,position:'right',fontSize:10}}],tooltip:{formatter:p=>rows[p.dataIndex].name+'<br>'+p.value+' unique models'}});
 }
 function renderCharts(){renderBenchmarkDepth();renderProviderMix();renderSourceRank();renderModelCoverage();}
+
+
+const aaState={data:null,view:'index',query:'',provider:'all',weights:'all',filtered:[]};
+const aaNumber=(v,d=2)=>v==null||!Number.isFinite(Number(v))?'—':new Intl.NumberFormat('en-US',{maximumFractionDigits:d}).format(Number(v));
+const aaMoney=v=>v==null?'—':'
+ buildOriginalIndex();renderOriginalIndex();renderSummary();renderBenchmarkSelect();renderBenchmark();renderBenchmarkCards();renderCharts();
+}
+function csvCell(v){const x=String(v??'');return '"'+x.replace(/"/g,'""')+'"';}
+function downloadFile(name,content,type){const blob=new Blob([content],{type});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);}
+function exportBenchmarkResults(){const b=get(state.benchmark);if(!b)return;const keys=[...new Set(b.models.flatMap(m=>Object.keys(m)))];const lines=[['benchmark','unit',...keys],...b.models.map(m=>[b.name,b.unit,...keys.map(k=>m[k])])].map(row=>row.map(csvCell).join(','));downloadFile('qbench-'+b.id+'.csv','\uFEFF'+lines.join('\r\n'),'text/csv;charset=utf-8');}
+function exportAllJSON(){downloadFile('qbench-benchmark-data.json',JSON.stringify(state.data,null,2),'application/json;charset=utf-8');}
+function exportChart(id){const c=echarts.getInstanceByDom($('#'+id));if(!c)return;const a=document.createElement('a');a.href=c.getDataURL({type:'svg',backgroundColor:'#fff'});a.download='qbench-'+id+'.svg';a.click();}
+$('#aaSearch').addEventListener('input',e=>{aaState.query=e.target.value.trim();aaFilter();});
+$('#aaProvider').addEventListener('change',e=>{aaState.provider=e.target.value;aaFilter();});
+$('#aaWeights').addEventListener('change',e=>{aaState.weights=e.target.value;aaFilter();});
+$('#aaExportCSV').addEventListener('click',aaExportCSV);
+document.querySelectorAll('[data-aa-view]').forEach(b=>b.addEventListener('click',()=>{aaState.view=b.dataset.aaView;aaRender();}));
+document.querySelectorAll('[data-aa-export]').forEach(b=>b.addEventListener('click',()=>exportChart(b.dataset.aaExport)));
+$('#indexSearch').addEventListener('input',e=>{state.indexQuery=e.target.value.trim();renderOriginalIndex();});
+$('#indexProvider').addEventListener('change',e=>{state.indexProvider=e.target.value;renderOriginalIndex();});
+$('#benchmarkSearch').addEventListener('input',e=>{state.benchmarkQuery=e.target.value.trim();renderBenchmark();});
+$('#benchmarkProviderFilter').addEventListener('change',e=>{state.benchmarkProvider=e.target.value;renderBenchmark();});
+$('#benchmarkSelect').addEventListener('change',e=>{state.benchmark=e.target.value;state.benchmarkProvider='all';renderBenchmark();});
+$('#catalogSearch').addEventListener('input',e=>{state.catalogQuery=e.target.value.trim();renderBenchmarkCards();});
+$('#catalogGroupFilter').addEventListener('change',e=>{state.catalogGroup=e.target.value;renderBenchmarkCards();});
+$('#catalogStatusFilter').addEventListener('change',e=>{state.catalogStatus=e.target.value;renderBenchmarkCards();});
+$('#benchmarkCards').addEventListener('click',e=>{const btn=e.target.closest('[data-open-benchmark]');if(!btn)return;state.benchmark=btn.dataset.openBenchmark;state.benchmarkProvider='all';state.benchmarkQuery='';$('#benchmarkSearch').value='';$('#benchmarkSelect').value=state.benchmark;renderBenchmark();$('#leaderboard').scrollIntoView({behavior:'smooth'});});
+$('#exportBenchmarkCSV').addEventListener('click',exportBenchmarkResults);
+$('#exportAllJSON').addEventListener('click',exportAllJSON);
+$('#themeBtn').addEventListener('click',()=>{const dark=document.documentElement.dataset.theme!=='dark';document.documentElement.dataset.theme=dark?'dark':'light';localStorage.setItem('qbench-theme',dark?'dark':'light');$('#themeBtn').innerHTML=dark?'<i class="bi bi-sun"></i>':'<i class="bi bi-moon-stars"></i>';state.charts.forEach(c=>c.dispose());state.charts=[];renderCharts();});
+$('#menuBtn').addEventListener('click',()=>$('#benchmarks').scrollIntoView({behavior:'smooth'}));
+document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>{document.querySelectorAll('.nav a').forEach(x=>x.classList.toggle('active',x===a));}));
+window.addEventListener('resize',()=>state.charts.forEach(c=>c.resize()));
+const savedTheme=localStorage.getItem('qbench-theme');if(savedTheme){document.documentElement.dataset.theme=savedTheme;$('#themeBtn').innerHTML=savedTheme==='dark'?'<i class="bi bi-sun"></i>':'<i class="bi bi-moon-stars"></i>';}
+fetch('./data/external-benchmarks.json').then(r=>{if(!r.ok)throw new Error('Could not load benchmark data ('+r.status+').');return r.json();}).then(async data=>{
+ if(!Array.isArray(data.benchmarks)||!Array.isArray(data.benchmarkCatalog))throw new Error('Benchmark data schema is incomplete.');
+ state.data=data;const aaResponse=await fetch('./data/aa-index-v5-snapshot.json');if(aaResponse.ok){aaState.data=await aaResponse.json();const providers=[...new Set(aaState.data.models.map(m=>m.provider))].sort();$('#aaProvider').innerHTML='<option value="all">All providers</option>'+providers.map(p=>'<option value="'+esc(p)+'">'+esc(p)+'</option>').join('');aaFilter();}if(document.fonts?.ready)await document.fonts.ready;renderAll();
+}).catch(err=>{$('#benchmarkRows').innerHTML='<tr><td class="empty">'+esc(err.message)+'</td></tr>';});
+})();
+</script>
+</body>
+</html>
++aaNumber(v,2);
+const aaDate=v=>v?new Date(v+'T00:00:00Z').toLocaleDateString('en-US',{month:'short',year:'numeric',timeZone:'UTC'}):'—';
+const aaChart=(id,option)=>{const el=$('#'+id);if(!el||!window.echarts)return;let c=echarts.getInstanceByDom(el);if(!c){c=echarts.init(el,null,{renderer:'canvas'});state.charts.push(c);}c.setOption(option,true);};
+const aaModels=()=>aaState.filtered.slice().sort((a,b)=>b.intelligenceIndex-a.intelligenceIndex);
+function aaFilter(){
+ if(!aaState.data)return;
+ const q=aaState.query.toLowerCase();
+ aaState.filtered=aaState.data.models.filter(m=>(aaState.provider==='all'||m.provider===aaState.provider)&&(aaState.weights==='all'||(aaState.weights==='open'?m.openWeights:!m.openWeights))&&(!q||(m.name+' '+m.provider).toLowerCase().includes(q)));
+ aaRender();
+}
+function aaRender(){
+ const rows=aaModels(),top=rows[0],costs=rows.filter(x=>x.costPerTaskUSD!=null).slice().sort((a,b)=>a.costPerTaskUSD-b.costPerTaskUSD),top10=rows.slice(0,10),lowest=top10.filter(x=>x.costPerTaskUSD!=null).sort((a,b)=>a.costPerTaskUSD-b.costPerTaskUSD)[0],tokens=rows.map(x=>x.outputTokens).filter(x=>x!=null).sort((a,b)=>a-b),median=tokens.length?(tokens.length%2?tokens[(tokens.length-1)/2]:(tokens[tokens.length/2-1]+tokens[tokens.length/2])/2):null;
+ $('#aaLeader').textContent=top?.shortName||top?.name||'—';$('#aaLeaderScore').textContent=top?'Index '+aaNumber(top.intelligenceIndex,2):'No source score';
+ $('#aaModelCount').textContent=rows.length+' / '+aaState.data.displayedModels;$('#aaLowestCost').textContent=aaMoney(lowest?.costPerTaskUSD);$('#aaLowestCostModel').textContent=lowest?.shortName||lowest?.name||'Top 10 · source data';
+ $('#aaMedianTokens').textContent=median==null?'—':aaNumber(median/1000,1)+'k';
+ $('#aaFilteredCount').textContent=rows.length+' / '+aaState.data.displayedModels+' MODELS';
+ $('#aaCoverage').textContent=aaState.data.displayedModels+' of '+aaState.data.sourceDisplayedTotal+' models in supplied source snapshot';
+ const metricViews={index:['Intelligence Index','Native AA score · higher is better'],cost:['Cost per task','USD per task · lower is better'],time:['Time per task','Seconds per task · lower is better'],tokens:['Output tokens per task','Answer + reasoning tokens · lower is not always better'], 'score-cost':['Intelligence Index vs. Cost per Task','Higher score and lower cost are preferable'], 'score-release':['Intelligence Index vs. Model Release','Source release date · score is not an estimate']};
+ const v=metricViews[aaState.view]||metricViews.index;$('#aaMainSubtitle').textContent=v[0]+' · '+v[1];
+ document.querySelectorAll('[data-aa-view]').forEach(b=>b.classList.toggle('is-active',b.dataset.aaView===aaState.view));
+ const palette=m=>m.providerColor||color(m.provider);
+ const chartRows=rows.slice().sort((a,b)=>{const k={index:'intelligenceIndex',cost:'costPerTaskUSD',time:'timePerTaskSeconds',tokens:'outputTokens'}[aaState.view]||'intelligenceIndex';return Number(a[k]??Infinity)-Number(b[k]??Infinity);});
+ if(['index','cost','time','tokens'].includes(aaState.view)){
+  const key={index:'intelligenceIndex',cost:'costPerTaskUSD',time:'timePerTaskSeconds',tokens:'outputTokens'}[aaState.view],unit={index:'',cost:' USD',time:' sec',tokens:' tokens'}[aaState.view],valid=chartRows.filter(m=>m[key]!=null),show=valid.slice(0,24);
+  aaChart('aaMainChart',{animationDuration:250,grid:{left:190,right:65,top:16,bottom:32},xAxis:{type:'value',axisLabel:{...axis(),formatter:v=>aaNumber(v,0)},splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'category',data:show.map(m=>m.shortName||m.name).reverse(),axisLabel:{...axis(),width:170,overflow:'truncate',fontSize:11}},tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:p=>{const m=show[show.length-1-p[0].dataIndex];return '<b>'+esc(m.name)+'</b><br>'+esc(m.provider)+'<br>'+aaNumber(m[key],2)+unit;}},series:[{type:'bar',barMaxWidth:18,data:show.map(m=>({value:m[key],itemStyle:{color:palette(m),borderRadius:[0,3,3,0]}})).reverse(),label:{show:true,position:'right',fontSize:10,formatter:p=>aaNumber(p.value,aaState.view==='index'?2:1)}}]});
+  $('#aaMainNote').textContent=valid.length+' models have a published '+v[0].toLowerCase()+' value in this snapshot. Missing values are excluded from this chart, not treated as zero.';
+ }else if(aaState.view==='score-cost'){
+  const valid=rows.filter(m=>m.costPerTaskUSD!=null&&m.intelligenceIndex!=null);
+  aaChart('aaMainChart',{grid:{left:60,right:30,top:24,bottom:55},xAxis:{type:'value',name:'Cost per task (USD)',nameLocation:'middle',nameGap:36,axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'value',name:'Intelligence Index',axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},tooltip:{formatter:p=>{const m=p.data.model;return '<b>'+esc(m.name)+'</b><br>Index: '+aaNumber(m.intelligenceIndex,2)+'<br>Cost: '+aaMoney(m.costPerTaskUSD);}},series:[{type:'scatter',symbolSize:12,data:valid.map(m=>({value:[m.costPerTaskUSD,m.intelligenceIndex],model:m,itemStyle:{color:palette(m)}})),markLine:{silent:true,symbol:'none',lineStyle:{type:'dashed',opacity:.4},data:[{type:'average',valueIndex:0},{type:'average',valueIndex:1}]}}]});
+  $('#aaMainNote').textContent=valid.length+' models have both an AA Index score and published cost-per-task data. Lower-right is not automatically better; compare score and cost together.';
+ }else{
+  const valid=rows.filter(m=>m.releaseDate&&m.intelligenceIndex!=null);
+  aaChart('aaMainChart',{grid:{left:60,right:30,top:24,bottom:55},xAxis:{type:'time',name:'Release date',nameLocation:'middle',nameGap:36,axisLabel:{...axis(),formatter:v=>new Date(v).toLocaleDateString('en-US',{month:'short',year:'2-digit'})},splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'value',name:'Intelligence Index',axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},tooltip:{formatter:p=>{const m=p.data.model;return '<b>'+esc(m.name)+'</b><br>'+aaDate(m.releaseDate)+'<br>Index: '+aaNumber(m.intelligenceIndex,2);}},series:[{type:'scatter',symbolSize:13,data:valid.map(m=>({value:[new Date(m.releaseDate+'T00:00:00Z').getTime(),m.intelligenceIndex],model:m,itemStyle:{color:palette(m)}}))}]});
+  $('#aaMainNote').textContent=valid.length+' models with a source release date and AA Index score. This is a cross-sectional release comparison, not a historical Progress Index time series.';
+ }
+ const providerCounts={};rows.forEach(m=>providerCounts[m.provider]=(providerCounts[m.provider]||0)+1);
+ aaChart('aaProviderChart',{tooltip:{trigger:'item',formatter:p=>p.name+': '+p.value+' models ('+p.percent+'%)'},legend:{type:'scroll',orient:'vertical',right:0,top:10,bottom:10,textStyle:axis()},series:[{type:'pie',radius:['43%','72%'],center:['34%','52%'],label:{show:false},data:Object.entries(providerCounts).sort((a,b)=>b[1]-a[1]).map(([name,value])=>({name,value,itemStyle:{color:color(name)}}))}]});
+ const timeRows=rows.filter(m=>m.timePerTaskSeconds!=null).slice().sort((a,b)=>a.timePerTaskSeconds-b.timePerTaskSeconds).slice(0,10);
+ aaChart('aaTimeChart',{grid:{left:135,right:45,top:8,bottom:20},xAxis:{type:'value',axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'category',data:timeRows.map(m=>m.shortName||m.name).reverse(),axisLabel:{...axis(),fontSize:10,width:120,overflow:'truncate'}},tooltip:{trigger:'axis',formatter:p=>{const m=timeRows[timeRows.length-1-p[0].dataIndex];return esc(m.name)+'<br>'+aaNumber(m.timePerTaskSeconds,1)+' seconds';}},series:[{type:'bar',barMaxWidth:14,data:timeRows.map(m=>({value:m.timePerTaskSeconds,itemStyle:{color:palette(m)}})).reverse()}]});
+ const tokenRows=rows.filter(m=>m.reasoningTokens!=null&&m.answerTokens!=null).slice().sort((a,b)=>(b.outputTokens||0)-(a.outputTokens||0)).slice(0,12);
+ aaChart('aaTokenChart',{legend:{top:2,textStyle:axis()},grid:{left:165,right:35,top:35,bottom:20},xAxis:{type:'value',axisLabel:{...axis(),formatter:v=>aaNumber(v/1000,0)+'k'},splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'category',data:tokenRows.map(m=>m.shortName||m.name).reverse(),axisLabel:{...axis(),fontSize:10,width:150,overflow:'truncate'}},tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:p=>{const m=tokenRows[tokenRows.length-1-p[0].dataIndex];return '<b>'+esc(m.name)+'</b><br>Reasoning: '+aaNumber(m.reasoningTokens,0)+'<br>Answer: '+aaNumber(m.answerTokens,0)+'<br>Total: '+aaNumber(m.outputTokens,0);}},series:[{name:'Reasoning',type:'bar',stack:'tokens',data:tokenRows.map(m=>m.reasoningTokens).reverse(),itemStyle:{color:'#8e78c8'}},{name:'Answer',type:'bar',stack:'tokens',data:tokenRows.map(m=>m.answerTokens).reverse(),itemStyle:{color:'#6d9eb7'}}]});
+ const costRows=rows.filter(m=>m.costBreakdown).slice().sort((a,b)=>(b.costPerTaskUSD||0)-(a.costPerTaskUSD||0)).slice(0,12);
+ aaChart('aaCostChart',{legend:{top:2,textStyle:axis()},grid:{left:165,right:40,top:35,bottom:20},xAxis:{type:'value',axisLabel:{...axis(),formatter:v=>'
+ buildOriginalIndex();renderOriginalIndex();renderSummary();renderBenchmarkSelect();renderBenchmark();renderBenchmarkCards();renderCharts();
+}
+function csvCell(v){const x=String(v??'');return '"'+x.replace(/"/g,'""')+'"';}
+function downloadFile(name,content,type){const blob=new Blob([content],{type});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);}
+function exportBenchmarkResults(){const b=get(state.benchmark);if(!b)return;const keys=[...new Set(b.models.flatMap(m=>Object.keys(m)))];const lines=[['benchmark','unit',...keys],...b.models.map(m=>[b.name,b.unit,...keys.map(k=>m[k])])].map(row=>row.map(csvCell).join(','));downloadFile('qbench-'+b.id+'.csv','\uFEFF'+lines.join('\r\n'),'text/csv;charset=utf-8');}
+function exportAllJSON(){downloadFile('qbench-benchmark-data.json',JSON.stringify(state.data,null,2),'application/json;charset=utf-8');}
+function exportChart(id){const c=echarts.getInstanceByDom($('#'+id));if(!c)return;const a=document.createElement('a');a.href=c.getDataURL({type:'svg',backgroundColor:'#fff'});a.download='qbench-'+id+'.svg';a.click();}
+$('#indexSearch').addEventListener('input',e=>{state.indexQuery=e.target.value.trim();renderOriginalIndex();});
+$('#indexProvider').addEventListener('change',e=>{state.indexProvider=e.target.value;renderOriginalIndex();});
+$('#benchmarkSearch').addEventListener('input',e=>{state.benchmarkQuery=e.target.value.trim();renderBenchmark();});
+$('#benchmarkProviderFilter').addEventListener('change',e=>{state.benchmarkProvider=e.target.value;renderBenchmark();});
+$('#benchmarkSelect').addEventListener('change',e=>{state.benchmark=e.target.value;state.benchmarkProvider='all';renderBenchmark();});
+$('#catalogSearch').addEventListener('input',e=>{state.catalogQuery=e.target.value.trim();renderBenchmarkCards();});
+$('#catalogGroupFilter').addEventListener('change',e=>{state.catalogGroup=e.target.value;renderBenchmarkCards();});
+$('#catalogStatusFilter').addEventListener('change',e=>{state.catalogStatus=e.target.value;renderBenchmarkCards();});
+$('#benchmarkCards').addEventListener('click',e=>{const btn=e.target.closest('[data-open-benchmark]');if(!btn)return;state.benchmark=btn.dataset.openBenchmark;state.benchmarkProvider='all';state.benchmarkQuery='';$('#benchmarkSearch').value='';$('#benchmarkSelect').value=state.benchmark;renderBenchmark();$('#leaderboard').scrollIntoView({behavior:'smooth'});});
+$('#exportBenchmarkCSV').addEventListener('click',exportBenchmarkResults);
+$('#exportAllJSON').addEventListener('click',exportAllJSON);
+$('#themeBtn').addEventListener('click',()=>{const dark=document.documentElement.dataset.theme!=='dark';document.documentElement.dataset.theme=dark?'dark':'light';localStorage.setItem('qbench-theme',dark?'dark':'light');$('#themeBtn').innerHTML=dark?'<i class="bi bi-sun"></i>':'<i class="bi bi-moon-stars"></i>';state.charts.forEach(c=>c.dispose());state.charts=[];renderCharts();});
+$('#menuBtn').addEventListener('click',()=>$('#benchmarks').scrollIntoView({behavior:'smooth'}));
+document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>{document.querySelectorAll('.nav a').forEach(x=>x.classList.toggle('active',x===a));}));
+window.addEventListener('resize',()=>state.charts.forEach(c=>c.resize()));
+const savedTheme=localStorage.getItem('qbench-theme');if(savedTheme){document.documentElement.dataset.theme=savedTheme;$('#themeBtn').innerHTML=savedTheme==='dark'?'<i class="bi bi-sun"></i>':'<i class="bi bi-moon-stars"></i>';}
+fetch('./data/external-benchmarks.json').then(r=>{if(!r.ok)throw new Error('Could not load benchmark data ('+r.status+').');return r.json();}).then(async data=>{
+ if(!Array.isArray(data.benchmarks)||!Array.isArray(data.benchmarkCatalog))throw new Error('Benchmark data schema is incomplete.');
+ state.data=data;if(document.fonts?.ready)await document.fonts.ready;renderAll();
+}).catch(err=>{$('#benchmarkRows').innerHTML='<tr><td class="empty">'+esc(err.message)+'</td></tr>';});
+})();
+</script>
+</body>
+</html>
++aaNumber(v,1)},splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'category',data:costRows.map(m=>m.shortName||m.name).reverse(),axisLabel:{...axis(),fontSize:10,width:150,overflow:'truncate'}},tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:p=>{const m=costRows[costRows.length-1-p[0].dataIndex];return '<b>'+esc(m.name)+'</b><br>'+p.map(x=>x.seriesName+': '+aaMoney(x.value)).join('<br>')+'<br>Total: '+aaMoney(m.costPerTaskUSD);}},series:[{name:'Input',type:'bar',stack:'cost',data:costRows.map(m=>m.costBreakdown.input||0).reverse(),itemStyle:{color:'#8297a9'}},{name:'Cache read',type:'bar',stack:'cost',data:costRows.map(m=>m.costBreakdown.cacheRead||0).reverse(),itemStyle:{color:'#7d9f91'}},{name:'Cache write',type:'bar',stack:'cost',data:costRows.map(m=>m.costBreakdown.cacheWrite||0).reverse(),itemStyle:{color:'#d1aa73'}},{name:'Reasoning',type:'bar',stack:'cost',data:costRows.map(m=>m.costBreakdown.reasoning||0).reverse(),itemStyle:{color:'#9a83c7'}},{name:'Answer',type:'bar',stack:'cost',data:costRows.map(m=>m.costBreakdown.answer||0).reverse(),itemStyle:{color:'#c17f83'}}]});
+ $('#aaModelRows').innerHTML=rows.map((m,i)=>'<tr><td><div class="model-cell"><span class="rank">'+String(i+1).padStart(2,'0')+'</span><span class="provider-mark" style="background:'+palette(m)+'"></span><span><span class="model-name">'+esc(m.name)+'</span><span class="provider-name">'+(m.openWeights?'Open weights':'Proprietary')+(m.reasoning?' · Reasoning':'')+'</span></span></div></td><td style="text-align:left">'+esc(m.provider)+'</td><td class="num"><strong class="score-main">'+aaNumber(m.intelligenceIndex,2)+'</strong></td><td class="num">'+aaMoney(m.costPerTaskUSD)+'</td><td class="num">'+(m.timePerTaskSeconds==null?'—':aaNumber(m.timePerTaskSeconds,1)+' s')+'</td><td class="num">'+(m.outputTokens==null?'—':aaNumber(m.outputTokens/1000,1)+'k')+'</td><td class="num">'+aaDate(m.releaseDate)+'</td></tr>').join('')||'<tr><td colspan="7" class="empty">No models match these filters.</td></tr>';
+ const pct=v=>v==null?'—':aaNumber(v*100,1)+'%';
+ $('#aaEvalRows').innerHTML=rows.map(m=>'<tr><td>'+esc(m.name)+'</td><td class="num">'+aaNumber(m.briefcaseElo,1)+'</td><td class="num">'+pct(m.automationBenchPartialScore)+'</td><td class="num">'+pct(m.gdpPdfAllPass)+'</td><td class="num">'+pct(m.frontierCode20)+'</td><td class="num">'+pct(m.terminalBench40)+'</td><td class="num">'+pct(m.terminalBenchScience)+'</td><td class="num">'+pct(m.critptAgenticHard)+'</td><td class="num">'+pct(m.omniscienceAccuracy)+'</td><td class="num">'+pct(m.hleDiamond)+'</td></tr>').join('')||'<tr><td colspan="10" class="empty">No models match these filters.</td></tr>';
+ $('#aaTableFoot').textContent='Showing '+rows.length+' of '+aaState.data.displayedModels+' source-listed models. Cost, speed and token metrics are weighted task-level metrics from AA. Missing source values are not zero-filled.';
+}
+function aaExportCSV(){
+ const rows=aaModels(),keys=['name','provider','intelligenceIndex','costPerTaskUSD','timePerTaskSeconds','outputTokens','reasoningTokens','answerTokens','medianOutputSpeed','releaseDate','openWeights','reasoning'];
+ const lines=[keys,...rows.map(m=>keys.map(k=>m[k]??''))].map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(','));
+ downloadFile('qbench-aa-index-v5-reference.csv','\uFEFF'+lines.join('\r\n'),'text/csv;charset=utf-8');
+}
 
 function renderAll(){
  buildOriginalIndex();renderOriginalIndex();renderSummary();renderBenchmarkSelect();renderBenchmark();renderBenchmarkCards();renderCharts();
