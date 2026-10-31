@@ -8374,7 +8374,6 @@
       "id": "arc-agi-1-semi-private",
       "name": "ARC-AGI-1 (Semi-Private)",
       "unit": "Accuracy (%)",
-      "taskCount": 400,
       "indexEligible": false,
       "indexDomain": "Reasoning & generalization",
       "saturationStatus": "ceiling-watch: several frontier models exceed 95%; standalone only",
@@ -8451,7 +8450,7 @@
           "snapshotDate": "2026-10-31",
           "source": "https://arcprize.org/results/anthropic-claude-haiku-5-5",
           "sourceType": "official-publisher",
-          "evidence": "ARC Prize verified model-results page; exact reasoning-effort row transcribed from the publisher's verified score table. Score is from the semi-private evaluation.",
+          "evidence": "ARC Prize verified model-results page. The publisher notes this ARC-AGI-1 run completed 93 of 100 tasks and counts incomplete tasks as incorrect; preserve the official reported score with this coverage caveat.",
           "inputUSDPerMillion": 0.1,
           "outputUSDPerMillion": 0.5
         },
@@ -9075,13 +9074,13 @@
         "maximum": 100,
         "unit": "percentage points",
         "direction": "higher-is-better"
-      }
+      },
+      "publicEvaluationTaskCount": 400
     },
     {
       "id": "arc-agi-2-semi-private",
       "name": "ARC-AGI-2 (Semi-Private)",
       "unit": "Accuracy (%)",
-      "taskCount": 120,
       "indexEligible": false,
       "indexDomain": "Reasoning & generalization",
       "saturationStatus": "upper-range ceiling-watch: leading models approach 95%; standalone only",
@@ -9752,7 +9751,8 @@
         "maximum": 100,
         "unit": "percentage points",
         "direction": "higher-is-better"
-      }
+      },
+      "publicEvaluationTaskCount": 120
     },
     {
       "id": "arc-agi-3",
