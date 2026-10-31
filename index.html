@@ -145,7 +145,7 @@ const get = id => state.data.benchmarks.find(b=>b.id===id);
 const providerColor = p => COLORS[p] || '#7b70ad';
 const CHART_FONT = 'DM Sans, Noto Sans JP, sans-serif';
 function chartFor(id){const host=$('#'+id);let c=echarts.getInstanceByDom(host);if(!c){c=echarts.init(host,null,{renderer:'svg'});state.charts.push(c);}return c;}
-function axisText(){return {fontFamily:CHART_FONT,fontSize:12,color:'#707985'};}
+function axisText(){return {fontFamily:CHART_FONT,fontSize:13,color:'#707985'};}
 const snapshotText = d => new Date(d+'T00:00:00Z').toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric',timeZone:'UTC'});
 function buildComposite(){
   const live=get('livebench-2.0'),gpqa=get('gpqa-diamond'),fm13=get('frontiermath-tiers-1-3-v2'),fm4=get('frontiermath-tier-4-v2'),proof=get('proofbench'),furniture=get('furniture-assembly');
@@ -247,8 +247,8 @@ function renderBenchmark(){
 function renderBenchmarkCards(){
   const compositeIds=new Set(['livebench-2.0','gpqa-diamond','frontiermath-tiers-1-3-v2','frontiermath-tier-4-v2','proofbench','furniture-assembly']);
   $('#benchmarkCards').innerHTML=state.data.benchmarks.map(b=>{
-    const included=compositeIds.has(b.id);
-    return '<article class="benchmark-card"><div class="benchmark-card-top"><div><h3>'+esc(b.name)+'</h3><p>'+esc(b.unit)+' · '+b.models.length+' model entries</p></div><span class="badge">'+(included?'COMPOSITE INPUT':'SEPARATE')+'</span></div><div class="benchmark-card-meta"><span>'+snapshotText(b.snapshotDate)+'</span><a href="'+esc(b.source)+'" target="_blank" rel="noopener noreferrer">View source ↗</a></div></article>';
+    const included=compositeIds.has(b.id); const frontier=b.id==='arc-agi-2'||b.id==='frontiermath-erdos';
+    return '<article class="benchmark-card"><div class="benchmark-card-top"><div><h3>'+esc(b.name)+'</h3><p>'+esc(b.unit)+' · '+b.models.length+' model entries</p></div><span class="badge">'+(included?'CORE INDEX INPUT':(frontier?'FRONTIER TEST':'SEPARATE'))+'</span></div><div class="benchmark-card-meta"><span>'+snapshotText(b.snapshotDate)+'</span><a href="'+esc(b.source)+'" target="_blank" rel="noopener noreferrer">View source ↗</a></div></article>';
   }).join('');
 }
 function renderRadar(){
