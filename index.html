@@ -317,265 +317,49 @@ function renderBenchmarkDepth(){
  setChart('benchmarkDepthChart',{textStyle:{fontFamily:chartFont},grid:{left:185,right:45,top:15,bottom:25},xAxis:{type:'value',minInterval:1,axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'category',data:rows.map(b=>b.name),axisLabel:{...axis(),fontSize:10}},series:[{type:'bar',data:rows.map(b=>({value:new Set(b.models.map(m=>m.model)).size,itemStyle:{color:'#587e9d'}})),barMaxWidth:19,label:{show:true,position:'right',fontSize:10}}],tooltip:{formatter:p=>rows[p.dataIndex].name+'<br>'+p.value+' unique models'}});
 }
 function renderPricePareto(){
- const host=$('#performanceFrontierChart'),sel=$('#frontierBenchmarkSelect'),records=state.data.apiPricing?.models||[],models=state.composite.filter(m=>m.ranked),providers=[...new Set(records.map(r=>r.provider))].sort();
+ const host=$('#performanceFrontierChart');
+ const select=$('#frontierBenchmarkSelect');
+ const records=state.data.apiPricing?.models||[];
+ const ranked=state.composite.filter(m=>m.ranked);
+ const providers=[...new Set(records.map(r=>r.provider))].sort();
  if(!host)return;
- if(sel){sel.innerHTML='<option value="all">All priced providers</option>'+providers.map(p=>'<option value="'+esc(p)+'">'+esc(p)+'</option>').join('');sel.value=state.frontierProvider||'all';}
+ if(select){
+  select.innerHTML='<option value="all">All priced providers</option>'+providers.map(p=>'<option value="'+esc(p)+'">'+esc(p)+'</option>').join('');
+  select.value=state.frontierProvider||'all';
+ }
  const rows=records.filter(r=>(state.frontierProvider==='all'||r.provider===state.frontierProvider)&&Number.isFinite(Number(r.inputUSDPerMillion))&&Number.isFinite(Number(r.outputUSDPerMillion))).map(r=>{
-  const scored=models.find(m=>m.model===r.model);return scored?{...r,index:scored.index,price:(Number(r.inputUSDPerMillion)+Number(r.outputUSDPerMillion))/2}:null;
+  const model=ranked.find(m=>m.model===r.model);
+  return model?{...r,index:model.index,price:(Number(r.inputUSDPerMillion)+Number(r.outputUSDPerMillion))/2}:null;
  }).filter(Boolean);
  const chart=chartFor('performanceFrontierChart');
  const note=$('#apiPriceNote');
- if(note)note.innerHTML='Proxy = (standard uncached input price + standard output price) ÷ 2, per 1M tokens, assuming equal input/output token volumes. Not measured task cost, not Cost per Task. Excludes caching, batch discounts, tools, regional uplifts and negotiated rates. Snapshot: '+esc(state.data.apiPricing?.snapshotDate||'undated')+'. Exact model-name matches only; '+rows.length+' ranked models have a verified published price.';
+ if(note)note.textContent='Proxy: mean of standard uncached input and output list prices per 1M tokens, assuming equal input/output token volumes. Not measured task cost or Cost per Task. Caching, batch discounts, tool charges, regional uplifts and negotiated rates are excluded. Snapshot '+(state.data.apiPricing?.snapshotDate||'undated')+'; '+rows.length+' exact-name ranked-model matches.';
  if(!chart)return;
- if(!rows.length){chart.setOption({title:{text:'No ranked model has a matching verified API price in this filter',left:'center',top:'middle',textStyle:{fontSize:13,color:'#7b8490'}}},true);return;}
- const sorted=rows.slice().sort((a,b)=>a.price-b.price||b.index-a.index),frontier=[];let best=-Infinity;
+ if(!rows.length){chart.setOption({title:{text:'No ranked model has a verified API price in this filter',left:'center',top:'middle'}},true);return;}
+ const sorted=rows.slice().sort((a,b)=>a.price-b.price||b.index-a.index);
+ const frontier=[];
+ let best=-Infinity;
  sorted.forEach(r=>{if(r.index>best){frontier.push(r);best=r.index;}});
  const point=r=>({value:[r.price,r.index],model:r.model,provider:r.provider,input:r.inputUSDPerMillion,output:r.outputUSDPerMillion,source:r.source,tier:r.tier,effectiveDate:r.effectiveDate,itemStyle:{color:color(r.provider)}});
- chart.setOption({textStyle:{fontFamily:chartFont},grid:{left:76,right:28,top:28,bottom:76},legend:{top:0,data:['Published-price observations','Pareto frontier'],textStyle:axis()},tooltip:{trigger:'item',formatter:p=>{const d=p.data;if(!d?.model)return p.seriesName;return '<b>'+esc(d.model)+'</b><br>'+esc(d.provider)+'<br>Equal-token proxy: 
- const defs=state.indexEligibleDefinitions||[],maps=state.indexPercentileMaps||new Map(),domains=state.indexDomains||[],ranked=state.composite.filter(m=>m.ranked),ax=axis(),pm=new Map();
- ranked.forEach(m=>{if(!pm.has(m.provider))pm.set(m.provider,[]);pm.get(m.provider).push(m);});const providers=[...pm.entries()].sort((a,b)=>b[1].length-a[1].length).slice(0,12),heat=[];
- providers.forEach(([p,ms],y)=>domains.forEach((d,x)=>{const v=ms.map(m=>m.domains[x]).filter(Number.isFinite);if(v.length)heat.push([x,y,v.reduce((a,b)=>a+b,0)/v.length]);}));
- setChart('providerDomainHeatmap',{grid:{left:145,right:20,top:15,bottom:75},xAxis:{type:'category',data:domains.map(d=>d.name),axisLabel:{...ax,rotate:25,interval:0}},yAxis:{type:'category',data:providers.map(x=>x[0]),axisLabel:ax},visualMap:{min:0,max:100,show:true,orient:'horizontal',left:'center',bottom:0,inRange:{color:['#f0f3f4','#8fb5b0','#087f73']}},series:[{type:'heatmap',data:heat,label:{show:true,formatter:p=>fmt(p.data[2],0)}}]});
- const dist=defs.map(def=>{const v=[...(maps.get(def.id)?.values()||[])].map(x=>x.percentile).sort((a,b)=>a-b);if(!v.length)return null;const q=p=>{const z=(v.length-1)*p,l=Math.floor(z),u=Math.ceil(z);return v[l]+(v[u]-v[l])*(z-l);};return {name:def.label,data:[v[0],q(.25),q(.5),q(.75),v[v.length-1]]};}).filter(Boolean);
- setChart('benchmarkDistributionChart',{grid:{left:180,right:20,top:15,bottom:20},xAxis:{type:'value',min:0,max:100,axisLabel:ax},yAxis:{type:'category',data:dist.map(x=>x.name),axisLabel:ax},series:[{type:'boxplot',data:dist.map(x=>x.data)}]});
- const ids=defs.slice(0,12),corr=[];function pearson(a,b){const n=a.length;if(n<5)return null;const ma=a.reduce((x,y)=>x+y,0)/n,mb=b.reduce((x,y)=>x+y,0)/n;let num=0,da=0,db=0;for(let i=0;i<n;i++){num+=(a[i]-ma)*(b[i]-mb);da+=(a[i]-ma)**2;db+=(b[i]-mb)**2;}return da&&db?num/Math.sqrt(da*db):null;}
- ids.forEach((a,y)=>ids.forEach((b,x)=>{const ma=maps.get(a.id),mb=maps.get(b.id),names=[...(ma?.keys()||[])].filter(n=>mb?.has(n)),v=pearson(names.map(n=>ma.get(n).percentile),names.map(n=>mb.get(n).percentile));if(v!==null)corr.push([x,y,v,names.length]);}));
- setChart('benchmarkCorrelationChart',{tooltip:{formatter:p=>{const a=ids[p.data[1]],b=ids[p.data[0]];return a.label+' × '+b.label+'<br>Pearson r: '+fmt(p.data[2],2)+'<br>Shared models: '+p.data[3];}},grid:{left:175,right:20,top:15,bottom:115},xAxis:{type:'category',data:ids.map(x=>x.label),axisLabel:{...ax,rotate:45,interval:0,fontSize:9}},yAxis:{type:'category',data:ids.map(x=>x.label),axisLabel:{...ax,fontSize:9}},visualMap:{min:-1,max:1,show:true,orient:'horizontal',left:'center',bottom:0,inRange:{color:['#b55b57','#f3f4f3','#087f73']}},series:[{type:'heatmap',data:corr,label:{show:true,formatter:p=>fmt(p.data[2],2),fontSize:8}}]});
- const top=ranked.slice(0,12).reverse();setChart('domainStackedChart',{legend:{type:'scroll',top:0,textStyle:ax},grid:{left:170,right:25,top:42,bottom:25},xAxis:{type:'value',max:600,axisLabel:ax},yAxis:{type:'category',data:top.map(m=>m.model),axisLabel:ax},series:domains.map((d,i)=>({name:d.name,type:'bar',stack:'domain',data:top.map(m=>Number.isFinite(m.domains[i])?m.domains[i]:null)}))});
- const rp=providers.filter(x=>x[1].length>=2).slice(0,6),rdi=domains.map((d,i)=>i).filter(i=>rp.every(([p,ms])=>ms.some(m=>Number.isFinite(m.domains[i]))));if(rp.length&&rdi.length>=3)setChart('providerRadarChart',{legend:{type:'scroll',bottom:0,textStyle:ax},radar:{indicator:rdi.map(i=>({name:domains[i].name,max:100})),radius:'58%'},series:[{type:'radar',data:rp.map(([p,ms])=>({name:p,value:rdi.map(i=>{const v=ms.map(m=>m.domains[i]).filter(Number.isFinite);return v.reduce((a,b)=>a+b,0)/v.length;}),lineStyle:{color:color(p)},itemStyle:{color:color(p)},areaStyle:{opacity:.05}}))}]});else setChart('providerRadarChart',{title:{text:'Not enough shared domain coverage for a provider radar',left:'center',top:'middle'}});
- const groups=new Map();state.data.benchmarkCatalog.forEach(c=>{const b=get(c.id),n=b?new Set(b.models.map(r=>r.model)).size:0;if(n>0){if(!groups.has(c.group||'Other'))groups.set(c.group||'Other',[]);groups.get(c.group||'Other').push({name:c.name,value:n});}});
- setChart('benchmarkTreemapChart',{series:[{type:'treemap',roam:true,breadcrumb:{show:true},label:{show:true,formatter:'{b}',fontSize:10},data:[...groups].map(([name,children])=>({name,children}))}]});
- const aa=get('aa-3d'),forest=(aa?.models||[]).map(r=>({model:r.model,score:Number(r.score),err:Number(String(r.uncertainty||'').replace(/[^0-9.]/g,''))})).filter(x=>x.err>0).sort((a,b)=>b.score-a.score);
- setChart('confidenceForestChart',{grid:{left:175,right:30,top:15,bottom:25},xAxis:{type:'value',min:500,max:1300,axisLabel:ax},yAxis:{type:'category',data:forest.map(x=>x.model).reverse(),axisLabel:ax},series:[{type:'custom',renderItem:(p,a)=>{const y=a.value(0),v=a.value(1),e=a.value(2),l=a.coord([v-e,y]),r=a.coord([v+e,y]),c=a.coord([v,y]);return {type:'group',children:[{type:'line',shape:{x1:l[0],y1:l[1],x2:r[0],y2:r[1]},style:{stroke:'#087f73',lineWidth:2}},{type:'circle',shape:{cx:c[0],cy:c[1],r:4},style:{fill:'#087f73'}}]};},encode:{x:[1,2],y:0},data:forest.map((x,i)=>[i,x.score,x.err])}]});
- renderPricePareto();
- const dates=new Map();state.data.benchmarks.forEach(b=>dates.set(b.snapshotDate||'Undated',(dates.get(b.snapshotDate||'Undated')||0)+b.models.length));const dr=[...dates].sort((a,b)=>a[0].localeCompare(b[0]));setChart('benchmarkFreshnessChart',{grid:{left:55,right:20,top:20,bottom:55},xAxis:{type:'category',data:dr.map(x=>x[0]),axisLabel:{...ax,rotate:35}},yAxis:{type:'value',name:'Result rows',axisLabel:ax},series:[{type:'bar',data:dr.map(x=>x[1]),itemStyle:{color:'#587e9d'}}]});
- const parallel=ranked.slice(0,6),shared=defs.filter(def=>parallel.length>=3&&parallel.every(m=>maps.get(def.id)?.has(m.model)));setChart('modelParallelChart',{parallel:{left:'8%',right:'8%',top:40,bottom:25,parallelAxisDefault:{type:'value',min:0,max:100,axisLabel:ax}},parallelAxis:shared.map((def,i)=>({dim:i,name:def.label})),series:[{type:'parallel',lineStyle:{width:2,opacity:.5},data:parallel.map(m=>shared.map(def=>maps.get(def.id).get(m.model).percentile))}]});
-}
-function renderCharts(){renderBenchmarkDepth();renderProviderMix();renderSourceRank();renderModelCoverage();renderModelCharts();renderAdvancedCharts();}
-
-function renderAll(){buildOriginalIndex();buildModelCatalog();renderOriginalIndex();renderSummary();renderBenchmarkSelect();renderBenchmark();renderBenchmarkCards();renderModelExplorer();renderCharts();}
-function csvCell(v){const x=String(v??'');return '"'+x.replace(/"/g,'""')+'"';}
-function downloadFile(name,content,type){const blob=new Blob([content],{type});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);}
-function exportBenchmarkResults(){const b=get(state.benchmark);if(!b)return;const keys=[...new Set(b.models.flatMap(m=>Object.keys(m)))];const lines=[['benchmark','unit',...keys],...b.models.map(m=>[b.name,b.unit,...keys.map(k=>m[k])])].map(row=>row.map(csvCell).join(','));downloadFile('qbench-'+b.id+'.csv','\uFEFF'+lines.join('\r\n'),'text/csv;charset=utf-8');}
-function exportAllJSON(){downloadFile('qbench-benchmark-data.json',JSON.stringify(state.data,null,2),'application/json;charset=utf-8');}
-function exportChart(id){const c=echarts.getInstanceByDom($('#'+id));if(!c)return;const a=document.createElement('a');a.href=c.getDataURL({type:'svg',backgroundColor:'#fff'});a.download='qbench-'+id+'.svg';a.click();}
-$('#indexSearch').addEventListener('input',e=>{state.indexQuery=e.target.value.trim();renderOriginalIndex();});
-$('#indexProvider').addEventListener('change',e=>{state.indexProvider=e.target.value;renderOriginalIndex();});
-$('#benchmarkSearch').addEventListener('input',e=>{state.benchmarkQuery=e.target.value.trim();renderBenchmark();});
-$('#benchmarkProviderFilter').addEventListener('change',e=>{state.benchmarkProvider=e.target.value;renderBenchmark();});
-$('#benchmarkSelect').addEventListener('change',e=>{state.benchmark=e.target.value;state.benchmarkProvider='all';renderBenchmark();});
-$('#benchmarkChartType').addEventListener('change',renderSourceRank);
-$('#frontierBenchmarkSelect').addEventListener('change',e=>{state.frontierProvider=e.target.value;renderPricePareto();});
-$('#modelSearch').addEventListener('input',e=>{state.modelQuery=e.target.value.trim();renderModelExplorer();});
-$('#modelProvider').addEventListener('change',e=>{state.modelProvider=e.target.value;renderModelExplorer();});
-$('#modelMinCoverage').addEventListener('change',e=>{state.modelMinCoverage=Number(e.target.value)||1;renderModelExplorer();});
-$('#modelRows').addEventListener('change',e=>{const x=e.target.closest('[data-model-pick]');if(!x)return;const n=x.dataset.modelPick;if(x.checked){if(state.selectedModels.length>=5){x.checked=false;return;}state.selectedModels.push(n);}else state.selectedModels=state.selectedModels.filter(y=>y!==n);renderModelExplorer();});
-$('#modelRows').addEventListener('click',e=>{const x=e.target.closest('[data-model-expand]');if(!x)return;state.expandedModel=state.expandedModel===x.dataset.modelExpand?'':x.dataset.modelExpand;renderModelExplorer();});
-$('#clearModelSelection').addEventListener('click',()=>{state.selectedModels=[];renderModelExplorer();});
-$('#exportModelScoresCSV').addEventListener('click',exportModelScoresCSV);
-$('#catalogSearch').addEventListener('input',e=>{state.catalogQuery=e.target.value.trim();renderBenchmarkCards();});
-$('#catalogGroupFilter').addEventListener('change',e=>{state.catalogGroup=e.target.value;renderBenchmarkCards();});
-$('#catalogStatusFilter').addEventListener('change',e=>{state.catalogStatus=e.target.value;renderBenchmarkCards();});
-$('#benchmarkCards').addEventListener('click',e=>{const btn=e.target.closest('[data-open-benchmark]');if(!btn)return;state.benchmark=btn.dataset.openBenchmark;state.benchmarkProvider='all';state.benchmarkQuery='';$('#benchmarkSearch').value='';$('#benchmarkSelect').value=state.benchmark;renderBenchmark();$('#leaderboard').scrollIntoView({behavior:'smooth'});});
-$('#exportBenchmarkCSV').addEventListener('click',exportBenchmarkResults);
-$('#exportAllJSON').addEventListener('click',exportAllJSON);
-$('#themeBtn').addEventListener('click',()=>{const dark=document.documentElement.dataset.theme!=='dark';document.documentElement.dataset.theme=dark?'dark':'light';localStorage.setItem('qbench-theme',dark?'dark':'light');$('#themeBtn').innerHTML=dark?'<i class="bi bi-sun"></i>':'<i class="bi bi-moon-stars"></i>';state.charts.forEach(c=>c.dispose());state.charts=[];renderOriginalIndex();renderCharts();});
-$('#menuBtn').addEventListener('click',()=>$('#leaderboard').scrollIntoView({behavior:'smooth'}));
-document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>{document.querySelectorAll('.nav a').forEach(x=>x.classList.toggle('active',x===a));}));
-window.addEventListener('resize',()=>state.charts.forEach(c=>c.resize()));
-const savedTheme=localStorage.getItem('qbench-theme');if(savedTheme){document.documentElement.dataset.theme=savedTheme;$('#themeBtn').innerHTML=savedTheme==='dark'?'<i class="bi bi-sun"></i>':'<i class="bi bi-moon-stars"></i>';}
-fetch('./data/external-benchmarks.json').then(r=>{if(!r.ok)throw new Error('Could not load benchmark data ('+r.status+').');return r.json();}).then(async data=>{
- if(!Array.isArray(data.benchmarks)||!Array.isArray(data.benchmarkCatalog))throw new Error('Benchmark data schema is incomplete.');
- state.data=data;if(document.fonts?.ready)await document.fonts.ready;renderAll();
-}).catch(err=>{$('#benchmarkRows').innerHTML='<tr><td class="empty">'+esc(err.message)+'</td></tr>';});
-})();
-</script>
-</body>
-</html>
-+fmt(d.value[0],3)+' / 1M tokens<br>Input: 
- const defs=state.indexEligibleDefinitions||[],maps=state.indexPercentileMaps||new Map(),domains=state.indexDomains||[],ranked=state.composite.filter(m=>m.ranked),ax=axis(),pm=new Map();
- ranked.forEach(m=>{if(!pm.has(m.provider))pm.set(m.provider,[]);pm.get(m.provider).push(m);});const providers=[...pm.entries()].sort((a,b)=>b[1].length-a[1].length).slice(0,12),heat=[];
- providers.forEach(([p,ms],y)=>domains.forEach((d,x)=>{const v=ms.map(m=>m.domains[x]).filter(Number.isFinite);if(v.length)heat.push([x,y,v.reduce((a,b)=>a+b,0)/v.length]);}));
- setChart('providerDomainHeatmap',{grid:{left:145,right:20,top:15,bottom:75},xAxis:{type:'category',data:domains.map(d=>d.name),axisLabel:{...ax,rotate:25,interval:0}},yAxis:{type:'category',data:providers.map(x=>x[0]),axisLabel:ax},visualMap:{min:0,max:100,show:true,orient:'horizontal',left:'center',bottom:0,inRange:{color:['#f0f3f4','#8fb5b0','#087f73']}},series:[{type:'heatmap',data:heat,label:{show:true,formatter:p=>fmt(p.data[2],0)}}]});
- const dist=defs.map(def=>{const v=[...(maps.get(def.id)?.values()||[])].map(x=>x.percentile).sort((a,b)=>a-b);if(!v.length)return null;const q=p=>{const z=(v.length-1)*p,l=Math.floor(z),u=Math.ceil(z);return v[l]+(v[u]-v[l])*(z-l);};return {name:def.label,data:[v[0],q(.25),q(.5),q(.75),v[v.length-1]]};}).filter(Boolean);
- setChart('benchmarkDistributionChart',{grid:{left:180,right:20,top:15,bottom:20},xAxis:{type:'value',min:0,max:100,axisLabel:ax},yAxis:{type:'category',data:dist.map(x=>x.name),axisLabel:ax},series:[{type:'boxplot',data:dist.map(x=>x.data)}]});
- const ids=defs.slice(0,12),corr=[];function pearson(a,b){const n=a.length;if(n<5)return null;const ma=a.reduce((x,y)=>x+y,0)/n,mb=b.reduce((x,y)=>x+y,0)/n;let num=0,da=0,db=0;for(let i=0;i<n;i++){num+=(a[i]-ma)*(b[i]-mb);da+=(a[i]-ma)**2;db+=(b[i]-mb)**2;}return da&&db?num/Math.sqrt(da*db):null;}
- ids.forEach((a,y)=>ids.forEach((b,x)=>{const ma=maps.get(a.id),mb=maps.get(b.id),names=[...(ma?.keys()||[])].filter(n=>mb?.has(n)),v=pearson(names.map(n=>ma.get(n).percentile),names.map(n=>mb.get(n).percentile));if(v!==null)corr.push([x,y,v,names.length]);}));
- setChart('benchmarkCorrelationChart',{tooltip:{formatter:p=>{const a=ids[p.data[1]],b=ids[p.data[0]];return a.label+' × '+b.label+'<br>Pearson r: '+fmt(p.data[2],2)+'<br>Shared models: '+p.data[3];}},grid:{left:175,right:20,top:15,bottom:115},xAxis:{type:'category',data:ids.map(x=>x.label),axisLabel:{...ax,rotate:45,interval:0,fontSize:9}},yAxis:{type:'category',data:ids.map(x=>x.label),axisLabel:{...ax,fontSize:9}},visualMap:{min:-1,max:1,show:true,orient:'horizontal',left:'center',bottom:0,inRange:{color:['#b55b57','#f3f4f3','#087f73']}},series:[{type:'heatmap',data:corr,label:{show:true,formatter:p=>fmt(p.data[2],2),fontSize:8}}]});
- const top=ranked.slice(0,12).reverse();setChart('domainStackedChart',{legend:{type:'scroll',top:0,textStyle:ax},grid:{left:170,right:25,top:42,bottom:25},xAxis:{type:'value',max:600,axisLabel:ax},yAxis:{type:'category',data:top.map(m=>m.model),axisLabel:ax},series:domains.map((d,i)=>({name:d.name,type:'bar',stack:'domain',data:top.map(m=>Number.isFinite(m.domains[i])?m.domains[i]:null)}))});
- const rp=providers.filter(x=>x[1].length>=2).slice(0,6),rdi=domains.map((d,i)=>i).filter(i=>rp.every(([p,ms])=>ms.some(m=>Number.isFinite(m.domains[i]))));if(rp.length&&rdi.length>=3)setChart('providerRadarChart',{legend:{type:'scroll',bottom:0,textStyle:ax},radar:{indicator:rdi.map(i=>({name:domains[i].name,max:100})),radius:'58%'},series:[{type:'radar',data:rp.map(([p,ms])=>({name:p,value:rdi.map(i=>{const v=ms.map(m=>m.domains[i]).filter(Number.isFinite);return v.reduce((a,b)=>a+b,0)/v.length;}),lineStyle:{color:color(p)},itemStyle:{color:color(p)},areaStyle:{opacity:.05}}))}]});else setChart('providerRadarChart',{title:{text:'Not enough shared domain coverage for a provider radar',left:'center',top:'middle'}});
- const groups=new Map();state.data.benchmarkCatalog.forEach(c=>{const b=get(c.id),n=b?new Set(b.models.map(r=>r.model)).size:0;if(n>0){if(!groups.has(c.group||'Other'))groups.set(c.group||'Other',[]);groups.get(c.group||'Other').push({name:c.name,value:n});}});
- setChart('benchmarkTreemapChart',{series:[{type:'treemap',roam:true,breadcrumb:{show:true},label:{show:true,formatter:'{b}',fontSize:10},data:[...groups].map(([name,children])=>({name,children}))}]});
- const aa=get('aa-3d'),forest=(aa?.models||[]).map(r=>({model:r.model,score:Number(r.score),err:Number(String(r.uncertainty||'').replace(/[^0-9.]/g,''))})).filter(x=>x.err>0).sort((a,b)=>b.score-a.score);
- setChart('confidenceForestChart',{grid:{left:175,right:30,top:15,bottom:25},xAxis:{type:'value',min:500,max:1300,axisLabel:ax},yAxis:{type:'category',data:forest.map(x=>x.model).reverse(),axisLabel:ax},series:[{type:'custom',renderItem:(p,a)=>{const y=a.value(0),v=a.value(1),e=a.value(2),l=a.coord([v-e,y]),r=a.coord([v+e,y]),c=a.coord([v,y]);return {type:'group',children:[{type:'line',shape:{x1:l[0],y1:l[1],x2:r[0],y2:r[1]},style:{stroke:'#087f73',lineWidth:2}},{type:'circle',shape:{cx:c[0],cy:c[1],r:4},style:{fill:'#087f73'}}]};},encode:{x:[1,2],y:0},data:forest.map((x,i)=>[i,x.score,x.err])}]});
- renderPricePareto();
- const dates=new Map();state.data.benchmarks.forEach(b=>dates.set(b.snapshotDate||'Undated',(dates.get(b.snapshotDate||'Undated')||0)+b.models.length));const dr=[...dates].sort((a,b)=>a[0].localeCompare(b[0]));setChart('benchmarkFreshnessChart',{grid:{left:55,right:20,top:20,bottom:55},xAxis:{type:'category',data:dr.map(x=>x[0]),axisLabel:{...ax,rotate:35}},yAxis:{type:'value',name:'Result rows',axisLabel:ax},series:[{type:'bar',data:dr.map(x=>x[1]),itemStyle:{color:'#587e9d'}}]});
- const parallel=ranked.slice(0,6),shared=defs.filter(def=>parallel.length>=3&&parallel.every(m=>maps.get(def.id)?.has(m.model)));setChart('modelParallelChart',{parallel:{left:'8%',right:'8%',top:40,bottom:25,parallelAxisDefault:{type:'value',min:0,max:100,axisLabel:ax}},parallelAxis:shared.map((def,i)=>({dim:i,name:def.label})),series:[{type:'parallel',lineStyle:{width:2,opacity:.5},data:parallel.map(m=>shared.map(def=>maps.get(def.id).get(m.model).percentile))}]});
-}
-function renderCharts(){renderBenchmarkDepth();renderProviderMix();renderSourceRank();renderModelCoverage();renderModelCharts();renderAdvancedCharts();}
-
-function renderAll(){buildOriginalIndex();buildModelCatalog();renderOriginalIndex();renderSummary();renderBenchmarkSelect();renderBenchmark();renderBenchmarkCards();renderModelExplorer();renderCharts();}
-function csvCell(v){const x=String(v??'');return '"'+x.replace(/"/g,'""')+'"';}
-function downloadFile(name,content,type){const blob=new Blob([content],{type});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);}
-function exportBenchmarkResults(){const b=get(state.benchmark);if(!b)return;const keys=[...new Set(b.models.flatMap(m=>Object.keys(m)))];const lines=[['benchmark','unit',...keys],...b.models.map(m=>[b.name,b.unit,...keys.map(k=>m[k])])].map(row=>row.map(csvCell).join(','));downloadFile('qbench-'+b.id+'.csv','\uFEFF'+lines.join('\r\n'),'text/csv;charset=utf-8');}
-function exportAllJSON(){downloadFile('qbench-benchmark-data.json',JSON.stringify(state.data,null,2),'application/json;charset=utf-8');}
-function exportChart(id){const c=echarts.getInstanceByDom($('#'+id));if(!c)return;const a=document.createElement('a');a.href=c.getDataURL({type:'svg',backgroundColor:'#fff'});a.download='qbench-'+id+'.svg';a.click();}
-$('#indexSearch').addEventListener('input',e=>{state.indexQuery=e.target.value.trim();renderOriginalIndex();});
-$('#indexProvider').addEventListener('change',e=>{state.indexProvider=e.target.value;renderOriginalIndex();});
-$('#benchmarkSearch').addEventListener('input',e=>{state.benchmarkQuery=e.target.value.trim();renderBenchmark();});
-$('#benchmarkProviderFilter').addEventListener('change',e=>{state.benchmarkProvider=e.target.value;renderBenchmark();});
-$('#benchmarkSelect').addEventListener('change',e=>{state.benchmark=e.target.value;state.benchmarkProvider='all';renderBenchmark();});
-$('#benchmarkChartType').addEventListener('change',renderSourceRank);
-$('#frontierBenchmarkSelect').addEventListener('change',e=>{state.frontierProvider=e.target.value;renderPricePareto();});
-$('#modelSearch').addEventListener('input',e=>{state.modelQuery=e.target.value.trim();renderModelExplorer();});
-$('#modelProvider').addEventListener('change',e=>{state.modelProvider=e.target.value;renderModelExplorer();});
-$('#modelMinCoverage').addEventListener('change',e=>{state.modelMinCoverage=Number(e.target.value)||1;renderModelExplorer();});
-$('#modelRows').addEventListener('change',e=>{const x=e.target.closest('[data-model-pick]');if(!x)return;const n=x.dataset.modelPick;if(x.checked){if(state.selectedModels.length>=5){x.checked=false;return;}state.selectedModels.push(n);}else state.selectedModels=state.selectedModels.filter(y=>y!==n);renderModelExplorer();});
-$('#modelRows').addEventListener('click',e=>{const x=e.target.closest('[data-model-expand]');if(!x)return;state.expandedModel=state.expandedModel===x.dataset.modelExpand?'':x.dataset.modelExpand;renderModelExplorer();});
-$('#clearModelSelection').addEventListener('click',()=>{state.selectedModels=[];renderModelExplorer();});
-$('#exportModelScoresCSV').addEventListener('click',exportModelScoresCSV);
-$('#catalogSearch').addEventListener('input',e=>{state.catalogQuery=e.target.value.trim();renderBenchmarkCards();});
-$('#catalogGroupFilter').addEventListener('change',e=>{state.catalogGroup=e.target.value;renderBenchmarkCards();});
-$('#catalogStatusFilter').addEventListener('change',e=>{state.catalogStatus=e.target.value;renderBenchmarkCards();});
-$('#benchmarkCards').addEventListener('click',e=>{const btn=e.target.closest('[data-open-benchmark]');if(!btn)return;state.benchmark=btn.dataset.openBenchmark;state.benchmarkProvider='all';state.benchmarkQuery='';$('#benchmarkSearch').value='';$('#benchmarkSelect').value=state.benchmark;renderBenchmark();$('#leaderboard').scrollIntoView({behavior:'smooth'});});
-$('#exportBenchmarkCSV').addEventListener('click',exportBenchmarkResults);
-$('#exportAllJSON').addEventListener('click',exportAllJSON);
-$('#themeBtn').addEventListener('click',()=>{const dark=document.documentElement.dataset.theme!=='dark';document.documentElement.dataset.theme=dark?'dark':'light';localStorage.setItem('qbench-theme',dark?'dark':'light');$('#themeBtn').innerHTML=dark?'<i class="bi bi-sun"></i>':'<i class="bi bi-moon-stars"></i>';state.charts.forEach(c=>c.dispose());state.charts=[];renderOriginalIndex();renderCharts();});
-$('#menuBtn').addEventListener('click',()=>$('#leaderboard').scrollIntoView({behavior:'smooth'}));
-document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>{document.querySelectorAll('.nav a').forEach(x=>x.classList.toggle('active',x===a));}));
-window.addEventListener('resize',()=>state.charts.forEach(c=>c.resize()));
-const savedTheme=localStorage.getItem('qbench-theme');if(savedTheme){document.documentElement.dataset.theme=savedTheme;$('#themeBtn').innerHTML=savedTheme==='dark'?'<i class="bi bi-sun"></i>':'<i class="bi bi-moon-stars"></i>';}
-fetch('./data/external-benchmarks.json').then(r=>{if(!r.ok)throw new Error('Could not load benchmark data ('+r.status+').');return r.json();}).then(async data=>{
- if(!Array.isArray(data.benchmarks)||!Array.isArray(data.benchmarkCatalog))throw new Error('Benchmark data schema is incomplete.');
- state.data=data;if(document.fonts?.ready)await document.fonts.ready;renderAll();
-}).catch(err=>{$('#benchmarkRows').innerHTML='<tr><td class="empty">'+esc(err.message)+'</td></tr>';});
-})();
-</script>
-</body>
-</html>
-+fmt(d.input,3)+' · Output: 
- const defs=state.indexEligibleDefinitions||[],maps=state.indexPercentileMaps||new Map(),domains=state.indexDomains||[],ranked=state.composite.filter(m=>m.ranked),ax=axis(),pm=new Map();
- ranked.forEach(m=>{if(!pm.has(m.provider))pm.set(m.provider,[]);pm.get(m.provider).push(m);});const providers=[...pm.entries()].sort((a,b)=>b[1].length-a[1].length).slice(0,12),heat=[];
- providers.forEach(([p,ms],y)=>domains.forEach((d,x)=>{const v=ms.map(m=>m.domains[x]).filter(Number.isFinite);if(v.length)heat.push([x,y,v.reduce((a,b)=>a+b,0)/v.length]);}));
- setChart('providerDomainHeatmap',{grid:{left:145,right:20,top:15,bottom:75},xAxis:{type:'category',data:domains.map(d=>d.name),axisLabel:{...ax,rotate:25,interval:0}},yAxis:{type:'category',data:providers.map(x=>x[0]),axisLabel:ax},visualMap:{min:0,max:100,show:true,orient:'horizontal',left:'center',bottom:0,inRange:{color:['#f0f3f4','#8fb5b0','#087f73']}},series:[{type:'heatmap',data:heat,label:{show:true,formatter:p=>fmt(p.data[2],0)}}]});
- const dist=defs.map(def=>{const v=[...(maps.get(def.id)?.values()||[])].map(x=>x.percentile).sort((a,b)=>a-b);if(!v.length)return null;const q=p=>{const z=(v.length-1)*p,l=Math.floor(z),u=Math.ceil(z);return v[l]+(v[u]-v[l])*(z-l);};return {name:def.label,data:[v[0],q(.25),q(.5),q(.75),v[v.length-1]]};}).filter(Boolean);
- setChart('benchmarkDistributionChart',{grid:{left:180,right:20,top:15,bottom:20},xAxis:{type:'value',min:0,max:100,axisLabel:ax},yAxis:{type:'category',data:dist.map(x=>x.name),axisLabel:ax},series:[{type:'boxplot',data:dist.map(x=>x.data)}]});
- const ids=defs.slice(0,12),corr=[];function pearson(a,b){const n=a.length;if(n<5)return null;const ma=a.reduce((x,y)=>x+y,0)/n,mb=b.reduce((x,y)=>x+y,0)/n;let num=0,da=0,db=0;for(let i=0;i<n;i++){num+=(a[i]-ma)*(b[i]-mb);da+=(a[i]-ma)**2;db+=(b[i]-mb)**2;}return da&&db?num/Math.sqrt(da*db):null;}
- ids.forEach((a,y)=>ids.forEach((b,x)=>{const ma=maps.get(a.id),mb=maps.get(b.id),names=[...(ma?.keys()||[])].filter(n=>mb?.has(n)),v=pearson(names.map(n=>ma.get(n).percentile),names.map(n=>mb.get(n).percentile));if(v!==null)corr.push([x,y,v,names.length]);}));
- setChart('benchmarkCorrelationChart',{tooltip:{formatter:p=>{const a=ids[p.data[1]],b=ids[p.data[0]];return a.label+' × '+b.label+'<br>Pearson r: '+fmt(p.data[2],2)+'<br>Shared models: '+p.data[3];}},grid:{left:175,right:20,top:15,bottom:115},xAxis:{type:'category',data:ids.map(x=>x.label),axisLabel:{...ax,rotate:45,interval:0,fontSize:9}},yAxis:{type:'category',data:ids.map(x=>x.label),axisLabel:{...ax,fontSize:9}},visualMap:{min:-1,max:1,show:true,orient:'horizontal',left:'center',bottom:0,inRange:{color:['#b55b57','#f3f4f3','#087f73']}},series:[{type:'heatmap',data:corr,label:{show:true,formatter:p=>fmt(p.data[2],2),fontSize:8}}]});
- const top=ranked.slice(0,12).reverse();setChart('domainStackedChart',{legend:{type:'scroll',top:0,textStyle:ax},grid:{left:170,right:25,top:42,bottom:25},xAxis:{type:'value',max:600,axisLabel:ax},yAxis:{type:'category',data:top.map(m=>m.model),axisLabel:ax},series:domains.map((d,i)=>({name:d.name,type:'bar',stack:'domain',data:top.map(m=>Number.isFinite(m.domains[i])?m.domains[i]:null)}))});
- const rp=providers.filter(x=>x[1].length>=2).slice(0,6),rdi=domains.map((d,i)=>i).filter(i=>rp.every(([p,ms])=>ms.some(m=>Number.isFinite(m.domains[i]))));if(rp.length&&rdi.length>=3)setChart('providerRadarChart',{legend:{type:'scroll',bottom:0,textStyle:ax},radar:{indicator:rdi.map(i=>({name:domains[i].name,max:100})),radius:'58%'},series:[{type:'radar',data:rp.map(([p,ms])=>({name:p,value:rdi.map(i=>{const v=ms.map(m=>m.domains[i]).filter(Number.isFinite);return v.reduce((a,b)=>a+b,0)/v.length;}),lineStyle:{color:color(p)},itemStyle:{color:color(p)},areaStyle:{opacity:.05}}))}]});else setChart('providerRadarChart',{title:{text:'Not enough shared domain coverage for a provider radar',left:'center',top:'middle'}});
- const groups=new Map();state.data.benchmarkCatalog.forEach(c=>{const b=get(c.id),n=b?new Set(b.models.map(r=>r.model)).size:0;if(n>0){if(!groups.has(c.group||'Other'))groups.set(c.group||'Other',[]);groups.get(c.group||'Other').push({name:c.name,value:n});}});
- setChart('benchmarkTreemapChart',{series:[{type:'treemap',roam:true,breadcrumb:{show:true},label:{show:true,formatter:'{b}',fontSize:10},data:[...groups].map(([name,children])=>({name,children}))}]});
- const aa=get('aa-3d'),forest=(aa?.models||[]).map(r=>({model:r.model,score:Number(r.score),err:Number(String(r.uncertainty||'').replace(/[^0-9.]/g,''))})).filter(x=>x.err>0).sort((a,b)=>b.score-a.score);
- setChart('confidenceForestChart',{grid:{left:175,right:30,top:15,bottom:25},xAxis:{type:'value',min:500,max:1300,axisLabel:ax},yAxis:{type:'category',data:forest.map(x=>x.model).reverse(),axisLabel:ax},series:[{type:'custom',renderItem:(p,a)=>{const y=a.value(0),v=a.value(1),e=a.value(2),l=a.coord([v-e,y]),r=a.coord([v+e,y]),c=a.coord([v,y]);return {type:'group',children:[{type:'line',shape:{x1:l[0],y1:l[1],x2:r[0],y2:r[1]},style:{stroke:'#087f73',lineWidth:2}},{type:'circle',shape:{cx:c[0],cy:c[1],r:4},style:{fill:'#087f73'}}]};},encode:{x:[1,2],y:0},data:forest.map((x,i)=>[i,x.score,x.err])}]});
- renderPricePareto();
- const dates=new Map();state.data.benchmarks.forEach(b=>dates.set(b.snapshotDate||'Undated',(dates.get(b.snapshotDate||'Undated')||0)+b.models.length));const dr=[...dates].sort((a,b)=>a[0].localeCompare(b[0]));setChart('benchmarkFreshnessChart',{grid:{left:55,right:20,top:20,bottom:55},xAxis:{type:'category',data:dr.map(x=>x[0]),axisLabel:{...ax,rotate:35}},yAxis:{type:'value',name:'Result rows',axisLabel:ax},series:[{type:'bar',data:dr.map(x=>x[1]),itemStyle:{color:'#587e9d'}}]});
- const parallel=ranked.slice(0,6),shared=defs.filter(def=>parallel.length>=3&&parallel.every(m=>maps.get(def.id)?.has(m.model)));setChart('modelParallelChart',{parallel:{left:'8%',right:'8%',top:40,bottom:25,parallelAxisDefault:{type:'value',min:0,max:100,axisLabel:ax}},parallelAxis:shared.map((def,i)=>({dim:i,name:def.label})),series:[{type:'parallel',lineStyle:{width:2,opacity:.5},data:parallel.map(m=>shared.map(def=>maps.get(def.id).get(m.model).percentile))}]});
-}
-function renderCharts(){renderBenchmarkDepth();renderProviderMix();renderSourceRank();renderModelCoverage();renderModelCharts();renderAdvancedCharts();}
-
-function renderAll(){buildOriginalIndex();buildModelCatalog();renderOriginalIndex();renderSummary();renderBenchmarkSelect();renderBenchmark();renderBenchmarkCards();renderModelExplorer();renderCharts();}
-function csvCell(v){const x=String(v??'');return '"'+x.replace(/"/g,'""')+'"';}
-function downloadFile(name,content,type){const blob=new Blob([content],{type});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);}
-function exportBenchmarkResults(){const b=get(state.benchmark);if(!b)return;const keys=[...new Set(b.models.flatMap(m=>Object.keys(m)))];const lines=[['benchmark','unit',...keys],...b.models.map(m=>[b.name,b.unit,...keys.map(k=>m[k])])].map(row=>row.map(csvCell).join(','));downloadFile('qbench-'+b.id+'.csv','\uFEFF'+lines.join('\r\n'),'text/csv;charset=utf-8');}
-function exportAllJSON(){downloadFile('qbench-benchmark-data.json',JSON.stringify(state.data,null,2),'application/json;charset=utf-8');}
-function exportChart(id){const c=echarts.getInstanceByDom($('#'+id));if(!c)return;const a=document.createElement('a');a.href=c.getDataURL({type:'svg',backgroundColor:'#fff'});a.download='qbench-'+id+'.svg';a.click();}
-$('#indexSearch').addEventListener('input',e=>{state.indexQuery=e.target.value.trim();renderOriginalIndex();});
-$('#indexProvider').addEventListener('change',e=>{state.indexProvider=e.target.value;renderOriginalIndex();});
-$('#benchmarkSearch').addEventListener('input',e=>{state.benchmarkQuery=e.target.value.trim();renderBenchmark();});
-$('#benchmarkProviderFilter').addEventListener('change',e=>{state.benchmarkProvider=e.target.value;renderBenchmark();});
-$('#benchmarkSelect').addEventListener('change',e=>{state.benchmark=e.target.value;state.benchmarkProvider='all';renderBenchmark();});
-$('#benchmarkChartType').addEventListener('change',renderSourceRank);
-$('#frontierBenchmarkSelect').addEventListener('change',e=>{state.frontierProvider=e.target.value;renderPricePareto();});
-$('#modelSearch').addEventListener('input',e=>{state.modelQuery=e.target.value.trim();renderModelExplorer();});
-$('#modelProvider').addEventListener('change',e=>{state.modelProvider=e.target.value;renderModelExplorer();});
-$('#modelMinCoverage').addEventListener('change',e=>{state.modelMinCoverage=Number(e.target.value)||1;renderModelExplorer();});
-$('#modelRows').addEventListener('change',e=>{const x=e.target.closest('[data-model-pick]');if(!x)return;const n=x.dataset.modelPick;if(x.checked){if(state.selectedModels.length>=5){x.checked=false;return;}state.selectedModels.push(n);}else state.selectedModels=state.selectedModels.filter(y=>y!==n);renderModelExplorer();});
-$('#modelRows').addEventListener('click',e=>{const x=e.target.closest('[data-model-expand]');if(!x)return;state.expandedModel=state.expandedModel===x.dataset.modelExpand?'':x.dataset.modelExpand;renderModelExplorer();});
-$('#clearModelSelection').addEventListener('click',()=>{state.selectedModels=[];renderModelExplorer();});
-$('#exportModelScoresCSV').addEventListener('click',exportModelScoresCSV);
-$('#catalogSearch').addEventListener('input',e=>{state.catalogQuery=e.target.value.trim();renderBenchmarkCards();});
-$('#catalogGroupFilter').addEventListener('change',e=>{state.catalogGroup=e.target.value;renderBenchmarkCards();});
-$('#catalogStatusFilter').addEventListener('change',e=>{state.catalogStatus=e.target.value;renderBenchmarkCards();});
-$('#benchmarkCards').addEventListener('click',e=>{const btn=e.target.closest('[data-open-benchmark]');if(!btn)return;state.benchmark=btn.dataset.openBenchmark;state.benchmarkProvider='all';state.benchmarkQuery='';$('#benchmarkSearch').value='';$('#benchmarkSelect').value=state.benchmark;renderBenchmark();$('#leaderboard').scrollIntoView({behavior:'smooth'});});
-$('#exportBenchmarkCSV').addEventListener('click',exportBenchmarkResults);
-$('#exportAllJSON').addEventListener('click',exportAllJSON);
-$('#themeBtn').addEventListener('click',()=>{const dark=document.documentElement.dataset.theme!=='dark';document.documentElement.dataset.theme=dark?'dark':'light';localStorage.setItem('qbench-theme',dark?'dark':'light');$('#themeBtn').innerHTML=dark?'<i class="bi bi-sun"></i>':'<i class="bi bi-moon-stars"></i>';state.charts.forEach(c=>c.dispose());state.charts=[];renderOriginalIndex();renderCharts();});
-$('#menuBtn').addEventListener('click',()=>$('#leaderboard').scrollIntoView({behavior:'smooth'}));
-document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>{document.querySelectorAll('.nav a').forEach(x=>x.classList.toggle('active',x===a));}));
-window.addEventListener('resize',()=>state.charts.forEach(c=>c.resize()));
-const savedTheme=localStorage.getItem('qbench-theme');if(savedTheme){document.documentElement.dataset.theme=savedTheme;$('#themeBtn').innerHTML=savedTheme==='dark'?'<i class="bi bi-sun"></i>':'<i class="bi bi-moon-stars"></i>';}
-fetch('./data/external-benchmarks.json').then(r=>{if(!r.ok)throw new Error('Could not load benchmark data ('+r.status+').');return r.json();}).then(async data=>{
- if(!Array.isArray(data.benchmarks)||!Array.isArray(data.benchmarkCatalog))throw new Error('Benchmark data schema is incomplete.');
- state.data=data;if(document.fonts?.ready)await document.fonts.ready;renderAll();
-}).catch(err=>{$('#benchmarkRows').innerHTML='<tr><td class="empty">'+esc(err.message)+'</td></tr>';});
-})();
-</script>
-</body>
-</html>
-+fmt(d.output,3)+' / 1M<br>QBench Index: '+fmt(d.value[1],2)+'<br>'+esc(d.tier)+' · '+esc(d.effectiveDate)+'<br><a href="'+esc(d.source)+'" target="_blank" rel="noopener">Official pricing ↗</a>'; }},xAxis:{type:'log',logBase:10,name:'Equal-token API price proxy (USD / 1M tokens) · log scale',nameLocation:'middle',nameGap:48,min:0.1,axisLabel:{...axis(),formatter:v=>'
- const defs=state.indexEligibleDefinitions||[],maps=state.indexPercentileMaps||new Map(),domains=state.indexDomains||[],ranked=state.composite.filter(m=>m.ranked),ax=axis(),pm=new Map();
- ranked.forEach(m=>{if(!pm.has(m.provider))pm.set(m.provider,[]);pm.get(m.provider).push(m);});const providers=[...pm.entries()].sort((a,b)=>b[1].length-a[1].length).slice(0,12),heat=[];
- providers.forEach(([p,ms],y)=>domains.forEach((d,x)=>{const v=ms.map(m=>m.domains[x]).filter(Number.isFinite);if(v.length)heat.push([x,y,v.reduce((a,b)=>a+b,0)/v.length]);}));
- setChart('providerDomainHeatmap',{grid:{left:145,right:20,top:15,bottom:75},xAxis:{type:'category',data:domains.map(d=>d.name),axisLabel:{...ax,rotate:25,interval:0}},yAxis:{type:'category',data:providers.map(x=>x[0]),axisLabel:ax},visualMap:{min:0,max:100,show:true,orient:'horizontal',left:'center',bottom:0,inRange:{color:['#f0f3f4','#8fb5b0','#087f73']}},series:[{type:'heatmap',data:heat,label:{show:true,formatter:p=>fmt(p.data[2],0)}}]});
- const dist=defs.map(def=>{const v=[...(maps.get(def.id)?.values()||[])].map(x=>x.percentile).sort((a,b)=>a-b);if(!v.length)return null;const q=p=>{const z=(v.length-1)*p,l=Math.floor(z),u=Math.ceil(z);return v[l]+(v[u]-v[l])*(z-l);};return {name:def.label,data:[v[0],q(.25),q(.5),q(.75),v[v.length-1]]};}).filter(Boolean);
- setChart('benchmarkDistributionChart',{grid:{left:180,right:20,top:15,bottom:20},xAxis:{type:'value',min:0,max:100,axisLabel:ax},yAxis:{type:'category',data:dist.map(x=>x.name),axisLabel:ax},series:[{type:'boxplot',data:dist.map(x=>x.data)}]});
- const ids=defs.slice(0,12),corr=[];function pearson(a,b){const n=a.length;if(n<5)return null;const ma=a.reduce((x,y)=>x+y,0)/n,mb=b.reduce((x,y)=>x+y,0)/n;let num=0,da=0,db=0;for(let i=0;i<n;i++){num+=(a[i]-ma)*(b[i]-mb);da+=(a[i]-ma)**2;db+=(b[i]-mb)**2;}return da&&db?num/Math.sqrt(da*db):null;}
- ids.forEach((a,y)=>ids.forEach((b,x)=>{const ma=maps.get(a.id),mb=maps.get(b.id),names=[...(ma?.keys()||[])].filter(n=>mb?.has(n)),v=pearson(names.map(n=>ma.get(n).percentile),names.map(n=>mb.get(n).percentile));if(v!==null)corr.push([x,y,v,names.length]);}));
- setChart('benchmarkCorrelationChart',{tooltip:{formatter:p=>{const a=ids[p.data[1]],b=ids[p.data[0]];return a.label+' × '+b.label+'<br>Pearson r: '+fmt(p.data[2],2)+'<br>Shared models: '+p.data[3];}},grid:{left:175,right:20,top:15,bottom:115},xAxis:{type:'category',data:ids.map(x=>x.label),axisLabel:{...ax,rotate:45,interval:0,fontSize:9}},yAxis:{type:'category',data:ids.map(x=>x.label),axisLabel:{...ax,fontSize:9}},visualMap:{min:-1,max:1,show:true,orient:'horizontal',left:'center',bottom:0,inRange:{color:['#b55b57','#f3f4f3','#087f73']}},series:[{type:'heatmap',data:corr,label:{show:true,formatter:p=>fmt(p.data[2],2),fontSize:8}}]});
- const top=ranked.slice(0,12).reverse();setChart('domainStackedChart',{legend:{type:'scroll',top:0,textStyle:ax},grid:{left:170,right:25,top:42,bottom:25},xAxis:{type:'value',max:600,axisLabel:ax},yAxis:{type:'category',data:top.map(m=>m.model),axisLabel:ax},series:domains.map((d,i)=>({name:d.name,type:'bar',stack:'domain',data:top.map(m=>Number.isFinite(m.domains[i])?m.domains[i]:null)}))});
- const rp=providers.filter(x=>x[1].length>=2).slice(0,6),rdi=domains.map((d,i)=>i).filter(i=>rp.every(([p,ms])=>ms.some(m=>Number.isFinite(m.domains[i]))));if(rp.length&&rdi.length>=3)setChart('providerRadarChart',{legend:{type:'scroll',bottom:0,textStyle:ax},radar:{indicator:rdi.map(i=>({name:domains[i].name,max:100})),radius:'58%'},series:[{type:'radar',data:rp.map(([p,ms])=>({name:p,value:rdi.map(i=>{const v=ms.map(m=>m.domains[i]).filter(Number.isFinite);return v.reduce((a,b)=>a+b,0)/v.length;}),lineStyle:{color:color(p)},itemStyle:{color:color(p)},areaStyle:{opacity:.05}}))}]});else setChart('providerRadarChart',{title:{text:'Not enough shared domain coverage for a provider radar',left:'center',top:'middle'}});
- const groups=new Map();state.data.benchmarkCatalog.forEach(c=>{const b=get(c.id),n=b?new Set(b.models.map(r=>r.model)).size:0;if(n>0){if(!groups.has(c.group||'Other'))groups.set(c.group||'Other',[]);groups.get(c.group||'Other').push({name:c.name,value:n});}});
- setChart('benchmarkTreemapChart',{series:[{type:'treemap',roam:true,breadcrumb:{show:true},label:{show:true,formatter:'{b}',fontSize:10},data:[...groups].map(([name,children])=>({name,children}))}]});
- const aa=get('aa-3d'),forest=(aa?.models||[]).map(r=>({model:r.model,score:Number(r.score),err:Number(String(r.uncertainty||'').replace(/[^0-9.]/g,''))})).filter(x=>x.err>0).sort((a,b)=>b.score-a.score);
- setChart('confidenceForestChart',{grid:{left:175,right:30,top:15,bottom:25},xAxis:{type:'value',min:500,max:1300,axisLabel:ax},yAxis:{type:'category',data:forest.map(x=>x.model).reverse(),axisLabel:ax},series:[{type:'custom',renderItem:(p,a)=>{const y=a.value(0),v=a.value(1),e=a.value(2),l=a.coord([v-e,y]),r=a.coord([v+e,y]),c=a.coord([v,y]);return {type:'group',children:[{type:'line',shape:{x1:l[0],y1:l[1],x2:r[0],y2:r[1]},style:{stroke:'#087f73',lineWidth:2}},{type:'circle',shape:{cx:c[0],cy:c[1],r:4},style:{fill:'#087f73'}}]};},encode:{x:[1,2],y:0},data:forest.map((x,i)=>[i,x.score,x.err])}]});
- renderPricePareto();
- const dates=new Map();state.data.benchmarks.forEach(b=>dates.set(b.snapshotDate||'Undated',(dates.get(b.snapshotDate||'Undated')||0)+b.models.length));const dr=[...dates].sort((a,b)=>a[0].localeCompare(b[0]));setChart('benchmarkFreshnessChart',{grid:{left:55,right:20,top:20,bottom:55},xAxis:{type:'category',data:dr.map(x=>x[0]),axisLabel:{...ax,rotate:35}},yAxis:{type:'value',name:'Result rows',axisLabel:ax},series:[{type:'bar',data:dr.map(x=>x[1]),itemStyle:{color:'#587e9d'}}]});
- const parallel=ranked.slice(0,6),shared=defs.filter(def=>parallel.length>=3&&parallel.every(m=>maps.get(def.id)?.has(m.model)));setChart('modelParallelChart',{parallel:{left:'8%',right:'8%',top:40,bottom:25,parallelAxisDefault:{type:'value',min:0,max:100,axisLabel:ax}},parallelAxis:shared.map((def,i)=>({dim:i,name:def.label})),series:[{type:'parallel',lineStyle:{width:2,opacity:.5},data:parallel.map(m=>shared.map(def=>maps.get(def.id).get(m.model).percentile))}]});
-}
-function renderCharts(){renderBenchmarkDepth();renderProviderMix();renderSourceRank();renderModelCoverage();renderModelCharts();renderAdvancedCharts();}
-
-function renderAll(){buildOriginalIndex();buildModelCatalog();renderOriginalIndex();renderSummary();renderBenchmarkSelect();renderBenchmark();renderBenchmarkCards();renderModelExplorer();renderCharts();}
-function csvCell(v){const x=String(v??'');return '"'+x.replace(/"/g,'""')+'"';}
-function downloadFile(name,content,type){const blob=new Blob([content],{type});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);}
-function exportBenchmarkResults(){const b=get(state.benchmark);if(!b)return;const keys=[...new Set(b.models.flatMap(m=>Object.keys(m)))];const lines=[['benchmark','unit',...keys],...b.models.map(m=>[b.name,b.unit,...keys.map(k=>m[k])])].map(row=>row.map(csvCell).join(','));downloadFile('qbench-'+b.id+'.csv','\uFEFF'+lines.join('\r\n'),'text/csv;charset=utf-8');}
-function exportAllJSON(){downloadFile('qbench-benchmark-data.json',JSON.stringify(state.data,null,2),'application/json;charset=utf-8');}
-function exportChart(id){const c=echarts.getInstanceByDom($('#'+id));if(!c)return;const a=document.createElement('a');a.href=c.getDataURL({type:'svg',backgroundColor:'#fff'});a.download='qbench-'+id+'.svg';a.click();}
-$('#indexSearch').addEventListener('input',e=>{state.indexQuery=e.target.value.trim();renderOriginalIndex();});
-$('#indexProvider').addEventListener('change',e=>{state.indexProvider=e.target.value;renderOriginalIndex();});
-$('#benchmarkSearch').addEventListener('input',e=>{state.benchmarkQuery=e.target.value.trim();renderBenchmark();});
-$('#benchmarkProviderFilter').addEventListener('change',e=>{state.benchmarkProvider=e.target.value;renderBenchmark();});
-$('#benchmarkSelect').addEventListener('change',e=>{state.benchmark=e.target.value;state.benchmarkProvider='all';renderBenchmark();});
-$('#benchmarkChartType').addEventListener('change',renderSourceRank);
-$('#frontierBenchmarkSelect').addEventListener('change',e=>{state.frontierProvider=e.target.value;renderPricePareto();});
-$('#modelSearch').addEventListener('input',e=>{state.modelQuery=e.target.value.trim();renderModelExplorer();});
-$('#modelProvider').addEventListener('change',e=>{state.modelProvider=e.target.value;renderModelExplorer();});
-$('#modelMinCoverage').addEventListener('change',e=>{state.modelMinCoverage=Number(e.target.value)||1;renderModelExplorer();});
-$('#modelRows').addEventListener('change',e=>{const x=e.target.closest('[data-model-pick]');if(!x)return;const n=x.dataset.modelPick;if(x.checked){if(state.selectedModels.length>=5){x.checked=false;return;}state.selectedModels.push(n);}else state.selectedModels=state.selectedModels.filter(y=>y!==n);renderModelExplorer();});
-$('#modelRows').addEventListener('click',e=>{const x=e.target.closest('[data-model-expand]');if(!x)return;state.expandedModel=state.expandedModel===x.dataset.modelExpand?'':x.dataset.modelExpand;renderModelExplorer();});
-$('#clearModelSelection').addEventListener('click',()=>{state.selectedModels=[];renderModelExplorer();});
-$('#exportModelScoresCSV').addEventListener('click',exportModelScoresCSV);
-$('#catalogSearch').addEventListener('input',e=>{state.catalogQuery=e.target.value.trim();renderBenchmarkCards();});
-$('#catalogGroupFilter').addEventListener('change',e=>{state.catalogGroup=e.target.value;renderBenchmarkCards();});
-$('#catalogStatusFilter').addEventListener('change',e=>{state.catalogStatus=e.target.value;renderBenchmarkCards();});
-$('#benchmarkCards').addEventListener('click',e=>{const btn=e.target.closest('[data-open-benchmark]');if(!btn)return;state.benchmark=btn.dataset.openBenchmark;state.benchmarkProvider='all';state.benchmarkQuery='';$('#benchmarkSearch').value='';$('#benchmarkSelect').value=state.benchmark;renderBenchmark();$('#leaderboard').scrollIntoView({behavior:'smooth'});});
-$('#exportBenchmarkCSV').addEventListener('click',exportBenchmarkResults);
-$('#exportAllJSON').addEventListener('click',exportAllJSON);
-$('#themeBtn').addEventListener('click',()=>{const dark=document.documentElement.dataset.theme!=='dark';document.documentElement.dataset.theme=dark?'dark':'light';localStorage.setItem('qbench-theme',dark?'dark':'light');$('#themeBtn').innerHTML=dark?'<i class="bi bi-sun"></i>':'<i class="bi bi-moon-stars"></i>';state.charts.forEach(c=>c.dispose());state.charts=[];renderOriginalIndex();renderCharts();});
-$('#menuBtn').addEventListener('click',()=>$('#leaderboard').scrollIntoView({behavior:'smooth'}));
-document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>{document.querySelectorAll('.nav a').forEach(x=>x.classList.toggle('active',x===a));}));
-window.addEventListener('resize',()=>state.charts.forEach(c=>c.resize()));
-const savedTheme=localStorage.getItem('qbench-theme');if(savedTheme){document.documentElement.dataset.theme=savedTheme;$('#themeBtn').innerHTML=savedTheme==='dark'?'<i class="bi bi-sun"></i>':'<i class="bi bi-moon-stars"></i>';}
-fetch('./data/external-benchmarks.json').then(r=>{if(!r.ok)throw new Error('Could not load benchmark data ('+r.status+').');return r.json();}).then(async data=>{
- if(!Array.isArray(data.benchmarks)||!Array.isArray(data.benchmarkCatalog))throw new Error('Benchmark data schema is incomplete.');
- state.data=data;if(document.fonts?.ready)await document.fonts.ready;renderAll();
-}).catch(err=>{$('#benchmarkRows').innerHTML='<tr><td class="empty">'+esc(err.message)+'</td></tr>';});
-})();
-</script>
-</body>
-</html>
-+v},splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'value',name:'QBench Composite Index 3.5',min:0,max:100,axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},series:[{name:'Published-price observations',type:'scatter',symbolSize:13,data:rows.map(point)},{name:'Pareto frontier',type:'line',symbol:'diamond',symbolSize:10,data:frontier.map(point),lineStyle:{color:'#087f73',width:2.5},itemStyle:{color:'#087f73'},z:4}]},true);
+ chart.setOption({
+  textStyle:{fontFamily:chartFont},
+  grid:{left:76,right:28,top:28,bottom:76},
+  legend:{top:0,data:['Published-price observations','Pareto frontier'],textStyle:axis()},
+  tooltip:{trigger:'item',formatter:p=>{
+   const d=p.data;
+   if(!d?.model)return p.seriesName;
+   return d.model+'<br>'+d.provider+'<br>Equal-token proxy: $'+fmt(d.value[0],3)+' per 1M tokens'
+    +'<br>Input: $'+fmt(d.input,3)+' · Output: $'+fmt(d.output,3)
+    +'<br>QBench Index 3.5: '+fmt(d.value[1],2)
+    +'<br>'+d.tier+' · '+d.effectiveDate;
+  }},
+  xAxis:{type:'log',logBase:10,name:'Equal-token API price proxy (USD / 1M tokens) · log scale',nameLocation:'middle',nameGap:48,min:0.1,axisLabel:{...axis(),formatter:v=>'$'+v},splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},
+  yAxis:{type:'value',name:'QBench Composite Index 3.5',min:0,max:100,axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},
+  series:[
+   {name:'Published-price observations',type:'scatter',symbolSize:13,data:rows.map(point)},
+   {name:'Pareto frontier',type:'line',symbol:'diamond',symbolSize:10,data:frontier.map(point),lineStyle:{color:'#087f73',width:2.5},itemStyle:{color:'#087f73'},z:4}
+  ]
+ },true);
 }
 function renderAdvancedCharts(){
  const defs=state.indexEligibleDefinitions||[],maps=state.indexPercentileMaps||new Map(),domains=state.indexDomains||[],ranked=state.composite.filter(m=>m.ranked),ax=axis(),pm=new Map();
