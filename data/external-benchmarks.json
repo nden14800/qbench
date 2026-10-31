@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.6",
-  "note": "Snapshot 2026-10-31: 20 result datasets, 507 model-result rows, 165 unique model names, 320 unique model configurations (model + configuration + harness), 31 providers, and 47 benchmark directory entries. QBench Composite Index 3.0 references the nine AA v5 evaluation components and official weights but independently normalizes eligible source results. 4 of 9 evaluations meet the minimum of eight unique models; below-threshold results remain visible in benchmark and model explorers but do not contribute to the composite.",
+  "note": "Snapshot 2026-10-31: 20 result datasets, 507 model-result rows, 165 unique model names, 320 unique model/configuration/harness combinations, 31 provider labels, and 47 benchmark directory entries. The AA-Omniscience accuracy-only Atlas dataset is third-party supplementary data and excluded from QBench Composite Index 3.0. 4/9 composite components meet the eight-model minimum.",
   "benchmarks": [
     {
       "id": "livebench-2.0",
@@ -4510,6 +4510,21 @@
         "snapshotDate": "2026-10-31"
       },
       {
+        "label": "AutomationBench-AA",
+        "url": "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5",
+        "snapshotDate": "2026-10-27"
+      },
+      {
+        "label": "GDP.pdf",
+        "url": "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5",
+        "snapshotDate": "2026-10-27"
+      },
+      {
+        "label": "FrontierCode 2.0",
+        "url": "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5",
+        "snapshotDate": "2026-10-27"
+      },
+      {
         "label": "Terminal-Bench 4.0",
         "url": "https://www.tbench.ai/?version=4.0",
         "snapshotDate": "2026-10-31"
@@ -4518,6 +4533,16 @@
         "label": "Terminal-Bench-Science 0.1",
         "url": "https://vals-ai.com/benchmarks/terminal-bench-science",
         "snapshotDate": "2026-10-25"
+      },
+      {
+        "label": "CritPt v2 (Hard Subset)",
+        "url": "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5",
+        "snapshotDate": "2026-10-27"
+      },
+      {
+        "label": "AA-Omniscience v1.1",
+        "url": "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5",
+        "snapshotDate": "2026-10-27"
       },
       {
         "label": "HLE-Diamond",
