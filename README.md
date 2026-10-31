@@ -15,7 +15,7 @@ Independent AI benchmark leaderboards and model-performance analysis.
 | Published result rows | 507 |
 | Datasets with model-level results | 20 |
 | Providers | 31 |
-| Benchmark directory entries | 46 |
+| Benchmark directory entries | 47 |
 
 Counts are derived from data/external-benchmarks.json. A result row is not necessarily a unique model: a source may publish several reasoning efforts, harnesses, or routing configurations for one model. Individual benchmark leaderboards retain the source rows; the main leaderboard groups each model once and shows its best reported configuration. CSV export retains the raw rows.
 
@@ -76,7 +76,7 @@ ARC-AGI-3 public competition standings are team/system submissions, not a compar
 
 ## Benchmark data and interpretation
 
-Every source table retains its native score, unit, snapshot date, and available configuration/harness metadata. Percentiles are used only for QBench Index 3.0. They are relative to the models included in each eligible imported dataset and can change when source coverage changes. They are not source-native benchmark scores.
+Every source table retains its native score, unit, snapshot date, and available configuration/harness metadata. Several public imports are partial: for example, the current QBench snapshots contain 42 GPQA rows versus 324 models on Epoch AI's hub, 58 FrontierMath Tiers 1–3 rows versus 120, and 26 Tier 4 rows versus 76. The benchmark directory identifies these coverage limits rather than presenting the imported subsets as complete. Percentiles are used only for QBench Index 3.0. They are relative to the models included in each eligible imported dataset and can change when source coverage changes. They are not source-native benchmark scores.
 
 Saturated, contaminated, version-incompatible, or insufficiently covered benchmarks can remain available as standalone references, but are not automatically admitted to the composite.
 
