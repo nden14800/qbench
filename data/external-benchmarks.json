@@ -382,7 +382,7 @@
           "retrievedAt": "2026-10-30"
         },
         {
-          "model": "Nemotron Super VL 3.5",
+          "model": "Nemotron 3.5 Super VL",
           "provider": "NVIDIA",
           "score": 50.2,
           "evidence": "BenchLeader's LiveBench 2.0 global mirror, retrieved 2026-10-30; underlying publisher release dated 2026-10-25. Publisher leaderboard is JavaScript-rendered.",
@@ -391,7 +391,8 @@
           "configuration": "Not reported",
           "harness": "Not reported",
           "sourceType": "secondary-mirror",
-          "retrievedAt": "2026-10-30"
+          "retrievedAt": "2026-10-30",
+          "originalModelName": "Nemotron Super VL 3.5"
         },
         {
           "model": "Inkling",
@@ -9841,6 +9842,51 @@
         "url": "https://unbiased.ai/changelog/",
         "sourceType": "aggregator-route",
         "checkedDate": "2026-10-31"
+      },
+      {
+        "label": "Kimi K3 — OpenRouter model page",
+        "url": "https://openrouter.ai/moonshotai/kimi-k3",
+        "sourceType": "aggregator-route"
+      },
+      {
+        "label": "Muse Spark Open — OpenRouter model page",
+        "url": "https://openrouter.ai/meta/muse-spark-open",
+        "sourceType": "aggregator-route"
+      },
+      {
+        "label": "GLM 5.3 Flash — OpenRouter model page",
+        "url": "https://openrouter.ai/z-ai/glm-5.3-flash",
+        "sourceType": "aggregator-route"
+      },
+      {
+        "label": "Step 5 Preview — OpenRouter model page",
+        "url": "https://openrouter.ai/stepfun/step-5-preview-20261008",
+        "sourceType": "aggregator-route"
+      },
+      {
+        "label": "Hy4 Preview — OpenRouter model page",
+        "url": "https://openrouter.ai/tencent/hy4-preview",
+        "sourceType": "aggregator-route"
+      },
+      {
+        "label": "Ember-1 — OpenRouter model page",
+        "url": "https://openrouter.ai/fireworks/ember-1",
+        "sourceType": "aggregator-route"
+      },
+      {
+        "label": "MiMo V2.6 Flash — OpenRouter model page",
+        "url": "https://openrouter.ai/xiaomi/mimo-v2.6-flash",
+        "sourceType": "aggregator-route"
+      },
+      {
+        "label": "MiMo V2.5 Pro — OpenRouter model page",
+        "url": "https://openrouter.ai/xiaomi/mimo-v2.5-pro",
+        "sourceType": "aggregator-route"
+      },
+      {
+        "label": "Nemotron 3.5 Super VL — OpenRouter model page",
+        "url": "https://openrouter.ai/nvidia/nemotron-3.5-super-vl",
+        "sourceType": "aggregator-route"
       }
     ],
     "models": [
@@ -10055,6 +10101,17 @@
       },
       {
         "currency": "USD",
+        "model": "Ember-1",
+        "provider": "Fireworks",
+        "inputUSDPerMillion": 3,
+        "outputUSDPerMillion": 15,
+        "source": "https://openrouter.ai/fireworks/ember-1",
+        "sourceType": "openrouter-route",
+        "pricePlatform": "OpenRouter",
+        "note": "OpenRouter listed Fireworks route price; model is a specialized reasoning model built on Kimi K3."
+      },
+      {
+        "currency": "USD",
         "model": "Gemini 3.5 Flash",
         "provider": "Google",
         "inputUSDPerMillion": 1.5,
@@ -10114,6 +10171,17 @@
       },
       {
         "currency": "USD",
+        "model": "Muse Spark Open",
+        "provider": "Meta",
+        "inputUSDPerMillion": 1.25,
+        "outputUSDPerMillion": 4.25,
+        "source": "https://openrouter.ai/meta/muse-spark-open",
+        "sourceType": "openrouter-route",
+        "pricePlatform": "OpenRouter",
+        "note": "OpenRouter listed route price; not a direct Meta API price."
+      },
+      {
+        "currency": "USD",
         "model": "Muse Wonder",
         "provider": "Meta",
         "inputUSDPerMillion": 4,
@@ -10158,6 +10226,17 @@
       },
       {
         "currency": "USD",
+        "model": "Kimi K3",
+        "provider": "Moonshot AI",
+        "inputUSDPerMillion": 1.7,
+        "outputUSDPerMillion": 8.5,
+        "source": "https://openrouter.ai/moonshotai/kimi-k3",
+        "sourceType": "openrouter-route",
+        "pricePlatform": "OpenRouter",
+        "note": "OpenRouter listed route price; provider-pinned endpoint rates may differ."
+      },
+      {
+        "currency": "USD",
         "model": "Kimi K3.1 Pro",
         "provider": "Moonshot AI",
         "inputUSDPerMillion": 2,
@@ -10165,6 +10244,17 @@
         "source": "https://openrouter.ai/api/v1/models",
         "sourceType": "openrouter-route",
         "pricePlatform": "OpenRouter"
+      },
+      {
+        "currency": "USD",
+        "model": "Nemotron 3.5 Super VL",
+        "provider": "NVIDIA",
+        "inputUSDPerMillion": 0.1,
+        "outputUSDPerMillion": 0.4,
+        "source": "https://openrouter.ai/nvidia/nemotron-3.5-super-vl",
+        "sourceType": "openrouter-route",
+        "pricePlatform": "OpenRouter",
+        "note": "OpenRouter displayed standard route price; provider-specific endpoints vary."
       },
       {
         "currency": "USD",
@@ -10261,6 +10351,28 @@
       },
       {
         "currency": "USD",
+        "model": "Step 5 Preview",
+        "provider": "StepFun",
+        "inputUSDPerMillion": 1,
+        "outputUSDPerMillion": 2.7,
+        "source": "https://openrouter.ai/stepfun/step-5-preview-20261008",
+        "sourceType": "openrouter-route",
+        "pricePlatform": "OpenRouter",
+        "note": "OpenRouter listed route price; cache-read rates are separate."
+      },
+      {
+        "currency": "USD",
+        "model": "Hy4 Preview",
+        "provider": "Tencent",
+        "inputUSDPerMillion": 0.834,
+        "outputUSDPerMillion": 2.501,
+        "source": "https://openrouter.ai/tencent/hy4-preview",
+        "sourceType": "openrouter-route",
+        "pricePlatform": "OpenRouter",
+        "note": "OpenRouter listed route price; cache-read rates are separate."
+      },
+      {
+        "currency": "USD",
         "model": "Inkling-Small",
         "provider": "Thinking Machines",
         "inputUSDPerMillion": 0.45,
@@ -10321,6 +10433,28 @@
       },
       {
         "currency": "USD",
+        "model": "MiMo V2.5 Pro",
+        "provider": "Xiaomi",
+        "inputUSDPerMillion": 0.3045,
+        "outputUSDPerMillion": 0.609,
+        "source": "https://openrouter.ai/xiaomi/mimo-v2.5-pro",
+        "sourceType": "openrouter-route",
+        "pricePlatform": "OpenRouter",
+        "note": "Current 30% promotional OpenRouter route price; Xiaomi list price is $0.435/$0.87 per 1M tokens."
+      },
+      {
+        "currency": "USD",
+        "model": "MiMo V2.6 Flash",
+        "provider": "Xiaomi",
+        "inputUSDPerMillion": 0.14,
+        "outputUSDPerMillion": 0.28,
+        "source": "https://openrouter.ai/xiaomi/mimo-v2.6-flash",
+        "sourceType": "openrouter-route",
+        "pricePlatform": "OpenRouter",
+        "note": "OpenRouter listed route price; cache-read rate is separate."
+      },
+      {
+        "currency": "USD",
         "model": "MiMo V2.6 Pro",
         "provider": "Xiaomi",
         "inputUSDPerMillion": 0.435,
@@ -10340,12 +10474,23 @@
         "sourceType": "openrouter-route",
         "pricePlatform": "OpenRouter",
         "note": "OpenRouter route, not Z.ai direct API price."
+      },
+      {
+        "currency": "USD",
+        "model": "GLM 5.3 Flash",
+        "provider": "Z.ai",
+        "inputUSDPerMillion": 0.075,
+        "outputUSDPerMillion": 0.25,
+        "source": "https://openrouter.ai/z-ai/glm-5.3-flash",
+        "sourceType": "openrouter-route",
+        "pricePlatform": "OpenRouter",
+        "note": "Current 50% promotional route price; listed standard price is $0.15/$0.50 per 1M tokens."
       }
     ],
     "diagnostics": {
-      "modelEntries": 44,
+      "modelEntries": 53,
       "officialProviderEntries": 36,
-      "aggregatorRouteEntries": 8,
+      "aggregatorRouteEntries": 17,
       "hostedPlatformEntries": 0
     }
   },
@@ -10421,6 +10566,12 @@
         "from": "Wonder",
         "to": "Muse Wonder",
         "benchmark": "terminal-bench-science-0-1"
+      },
+      {
+        "from": "Nemotron Super VL 3.5",
+        "to": "Nemotron 3.5 Super VL",
+        "benchmark": "all matching benchmark rows",
+        "reason": "Normalized to the OpenRouter model page's official display title; NVIDIA's model card uses Nemotron 3.5 Super VL."
       }
     ],
     "modelKinds": [
@@ -10484,7 +10635,8 @@
     "notes": [
       "Original source spellings are retained as originalModelName after canonical normalization.",
       "Routers, multi-agent systems and specialist formal provers remain visible in benchmark details but are excluded from the general-purpose composite.",
-      "Pareto 26.10 Preview remains a historical preview result; stable model IDs are pareto and pareto-26.10."
+      "Pareto 26.10 Preview remains a historical preview result; stable model IDs are pareto and pareto-26.10.",
+      "NVIDIA Nemotron Super VL 3.5 is canonicalized to Nemotron 3.5 Super VL; the NVFP4 quantized variant remains distinct."
     ]
   }
 }
