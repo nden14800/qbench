@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>QBench</title>
-<meta name="description" content="QBench: independent AI model benchmark explorer. QBench Composite Index 4.0, benchmarks, methodology and API price comparison. No Artificial Analysis values are used.">
+<meta name="description" content="QBench: independent AI model benchmark explorer. QBench Composite Index 1.0, benchmarks, methodology and API price comparison. No Artificial Analysis values are used.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -160,16 +160,16 @@ footer{color:var(--muted);font-size:12px;padding:24px 0 40px;border-top:1px soli
 <main class="wrap">
   <div class="hero">
     <h1>Independent analysis of AI models</h1>
-    <p>QBench compares models on public benchmark results. The QBench Composite Index 4.0 keeps the four-category structure and evaluation criteria of the Artificial Analysis Intelligence Index v5 as a reference. No Artificial Analysis values are used.</p>
+    <p>QBench compares models on public benchmark results. The QBench Composite Index 1.0 keeps the four-category structure and evaluation criteria of the Artificial Analysis Intelligence Index v5 as a reference. No Artificial Analysis values are used.</p>
     <div class="stats" id="stats"></div>
   </div>
 
   <!-- INDEX -->
-  <section class="view active" id="view-index" aria-label="QBench Index 4.0">
+  <section class="view active" id="view-index" aria-label="QBench Index 1.0">
     <div class="card">
       <div class="card-head">
         <div>
-          <h2>QBench Composite Index 4.0 leaderboard</h2>
+          <h2>QBench Composite Index 1.0 leaderboard</h2>
           <div class="sub" id="index-sub"></div>
         </div>
         <div class="toolbar">
@@ -260,6 +260,7 @@ footer{color:var(--muted);font-size:12px;padding:24px 0 40px;border-top:1px soli
 
 <footer class="wrap" id="footer"></footer>
 
+<script src="vendor/echarts.min.js"></script>
 <script>
 (function(){
 'use strict';
@@ -273,7 +274,7 @@ function scoreOf(r){var v=r&&r.score;if(v==null||v==='')return null;v=Number(v);
 var COLORS={'Knowledge Work':'var(--c1)','Coding':'var(--c2)','Science':'var(--c3)','General':'var(--c4)'};
 var PROVIDER_COLORS={'OpenAI':'#10a37f','Anthropic':'#d97757','Google':'#4285f4','xAI':'#8e8e93','DeepSeek':'#4d6bfe','Meta':'#0866ff','Moonshot AI':'#7c3aed','Unknown':'#98a2b3'};
 
-/* ---------- compute QBench Composite Index 4.0 ---------- */
+/* ---------- compute QBench Composite Index 1.0 ---------- */
 var DATA=null, RESULT=null;
 
 function compute(data){
@@ -371,7 +372,7 @@ function renderStats(){
   var ranked=RESULT.rows.filter(function(r){return r.ranked;});
   var top=ranked[0];
   var items=[
-    ['Top model, Index 4.0', top?esc(top.model):'—', top?'Index '+fmt(top.index,1)+' / 100':''],
+    ['Top model, Index 1.0', top?esc(top.model):'—', top?'Index '+fmt(top.index,1)+' / 100':''],
     ['Ranked models', String(ranked.length), '4+ evaluations in 3+ categories'],
     ['Eligible evaluations', String(RESULT.evals.length), 'At least 8 unique models each'],
     ['Models with results', String(RESULT.rows.length), 'Coverage-only models included']
@@ -384,7 +385,7 @@ function renderStats(){
 
 /* ---------- index table ---------- */
 function indexColumns(){
-  return [{k:'rank',l:'#',num:true},{k:'model',l:'Model'},{k:'provider',l:'Provider'},{k:'index',l:'Index 4.0',num:true}]
+  return [{k:'rank',l:'#',num:true},{k:'model',l:'Model'},{k:'provider',l:'Provider'},{k:'index',l:'Index 1.0',num:true}]
     .concat(RESULT.domains.map(function(d){return {k:'d:'+d,l:d,num:true};}))
     .concat([{k:'coverage',l:'Evals',num:true},{k:'price',l:'Price proxy',num:true}]);
 }
@@ -433,66 +434,80 @@ function renderIndex(){
   renderScatter(); renderStack();
 }
 
-/* ---------- SVG charts ---------- */
+/* ---------- charts (ECharts, same library as omikuji-bench) ---------- */
+var ECH={};
+function chartInit(id){var el=document.getElementById(id);if(!el)return null;if(!ECH[id]){ECH[id]=echarts.init(el,null,{renderer:'svg'});window.addEventListener('resize',function(){ECH[id]&&ECH[id].resize();});}return ECH[id];}
+function cssVar(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();}
+function textColor(){return cssVar('--muted')||'#667085';}
+function gridColor(){return cssVar('--grid')||'#eceff3';}
 function renderScatter(){
   var pts=RESULT.rows.filter(function(r){return r.ranked&&r.price!=null&&r.index!=null;});
-  var host=$('#scatter');
+  var host=document.getElementById('scatter');
   if(!pts.length){host.innerHTML='<div class="empty">No ranked model has a verified price mapping.</div>';return;}
-  var W=720,H=360,P={l:48,r:18,t:14,b:44};
+  host.innerHTML='<div id="scatter-chart" style="width:100%;height:380px"></div><div class="legend" id="scatter-legend"></div><div class="notice">Dashed line: Pareto frontier (highest index at each price level). The price proxy assumes equal input and output tokens; it is not cost per task.</div>';
+  var c=chartInit('scatter-chart');
+  var front=[],best=-1;pts.slice().sort(function(a,b){return a.price-b.price||b.index-a.index;}).forEach(function(p){if(p.index>best){front.push([p.price,p.index]);best=p.index;}});
   var prices=pts.map(function(p){return p.price;});
-  var lo=Math.floor(Math.log10(Math.min.apply(null,prices)*0.8)), hi=Math.ceil(Math.log10(Math.max.apply(null,prices)*1.25));
-  if(hi<=lo)hi=lo+1;
-  function x(v){return P.l+(Math.log10(v)-lo)/(hi-lo)*(W-P.l-P.r);}
-  function y(v){return P.t+(1-v/100)*(H-P.t-P.b);}
-  var s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="QBench Index against API price proxy">';
-  for(var g=0;g<=4;g++){var gy=P.t+(H-P.t-P.b)*g/4;s+='<line class="grid" x1="'+P.l+'" x2="'+(W-P.r)+'" y1="'+gy+'" y2="'+gy+'"/><text x="'+(P.l-8)+'" y="'+(gy+4)+'" text-anchor="end">'+(100-g*25)+'</text>';}
-  for(var e=lo;e<=hi;e++){var gx=x(Math.pow(10,e));s+='<line class="grid" x1="'+gx+'" x2="'+gx+'" y1="'+P.t+'" y2="'+(H-P.b)+'"/><text x="'+gx+'" y="'+(H-P.b+16)+'" text-anchor="middle">$'+Math.pow(10,e)+'</text>';}
-  s+='<text x="'+(W/2)+'" y="'+(H-6)+'" text-anchor="middle">API price proxy, USD per 1M tokens (log)</text>';
-  s+='<text transform="rotate(-90 14 '+(H/2)+')" x="14" y="'+(H/2)+'" text-anchor="middle">QBench Index 4.0</text>';
-  if(S.quadrant){
-    var mp=pts.reduce(function(a,p){return a+p.price;},0)/pts.length, mi=pts.reduce(function(a,p){return a+p.index;},0)/pts.length;
-    s+='<rect x="'+P.l+'" y="'+P.t+'" width="'+(x(mp)-P.l)+'" height="'+(y(mi)-P.t)+'" fill="var(--accent-soft)"/>';
-    s+='<text class="lbl" x="'+(P.l+6)+'" y="'+(P.t+14)+'">most attractive quadrant</text>';
-  }
-  if(S.pareto){
-    var sorted=pts.slice().sort(function(a,b){return a.price-b.price||b.index-a.index;}), front=[], best=-1;
-    sorted.forEach(function(p){if(p.index>best){front.push(p);best=p.index;}});
-    if(front.length>1)s+='<polyline fill="none" stroke="var(--c2)" stroke-width="2" stroke-dasharray="5 4" points="'+front.map(function(p){return x(p.price)+','+y(p.index);}).join(' ')+'"/>';
-  }
-  pts.forEach(function(p){
-    var col=PROVIDER_COLORS[p.provider]||PROVIDER_COLORS.Unknown;
-    s+='<circle cx="'+x(p.price)+'" cy="'+y(p.index)+'" r="4.5" fill="'+col+'" fill-opacity=".9"><title>'+esc(p.model)+' · Index '+fmt(p.index,1)+' · $'+fmt(p.price,2)+'</title></circle>';
-  });
-  pts.slice(0,8).forEach(function(p){s+='<text class="lbl" x="'+(x(p.price)+7)+'" y="'+(y(p.index)+4)+'">'+esc(p.model)+'</text>';});
-  s+='</svg>';
-  var provs=[]; pts.forEach(function(p){if(provs.indexOf(p.provider)<0)provs.push(p.provider);});
-  host.innerHTML=s+'<div class="legend">'+provs.map(function(p){return '<span><i style="background:'+(PROVIDER_COLORS[p]||PROVIDER_COLORS.Unknown)+'"></i>'+esc(p)+'</span>';}).join('')+'</div><div class="notice">Dashed line: Pareto frontier (highest index at each price level). The price proxy assumes equal input and output tokens; it is not cost per task.</div>';
+  var mp=prices.reduce(function(a,b){return a+b;},0)/prices.length;
+  var mi=pts.reduce(function(a,p){return a+p.index;},0)/pts.length;
+  var provs=[];pts.forEach(function(p){if(provs.indexOf(p.provider)<0)provs.push(p.provider);});
+  var series=provs.map(function(pv){return {name:pv,type:'scatter',symbolSize:11,itemStyle:{color:PROVIDER_COLORS[pv]||PROVIDER_COLORS.Unknown},
+    label:{show:true,position:'right',formatter:function(p){return p.data[2];},color:cssVar('--ink'),fontSize:11},
+    data:pts.filter(function(p){return p.provider===pv;}).map(function(p){return [p.price,p.index,p.model];})};});
+  if(S.pareto&&front.length>1)series.push({name:'Pareto frontier',type:'line',symbol:'none',lineStyle:{type:'dashed',width:2,color:cssVar('--good')},data:front,silent:true});
+  var markArea=S.quadrant?{silent:true,itemStyle:{color:cssVar('--accent-soft')},data:[[{xAxis:Math.min.apply(null,prices)*0.8,yAxis:mi},{xAxis:mp,yAxis:100}]]}:null;
+  if(markArea&&series.length){series[0].markArea=markArea;}
+  c.setOption({
+    animation:false,
+    grid:{left:56,right:24,top:16,bottom:48},
+    tooltip:{trigger:'item',formatter:function(p){var d=p.data;return d[2]?d[2]+'<br>Index '+Number(d[1]).toFixed(1)+'<br>$'+Number(d[0]).toFixed(2)+' / 1M tokens':p.seriesName;}},
+    xAxis:{type:'log',name:'API price proxy, USD per 1M tokens',nameLocation:'middle',nameGap:30,axisLabel:{color:textColor()},splitLine:{lineStyle:{color:gridColor()}},axisLine:{lineStyle:{color:gridColor()}},nameTextStyle:{color:textColor()}},
+    yAxis:{type:'value',min:0,max:100,name:'QBench Index 1.0',nameTextStyle:{color:textColor()},axisLabel:{color:textColor()},splitLine:{lineStyle:{color:gridColor()}}},
+    series:series
+  },true);
+  document.getElementById('scatter-legend').innerHTML=provs.map(function(p){return '<span><i style="background:'+(PROVIDER_COLORS[p]||PROVIDER_COLORS.Unknown)+'"></i>'+esc(p)+'</span>';}).join('');
 }
 function renderStack(){
   var top=RESULT.rows.filter(function(r){return r.ranked;}).slice(0,12);
-  var host=$('#stack');
+  var host=document.getElementById('stack');
   if(!top.length){host.innerHTML='<div class="empty">No ranked models yet.</div>';return;}
-  var W=720,rowH=30,P={l:170,r:50,t:8,b:8},H=P.t+P.b+rowH*top.length;
-  var scale=(W-P.l-P.r)/100;
-  var s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Category contribution to index">';
-  top.forEach(function(r,i){
-    var y0=P.t+i*rowH+6, x0=P.l;
-    s+='<text class="lbl" x="'+(P.l-8)+'" y="'+(y0+12)+'" text-anchor="end">'+esc(r.model)+'</text>';
-    RESULT.domains.forEach(function(d){
-      var v=r.domains[d]; if(v==null)return;
-      var w=v/RESULT.domains.length*scale;
-      s+='<rect x="'+x0+'" y="'+y0+'" width="'+w+'" height="'+(rowH-12)+'" style="fill:'+COLORS[d]+'"><title>'+esc(d)+': '+fmt(v,1)+' percentile</title></rect>';
-      x0+=w;
-    });
-    s+='<text class="lbl" x="'+(x0+6)+'" y="'+(y0+12)+'">'+fmt(r.index,1)+'</text>';
-  });
-  s+='</svg>';
-  host.innerHTML=s+'<div class="legend">'+RESULT.domains.map(function(d){return '<span><i style="background:'+COLORS[d]+'"></i>'+esc(d)+'</span>';}).join('')+'</div><div class="notice">Bar length = index (0 to 100). Each segment is a category percentile divided by the number of categories.</div>';
+  host.innerHTML='<div id="stack-chart" style="width:100%;height:'+(60+top.length*30)+'px"></div><div class="legend">'+RESULT.domains.map(function(d){return '<span><i style="background:'+COLORS[d]+'"></i>'+esc(d)+'</span>';}).join('')+'</div><div class="notice">Bar length = index (0 to 100). Each segment is a category percentile divided by the number of categories.</div>';
+  var c=chartInit('stack-chart');
+  var names=top.map(function(r){return r.model;}).reverse();
+  var n=RESULT.domains.length;
+  var series=RESULT.domains.map(function(d,di){return {name:d,type:'bar',stack:'idx',barWidth:16,itemStyle:{color:COLORS[d]},
+    data:top.slice().reverse().map(function(r){return r.domains[d]==null?0:r.domains[d]/n;})};});
+  c.setOption({animation:false,grid:{left:150,right:50,top:8,bottom:8},
+    tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+    xAxis:{type:'value',max:100,axisLabel:{color:textColor()},splitLine:{lineStyle:{color:gridColor()}}},
+    yAxis:{type:'category',data:names,axisLabel:{color:cssVar('--ink'),fontSize:11}},
+    series:series},true);
+}
+function renderBench(){
+  if(!S.bench){$('#bench-title').textContent='Select a benchmark';$('#bench-sub').textContent='';document.getElementById('bench-chart').innerHTML='';return;}
+  var b=RESULT.byId[S.bench]; if(!b)return;
+  var st=benchStatus(b.id);
+  $('#bench-title').textContent=b.name;
+  $('#bench-sub').innerHTML='Unit: '+esc(b.unit||'—')+' · Source: <a href="'+esc(b.source)+'" target="_blank" rel="noopener">'+esc(b.source)+'</a>';
+  var best=new Map();
+  (b.models||[]).forEach(function(r){var v=scoreOf(r);if(!r.model||v===null)return;var o=best.get(r.model);if(!o||v>o.value)best.set(r.model,{value:v,c:r.configuration||''});});
+  var arr=[]; best.forEach(function(e,k){arr.push({m:k,v:e.value,c:e.c});}); arr.sort(function(a,c){return c.v-a.v;});
+  var host=document.getElementById('bench-chart');
+  if(!arr.length){host.innerHTML='<div class="empty">No model values are stored for this benchmark.'+(b.valueNote?' '+esc(b.valueNote):'')+'</div>';return;}
+  var top=arr.slice(0,25);
+  host.innerHTML='<div id="bench-plot" style="width:100%;height:'+(60+top.length*24)+'px"></div><div class="notice">Top 25 by best score per model. Status: '+esc(st.t)+'. Snapshot '+esc(b.snapshotDate||'—')+'. Verify against the publisher before citing.</div>';
+  var c=chartInit('bench-plot');
+  c.setOption({animation:false,grid:{left:260,right:60,top:6,bottom:6},
+    tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+    xAxis:{type:'value',axisLabel:{color:textColor()},splitLine:{lineStyle:{color:gridColor()}}},
+    yAxis:{type:'category',inverse:true,data:top.map(function(t){return t.m+(t.c?' ('+t.c+')':'');}),axisLabel:{color:cssVar('--ink'),fontSize:11,width:230,overflow:'truncate'}},
+    series:[{type:'bar',barWidth:14,itemStyle:{color:cssVar('--accent'),borderRadius:[0,3,3,0]},label:{show:true,position:'right',color:cssVar('--ink'),fontSize:11,formatter:function(p){return Number(p.value).toFixed(1);}},data:top.map(function(t){return t.v;})}]
+  },true);
 }
 
 /* ---------- models ---------- */
 function renderModels(){
-  var cols=[{k:'sel',l:'Compare'},{k:'model',l:'Model'},{k:'provider',l:'Provider'},{k:'index',l:'Index 4.0',num:true},{k:'coverage',l:'Evals',num:true}];
+  var cols=[{k:'sel',l:'Compare'},{k:'model',l:'Model'},{k:'provider',l:'Provider'},{k:'index',l:'Index 1.0',num:true},{k:'coverage',l:'Evals',num:true}];
   var rows=RESULT.rows.filter(function(r){return !S.mq||r.model.toLowerCase().indexOf(S.mq.toLowerCase())>=0;});
   rows=rows.slice().sort(function(a,b){
     var va=S.mSort==='model'?a.model:S.mSort==='provider'?a.provider:S.mSort==='coverage'?a.coverage:(a.index==null?-1:a.index);
@@ -513,7 +528,7 @@ function renderCompare(){
   card.hidden=false;
   var sel=S.selected.map(function(n){return RESULT.rows.filter(function(r){return r.model===n;})[0];}).filter(Boolean);
   $('#cmp-head').innerHTML='<tr><th>Measure</th>'+sel.map(function(r){return '<th class="num">'+esc(r.model)+'</th>';}).join('')+'</tr>';
-  var body='<tr><td class="name">QBench Index 4.0</td>'+sel.map(function(r){return '<td class="num"><strong>'+fmt(r.index,1)+'</strong></td>';}).join('')+'</tr>';
+  var body='<tr><td class="name">QBench Index 1.0</td>'+sel.map(function(r){return '<td class="num"><strong>'+fmt(r.index,1)+'</strong></td>';}).join('')+'</tr>';
   RESULT.domains.forEach(function(d){body+='<tr><td>'+esc(d)+' (category)</td>'+sel.map(function(r){return '<td class="num">'+fmt(r.domains[d],1)+'</td>';}).join('')+'</tr>';});
   RESULT.evals.forEach(function(e){body+='<tr><td>'+esc(e.name)+'</td>'+sel.map(function(r){var v=r.detail[e.id];return '<td class="num">'+(v?fmt(v.value,1)+' <span class="dim">('+fmt(v.pct,0)+')</span>':'—')+'</td>';}).join('')+'</tr>';});
   $('#cmp-body').innerHTML=body;
@@ -522,7 +537,7 @@ function csvOut(){
   var head=['model','provider','index_4_0','coverage','ranked'].concat(RESULT.domains).join(',');
   var lines=RESULT.rows.map(function(r){return [JSON.stringify(r.model),JSON.stringify(r.provider),fmt(r.index,2),r.coverage,r.ranked].concat(RESULT.domains.map(function(d){return fmt(r.domains[d],2);})).join(',');});
   var blob=new Blob([head+'\n'+lines.join('\n')],{type:'text/csv'});
-  var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='qbench-index-4.0.csv';a.click();
+  var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='qbench-index-1.0.csv';a.click();
 }
 
 /* ---------- benchmarks ---------- */
@@ -543,30 +558,6 @@ function renderBenchGrid(){
     return '<button type="button" class="bcard" data-bench="'+esc(b.id)+'" aria-pressed="'+(S.bench===b.id)+'"><div class="t">'+esc(b.name)+'</div><div class="m">'+st.n+' unique models · snapshot '+esc(b.snapshotDate||'—')+'</div><div style="margin-top:8px"><span class="pill '+st.c+'">'+esc(st.t)+'</span></div></button>';
   }).join('');
 }
-function renderBench(){
-  if(!S.bench){$('#bench-title').textContent='Select a benchmark';$('#bench-sub').textContent='';$('#bench-chart').innerHTML='';return;}
-  var b=RESULT.byId[S.bench]; if(!b)return;
-  var st=benchStatus(b.id);
-  $('#bench-title').textContent=b.name;
-  $('#bench-sub').innerHTML='Unit: '+esc(b.unit||'—')+' · Source: <a href="'+esc(b.source)+'" target="_blank" rel="noopener">'+esc(b.source)+'</a>';
-  var best=new Map();
-  (b.models||[]).forEach(function(r){var v=scoreOf(r);if(!r.model||v===null)return;var o=best.get(r.model);if(!o||v>o.value)best.set(r.model,{value:v,c:r.configuration||''});});
-  var arr=[]; best.forEach(function(e,k){arr.push({m:k,v:e.value,c:e.c});}); arr.sort(function(a,c){return c.v-a.v;});
-  var host=$('#bench-chart');
-  if(!arr.length){host.innerHTML='<div class="empty">No model values are stored for this benchmark.'+(b.valueNote?' '+esc(b.valueNote):'')+'</div>';return;}
-  var top=arr.slice(0,25), W=720, rowH=24, P={l:250,r:60,t:6,b:6}, H=P.t+P.b+rowH*top.length;
-  var max=Math.max.apply(null,top.map(function(t){return t.v;}))||1, sc=(W-P.l-P.r)/max;
-  var s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+esc(b.name)+' scores">';
-  top.forEach(function(t,i){
-    var y0=P.t+i*rowH;
-    s+='<text class="lbl" x="'+(P.l-8)+'" y="'+(y0+15)+'" text-anchor="end">'+esc(t.m)+(t.c?' ('+esc(t.c)+')':'')+'</text>';
-    s+='<rect x="'+P.l+'" y="'+(y0+4)+'" width="'+(t.v*sc)+'" height="'+(rowH-8)+'" rx="3" fill="var(--c1)"><title>'+esc(t.m)+': '+fmt(t.v,2)+'</title></rect>';
-    s+='<text class="lbl" x="'+(P.l+t.v*sc+6)+'" y="'+(y0+15)+'">'+fmt(t.v,1)+'</text>';
-  });
-  s+='</svg>';
-  host.innerHTML=s+'<div class="notice">Top 25 by best score per model. Status: '+esc(st.t)+'. Snapshot '+esc(b.snapshotDate||'—')+'. Verify against the publisher before citing.</div>';
-}
-
 /* ---------- methodology ---------- */
 function renderMethod(){
   var sp=DATA.composite;
@@ -575,9 +566,9 @@ function renderMethod(){
     return '<li><strong>'+esc(dom.name)+'</strong>: '+names+(dom.note?' <span class="dim">— '+esc(dom.note)+'</span>':'')+'</li>';
   }).join('');
   $('#method').innerHTML=
-    '<h3>What QBench 4.0 is</h3><p>QBench Composite Index 4.0 is an independent, percentile-based index. It keeps the four-category structure of the Artificial Analysis Intelligence Index v5 (Knowledge Work, Coding, Science, General; equal weight) as a reference. Where an AA evaluation has no non-AA values, it uses a current, non-saturated public benchmark instead.</p>'+
+    '<h3>What QBench 1.0 is</h3><p>QBench Composite Index 1.0 is an independent, percentile-based index. It keeps the four-category structure of the Artificial Analysis Intelligence Index v5 (Knowledge Work, Coding, Science, General; equal weight) as a reference. Where an AA evaluation has no non-AA values, it uses a current, non-saturated public benchmark instead.</p>'+
     '<h3>Policy</h3><ul><li>No Artificial Analysis values (scores, Elo, rankings or index numbers) are stored or displayed.</li><li>Evaluation names and definitions may follow AA where they are public.</li><li>Missing values are never imputed or filled with zero.</li></ul>'+
-    '<h3>Categories and evaluations in 4.0</h3><ul>'+cats+'</ul>'+
+    '<h3>Categories and evaluations in 1.0</h3><ul>'+cats+'</ul>'+
     '<h3>Rules</h3><ol><li>For each eligible benchmark, the best published score per exact model name is used.</li><li>Each benchmark is converted to a midrank percentile within its cohort, so Elo, percentages and accuracy do not share a raw scale.</li><li>A benchmark needs at least 8 unique models and must be marked index-eligible.</li><li>Category score = average of its benchmarks’ percentiles. Index = average of the available category scores.</li><li>A model is ranked with 4+ evaluations across 3+ categories.</li></ol>'+
     '<h3>Excluded</h3><ul><li>Saturated benchmarks: GPQA Diamond, SWE-bench Verified, SWE-Bench Pro V2 Full (top 99.4%), ARC-AGI-2 (top 95%).</li><li>AA evaluations with no non-AA values yet: AA-Briefcase v1.1, AutomationBench-AA, GDP.pdf, FrontierCode 2.0, CritPt v2 (Hard), AA-Omniscience v1.1.</li></ul>'+
     '<h3>Limitations</h3><ul><li>Many values come from secondary mirrors (BenchLM, BenchLeader, evals.report). Each row keeps its source and snapshot date.</li><li>Knowledge Work currently rests on one benchmark, so that category is less stable.</li><li>This is a comparative percentile index, not a controlled head-to-head test. Harness, effort settings and tools differ between sources.</li></ul>'+
