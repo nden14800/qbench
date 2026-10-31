@@ -79,6 +79,11 @@ ARC-AGI-3 public competition standings are team/system submissions, not a compar
 - AA-Omniscience v1.1 Accuracy: 40 third-party Benchmark Atlas results from 2026-10-27. This is accuracy-only; the paired hallucination-rate measure is absent, so it is not a substitute for the full AA component and is excluded from QBench Composite Index 3.0.
 - GDP.pdf: three published all-pass results imported from the official Artificial Analysis evaluation page. The page lists 28 of 238 models and states that no public API is available; the import is therefore explicitly a top-three summary, not a complete leaderboard.
 
+## Supplementary score imports
+
+- AA-Omniscience v1.1 Accuracy: 40 third-party Benchmark Atlas results from 2026-10-27. This is accuracy-only; the paired hallucination-rate measure is absent, so it is not a substitute for the full AA component and is excluded from QBench Composite Index 3.0.
+- GDP.pdf: three published all-pass results imported from the official Artificial Analysis evaluation page. The page lists 28 of 238 models and states that no public API is available; the import is a top-three summary, not a complete leaderboard.
+
 ## Model explorer and analytics
 
 - Search and filter the full imported model set (165 exact model names across 20 result datasets).
