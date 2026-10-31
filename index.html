@@ -269,7 +269,7 @@ function renderSummary(){
 }
 function renderBenchmarkSelect(){
  const sel=$('#benchmarkSelect');
- const opts=state.data.benchmarks.map(b=>'<option value="'+esc(b.id)+'">'+esc(b.name)+' · '+b.models.length+'</option>').join('');
+ const opts=state.data.benchmarks.map(b=>'<option value="'+esc(b.id)+'">'+esc(b.name)+' · '+new Set(b.models.map(m=>m.model)).size+' models</option>').join('');
  sel.innerHTML=opts;
  sel.value=get(state.benchmark)?state.benchmark:'arc-agi-2';
  state.benchmark=sel.value;
