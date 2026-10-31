@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.6",
-  "note": "Snapshot 2026-10-31: 20 result datasets, 505 model-result rows, 165 unique model names, 325 model configurations, and 31 providers. QBench Index 3.0 mirrors the nine AA v5 evaluations and category weights; only datasets with at least eight unique model names enter percentile scoring. Four of nine currently meet that data threshold. FrontierMath Erdős and MirrorCode are monitored separately until sufficient comparable model-level coverage is available.",
+  "note": "Snapshot 2026-10-31: 20 result datasets, 505 model-result rows, 165 unique model names, 325 model configurations, and 31 providers. QBench Index 3.0 mirrors the nine AA v5 evaluations and category weights; only datasets with at least eight unique model names enter percentile scoring. Four of nine meet that threshold. On the current eligible data, 29 models cover at least two categories; five meet the strict rank threshold and 24 remain coverage-only. FrontierMath Erdős, MirrorCode, and ARC-AGI-3 are monitored separately until comparable model-level coverage is available.",
   "benchmarks": [
     {
       "id": "livebench-2.0",
@@ -4056,7 +4056,7 @@
       "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/frontiermath-tiers-1-3-v2",
       "status": "results-imported",
-      "note": "FrontierMath Tiers 1–3 v2. Standalone reference only; current public results are near ceiling, so excluded from QBench Index."
+      "note": "FrontierMath v2 Tiers 1–3 private set. Epoch AI's latest public results cluster near 90–94%; high-level math remains useful as a standalone reference, but this is not one of the AA v5 core evaluations."
     },
     {
       "id": "frontiermath-tier-4-v2",
@@ -4064,7 +4064,7 @@
       "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
       "status": "results-imported",
-      "note": "Research-level mathematics. Standalone reference only; public version has reached ceiling-level results, so excluded from QBench Index."
+      "note": "FrontierMath v2 Tier 4: 41 private research-level problems. Epoch AI reports 76 tested models and a current best of 100%; still a useful hard standalone reference, but not an unsolved benchmark and not part of AA v5 core."
     },
     {
       "id": "frontiermath-erdos",
@@ -4112,7 +4112,7 @@
       "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/swe-bench-verified",
       "status": "results-imported",
-      "note": "Legacy reference only. Epoch AI's current benchmark hub reports contamination concerns and a flawed verdict; excluded from QBench Index."
+      "note": "Legacy software-engineering reference. Retained for historical comparison only; not part of the AA v5 core suite or QBench Index 3.0."
     },
     {
       "id": "furniture-assembly",
@@ -4128,7 +4128,7 @@
       "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/gpqa-diamond",
       "status": "results-imported",
-      "note": "Graduate-level science reasoning. Retained as a standalone reference; Epoch AI's progress tracker shows the benchmark has crossed its saturation threshold, so excluded from QBench Index."
+      "note": "Graduate-level science reasoning. Top results are now above 96%, leaving limited headroom; retained as a standalone reference, not an AA v5 core evaluation."
     },
     {
       "id": "proofbench",
@@ -4136,7 +4136,7 @@
       "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/proofbench",
       "status": "results-imported",
-      "note": "Mathematical proof generation. Standalone reference only; current imported results are ceiling-compressed and are not used in QBench Index."
+      "note": "Mathematical proof generation. Retained as a standalone reference; not part of the AA v5 core suite."
     },
     {
       "id": "mmlu-pro",
