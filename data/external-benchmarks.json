@@ -9300,20 +9300,15 @@
           "weight": 1,
           "benchmarks": [
             "aa-briefcase-v1-1",
-            "automationbench-aa",
-            "gdp-pdf",
-            "harvey-lab-aa-v1-1",
-            "aa-analyst-agent",
-            "global-mmlu-lite-aa"
+            "harvey-lab-aa-v1-1"
           ]
         },
         {
           "name": "Coding & Engineering",
           "weight": 1,
           "benchmarks": [
-            "frontiercode-2-0",
             "terminal-bench-4-0",
-            "swe-bench-pro-v2"
+            "frontiercode-2-0"
           ]
         },
         {
@@ -9321,44 +9316,30 @@
           "weight": 1,
           "benchmarks": [
             "terminal-bench-science-0-1",
-            "critpt-v2-hard",
-            "frontiermath-tiers-1-3-v2",
-            "frontiermath-tier-4-v2",
-            "gpqa-diamond",
-            "proofbench"
+            "frontiermath-tiers-1-3-v2"
           ]
         },
         {
           "name": "Reasoning & Generalization",
           "weight": 1,
           "benchmarks": [
-            "aa-omniscience-v1-1",
             "hle-diamond",
             "arc-agi-2",
-            "livebench-2.0",
-            "ifbench-aa"
+            "livebench-2.0"
           ]
         },
         {
           "name": "Agents & Tool Use",
           "weight": 1,
           "benchmarks": [
-            "apex-agents-aa",
-            "enterpriseops-gym-aa",
-            "itbench-aa",
-            "osworld-2-0",
-            "bfcl-v4",
-            "livebench-2.0",
-            "terminal-bench-4-0"
+            "osworld-2-0"
           ]
         },
         {
           "name": "Multimodal & Interaction",
           "weight": 1,
           "benchmarks": [
-            "aa-3d",
-            "mmmu-pro-aa",
-            "healthbench-professional"
+            "aa-3d"
           ]
         }
       ],
@@ -9387,7 +9368,8 @@
           "id": "metr-time-horizons",
           "reason": "METR public page says the board is no longer actively updated; last model result is dated 2026-04-07."
         }
-      ]
+      ],
+      "methodology": "QBench Composite Index 3.5: best published configuration per exact model within each eligible benchmark is converted to a midrank percentile. Each benchmark contributes equally inside its single primary domain; six domain means are then averaged equally. A model is ranked only with results in at least four eligible evaluations spanning at least three of six domains. Every contributing evaluation must have at least eight unique model names. Missing scores are not imputed. This broad percentile index is independent of AA's native index and does not claim identical harnesses."
     }
   }
 }
