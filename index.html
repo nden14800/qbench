@@ -638,7 +638,8 @@ function renderModelDetail(id){
  var resultRows=all.map(function(x){
   var m=x.row,b=x.benchmark,unc=m.scoreUncertainty;
   if(unc==null&&m.uncertainty){var um=String(m.uncertainty).match(/([0-9]+(?:\.[0-9]+)?)/);if(um)unc=Number(um[1]);}
-  var cost=m.costPerTestUSD!=null?'m.costPerSuccessfulTaskUSD!=null?'$'+fmt(m.costPerSuccessfulTaskUSD,3):(m.costPerTestUSD!=null&&scoreOf(m)>0?'$'+fmt(m.costPerTestUSD/(scoreOf(m)/100),3)+'*':'—');
+  var cost=m.costPerTestUSD!=null?'$'+fmt(m.costPerTestUSD,3):'—';
+  var derived=m.costPerSuccessfulTaskUSD!=null?'$'+fmt(m.costPerSuccessfulTaskUSD,3):(m.costPerTestUSD!=null&&scoreOf(m)>0?'$'+fmt(m.costPerTestUSD/(scoreOf(m)/100),3)+'*':'—');
   return '<tr><td>'+esc(b.name)+'</td><td>'+esc(x.effort==='not-reported'?'Not reported':x.effort)+'</td><td class="text-end num">'+fmt(scoreOf(m),2)+(unc!=null?' ± '+fmt(unc,2):'')+'</td><td class="text-end num">'+fmt(m.public500Score,2)+'</td><td>'+esc(m.harness||'Not reported')+'</td><td>'+esc(m.configuration||'—')+'</td><td>'+esc(m.releaseDate||'—')+'</td><td class="num">'+cost+'</td><td class="num">'+derived+'</td><td class="num">'+esc(m.tokensPerTestDisplay||'—')+'</td><td class="num">'+esc(m.durationPerTestDisplay||'—')+'</td><td><a href="'+esc(m.source||b.source||'')+'" target="_blank" rel="noopener">Source</a></td></tr>';
  }).join('');
  var price=(inputPrice!=null||outputPrice!=null)?'<div class="qb-detail-stat"><div class="k">API token pricing</div><div class="v">$'+(inputPrice==null?'—':fmt(inputPrice,3))+' / $'+(outputPrice==null?'—':fmt(outputPrice,3))+'</div><div class="small text-muted-qb">Input / output per 1M tokens · '+esc(priceSource)+'</div></div>':'<div class="qb-detail-stat"><div class="k">API token pricing</div><div class="v">Not verified</div></div>';
