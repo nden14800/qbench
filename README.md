@@ -1,102 +1,114 @@
 # QBench
 
-Independent AI model benchmark explorer and performance analytics platform.
+Evidence-first AI model benchmark explorer.
 
 **公開URL:** https://qbench.pages.dev/ （Cloudflare Pages、`main` ブランチから自動デプロイ）
 
-QBench presents source-traceable model results from public evaluations. It supports benchmark-level inspection, model comparison, coverage analysis and an independent composite percentile index. The four-domain taxonomy is inspired by the structure of Artificial Analysis Intelligence Index v5, but QBench is not an AA score, reproduction or official ranking.
+QBench keeps model results tied to the original evaluation, metric, model configuration, harness and source. Its composite is **QBench Index 1.2**, rebuilt from five source-audited evaluations grouped into four task families.
 
-## Data policy
+## Index 1.2 data policy
 
-- No Artificial Analysis (AA) scores, Elo values, rankings or native Index values are stored or displayed.
-- QBench does not copy AA's internal benchmark weights.
-- Publisher results, third-party evaluator runs and secondary leaderboard mirrors are distinguished in each row.
-- Missing results are not converted to zero; uncertain rows are excluded from composite calculations.
-- Model aliases are not merged without evidence. The highest published configuration for an exact model name is used within each eligible evaluation; configurations and harnesses remain visible.
+- Only the five evaluations listed below contribute to Index 1.2.
+- Every eligible evaluation must contain at least **12 distinct model names** with valid results.
+- Publisher and independent-evaluator results are used; mixed-source extracts, incomplete exports, near-ceiling sets and incompatible harness mixtures stay outside the composite.
+- Missing results are never converted to zero or imputed.
+- Model aliases are not merged without explicit source evidence.
+- A model receives a rank only when it has at least **2 eligible evaluation results across 2 or more task families**.
+- The raw benchmark result, source, snapshot, harness and configuration remain available in the benchmark directory.
 
-## QBench Composite Index 1.1
+## QBench Index 1.2
 
-The Index 1.1 uses four equal-weight domains: **Knowledge Work, Coding, Science and General**. This is a taxonomy reference to AA v5 only. QBench uses its own normalization and weighting rules.
+### Task families and eligible evaluations
+
+| Task family | Evaluation | Valid model results | Source snapshot |
+|---|---|---:|---|
+| Software & terminal execution | Terminal-Bench 4.0 | 59 | Vals AI, 2026-10-29 |
+| Formal mathematics | ProofBench 1.1 | 52 | Vals AI, 2026-10-29 |
+| Scientific workflows | Terminal-Bench-Science 0.1 | 43 | Vals AI, 2026-10-25 |
+| Scientific workflows | DrugDiscoveryBench | 14 | Scale Labs, 2026-10-31 |
+| Expert knowledge & reasoning | HLE-Diamond | 19 | Scale Labs, 2026-10-31 |
+
+ProofBench's 54 leaderboard rows include two specialist formal-proof systems; those remain visible in the benchmark detail but are excluded from the general-purpose composite. DrugDiscoveryBench contributes only the mini-SWE-agent runs so that its harness is consistent; other native-harness configurations are not mixed into Index 1.2.
 
 ### Calculation
 
-1. An evaluation contributes only when it is marked `indexEligible: true` and contains at least **8 unique model names** with valid, non-uncertain scores.
-2. For each exact model name in an evaluation, QBench selects its highest published score.
-3. Each selected score is converted to a midrank percentile within that evaluation's observed cohort:
-   `100 × (count(scores below) + (count(ties) − 1) / 2) / (cohort size − 1)`.
-4. A domain score is the equal-weighted average of the eligible evaluation percentiles available in that domain.
-5. A provisional Index is the equal-weighted average of the domain scores that are available for that model. Missing results are never imputed.
-6. A **rank** requires at least **3 eligible evaluations across at least 2 of the 4 domains**. Ranks with fewer than 4 evaluations or fewer than 3 domains are marked **limited coverage**. Models with 2 eligible results have a provisional value but no rank. Models with one eligible result are visible in Models and Benchmarks but do not receive a composite Index.
+1. **Eligibility gate:** an evaluation needs at least 12 distinct model names, a current publisher or independent-evaluator source, and a usable score for each included model.
+2. **Normalize within each benchmark:** each exact model's score is converted to a midrank percentile within that evaluation's observed cohort:
 
-A provisional value is coverage-limited: it is not directly equivalent to a score with all four domains represented. Different model configurations, effort settings, tools and harnesses are not controlled head-to-head comparisons.
+   `100 × (count(scores below) + (count(ties) − 1) / 2) / (cohort size − 1)`
 
-### Eligible evaluations in 1.0
+3. **Average within task family:** eligible benchmark percentiles are averaged inside each of the four task families. The two Scientific workflows evaluations therefore form one family score, rather than receiving twice the weight of the other families.
+4. **Calculate the raw mean:** average the observed task-family percentiles equally.
+5. **Adjust for evidence:** pull scores toward the neutral midpoint of 50 when fewer than four task families are represented:
 
-| Domain | Evaluation | Valid unique models | Source / caveat |
-|---|---|---:|---|
-| Knowledge Work | GDPval (wins or ties) | 8 | OpenAI-published headline values; exactly meets the 8-model minimum |
-| Coding | Terminal-Bench 4.0 | 59 | Vals AI third-party evaluation using Mini-SWE-agent; snapshot 2026-10-29 |
-| Coding | SWE-Bench Pro (public set) | 20 | Scale AI public set; 5 uncertain rows are excluded |
-| Science | Terminal-Bench-Science 0.1 | 43 | Vals AI third-party evaluation using Mini-SWE-agent; snapshot 2026-10-25 |
-| Science | ProofBench 1.1 | 52 | Vals AI; full 54-row leaderboard minus two specialist formal-proof systems |
-| General | HLE-Diamond | 19 | Scale AI publisher leaderboard; snapshot 2026-10-31 |
-| General | ARC-AGI-3 | 24 | BenchLM mirror of ARC Prize semi-private scores; not an official public leaderboard extract |
-| General | LiveBench 2.0 | 31 | 6 publisher-reported rows and secondary-mirror rows explicitly labelled |
+   `Index = 50 + (Raw mean − 50) × sqrt(Observed task families / 4)`
 
-Knowledge Work has one eligible evaluation; Science has two. Knowledge Work is therefore the least broad domain. Provisional scores and limited-coverage ranks that omit domains should be interpreted cautiously.
+A model with four task families has an adjustment factor of 1.00; three families, approximately 0.87; two families, approximately 0.71. This is an evidence adjustment, not a statistical confidence interval.
 
-### Coverage snapshot — 2026-10-31
+### Evidence labels
 
-- **48 ranked models**
-- **10 provisional Index values** (2+ eligible evaluations, but rank-coverage requirements not met)
-- **41 single-evaluation models** (shown without a composite Index)
-- **99 models** with at least one result in an Index-eligible evaluation
-- **8 eligible evaluations** across the four domains
+- **Full evidence:** all four task families are represented.
+- **Broad evidence:** three task families are represented.
+- **Limited evidence:** two task families are represented; the score is adjusted more strongly toward 50.
+- **Insufficient evidence:** fewer than two task families. The model remains visible in Models and benchmark details but receives no Index score.
 
-### Excluded or tracked separately
+### Recalculated coverage — 2026-10-31
 
-- **OSWorld 2.0:** 16 LLM Stats secondary aggregate rows are retained for reference but excluded because the metric does not identify binary completion versus partial reward.
-- **ProofBench 1.1:** 54 Vals AI rows added to Science; four entries tie at 100%. AlephProver and Aristotle remain visible but are excluded as specialist formal-proof systems.
-- **GPQA Diamond:** the stored 42-row OpenRouter extract is partial against the 167-row leaderboard, so it stays standalone. **FrontierMath Tiers 1–3:** 60 of 120 published configurations are stored, so this partial extract stays standalone.
-- **FrontierMath Tiers 1–3:** retained separately as ceiling-watch; it is not in the current composite.
-- **GPQA Diamond, SWE-bench Verified, SWE-Bench Pro V2 Full and ARC-AGI-2:** retained in the benchmark directory and excluded from the composite under the current ceiling-watch policy.
-- AA-only evaluations without non-AA model values remain in the directory as definitions/source references, not as fabricated model scores.
+- **54 ranked models**
+- **14 full-evidence models**
+- **29 broad-evidence models**
+- **11 limited-evidence models**
+- **16 models with insufficient evidence**
+- **70 models** have at least one result in an eligible evaluation
+- **5 eligible evaluations** across four task families
 
-## Evaluation-specific cost data
+All Index scores are recalculated from the five selected evaluations. The previous composite's eligibility rules and computed scores are no longer used.
 
-QBench keeps benchmark costs separate because they measure different things.
+## Tracked separately — not in Index 1.2
 
-- **Terminal-Bench 4.0 — Cost / Test:** all 59 Vals AI model rows include publisher-listed Cost / Test, Tokens / Test and Duration / Test where available. This is the cost of a full benchmark test, not a universal task cost.
-- **ProofBench 1.1 — Cost / Test:** the 54 Vals AI third-party evaluation rows include the same evaluation-specific metrics where reported.
-- **LiveBench 2.0 — Cost per successful task:** the first six model rows and costs come from the publisher's leaderboard. The remaining 25 model scores are explicitly attributed to the BenchLeader mirror; no publisher cost is invented for them.
-- **API token prices:** a separate searchable catalog lists input/output rates per 1M tokens for 61 model entries. First-party provider prices and OpenRouter route prices are separately labelled; the scatter uses first-party rates only and is not a task-cost metric.
+These datasets remain available for inspection but do not contribute to the composite.
 
-The API price catalog currently covers 57 of 98 models with eligible Index results; unpriced models remain blank rather than receiving estimated or invented rates.
+- **SWE-Bench Pro V2 Hard:** Scale Labs' 51-task high-difficulty split. Its current leaderboard mixes Claude Code, Codex and mini-SWE-agent configurations, so it is retained as a standalone benchmark rather than pooled into the Index.
+- **SWE-Bench Pro V2 Full:** near-ceiling public-set results and mixed harnesses make it unsuitable for the current cross-model composite.
+- **GPQA Diamond:** ceiling/saturation watch; not used in Index 1.2.
+- **FrontierMath Tiers 1–3 (v2):** the checked-in extract contains only 60 of the 120 model results available from Epoch AI's data export. It stays excluded until the complete source export is integrated.
+- **LiveBench 2.0:** the stored snapshot mixes publisher-reported and secondary-mirror values, so source uniformity is insufficient for the composite.
+- **ARC-AGI-3:** the stored extract comes from a secondary mirror and combines multiple settings.
+- **GDPval:** only eight model entries are available in the current checked-in snapshot, below the 12-model source gate.
+- **Older SWE-Bench Pro public results:** replaced for tracking by the refreshed V2 benchmark family.
 
-The benchmark detail view labels the native metric, displays all stored model/configuration rows, and plots cost against score only within the relevant evaluation. Cost metrics from different benchmarks are never pooled.
+The exclusions are deliberate: a larger leaderboard is not automatically a better composite if its results are incomplete, stale, saturated or not comparable.
+
+## Evaluation-specific costs and API pricing
+
+- Benchmark-native **Cost / Test**, **Tokens / Test**, **Duration / Test** and **cost per successful task** remain attached to the benchmark that measured them. They are not pooled into a universal cost-per-task figure.
+- The API price catalog lists **61 model entries** with input and output rates per 1M tokens where available.
+- First-party provider prices and hosted-route prices are labelled separately. The Index price chart uses first-party API prices only.
+- API token prices are not a substitute for benchmark-specific task costs.
 
 ## Data snapshot — 2026-10-31
 
 | Metric | Current snapshot |
 |---|---:|
-| Benchmark datasets with model values | 22 |
-| Model-result / configuration rows | 664 |
-| Exact model names across all datasets | 147 |
-| Model + configuration + harness combinations | 553 |
+| Benchmark datasets with model values | 24 |
+| Model-result / configuration rows | 694 |
+| Exact model names across all datasets | 149 |
+| Model + configuration + harness combinations | 583 |
 | Provider labels | 28 |
 | API price entries | 61 |
-| Benchmark directory entries | 74 |
+| Benchmark directory entries | 43 |
 
-Counts come from the checked-in `data/external-benchmarks.json`. A model may have multiple configurations, harnesses or benchmark results.
+Counts come from `data/external-benchmarks.json`. A model may appear in several evaluations or configurations.
 
 ## UI and features
 
-- Index leaderboard with provider filter, search, sortable metrics, ranked, limited-coverage and provisional distinctions and responsive columns.
-- Charts: domain composition, first-party API token-price vs Index scatter with Pareto frontier, percentile heatmap, Index distribution and evaluation coverage.
-- Models view includes every model with at least one eligible result; single-result models are labelled and do not receive a composite score. Compare up to five multi-evaluation models with a category radar and result table. A searchable API price catalog also lists priced models outside the composite.
-- Benchmark directory with per-evaluation score charts, all stored result rows, configuration, harness, snapshot, source/evidence and evaluation-specific cost data.
-- CSV export and light/dark themes.
-- Responsive dashboard without horizontal overflow in the main Index table.
+- QBench Index 1.2 leaderboard with provider filter, model search, sortable metrics, evidence labels and CSV export.
+- Charts: task-family composition, first-party API price vs. Index with Pareto frontier, benchmark percentile heatmap, Index distribution, evaluation coverage and cross-benchmark consistency.
+- Models view includes every model with at least one eligible result; unranked models are clearly labelled and cannot be selected for composite comparison.
+- Compare up to five ranked models with a task-family radar chart and per-evaluation result table.
+- Benchmark directory with raw scores, model configurations, harnesses, source links, snapshots and evaluation-specific cost metrics.
+- Searchable API price catalog and light/dark themes.
+- ECharts charts inherit the dashboard's DM Sans / Zen Kaku Gothic New font stack, including SVG-rendered labels and tooltips.
 
 Built with Bootstrap 5.3.3, Bootstrap Icons 1.13.1 and ECharts 6.1.0 (`vendor/echarts.min.js`). Fonts: DM Sans and Zen Kaku Gothic New for body text, Zen Old Mincho for Japanese display headings, and IBM Plex Mono for numeric data.
 
@@ -104,15 +116,14 @@ Built with Bootstrap 5.3.3, Bootstrap Icons 1.13.1 and ECharts 6.1.0 (`vendor/ec
 
 - [Vals AI — Terminal-Bench 4.0](https://www.vals.ai/benchmarks/terminal-bench-4)
 - [Vals AI — ProofBench 1.1](https://www.vals.ai/benchmarks/proof_bench)
-- [LiveBench 2.0](https://livebench.ai/)
+- [Vals AI — Terminal-Bench-Science 0.1](https://www.vals.ai/benchmarks/terminal-bench-science)
+- [Scale Labs — HLE-Diamond](https://labs.scale.com/leaderboard/hle-diamond)
+- [Scale Labs — DrugDiscoveryBench](https://labs.scale.com/leaderboard/drugdiscoverybench)
+- [Scale Labs — SWE-Bench Pro V2 and V2 Hard](https://labs.scale.com/leaderboard/swe_bench_pro_public_v2)
+- [Epoch AI — FrontierMath Tiers 1–3 (v2)](https://epoch.ai/benchmarks/frontiermath-tiers-1-3-v2)
 - API pricing: [OpenAI](https://developers.openai.com/api/docs/pricing), [Anthropic](https://platform.claude.com/docs/en/about-claude/pricing), [Google](https://ai.google.dev/gemini-api/docs/pricing), [xAI](https://docs.x.ai/developers/pricing), [Alibaba](https://www.alibabacloud.com/help/en/model-studio/model-pricing), [DeepSeek](https://api-docs.deepseek.com/quick_start/pricing/), [Mistral](https://docs.mistral.ai/inference/pricing), [OpenRouter](https://openrouter.ai/api/v1/models)
-- [BenchLeader — LiveBench 2.0 global mirror](https://www.benchleader.com/benchmarks/livebench2_global)
-- [Scale AI — HLE-Diamond](https://labs.scale.com/leaderboard/hle-diamond)
-- [Epoch AI — OSWorld 2.0 methodology](https://epoch.ai/benchmarks/osworld-2) — documents binary accuracy separately from partial reward; the secondary aggregate is excluded until its metric is verified.
-- [ARC Prize — ARC-AGI-3](https://arcprize.org/arc-agi-3)
-- [Artificial Analysis methodology](https://artificialanalysis.ai/methodology/intelligence-benchmarking) — taxonomy reference only; AA values and internal weights are not copied.
 
-A source URL alone does not mean QBench independently reproduced a result. Data provenance, harness and snapshot caveats are retained per benchmark or row where available.
+A source URL does not mean QBench independently reproduced the result. The publisher/evaluator, harness, configuration and snapshot caveats are retained with each dataset or row.
 
 ## Technical
 
