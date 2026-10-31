@@ -57,7 +57,7 @@ Four of the nine AA v5 evaluations currently meet the minimum eight-model thresh
 
 These are candidates for future inclusion, not fabricated or backfilled composite inputs:
 
-- **FrontierMath Erdős** — Epoch AI's initial run covered 68 open Erdős problems. GPT-6 Astra solved 2/68 (3%); GPT-5.6 Sol, GPT-5.5, Claude Fable 5.1, and Claude Fable 5 each scored 0%. Only five models were tested in the published initial run, so the dataset is too small for a stable percentile ranking. The QBench records have been corrected to these official results.
+- **FrontierMath Erdős** — Epoch AI's current leaderboard covers 68 open Erdős problems and lists seven models: GPT-6 Astra, Claude Opus 5.5, and Claude Sonnet 5.5 each score 2.9% ±2.1%; GPT-5.6 Sol, GPT-5.5, Claude Fable 5.1, and Claude Fable 5 each score 0%. The initial announcement listed five models; the current benchmark page later added two. Seven models are still too few for a stable composite percentile.
 - **MirrorCode** — Epoch AI and METR's long-horizon coding benchmark uses 15 medium/large target programs, two implementation languages, private held-out tests, and three runs per task. Full official model-level coverage is required before inclusion.
 - **Earthborne Rangers (EBR-bench)** — useful long-horizon learning monitor, but its game content and harness changed in v4; versioned results must be separated.
 - **ARC-AGI-3** — highly difficult interactive reasoning environments, but public standings are team/system submissions rather than comparable base-model results, so it is tracked outside the composite.
