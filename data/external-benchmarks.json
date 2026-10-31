@@ -5,7 +5,7 @@
     {
       "id": "livebench-2.0",
       "name": "LiveBench 2.0",
-      "snapshotDate": "2026-10-25",
+      "snapshotDate": "2026-10-30",
       "source": "https://livebench.ai/",
       "unit": "% task score",
       "models": [
@@ -86,6 +86,156 @@
           "dataAnalysis": 85.2,
           "research": 83.1,
           "reasoning": 95.1
+        },
+        {
+          "model": "GPT-6.1 Terra",
+          "provider": "OpenAI",
+          "score": 77.8,
+          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench"
+        },
+        {
+          "model": "Muse Wonder",
+          "provider": "Meta",
+          "score": 74.2,
+          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench"
+        },
+        {
+          "model": "DeepSeek V4.1 Flash 1017",
+          "provider": "DeepSeek",
+          "score": 74,
+          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench"
+        },
+        {
+          "model": "Kimi K3.1 Pro",
+          "provider": "Moonshot AI",
+          "score": 71.3,
+          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench"
+        },
+        {
+          "model": "Grok 4.7",
+          "provider": "xAI",
+          "score": 70.1,
+          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench"
+        },
+        {
+          "model": "Claude Haiku 5.5",
+          "provider": "Anthropic",
+          "score": 69.8,
+          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench"
+        },
+        {
+          "model": "MiMo-V2.6-Pro",
+          "provider": "Xiaomi",
+          "score": 68.5,
+          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench"
+        },
+        {
+          "model": "GPT-5.6 Terra",
+          "provider": "OpenAI",
+          "score": 67.8,
+          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench"
+        },
+        {
+          "model": "Grok 4.6",
+          "provider": "xAI",
+          "score": 67.8,
+          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench"
+        },
+        {
+          "model": "MiniMax M3.1 Flash",
+          "provider": "MiniMax",
+          "score": 66.9,
+          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench"
+        },
+        {
+          "model": "GPT-6 Luna",
+          "provider": "OpenAI",
+          "score": 64.6,
+          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench"
+        },
+        {
+          "model": "Kimi K3",
+          "provider": "Moonshot AI",
+          "score": 64.6,
+          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench"
+        },
+        {
+          "model": "Mistral Large 4",
+          "provider": "Mistral AI",
+          "score": 63.5,
+          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench"
+        },
+        {
+          "model": "Muse Spark 1.3",
+          "provider": "Meta",
+          "score": 63,
+          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench"
+        },
+        {
+          "model": "GLM 5.3 Flash",
+          "provider": "Z.ai",
+          "score": 62.1,
+          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench"
+        },
+        {
+          "model": "Qwen3.8 Max",
+          "provider": "Qwen",
+          "score": 61.6,
+          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench"
+        },
+        {
+          "model": "Gemini 3.8 Flash",
+          "provider": "Google",
+          "score": 59.2,
+          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench"
+        },
+        {
+          "model": "Step 5 Preview",
+          "provider": "StepFun",
+          "score": 58.6,
+          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench"
+        },
+        {
+          "model": "Qwen3.8 27B",
+          "provider": "Qwen",
+          "score": 58.4,
+          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench"
+        },
+        {
+          "model": "Muse Spark Open",
+          "provider": "Meta",
+          "score": 51.6,
+          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench"
+        },
+        {
+          "model": "Smaug Nemotron 3.5 NVFP4",
+          "provider": "NVIDIA",
+          "score": 50.3,
+          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench"
+        },
+        {
+          "model": "Nemotron Super VL 3.5",
+          "provider": "NVIDIA",
+          "score": 50.2,
+          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench"
+        },
+        {
+          "model": "T Inkling",
+          "provider": "Thinking Machines",
+          "score": 47,
+          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench"
+        },
+        {
+          "model": "Nemotron Super VL 3.5 NVFP4",
+          "provider": "NVIDIA",
+          "score": 46.5,
+          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench"
+        },
+        {
+          "model": "Gemma 4 31B",
+          "provider": "Google",
+          "score": 38.7,
+          "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench"
         }
       ]
     },
@@ -143,6 +293,318 @@
           "costPerQuestion": 0.13,
           "timePerQuestion": "31s",
           "routing": "OpenRouter default route"
+        },
+        {
+          "model": "Gemini 3.8 Flash",
+          "provider": "Google",
+          "score": 95.6,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.068,
+          "timePerQuestion": "2.2m"
+        },
+        {
+          "model": "GPT-6 Astra Pro",
+          "provider": "OpenAI",
+          "score": 95.5,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.33,
+          "timePerQuestion": "75s"
+        },
+        {
+          "model": "Fugu Ultra",
+          "provider": "Sakana",
+          "score": 94.6,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 1.15,
+          "timePerQuestion": "5.5m"
+        },
+        {
+          "model": "Gemini 3.1 Pro Preview",
+          "provider": "Google",
+          "score": 94.5,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.2,
+          "timePerQuestion": "2.2m"
+        },
+        {
+          "model": "GPT-5.6 Sol Pro",
+          "provider": "OpenAI",
+          "score": 94.1,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.15,
+          "timePerQuestion": "1.6m"
+        },
+        {
+          "model": "GPT-5.5",
+          "provider": "OpenAI",
+          "score": 93.9,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.31,
+          "timePerQuestion": "2.5m"
+        },
+        {
+          "model": "Gemini 3.7 Flash",
+          "provider": "Google",
+          "score": 93.9,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.029,
+          "timePerQuestion": "59s"
+        },
+        {
+          "model": "Fugu Ultra V2",
+          "provider": "Sakana",
+          "score": 93.3,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.5,
+          "timePerQuestion": "3.2m"
+        },
+        {
+          "model": "Jev Router",
+          "provider": "TypeSafe",
+          "score": 93.3,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.035,
+          "timePerQuestion": "58s"
+        },
+        {
+          "model": "Grok 4.6",
+          "provider": "xAI",
+          "score": 92.8,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.12,
+          "timePerQuestion": "6.0m"
+        },
+        {
+          "model": "Gemini 3.6 Flash",
+          "provider": "Google",
+          "score": 92.8,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.044,
+          "timePerQuestion": "62s"
+        },
+        {
+          "model": "Gemini 3.5 Flash",
+          "provider": "Google",
+          "score": 92.6,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.14,
+          "timePerQuestion": "82s"
+        },
+        {
+          "model": "GPT-5.6 Sol",
+          "provider": "OpenAI",
+          "score": 92.4,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.039,
+          "timePerQuestion": "63s"
+        },
+        {
+          "model": "Unbiased 26.10 Preview",
+          "provider": "Unbiased",
+          "score": 92.4,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.003,
+          "timePerQuestion": "38s"
+        },
+        {
+          "model": "GPT-6 Sol",
+          "provider": "OpenAI",
+          "score": 91.9,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.025,
+          "timePerQuestion": "32s"
+        },
+        {
+          "model": "Kimi K3",
+          "provider": "Moonshot AI",
+          "score": 91.8,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.13,
+          "timePerQuestion": "4.6m"
+        },
+        {
+          "model": "GPT-6.1 Terra",
+          "provider": "OpenAI",
+          "score": 91.4,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.008,
+          "timePerQuestion": "21s"
+        },
+        {
+          "model": "GLM 5.3 Flash",
+          "provider": "Z.ai",
+          "score": 90.9,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.005,
+          "timePerQuestion": "3.9m"
+        },
+        {
+          "model": "Qwen3.7 Max",
+          "provider": "Qwen",
+          "score": 90.9,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.22,
+          "timePerQuestion": "5.0m"
+        },
+        {
+          "model": "DeepSeek V4.1 Flash 1017",
+          "provider": "DeepSeek",
+          "score": 90.7,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.01,
+          "timePerQuestion": "1.8m"
+        },
+        {
+          "model": "NVIDIA Switchyard",
+          "provider": "NVIDIA",
+          "score": 90.7,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.016,
+          "timePerQuestion": "64s"
+        },
+        {
+          "model": "Muse Spark Open",
+          "provider": "Meta",
+          "score": 90.6,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.069,
+          "timePerQuestion": "1.7m"
+        },
+        {
+          "model": "Kimi K3.1 Pro",
+          "provider": "Moonshot AI",
+          "score": 90.4,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.021,
+          "timePerQuestion": "58s"
+        },
+        {
+          "model": "MiniMax M3",
+          "provider": "MiniMax",
+          "score": 90.4,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.034,
+          "timePerQuestion": "5.3m"
+        },
+        {
+          "model": "GPT-5.4",
+          "provider": "OpenAI",
+          "score": 90.2,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.14,
+          "timePerQuestion": "2.5m"
+        },
+        {
+          "model": "DeepSeek V4 Pro 0813",
+          "provider": "DeepSeek",
+          "score": 90.2,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.11,
+          "timePerQuestion": "9.4m"
+        },
+        {
+          "model": "DeepSeek V4.1 Flash",
+          "provider": "DeepSeek",
+          "score": 90.2,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.007,
+          "timePerQuestion": "73s"
+        },
+        {
+          "model": "Tencent Hy4 Preview",
+          "provider": "Tencent",
+          "score": 90,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.12,
+          "timePerQuestion": "14.1m"
+        },
+        {
+          "model": "Claude Opus 4.8",
+          "provider": "Anthropic",
+          "score": 89.7,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.2,
+          "timePerQuestion": "1.6m"
+        },
+        {
+          "model": "GPT-5.6 Luna Pro",
+          "provider": "OpenAI",
+          "score": 89.6,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.038,
+          "timePerQuestion": "2.4m"
+        },
+        {
+          "model": "Claude Opus 4.7",
+          "provider": "Anthropic",
+          "score": 89.5,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.23,
+          "timePerQuestion": "1.8m"
+        },
+        {
+          "model": "GPT-6 Luna",
+          "provider": "OpenAI",
+          "score": 89.8,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.003,
+          "timePerQuestion": "73s"
+        },
+        {
+          "model": "Claude Haiku 5.5",
+          "provider": "Anthropic",
+          "score": 86.9,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.004,
+          "timePerQuestion": "39s"
+        },
+        {
+          "model": "GPT-5.6 Terra",
+          "provider": "OpenAI",
+          "score": 88.4,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.041,
+          "timePerQuestion": "55s"
+        },
+        {
+          "model": "Claude Fable 5",
+          "provider": "Anthropic",
+          "score": 86.6,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.18,
+          "timePerQuestion": "44s"
+        },
+        {
+          "model": "GPT-5.6 Luna",
+          "provider": "OpenAI",
+          "score": 87.9,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.008,
+          "timePerQuestion": "80s"
+        },
+        {
+          "model": "Muse Wonder",
+          "provider": "Meta",
+          "score": 88.1,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.04,
+          "timePerQuestion": "1.1m"
+        },
+        {
+          "model": "Mistral Large 4",
+          "provider": "Mistral AI",
+          "score": 88,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.08,
+          "timePerQuestion": "2.0m"
+        },
+        {
+          "model": "Grok 4.7",
+          "provider": "xAI",
+          "score": 88.2,
+          "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
+          "costPerQuestion": 0.06,
+          "timePerQuestion": "2.3m"
         }
       ]
     },
@@ -188,13 +650,373 @@
           "provider": "Google",
           "score": 86,
           "uncertainty": "±2.1"
+        },
+        {
+          "model": "GPT-6.1 Terra",
+          "provider": "OpenAI",
+          "score": 90.9,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "GPT-6 Sol",
+          "provider": "OpenAI",
+          "score": 89.8,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "GPT-5.6 Sol",
+          "provider": "OpenAI",
+          "score": 89.1,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "GPT-5.5 Pro",
+          "provider": "OpenAI",
+          "score": 87.7,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "xhigh"
+        },
+        {
+          "model": "Claude Fable 5",
+          "provider": "Anthropic",
+          "score": 87,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "GPT-5.6 Terra",
+          "provider": "OpenAI",
+          "score": 86,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "Claude Opus 5",
+          "provider": "Anthropic",
+          "score": 85.6,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "GPT-5.5",
+          "provider": "OpenAI",
+          "score": 85.3,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "xhigh"
+        },
+        {
+          "model": "GPT-5.4 Pro",
+          "provider": "OpenAI",
+          "score": 82.5,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "xhigh"
+        },
+        {
+          "model": "Muse Wonder",
+          "provider": "Meta",
+          "score": 82.1,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "GPT-5.6 Luna",
+          "provider": "OpenAI",
+          "score": 82.1,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "Claude Opus 4.8",
+          "provider": "Anthropic",
+          "score": 80,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "GPT-6 Luna",
+          "provider": "OpenAI",
+          "score": 79,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "GPT-5.4",
+          "provider": "OpenAI",
+          "score": 78.6,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "xhigh"
+        },
+        {
+          "model": "Claude Haiku 5.5",
+          "provider": "Anthropic",
+          "score": 75.1,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "Qwen3.8 Max",
+          "provider": "Qwen",
+          "score": 74.7,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "xhigh"
+        },
+        {
+          "model": "Muse Spark 1.3",
+          "provider": "Meta",
+          "score": 74.4,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "xhigh"
+        },
+        {
+          "model": "GPT-5.2 Pro",
+          "provider": "OpenAI",
+          "score": 74,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "xhigh"
+        },
+        {
+          "model": "Kimi K3",
+          "provider": "Moonshot AI",
+          "score": 72.2,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "Gemini 3.7 Flash",
+          "provider": "Google",
+          "score": 71.6,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "high"
+        },
+        {
+          "model": "DeepSeek V4.1 Flash 1017",
+          "provider": "DeepSeek",
+          "score": 71.2,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "Claude Opus 4.7",
+          "provider": "Anthropic",
+          "score": 70.2,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "Muse Spark Open 816B A42B",
+          "provider": "Meta",
+          "score": 69.8,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "xhigh"
+        },
+        {
+          "model": "GLM 5.3",
+          "provider": "Z.ai",
+          "score": 68.8,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "Gemini 3.8 Flash",
+          "provider": "Google",
+          "score": 68.4,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "high"
+        },
+        {
+          "model": "GPT-5.2",
+          "provider": "OpenAI",
+          "score": 67.4,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "xhigh"
+        },
+        {
+          "model": "DeepSeek V4.1 Flash",
+          "provider": "DeepSeek",
+          "score": 67.4,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "Grok 4.6",
+          "provider": "xAI",
+          "score": 66,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "xhigh"
+        },
+        {
+          "model": "Claude Opus 4.6",
+          "provider": "Anthropic",
+          "score": 66,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "Claude Sonnet 5",
+          "provider": "Anthropic",
+          "score": 65.6,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "Qwen3.7",
+          "provider": "Qwen",
+          "score": 64.6,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "DeepSeek V4 Pro",
+          "provider": "DeepSeek",
+          "score": 64.6,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "Gemini 3.5 Flash",
+          "provider": "Google",
+          "score": 62.8,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "high"
+        },
+        {
+          "model": "Gemini 3.1 Pro",
+          "provider": "Google",
+          "score": 59.6,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI"
+        },
+        {
+          "model": "GLM 5.2",
+          "provider": "Z.ai",
+          "score": 59.2,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "Gemini 3.6 Flash",
+          "provider": "Google",
+          "score": 59,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "high"
+        },
+        {
+          "model": "Mistral Large 4",
+          "provider": "Mistral AI",
+          "score": 58.6,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "high"
+        },
+        {
+          "model": "DeepSeek V4 Flash",
+          "provider": "DeepSeek",
+          "score": 57.5,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "Grok 4.5",
+          "provider": "xAI",
+          "score": 57.2,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "high"
+        },
+        {
+          "model": "Kimi K2.6",
+          "provider": "Moonshot AI",
+          "score": 57.2,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI"
+        },
+        {
+          "model": "GLM 5.3 Flash",
+          "provider": "Z.ai",
+          "score": 55.8,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "GPT-5 Pro",
+          "provider": "OpenAI",
+          "score": 55.8,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "high"
+        },
+        {
+          "model": "GPT-5",
+          "provider": "OpenAI",
+          "score": 55.4,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "high"
+        },
+        {
+          "model": "Kimi K2.7 Code",
+          "provider": "Moonshot AI",
+          "score": 54,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI"
+        },
+        {
+          "model": "Grok 4.7",
+          "provider": "xAI",
+          "score": 53,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "xhigh"
+        },
+        {
+          "model": "Gemini 3 Flash",
+          "provider": "Google",
+          "score": 51.2,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI"
+        },
+        {
+          "model": "GPT-5.4 Mini",
+          "provider": "OpenAI",
+          "score": 51.2,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "xhigh"
+        },
+        {
+          "model": "GPT-5 mini",
+          "provider": "OpenAI",
+          "score": 46.7,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "high"
+        },
+        {
+          "model": "T Inkling Small",
+          "provider": "Thinking Machines",
+          "score": 46.3,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "xhigh"
+        },
+        {
+          "model": "Grok 4.20",
+          "provider": "xAI",
+          "score": 44.9,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "thinking"
+        },
+        {
+          "model": "GPT-5.4 Nano",
+          "provider": "OpenAI",
+          "score": 44.9,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "high"
+        },
+        {
+          "model": "Grok 4.3",
+          "provider": "xAI",
+          "score": 42.8,
+          "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "high"
         }
       ]
     },
     {
       "id": "frontiermath-tier-4-v2",
       "name": "FrontierMath Tier 4 (v2, private)",
-      "snapshotDate": "2026-10-30",
+      "snapshotDate": "2026-10-29",
       "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
       "unit": "% accuracy",
       "models": [
@@ -232,13 +1054,133 @@
           "provider": "Google",
           "score": 78,
           "uncertainty": "±6.5"
+        },
+        {
+          "model": "GPT-6.1 Terra",
+          "provider": "OpenAI",
+          "score": 92.683,
+          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI"
+        },
+        {
+          "model": "Claude Fable 5",
+          "provider": "Anthropic",
+          "score": 90.2,
+          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI"
+        },
+        {
+          "model": "GPT-6 Sol",
+          "provider": "OpenAI",
+          "score": 90,
+          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI"
+        },
+        {
+          "model": "GPT-5.6 Sol",
+          "provider": "OpenAI",
+          "score": 83,
+          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI"
+        },
+        {
+          "model": "GPT-5.5 Pro",
+          "provider": "OpenAI",
+          "score": 78.049,
+          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI"
+        },
+        {
+          "model": "Claude Opus 5",
+          "provider": "Anthropic",
+          "score": 73.171,
+          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI"
+        },
+        {
+          "model": "GPT-5.5",
+          "provider": "OpenAI",
+          "score": 72.5,
+          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI"
+        },
+        {
+          "model": "GPT-5.6 Terra",
+          "provider": "OpenAI",
+          "score": 68.3,
+          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI"
+        },
+        {
+          "model": "GPT-5.4 Pro",
+          "provider": "OpenAI",
+          "score": 58.537,
+          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI"
+        },
+        {
+          "model": "GPT-5.6 Luna",
+          "provider": "OpenAI",
+          "score": 58.5,
+          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI"
+        },
+        {
+          "model": "Claude Opus 4.8",
+          "provider": "Anthropic",
+          "score": 56.098,
+          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI"
+        },
+        {
+          "model": "GPT-6 Luna",
+          "provider": "OpenAI",
+          "score": 56.098,
+          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI"
+        },
+        {
+          "model": "GPT-5.4",
+          "provider": "OpenAI",
+          "score": 49,
+          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI"
+        },
+        {
+          "model": "Qwen3.8 Max",
+          "provider": "Qwen",
+          "score": 46.341,
+          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI"
+        },
+        {
+          "model": "Claude Haiku 5.5",
+          "provider": "Anthropic",
+          "score": 46.341,
+          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI"
+        },
+        {
+          "model": "Muse Spark 1.3",
+          "provider": "Meta",
+          "score": 46.341,
+          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI"
+        },
+        {
+          "model": "Gemini 3.7 Flash",
+          "provider": "Google",
+          "score": 36.585,
+          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI"
+        },
+        {
+          "model": "Qwen3.7 Max",
+          "provider": "Qwen",
+          "score": 34.146,
+          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI"
+        },
+        {
+          "model": "Grok 4.6",
+          "provider": "xAI",
+          "score": 31.707,
+          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI"
+        },
+        {
+          "model": "Claude Opus 4.7",
+          "provider": "Anthropic",
+          "score": 31.707,
+          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI"
         }
       ]
     },
     {
       "id": "proofbench",
       "name": "ProofBench",
-      "snapshotDate": "2026-10-12",
+      "snapshotDate": "2026-10-29",
       "source": "https://epoch.ai/benchmarks/proofbench",
       "unit": "% proof success",
       "models": [
@@ -277,6 +1219,266 @@
           "provider": "Google",
           "score": 99,
           "configuration": "unknown"
+        },
+        {
+          "model": "Claude Opus 5",
+          "provider": "Anthropic",
+          "score": 99,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
+          "configuration": "max"
+        },
+        {
+          "model": "Claude Fable 5",
+          "provider": "Anthropic",
+          "score": 95,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
+          "configuration": "max"
+        },
+        {
+          "model": "Kimi K3.1 Pro",
+          "provider": "Moonshot AI",
+          "score": 91,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI"
+        },
+        {
+          "model": "Claude Haiku 5.5",
+          "provider": "Anthropic",
+          "score": 89,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
+          "configuration": "max"
+        },
+        {
+          "model": "Kimi K3",
+          "provider": "Moonshot AI",
+          "score": 87,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI"
+        },
+        {
+          "model": "Muse Wonder",
+          "provider": "Meta",
+          "score": 84,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI"
+        },
+        {
+          "model": "GPT-6 Sol",
+          "provider": "OpenAI",
+          "score": 83,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI"
+        },
+        {
+          "model": "Claude Sonnet 5",
+          "provider": "Anthropic",
+          "score": 77,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
+          "configuration": "max"
+        },
+        {
+          "model": "Hy4",
+          "provider": "Tencent",
+          "score": 75,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI"
+        },
+        {
+          "model": "GPT-5.6 Terra",
+          "provider": "OpenAI",
+          "score": 74,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
+          "configuration": "xhigh"
+        },
+        {
+          "model": "MiMo-V2.6-Pro",
+          "provider": "Xiaomi",
+          "score": 70,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI"
+        },
+        {
+          "model": "Claude Opus 4.8",
+          "provider": "Anthropic",
+          "score": 69,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
+          "configuration": "max"
+        },
+        {
+          "model": "GPT-6 Luna",
+          "provider": "OpenAI",
+          "score": 64,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI"
+        },
+        {
+          "model": "MiMo-V2.6-Flash",
+          "provider": "Xiaomi",
+          "score": 63,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI"
+        },
+        {
+          "model": "GPT-5.6 Luna",
+          "provider": "OpenAI",
+          "score": 60,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
+          "configuration": "max"
+        },
+        {
+          "model": "Muse Spark 1.3",
+          "provider": "Meta",
+          "score": 58,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
+          "configuration": "max"
+        },
+        {
+          "model": "Qwen3.8 Max",
+          "provider": "Qwen",
+          "score": 58,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
+          "configuration": "max"
+        },
+        {
+          "model": "Gemini 3.7 Flash",
+          "provider": "Google",
+          "score": 58,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI"
+        },
+        {
+          "model": "GPT-5.4",
+          "provider": "OpenAI",
+          "score": 56,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
+          "configuration": "xhigh"
+        },
+        {
+          "model": "DeepSeek V4 Flash",
+          "provider": "DeepSeek",
+          "score": 56,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
+          "configuration": "max"
+        },
+        {
+          "model": "Claude Opus 4.7",
+          "provider": "Anthropic",
+          "score": 54,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
+          "configuration": "max"
+        },
+        {
+          "model": "DeepSeek V4.1 Flash",
+          "provider": "DeepSeek",
+          "score": 54,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI"
+        },
+        {
+          "model": "Grok 4.6",
+          "provider": "xAI",
+          "score": 51,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI"
+        },
+        {
+          "model": "GPT-5.5",
+          "provider": "OpenAI",
+          "score": 50,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
+          "configuration": "xhigh"
+        },
+        {
+          "model": "Claude Opus 4.6",
+          "provider": "Anthropic",
+          "score": 50,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
+          "configuration": "max"
+        },
+        {
+          "model": "DeepSeek V4 Pro",
+          "provider": "DeepSeek",
+          "score": 50,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI"
+        },
+        {
+          "model": "GLM 5.3",
+          "provider": "Z.ai",
+          "score": 49,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
+          "configuration": "max"
+        },
+        {
+          "model": "Gemini 3.8 Flash",
+          "provider": "Google",
+          "score": 48,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI"
+        },
+        {
+          "model": "Claude Sonnet 4.6",
+          "provider": "Anthropic",
+          "score": 45,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
+          "configuration": "max"
+        },
+        {
+          "model": "Muse Spark 1.2",
+          "provider": "Meta",
+          "score": 43,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI"
+        },
+        {
+          "model": "Step 5 Preview",
+          "provider": "StepFun",
+          "score": 42,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI"
+        },
+        {
+          "model": "Muse Spark 1.1",
+          "provider": "Meta",
+          "score": 39,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI"
+        },
+        {
+          "model": "Claude Opus 4.5",
+          "provider": "Anthropic",
+          "score": 36,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI"
+        },
+        {
+          "model": "Gemini 3.6 Flash",
+          "provider": "Google",
+          "score": 36,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI"
+        },
+        {
+          "model": "GLM 5.2",
+          "provider": "Z.ai",
+          "score": 35,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
+          "configuration": "max"
+        },
+        {
+          "model": "Gemini 3.5 Flash",
+          "provider": "Google",
+          "score": 31,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
+          "configuration": "high"
+        },
+        {
+          "model": "Grok 4.5",
+          "provider": "xAI",
+          "score": 31,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
+          "configuration": "high"
+        },
+        {
+          "model": "Gemini 3.1 Pro",
+          "provider": "Google",
+          "score": 26,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI"
+        },
+        {
+          "model": "Qwen3.7",
+          "provider": "Qwen",
+          "score": 26,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
+          "configuration": "max"
+        },
+        {
+          "model": "Grok 4.7",
+          "provider": "xAI",
+          "score": 26,
+          "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI"
         }
       ]
     },
@@ -328,6 +1530,182 @@
           "score": 70,
           "uncertainty": "±5.7",
           "configuration": "max"
+        },
+        {
+          "model": "Claude Opus 5",
+          "provider": "Anthropic",
+          "score": 60.8,
+          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "GPT-6 Sol",
+          "provider": "OpenAI",
+          "score": 58.3,
+          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "GPT-5.6 Sol",
+          "provider": "OpenAI",
+          "score": 56.7,
+          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "GPT-5.6 Terra",
+          "provider": "OpenAI",
+          "score": 54.2,
+          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "Claude Haiku 5.5",
+          "provider": "Anthropic",
+          "score": 47.5,
+          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "GPT-5.5",
+          "provider": "OpenAI",
+          "score": 44.2,
+          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "xhigh"
+        },
+        {
+          "model": "GPT-6 Luna",
+          "provider": "OpenAI",
+          "score": 44.2,
+          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "Claude Opus 4.8",
+          "provider": "Anthropic",
+          "score": 42.5,
+          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "GPT-5.6 Luna",
+          "provider": "OpenAI",
+          "score": 42.5,
+          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "Grok 4.6",
+          "provider": "xAI",
+          "score": 40,
+          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "xhigh"
+        },
+        {
+          "model": "GPT-5.2",
+          "provider": "OpenAI",
+          "score": 38.3,
+          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "xhigh"
+        },
+        {
+          "model": "GPT-5.4",
+          "provider": "OpenAI",
+          "score": 37.5,
+          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "xhigh"
+        },
+        {
+          "model": "Claude Fable 5",
+          "provider": "Anthropic",
+          "score": 35.8,
+          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "DeepSeek V4.1 Flash",
+          "provider": "DeepSeek",
+          "score": 34.2,
+          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI"
+        },
+        {
+          "model": "Kimi K3",
+          "provider": "Moonshot AI",
+          "score": 34.2,
+          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI"
+        },
+        {
+          "model": "Claude Opus 4.7",
+          "provider": "Anthropic",
+          "score": 33.3,
+          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
+          "configuration": "max"
+        },
+        {
+          "model": "Gemini 3.8 Flash",
+          "provider": "Google",
+          "score": 31.7,
+          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI"
+        },
+        {
+          "model": "Claude Opus 4.5",
+          "provider": "Anthropic",
+          "score": 28.3,
+          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI"
+        },
+        {
+          "model": "Claude Opus 4.6",
+          "provider": "Anthropic",
+          "score": 28.3,
+          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI"
+        },
+        {
+          "model": "Gemini 3.1 Pro Preview",
+          "provider": "Google",
+          "score": 26.7,
+          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI"
+        },
+        {
+          "model": "Gemini 3.7 Flash",
+          "provider": "Google",
+          "score": 26.7,
+          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI"
+        },
+        {
+          "model": "Gemini 3.6 Flash",
+          "provider": "Google",
+          "score": 23.3,
+          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI"
+        },
+        {
+          "model": "Grok 4.5",
+          "provider": "xAI",
+          "score": 22.5,
+          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI"
+        },
+        {
+          "model": "Kimi K2.6",
+          "provider": "Moonshot AI",
+          "score": 21.7,
+          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI"
+        },
+        {
+          "model": "Mistral Large 4",
+          "provider": "Mistral AI",
+          "score": 20.8,
+          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI"
+        },
+        {
+          "model": "Grok 4.7",
+          "provider": "xAI",
+          "score": 20.8,
+          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI"
+        },
+        {
+          "model": "Qwen3.8 Max (0902)",
+          "provider": "Qwen",
+          "score": 20,
+          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI"
         }
       ]
     },
@@ -444,7 +1822,9 @@
       "proofbench": 0.2,
       "furniture-assembly": 0.2
     },
-    "cohortSize": 6,
-    "method": "Exact model-name intersection across the five benchmark families. Preserve each source's published 0–100 score; FrontierMath family score is the arithmetic mean of Tiers 1–3 (v2) and Tier 4 (v2), so the two tiers count as one family. The composite is the equal-weight arithmetic mean of LiveBench 2.0, GPQA Diamond, FrontierMath family, ProofBench and Furniture Assembly. This is a descriptive external composite, not a universal capability measure or a QBench-run score. SWE-bench snapshots remain separate because their model coverage is not the same six-model cohort."
+    "cohortSize": 10,
+    "method": "Exact model-name intersection across the five benchmark families. Preserve each source's published 0–100 score; FrontierMath family score is the arithmetic mean of Tiers 1–3 (v2) and Tier 4 (v2), so the two tiers count as one family. The composite is the equal-weight arithmetic mean of LiveBench 2.0, GPQA Diamond, FrontierMath family, ProofBench and Furniture Assembly. This is a descriptive external composite, not a universal capability measure or a QBench-run score. SWE-bench snapshots remain separate because their model coverage is not the same six-model cohort.",
+    "modelCount": 92,
+    "snapshotAsOf": "2026-10-30"
   }
 }
