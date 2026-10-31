@@ -727,7 +727,8 @@ function renderBench(){
   var header='<tr><th>Model</th><th class="text-end">Score (± if reported)</th><th>Configuration</th><th>Harness</th><th>'+esc(costName)+'</th><th>Tokens / test</th><th>Duration / test</th><th>Snapshot</th><th>Evidence / source</th></tr>';
   var body=allRows.map(function(r){
     var cost=r.costPerTestUSD!=null?r.costPerTestUSD:r.costPerSuccessfulTaskUSD;
-    var src=r.source||source,evidence=r.evidence||'No row-level evidence provided.';\n    var scoreText=fmt(scoreOf(r),2)+(r.scoreUncertainty!=null?' ± '+fmt(r.scoreUncertainty,2):'');
+    var src=r.source||source,evidence=r.evidence||'No row-level evidence provided.';
+    var scoreText=fmt(scoreOf(r),2)+(r.scoreUncertainty!=null?' ± '+fmt(r.scoreUncertainty,2):'');
     var kind=(DATA.modelNameAudit&&DATA.modelNameAudit.modelKinds||[]).filter(function(x){return x.name===r.model;})[0];
     var kindLabel=kind?'<span class="badge rounded-pill text-bg-light text-secondary border ms-1">'+esc(kind.label)+'</span>':'';
     var sourceLabel=r.originalModelName?'<small class="d-block text-muted-qb">source label: '+esc(r.originalModelName)+'</small>':'';
@@ -737,7 +738,7 @@ function renderBench(){
     '<div class="notice-qb">Chart: point estimates per exact model name. Publisher-reported ± values are preserved in the table where available. Table: all '+allRows.length+' stored model/configuration rows. † = uncertain and excluded from the composite index.</div>'+costHtml+
     '<h3 class="card-title-qb mt-4 mb-2">All model results <span class="metric-chip">'+allRows.length+' rows</span></h3><div class="table-responsive"><table class="table table-hover align-middle bench-results mb-0"><thead>'+header+'</thead><tbody>'+body+'</tbody></table></div>';
   var c=chartInit('bench-plot-el');
-  if(c)c.setOption({animation:false,grid:{left:260,right:60,top:6,bottom:6},tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+  if(c)c.setOption({animation:false,grid:{left:260,right:60,top:6,bottom:6},tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(items){var t=top[items[0].dataIndex];return esc(t.m)+'<br>Score: '+fmt(t.v,2)+(t.s!=null?' ± '+fmt(t.s,2):'')+' '+esc(b.unit||'');}},
     xAxis:Object.assign({type:'value'},axisStyle(p)),
     yAxis:{type:'category',inverse:true,data:top.map(function(t){return t.m+(t.c?' ('+t.c+')':'')+(t.u?' †':'');}),axisLabel:{color:p.ink,fontSize:11,width:235,overflow:'truncate'},axisLine:{show:false},axisTick:{show:false}},
     series:[{type:'bar',barWidth:14,itemStyle:{color:p.accent,borderRadius:[0,4,4,0]},label:{show:true,position:'right',color:p.ink,fontSize:11,formatter:function(e){return Number(e.value).toFixed(1);}},data:top.map(function(t){return t.v;})}]
