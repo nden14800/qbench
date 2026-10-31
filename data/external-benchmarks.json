@@ -13017,7 +13017,7 @@
       "LiveBench 2.0 remains standalone because the imported snapshot mixes six official-publisher rows with secondary-mirror results; the official-only subset is below the 12-variant source gate.",
       "API token prices are not measured benchmark cost per task. No task cost is inferred without matching per-run token usage and pricing.",
       "Missing scores are never imputed, and aliases are not merged without explicit source evidence.",
-      "An IRT-based long-run Progress Index is not published yet. Only eight model/effort variants currently have results across four or more eligible evaluations, and most inputs are aggregate benchmark scores rather than task-level response matrices; a stable longitudinal calibration needs a larger connected overlap set.",
+      "An IRT-based long-run Progress Index is not published yet. Only seven model/effort variants currently have results across four or more eligible evaluations, and most inputs are aggregate benchmark scores rather than task-level response matrices; a stable longitudinal calibration needs a larger connected overlap set.",
       "MCP Atlas source-page caveat: QBench uses only the explicitly labeled 20-row Pass Rate % (All 1000) table and preserves Public 500 scores separately. The page headline says 83.6% top pass rate while the displayed All 1000 table's maximum is 82.2%; the page does not reconcile this. A separate 34-row Performance Comparison table has score ± values but no explicit metric label and is retained outside the Index."
     ],
     "sourceNotes": [
@@ -13297,7 +13297,7 @@
         "LiveBench 2.0 remains standalone because the imported snapshot mixes six official-publisher rows with secondary-mirror results; the official-only subset is below the 12-variant source gate.",
         "API token prices are not measured benchmark cost per task. No task cost is inferred without matching per-run token usage and pricing.",
         "Missing scores are never imputed, and aliases are not merged without explicit source evidence.",
-        "An IRT-based long-run Progress Index is not published yet. Only eight model/effort variants currently have results across four or more eligible evaluations, and most inputs are aggregate benchmark scores rather than task-level response matrices; a stable longitudinal calibration needs a larger connected overlap set.",
+        "An IRT-based long-run Progress Index is not published yet. Only seven model/effort variants currently have results across four or more eligible evaluations, and most inputs are aggregate benchmark scores rather than task-level response matrices; a stable longitudinal calibration needs a larger connected overlap set.",
         "MCP Atlas source-page caveat: QBench uses only the explicitly labeled 20-row Pass Rate % (All 1000) table and preserves Public 500 scores separately. The page headline says 83.6% top pass rate while the displayed All 1000 table's maximum is 82.2%; the page does not reconcile this. A separate 34-row Performance Comparison table has score ± values but no explicit metric label and is retained outside the Index."
       ],
       "sourceNotes": [
