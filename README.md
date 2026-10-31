@@ -141,6 +141,8 @@ The Pareto chart pairs the QBench Composite Index 3.5 score with a separate **eq
 
 This is a unit-price comparison, **not Cost per Task, not observed workload expenditure, and not a QBench score component**. It excludes cache hits/writes, batch discounts, tool/search charges, regional uplifts, negotiated prices, taxes and provider-specific tokenization differences. Models without a verified exact-name price mapping are omitted rather than estimated. The frontier is recalculated from the plotted model set: a point is non-dominated when no other plotted model is both no more expensive and at least as high-scoring.
 
+The AA standalone/legacy directory keeps partial public leaderboard snapshots distinct from full result tables. IFBench, MMMU-Pro and AA-LCR v1.1 currently expose only official top-three summaries in this repository; they are marked summary-only and excluded from Composite Index 3.5 until a sufficiently complete, comparable result table is available. The public AA page reports 27/451 IFBench models, 27/298 MMMU-Pro models and 28/589 AA-LCR v1.1 models, so the three-row snapshots must not be mistaken for complete leaderboards.
+
 ## Data sources and limitations
 
 Primary sources are preferred: Artificial Analysis evaluation pages, Epoch AI benchmark pages, Scale AI leaderboards, LiveBench, UC Berkeley BFCL, METR and the originating benchmark publishers. Secondary mirrors are explicitly labelled in row-level metadata. A source URL alone does not mean a result was independently reproduced by QBench.
