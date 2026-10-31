@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.6",
-  "note": "Snapshot 2026-10-31: 20 result datasets, 507 model-result rows, 165 unique model names, 320 unique model/configuration/harness combinations, 31 provider labels, and 47 benchmark directory entries. The AA-Omniscience accuracy-only Atlas dataset is third-party supplementary data and excluded from QBench Composite Index 3.0. 4/9 composite components meet the eight-model minimum.",
+  "note": "Snapshot 2026-10-31: 21 result datasets, 549 model-result rows, 176 unique model names, 362 unique model/configuration/harness combinations, 34 provider labels, and 48 benchmark directory entries. The AA-Omniscience accuracy-only Atlas dataset is third-party supplementary data and excluded from QBench Composite Index 3.0. 4/9 composite components meet the eight-model minimum.",
   "benchmarks": [
     {
       "id": "livebench-2.0",
@@ -3952,18 +3952,35 @@
     {
       "id": "gdp-pdf",
       "name": "GDP.pdf",
-      "snapshotDate": "2026-10-27",
-      "source": "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5",
+      "snapshotDate": "2026-10-31",
+      "source": "https://artificialanalysis.ai/evaluations/gdp-pdf",
       "unit": "% all-pass",
-      "quality": "AA v5 component · official leader-summary only; one published all-pass result imported",
+      "quality": "AA v5 component · official evaluation page publishes the top three all-pass results; no public API",
       "coverageLevel": "published-leader-summary-only",
       "models": [
         {
           "model": "Muse Wonder Full",
           "provider": "Meta",
           "configuration": "Max",
-          "score": 33,
-          "evidence": "Artificial Analysis Intelligence Index v5 official announcement, 2026-10-27; published leader summary only"
+          "score": 32.6,
+          "evidence": "Artificial Analysis official GDP.pdf evaluation page, top-three summary, checked 2026-10-31",
+          "source": "https://artificialanalysis.ai/evaluations/gdp-pdf"
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "configuration": "Xhigh",
+          "score": 32.2,
+          "evidence": "Artificial Analysis official GDP.pdf evaluation page, top-three summary, checked 2026-10-31",
+          "source": "https://artificialanalysis.ai/evaluations/gdp-pdf"
+        },
+        {
+          "model": "GPT-6.1 Sol",
+          "provider": "OpenAI",
+          "configuration": "High",
+          "score": 32,
+          "evidence": "Artificial Analysis official GDP.pdf evaluation page, top-three summary, checked 2026-10-31",
+          "source": "https://artificialanalysis.ai/evaluations/gdp-pdf"
         }
       ]
     },
@@ -3982,6 +3999,337 @@
           "configuration": "Max",
           "score": 48,
           "evidence": "Artificial Analysis Intelligence Index v5 official announcement, 2026-10-27; published leader summary only"
+        }
+      ]
+    },
+    {
+      "id": "aa-omniscience-v1-1-accuracy-atlas",
+      "name": "AA-Omniscience v1.1 Accuracy (Atlas snapshot)",
+      "snapshotDate": "2026-10-27",
+      "source": "https://atlas.kevinhu.io/benchmarks/aa-omniscience-v1-1-accuracy-artificial-analysis",
+      "unit": "Accuracy (%)",
+      "quality": "Third-party supplementary import. Accuracy-only measure; paired hallucination-rate results are not included. Not a substitute for the full AA-Omniscience v1.1 component and excluded from QBench Composite Index.",
+      "coverageLevel": "third-party-supplementary",
+      "models": [
+        {
+          "model": "GPT-6.1 Sol",
+          "provider": "OpenAI",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 61.8,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 61.6,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "Gemini 4 Carbon",
+          "provider": "Google",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 58.3,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "Claude Sonnet 5.5",
+          "provider": "Anthropic",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 51.5,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "Gemini 3.8 Flash",
+          "provider": "Google",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 50.5,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "Kimi K3.1 Pro",
+          "provider": "Moonshot AI",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 48.9,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "provider": "Google",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 48.3,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "GPT-6.1 Terra",
+          "provider": "OpenAI",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 48,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "Grok 4.7",
+          "provider": "xAI",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 45.7,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "DeepSeek V4 Pro 0813",
+          "provider": "DeepSeek",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 45.2,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "MiniMax M3.1 Flash",
+          "provider": "MiniMax",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 45.1,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "MiniMax M3",
+          "provider": "MiniMax",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 44.9,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "Kimi K3",
+          "provider": "Moonshot AI",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 42.4,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "GPT-5.6 Terra",
+          "provider": "OpenAI",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 42.3,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "Muse Spark Open",
+          "provider": "Unspecified",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 42,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "Muse Wonder Full",
+          "provider": "Unspecified",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 41,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "GPT-6 Luna",
+          "provider": "OpenAI",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 39.6,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "DeepSeek V4.1 Flash 1017",
+          "provider": "DeepSeek",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 39.6,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "Inkling",
+          "provider": "Unspecified",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 39.3,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "Muse Wonder",
+          "provider": "Unspecified",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 38,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "Muse Spark 1.3",
+          "provider": "Unspecified",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 38,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "Ling 3.0 Tiny",
+          "provider": "Unspecified",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 37.9,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "Step 5 Preview",
+          "provider": "StepFun",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 36.4,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "MiMo-V2.6-Pro",
+          "provider": "Xiaomi",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 34.8,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "Claude Haiku 5.5",
+          "provider": "Anthropic",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 34.7,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "GLM-5.3",
+          "provider": "Zhipu AI",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 32.3,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "Inkling-Small",
+          "provider": "Unspecified",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 31.8,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "Qwen3.8 2.4T A95B",
+          "provider": "Alibaba Cloud",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 31.4,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "Beam 1.0 501B A23B",
+          "provider": "Unspecified",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 30.7,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "Qwen3.8 Max (0902)",
+          "provider": "Alibaba Cloud",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 29.5,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "GLM-5.3 Flash",
+          "provider": "Zhipu AI",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 28.2,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "Muse Glimmer 30B",
+          "provider": "Unspecified",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 28,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "MiMo-V2.6-Flash",
+          "provider": "Xiaomi",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 27.2,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "Ling 3.1 Flash 1019",
+          "provider": "Unspecified",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 26.5,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "Gemini 3.5 Flash-Lite",
+          "provider": "Google",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 26.5,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "Ring 2.6 1T",
+          "provider": "Unspecified",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 26.3,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "Mistral Large 4 Preview",
+          "provider": "Mistral AI",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 23.9,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "Qwen3.8-Flash-Next",
+          "provider": "Alibaba Cloud",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 23.5,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "Mistral Medium 3.5",
+          "provider": "Mistral AI",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 23,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
+        },
+        {
+          "model": "Mistral Small 4",
+          "provider": "Mistral AI",
+          "configuration": "Not reported",
+          "harness": "Not reported",
+          "score": 21.4,
+          "evidence": "Benchmark Atlas public leaderboard snapshot dated 2026-10-27"
         }
       ]
     }
@@ -4362,6 +4710,14 @@
       "source": "https://llmbenchmark.ai/benchmarks/swe-bench-pro",
       "status": "results-imported",
       "note": "Long-horizon software engineering benchmark. Current QBench import has six model results from a third-party leaderboard; incomplete snapshot, standalone only."
+    },
+    {
+      "id": "aa-omniscience-v1-1-accuracy-atlas",
+      "name": "AA-Omniscience v1.1 Accuracy (Atlas snapshot)",
+      "group": "Additional evaluations",
+      "source": "https://atlas.kevinhu.io/benchmarks/aa-omniscience-v1-1-accuracy-artificial-analysis",
+      "status": "results-imported",
+      "note": "Third-party Benchmark Atlas snapshot (2026-10-27): 40 accuracy-only results over 3,000 questions. Paired hallucination-rate data is not included; this dataset is excluded from the QBench Composite Index."
     }
   ],
   "composite": {
@@ -4399,7 +4755,7 @@
       {
         "id": "gdp-pdf",
         "name": "GDP.pdf",
-        "uniqueModels": 1,
+        "uniqueModels": 3,
         "requiredModels": 8
       },
       {
@@ -4491,7 +4847,8 @@
       "Best reported configurations can differ by evaluation.",
       "Some public leaderboard runs do not share AA's internal harness; matching benchmark versions do not guarantee identical conditions.",
       "Below-threshold rows remain in standalone results but do not contribute to the composite.",
-      "AA native scores and QBench percentiles are separate measures."
+      "AA native scores and QBench percentiles are separate measures.",
+      "The separately imported Benchmark Atlas AA-Omniscience accuracy-only table is not the full accuracy-plus-hallucination-rate component and is excluded from the composite."
     ],
     "sourceNotes": [
       {
@@ -4516,8 +4873,8 @@
       },
       {
         "label": "GDP.pdf",
-        "url": "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5",
-        "snapshotDate": "2026-10-27"
+        "url": "https://artificialanalysis.ai/evaluations/gdp-pdf",
+        "snapshotDate": "2026-10-31"
       },
       {
         "label": "FrontierCode 2.0",
@@ -4556,6 +4913,9 @@
       "modelsWithAtLeastTwoCategories": 29,
       "eligibleEvaluationCount": 4,
       "excludedEvaluationCount": 5
-    }
+    },
+    "supplementaryInputsExcluded": [
+      "aa-omniscience-v1-1-accuracy-atlas"
+    ]
   }
 }
