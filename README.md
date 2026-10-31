@@ -116,7 +116,7 @@ Built with Bootstrap 5.3.3, Bootstrap Icons 1.13.1 and ECharts 6.1.0 (`vendor/ec
 
 - [Vals AI — Terminal-Bench 4.0](https://www.vals.ai/benchmarks/terminal-bench-4)
 - [Vals AI — ProofBench 1.1](https://www.vals.ai/benchmarks/proof_bench)
-- [Vals AI — Terminal-Bench-Science 0.1](https://www.vals.ai/benchmarks/terminal-bench-science)
+- [Vals AI — Terminal-Bench-Science 0.1](https://vals-ai.com/benchmarks/terminal-bench-science)
 - [Scale Labs — HLE-Diamond](https://labs.scale.com/leaderboard/hle-diamond)
 - [Scale Labs — DrugDiscoveryBench](https://labs.scale.com/leaderboard/drugdiscoverybench)
 - [Scale Labs — SWE-Bench Pro V2 and V2 Hard](https://labs.scale.com/leaderboard/swe_bench_pro_public_v2)
