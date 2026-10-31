@@ -90,7 +90,7 @@ body{font-size:16px;line-height:1.7}
       </div>
       <div class="table-wrap">
         <table class="table index-table" aria-label="Composite score leaderboard">
-          <thead><tr><th>Rank / Model</th><th>Coding</th><th>Science</th><th>Math & Proof</th><th>Practical</th><th>QBench Index</th></tr></thead>
+          <thead><tr><th>Rank / Model</th><th>Coding</th><th>Science</th><th>Math & Proof</th><th>Practical</th><th>Composite score</th></tr></thead>
           <tbody id="originalIndexRows"><tr><td colspan="6" class="empty">Calculating composite score…</td></tr></tbody>
         </table>
       </div>
@@ -212,16 +212,6 @@ function renderBenchmarkCards(){
   return '<article class="benchmark-card"><div class="benchmark-card-top"><div><h3>'+esc(x.name)+'</h3><p>'+esc(x.note||'Description not yet added.')+'</p></div><span class="badge">'+esc(statusLabel(x.status))+'</span></div><div class="benchmark-card-meta"><span>'+(count?models+' models · '+count+' results':'No imported model results')+'</span><a href="'+esc(x.source)+'" target="_blank" rel="noopener noreferrer">Official source ↗</a></div></article>';
  }).join('')||'<div class="empty">No benchmarks match this filter.</div>';
 }
-function renderWatchlist(){
- const items=state.data.watchlist||[];
- $('#benchmarkWatchlist').innerHTML=items.map(x=>'<article class="benchmark-card"><div class="benchmark-card-top"><div><h3>'+esc(x.name)+'</h3><p>'+esc(x.category)+'</p></div><span class="badge">'+esc(x.status)+'</span></div><p>'+esc(x.reason)+'</p><div class="benchmark-card-meta"><span>Research pipeline</span><a href="'+esc(x.source)+'" target="_blank" rel="noopener noreferrer">View source ↗</a></div></article>').join('');
-}
-function updateCompareModels(){
- const b=get(state.compareBenchmark);if(!b)return;
- const options=modelOptions(b).map((m,i)=>({value:configKey(m),label:m.model+' · '+config(m)}));
- const fill=(id,chosen,exclude)=>{const el=$(id);el.innerHTML=options.map(o=>'<option value="'+esc(o.value)+'">'+esc(o.label)+'</option>').join('');if(options.some(o=>o.value===chosen))el.value=chosen;else if(options.length)el.value=options[exclude?Math.min(1,options.length-1):0].value;return el.value;};
- state.compareA=fill('#compareModelA',state.compareA,false);state.compareB=fill('#compareModelB',state.compareB,true);
-}
 function renderProviderMix(){
  const unique=new Map();
  state.data.benchmarks.forEach(b=>b.models.forEach(m=>unique.set(m.model+'|'+m.provider,{model:m.model,provider:m.provider})));
@@ -272,7 +262,7 @@ const savedTheme=localStorage.getItem('qbench-theme');if(savedTheme){document.do
 fetch('./data/external-benchmarks.json').then(r=>{if(!r.ok)throw new Error('Could not load benchmark data ('+r.status+').');return r.json();}).then(async data=>{
  if(!Array.isArray(data.benchmarks)||!Array.isArray(data.benchmarkCatalog))throw new Error('Benchmark data schema is incomplete.');
  state.data=data;if(document.fonts?.ready)await document.fonts.ready;renderAll();
-}).catch(err=>{$('#leaderboardRows').innerHTML='<tr><td colspan="6" class="empty">Benchmark data could not be loaded. '+esc(err.message)+'</td></tr>';$('#benchmarkRows').innerHTML='<tr><td class="empty">'+esc(err.message)+'</td></tr>';});
+}).catch(err=>{$('#benchmarkRows').innerHTML='<tr><td class="empty">'+esc(err.message)+'</td></tr>';});
 })();
 </script>
 </body>
