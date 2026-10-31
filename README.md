@@ -47,7 +47,7 @@ An independent, percentile-based index with four categories at equal weight (Kno
 ### Current coverage (rendered on 2026-10-31)
 
 - **8 evaluations** are included in the index.
-- **18 models** are ranked; **35 models** are coverage-only.
+- **18 models** are ranked; **36 models** are coverage-only.
 - Science rests on a single evaluation, so the Science category is the least stable.
 
 ## Data snapshot — 2026-10-31
@@ -56,9 +56,9 @@ An independent, percentile-based index with four categories at equal weight (Kno
 |---|---:|
 | Benchmark datasets with model values | 22 |
 | Model-result / configuration rows | 655 |
-| Exact model names | 158 |
-| Model + configuration + harness combinations | 519 |
-| Provider labels | 27 |
+| Exact model names | 144 |
+| Model + configuration + harness combinations | 518 |
+| Provider labels | 24 |
 | Benchmark directory entries | 74 |
 
 Counts come from the checked-in `data/external-benchmarks.json`. A model may have several configurations or rows.
@@ -68,7 +68,7 @@ Counts come from the checked-in `data/external-benchmarks.json`. A model may hav
 Primary sources are preferred. Several rows come from third-party evaluators or mirrors, labelled per row:
 
 - **Terminal-Bench 4.0 / Terminal-Bench-Science 0.1:** vals.ai runs (Mini-SWE-agent harness, 2026-10-25 and 2026-10-29). The official tbench.ai tables were not readable.
-- **SWE-Bench Pro (public):** Scale AI SEAL public-set leaderboard. Snapshot date not shown; harness not stated for most rows.
+- **SWE-Bench Pro (public):** Scale AI SEAL public-set leaderboard. Snapshot date not shown; harness not stated for most rows. Five rows with an uncertain harness or footnote linkage are kept visible but excluded from the index.
 - **OSWorld 2.0:** self-reported aggregate mirrored by llm-stats.com (2026-10-26), converted from 0–1 to %.
 - **GDPval:** OpenAI's headline metric as shown on OpenAI pages; Claude Opus 4.7 and Gemini 3.1 Pro values appear in OpenAI's chart.
 - **ARC-AGI-3:** BenchLM mirror of ARC Prize semi-private scores (2026-10-28). Verify against the ARC Prize leaderboard before citing as official.
@@ -78,7 +78,7 @@ A source URL alone does not mean QBench independently reproduced a result.
 
 ## Charts and features
 
-Built with ECharts 6.1.0 (`vendor/echarts.min.js`, the same library as the omikuji-bench project). Index leaderboard with search, provider filter and sortable category columns; index vs. API price scatter with Pareto frontier and "most attractive quadrant"; category stacked bars; benchmark directory with per-benchmark bar charts; models view with CSV export and up to five-model comparison.
+Built with Bootstrap 5.3.3 and Bootstrap Icons 1.13.1 (CDN), and ECharts 6.1.0 (`vendor/echarts.min.js`, the same library as the omikuji-bench project). Fonts: Zen Kaku Gothic New and Zen Old Mincho (Google Fonts), the same as tenmei-mori. Index leaderboard with search, provider filter and sortable category columns; charts for index composition (stacked by category), index vs. API price (Pareto frontier and most attractive quadrant), a percentile heatmap of ranked models, and evaluation coverage against the 8-model minimum; a benchmark directory with per-benchmark bar charts; a models view with CSV export and a five-model comparison with radar chart; light and dark themes.
 
 ## API token-price proxy
 

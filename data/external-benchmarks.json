@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.6",
-  "note": "Snapshot 2026-10-31: 37 result datasets, 900 model-result/configuration rows, 191 exact model names, 683 model/configuration/harness combinations, 37 provider labels, and 74 directory entries. AA's official 38-entry evaluation directory is represented; several standalone leaderboard mirrors now have model-level results. QBench 3.5 uses six domains; partial mirrors remain labelled.",
+  "note": "Snapshot 2026-10-31: 37 result datasets, 900 model-result/configuration rows, 191 exact model names, 683 model/configuration/harness combinations, 37 provider labels, and 74 directory entries. AA's official 38-entry evaluation directory is represented; several standalone leaderboard mirrors now have model-level results. QBench 1.0 uses six domains; partial mirrors remain labelled.",
   "benchmarks": [
     {
       "id": "livebench-2.0",
@@ -196,7 +196,7 @@
           "sourceType": "source-documented"
         },
         {
-          "model": "MiMo-V2.6-Pro",
+          "model": "MiMo V2.6 Pro",
           "provider": "Xiaomi",
           "score": 68.5,
           "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench",
@@ -296,7 +296,7 @@
         },
         {
           "model": "Qwen3.8 Max",
-          "provider": "Qwen",
+          "provider": "Alibaba",
           "score": 61.6,
           "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench",
           "source": "https://livebench.ai/",
@@ -329,7 +329,7 @@
         },
         {
           "model": "Qwen3.8 27B",
-          "provider": "Qwen",
+          "provider": "Alibaba",
           "score": 58.4,
           "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench",
           "source": "https://livebench.ai/",
@@ -737,7 +737,7 @@
         },
         {
           "model": "Qwen3.7 Max",
-          "provider": "Qwen",
+          "provider": "Alibaba",
           "score": 90.9,
           "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
           "costPerQuestion": 0.22,
@@ -853,7 +853,7 @@
           "sourceType": "source-documented"
         },
         {
-          "model": "Tencent Hy4 Preview",
+          "model": "Hy4 Preview",
           "provider": "Tencent",
           "score": 90,
           "evidence": "OpenRouter GPQA Diamond leaderboard snapshot 2026-10-30",
@@ -1539,7 +1539,7 @@
         },
         {
           "model": "Mistral Large 4",
-          "provider": "Mistral",
+          "provider": "Mistral AI",
           "score": 58.6,
           "configuration": "high",
           "harness": "Epoch AI run; exact per-model tool settings not listed",
@@ -1990,7 +1990,7 @@
         },
         {
           "model": "Qwen3.8 Max",
-          "provider": "Qwen",
+          "provider": "Alibaba",
           "score": 46.341,
           "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI",
           "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
@@ -2034,7 +2034,7 @@
         },
         {
           "model": "Qwen3.7 Max",
-          "provider": "Qwen",
+          "provider": "Alibaba",
           "score": 34.146,
           "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI",
           "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
@@ -2229,7 +2229,7 @@
           "sourceType": "source-documented"
         },
         {
-          "model": "Hy4",
+          "model": "Hy4 Preview",
           "provider": "Tencent",
           "score": 75,
           "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
@@ -2251,7 +2251,7 @@
           "sourceType": "source-documented"
         },
         {
-          "model": "MiMo-V2.6-Pro",
+          "model": "MiMo V2.6 Pro",
           "provider": "Xiaomi",
           "score": 70,
           "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
@@ -2284,7 +2284,7 @@
           "sourceType": "source-documented"
         },
         {
-          "model": "MiMo-V2.6-Flash",
+          "model": "MiMo V2.6 Flash",
           "provider": "Xiaomi",
           "score": 63,
           "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
@@ -2318,7 +2318,7 @@
         },
         {
           "model": "Qwen3.8 Max",
-          "provider": "Qwen",
+          "provider": "Alibaba",
           "score": 58,
           "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
           "configuration": "max",
@@ -2560,7 +2560,7 @@
         },
         {
           "model": "Qwen3.7",
-          "provider": "Qwen",
+          "provider": "Alibaba",
           "score": 26,
           "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI",
           "configuration": "max",
@@ -2949,7 +2949,7 @@
         },
         {
           "model": "Qwen3.8 Max (0902)",
-          "provider": "Qwen",
+          "provider": "Alibaba",
           "score": 20,
           "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
           "source": "https://epoch.ai/benchmarks/furniture-assembly",
@@ -3108,7 +3108,7 @@
           "uncertainty": null
         },
         {
-          "model": "Muse Wonder 1.0",
+          "model": "Muse Wonder",
           "provider": "Meta",
           "score": 90.2,
           "configuration": "mini-swe-agent · xhigh",
@@ -3156,7 +3156,7 @@
           "uncertainty": null
         },
         {
-          "model": "GLM-5.3",
+          "model": "GLM 5.3",
           "provider": "Z.ai",
           "score": 84.3,
           "configuration": "mini-swe-agent · max",
@@ -3647,7 +3647,7 @@
           "snapshotDate": "2026-09-24"
         },
         {
-          "model": "GLM-5.2",
+          "model": "GLM 5.2",
           "provider": "Z.ai",
           "score": 22.78,
           "configuration": "Not reported",
@@ -3804,7 +3804,7 @@
       "coverageLevel": "source-cited-model-results",
       "indexEligible": false,
       "indexDomain": "Reasoning & Generalization",
-      "saturationStatus": "saturated (top 95%) - excluded from QBench 4.0",
+      "saturationStatus": "saturated (top 95%) - excluded from QBench 1.0",
       "methodology": "Semi-private abstract reasoning puzzle benchmark. The source marks these rows Official and links the originating model result; benchmark is administered by ARC Prize."
     },
     {
@@ -4257,7 +4257,7 @@
           "sourceType": "source-documented"
         },
         {
-          "model": "Muse Wonder 1.0",
+          "model": "Muse Wonder",
           "provider": "Meta",
           "score": 37.3,
           "reasoningScore": null,
@@ -4407,7 +4407,7 @@
           "sourceType": "source-documented"
         },
         {
-          "model": "GLM-5.3",
+          "model": "GLM 5.3",
           "provider": "Z.ai",
           "score": 16.4,
           "reasoningScore": null,
@@ -4438,7 +4438,7 @@
         },
         {
           "model": "Inkling",
-          "provider": "Other",
+          "provider": "Thinking Machines",
           "score": 11.2,
           "reasoningScore": null,
           "knowledgeScore": null,
@@ -4619,7 +4619,7 @@
         },
         {
           "model": "GLM 5.3",
-          "provider": "Zhipu AI",
+          "provider": "Z.ai",
           "score": 38.89,
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
@@ -4629,7 +4629,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "Qwen 3.8 Max 0902",
+          "model": "Qwen3.8 Max (0902)",
           "provider": "Alibaba",
           "score": 38.89,
           "configuration": "Mini-SWE-agent",
@@ -4652,7 +4652,7 @@
         },
         {
           "model": "GLM 5.3 Flash",
-          "provider": "Zhipu AI",
+          "provider": "Z.ai",
           "score": 37.37,
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
@@ -4673,7 +4673,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "Qwen 3.8 Max",
+          "model": "Qwen3.8 Max",
           "provider": "Alibaba",
           "score": 34.34,
           "configuration": "Mini-SWE-agent",
@@ -4696,7 +4696,7 @@
         },
         {
           "model": "Step 5 Preview",
-          "provider": "Other",
+          "provider": "StepFun",
           "score": 31.82,
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
@@ -4729,7 +4729,7 @@
         },
         {
           "model": "Mistral Large 4",
-          "provider": "Mistral",
+          "provider": "Mistral AI",
           "score": 27.78,
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
@@ -4740,7 +4740,7 @@
         },
         {
           "model": "Mistral Large 4 OSS",
-          "provider": "Mistral",
+          "provider": "Mistral AI",
           "score": 26.26,
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
@@ -4750,7 +4750,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "MiniMax-M3.1-Flash",
+          "model": "MiniMax M3.1 Flash",
           "provider": "MiniMax",
           "score": 25.25,
           "configuration": "Mini-SWE-agent",
@@ -4960,7 +4960,7 @@
         },
         {
           "model": "Hy4 Preview",
-          "provider": "Other",
+          "provider": "Tencent",
           "score": 8.08,
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
@@ -5036,7 +5036,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "GPT 5.4 Mini",
+          "model": "GPT-5.4 Mini",
           "provider": "OpenAI",
           "score": 2.52,
           "configuration": "Mini-SWE-agent",
@@ -5047,7 +5047,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "MiniMax-M3",
+          "model": "MiniMax M3",
           "provider": "MiniMax",
           "score": 1.01,
           "configuration": "Mini-SWE-agent",
@@ -5059,7 +5059,7 @@
         },
         {
           "model": "Inkling",
-          "provider": "Other",
+          "provider": "Thinking Machines",
           "score": 0.51,
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
@@ -5081,7 +5081,7 @@
         },
         {
           "model": "Inkling Small",
-          "provider": "Other",
+          "provider": "Thinking Machines",
           "score": 0,
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
@@ -5257,7 +5257,7 @@
           "snapshotDate": "2026-10-25"
         },
         {
-          "model": "Qwen 3.8 Max",
+          "model": "Qwen3.8 Max",
           "provider": "Alibaba",
           "score": 12.86,
           "configuration": "Mini-SWE-agent",
@@ -5357,7 +5357,7 @@
         },
         {
           "model": "GLM 5.3",
-          "provider": "Zhipu AI",
+          "provider": "Z.ai",
           "score": 5.71,
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
@@ -5467,7 +5467,7 @@
         },
         {
           "model": "Step 5 Preview",
-          "provider": "Other",
+          "provider": "StepFun",
           "score": 2.86,
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
@@ -5489,7 +5489,7 @@
         },
         {
           "model": "GLM 5.3 Flash",
-          "provider": "Zhipu AI",
+          "provider": "Z.ai",
           "score": 2.86,
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
@@ -5522,7 +5522,7 @@
         },
         {
           "model": "Hy4 Preview",
-          "provider": "Other",
+          "provider": "Tencent",
           "score": 1.43,
           "configuration": "Terminus 2",
           "harness": "Terminus 2",
@@ -5576,7 +5576,7 @@
           "snapshotDate": "2026-10-25"
         },
         {
-          "model": "Qwen 3.8 27B",
+          "model": "Qwen3.8 27B",
           "provider": "Alibaba",
           "score": 0,
           "configuration": "Mini-SWE-agent",
@@ -5953,7 +5953,7 @@
         },
         {
           "model": "Qwen3.8 Flash",
-          "provider": "Qwen",
+          "provider": "Alibaba",
           "score": 19.4,
           "configuration": "llm-stats aggregate (self-reported)",
           "harness": "llm-stats aggregate (self-reported)",
@@ -6515,7 +6515,7 @@
       "snapshotDate": "2026-09-24",
       "source": "https://evals.report/benchmarks/metr-time-horizons?tab=scores",
       "unit": "50% task-completion time horizon (human-expert minutes)",
-      "quality": "18 rows marked Official in evals.report. Score is the human-expert task duration at 50% success, fitted over HCAST, RE-Bench and SWAA; not a percentage score. Latest official result in this snapshot is Claude Mythos Preview (1,044.8 minutes, 2026-04-07). METR's public page says the leaderboard is no longer actively updated; historical reference only, excluded from QBench 3.5.",
+      "quality": "18 rows marked Official in evals.report. Score is the human-expert task duration at 50% success, fitted over HCAST, RE-Bench and SWAA; not a percentage score. Latest official result in this snapshot is Claude Mythos Preview (1,044.8 minutes, 2026-04-07). METR's public page says the leaderboard is no longer actively updated; historical reference only, excluded from QBench 1.0.",
       "coverageLevel": "18-official-status-secondary-mirror",
       "indexEligible": false,
       "indexDomain": "Agents & Tool Use",
@@ -7019,7 +7019,7 @@
           "snapshotDate": "unknown"
         },
         {
-          "model": "glm-4.6",
+          "model": "GLM-4.6",
           "provider": "Other",
           "score": 9.67,
           "configuration": "harness not shown",
@@ -7060,7 +7060,7 @@
       "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2?tab=full",
       "publisherSource": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
       "unit": "% resolved",
-      "quality": "Official Scale AI V2 Full tab; 16 configurations with 95% confidence intervals. Top result 99.40%, indicating severe ceiling compression. Tracked separately and excluded from QBench 3.5; do not mix with the V2 HARD tab or the separate SWE-Bench Pro public-set benchmark.",
+      "quality": "Official Scale AI V2 Full tab; 16 configurations with 95% confidence intervals. Top result 99.40%, indicating severe ceiling compression. Tracked separately and excluded from QBench 1.0; do not mix with the V2 HARD tab or the separate SWE-Bench Pro public-set benchmark.",
       "coverageLevel": "official-full-tab-16-configurations",
       "indexEligible": false,
       "indexDomain": "Coding & Engineering",
@@ -7132,7 +7132,7 @@
           "variant": "Full"
         },
         {
-          "model": "Muse Wonder 1.0",
+          "model": "Muse Wonder",
           "provider": "Meta",
           "score": 96.73,
           "configuration": "mini-swe-agent · xhigh",
@@ -7171,7 +7171,7 @@
           "variant": "Full"
         },
         {
-          "model": "GLM-5.3",
+          "model": "GLM 5.3",
           "provider": "Z.ai",
           "score": 95.6,
           "configuration": "mini-swe-agent · max",
@@ -8870,7 +8870,7 @@
       "group": "External frontier evaluations",
       "status": "results-imported",
       "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2?tab=full",
-      "note": "Official Scale AI V2 Full tab; 16 model configurations with 95% intervals. Top score 99.40%; ceiling-saturated and excluded from QBench 3.5."
+      "note": "Official Scale AI V2 Full tab; 16 model configurations with 95% intervals. Top score 99.40%; ceiling-saturated and excluded from QBench 1.0."
     }
   ],
   "composite": {
@@ -9005,11 +9005,11 @@
     ],
     "currentDiagnostics": {
       "rankedModels": 18,
-      "coverageOnlyModels": 35,
+      "coverageOnlyModels": 36,
       "modelsWithAtLeastTwoCategories": 53,
       "eligibleEvaluationCount": 8,
       "excludedEvaluationCount": 0,
-      "note": "Verified against the rendered QBench 1.0 page on 2026-10-31."
+      "note": "Verified against the rendered QBench 1.0 page on 2026-10-31. Uncertain rows are excluded from the index. Name variants and provider labels were normalized."
     },
     "supplementaryInputsExcluded": [
       "aa-omniscience-v1-1-accuracy-atlas"
@@ -9027,7 +9027,7 @@
             "osworld-2-0",
             "gdpval"
           ],
-          "note": "GDPval below 8-model minimum until more verified rows; AA-Briefcase, AutomationBench-AA, GDP.pdf have no non-AA values."
+          "note": "GDPval has exactly 8 unique models, which meets the minimum. Adding more verified rows is the next step. AA-Briefcase, AutomationBench-AA and GDP.pdf have no non-AA values."
         },
         {
           "name": "Coding",
