@@ -4563,7 +4563,7 @@
         "id": "frontiermath-erdos",
         "role": "active-frontier-extension",
         "domain": "Mathematics / formal proof",
-        "reason": "68 research-level Erdős problems; current official leaderboard top is 2.9% in the Epoch snapshot and 4% in current benchmark registry, indicating substantial headroom. Scores must be refreshed from official source before recalculating.",
+        "reason": "68 research-level Erdős problems with Lean proof verification. Epoch AI's official benchmark page currently reports a highest score of 3% (rounded); the stored official leaderboard rows show 2.9% for the leading configurations, indicating substantial headroom. Scores must be refreshed from the official source before recalculating.",
         "source": "https://epoch.ai/benchmarks/frontiermath-erdos"
       },
       {
