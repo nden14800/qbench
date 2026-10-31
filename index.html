@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#f7f8fa">
-<title>QBench — Independent AI model benchmarks</title>
-<meta name="description" content="QBench Index 2.0 aligns to Artificial Analysis Intelligence Index v5 and expands frontier evaluations across reasoning, science, coding, agents and multimodal tasks.">
+<title>QBench — AI Benchmark Leaderboard</title>
+<meta name="description" content="Independent AI benchmark database with model leaderboards, benchmark definitions, and statistical analysis.">
 <link rel="icon" href="./favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,44 +57,44 @@ body{font-size:16px;line-height:1.7}
   <div class="shell mast-inner">
     <a class="brand" href="#top" aria-label="QBench home"><img src="./favicon.svg" alt=""><span><span class="brand-name">QBench</span><span class="brand-tag">Independent benchmark intelligence</span></span></a>
     <nav class="nav" aria-label="Main navigation">
-      <a class="active" href="#qbench-index">QBench Index</a><a href="#benchmarks">Benchmarks</a><a href="#landscape">Analysis</a><a href="#methodology">Methodology</a>
+      <a class="active" href="#leaderboard">Leaderboard</a><a href="#qbench-index">QBench Index</a><a href="#benchmarks">Benchmarks</a><a href="#landscape">Statistical analysis</a>
     </nav>
     <div class="mast-actions"><span class="updated" id="updatedAt">DATA SNAPSHOT · 30 OCT 2026</span><button class="icon-btn mobile-menu" id="menuBtn" aria-label="Jump to benchmarks"><i class="bi bi-list"></i></button><button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode" title="Toggle dark mode"><i class="bi bi-moon-stars"></i></button></div>
   </div>
 </header>
 <main class="shell" id="top">
   <section class="intro">
-    <div><div class="eyebrow">QBENCH · INDEPENDENT MODEL EVALUATION</div><h1>AI benchmark index.</h1><p>従来のQBenchスコアを残し、AA v5の9評価と35の独立ベンチマークを同じ一覧で比較。</p></div>
-    <div class="intro-meta"><strong>QBENCH / INDEX 2.0</strong><span>Last source snapshot: <b id="latestSnapshot">30 Oct 2026</b></span></div>
+    <div><div class="eyebrow">INDEPENDENT AI EVALUATION DATABASE</div><h1>QBench.</h1><p>AIモデルの性能を、ベンチマークごとのランキング・評価内容・出典データから比較。</p></div>
+    <div class="intro-meta"><strong>QBENCH / LIVE DATASET</strong><span>Last source snapshot: <b id="latestSnapshot">30 Oct 2026</b></span></div>
   </section>
   <section class="metrics" aria-label="Dataset summary">
-    <div class="metric"><div class="metric-label">Unique base models</div><div class="metric-value" id="modelCount">—</div><div class="metric-note">Across all imported results</div></div>
-    <div class="metric"><div class="metric-label">Model configurations</div><div class="metric-value" id="configCount">—</div><div class="metric-note">Reasoning effort / harness-aware</div></div>
-    <div class="metric"><div class="metric-label">Result observations</div><div class="metric-value" id="resultCount">—</div><div class="metric-note">Published model × benchmark rows</div></div>
-    <div class="metric"><div class="metric-label">Imported datasets</div><div class="metric-value" id="snapshotCount">—</div><div class="metric-note">Source-level result tables</div></div>
-    <div class="metric"><div class="metric-label">AA v5 components</div><div class="metric-value" id="familyCount">—</div><div class="metric-note">Nine evaluations represented</div></div>
+    <div class="metric"><div class="metric-label">Models</div><div class="metric-value" id="modelCount">—</div><div class="metric-note">Across all benchmark datasets</div></div>
+    <div class="metric"><div class="metric-label">Providers</div><div class="metric-value" id="configCount">—</div><div class="metric-note">Model creators represented</div></div>
+    <div class="metric"><div class="metric-label">Results</div><div class="metric-value" id="resultCount">—</div><div class="metric-note">Published model scores</div></div>
+    <div class="metric"><div class="metric-label">Datasets</div><div class="metric-value" id="snapshotCount">—</div><div class="metric-note">With model-level results</div></div>
+    <div class="metric"><div class="metric-label">Configurations</div><div class="metric-value" id="familyCount">—</div><div class="metric-note">Model and harness variants</div></div>
   </section>
 
   <section id="qbench-index" class="qbench-index">
     <div class="section-head">
-      <div><h2>QBench Index</h2><p>従来のQBenchスコアを維持。AA v5の9評価と独立ベンチマークも、下の一覧から同じ形式で確認できます。</p></div>
-      <span class="section-kicker">ORIGINAL SCORE · 10 MODELS</span>
+      <div><h2>QBench Composite Index</h2><p>6つの評価データを組み合わせた独自スコア。全データがそろうモデルのみ掲載。</p></div>
+      <span class="section-kicker">10 COMPLETE MODELS</span>
     </div>
         <div class="panel index-panel">
       <div class="panel-head">
-        <div><div class="panel-title">QBench Index leaderboard</div><div class="panel-sub">従来と同じ完全一致コホート。欠損値の補完・モデル名の推測統合は行いません。</div></div>
+        <div><div class="panel-title">Composite score ranking</div><div class="panel-sub">4領域を各25%で集計。対象データがすべてそろったモデルのみ比較。</div></div>
         <div class="toolbar">
           <input class="control search" id="indexSearch" type="search" placeholder="Search model" aria-label="Search original index models">
           <select class="control" id="indexProvider" aria-label="Filter original index by provider"><option value="all">All providers</option></select>
         </div>
       </div>
       <div class="table-wrap">
-        <table class="table index-table" aria-label="QBench Index leaderboard">
+        <table class="table index-table" aria-label="Composite score leaderboard">
           <thead><tr><th>Rank / Model</th><th>Coding</th><th>Science</th><th>Math & Proof</th><th>Practical</th><th>QBench Index</th></tr></thead>
           <tbody id="originalIndexRows"><tr><td colspan="6" class="empty">Calculating original index…</td></tr></tbody>
         </table>
       </div>
-      <div class="table-foot" id="originalIndexFoot">Original QBench Index score and calculation are retained.</div>
+      <div class="table-foot" id="originalIndexFoot">Exact-name match across six source datasets; no missing values are estimated.</div>
     </div>
       </section>
 
@@ -108,93 +108,62 @@ body{font-size:16px;line-height:1.7}
     <div class="extension-grid" id="extensionCards"></div>
   </section>
 
-  <section id="leaderboard" hidden>
-    <div class="section-head"><div><h2>AA Intelligence Index v5 · common evaluation suite</h2><p>同じ9評価・4領域・25%均等配分。公開結果は原単位のまま掲載し、欠損値を埋めた総合点は作りません。</p></div><span class="section-kicker">9 EVALUATIONS / 4 DOMAINS</span></div>
-    <div class="method-note" id="aaStatus">AA v5 methodology loading…</div>
-    <div class="panel" style="margin-top:13px">
+  <section id="leaderboard">
+    <div class="section-head"><div><h2>Model leaderboard</h2><p id="benchmarkMeta">Select a benchmark to compare its published model scores.</p></div><span class="section-kicker" id="leaderboardCount">— MODELS</span></div>
+    <div class="panel">
       <div class="panel-head">
-        <div><div class="panel-title">AA v5 component results</div><div class="panel-sub">同じAA評価の公開結果を集約。ベンチマーク間で単位・ハーネスが異なるため、異なる列を合算しません。</div></div>
+        <div><div class="panel-title">Ranked results</div><div class="panel-sub" id="leaderboardSource">Scores remain on each benchmark's published scale.</div></div>
         <div class="toolbar">
-          <input class="control search" id="modelSearch" type="search" placeholder="Search model / configuration" aria-label="Search models">
-          <select class="control" id="providerFilter" aria-label="Filter by provider"><option value="all">All providers</option></select>
-          <select class="control" id="aaBenchmarkFilter" aria-label="Filter AA evaluation"><option value="all">All 9 AA evaluations</option></select><button class="chart-action" id="exportAAResults" type="button">Download CSV</button><button class="chart-action" id="resetFilters" type="button">Reset filters</button>
+          <select class="control" id="benchmarkSelect" aria-label="Select benchmark"></select>
+          <input class="control search" id="benchmarkSearch" type="search" placeholder="Search models" aria-label="Search models">
+          <select class="control" id="benchmarkProviderFilter" aria-label="Filter by provider"><option value="all">All providers</option></select>
+          <button class="chart-action" id="exportBenchmarkCSV" type="button">CSV</button>
+          <button class="chart-action" id="exportAllJSON" type="button">JSON</button>
         </div>
       </div>
-      <div class="table-wrap"><table class="table" aria-label="AA v5 component results"><thead><tr><th>Model</th><th>Configuration</th><th>Evaluation</th><th>Score</th><th>Uncertainty</th><th>Harness / evidence</th></tr></thead><tbody id="leaderboardRows"><tr><td colspan="6" class="empty">Loading benchmark data…</td></tr></tbody></table></div>
-      <div class="table-foot" id="leaderboardFoot">Rows retain their source-specific units. An AA-compatible aggregate is withheld until all nine component scores exist for the same model configuration.</div>
+      <div class="table-wrap"><table class="table" aria-label="Selected benchmark model leaderboard"><thead id="benchmarkHead"></thead><tbody id="benchmarkRows"><tr><td class="empty">Loading benchmark data…</td></tr></tbody></table></div>
+      <div class="table-foot" id="benchmarkFoot"></div>
     </div>
-    <div class="section-head"><div><h2>Official AA Index reference</h2><p>AAが公開しているIndex v5総合スコア。QBench独自の再計算値ではありません。</p></div><span class="section-kicker">SOURCE REFERENCE ONLY</span></div>
-    <div class="panel"><div class="table-wrap"><table class="table"><thead><tr><th>Model</th><th>Configuration</th><th>AA Index v5</th><th>Source</th></tr></thead><tbody id="aaReferenceRows"><tr><td colspan="4" class="empty">Loading…</td></tr></tbody></table></div></div>
-  </section>
+  </section></section>
 
   <section id="landscape">
-    <div class="section-head"><div><h2>Statistical analysis</h2><p>異なる評価を無理に合成せず、分布・信頼区間・コスト・校正・モデル間の重なりを個別に可視化。</p></div><span class="section-kicker">17 ANALYTICS · EXPAND WHEN NEEDED</span></div>
-    <div class="toolbar" style="margin:0 0 12px">
-      <label class="family-label" for="costBenchmarkFilter">Cost frontier</label><select class="control" id="costBenchmarkFilter"><option value="terminal-bench-4-0">Terminal-Bench 4.0</option><option value="terminal-bench-science-0-1">Terminal-Bench-Science</option></select>
-      <label class="family-label" for="compareBenchmark">Model comparison</label><select class="control" id="compareBenchmark"></select>
-      <select class="control" id="compareModelA" aria-label="First model"></select><select class="control" id="compareModelB" aria-label="Second model"></select>
-    </div>
-    <details class="analytics-details"><summary>Open statistical chart gallery · 17 analytical views</summary>
+    <div class="section-head"><div><h2>Statistical analysis</h2><p>収録データから自動集計。モデル分布・評価ごとの収録数・プロバイダー構成を確認。</p></div><span class="section-kicker">LIVE FROM QBENCH DATA</span></div>
     <div class="charts-grid">
-      <article class="panel"><div class="panel-head"><div><div class="panel-title">AA v5 evaluation weights</div><div class="panel-sub">Official component weights · percentage of total Index</div></div><button class="chart-action" data-export="aaWeightChart">Export SVG</button></div><div id="aaWeightChart" class="chart chart-tall"></div></article>
-      <article class="panel"><div class="panel-head"><div><div class="panel-title">AA-Briefcase Elo · confidence intervals</div><div class="panel-sub">Published 95% CI · highest 25 configurations</div></div><button class="chart-action" data-export="briefcaseForestChart">Export SVG</button></div><div id="briefcaseForestChart" class="chart chart-tall"></div></article>
-      <article class="panel"><div class="panel-head"><div><div class="panel-title">HLE-Diamond · reasoning vs knowledge</div><div class="panel-sub">Two 500-question partitions · accuracy (%)</div></div><button class="chart-action" data-export="hlePartitionChart">Export SVG</button></div><div id="hlePartitionChart" class="chart chart-tall"></div></article>
-      <article class="panel"><div class="panel-head"><div><div class="panel-title">HLE-Diamond · accuracy vs calibration</div><div class="panel-sub">Confidence calibration error · lower is better</div></div><button class="chart-action" data-export="hleCalibrationChart">Export SVG</button></div><div id="hleCalibrationChart" class="chart chart-tall"></div></article>
-      <article class="panel"><div class="panel-head"><div><div class="panel-title">Cost vs task resolution</div><div class="panel-sub">Selected agent benchmark · cost per test (USD)</div></div><button class="chart-action" data-export="costPerformanceChart">Export SVG</button></div><div id="costPerformanceChart" class="chart chart-tall"></div></article>
-      <article class="panel"><div class="panel-head"><div><div class="panel-title">Score distribution by evaluation</div><div class="panel-sub">Independent percentage-based evaluations · box plots</div></div><button class="chart-action" data-export="scoreDistributionChart">Export SVG</button></div><div id="scoreDistributionChart" class="chart chart-tall"></div></article>
-      <article class="panel"><div class="panel-head"><div><div class="panel-title">AA suite coverage matrix</div><div class="panel-sub">Base-model presence across nine AA components · not score equivalence</div></div><button class="chart-action" data-export="aaCoverageChart">Export SVG</button></div><div id="aaCoverageChart" class="chart chart-tall"></div></article>
-      <article class="panel"><div class="panel-head"><div><div class="panel-title">Provider coverage by evaluation</div><div class="panel-sub">Published configurations in each AA component</div></div><button class="chart-action" data-export="providerCoverageChart">Export SVG</button></div><div id="providerCoverageChart" class="chart chart-tall"></div></article>
-      <article class="panel"><div class="panel-head"><div><div class="panel-title">Cross-benchmark score profile</div><div class="panel-sub">Shared base models across HLE-Diamond, Terminal-Bench 4.0 and Terminal-Bench-Science</div></div><button class="chart-action" data-export="scoreSlopeChart">Export SVG</button></div><div id="scoreSlopeChart" class="chart chart-tall"></div></article>
-      <article class="panel"><div class="panel-head"><div><div class="panel-title">Selected benchmark leaderboard</div><div class="panel-sub">Source-native score scale · selected dataset</div></div><button class="chart-action" data-export="sourceRankChart">Export SVG</button></div><div id="sourceRankChart" class="chart chart-tall"></div></article>
-      <article class="panel"><div class="panel-head"><div><div class="panel-title">Provider share</div><div class="panel-sub">Unique base-model names across all stored results</div></div><button class="chart-action" data-export="providerMixChart">Export SVG</button></div><div id="providerMixChart" class="chart chart-tall"></div></article>
-      <article class="panel"><div class="panel-head"><div><div class="panel-title">Result depth by benchmark</div><div class="panel-sub">Number of stored model-result observations per dataset</div></div><button class="chart-action" data-export="benchmarkDepthChart">Export SVG</button></div><div id="benchmarkDepthChart" class="chart chart-tall"></div></article>
-      <article class="panel"><div class="panel-head"><div><div class="panel-title">Model-to-model comparison</div><div class="panel-sub">Two selected configurations · one benchmark · native score unit</div></div><button class="chart-action" data-export="modelCompareChart">Export SVG</button></div><div id="modelCompareChart" class="chart chart-tall"></div></article>
-      <article class="panel"><div class="panel-head"><div><div class="panel-title">Configuration mix by provider</div><div class="panel-sub">Distinct model / reasoning-effort / harness combinations</div></div><button class="chart-action" data-export="configurationMixChart">Export SVG</button></div><div id="configurationMixChart" class="chart chart-tall"></div></article>
-      <article class="panel"><div class="panel-head"><div><div class="panel-title">Provider-to-benchmark flow</div><div class="panel-sub">Sankey view of where published model results are concentrated</div></div><button class="chart-action" data-export="benchmarkFlowChart">Export SVG</button></div><div id="benchmarkFlowChart" class="chart chart-tall"></div></article>
-      <article class="panel"><div class="panel-head"><div><div class="panel-title">AA v5 evidence coverage funnel</div><div class="panel-sub">Component availability → full tables → complete model-level coverage</div></div><button class="chart-action" data-export="coverageFunnelChart">Export SVG</button></div><div id="coverageFunnelChart" class="chart chart-tall"></div></article>
-      <article class="panel"><div class="panel-head"><div><div class="panel-title">Benchmark registry taxonomy</div><div class="panel-sub">Hierarchical view by AA suite, extension family and evidence status</div></div><button class="chart-action" data-export="benchmarkSunburstChart">Export SVG</button></div><div id="benchmarkSunburstChart" class="chart chart-tall"></div></article>
+      <article class="panel"><div class="panel-head"><div><div class="panel-title">Models per benchmark</div><div class="panel-sub">Unique model names in each dataset</div></div></div><div id="benchmarkDepthChart" class="chart chart-tall"></div></article>
+      <article class="panel"><div class="panel-head"><div><div class="panel-title">Model coverage by provider</div><div class="panel-sub">Unique models across all imported results</div></div></div><div id="providerMixChart" class="chart chart-tall"></div></article>
+      <article class="panel"><div class="panel-head"><div><div class="panel-title">Selected benchmark ranking</div><div class="panel-sub">Changes with the leaderboard selection</div></div></div><div id="sourceRankChart" class="chart chart-tall"></div></article>
+      <article class="panel"><div class="panel-head"><div><div class="panel-title">Result coverage</div><div class="panel-sub">Model-level observations per dataset</div></div></div><div id="modelCoverageChart" class="chart chart-tall"></div></article>
     </div>
-    </details>
-  </section>
+  </section></section>
 
   <section id="benchmarks">
-    <div class="section-head"><div><h2>All benchmarks</h2><p>AA v5の9評価と、独立した追加ベンチマークを同じ一覧にまとめています。</p></div><span class="section-kicker" id="catalogCount">44 EVALUATIONS</span></div>
+    <div class="section-head"><div><h2>Benchmark directory</h2><p>各テストの内容・収録モデル数・公開データの状態を確認。</p></div><span class="section-kicker" id="catalogCount">44 EVALUATIONS</span></div>
     <div class="toolbar" style="margin-bottom:12px">
       <input class="control search" id="catalogSearch" type="search" placeholder="Search benchmark registry" aria-label="Search benchmarks">
-      <select class="control" id="catalogGroupFilter"><option value="all">All benchmark groups</option><option value="AA Index v5">AA v5</option><option value="Independent benchmarks">Independent benchmarks</option></select>
+      <select class="control" id="catalogGroupFilter"><option value="all">All benchmark groups</option><option value="Core evaluations">Core evaluations</option><option value="Additional evaluations">Additional evaluations</option></select>
       <select class="control" id="catalogStatusFilter"><option value="all">All statuses</option><option value="results-imported">Full result table imported</option><option value="leader-summary-imported">Leader summary only</option><option value="public-summary-only">Public summary only</option><option value="private-results">Private / unavailable</option><option value="research-pipeline">Research pipeline</option></select>
     </div>
     <div class="benchmark-list" id="benchmarkCards"></div>
-    <div class="section-head"><div><h2>Source result explorer</h2><p>選択したデータセットの全保存結果を、原スコア・設定・信頼区間・ハーネスとともに確認。</p></div><span class="section-kicker">SOURCE-NATIVE VALUES</span></div>
-    <div class="panel">
-      <div class="panel-head"><div><div class="panel-title">Published model results</div><div class="panel-sub" id="benchmarkMeta">Select a benchmark to inspect its published results.</div></div><div class="toolbar"><select class="control" id="benchmarkSelect" aria-label="Select benchmark"></select><button class="chart-action" id="exportBenchmarkCSV" type="button">Download CSV</button><button class="chart-action" id="exportAllJSON" type="button">Full JSON</button></div></div>
-      <div class="table-wrap"><table class="table" aria-label="Selected benchmark results"><thead id="benchmarkHead"></thead><tbody id="benchmarkRows"><tr><td class="empty">Loading…</td></tr></tbody></table></div>
-      <div class="table-foot" id="benchmarkFoot"></div>
-    </div>
     <div hidden><div class="section-head"><div><h2>Research watchlist</h2><p>公開結果の追加確認が必要な評価。</p></div><span class="section-kicker">NOT SCORED UNTIL VERIFIED</span></div><div class="benchmark-list" id="benchmarkWatchlist"></div></div>
   </section>
 
   <section id="methodology">
-    <div class="section-head"><div><h2>Methodology & evidence policy</h2><p>AA v5の方式を基準にしつつ、独立した追加ベンチマークは別枠で分析。</p></div><span class="section-kicker">AUDITABLE / NO IMPUTATION</span></div>
+    <div class="section-head"><div><h2>How to read QBench</h2><p>評価結果の意味と比較条件を明確にするための基本ルール。</p></div></div>
     <div class="method-grid">
-      <article class="method-item"><div class="method-index">01 / AA V5</div><h3>Same nine evaluations</h3><p>AA-Briefcase v1.1、AutomationBench-AA、GDP.pdf、Terminal-Bench 4.0、FrontierCode 2.0、Terminal-Bench-Science 0.1、CritPt v2 Hard Subset、AA-Omniscience v1.1、HLE-Diamondを同じ評価セットとして登録。</p></article>
-      <article class="method-item"><div class="method-index">02 / WEIGHTS</div><h3>Four categories · 25% each</h3><p>Knowledge Work、Coding、Science、Generalを各25%。領域内の評価ウェイトもAA v5公式配分に合わせる。追加ベンチマークはAAスコアに混ぜない。</p></article>
-      <article class="method-item"><div class="method-index">03 / NO IMPUTATION</div><h3>Complete coverage required</h3><p>同じモデル設定で9評価すべてのスコアが揃うまで、QBench独自のAA互換総合点は計算しない。欠損値の推定、モデル名だけの強引な別名統合は禁止。</p></article>
-      <article class="method-item"><div class="method-index">04 / PRIVATE TESTS</div><h3>Public evidence is not a rerun</h3><p>AA v5の一部は非公開テスト。AAが公表したリーダー要約と第三者の公開リーダーボードを区別し、非公開問題を再現したとは主張しない。</p></article>
-      <article class="method-item"><div class="method-index">05 / CONFIGURATION</div><h3>Model ≠ configuration</h3><p>モデル名、reasoning effort、実行ハーネスを分離。ベースモデル数、モデル設定数、結果行数を別々に数え、同じモデルのMax/High/Lowを一つに潰さない。</p></article>
-      <article class="method-item"><div class="method-index">06 / EXTENSIONS</div><h3>Hard, unsaturated benchmarks</h3><p>Epoch AIの95ベンチマーク・418モデルの公開データベースを探索母集団にし、FrontierMath、ARC-AGI-2、Mystery Game Puzzles、SpireClimbなどを追加。飽和済み評価は難度・更新日を注記して別扱い。</p></article>
+      <article class="method-item"><div class="method-index">01 / BENCHMARK</div><h3>One ranking per test</h3><p>評価ごとに目的・問題形式・スコア単位が異なるため、基本はベンチマーク単位で順位を比較します。</p></article>
+      <article class="method-item"><div class="method-index">02 / SCORE</div><h3>Keep the published scale</h3><p>正答率、Elo、成功率など、元の評価が公表する単位をそのまま表示。異なる単位を無理に足し合わせません。</p></article>
+      <article class="method-item"><div class="method-index">03 / COVERAGE</div><h3>Show the available evidence</h3><p>モデル数・設定数・データ更新日・出典を明示。未公開の結果や不足値を推測で補完しません。</p></article>
     </div>
-    <div class="method-note"><strong>注意:</strong> AA v5の60%は非公開テストセットまたは保留回答を使う評価に基づく。QBenchは公開された結果の収集・比較を行うもので、AA独自の非公開実行環境を完全に再現するものではない。結果の単位・ハーネス・試行回数・信頼区間は出典に従って保持する。</div>
-  </section>
+  </section></section>
 
-  <footer class="foot"><span>QBench · Independent benchmark intelligence · Not affiliated with Artificial Analysis.</span><span><a href="https://github.com/nden14800/qbench" target="_blank" rel="noopener">Source repository <i class="bi bi-box-arrow-up-right"></i></a> · <a href="https://artificialanalysis.ai/" target="_blank" rel="noopener">AA reference <i class="bi bi-box-arrow-up-right"></i></a></span></footer>
+  <footer class="foot"><span>QBench · Independent benchmark database</span><span><a href="https://github.com/nden14800/qbench" target="_blank" rel="noopener">Source repository <i class="bi bi-box-arrow-up-right"></i></a></span></footer>
 </main>
 <script>
 (() => {
 'use strict';
 const $=(q,root=document)=>root.querySelector(q);
 const COLORS={Anthropic:'#d97757',OpenAI:'#16866f',Google:'#4285d4',Meta:'#8b6fc0',DeepSeek:'#c79b35','Moonshot AI':'#b85c87','xAI':'#536273',Xiaomi:'#159b91',MiniMax:'#8b70ad','Mistral AI':'#c17b35','Z.ai':'#64748b',Qwen:'#218b68',Alibaba:'#b78bcd',StepFun:'#9b75c6',NVIDIA:'#79a64a','Thinking Machines':'#3d91a8','Institute of Foundation Models':'#7086a2','Multiverse Computing':'#a47b52','China Mobile':'#668f9d','Nex AGI':'#8c7eaa',Ember:'#b36d58',Beam:'#7994b0',Hy4:'#a18c69',Mercury:'#799f91',Other:'#858b94'};
-const state={data:null,benchmark:'aa-briefcase-v1-1',aaFilter:'all',query:'',provider:'all',catalogQuery:'',catalogGroup:'all',catalogStatus:'all',indexQuery:'',indexProvider:'all',composite:[],compareBenchmark:'terminal-bench-4-0',compareA:'',compareB:'',costBenchmark:'terminal-bench-4-0',charts:[]};
+const state={data:null,benchmark:'arc-agi-2',aaFilter:'all',query:'',provider:'all',catalogQuery:'',catalogGroup:'all',catalogStatus:'all',benchmarkQuery:'',benchmarkProvider:'all',indexQuery:'',indexProvider:'all',composite:[],compareBenchmark:'terminal-bench-4-0',compareA:'',compareB:'',costBenchmark:'terminal-bench-4-0',charts:[]};
 const fmt=(v,d=1)=>Number.isFinite(Number(v))?new Intl.NumberFormat('en-US',{maximumFractionDigits:d}).format(Number(v)):'—';
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const get=id=>state.data.benchmarks.find(b=>b.id===id);
@@ -246,20 +215,16 @@ function renderSummary(){
  const all=state.data.benchmarks.flatMap(b=>b.models);
  const base=new Set(all.map(m=>m.model));
  const configs=new Set(all.map(configKey));
- const aa=aaIds(),present=aa.filter(id=>(get(id)?.models.length||0)>0).length;
- $('#modelCount').textContent=base.size;
- $('#configCount').textContent=configs.size;
- $('#resultCount').textContent=all.length;
- $('#snapshotCount').textContent=state.data.benchmarks.length;
- $('#familyCount').textContent=aa.length;
- $('#catalogCount').textContent=(state.data.benchmarkCatalog||[]).length+' EVALUATIONS';
+ const providers=new Set(all.map(m=>m.provider).filter(Boolean));
+ $('#modelCount').textContent=base.size.toLocaleString('en-US');
+ $('#configCount').textContent=providers.size.toLocaleString('en-US');
+ $('#resultCount').textContent=all.length.toLocaleString('en-US');
+ $('#snapshotCount').textContent=state.data.benchmarks.length.toLocaleString('en-US');
+ $('#familyCount').textContent=configs.size.toLocaleString('en-US');
+ $('#catalogCount').textContent=(state.data.benchmarkCatalog||[]).length+' BENCHMARKS';
  const dates=state.data.benchmarks.map(b=>b.snapshotDate).filter(Boolean).sort();
  $('#latestSnapshot').textContent=snapshot(dates[dates.length-1]);
  $('#updatedAt').textContent='DATA SNAPSHOT · '+snapshot(dates[dates.length-1]).toUpperCase();
- 
- const full=['aa-briefcase-v1-1','hle-diamond','terminal-bench-4-0','terminal-bench-science-0-1'].filter(id=>(get(id)?.models.length||0)>0).length;
- const rows=aa.reduce((n,id)=>n+(get(id)?.models.length||0),0);
- $('#aaStatus').innerHTML='<strong>AA v5 common suite.</strong> All '+aa.length+' official components have at least one source-backed value ('+rows+' result rows). '+full+'/9 have full model-level public tables; the remaining '+(aa.length-full)+' have only published leader summaries. <strong>No model currently has complete, configuration-matched coverage across all nine</strong>, so QBench withholds a calculated AA-equivalent total score. The official AA overall score reference is shown separately below.';
 }
 function renderAAFilter(){
  const select=$('#aaBenchmarkFilter');const prev=state.aaFilter;
@@ -282,23 +247,30 @@ function renderAAReference(){
  $('#aaReferenceRows').innerHTML=models.map(m=>'<tr><td>'+esc(m.model)+' <span class="provider-name">'+esc(m.provider)+'</span></td><td style="text-align:left">'+esc(m.configuration)+'</td><td class="num"><strong>'+fmt(m.score,0)+'</strong></td><td style="text-align:left"><a class="link" href="'+esc(state.data.aaIndexReference.source)+'" target="_blank" rel="noopener noreferrer">Artificial Analysis ↗</a></td></tr>').join('');
 }
 function renderBenchmarkSelect(){
- const sel=$('#benchmarkSelect'),comp=$('#compareBenchmark');
- const opts=state.data.benchmarks.map(b=>'<option value="'+esc(b.id)+'">'+esc(b.name)+'</option>').join('');
- sel.innerHTML=opts;sel.value=get(state.benchmark)?state.benchmark:state.data.benchmarks[0].id;
- comp.innerHTML=opts;comp.value=get(state.compareBenchmark)?state.compareBenchmark:state.benchmark;
- state.benchmark=sel.value;state.compareBenchmark=comp.value;
- updateCompareModels();
+ const sel=$('#benchmarkSelect');
+ const opts=state.data.benchmarks.map(b=>'<option value="'+esc(b.id)+'">'+esc(b.name)+' · '+b.models.length+'</option>').join('');
+ sel.innerHTML=opts;
+ sel.value=get(state.benchmark)?state.benchmark:'arc-agi-2';
+ state.benchmark=sel.value;
 }
 function detailValue(m){
  return [m.uncertainty?'CI '+m.uncertainty:null,m.configuration?'Config: '+m.configuration:null,m.harness?'Harness: '+m.harness:null,m.costPerTaskUSD!=null?'$'+fmt(m.costPerTaskUSD,2)+'/test':null,m.costPerQuestion!=null?'$'+fmt(m.costPerQuestion,3)+'/question':null,m.tokensUsedBillions!=null?fmt(m.tokensUsedBillions,2)+'B tokens':null,m.tokensPerTaskMillions!=null?fmt(m.tokensPerTaskMillions,2)+'M tokens':null,m.durationMinutes!=null?fmt(m.durationMinutes,0)+' min':null,m.calibrationError!=null?'Calibration error '+fmt(m.calibrationError,1):null,m.evidence].filter(Boolean).join(' · ')||'—';
 }
 function renderBenchmark(){
  const b=get(state.benchmark);if(!b)return;
- $('#benchmarkMeta').textContent=b.unit+' · '+snapshot(b.snapshotDate)+' · '+b.models.length+' result rows · '+(b.quality||'source-reported data');
- $('#benchmarkHead').innerHTML='<tr><th>Model</th><th>Configuration</th><th>Score</th><th>Uncertainty</th><th>Harness / cost / evidence</th></tr>';
- const models=b.models.slice().sort((a,c)=>Number(c.score)-Number(a.score));
- $('#benchmarkRows').innerHTML=models.map((m,i)=>'<tr><td><div class="model-cell"><span class="rank">'+String(i+1).padStart(2,'0')+'</span><span class="provider-mark" style="background:'+color(m.provider)+'"></span><span><span class="model-name">'+esc(m.model)+'</span><span class="provider-name">'+esc(m.provider)+'</span></span></div></td><td style="text-align:left;white-space:normal">'+esc(config(m)||'—')+'</td><td class="num">'+fmt(m.score,2)+' <span class="family-label">'+esc(b.unit)+'</span></td><td class="num">'+esc(m.uncertainty||'—')+'</td><td style="text-align:left;white-space:normal;min-width:250px;color:var(--muted)">'+esc(detailValue(m))+'</td></tr>').join('')||'<tr><td colspan="5" class="empty">No result rows imported yet.</td></tr>';
- $('#benchmarkFoot').innerHTML='Source: <a class="link" href="'+esc(b.source)+'" target="_blank" rel="noopener noreferrer">'+esc(b.source)+'</a> · Snapshot '+snapshot(b.snapshotDate)+'. '+esc(b.quality||'Values are shown as published by the source.');
+ const providers=[...new Set(b.models.map(m=>m.provider).filter(Boolean))].sort();
+ const p=$('#benchmarkProviderFilter'),prior=state.benchmarkProvider;
+ p.innerHTML='<option value="all">All providers</option>'+providers.map(x=>'<option value="'+esc(x)+'">'+esc(x)+'</option>').join('');
+ p.value=providers.includes(prior)?prior:'all';state.benchmarkProvider=p.value;
+ const q=state.benchmarkQuery.toLowerCase();
+ const models=b.models.filter(m=>(state.benchmarkProvider==='all'||m.provider===state.benchmarkProvider)&&(!q||[m.model,m.provider,m.configuration,m.harness].join(' ').toLowerCase().includes(q))).slice().sort((a,c)=>Number(c.score)-Number(a.score));
+ const unique=new Set(b.models.map(m=>m.model)).size;
+ $('#benchmarkMeta').textContent=b.unit+' · Updated '+snapshot(b.snapshotDate)+' · '+unique+' models / '+b.models.length+' results';
+ $('#leaderboardCount').textContent=models.length+' / '+unique+' MODELS';
+ $('#leaderboardSource').textContent=b.quality||'Scores are shown on the source-published scale.';
+ $('#benchmarkHead').innerHTML='<tr><th>Rank / Model</th><th>Provider</th><th>Configuration</th><th>Score</th><th>Details</th></tr>';
+ $('#benchmarkRows').innerHTML=models.map((m,i)=>'<tr><td><div class="model-cell"><span class="rank">'+String(i+1).padStart(2,'0')+'</span><span class="model-name">'+esc(m.model)+'</span></div></td><td style="text-align:left">'+esc(m.provider||'—')+'</td><td style="text-align:left;white-space:normal">'+esc(config(m)||'—')+'</td><td class="num"><strong class="score-main">'+fmt(m.score,2)+'</strong> <span class="family-label">'+esc(b.unit)+'</span></td><td style="text-align:left;white-space:normal;min-width:230px;color:var(--muted)">'+esc(detailValue(m))+'</td></tr>').join('')||'<tr><td colspan="5" class="empty">No models match these filters.</td></tr>';
+ $('#benchmarkFoot').innerHTML='Source: <a class="link" href="'+esc(b.source)+'" target="_blank" rel="noopener noreferrer">'+esc(b.source)+'</a> · '+snapshot(b.snapshotDate)+'. '+esc(b.quality||'Published benchmark results.');
  renderSourceRank();
 }
 function statusLabel(s){return ({'results-imported':'Full results imported','leader-summary-imported':'Leader summary only','public-summary-only':'Public summary only','private-results':'Private / unavailable','leaderboard-access-limited':'Leaderboard access limited','research-pipeline':'Research pipeline'})[s]||s||'Catalogued';}
@@ -306,8 +278,8 @@ function renderBenchmarkCards(){
  const list=state.data.benchmarkCatalog||[],q=state.catalogQuery.toLowerCase();
  const rows=list.filter(x=>(state.catalogGroup==='all'||x.group===state.catalogGroup)&&(state.catalogStatus==='all'||x.status===state.catalogStatus)&&(!q||[x.name,x.note,x.group].join(' ').toLowerCase().includes(q)));
  $('#benchmarkCards').innerHTML=rows.map(x=>{
-  const b=get(x.id),count=b?.models.length||0;
-  return '<article class="benchmark-card"><div class="benchmark-card-top"><div><h3>'+esc(x.name)+'</h3><p>'+esc(x.group)+' · '+esc(x.note||'')+'</p></div><span class="badge">'+esc(statusLabel(x.status))+'</span></div><div class="benchmark-card-meta"><span>'+(count?count+' result rows':'No imported model rows')+'</span><a href="'+esc(x.source)+'" target="_blank" rel="noopener noreferrer">View source ↗</a></div></article>';
+  const b=get(x.id),count=b?.models.length||0,models=b?new Set(b.models.map(m=>m.model)).size:0;
+  return '<article class="benchmark-card"><div class="benchmark-card-top"><div><h3>'+esc(x.name)+'</h3><p>'+esc(x.note||'Description not yet added.')+'</p></div><span class="badge">'+esc(statusLabel(x.status))+'</span></div><div class="benchmark-card-meta"><span>'+(count?models+' models · '+count+' results':'No imported model results')+'</span><a href="'+esc(x.source)+'" target="_blank" rel="noopener noreferrer">Official source ↗</a></div></article>';
  }).join('')||'<div class="empty">No benchmarks match this filter.</div>';
 }
 function renderWatchlist(){
@@ -419,11 +391,14 @@ function renderBenchmarkSunburst(){
  const data=Object.entries(groups).map(([group,statuses])=>({name:group,children:Object.entries(statuses).map(([status,items])=>({name:statusLabel(status),children:items.map(x=>({name:x.name,value:1,itemStyle:{color:status==='results-imported'?'#3d8b78':status==='leader-summary-imported'?'#7396aa':status==='research-pipeline'?'#b18a58':'#9299a2'}}))}))}));
  setChart('benchmarkSunburstChart',{textStyle:{fontFamily:chartFont},series:[{type:'sunburst',data,sort:null,radius:['10%','88%'],nodeClick:'rootToNode',emphasis:{focus:'ancestor'},label:{rotate:'radial',fontFamily:chartFont,fontSize:9},levels:[{},{r0:'10%',r:'36%',itemStyle:{borderWidth:2},label:{rotate:0,fontSize:11}},{r0:'36%',r:'62%',label:{fontSize:9}},{r0:'62%',r:'88%',label:{fontSize:8}}]}],tooltip:{formatter:p=>p.name+(p.value!=null?' · '+p.value:'')}});
 }
-function renderCharts(){
- renderWeightChart();renderBriefcaseForest();renderHLEPartition();renderHLECalibration();renderCostPerformance();renderScoreDistribution();renderAACoverage();renderProviderCoverage();renderScoreSlope();renderSourceRank();renderProviderMix();renderBenchmarkDepth();renderModelCompare();renderConfigurationMix();renderBenchmarkFlow();renderCoverageFunnel();renderBenchmarkSunburst();
+function renderModelCoverage(){
+ const rows=state.data.benchmarks.map(b=>({name:b.name,count:new Set(b.models.map(m=>m.model)).size,results:b.models.length})).sort((a,b)=>a.count-b.count);
+ setChart('modelCoverageChart',{textStyle:{fontFamily:chartFont},grid:{left:185,right:42,top:15,bottom:25},xAxis:{type:'value',minInterval:1,axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'category',data:rows.map(x=>x.name),axisLabel:{...axis(),fontSize:10}},series:[{type:'bar',data:rows.map(x=>x.count),barMaxWidth:18,itemStyle:{color:'#587e9d'},label:{show:true,position:'right',fontSize:10}}],tooltip:{formatter:p=>rows[p.dataIndex].name+'<br>'+p.value+' unique models · '+rows[p.dataIndex].results+' result rows'}});
 }
+function renderCharts(){renderBenchmarkDepth();renderProviderMix();renderSourceRank();renderModelCoverage();}
+
 function renderAll(){
- buildOriginalIndex();renderOriginalIndex();renderExpandedIndex();renderSummary();renderAAFilter();renderLeaderboard();renderAAReference();renderBenchmarkSelect();renderBenchmark();renderBenchmarkCards();renderWatchlist();renderCharts();
+ buildOriginalIndex();renderOriginalIndex();renderSummary();renderBenchmarkSelect();renderBenchmark();renderBenchmarkCards();renderCharts();
 }
 function csvCell(v){const x=String(v??'');return '"'+x.replace(/"/g,'""')+'"';}
 function downloadFile(name,content,type){const blob=new Blob([content],{type});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);}
@@ -434,27 +409,18 @@ function exportAllJSON(){downloadFile('qbench-benchmark-data.json',JSON.stringif
 function exportChart(id){const c=echarts.getInstanceByDom($('#'+id));if(!c)return;const a=document.createElement('a');a.href=c.getDataURL({type:'svg',backgroundColor:'#fff'});a.download='qbench-'+id+'.svg';a.click();}
 $('#indexSearch').addEventListener('input',e=>{state.indexQuery=e.target.value.trim();renderOriginalIndex();});
 $('#indexProvider').addEventListener('change',e=>{state.indexProvider=e.target.value;renderOriginalIndex();});
-$('.analytics-details').addEventListener('toggle',e=>{if(e.target.open)requestAnimationFrame(()=>state.charts.forEach(c=>c.resize()));});
-$('#modelSearch').addEventListener('input',e=>{state.query=e.target.value.trim();renderLeaderboard();});
-$('#providerFilter').addEventListener('change',e=>{state.provider=e.target.value;renderLeaderboard();});
-$('#aaBenchmarkFilter').addEventListener('change',e=>{state.aaFilter=e.target.value;renderLeaderboard();});
-$('#benchmarkSelect').addEventListener('change',e=>{state.benchmark=e.target.value;renderBenchmark();});
-$('#compareBenchmark').addEventListener('change',e=>{state.compareBenchmark=e.target.value;updateCompareModels();renderModelCompare();});
-$('#compareModelA').addEventListener('change',e=>{state.compareA=e.target.value;renderModelCompare();});
-$('#compareModelB').addEventListener('change',e=>{state.compareB=e.target.value;renderModelCompare();});
-$('#costBenchmarkFilter').addEventListener('change',e=>{state.costBenchmark=e.target.value;renderCostPerformance();});
+$('#benchmarkSearch').addEventListener('input',e=>{state.benchmarkQuery=e.target.value.trim();renderBenchmark();});
+$('#benchmarkProviderFilter').addEventListener('change',e=>{state.benchmarkProvider=e.target.value;renderBenchmark();});
+$('#benchmarkSelect').addEventListener('change',e=>{state.benchmark=e.target.value;state.benchmarkProvider='all';renderBenchmark();});
 $('#catalogSearch').addEventListener('input',e=>{state.catalogQuery=e.target.value.trim();renderBenchmarkCards();});
 $('#catalogGroupFilter').addEventListener('change',e=>{state.catalogGroup=e.target.value;renderBenchmarkCards();});
 $('#catalogStatusFilter').addEventListener('change',e=>{state.catalogStatus=e.target.value;renderBenchmarkCards();});
-$('#exportAAResults').addEventListener('click',exportAAResults);
 $('#exportBenchmarkCSV').addEventListener('click',exportBenchmarkResults);
 $('#exportAllJSON').addEventListener('click',exportAllJSON);
-$('#resetFilters').addEventListener('click',()=>{state.query='';state.provider='all';state.aaFilter='all';$('#modelSearch').value='';$('#providerFilter').value='all';$('#aaBenchmarkFilter').value='all';renderLeaderboard();});
 $('#themeBtn').addEventListener('click',()=>{const dark=document.documentElement.dataset.theme!=='dark';document.documentElement.dataset.theme=dark?'dark':'light';localStorage.setItem('qbench-theme',dark?'dark':'light');$('#themeBtn').innerHTML=dark?'<i class="bi bi-sun"></i>':'<i class="bi bi-moon-stars"></i>';state.charts.forEach(c=>c.dispose());state.charts=[];renderCharts();});
 $('#menuBtn').addEventListener('click',()=>$('#benchmarks').scrollIntoView({behavior:'smooth'}));
 document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>{document.querySelectorAll('.nav a').forEach(x=>x.classList.toggle('active',x===a));}));
 window.addEventListener('resize',()=>state.charts.forEach(c=>c.resize()));
-document.querySelectorAll('[data-export]').forEach(b=>b.addEventListener('click',()=>exportChart(b.dataset.export)));
 const savedTheme=localStorage.getItem('qbench-theme');if(savedTheme){document.documentElement.dataset.theme=savedTheme;$('#themeBtn').innerHTML=savedTheme==='dark'?'<i class="bi bi-sun"></i>':'<i class="bi bi-moon-stars"></i>';}
 fetch('./data/external-benchmarks.json').then(r=>{if(!r.ok)throw new Error('Could not load benchmark data ('+r.status+').');return r.json();}).then(async data=>{
  if(!Array.isArray(data.benchmarks)||!data.aaIndexV5||!Array.isArray(data.benchmarkCatalog))throw new Error('Benchmark data schema is incomplete.');
