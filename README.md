@@ -71,7 +71,7 @@ These datasets remain available for inspection but do not contribute to the comp
 - **SWE-Bench Pro V2 Hard:** Scale Labs' 51-task high-difficulty split. Its current leaderboard mixes Claude Code, Codex and mini-SWE-agent configurations, so it is retained as a standalone benchmark rather than pooled into the Index.
 - **SWE-Bench Pro V2 Full:** near-ceiling public-set results and mixed harnesses make it unsuitable for the current cross-model composite.
 - **GPQA Diamond:** ceiling/saturation watch; not used in Index 1.2.
-- **FrontierMath Tiers 1–3 (v2):** the checked-in extract contains only 60 of the 120 model results available from Epoch AI's data export. It stays excluded until the complete source export is integrated.
+- **FrontierMath Tiers 1–3 (v2):** the checked-in extract is partial and is not a complete, source-exported leaderboard snapshot. It stays excluded until the full publisher data and settings can be verified.
 - **LiveBench 2.0:** the stored snapshot mixes publisher-reported and secondary-mirror values, so source uniformity is insufficient for the composite.
 - **ARC-AGI-3:** the stored extract comes from a secondary mirror and combines multiple settings.
 - **GDPval:** only eight model entries are available in the current checked-in snapshot, below the 12-model source gate.
