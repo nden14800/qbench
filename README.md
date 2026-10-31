@@ -69,6 +69,7 @@ These remain visible in the benchmark directory but do not contribute to the com
 
 - **ARC-AGI-1 and ARC-AGI-2 semi-private:** retained as ceiling-watch series; high-end results approach saturation.
 - **ARC-AGI-3 Provider Adapter:** separate harness from Standard; never pooled into the Index.
+- **MCP Atlas Performance Comparison:** the publisher's 34-row score ± table does not explicitly label the metric; retained separately. The Index uses only the clearly labeled All 1,000-task Pass Rate table.
 - **ProofBench 1.1:** upper-end tie at 100% creates ceiling risk.
 - **GPQA Diamond:** near-ceiling and incomplete checked-in snapshot.
 - **FrontierMath Tiers 1–3 v2:** the checked-in extract is partial, not a complete publisher export.
