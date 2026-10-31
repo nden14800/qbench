@@ -75,6 +75,24 @@ body{font-size:16px;line-height:1.7}
     <div class="metric"><div class="metric-label">Configurations</div><div class="metric-value" id="familyCount">—</div><div class="metric-note">Model and harness variants</div></div>
   </section>
 
+  <section id="leaderboard">
+    <div class="section-head"><div><h2>Model leaderboard</h2><p id="benchmarkMeta">Select a benchmark to compare its published model scores.</p></div><span class="section-kicker" id="leaderboardCount">— MODELS</span></div>
+    <div class="panel">
+      <div class="panel-head">
+        <div><div class="panel-title">Ranked results</div><div class="panel-sub" id="leaderboardSource">Scores remain on each benchmark's published scale.</div></div>
+        <div class="toolbar">
+          <select class="control" id="benchmarkSelect" aria-label="Select benchmark"></select>
+          <input class="control search" id="benchmarkSearch" type="search" placeholder="Search models" aria-label="Search models">
+          <select class="control" id="benchmarkProviderFilter" aria-label="Filter by provider"><option value="all">All providers</option></select>
+          <button class="chart-action" id="exportBenchmarkCSV" type="button">CSV</button>
+          <button class="chart-action" id="exportAllJSON" type="button">JSON</button>
+        </div>
+      </div>
+      <div class="table-wrap"><table class="table" aria-label="Selected benchmark model leaderboard"><thead id="benchmarkHead"></thead><tbody id="benchmarkRows"><tr><td class="empty">Loading benchmark data…</td></tr></tbody></table></div>
+      <div class="table-foot" id="benchmarkFoot"></div>
+    </div>
+  </section>
+
   <section id="qbench-index" class="qbench-index">
     <div class="section-head">
       <div><h2>QBench Composite Index</h2><p>6つの評価データを組み合わせた独自スコア。全データがそろうモデルのみ掲載。</p></div>
@@ -107,6 +125,16 @@ body{font-size:16px;line-height:1.7}
     </div>
     <div class="benchmark-list" id="benchmarkCards"></div>
     
+  </section>
+
+  <section id="landscape">
+    <div class="section-head"><div><h2>Statistical analysis</h2><p>収録データから自動集計。モデル分布・評価ごとの収録数・プロバイダー構成を確認。</p></div><span class="section-kicker">LIVE FROM QBENCH DATA</span></div>
+    <div class="charts-grid">
+      <article class="panel"><div class="panel-head"><div><div class="panel-title">Models per benchmark</div><div class="panel-sub">Unique model names in each dataset</div></div></div><div id="benchmarkDepthChart" class="chart chart-tall"></div></article>
+      <article class="panel"><div class="panel-head"><div><div class="panel-title">Model coverage by provider</div><div class="panel-sub">Model/provider pairs across imported results</div></div></div><div id="providerMixChart" class="chart chart-tall"></div></article>
+      <article class="panel"><div class="panel-head"><div><div class="panel-title">Selected benchmark ranking</div><div class="panel-sub">Changes with the leaderboard selection</div></div></div><div id="sourceRankChart" class="chart chart-tall"></div></article>
+      <article class="panel"><div class="panel-head"><div><div class="panel-title">Result coverage</div><div class="panel-sub">Unique models compared with raw result rows</div></div></div><div id="modelCoverageChart" class="chart chart-tall"></div></article>
+    </div>
   </section>
 
   <section id="methodology">
