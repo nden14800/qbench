@@ -84,62 +84,24 @@ body{font-size:16px;line-height:1.7}
       <div class="panel-head">
         <div><div class="panel-title">Composite score ranking</div><div class="panel-sub">4領域を各25%で集計。対象データがすべてそろったモデルのみ比較。</div></div>
         <div class="toolbar">
-          <input class="control search" id="indexSearch" type="search" placeholder="Search model" aria-label="Search original index models">
+          <input class="control search" id="indexSearch" type="search" placeholder="Search model" aria-label="Search composite score models">
           <select class="control" id="indexProvider" aria-label="Filter original index by provider"><option value="all">All providers</option></select>
         </div>
       </div>
       <div class="table-wrap">
         <table class="table index-table" aria-label="Composite score leaderboard">
           <thead><tr><th>Rank / Model</th><th>Coding</th><th>Science</th><th>Math & Proof</th><th>Practical</th><th>QBench Index</th></tr></thead>
-          <tbody id="originalIndexRows"><tr><td colspan="6" class="empty">Calculating original index…</td></tr></tbody>
+          <tbody id="originalIndexRows"><tr><td colspan="6" class="empty">Calculating composite score…</td></tr></tbody>
         </table>
       </div>
       <div class="table-foot" id="originalIndexFoot">Exact-name match across six source datasets; no missing values are estimated.</div>
     </div>
       </section>
 
-  <section id="expanded-index" hidden>
-    <div class="section-head"><div><h2>QBench Expanded Index</h2><p>AA Intelligence Index v5の9評価をすべて採用し、さらにAAにない未飽和の難関評価を加える新しい評価セット。</p></div><span class="section-kicker">AA v5 + QBENCH FRONTIER EXTENSIONS</span></div>
-    <div class="expanded-summary">
-      <div class="expanded-summary-main"><strong>9</strong><span>AA v5 core evaluations</span><small>公式の4領域・配点を維持</small></div>
-      <div class="expanded-summary-main"><strong id="extensionCount">—</strong><span>QBench frontier additions</span><small>AA v5に含まれない評価</small></div>
-      <div class="expanded-summary-note"><b>総合点は未確定</b><span>同一モデル・同一設定での9評価の完全な結果と、追加評価の正規化・配点がそろうまでは、拡張Indexの総合点を捏造しません。従来のQBenchスコアは上の表に残しています。</span></div>
-    </div>
-    <div class="extension-grid" id="extensionCards"></div>
-  </section>
-
-  <section id="leaderboard">
-    <div class="section-head"><div><h2>Model leaderboard</h2><p id="benchmarkMeta">Select a benchmark to compare its published model scores.</p></div><span class="section-kicker" id="leaderboardCount">— MODELS</span></div>
-    <div class="panel">
-      <div class="panel-head">
-        <div><div class="panel-title">Ranked results</div><div class="panel-sub" id="leaderboardSource">Scores remain on each benchmark's published scale.</div></div>
-        <div class="toolbar">
-          <select class="control" id="benchmarkSelect" aria-label="Select benchmark"></select>
-          <input class="control search" id="benchmarkSearch" type="search" placeholder="Search models" aria-label="Search models">
-          <select class="control" id="benchmarkProviderFilter" aria-label="Filter by provider"><option value="all">All providers</option></select>
-          <button class="chart-action" id="exportBenchmarkCSV" type="button">CSV</button>
-          <button class="chart-action" id="exportAllJSON" type="button">JSON</button>
-        </div>
-      </div>
-      <div class="table-wrap"><table class="table" aria-label="Selected benchmark model leaderboard"><thead id="benchmarkHead"></thead><tbody id="benchmarkRows"><tr><td class="empty">Loading benchmark data…</td></tr></tbody></table></div>
-      <div class="table-foot" id="benchmarkFoot"></div>
-    </div>
-  </section></section>
-
-  <section id="landscape">
-    <div class="section-head"><div><h2>Statistical analysis</h2><p>収録データから自動集計。モデル分布・評価ごとの収録数・プロバイダー構成を確認。</p></div><span class="section-kicker">LIVE FROM QBENCH DATA</span></div>
-    <div class="charts-grid">
-      <article class="panel"><div class="panel-head"><div><div class="panel-title">Models per benchmark</div><div class="panel-sub">Unique model names in each dataset</div></div></div><div id="benchmarkDepthChart" class="chart chart-tall"></div></article>
-      <article class="panel"><div class="panel-head"><div><div class="panel-title">Model coverage by provider</div><div class="panel-sub">Unique models across all imported results</div></div></div><div id="providerMixChart" class="chart chart-tall"></div></article>
-      <article class="panel"><div class="panel-head"><div><div class="panel-title">Selected benchmark ranking</div><div class="panel-sub">Changes with the leaderboard selection</div></div></div><div id="sourceRankChart" class="chart chart-tall"></div></article>
-      <article class="panel"><div class="panel-head"><div><div class="panel-title">Result coverage</div><div class="panel-sub">Model-level observations per dataset</div></div></div><div id="modelCoverageChart" class="chart chart-tall"></div></article>
-    </div>
-  </section></section>
-
   <section id="benchmarks">
     <div class="section-head"><div><h2>Benchmark directory</h2><p>各テストの内容・収録モデル数・公開データの状態を確認。</p></div><span class="section-kicker" id="catalogCount">44 EVALUATIONS</span></div>
     <div class="toolbar" style="margin-bottom:12px">
-      <input class="control search" id="catalogSearch" type="search" placeholder="Search benchmark registry" aria-label="Search benchmarks">
+      <input class="control search" id="catalogSearch" type="search" placeholder="Search benchmarks" aria-label="Search benchmarks">
       <select class="control" id="catalogGroupFilter"><option value="all">All benchmark groups</option><option value="Core evaluations">Core evaluations</option><option value="Additional evaluations">Additional evaluations</option></select>
       <select class="control" id="catalogStatusFilter"><option value="all">All statuses</option><option value="results-imported">Full result table imported</option><option value="leader-summary-imported">Leader summary only</option><option value="public-summary-only">Public summary only</option><option value="private-results">Private / unavailable</option><option value="research-pipeline">Research pipeline</option></select>
     </div>
@@ -163,7 +125,7 @@ body{font-size:16px;line-height:1.7}
 'use strict';
 const $=(q,root=document)=>root.querySelector(q);
 const COLORS={Anthropic:'#d97757',OpenAI:'#16866f',Google:'#4285d4',Meta:'#8b6fc0',DeepSeek:'#c79b35','Moonshot AI':'#b85c87','xAI':'#536273',Xiaomi:'#159b91',MiniMax:'#8b70ad','Mistral AI':'#c17b35','Z.ai':'#64748b',Qwen:'#218b68',Alibaba:'#b78bcd',StepFun:'#9b75c6',NVIDIA:'#79a64a','Thinking Machines':'#3d91a8','Institute of Foundation Models':'#7086a2','Multiverse Computing':'#a47b52','China Mobile':'#668f9d','Nex AGI':'#8c7eaa',Ember:'#b36d58',Beam:'#7994b0',Hy4:'#a18c69',Mercury:'#799f91',Other:'#858b94'};
-const state={data:null,benchmark:'arc-agi-2',aaFilter:'all',query:'',provider:'all',catalogQuery:'',catalogGroup:'all',catalogStatus:'all',benchmarkQuery:'',benchmarkProvider:'all',indexQuery:'',indexProvider:'all',composite:[],compareBenchmark:'terminal-bench-4-0',compareA:'',compareB:'',costBenchmark:'terminal-bench-4-0',charts:[]};
+const state={data:null,benchmark:'arc-agi-2',catalogQuery:'',catalogGroup:'all',catalogStatus:'all',benchmarkQuery:'',benchmarkProvider:'all',indexQuery:'',indexProvider:'all',composite:[],charts:[]};
 const fmt=(v,d=1)=>Number.isFinite(Number(v))?new Intl.NumberFormat('en-US',{maximumFractionDigits:d}).format(Number(v)):'—';
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const get=id=>state.data.benchmarks.find(b=>b.id===id);
@@ -171,9 +133,6 @@ const color=p=>COLORS[p]||'#7d8490';
 const chartFont='Geist, Noto Sans JP, sans-serif';
 const axis=()=>({fontFamily:chartFont,fontSize:12,color:'#7b8490'});
 const snapshot=d=>new Date(d+'T00:00:00Z').toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric',timeZone:'UTC'});
-const aaIds=()=>state.data.aaIndexV5.categories.flatMap(c=>c.components.map(x=>x.id));
-const aaOrder=()=>state.data.aaIndexV5.categories.flatMap(c=>c.components.map(x=>x.id));
-const aaName=id=>(state.data.benchmarkCatalog.find(x=>x.id===id)||{}).name||((get(id)||{}).name)||id;
 const config=m=>[m.configuration||'unspecified',m.harness||''].filter(Boolean).join(' · ');
 const configKey=m=>[m.model,(m.configuration||'unspecified').toLowerCase(),(m.harness||'').toLowerCase()].join('|');
 const modelOptions=b=>{const rows=b?.models||[];const seen=new Set();return rows.filter(m=>{const k=configKey(m);if(seen.has(k))return false;seen.add(k);return true;}).sort((a,b)=>a.model.localeCompare(b.model));};
@@ -202,15 +161,6 @@ function renderOriginalIndex(){
  const c=chartFor('originalIndexChart');
  if(c)c.setOption({textStyle:{fontFamily:chartFont,fontSize:13},grid:{left:185,right:55,top:18,bottom:32},xAxis:{type:'value',min:0,max:100,axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'category',data:rows.slice(0,15).map(m=>m.model).reverse(),axisLabel:{...axis(),fontSize:12}},series:[{type:'bar',barMaxWidth:22,data:rows.slice(0,15).map(m=>({value:m.index,itemStyle:{color:color(m.provider)}})).reverse(),label:{show:true,position:'right',fontSize:12,formatter:p=>fmt(p.value,2)}}],tooltip:{trigger:'axis',axisPointer:{type:'shadow'}}},true);
 }
-function renderExpandedIndex(){
- const cfg=state.data.qbenchIndex||{},items=cfg.additions||[];
- $('#extensionCount').textContent=items.length;
- $('#extensionCards').innerHTML=items.map(x=>{
-  const b=get(x.id),count=b?.models?.length||0;
-  const status=x.role==='active-frontier-extension'?'Active · result data available':x.role==='candidate-awaiting-result-import'?'Candidate · import pending':'Research watchlist';
-  return '<article class="extension-card"><h3>'+esc(b?.name||x.id)+'</h3><p><b>'+esc(x.domain)+'</b> · '+esc(x.reason)+'</p><div class="extension-meta"><span class="extension-status">'+esc(status)+'</span><span>'+count+' stored result rows · <a href="'+esc(x.source)+'" target="_blank" rel="noopener noreferrer">Official source ↗</a></span></div></article>';
- }).join('');
-}
 function renderSummary(){
  const all=state.data.benchmarks.flatMap(b=>b.models);
  const base=new Set(all.map(m=>m.model));
@@ -225,26 +175,6 @@ function renderSummary(){
  const dates=state.data.benchmarks.map(b=>b.snapshotDate).filter(Boolean).sort();
  $('#latestSnapshot').textContent=snapshot(dates[dates.length-1]);
  $('#updatedAt').textContent='DATA SNAPSHOT · '+snapshot(dates[dates.length-1]).toUpperCase();
-}
-function renderAAFilter(){
- const select=$('#aaBenchmarkFilter');const prev=state.aaFilter;
- select.innerHTML='<option value="all">All 9 AA evaluations</option>'+aaOrder().map(id=>'<option value="'+esc(id)+'">'+esc(aaName(id))+'</option>').join('');
- select.value=aaOrder().includes(prev)?prev:'all';state.aaFilter=select.value;
- const providers=[...new Set(state.data.benchmarks.flatMap(b=>b.models.map(m=>m.provider)).filter(Boolean))].sort();
- const p=$('#providerFilter');p.innerHTML='<option value="all">All providers</option>'+providers.map(x=>'<option value="'+esc(x)+'">'+esc(x)+'</option>').join('');p.value=state.provider;
-}
-function renderLeaderboard(){
- const q=state.query.toLowerCase(),ids=state.aaFilter==='all'?aaOrder():[state.aaFilter];
- let rows=[];
- ids.forEach(id=>{const b=get(id);if(b)b.models.forEach(m=>rows.push({id,b,m}));});
- rows=rows.filter(x=>(state.provider==='all'||x.m.provider===state.provider)&&(!q||[x.m.model,config(x.m),x.b.name,x.m.evidence].join(' ').toLowerCase().includes(q)));
- rows.sort((a,b)=>aaOrder().indexOf(a.id)-aaOrder().indexOf(b.id)||Number(b.m.score)-Number(a.m.score));
- $('#leaderboardRows').innerHTML=rows.length?rows.map(x=>'<tr><td><div class="model-cell"><span class="provider-mark" style="background:'+color(x.m.provider)+'"></span><span><span class="model-name">'+esc(x.m.model)+'</span><span class="provider-name">'+esc(x.m.provider)+'</span></span></div></td><td style="text-align:left;white-space:normal;min-width:145px">'+esc(config(x.m)||'—')+'</td><td style="text-align:left;white-space:normal;min-width:150px"><a class="link" href="'+esc(x.b.source)+'" target="_blank" rel="noopener noreferrer">'+esc(x.b.name)+'</a></td><td class="num">'+fmt(x.m.score,2)+' <span class="family-label">'+esc(x.b.unit)+'</span></td><td class="num">'+esc(x.m.uncertainty||'—')+'</td><td style="text-align:left;white-space:normal;min-width:180px;color:var(--muted)">'+esc(x.m.harness||x.m.evidence||'Published result')+'</td></tr>').join(''):'<tr><td colspan="6" class="empty">No published results match these filters.</td></tr>';
- $('#leaderboardFoot').textContent=rows.length+' published result rows shown. Raw units and source configurations are retained. AA-compatible total score is not estimated from incomplete coverage.';
-}
-function renderAAReference(){
- const models=state.data.aaIndexReference?.models||[];
- $('#aaReferenceRows').innerHTML=models.map(m=>'<tr><td>'+esc(m.model)+' <span class="provider-name">'+esc(m.provider)+'</span></td><td style="text-align:left">'+esc(m.configuration)+'</td><td class="num"><strong>'+fmt(m.score,0)+'</strong></td><td style="text-align:left"><a class="link" href="'+esc(state.data.aaIndexReference.source)+'" target="_blank" rel="noopener noreferrer">Artificial Analysis ↗</a></td></tr>').join('');
 }
 function renderBenchmarkSelect(){
  const sel=$('#benchmarkSelect');
@@ -292,108 +222,10 @@ function updateCompareModels(){
  const fill=(id,chosen,exclude)=>{const el=$(id);el.innerHTML=options.map(o=>'<option value="'+esc(o.value)+'">'+esc(o.label)+'</option>').join('');if(options.some(o=>o.value===chosen))el.value=chosen;else if(options.length)el.value=options[exclude?Math.min(1,options.length-1):0].value;return el.value;};
  state.compareA=fill('#compareModelA',state.compareA,false);state.compareB=fill('#compareModelB',state.compareB,true);
 }
-function renderWeightChart(){
- const comps=state.data.aaIndexV5.categories.flatMap(c=>c.components.map(x=>({name:aaName(x.id),weight:x.weight,category:c.name})));
- setChart('aaWeightChart',{textStyle:{fontFamily:chartFont},grid:{left:165,right:35,top:18,bottom:35},xAxis:{type:'value',max:16,axisLabel:{...axis(),formatter:v=>v+'%'},splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'category',data:comps.map(x=>x.name),axisLabel:{...axis(),fontSize:11}},series:[{type:'bar',data:comps.map(x=>({value:x.weight,itemStyle:{color:({ 'Knowledge Work':'#9a7b52',Coding:'#3982a8',Science:'#7c72ad',General:'#258875'})[x.category]||'#7c72ad'}})),barMaxWidth:22,label:{show:true,position:'right',formatter:p=>p.value+'%',fontSize:11}}],tooltip:{formatter:p=>'<b>'+esc(comps[p.dataIndex].name)+'</b><br>'+esc(comps[p.dataIndex].category)+' · '+p.value+'% of total index'}});
-}
-function renderBriefcaseForest(){
- const b=get('aa-briefcase-v1-1');if(!b)return;
- const rows=b.models.slice().sort((a,z)=>z.score-a.score).slice(0,26);
- $('#briefcaseForestChart').style.height=Math.max(480,rows.length*23+85)+'px';
- const data=rows.map((m,i)=>{const nums=String(m.uncertainty||'').match(/[−-]?\d+/g)||[];const lo=Math.abs(Number(nums[0]||0)),hi=Math.abs(Number(nums[1]||0));return [i,m.score-lo,m.score+hi,m.score,m.model,m.configuration||''];});
- setChart('briefcaseForestChart',{textStyle:{fontFamily:chartFont},grid:{left:185,right:35,top:12,bottom:30},xAxis:{type:'value',min:0,max:1900,axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'category',data:rows.map(m=>m.model+' · '+(m.configuration||'')),inverse:true,axisLabel:{...axis(),fontSize:10}},series:[{type:'custom',renderItem:(params,api)=>{const y=api.value(0),lo=api.coord([api.value(1),y]),hi=api.coord([api.value(2),y]),mid=api.coord([api.value(3),y]);const c=color(rows[params.dataIndex].provider);return {type:'group',children:[{type:'line',shape:{x1:lo[0],y1:lo[1],x2:hi[0],y2:hi[1]},style:{stroke:c,lineWidth:2}},{type:'line',shape:{x1:lo[0],y1:lo[1]-5,x2:lo[0],y2:lo[1]+5},style:{stroke:c,lineWidth:1.5}},{type:'line',shape:{x1:hi[0],y1:hi[1]-5,x2:hi[0],y2:hi[1]+5},style:{stroke:c,lineWidth:1.5}},{type:'circle',shape:{cx:mid[0],cy:mid[1],r:4},style:{fill:c,stroke:'#fff',lineWidth:1}}]};},encode:{x:[1,2,3],y:0},data}],tooltip:{formatter:p=>{const v=p.value;return '<b>'+esc(v[4])+'</b><br>'+esc(v[5])+'<br>Elo '+fmt(v[3],0)+' · CI '+fmt(v[1],0)+'–'+fmt(v[2],0);}}});
-}
-function renderHLEPartition(){
- const rows=(get('hle-diamond')?.models||[]).filter(m=>m.reasoningScore!=null&&m.knowledgeScore!=null);
- setChart('hlePartitionChart',{textStyle:{fontFamily:chartFont},grid:{left:50,right:25,top:20,bottom:48},xAxis:{type:'value',name:'Reasoning accuracy (%)',min:0,max:100,nameLocation:'middle',nameGap:30,axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'value',name:'Knowledge accuracy (%)',min:0,max:100,axisLabel:axis()},series:[{type:'scatter',data:rows.map(m=>({name:m.model,value:[m.reasoningScore,m.knowledgeScore,m.score,m.calibrationError],itemStyle:{color:color(m.provider)}})),symbolSize:13,label:{show:true,position:'top',formatter:p=>p.data.name,fontSize:9,color:'#69717c'} }],tooltip:{formatter:p=>'<b>'+esc(p.data.name)+'</b><br>Reasoning '+fmt(p.value[0],1)+'%<br>Knowledge '+fmt(p.value[1],1)+'%<br>Overall '+fmt(p.value[2],1)+'%'}});
-}
-function renderHLECalibration(){
- const rows=(get('hle-diamond')?.models||[]).filter(m=>m.calibrationError!=null);
- setChart('hleCalibrationChart',{textStyle:{fontFamily:chartFont},grid:{left:55,right:25,top:20,bottom:48},xAxis:{type:'value',name:'Calibration error · lower is better',min:0,max:100,nameLocation:'middle',nameGap:30,axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'value',name:'HLE-Diamond accuracy (%)',min:0,max:70,axisLabel:axis()},series:[{type:'scatter',data:rows.map(m=>({name:m.model,value:[m.calibrationError,m.score],itemStyle:{color:color(m.provider)}})),symbolSize:13,label:{show:false}}],tooltip:{formatter:p=>'<b>'+esc(p.data.name)+'</b><br>Accuracy '+fmt(p.value[1],1)+'%<br>Calibration error '+fmt(p.value[0],1)}});
-}
-function renderCostPerformance(){
- const b=get(state.costBenchmark);if(!b)return;
- const rows=b.models.filter(m=>m.costPerTaskUSD!=null&&m.costPerTaskUSD>0);
- setChart('costPerformanceChart',{textStyle:{fontFamily:chartFont},grid:{left:60,right:30,top:25,bottom:55},xAxis:{type:'log',name:'Cost per test (USD) · log scale',nameLocation:'middle',nameGap:32,axisLabel:{...axis(),formatter:v=>'$'+fmt(v,2)},splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'value',name:'Resolution / pass rate (%)',min:0,max:100,axisLabel:axis()},series:[{type:'scatter',data:rows.map(m=>({name:m.model,config:m.configuration,harness:m.harness,value:[m.costPerTaskUSD,m.score,m.tokensPerTaskMillions||m.tokensUsedBillions||0],itemStyle:{color:color(m.provider)}})),symbolSize:p=>Math.max(7,Math.min(22,7+Math.sqrt(Number(p[2]||0)))),label:{show:false}}],tooltip:{formatter:p=>'<b>'+esc(p.data.name)+'</b><br>'+esc(p.data.config||'')+' · '+esc(p.data.harness||'')+'<br>Score '+fmt(p.value[1],2)+'%<br>Cost $'+fmt(p.value[0],2)+' / test'}});
-}
-function renderScoreDistribution(){
- const ids=['hle-diamond','terminal-bench-4-0','terminal-bench-science-0-1'];
- const labels=ids.map(aaName),values=ids.map(id=>(get(id)?.models||[]).map(m=>Number(m.score)).filter(Number.isFinite).sort((a,b)=>a-b));
- const q=(a,p)=>{const n=(a.length-1)*p,i=Math.floor(n),r=n-i;return a[i+1]===undefined?a[i]:a[i]+r*(a[i+1]-a[i]);};
- const data=values.map(a=>a.length?[a[0],q(a,.25),q(a,.5),q(a,.75),a[a.length-1]]:[0,0,0,0,0]);
- setChart('scoreDistributionChart',{textStyle:{fontFamily:chartFont},grid:{left:175,right:25,top:20,bottom:40},xAxis:{type:'value',min:0,max:100,name:'Published percentage score',nameLocation:'middle',nameGap:28,axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'category',data:labels,axisLabel:{...axis(),fontSize:10}},series:[{type:'boxplot',data,itemStyle:{color:'rgba(73,124,156,.16)',borderColor:'#4b829f',borderWidth:2},boxWidth:[20,34]}],tooltip:{formatter:p=>{const v=p.data;return '<b>'+labels[p.dataIndex]+'</b><br>Min '+fmt(v[0],1)+' · Q1 '+fmt(v[1],1)+'<br>Median '+fmt(v[2],1)+' · Q3 '+fmt(v[3],1)+'<br>Max '+fmt(v[4],1);}}});
-}
-function renderAACoverage(){
- const ids=aaOrder(),benchNames=ids.map(aaName);
- const all=state.data.benchmarks.filter(b=>ids.includes(b.id)).flatMap(b=>b.models);
- const counts={};all.forEach(m=>counts[m.model]=(counts[m.model]||0)+1);
- const names=Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,45).map(x=>x[0]).reverse();
- $('#aaCoverageChart').style.height=Math.max(480,names.length*15+135)+'px';
- const data=[];names.forEach((name,y)=>ids.forEach((id,x)=>{const b=get(id);data.push([x,y,b?.models.some(m=>m.model===name)?1:0]);}));
- setChart('aaCoverageChart',{textStyle:{fontFamily:chartFont},grid:{left:165,right:18,top:15,bottom:110},xAxis:{type:'category',data:benchNames,axisLabel:{...axis(),rotate:30,interval:0,fontSize:10}},yAxis:{type:'category',data:names,axisLabel:{...axis(),fontSize:10}},visualMap:{min:0,max:1,show:false,inRange:{color:['#f0f1f3','#477e9f']}},series:[{type:'heatmap',data,itemStyle:{borderColor:'#fff',borderWidth:1}}],tooltip:{formatter:p=>names[p.data[1]]+'<br>'+benchNames[p.data[0]]+'<br>'+(p.data[2]?'Published result stored':'No imported result')}});
-}
-function renderProviderCoverage(){
- const ids=aaOrder(),providers=[...new Set(state.data.benchmarks.filter(b=>ids.includes(b.id)).flatMap(b=>b.models.map(m=>m.provider)))].sort();
- setChart('providerCoverageChart',{textStyle:{fontFamily:chartFont},legend:{top:4,type:'scroll',textStyle:axis()},grid:{left:185,right:25,top:42,bottom:45},xAxis:{type:'value',minInterval:1,axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'category',data:ids.map(aaName),axisLabel:{...axis(),fontSize:10}},series:providers.map(p=>({name:p,type:'bar',stack:'configs',barMaxWidth:24,data:ids.map(id=>(get(id)?.models||[]).filter(m=>m.provider===p).length),itemStyle:{color:color(p)}})),tooltip:{trigger:'axis',axisPointer:{type:'shadow'}}});
-}
-function renderScoreSlope(){
- const ids=['hle-diamond','terminal-bench-4-0','terminal-bench-science-0-1'],labels=ids.map(aaName);
- const maps=ids.map(id=>{const map=new Map();(get(id)?.models||[]).forEach(m=>{const old=map.get(m.model);if(!old||m.score>old.score)map.set(m.model,m);});return map;});
- const common=[...maps[0].keys()].filter(n=>maps.every(m=>m.has(n)));
- const names=common.sort((a,b)=>{const av=maps.reduce((s,m)=>s+m.get(a).score,0),bv=maps.reduce((s,m)=>s+m.get(b).score,0);return bv-av;}).slice(0,18);
- setChart('scoreSlopeChart',{textStyle:{fontFamily:chartFont},legend:{top:3,left:10,type:'scroll',textStyle:axis(),itemWidth:10,itemHeight:8},grid:{left:50,right:20,top:48,bottom:50},xAxis:{type:'category',data:labels,axisLabel:{...axis(),fontSize:10,interval:0},axisTick:{show:false}},yAxis:{type:'value',min:0,max:100,name:'Published score (%)',axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},series:names.map(name=>({name,type:'line',data:maps.map(m=>m.get(name).score),symbol:'circle',symbolSize:6,smooth:false,lineStyle:{width:1.7,color:color(maps[0].get(name).provider),opacity:.75},itemStyle:{color:color(maps[0].get(name).provider)},emphasis:{focus:'series',lineStyle:{width:3,opacity:1}}})),tooltip:{trigger:'axis',axisPointer:{type:'line'}}});
-}
-function renderSourceRank(){
- const b=get(state.benchmark);if(!b)return;
- const rows=b.models.slice().sort((a,z)=>a.score-z.score).slice(-32);
- const host=$('#sourceRankChart');host.style.height=Math.max(360,rows.length*24+75)+'px';
- const c=chartFor('sourceRankChart');if(c)c.resize();
- setChart('sourceRankChart',{textStyle:{fontFamily:chartFont},grid:{left:185,right:55,top:18,bottom:28},xAxis:{type:'value',axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'category',data:rows.map(m=>m.model+' · '+(m.configuration||'')).reverse(),axisLabel:{...axis(),fontSize:10}},series:[{type:'bar',barMaxWidth:21,data:rows.map(m=>({value:m.score,model:m.model,provider:m.provider,unit:b.unit,configuration:m.configuration,itemStyle:{color:color(m.provider)}})).reverse(),label:{show:true,position:'right',fontSize:10,formatter:p=>fmt(p.value,1)}}],tooltip:{formatter:p=>'<b>'+esc(p.data.model)+'</b><br>'+esc(p.data.configuration||'')+'<br>'+fmt(p.value,2)+' '+esc(b.unit)}});
-}
-function renderProviderMix(){
- const map=new Map();state.data.benchmarks.forEach(b=>b.models.forEach(m=>map.set(m.model,m.provider)));
- const counts={};map.forEach(p=>counts[p]=(counts[p]||0)+1);
- setChart('providerMixChart',{textStyle:{fontFamily:chartFont},legend:{type:'scroll',orient:'vertical',right:5,top:15,bottom:15,textStyle:axis()},series:[{type:'pie',radius:['43%','72%'],center:['37%','52%'],avoidLabelOverlap:true,label:{show:false},emphasis:{label:{show:true,fontSize:13,fontWeight:600}},itemStyle:{borderColor:'#fff',borderWidth:2},data:Object.entries(counts).map(([name,value])=>({name,value,itemStyle:{color:color(name)}}))}],tooltip:{trigger:'item',formatter:p=>p.name+': '+p.value+' unique base models ('+p.percent+'%)'}});
-}
 function renderBenchmarkDepth(){
- const rows=state.data.benchmarks.slice().sort((a,b)=>a.models.length-b.models.length);
+ const rows=state.data.benchmarks.slice().sort((a,b)=>new Set(a.models.map(m=>m.model)).size-new Set(b.models.map(m=>m.model)).size);
  $('#benchmarkDepthChart').style.height=Math.max(440,rows.length*23+75)+'px';
- setChart('benchmarkDepthChart',{textStyle:{fontFamily:chartFont},grid:{left:185,right:45,top:15,bottom:25},xAxis:{type:'value',minInterval:1,axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'category',data:rows.map(b=>b.name),axisLabel:{...axis(),fontSize:10}},series:[{type:'bar',data:rows.map(b=>({value:b.models.length,itemStyle:{color:aaIds().includes(b.id)?'#4d7897':'#a18b6e'}})),barMaxWidth:19,label:{show:true,position:'right',fontSize:10}}],tooltip:{formatter:p=>rows[p.dataIndex].name+'<br>'+p.value+' result rows'}});
-}
-function renderModelCompare(){
- const b=get(state.compareBenchmark);if(!b)return;
- const rows=modelOptions(b),a=rows.find(m=>configKey(m)===state.compareA),z=rows.find(m=>configKey(m)===state.compareB);
- const selected=[a,z].filter(Boolean);
- setChart('modelCompareChart',{textStyle:{fontFamily:chartFont},grid:{left:180,right:45,top:25,bottom:45},xAxis:{type:'value',name:b.unit,nameLocation:'middle',nameGap:28,axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'category',data:selected.map(m=>m.model+' · '+config(m)),axisLabel:{...axis(),fontSize:10}},series:[{type:'bar',data:selected.map(m=>({value:m.score,itemStyle:{color:color(m.provider)}})),barMaxWidth:30,label:{show:true,position:'right',formatter:p=>fmt(p.value,2)}}],tooltip:{trigger:'item',formatter:p=>selected[p.dataIndex].model+'<br>'+config(selected[p.dataIndex])+'<br>'+fmt(p.value,2)+' '+b.unit}});
-}
-function renderConfigurationMix(){
- const map=new Map();state.data.benchmarks.forEach(b=>b.models.forEach(m=>{const k=configKey(m);if(!map.has(k))map.set(k,{name:m.model+' · '+config(m),provider:m.provider});}));
- const groups={};map.forEach(v=>{groups[v.provider]=(groups[v.provider]||0)+1;});
- setChart('configurationMixChart',{textStyle:{fontFamily:chartFont},series:[{type:'treemap',data:Object.entries(groups).map(([name,value])=>({name,value,itemStyle:{borderColor:'#fff',borderWidth:2,color:color(name)}})),leafDepth:1,roam:true,nodeClick:false,breadcrumb:{show:false},label:{show:true,formatter:p=>p.name+'\\n'+p.value+' configs',fontSize:11},upperLabel:{show:true,height:24,fontSize:11},itemStyle:{borderColor:'#fff',gapWidth:2}}],tooltip:{formatter:p=>p.name+': '+p.value+' unique model configurations'}});
-}
-function renderBenchmarkFlow(){
- const nodes=[],links=[],providerSet=new Set(),benchSet=new Set();
- state.data.benchmarks.forEach(b=>b.models.forEach(m=>{providerSet.add(m.provider);benchSet.add(b.name);}));
- [...providerSet].forEach(p=>nodes.push({name:p,itemStyle:{color:color(p)}}));
- [...benchSet].forEach(n=>nodes.push({name:n,itemStyle:{color:'#9a9eaa'}}));
- state.data.benchmarks.forEach(b=>{const counts={};b.models.forEach(m=>counts[m.provider]=(counts[m.provider]||0)+1);Object.entries(counts).forEach(([p,v])=>links.push({source:p,target:b.name,value:v}));});
- setChart('benchmarkFlowChart',{textStyle:{fontFamily:chartFont},series:[{type:'sankey',data:nodes,links,orient:'horizontal',nodeAlign:'justify',nodeWidth:13,nodeGap:9,layoutIterations:24,emphasis:{focus:'adjacency'},lineStyle:{color:'gradient',curveness:.5,opacity:.22},label:{fontFamily:chartFont,fontSize:9,color:'#68717d'},levels:[{depth:0,itemStyle:{borderWidth:0}},{depth:1,itemStyle:{borderWidth:0}}]}],tooltip:{trigger:'item',formatter:p=>p.dataType==='edge'?p.data.source+' → '+p.data.target+'<br>'+p.data.value+' result rows':p.name}});
-}
-function renderCoverageFunnel(){
- const aa=aaOrder(),present=aa.filter(id=>(get(id)?.models.length||0)>0).length;
- const full=['aa-briefcase-v1-1','hle-diamond','terminal-bench-4-0','terminal-bench-science-0-1'].filter(id=>(get(id)?.models.length||0)>0).length;
- const complete=0;
- setChart('coverageFunnelChart',{textStyle:{fontFamily:chartFont},series:[{type:'funnel',left:'12%',top:25,bottom:25,width:'76%',min:0,max:9,minSize:'0%',maxSize:'100%',sort:'descending',gap:5,label:{show:true,position:'inside',formatter:p=>p.name+' · '+p.value,fontSize:11,color:'#fff'},labelLine:{show:false},itemStyle:{borderColor:'#fff',borderWidth:2},data:[{name:'AA v5 components',value:9,itemStyle:{color:'#416f8c'}},{name:'Components with results',value:present,itemStyle:{color:'#548a9e'}},{name:'Full model tables',value:full,itemStyle:{color:'#7d9c9d'}},{name:'Complete 9/9 model configs',value:complete,itemStyle:{color:'#b3b8be'}}]}],tooltip:{trigger:'item',formatter:p=>p.name+': '+p.value}});
-}
-function renderBenchmarkSunburst(){
- const catalog=state.data.benchmarkCatalog||[],groups={};
- catalog.forEach(x=>{const group=x.group||'Other',status=x.status||'Catalogued';groups[group]??={};groups[group][status]??=[];groups[group][status].push(x);});
- const data=Object.entries(groups).map(([group,statuses])=>({name:group,children:Object.entries(statuses).map(([status,items])=>({name:statusLabel(status),children:items.map(x=>({name:x.name,value:1,itemStyle:{color:status==='results-imported'?'#3d8b78':status==='leader-summary-imported'?'#7396aa':status==='research-pipeline'?'#b18a58':'#9299a2'}}))}))}));
- setChart('benchmarkSunburstChart',{textStyle:{fontFamily:chartFont},series:[{type:'sunburst',data,sort:null,radius:['10%','88%'],nodeClick:'rootToNode',emphasis:{focus:'ancestor'},label:{rotate:'radial',fontFamily:chartFont,fontSize:9},levels:[{},{r0:'10%',r:'36%',itemStyle:{borderWidth:2},label:{rotate:0,fontSize:11}},{r0:'36%',r:'62%',label:{fontSize:9}},{r0:'62%',r:'88%',label:{fontSize:8}}]}],tooltip:{formatter:p=>p.name+(p.value!=null?' · '+p.value:'')}});
-}
-function renderModelCoverage(){
- const rows=state.data.benchmarks.map(b=>({name:b.name,count:new Set(b.models.map(m=>m.model)).size,results:b.models.length})).sort((a,b)=>a.count-b.count);
- setChart('modelCoverageChart',{textStyle:{fontFamily:chartFont},grid:{left:185,right:42,top:15,bottom:25},xAxis:{type:'value',minInterval:1,axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'category',data:rows.map(x=>x.name),axisLabel:{...axis(),fontSize:10}},series:[{type:'bar',data:rows.map(x=>x.count),barMaxWidth:18,itemStyle:{color:'#587e9d'},label:{show:true,position:'right',fontSize:10}}],tooltip:{formatter:p=>rows[p.dataIndex].name+'<br>'+p.value+' unique models · '+rows[p.dataIndex].results+' result rows'}});
+ setChart('benchmarkDepthChart',{textStyle:{fontFamily:chartFont},grid:{left:185,right:45,top:15,bottom:25},xAxis:{type:'value',minInterval:1,axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'category',data:rows.map(b=>b.name),axisLabel:{...axis(),fontSize:10}},series:[{type:'bar',data:rows.map(b=>({value:new Set(b.models.map(m=>m.model)).size,itemStyle:{color:'#587e9d'}})),barMaxWidth:19,label:{show:true,position:'right',fontSize:10}}],tooltip:{formatter:p=>rows[p.dataIndex].name+'<br>'+p.value+' result rows'}});
 }
 function renderCharts(){renderBenchmarkDepth();renderProviderMix();renderSourceRank();renderModelCoverage();}
 
@@ -402,8 +234,6 @@ function renderAll(){
 }
 function csvCell(v){const x=String(v??'');return '"'+x.replace(/"/g,'""')+'"';}
 function downloadFile(name,content,type){const blob=new Blob([content],{type});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);}
-function aaFilteredRows(){const q=state.query.toLowerCase(),ids=state.aaFilter==='all'?aaOrder():[state.aaFilter];let rows=[];ids.forEach(id=>{const b=get(id);if(b)b.models.forEach(m=>rows.push({id,b,m}));});return rows.filter(x=>(state.provider==='all'||x.m.provider===state.provider)&&(!q||[x.m.model,config(x.m),x.b.name,x.m.evidence].join(' ').toLowerCase().includes(q)));}
-function exportAAResults(){const rows=aaFilteredRows(),head=['model','provider','configuration','harness','benchmark','score','unit','uncertainty','evidence'];const lines=[head,...rows.map(x=>[x.m.model,x.m.provider,x.m.configuration,x.m.harness,x.b.name,x.m.score,x.b.unit,x.m.uncertainty,x.m.evidence])].map(row=>row.map(csvCell).join(','));downloadFile('qbench-aa-v5-results.csv','\uFEFF'+lines.join('\r\n'),'text/csv;charset=utf-8');}
 function exportBenchmarkResults(){const b=get(state.benchmark);if(!b)return;const keys=[...new Set(b.models.flatMap(m=>Object.keys(m)))];const lines=[['benchmark','unit',...keys],...b.models.map(m=>[b.name,b.unit,...keys.map(k=>m[k])])].map(row=>row.map(csvCell).join(','));downloadFile('qbench-'+b.id+'.csv','\uFEFF'+lines.join('\r\n'),'text/csv;charset=utf-8');}
 function exportAllJSON(){downloadFile('qbench-benchmark-data.json',JSON.stringify(state.data,null,2),'application/json;charset=utf-8');}
 function exportChart(id){const c=echarts.getInstanceByDom($('#'+id));if(!c)return;const a=document.createElement('a');a.href=c.getDataURL({type:'svg',backgroundColor:'#fff'});a.download='qbench-'+id+'.svg';a.click();}
@@ -423,7 +253,7 @@ document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>{d
 window.addEventListener('resize',()=>state.charts.forEach(c=>c.resize()));
 const savedTheme=localStorage.getItem('qbench-theme');if(savedTheme){document.documentElement.dataset.theme=savedTheme;$('#themeBtn').innerHTML=savedTheme==='dark'?'<i class="bi bi-sun"></i>':'<i class="bi bi-moon-stars"></i>';}
 fetch('./data/external-benchmarks.json').then(r=>{if(!r.ok)throw new Error('Could not load benchmark data ('+r.status+').');return r.json();}).then(async data=>{
- if(!Array.isArray(data.benchmarks)||!data.aaIndexV5||!Array.isArray(data.benchmarkCatalog))throw new Error('Benchmark data schema is incomplete.');
+ if(!Array.isArray(data.benchmarks)||!Array.isArray(data.benchmarkCatalog))throw new Error('Benchmark data schema is incomplete.');
  state.data=data;if(document.fonts?.ready)await document.fonts.ready;renderAll();
 }).catch(err=>{$('#leaderboardRows').innerHTML='<tr><td colspan="6" class="empty">Benchmark data could not be loaded. '+esc(err.message)+'</td></tr>';$('#benchmarkRows').innerHTML='<tr><td class="empty">'+esc(err.message)+'</td></tr>';});
 })();
