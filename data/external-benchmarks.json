@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.6",
-  "note": "Snapshot 2026-10-31: 20 result datasets, 507 model-result rows, 165 unique model names, 320 model configurations, 31 providers, and 47 benchmark directory entries. QBench Index 3.0 mirrors the nine AA v5 evaluations and category weights; only datasets with at least eight unique model names enter percentile scoring. Four of nine meet that threshold. On the current eligible data, 29 models cover at least two categories; five meet the strict rank threshold and 24 remain coverage-only. FrontierMath Erdős, MirrorCode, and ARC-AGI-3 are monitored separately until comparable model-level coverage is available.",
+  "note": "Snapshot 2026-10-31: 20 result datasets, 507 model-result rows, 165 unique model names, 320 unique model configurations (model + configuration + harness), 31 providers, and 47 benchmark directory entries. QBench Composite Index 3.0 references the nine AA v5 evaluation components and official weights but independently normalizes eligible source results. 4 of 9 evaluations meet the minimum of eight unique models; below-threshold results remain visible in benchmark and model explorers but do not contribute to the composite.",
   "benchmarks": [
     {
       "id": "livebench-2.0",
@@ -4365,29 +4365,94 @@
     }
   ],
   "composite": {
-    "name": "QBench Composite Index v2",
-    "version": "2.0",
+    "name": "QBench Composite Index",
+    "version": "3.0",
     "snapshotAsOf": "2026-10-31",
-    "eligibleBenchmarks": [
-      "livebench-2.0",
-      "gpqa-diamond",
-      "frontiermath-tiers-1-3-v2",
-      "frontiermath-tier-4-v2",
-      "proofbench",
-      "furniture-assembly"
+    "basis": "Nine evaluation components, four categories, and component weights published for Artificial Analysis Intelligence Index v5. QBench calculates an independent percentile-based score and does not reproduce AA's native score.",
+    "minimumModelsPerEvaluation": 8,
+    "minimumCategoryCoverage": 4,
+    "minimumOfficialWeight": 50,
+    "componentBenchmarks": [
+      "aa-briefcase-v1-1",
+      "automationbench-aa",
+      "gdp-pdf",
+      "frontiercode-2-0",
+      "terminal-bench-4-0",
+      "terminal-bench-science-0-1",
+      "critpt-v2-hard",
+      "aa-omniscience-v1-1",
+      "hle-diamond"
     ],
-    "minimumDomainCoverage": 3,
-    "rankingCoverage": 4,
-    "normalization": "Within each source dataset, convert each model's best published score to a 0–100 percentile rank among unique model names in that dataset. Ties receive average ranks. Higher source scores are treated as better.",
-    "configurationPolicy": "When a model has multiple reported configurations in one dataset, retain the highest published score for the composite calculation and record the selected configuration. This is a best-reported-configuration index, not a controlled same-settings comparison.",
+    "eligibleBenchmarks": [
+      "aa-briefcase-v1-1",
+      "terminal-bench-4-0",
+      "terminal-bench-science-0-1",
+      "hle-diamond"
+    ],
+    "insufficientCoverage": [
+      {
+        "id": "automationbench-aa",
+        "name": "AutomationBench-AA",
+        "uniqueModels": 3,
+        "requiredModels": 8
+      },
+      {
+        "id": "gdp-pdf",
+        "name": "GDP.pdf",
+        "uniqueModels": 1,
+        "requiredModels": 8
+      },
+      {
+        "id": "frontiercode-2-0",
+        "name": "FrontierCode 2.0",
+        "uniqueModels": 5,
+        "requiredModels": 8
+      },
+      {
+        "id": "critpt-v2-hard",
+        "name": "CritPt v2 (Hard Subset)",
+        "uniqueModels": 4,
+        "requiredModels": 8
+      },
+      {
+        "id": "aa-omniscience-v1-1",
+        "name": "AA-Omniscience v1.1",
+        "uniqueModels": 1,
+        "requiredModels": 8
+      }
+    ],
+    "normalization": "Highest reported score per exact model name is converted to a 0–100 midrank percentile among models with a numeric result; ties receive average ranks.",
+    "configurationPolicy": "Best reported configuration per model and evaluation. Not a controlled same-effort or same-harness comparison.",
     "domains": [
       {
-        "name": "General & Agentic",
+        "name": "Knowledge Work",
         "weight": 25,
         "inputs": [
           {
-            "id": "livebench-2.0",
-            "weight": 25
+            "id": "aa-briefcase-v1-1",
+            "weight": 15
+          },
+          {
+            "id": "automationbench-aa",
+            "weight": 5
+          },
+          {
+            "id": "gdp-pdf",
+            "weight": 5
+          }
+        ]
+      },
+      {
+        "name": "Coding",
+        "weight": 25,
+        "inputs": [
+          {
+            "id": "frontiercode-2-0",
+            "weight": 15
+          },
+          {
+            "id": "terminal-bench-4-0",
+            "weight": 10
           }
         ]
       },
@@ -4396,78 +4461,76 @@
         "weight": 25,
         "inputs": [
           {
-            "id": "gpqa-diamond",
-            "weight": 25
+            "id": "terminal-bench-science-0-1",
+            "weight": 15
+          },
+          {
+            "id": "critpt-v2-hard",
+            "weight": 10
           }
         ]
       },
       {
-        "name": "Math & Proof",
+        "name": "General",
         "weight": 25,
         "inputs": [
           {
-            "id": "frontiermath-tiers-1-3-v2",
-            "weight": 8.333333333333334
+            "id": "aa-omniscience-v1-1",
+            "weight": 15
           },
           {
-            "id": "frontiermath-tier-4-v2",
-            "weight": 8.333333333333334
-          },
-          {
-            "id": "proofbench",
-            "weight": 8.333333333333334
-          }
-        ]
-      },
-      {
-        "name": "Practical Execution",
-        "weight": 25,
-        "inputs": [
-          {
-            "id": "furniture-assembly",
-            "weight": 25
+            "id": "hle-diamond",
+            "weight": 10
           }
         ]
       }
     ],
-    "method": "QBench Composite Index v2 uses four equally weighted domains. Each source dataset is normalized independently to a percentile rank so unlike native score scales are not averaged directly. The Math & Proof domain averages the available percentiles from FrontierMath Tiers 1–3 v2, FrontierMath Tier 4 v2, and ProofBench. A model is listed in the coverage explorer when at least three of four domains are available. Only models with all four domains receive a comparable composite score and a ranked position; partial-coverage models are shown without an overall score and are not ranked. Model names are matched exactly; aliases are not inferred. Where a dataset contains multiple configurations for one model, the highest published score is used and its configuration is retained as provenance.",
+    "method": "An evaluation contributes only if it has at least eight unique model names. Available component percentiles are weighted by official relative weights and renormalized within each category; the four categories receive equal 25% weight. A model is ranked only with all four categories and at least 50% official total weight. Missing scores are never imputed and model aliases are not inferred.",
     "caveats": [
-      "Percentiles are relative to the models present in each imported dataset and can change when the dataset's model coverage changes.",
-      "Best-reported configurations can differ between benchmarks; the index is not a controlled comparison at identical reasoning effort, harness, or routing.",
-      "Benchmark prompts and evaluation settings can affect results. Review the source leaderboard and configuration details before drawing fine-grained conclusions.",
-      "Artificial Analysis Intelligence Index v5 is an independent composite with its own nine evaluations and weights; it is not blended into this QBench score."
+      "Percentiles depend on the imported model cohort and may change with coverage.",
+      "Best reported configurations can differ by evaluation.",
+      "Some public leaderboard runs do not share AA's internal harness; matching benchmark versions do not guarantee identical conditions.",
+      "Below-threshold rows remain in standalone results but do not contribute to the composite.",
+      "AA native scores and QBench percentiles are separate measures."
     ],
     "sourceNotes": [
       {
-        "label": "LiveBench 2.0",
-        "url": "https://livebench.ai/",
-        "snapshotDate": "2026-10-30"
+        "label": "Artificial Analysis Intelligence Benchmarking Methodology",
+        "url": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
+        "snapshotDate": "2026-10-31"
       },
       {
-        "label": "GPQA Diamond",
-        "url": "https://openrouter.ai/benchmarks/gpqa-diamond/",
-        "snapshotDate": "2026-10-30"
+        "label": "Artificial Analysis Intelligence Index v5 announcement",
+        "url": "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5",
+        "snapshotDate": "2026-10-27"
       },
       {
-        "label": "FrontierMath Tiers 1–3 v2",
-        "url": "https://epoch.ai/benchmarks/frontiermath-tiers-1-3-v2",
-        "snapshotDate": "2026-10-30"
+        "label": "AA-Briefcase v1.1",
+        "url": "https://artificialanalysis.ai/evaluations/aa-briefcase",
+        "snapshotDate": "2026-10-31"
       },
       {
-        "label": "FrontierMath Tier 4 v2",
-        "url": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
-        "snapshotDate": "2026-10-29"
+        "label": "Terminal-Bench 4.0",
+        "url": "https://www.tbench.ai/?version=4.0",
+        "snapshotDate": "2026-10-31"
       },
       {
-        "label": "ProofBench",
-        "url": "https://epoch.ai/benchmarks/proofbench",
-        "snapshotDate": "2026-10-29"
+        "label": "Terminal-Bench-Science 0.1",
+        "url": "https://vals-ai.com/benchmarks/terminal-bench-science",
+        "snapshotDate": "2026-10-25"
       },
       {
-        "label": "Furniture Assembly Benchmark",
-        "url": "https://epoch.ai/benchmarks/furniture-assembly",
-        "snapshotDate": "2026-10-30"
+        "label": "HLE-Diamond",
+        "url": "https://labs.scale.com/leaderboard/hle-diamond",
+        "snapshotDate": "2026-10-31"
       }
-    ]
+    ],
+    "currentDiagnostics": {
+      "rankedModels": 5,
+      "coverageOnlyModels": 24,
+      "modelsWithAtLeastTwoCategories": 29,
+      "eligibleEvaluationCount": 4,
+      "excludedEvaluationCount": 5
+    }
   }
 }
