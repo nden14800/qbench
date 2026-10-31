@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#f7f8fa">
 <title>QBench — Independent AI model benchmarks</title>
-<meta name="description" content="Explore comparable AI model results across independent public benchmarks, with transparent sources and a cost-performance frontier.">
+<meta name="description" content="QBench Index 2.0 aligns to Artificial Analysis Intelligence Index v5 and expands frontier evaluations across reasoning, science, coding, agents and multimodal tasks.">
 <link rel="icon" href="./favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,7 +71,7 @@ main{padding:34px 0 70px}.intro{display:flex;justify-content:space-between;align
   </section>
 
   <section id="landscape">
-    <div class="section-head"><div><h2>Statistical analysis</h2><p>異なる評価を無理に合成せず、分布・信頼区間・コスト・校正・モデル間の重なりを個別に可視化。</p></div><span class="section-kicker">14 DISTINCT ANALYTICS / SVG EXPORT</span></div>
+    <div class="section-head"><div><h2>Statistical analysis</h2><p>異なる評価を無理に合成せず、分布・信頼区間・コスト・校正・モデル間の重なりを個別に可視化。</p></div><span class="section-kicker">17 DISTINCT ANALYTICS / SVG EXPORT</span></div>
     <div class="toolbar" style="margin:0 0 12px">
       <label class="family-label" for="costBenchmarkFilter">Cost frontier</label><select class="control" id="costBenchmarkFilter"><option value="terminal-bench-4-0">Terminal-Bench 4.0</option><option value="terminal-bench-science-0-1">Terminal-Bench-Science</option></select>
       <label class="family-label" for="compareBenchmark">Model comparison</label><select class="control" id="compareBenchmark"></select>
@@ -236,10 +236,10 @@ function renderWeightChart(){
 }
 function renderBriefcaseForest(){
  const b=get('aa-briefcase-v1-1');if(!b)return;
- const rows=b.models.slice().sort((a,z)=>z.score-a.score).slice(0,26).reverse();
+ const rows=b.models.slice().sort((a,z)=>z.score-a.score).slice(0,26);
  $('#briefcaseForestChart').style.height=Math.max(480,rows.length*23+85)+'px';
  const data=rows.map((m,i)=>{const nums=String(m.uncertainty||'').match(/[−-]?\d+/g)||[];const lo=Math.abs(Number(nums[0]||0)),hi=Math.abs(Number(nums[1]||0));return [i,m.score-lo,m.score+hi,m.score,m.model,m.configuration||''];});
- setChart('briefcaseForestChart',{textStyle:{fontFamily:chartFont},grid:{left:185,right:35,top:12,bottom:30},xAxis:{type:'value',min:0,max:1900,axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'category',data:rows.map(m=>m.model+' · '+(m.configuration||'')).reverse(),axisLabel:{...axis(),fontSize:10}},series:[{type:'custom',renderItem:(params,api)=>{const y=api.value(0),lo=api.coord([api.value(1),y]),hi=api.coord([api.value(2),y]),mid=api.coord([api.value(3),y]);const c=color(rows[params.dataIndex].provider);return {type:'group',children:[{type:'line',shape:{x1:lo[0],y1:lo[1],x2:hi[0],y2:hi[1]},style:{stroke:c,lineWidth:2}},{type:'line',shape:{x1:lo[0],y1:lo[1]-5,x2:lo[0],y2:lo[1]+5},style:{stroke:c,lineWidth:1.5}},{type:'line',shape:{x1:hi[0],y1:hi[1]-5,x2:hi[0],y2:hi[1]+5},style:{stroke:c,lineWidth:1.5}},{type:'circle',shape:{cx:mid[0],cy:mid[1],r:4},style:{fill:c,stroke:'#fff',lineWidth:1}}]};},encode:{x:[1,2,3],y:0},data}],tooltip:{formatter:p=>{const v=p.value;return '<b>'+esc(v[4])+'</b><br>'+esc(v[5])+'<br>Elo '+fmt(v[3],0)+' · CI '+fmt(v[1],0)+'–'+fmt(v[2],0);}}});
+ setChart('briefcaseForestChart',{textStyle:{fontFamily:chartFont},grid:{left:185,right:35,top:12,bottom:30},xAxis:{type:'value',min:0,max:1900,axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'category',data:rows.map(m=>m.model+' · '+(m.configuration||'')),inverse:true,axisLabel:{...axis(),fontSize:10}},series:[{type:'custom',renderItem:(params,api)=>{const y=api.value(0),lo=api.coord([api.value(1),y]),hi=api.coord([api.value(2),y]),mid=api.coord([api.value(3),y]);const c=color(rows[params.dataIndex].provider);return {type:'group',children:[{type:'line',shape:{x1:lo[0],y1:lo[1],x2:hi[0],y2:hi[1]},style:{stroke:c,lineWidth:2}},{type:'line',shape:{x1:lo[0],y1:lo[1]-5,x2:lo[0],y2:lo[1]+5},style:{stroke:c,lineWidth:1.5}},{type:'line',shape:{x1:hi[0],y1:hi[1]-5,x2:hi[0],y2:hi[1]+5},style:{stroke:c,lineWidth:1.5}},{type:'circle',shape:{cx:mid[0],cy:mid[1],r:4},style:{fill:c,stroke:'#fff',lineWidth:1}}]};},encode:{x:[1,2,3],y:0},data}],tooltip:{formatter:p=>{const v=p.value;return '<b>'+esc(v[4])+'</b><br>'+esc(v[5])+'<br>Elo '+fmt(v[3],0)+' · CI '+fmt(v[1],0)+'–'+fmt(v[2],0);}}});
 }
 function renderHLEPartition(){
  const rows=(get('hle-diamond')?.models||[]).filter(m=>m.reasoningScore!=null&&m.knowledgeScore!=null);
