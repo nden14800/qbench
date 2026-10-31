@@ -11,8 +11,8 @@ Independent AI benchmark leaderboards and model-performance analysis.
 | Measure | Count |
 |---|---:|
 | Unique model names across imported datasets | 165 |
-| Model configurations (model + configuration + harness) | 325 |
-| Published result rows | 505 |
+| Model configurations (model + configuration + harness) | 330 |
+| Published result rows | 507 |
 | Datasets with model-level results | 20 |
 | Providers | 31 |
 | Benchmark directory entries | 46 |
