@@ -19,7 +19,7 @@ The external composite uses the exact model-name intersection across five benchm
 
 Each family contributes 20%. Source-published 0–100 values are retained. The composite is the arithmetic mean of those five family scores. Missing results are not imputed and model aliases are not inferred.
 
-The GPQA Pareto chart uses only source-reported GPQA accuracy and cost-per-question values. The benchmark explorer preserves each dataset's full available source cohort; the composite remains restricted to exact-name matches. SWE-bench Pro V2 and SWE-bench Verified are displayed as separate coding references because their model coverage does not match the composite cohort.
+The GPQA Pareto chart uses only source-reported GPQA accuracy and cost-per-question values. The benchmark explorer preserves each stored source snapshot; some public boards expose more configurations than this curated snapshot. The composite remains restricted to exact-name matches. SWE-bench Pro V2 and SWE-bench Verified are displayed as separate coding references because their model coverage does not match the composite cohort.
 
 ## Data provenance and interpretation
 
