@@ -34,7 +34,6 @@ A provisional value is coverage-limited: it is not directly equivalent to a scor
 
 | Domain | Evaluation | Valid unique models | Source / caveat |
 |---|---|---:|---|
-| Knowledge Work | OSWorld 2.0 | 16 | Self-reported aggregate mirrored by llm-stats.com; snapshot 2026-10-26 |
 | Knowledge Work | GDPval (wins or ties) | 8 | OpenAI-published headline values; exactly meets the 8-model minimum |
 | Coding | Terminal-Bench 4.0 | 59 | Vals AI third-party evaluation using Mini-SWE-agent; snapshot 2026-10-29 |
 | Coding | SWE-Bench Pro (public set) | 20 | Scale AI public set; 5 uncertain rows are excluded |
@@ -43,18 +42,19 @@ A provisional value is coverage-limited: it is not directly equivalent to a scor
 | General | ARC-AGI-3 | 24 | BenchLM mirror of ARC Prize semi-private scores; not an official public leaderboard extract |
 | General | LiveBench 2.0 | 31 | 6 publisher-reported rows and 25 explicitly labelled secondary-mirror rows |
 
-The Science domain currently has only one eligible evaluation and is therefore the least stable domain.
+Knowledge Work and Science currently have only one eligible evaluation each. They are therefore the least stable domains; provisional scores that omit domains should be interpreted cautiously.
 
 ### Coverage snapshot — 2026-10-31
 
-- **18 formal ranks**
-- **36 provisional Index values** (2+ eligible evaluations, but rank-coverage requirements not met)
-- **45 single-evaluation models** (shown without a composite Index)
-- **99 models** with at least one result in an Index-eligible evaluation
-- **8 eligible evaluations** across the four domains
+- **17 formal ranks**
+- **37 provisional Index values** (2+ eligible evaluations, but rank-coverage requirements not met)
+- **44 single-evaluation models** (shown without a composite Index)
+- **98 models** with at least one result in an Index-eligible evaluation
+- **7 eligible evaluations** across the four domains
 
 ### Excluded or tracked separately
 
+- **OSWorld 2.0:** 16 LLM Stats secondary aggregate rows are retained for reference but excluded from the composite. The 0–1 values do not identify whether they represent binary completion or partial reward; Epoch AI documents these as separate metrics. QBench will not mix them until the official binary-accuracy export is verified.
 - **ProofBench 1.1:** retained as a standalone benchmark, not in the composite. The Vals AI third-party evaluator leaderboard has 54 model rows; the top four are at 100%, so it is marked ceiling-watch rather than used to influence the index.
 - **FrontierMath Tiers 1–3:** retained separately as ceiling-watch; it is not in the current composite.
 - **GPQA Diamond, SWE-bench Verified, SWE-Bench Pro V2 Full and ARC-AGI-2:** retained in the benchmark directory and excluded from the composite under the current ceiling-watch policy.
@@ -93,7 +93,7 @@ Counts come from the checked-in `data/external-benchmarks.json`. A model may hav
 - CSV export and light/dark themes.
 - Responsive dashboard without horizontal overflow in the main Index table.
 
-Built with Bootstrap 5.3.3, Bootstrap Icons 1.13.1 and ECharts 6.1.0 (`vendor/echarts.min.js`). Fonts: Inter, DM Sans, IBM Plex Mono and Noto Sans JP.
+Built with Bootstrap 5.3.3, Bootstrap Icons 1.13.1 and ECharts 6.1.0 (`vendor/echarts.min.js`). Fonts: DM Sans and Zen Kaku Gothic New for body text, Zen Old Mincho for Japanese display headings, and IBM Plex Mono for numeric data.
 
 ## Sources and verification
 
@@ -102,6 +102,7 @@ Built with Bootstrap 5.3.3, Bootstrap Icons 1.13.1 and ECharts 6.1.0 (`vendor/ec
 - [LiveBench 2.0](https://livebench.ai/)
 - [BenchLeader — LiveBench 2.0 global mirror](https://www.benchleader.com/benchmarks/livebench2_global)
 - [Scale AI — HLE-Diamond](https://labs.scale.com/leaderboard/hle-diamond)
+- [Epoch AI — OSWorld 2.0 methodology](https://epoch.ai/benchmarks/osworld-2) — documents binary accuracy separately from partial reward; the secondary aggregate is excluded until its metric is verified.
 - [ARC Prize — ARC-AGI-3](https://arcprize.org/arc-agi-3)
 - [Artificial Analysis methodology](https://artificialanalysis.ai/methodology/intelligence-benchmarking) — taxonomy reference only; AA values and internal weights are not copied.
 
