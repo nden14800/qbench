@@ -55,9 +55,9 @@ An independent, percentile-based index with four categories at equal weight (Kno
 | Metric | Current snapshot |
 |---|---:|
 | Benchmark datasets with model values | 22 |
-| Model-result / configuration rows | 654 |
-| Exact model names | 157 |
-| Model + configuration + harness combinations | 518 |
+| Model-result / configuration rows | 655 |
+| Exact model names | 158 |
+| Model + configuration + harness combinations | 519 |
 | Provider labels | 27 |
 | Benchmark directory entries | 74 |
 

@@ -5950,6 +5950,17 @@
           "source": "https://llm-stats.com/benchmarks/osworld-2.0",
           "sourceType": "mirror",
           "snapshotDate": "2026-10-26"
+        },
+        {
+          "model": "Qwen3.8 Flash",
+          "provider": "Qwen",
+          "score": 19.4,
+          "configuration": "llm-stats aggregate (self-reported)",
+          "harness": "llm-stats aggregate (self-reported)",
+          "evidence": "llm-stats OSWorld 2.0 page, last updated 2026-10-31 (17 rows; this row is the Qwen3.8 Flash entry; no per-row date or harness shown)",
+          "source": "https://llm-stats.com/benchmarks/osworld-2.0",
+          "sourceType": "mirror",
+          "snapshotDate": "2026-10-31"
         }
       ]
     },
