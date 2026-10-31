@@ -55,7 +55,7 @@ The Science domain currently has only one eligible evaluation and is therefore t
 
 ### Excluded or tracked separately
 
-- **ProofBench 1.1:** retained as a standalone benchmark, not in the composite. The Vals AI leaderboard has 54 model rows; the top four are at 100%, so it is marked ceiling-watch rather than used to influence the index.
+- **ProofBench 1.1:** retained as a standalone benchmark, not in the composite. The Vals AI third-party evaluator leaderboard has 54 model rows; the top four are at 100%, so it is marked ceiling-watch rather than used to influence the index.
 - **FrontierMath Tiers 1–3:** retained separately as ceiling-watch; it is not in the current composite.
 - **GPQA Diamond, SWE-bench Verified, SWE-Bench Pro V2 Full and ARC-AGI-2:** retained in the benchmark directory and excluded from the composite under the current ceiling-watch policy.
 - AA-only evaluations without non-AA model values remain in the directory as definitions/source references, not as fabricated model scores.
@@ -65,7 +65,7 @@ The Science domain currently has only one eligible evaluation and is therefore t
 QBench keeps benchmark costs separate because they measure different things.
 
 - **Terminal-Bench 4.0 — Cost / Test:** all 59 Vals AI model rows include publisher-listed Cost / Test, Tokens / Test and Duration / Test where available. This is the cost of a full benchmark test, not a universal task cost.
-- **ProofBench 1.1 — Cost / Test:** the 54 Vals AI publisher rows include the same evaluation-specific metrics where reported.
+- **ProofBench 1.1 — Cost / Test:** the 54 Vals AI third-party evaluation rows include the same evaluation-specific metrics where reported.
 - **LiveBench 2.0 — Cost per successful task:** the first six model rows and costs come from the publisher's leaderboard. The remaining 25 model scores are explicitly attributed to the BenchLeader mirror; no publisher cost is invented for them.
 - **API token-price proxy:** the Index scatter chart uses a separate provider list-price estimate based on equal input/output token volume. It is not a benchmark cost, not cost per task and not an Index component.
 
