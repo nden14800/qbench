@@ -658,8 +658,8 @@ function renderModelDetail(id){
 }
 
 function csvOut(){
- var head=['variant_id','model','effort','provider','index_1_3','raw_family_mean','evidence_factor','benchmark_coverage','family_coverage','ranked','api_input_price','api_output_price','price_currency','price_source'].concat(RESULT.domains).join(',');
- var lines=RESULT.rows.map(function(r){return [JSON.stringify(r.variantId),JSON.stringify(r.model),JSON.stringify(r.effort),JSON.stringify(r.provider),fmt(r.index,2),fmt(r.rawIndex,2),fmt(r.evidenceFactor,3),r.coverage,r.domainCount,r.ranked,fmt(r.priceInput,6),fmt(r.priceOutput,6),JSON.stringify(r.priceCurrency),JSON.stringify(r.priceSource)].concat(RESULT.domains.map(function(d){return fmt(r.domains[d],2);})).join(',');});
+ var head=['rank','variant_id','model','effort','provider','index_1_3','raw_family_mean','evidence_factor','benchmark_coverage','family_coverage','ranked','api_input_price','api_output_price','price_currency','price_source'].concat(RESULT.domains).join(',');
+ var lines=RESULT.rows.map(function(r){return [r.ranked?r.rank:'',JSON.stringify(r.variantId),JSON.stringify(r.model),JSON.stringify(r.effort),JSON.stringify(r.provider),fmt(r.index,2),fmt(r.rawIndex,2),fmt(r.evidenceFactor,3),r.coverage,r.domainCount,r.ranked,fmt(r.priceInput,6),fmt(r.priceOutput,6),JSON.stringify(r.priceCurrency),JSON.stringify(r.priceSource)].concat(RESULT.domains.map(function(d){return fmt(r.domains[d],2);})).join(',');});
  var blob=new Blob([head+'\n'+lines.join('\n')],{type:'text/csv'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='qbench-index-1.3.csv';a.click();
 }
 /* ---------- benchmarks ---------- */
