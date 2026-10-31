@@ -483,14 +483,22 @@ function renderIndex(){
 
 var ECH={};
 function chartInit(id){
-  var el=document.getElementById(id); if(!el) return null;
+  var el=document.getElementById(id);if(!el)return null;
   var cur=ECH[id];
-  if(cur&&(cur.getDom()!==el||cur.isDisposed())){ if(!cur.isDisposed()) cur.dispose(); cur=null; }
-  if(!cur){ cur=echarts.init(el,null,{renderer:'svg'}); ECH[id]=cur; }
+  if(cur&&(cur.getDom()!==el||cur.isDisposed())){if(!cur.isDisposed())cur.dispose();cur=null;}
+  if(!cur){
+    var family=getComputedStyle(document.body).fontFamily||'DM Sans, Zen Kaku Gothic New, sans-serif';
+    cur=echarts.init(el,{textStyle:{fontFamily:family,fontSize:12}}, {renderer:'svg'});
+    ECH[id]=cur;
+  }
   return cur;
 }
 window.addEventListener('resize',function(){Object.keys(ECH).forEach(function(k){if(ECH[k]&&!ECH[k].isDisposed())ECH[k].resize();});});
-function axisStyle(p){return {axisLabel:{color:p.muted,fontSize:11},axisLine:{lineStyle:{color:p.grid}},splitLine:{lineStyle:{color:p.grid}}};}
+if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){Object.keys(ECH).forEach(function(k){if(ECH[k]&&!ECH[k].isDisposed())ECH[k].resize();});});}
+function axisStyle(p){
+  var family=getComputedStyle(document.body).fontFamily||'DM Sans, Zen Kaku Gothic New, sans-serif';
+  return {axisLabel:{color:p.muted,fontSize:11,fontFamily:family},axisLine:{lineStyle:{color:p.grid}},splitLine:{lineStyle:{color:p.grid}}};
+}
 function emptyChart(host,msg){host.innerHTML='<div class="empty-qb">'+esc(msg)+'</div>';}
 
 function renderComposition(host){
@@ -568,20 +576,21 @@ function renderHeatmap(host){
 
 function renderDistribution(host){
   var rows=RESULT.rows.filter(function(r){return r.ranked&&r.index!=null;});
-  if(!rows.length){emptyChart(host,'No provisional Index values yet.');return;}
-  var p=pal(),labels=[],rankedBins=[],provisionalBins=[];
-  for(var i=0;i<10;i++){labels.push((i*10)+'–'+((i+1)*10));rankedBins.push(0);provisionalBins.push(0);}
-  rows.forEach(function(r){var bin=Math.max(0,Math.min(9,Math.floor(r.index/10)));if(r.ranked)rankedBins[bin]++;else provisionalBins[bin]++;});
-  host.innerHTML='<div id="chart-main-el" style="height:360px"></div><div class="chart-legend"><span><i style="background:'+p.c[0]+'"></i>Formal ranks</span><span><i style="background:'+p.c[2]+'"></i>Provisional</span></div><div class="notice-qb">Distribution of two-or-more-evaluation Index values. Provisional values have incomplete domain coverage and are not ranks.</div>';
+  if(!rows.length){emptyChart(host,'No ranked models yet.');return;}
+  var p=pal(),labels=[],bins=[];
+  for(var i=0;i<10;i++){labels.push((i*10)+'–'+((i+1)*10));bins.push(0);}
+  rows.forEach(function(r){var bin=Math.max(0,Math.min(9,Math.floor(r.index/10)));bins[bin]++;});
+  host.innerHTML='<div id="chart-main-el" style="height:360px"></div><div class="notice-qb">Distribution of the evidence-adjusted Index scores for all ranked models.</div>';
   var c=chartInit('chart-main-el');if(!c)return;
-  c.setOption({animation:false,grid:{left:48,right:18,top:18,bottom:48},tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},xAxis:Object.assign({type:'category',data:labels,name:'Index band'},axisStyle(p)),yAxis:Object.assign({type:'value',minInterval:1,name:'Models'},axisStyle(p)),series:[{name:'Formal ranks',type:'bar',stack:'total',barWidth:28,itemStyle:{color:p.c[0]},data:rankedBins},{name:'Provisional',type:'bar',stack:'total',barWidth:28,itemStyle:{color:p.c[2]},data:provisionalBins}]},true);
+  c.setOption({animation:false,grid:{left:48,right:18,top:18,bottom:48},tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},xAxis:Object.assign({type:'category',data:labels,name:'Index band'},axisStyle(p)),yAxis:Object.assign({type:'value',minInterval:1,name:'Models'},axisStyle(p)),series:[{name:'Ranked models',type:'bar',barWidth:28,itemStyle:{color:p.c[0]},data:bins}]},true);
 }
+
 function renderCoverage(host){
   var evs=RESULT.evals.slice().sort(function(a,b){return b.unique-a.unique;});
   if(!evs.length){emptyChart(host,'No eligible evaluation.');return;}
   var p=pal();
   host.innerHTML='<div id="chart-main-el" style="height:'+(evs.length*34+90)+'px"></div>'+
-    '<div class="notice-qb">Unique models with a non-AA result in each eligible evaluation. The dashed line marks the 12-model minimum. Evaluations are included only when they meet it.</div>';
+    '<div class="notice-qb">Unique models with a source-verified result in each eligible evaluation. The dashed line marks the 12-model minimum. Evaluations are included only when they meet it.</div>';
   var c=chartInit('chart-main-el');
   c.setOption({animation:false,grid:{left:230,right:50,top:8,bottom:24},
     tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
@@ -590,7 +599,7 @@ function renderCoverage(host){
     series:[{type:'bar',barWidth:16,label:{show:true,position:'right',color:p.ink,fontSize:11},
       itemStyle:{borderRadius:[0,4,4,0]},
       data:evs.map(function(e){return {value:e.unique,itemStyle:{color:p.c[RESULT.domains.indexOf(e.domain)%4]||p.accent,borderRadius:[0,4,4,0]}};}),
-      markLine:{symbol:'none',silent:true,label:{formatter:'minimum 8',color:p.muted,fontSize:11},lineStyle:{type:'dashed',color:p.muted},data:[{xAxis:12}]}}]
+      markLine:{symbol:'none',silent:true,label:{formatter:'minimum 12',color:p.muted,fontSize:11},lineStyle:{type:'dashed',color:p.muted},data:[{xAxis:12}]}}]
   },true);
 }
 
@@ -682,10 +691,10 @@ function csvOut(){
 
 function benchStatus(id){
   var b=RESULT.byId[id]||{}, n=new Set((b.models||[]).filter(function(m){return m.uncertain!==true&&scoreOf(m)!==null;}).map(function(m){return m.model;})).size;
-  if(RESULT.evals.some(function(e){return e.id===id;}))return {t:'In index',c:'text-bg-success',n:n};
+  if(RESULT.evals.some(function(e){return e.id===id;}))return {t:'In Index 1.2',c:'text-bg-success',n:n};
   if(!n)return {t:'No verified results',c:'text-bg-warning',n:0};
   if(b.indexEligible!==true)return {t:'Not in index',c:'text-bg-danger',n:n};
-  return {t:'Below 8-model minimum',c:'text-bg-warning',n:n};
+  return {t:'Below 12-model minimum',c:'text-bg-warning',n:n};
 }
 function renderBenchGrid(){
   var list=(DATA.benchmarks||[]).slice().sort(function(a,b){
