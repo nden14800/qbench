@@ -11,7 +11,7 @@ Independent AI benchmark leaderboards and model-performance analysis.
 | Measure | Count |
 |---|---:|
 | Unique model names across imported datasets | 176 |
-| Model configurations (model + configuration + harness) | 362 |
+| Model configurations (model + configuration + harness) | 531 |
 | Published result rows | 549 |
 | Datasets with model-level results | 21 |
 | Provider labels | 34 |
@@ -19,7 +19,7 @@ Independent AI benchmark leaderboards and model-performance analysis.
 
 Counts are derived from data/external-benchmarks.json. A result row is not necessarily a unique model: a source may publish several reasoning efforts, harnesses, or routing configurations for one model. Individual benchmark leaderboards retain the source rows; the main leaderboard groups each model once and shows its best reported configuration. CSV export retains the raw rows.
 
-## QBench Composite Index 3.0
+## QBench Composite Index 3.5
 
 QBench Index 3.0 references the **nine evaluation components, four categories, and published component weights** used by Artificial Analysis Intelligence Index v5. QBench applies its own eligibility rules, percentile normalization, and aggregation; it does not reproduce AA's native score or interface.
 
@@ -76,7 +76,7 @@ ARC-AGI-3 public competition standings are team/system submissions, not a compar
 
 ## Supplementary score imports
 
-- **AA-Omniscience v1.1 Accuracy:** 40 third-party Benchmark Atlas results from 2026-10-27. This is accuracy-only; the paired hallucination-rate measure is absent, so it is not a substitute for the full AA component and is excluded from QBench Composite Index 3.0.
+- **AA-Omniscience v1.1 Accuracy:** 40 third-party Benchmark Atlas results from 2026-10-27. This is accuracy-only; the paired hallucination-rate measure is absent, so it is not a substitute for the full AA component and is excluded from QBench Composite Index 3.5.
 - **GDP.pdf:** three published all-pass results imported from the official Artificial Analysis evaluation page (32.6%, 32.2%, 32.0%). The page lists 28 of 238 models and states that no public API is available; this is a top-three summary, not a complete leaderboard.
 
 ## Model explorer and analytics
