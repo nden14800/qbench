@@ -12784,13 +12784,14 @@
     "currentDiagnostics": {
       "snapshotAsOf": "2026-10-31",
       "eligibleEvaluationCount": 7,
-      "modelsWithEligibleResults": null,
-      "rankedVariants": null,
-      "fullEvidenceVariants": null,
-      "broadEvidenceVariants": null,
-      "limitedEvidenceVariants": null,
-      "insufficientEvidenceVariants": null,
-      "note": "Recomputed by the Index 1.3 runtime from exact model/effort variants; diagnostic counts are generated from the current dataset, not manually entered."
+      "modelsWithEligibleResults": 114,
+      "totalVariants": 140,
+      "rankedVariants": 18,
+      "fullEvidenceVariants": 0,
+      "broadEvidenceVariants": 8,
+      "limitedEvidenceVariants": 10,
+      "insufficientEvidenceVariants": 122,
+      "note": "Recomputed at runtime from exact model/effort variants and source-reported scores."
     },
     "supplementaryInputsExcluded": [
       "aa-omniscience-v1-1-accuracy-atlas"
@@ -13046,7 +13047,19 @@
           "snapshotDate": "2026-10-31"
         }
       ],
-      "method": "QBench Index 1.3 uses source-reported percentage-point performance rather than within-cohort percentiles. Each exact model/effort variant is scored separately. Evaluations are averaged within six capability families, and observed families are weighted equally. Ranking requires at least three eligible evaluations across three distinct families. Missing values are not imputed."
+      "method": "QBench Index 1.3 uses source-reported percentage-point performance rather than within-cohort percentiles. Each exact model/effort variant is scored separately. Evaluations are averaged within six capability families, and observed families are weighted equally. Ranking requires at least three eligible evaluations across three distinct families. Missing values are not imputed.",
+      "currentDiagnostics": {
+        "snapshotAsOf": "2026-10-31",
+        "eligibleEvaluationCount": 7,
+        "modelsWithEligibleResults": 114,
+        "totalVariants": 140,
+        "rankedVariants": 18,
+        "fullEvidenceVariants": 0,
+        "broadEvidenceVariants": 8,
+        "limitedEvidenceVariants": 10,
+        "insufficientEvidenceVariants": 122,
+        "note": "Recomputed at runtime from exact model/effort variants and source-reported scores."
+      }
     },
     "minimumEvaluationsPerModel": 3,
     "minimumDomainsPerModel": 3,
