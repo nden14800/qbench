@@ -22,7 +22,7 @@
       "estimated": false,
       "costPerTaskUSD": 2.3452525606205166,
       "costBreakdown": {
-        "input": 2.0388757907717157,
+        "input": 0.00438336290000052,
         "cacheRead": 1.5337544881906702,
         "cacheWrite": 0.5007379396810452,
         "reasoning": 0.2157499165999972,
@@ -64,7 +64,7 @@
       "estimated": false,
       "costPerTaskUSD": 1.3519575079737436,
       "costBreakdown": {
-        "input": 1.1443720391412127,
+        "input": 0.004704291749999978,
         "cacheRead": 0.9742392439984202,
         "cacheWrite": 0.16542850339279258,
         "reasoning": 0.13718896131267277,
@@ -106,7 +106,7 @@
       "estimated": false,
       "costPerTaskUSD": 0.25718036275876155,
       "costBreakdown": {
-        "input": 0.15184673980561877,
+        "input": 0.0008283924239999851,
         "cacheRead": 0.04275142965643572,
         "cacheWrite": 0.10826691772518307,
         "reasoning": 0.07505781043888415,
@@ -148,7 +148,7 @@
       "estimated": false,
       "costPerTaskUSD": 6.244666943602518,
       "costBreakdown": {
-        "input": 3.6460069947806435,
+        "input": 0.08150246549999984,
         "cacheRead": 2.1747247960716,
         "cacheWrite": 1.3897797332090436,
         "reasoning": 1.7879848417442221,
@@ -190,7 +190,7 @@
       "estimated": false,
       "costPerTaskUSD": 10.036409719512749,
       "costBreakdown": {
-        "input": 6.569951348193785,
+        "input": 0.035678110404352203,
         "cacheRead": 4.738378412876434,
         "cacheWrite": 1.795894824912998,
         "reasoning": 2.409395982770641,
@@ -232,7 +232,7 @@
       "estimated": false,
       "costPerTaskUSD": 2.0176680435839316,
       "costBreakdown": {
-        "input": 1.7352976738551713,
+        "input": 0.007957660124999988,
         "cacheRead": 1.0957844371250107,
         "cacheWrite": 0.6315555766051606,
         "reasoning": 0.1372583567281079,
@@ -274,7 +274,7 @@
       "estimated": false,
       "costPerTaskUSD": 12.993997201178466,
       "costBreakdown": {
-        "input": 7.215193678976741,
+        "input": 0.08806242729686797,
         "cacheRead": 3.7021932160905138,
         "cacheWrite": 3.424938035589359,
         "reasoning": 3.487900912193839,
@@ -316,7 +316,7 @@
       "estimated": false,
       "costPerTaskUSD": 3.185145018337793,
       "costBreakdown": {
-        "input": 2.9829052930508153,
+        "input": 0.0005833773450003576,
         "cacheRead": 1.8567356990981327,
         "cacheWrite": 1.1255862166076824,
         "reasoning": 0.13616195772853854,
@@ -358,7 +358,7 @@
       "estimated": false,
       "costPerTaskUSD": 7.511769586408455,
       "costBreakdown": {
-        "input": 6.953952547798568,
+        "input": 0.011708471199999515,
         "cacheRead": 4.45458684021329,
         "cacheWrite": 2.487657236385279,
         "reasoning": 0.32341162152706654,
@@ -400,7 +400,7 @@
       "estimated": false,
       "costPerTaskUSD": 3.6812002895742055,
       "costBreakdown": {
-        "input": 2.958810587259056,
+        "input": 0.016748667699999942,
         "cacheRead": 2.1020636936657997,
         "cacheWrite": 0.8399982258932563,
         "reasoning": 0.4422975523008582,
@@ -442,7 +442,7 @@
       "estimated": false,
       "costPerTaskUSD": 0.28440671352465285,
       "costBreakdown": {
-        "input": 0.24331609700587142,
+        "input": 0.0007632284200000117,
         "cacheRead": 0.2054197473514638,
         "cacheWrite": 0.037133121234407616,
         "reasoning": 0.02632018095645423,
@@ -484,7 +484,7 @@
       "estimated": false,
       "costPerTaskUSD": 0.15195575732105837,
       "costBreakdown": {
-        "input": 0.11430773113823903,
+        "input": 0.0008148386949999864,
         "cacheRead": 0.08963626960255419,
         "cacheWrite": 0.023856622840684842,
         "reasoning": 0.028781102766303218,
@@ -526,7 +526,7 @@
       "estimated": false,
       "costPerTaskUSD": 0.41100741536816304,
       "costBreakdown": {
-        "input": 0.2980244355101784,
+        "input": 0.0008875963900000783,
         "cacheRead": 0.23252235946317396,
         "cacheWrite": 0.06461447965700437,
         "reasoning": 0.08640723861076245,
@@ -568,7 +568,7 @@
       "estimated": false,
       "costPerTaskUSD": 7.766006178152514,
       "costBreakdown": {
-        "input": 7.394983000430598,
+        "input": 0.0031013271375002205,
         "cacheRead": 0.36404810993927716,
         "cacheWrite": 7.027833563353821,
         "reasoning": 0.22525225162166942,
@@ -610,7 +610,7 @@
       "estimated": false,
       "costPerTaskUSD": 7.755545745286556,
       "costBreakdown": {
-        "input": 5.300189827800433,
+        "input": 0.04702803579999948,
         "cacheRead": 2.0391456408266344,
         "cacheWrite": 3.214016151173799,
         "reasoning": 1.4435571315365638,
@@ -652,7 +652,7 @@
       "estimated": false,
       "costPerTaskUSD": 3.5295494751410654,
       "costBreakdown": {
-        "input": 3.2001430836141562,
+        "input": 0.00317031522500022,
         "cacheRead": 1.1806566654988,
         "cacheWrite": 2.016316102890356,
         "reasoning": 0.21709330076695815,
@@ -694,7 +694,7 @@
       "estimated": false,
       "costPerTaskUSD": 0.961108031081634,
       "costBreakdown": {
-        "input": 0.6616922074921133,
+        "input": 0.008150324749999993,
         "cacheRead": 0.4264246328151169,
         "cacheWrite": 0.22711724992699645,
         "reasoning": 0.19680942126498924,
@@ -736,7 +736,7 @@
       "estimated": false,
       "costPerTaskUSD": 10.023891571541945,
       "costBreakdown": {
-        "input": 8.999127802457068,
+        "input": 0.013420322099999993,
         "cacheRead": 5.668969038896941,
         "cacheWrite": 3.316738441460127,
         "reasoning": 0.7181857800531934,
@@ -778,7 +778,7 @@
       "estimated": false,
       "costPerTaskUSD": 10.020621343395753,
       "costBreakdown": {
-        "input": 7.166750209890859,
+        "input": 0.017801421599999756,
         "cacheRead": 4.879029232925522,
         "cacheWrite": 2.2699195553653375,
         "reasoning": 2.0636169402177984,
@@ -820,7 +820,7 @@
       "estimated": false,
       "costPerTaskUSD": 1.2720632679446995,
       "costBreakdown": {
-        "input": 0.5938263505669177,
+        "input": 0.016300453699999995,
         "cacheRead": 0.25176175122452343,
         "cacheWrite": 0.3257641456423942,
         "reasoning": 0.4921293730141594,
@@ -904,7 +904,7 @@
       "estimated": false,
       "costPerTaskUSD": 5.009264601719954,
       "costBreakdown": {
-        "input": 4.485723980393173,
+        "input": 0.0024806817699998263,
         "cacheRead": 4.134167531076821,
         "cacheWrite": 0.34907576754635206,
         "reasoning": 0.3730129371756562,
@@ -946,7 +946,7 @@
       "estimated": false,
       "costPerTaskUSD": 0.49097067348453205,
       "costBreakdown": {
-        "input": 0.408064858506196,
+        "input": 0.0012120177525000164,
         "cacheRead": 0.29524324450332606,
         "cacheWrite": 0.11160959625036992,
         "reasoning": 0.06176434914202647,
@@ -988,7 +988,7 @@
       "estimated": false,
       "costPerTaskUSD": 0.5565160431921087,
       "costBreakdown": {
-        "input": 0.5096911284041099,
+        "input": 0.0009502120350000087,
         "cacheRead": 0.22696879866924946,
         "cacheWrite": 0.2817721176998604,
         "reasoning": 0.032286230877171924,
@@ -1066,7 +1066,7 @@
       "estimated": false,
       "costPerTaskUSD": 2.061496607384404,
       "costBreakdown": {
-        "input": 1.8894000441742524,
+        "input": 0.00450062784500016,
         "cacheRead": 0.7818236978724986,
         "cacheWrite": 1.1030757184567537,
         "reasoning": 0.11445076319444966,
@@ -1108,7 +1108,7 @@
       "estimated": false,
       "costPerTaskUSD": 0.60210514783598,
       "costBreakdown": {
-        "input": 0.43535110077222494,
+        "input": 0.0011532057599999979,
         "cacheRead": 0.1782037281167598,
         "cacheWrite": 0.2559941668954651,
         "reasoning": 0.10873805404567916,
@@ -1150,7 +1150,7 @@
       "estimated": false,
       "costPerTaskUSD": 6.9520364786062245,
       "costBreakdown": {
-        "input": 5.030774496770688,
+        "input": 0.02532936079999981,
         "cacheRead": 3.790413332177666,
         "cacheWrite": 1.2150318037930221,
         "reasoning": 1.17168848347864,
