@@ -9151,7 +9151,8 @@
           "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
           "sourceType": "publisher",
           "snapshotDate": "2026-10-31",
-          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2."
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2.",
+          "originalModelName": "Opus 5"
         },
         {
           "model": "Claude Fable 5.1",
@@ -9162,7 +9163,8 @@
           "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
           "sourceType": "publisher",
           "snapshotDate": "2026-10-31",
-          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2."
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2.",
+          "originalModelName": "Fable 5.1"
         },
         {
           "model": "Gemini 4 Argon",
@@ -9173,7 +9175,8 @@
           "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
           "sourceType": "publisher",
           "snapshotDate": "2026-10-31",
-          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2."
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2.",
+          "originalModelName": "Gemini 4 Argon"
         },
         {
           "model": "GPT-6 Astra",
@@ -9184,7 +9187,8 @@
           "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
           "sourceType": "publisher",
           "snapshotDate": "2026-10-31",
-          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2."
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2.",
+          "originalModelName": "GPT-6 Astra"
         },
         {
           "model": "Muse Wonder 1.0",
@@ -9195,7 +9199,8 @@
           "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
           "sourceType": "publisher",
           "snapshotDate": "2026-10-31",
-          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2."
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2.",
+          "originalModelName": "Muse Wonder 1.0"
         },
         {
           "model": "Kimi K3",
@@ -9206,7 +9211,8 @@
           "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
           "sourceType": "publisher",
           "snapshotDate": "2026-10-31",
-          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2."
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2.",
+          "originalModelName": "Kimi-K3"
         },
         {
           "model": "Claude Sonnet 5",
@@ -9217,7 +9223,8 @@
           "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
           "sourceType": "publisher",
           "snapshotDate": "2026-10-31",
-          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2."
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2.",
+          "originalModelName": "Sonnet 5"
         },
         {
           "model": "GPT-5.6 Terra",
@@ -9228,7 +9235,8 @@
           "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
           "sourceType": "publisher",
           "snapshotDate": "2026-10-31",
-          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2."
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2.",
+          "originalModelName": "GPT-5.6 Terra"
         },
         {
           "model": "GLM 5.3",
@@ -9239,7 +9247,8 @@
           "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
           "sourceType": "publisher",
           "snapshotDate": "2026-10-31",
-          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2."
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2.",
+          "originalModelName": "GLM-5.3"
         },
         {
           "model": "GPT-5.6 Sol",
@@ -9250,7 +9259,8 @@
           "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
           "sourceType": "publisher",
           "snapshotDate": "2026-10-31",
-          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2."
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2.",
+          "originalModelName": "GPT-5.6 Sol"
         },
         {
           "model": "Muse Spark Open",
@@ -9261,7 +9271,8 @@
           "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
           "sourceType": "publisher",
           "snapshotDate": "2026-10-31",
-          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2."
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2.",
+          "originalModelName": "Muse Spark Open"
         },
         {
           "model": "Claude Sonnet 5.5",
@@ -9272,7 +9283,8 @@
           "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
           "sourceType": "publisher",
           "snapshotDate": "2026-10-31",
-          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2."
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2.",
+          "originalModelName": "Sonnet 5.5"
         },
         {
           "model": "Gemini 3.8 Flash",
@@ -9283,7 +9295,8 @@
           "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
           "sourceType": "publisher",
           "snapshotDate": "2026-10-31",
-          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2."
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2.",
+          "originalModelName": "Gemini 3.8 Flash"
         },
         {
           "model": "Inkling",
@@ -9294,7 +9307,8 @@
           "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
           "sourceType": "publisher",
           "snapshotDate": "2026-10-31",
-          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2."
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2.",
+          "originalModelName": "Inkling"
         },
         {
           "model": "Claude Haiku 5.5",
@@ -9306,7 +9320,9 @@
           "sourceType": "publisher",
           "snapshotDate": "2026-10-31",
           "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2.",
-          "standardError": 13.01
+          "originalModelName": "Haiku 5.5",
+          "scoreUncertainty": 13.01,
+          "scoreUncertaintyNote": "Publisher-reported ±13.01; the leaderboard uses confidence-interval bounds for its upper-bound rank."
         },
         {
           "model": "Claude Haiku 4.5",
@@ -9317,7 +9333,8 @@
           "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
           "sourceType": "publisher",
           "snapshotDate": "2026-10-31",
-          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2."
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2.",
+          "originalModelName": "Haiku 4.5"
         }
       ]
     }
