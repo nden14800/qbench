@@ -38,7 +38,7 @@ QBench Index 3.0 is aligned to the **nine evaluations, four categories, and offi
 | General (25%) | HLE-Diamond | 10% |
 | **Total** | **9 evaluations** | **100%** |
 
-The category weights and component weights mirror the AA v5 methodology. QBench's scoring procedure is intentionally separate:
+QBench uses the publicly documented AA v5 component weights as reference inputs. Its scoring procedure is intentionally separate:
 
 1. For each evaluation, retain the highest published score for each exact model name. Preserve its configuration and harness as provenance.
 2. Do not calculate percentiles for an evaluation with fewer than **8 unique model names**. Small leader summaries are not a reliable comparison pool.
@@ -73,6 +73,16 @@ ARC-AGI-3 public competition standings are team/system submissions, not a compar
 - Epoch AI MirrorCode: https://epoch.ai/benchmarks/mirrorcode
 - Epoch AI EBR-bench: https://epoch.ai/benchmarks/ebr-bench
 - Epoch AI DeepSWE review status: https://epoch.ai/benchmarks/deepswe
+
+## Model explorer and analytics
+
+- Search and filter the full imported model set (165 exact model names across 20 result datasets).
+- Expand a model to inspect each available native score, source URL, snapshot date, configuration, and harness.
+- Compare up to five models in a dataset-by-dataset matrix. Values keep each benchmark's native unit; missing results remain blank rather than being inferred.
+- Export the complete model-result table as CSV.
+- Inspect coverage with a model-by-benchmark heatmap (top 35 models by dataset coverage) and a distribution of benchmark counts per model.
+- Switch the selected benchmark chart between horizontal bars, rank curve, score histogram, metric scatter (only when a numeric auxiliary metric is published), and provider box plot (only when enough models are available per provider).
+- Review the composite with a ranked-score bar chart and four-category radar profile. The interface uses a separate QBench visual system and responsive layouts rather than reproducing the AA page.
 
 ## Benchmark data and interpretation
 
