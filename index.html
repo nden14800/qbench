@@ -57,7 +57,7 @@ body{font-size:16px;line-height:1.7}
   <div class="shell mast-inner">
     <a class="brand" href="#top" aria-label="QBench home"><img src="./favicon.svg" alt=""><span><span class="brand-name">QBench</span><span class="brand-tag">Independent benchmark intelligence</span></span></a>
     <nav class="nav" aria-label="Main navigation">
-      <a class="active" href="#qbench-index">QBench Index</a><a href="#expanded-index">Expanded Index</a><a href="#leaderboard">AA v5 suite</a><a href="#landscape">Analysis</a><a href="#benchmarks">Benchmarks</a><a href="#methodology">Methodology</a>
+      <a class="active" href="#qbench-index">QBench Index</a><a href="#benchmarks">Benchmarks</a><a href="#landscape">Analysis</a><a href="#methodology">Methodology</a>
     </nav>
     <div class="mast-actions"><span class="updated" id="updatedAt">DATA SNAPSHOT · 30 OCT 2026</span><button class="icon-btn mobile-menu" id="menuBtn" aria-label="Jump to benchmarks"><i class="bi bi-list"></i></button><button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode" title="Toggle dark mode"><i class="bi bi-moon-stars"></i></button></div>
   </div>
@@ -77,38 +77,28 @@ body{font-size:16px;line-height:1.7}
 
   <section id="qbench-index" class="qbench-index">
     <div class="section-head">
-      <div><h2>QBench Original Index 2.0</h2><p>既存のQBench独自スコアを維持。AA v5への置き換えではなく、従来の評価結果を引き続き比較できます。</p></div>
-      <span class="section-kicker">ORIGINAL SCORED INDEX · 4 DOMAINS</span>
+      <div><h2>QBench Index</h2><p>従来のQBenchスコアを維持。AA v5の9評価と独立ベンチマークも、下の一覧から同じ形式で確認できます。</p></div>
+      <span class="section-kicker">ORIGINAL SCORE · 10 MODELS</span>
     </div>
-    <div class="index-method-strip">
-      <div><strong>25%</strong><span>Coding & Agentic</span><small>LiveBench 2.0</small></div>
-      <div><strong>25%</strong><span>Scientific Reasoning</span><small>GPQA Diamond</small></div>
-      <div><strong>25%</strong><span>Mathematics & Proof</span><small>FrontierMath family + ProofBench</small></div>
-      <div><strong>25%</strong><span>Practical Execution</span><small>Furniture Assembly</small></div>
-    </div>
-    <div class="panel index-panel">
+        <div class="panel index-panel">
       <div class="panel-head">
-        <div><div class="panel-title">Original Index leaderboard</div><div class="panel-sub">従来と同じ完全一致コホート。欠損値の補完・モデル名の推測統合は行いません。</div></div>
+        <div><div class="panel-title">QBench Index leaderboard</div><div class="panel-sub">従来と同じ完全一致コホート。欠損値の補完・モデル名の推測統合は行いません。</div></div>
         <div class="toolbar">
           <input class="control search" id="indexSearch" type="search" placeholder="Search model" aria-label="Search original index models">
           <select class="control" id="indexProvider" aria-label="Filter original index by provider"><option value="all">All providers</option></select>
         </div>
       </div>
       <div class="table-wrap">
-        <table class="table index-table" aria-label="QBench Original Index leaderboard">
+        <table class="table index-table" aria-label="QBench Index leaderboard">
           <thead><tr><th>Rank / Model</th><th>Coding</th><th>Science</th><th>Math & Proof</th><th>Practical</th><th>QBench Index</th></tr></thead>
           <tbody id="originalIndexRows"><tr><td colspan="6" class="empty">Calculating original index…</td></tr></tbody>
         </table>
       </div>
       <div class="table-foot" id="originalIndexFoot">Original QBench Index score and calculation are retained.</div>
     </div>
-    <div class="index-chart-panel panel">
-      <div class="panel-head"><div><div class="panel-title">QBench Original Index · score ranking</div><div class="panel-sub">Four domain scores averaged equally · 0–100</div></div></div>
-      <div id="originalIndexChart" class="chart index-chart" role="img" aria-label="QBench Original Index model score ranking"></div>
-    </div>
-  </section>
+      </section>
 
-  <section id="expanded-index">
+  <section id="expanded-index" hidden>
     <div class="section-head"><div><h2>QBench Expanded Index</h2><p>AA Intelligence Index v5の9評価をすべて採用し、さらにAAにない未飽和の難関評価を加える新しい評価セット。</p></div><span class="section-kicker">AA v5 + QBENCH FRONTIER EXTENSIONS</span></div>
     <div class="expanded-summary">
       <div class="expanded-summary-main"><strong>9</strong><span>AA v5 core evaluations</span><small>公式の4領域・配点を維持</small></div>
@@ -118,7 +108,7 @@ body{font-size:16px;line-height:1.7}
     <div class="extension-grid" id="extensionCards"></div>
   </section>
 
-  <section id="leaderboard">
+  <section id="leaderboard" hidden>
     <div class="section-head"><div><h2>AA Intelligence Index v5 · common evaluation suite</h2><p>同じ9評価・4領域・25%均等配分。公開結果は原単位のまま掲載し、欠損値を埋めた総合点は作りません。</p></div><span class="section-kicker">9 EVALUATIONS / 4 DOMAINS</span></div>
     <div class="method-note" id="aaStatus">AA v5 methodology loading…</div>
     <div class="panel" style="margin-top:13px">
@@ -168,10 +158,10 @@ body{font-size:16px;line-height:1.7}
   </section>
 
   <section id="benchmarks">
-    <div class="section-head"><div><h2>Benchmark registry & explorer</h2><p>AA v5の9評価に加え、未飽和の数学・エージェント・コーディング・マルチモーダル評価を収録。</p></div><span class="section-kicker" id="catalogCount">30 EVALUATIONS</span></div>
+    <div class="section-head"><div><h2>All benchmarks</h2><p>AA v5の9評価と、独立した追加ベンチマークを同じ一覧にまとめています。</p></div><span class="section-kicker" id="catalogCount">44 EVALUATIONS</span></div>
     <div class="toolbar" style="margin-bottom:12px">
       <input class="control search" id="catalogSearch" type="search" placeholder="Search benchmark registry" aria-label="Search benchmarks">
-      <select class="control" id="catalogGroupFilter"><option value="all">All benchmark groups</option><option value="AA Index v5">AA Index v5</option><option value="Frontier extensions">Frontier extensions</option></select>
+      <select class="control" id="catalogGroupFilter"><option value="all">All benchmark groups</option><option value="AA Index v5">AA v5</option><option value="Independent benchmarks">Independent benchmarks</option></select>
       <select class="control" id="catalogStatusFilter"><option value="all">All statuses</option><option value="results-imported">Full result table imported</option><option value="leader-summary-imported">Leader summary only</option><option value="public-summary-only">Public summary only</option><option value="private-results">Private / unavailable</option><option value="research-pipeline">Research pipeline</option></select>
     </div>
     <div class="benchmark-list" id="benchmarkCards"></div>
@@ -181,7 +171,7 @@ body{font-size:16px;line-height:1.7}
       <div class="table-wrap"><table class="table" aria-label="Selected benchmark results"><thead id="benchmarkHead"></thead><tbody id="benchmarkRows"><tr><td class="empty">Loading…</td></tr></tbody></table></div>
       <div class="table-foot" id="benchmarkFoot"></div>
     </div>
-    <div class="section-head"><div><h2>Frontier research queue</h2><p>難度・信頼性・結果公開状況を確認しながら、次に取り込む評価を管理。</p></div><span class="section-kicker">NOT SCORED UNTIL VERIFIED</span></div>
+    <div class="section-head"><div><h2>Research watchlist</h2><p>公開結果の追加確認が必要な評価。</p></div><span class="section-kicker">NOT SCORED UNTIL VERIFIED</span></div>
     <div class="benchmark-list" id="benchmarkWatchlist"></div>
   </section>
 
