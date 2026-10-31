@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.6",
-  "note": "Snapshot 2026-10-31: 20 result datasets, 507 model-result rows, 165 unique model names, 330 model configurations, and 31 providers. QBench Index 3.0 mirrors the nine AA v5 evaluations and category weights; only datasets with at least eight unique model names enter percentile scoring. Four of nine meet that threshold. On the current eligible data, 29 models cover at least two categories; five meet the strict rank threshold and 24 remain coverage-only. FrontierMath Erdős, MirrorCode, and ARC-AGI-3 are monitored separately until comparable model-level coverage is available.",
+  "note": "Snapshot 2026-10-31: 20 result datasets, 507 model-result rows, 165 unique model names, 320 model configurations, and 31 providers. QBench Index 3.0 mirrors the nine AA v5 evaluations and category weights; only datasets with at least eight unique model names enter percentile scoring. Four of nine meet that threshold. On the current eligible data, 29 models cover at least two categories; five meet the strict rank threshold and 24 remain coverage-only. FrontierMath Erdős, MirrorCode, and ARC-AGI-3 are monitored separately until comparable model-level coverage is available.",
   "benchmarks": [
     {
       "id": "livebench-2.0",
