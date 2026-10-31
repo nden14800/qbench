@@ -9525,7 +9525,7 @@
   ],
   "composite": {
     "name": "QBench Composite Index",
-    "version": "1.0",
+    "version": "1.1",
     "snapshotAsOf": "2026-10-31",
     "basis": "Four equal-weight domains (Knowledge Work, Coding, Science, General), using AA's category structure only as a taxonomy reference. QBench applies its own public-evaluation percentile method and does not reproduce AA's per-evaluation weighting or native score.",
     "minimumModelsPerEvaluation": 8,
@@ -9587,16 +9587,17 @@
         "note": "HLE-Diamond is publisher-reported; ARC-AGI-3 and part of LiveBench 2.0 use secondary mirrors."
       }
     ],
-    "method": "QBench Composite Index 1.0 is independent of Artificial Analysis. Each eligible evaluation needs at least eight unique model names. Within an evaluation, the best published score per exact model name is converted to a midrank percentile. Each domain score is the equal average of the eligible evaluation percentiles available in that domain. The provisional Index is the equal average of the available domain scores. A formal rank requires at least four eligible evaluations spanning at least three of four domains. Models with two or more eligible results but insufficient coverage are shown as coverage-only and are not ranked. Missing scores are never imputed. QBench does not use AA's individual evaluation weights or AA values.",
+    "method": "QBench Composite Index 1.1 is independent of Artificial Analysis. Each eligible evaluation needs at least eight unique model names. Within an evaluation, the best published score per exact model name is converted to a midrank percentile. Each domain score is the equal average of eligible evaluation percentiles available in that domain. The provisional Index is the equal-weighted average of available domain scores. A model receives a published rank after at least three eligible evaluations across at least two of four domains; ranks that do not meet the former 4-evaluation/3-domain breadth threshold are explicitly marked limited coverage. Models with two eligible evaluations receive a provisional value but no rank. Missing scores are never imputed.",
     "caveats": [
+      "Rank threshold: at least three eligible evaluations across at least two of four domains. Ranks with fewer than four evaluations or fewer than three domains are explicitly marked limited coverage.",
       "Coverage-limited Index values average only available domains and are not equivalent to complete four-domain scores.",
-      "Knowledge Work has one eligible evaluation (GDPval); Science has two and includes ProofBench 1.1, whose top end is compressed by four 100% ties.",
-      "ProofBench 1.1 is a third-party Vals AI run using two 100-problem splits and Lean 4 checking; specialist proof systems are excluded from the general-purpose composite.",
-      "GPQA Diamond remains standalone because the stored 42-row OpenRouter extract is partial compared with its 167-row public leaderboard.",
-      "FrontierMath Tiers 1–3 remains standalone because the stored 60 rows are a partial extract of 120 published configurations.",
+      "Knowledge Work has one eligible evaluation (GDPval); Science has two, including ProofBench 1.1. Knowledge Work remains the least broad domain.",
+      "ProofBench 1.1 has four entries tied at 100%; specialist formal-proof systems are excluded from the general-purpose composite.",
+      "GPQA Diamond remains standalone because the checked-in 42-row extract is partial against the 167-row OpenRouter leaderboard.",
+      "FrontierMath Tiers 1–3 remains standalone because the checked-in 60 rows are a partial extract of 120 published configurations.",
       "OSWorld 2.0 aggregate does not identify binary completion versus partial reward and remains excluded.",
       "Third-party evaluation runs and secondary leaderboard mirrors are explicitly distinguished from publisher-reported results.",
-      "Missing scores are never imputed; formal ranks require four eligible evaluations across at least three domains."
+      "Missing scores are never imputed."
     ],
     "sourceNotes": [
       {
@@ -9656,14 +9657,14 @@
       }
     ],
     "currentDiagnostics": {
-      "rankedModels": 27,
-      "coverageOnlyModels": 31,
+      "rankedModels": 48,
+      "coverageOnlyModels": 10,
       "modelsWithAtLeastTwoCategories": 58,
       "eligibleEvaluationCount": 8,
       "excludedEvaluationCount": 1,
       "allEligibleModels": 99,
       "singleEvaluationModels": 41,
-      "note": "Recomputed after canonical model-name audit, router/agent/specialist exclusion and inclusion of full ProofBench v1.1. GPQA (42/167) and FrontierMath (60/120) partial extracts remain standalone."
+      "note": "Index 1.1 rank threshold: >=3 eligible evaluations across >=2 domains. Limited-coverage ranks are visibly marked; GPQA and FrontierMath remain standalone due partial extracts."
     },
     "supplementaryInputsExcluded": [
       "aa-omniscience-v1-1-accuracy-atlas"
@@ -9672,8 +9673,8 @@
       "name": "QBench Composite Index",
       "normalization": "Within each eligible benchmark, the best published score per exact model name is converted to a midrank percentile. Category scores are equal-weighted averages of benchmark percentiles; the index is the equal-weighted average of available category scores. Missing results are never imputed.",
       "minimumModelsPerEvaluation": 8,
-      "minimumEvaluationsPerModel": 4,
-      "minimumDomainsPerModel": 3,
+      "minimumEvaluationsPerModel": 3,
+      "minimumDomainsPerModel": 2,
       "domains": [
         {
           "name": "Knowledge Work",
@@ -9742,19 +9743,20 @@
           "reason": "LLM Stats 0–1 aggregate does not clearly distinguish the official binary-completion metric from partial reward. Epoch AI confirms these are separate metrics; exclude until the official binary-accuracy export is used."
         }
       ],
-      "methodology": "QBench Composite Index 1.0 is independent of Artificial Analysis. Each eligible evaluation needs at least eight unique model names. Within an evaluation, the best published score per exact model name is converted to a midrank percentile. Each domain score is the equal average of the eligible evaluation percentiles available in that domain. The provisional Index is the equal average of the available domain scores. A formal rank requires at least four eligible evaluations spanning at least three of four domains. Models with two or more eligible results but insufficient coverage are shown as coverage-only and are not ranked. Missing scores are never imputed. QBench does not use AA's individual evaluation weights or AA values.",
-      "version": "1.0",
+      "methodology": "QBench Composite Index 1.1 is independent of Artificial Analysis. Each eligible evaluation needs at least eight unique model names. Within an evaluation, the best published score per exact model name is converted to a midrank percentile. Each domain score is the equal average of eligible evaluation percentiles available in that domain. The provisional Index is the equal-weighted average of available domain scores. A model receives a published rank after at least three eligible evaluations across at least two of four domains; ranks that do not meet the former 4-evaluation/3-domain breadth threshold are explicitly marked limited coverage. Models with two eligible evaluations receive a provisional value but no rank. Missing scores are never imputed.",
+      "version": "1.1",
       "snapshotAsOf": "2026-10-31",
       "basis": "Four equal-weight domains (Knowledge Work, Coding, Science, General), using AA's category structure only as a taxonomy reference. QBench applies its own public-evaluation percentile method and does not reproduce AA's per-evaluation weighting or native score.",
       "caveats": [
+        "Rank threshold: at least three eligible evaluations across at least two of four domains. Ranks with fewer than four evaluations or fewer than three domains are explicitly marked limited coverage.",
         "Coverage-limited Index values average only available domains and are not equivalent to complete four-domain scores.",
-        "Knowledge Work has one eligible evaluation (GDPval); Science has two and includes ProofBench 1.1, whose top end is compressed by four 100% ties.",
-        "ProofBench 1.1 is a third-party Vals AI run using two 100-problem splits and Lean 4 checking; specialist proof systems are excluded from the general-purpose composite.",
-        "GPQA Diamond remains standalone because the stored 42-row OpenRouter extract is partial compared with its 167-row public leaderboard.",
-        "FrontierMath Tiers 1–3 remains standalone because the stored 60 rows are a partial extract of 120 published configurations.",
+        "Knowledge Work has one eligible evaluation (GDPval); Science has two, including ProofBench 1.1. Knowledge Work remains the least broad domain.",
+        "ProofBench 1.1 has four entries tied at 100%; specialist formal-proof systems are excluded from the general-purpose composite.",
+        "GPQA Diamond remains standalone because the checked-in 42-row extract is partial against the 167-row OpenRouter leaderboard.",
+        "FrontierMath Tiers 1–3 remains standalone because the checked-in 60 rows are a partial extract of 120 published configurations.",
         "OSWorld 2.0 aggregate does not identify binary completion versus partial reward and remains excluded.",
         "Third-party evaluation runs and secondary leaderboard mirrors are explicitly distinguished from publisher-reported results.",
-        "Missing scores are never imputed; formal ranks require four eligible evaluations across at least three domains."
+        "Missing scores are never imputed."
       ],
       "insufficientCoverage": [],
       "eligibleBenchmarks": [
@@ -10016,6 +10018,17 @@
       },
       {
         "currency": "USD",
+        "model": "DeepSeek V4 Flash 0731",
+        "provider": "DeepSeek",
+        "inputUSDPerMillion": 0.0419,
+        "outputUSDPerMillion": 0.3,
+        "source": "https://openrouter.ai/deepseek/deepseek-v4-flash-0731",
+        "sourceType": "openrouter-route",
+        "pricePlatform": "OpenRouter",
+        "note": "OpenRouter displayed price per 1M tokens; provider-pinned endpoints may differ."
+      },
+      {
+        "currency": "USD",
         "model": "DeepSeek V4 Pro 0813",
         "provider": "DeepSeek",
         "inputUSDPerMillion": 1.32,
@@ -10039,6 +10052,39 @@
         "sourceType": "official-provider",
         "pricePlatform": "DeepSeek API",
         "note": "Peak rate shown; off-peak rate is half. See official UTC schedule."
+      },
+      {
+        "currency": "USD",
+        "model": "Gemini 3.5 Flash",
+        "provider": "Google",
+        "inputUSDPerMillion": 1.5,
+        "outputUSDPerMillion": 9,
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "Gemini API",
+        "note": "Paid standard tier. Batch and priority tiers are priced separately."
+      },
+      {
+        "currency": "USD",
+        "model": "Gemini 3.6 Flash",
+        "provider": "Google",
+        "inputUSDPerMillion": 0.75,
+        "outputUSDPerMillion": 3.75,
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "Gemini API",
+        "note": "Paid standard tier through 2026-12-31; from 2027-01-01 price changes to $1.50/$7.50."
+      },
+      {
+        "currency": "USD",
+        "model": "Gemini 3.7 Flash",
+        "provider": "Google",
+        "inputUSDPerMillion": 0.75,
+        "outputUSDPerMillion": 3.75,
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "Gemini API",
+        "note": "Paid standard tier through 2026-12-31; from 2027-01-01 price changes to $1.50/$7.50."
       },
       {
         "model": "Gemini 3.8 Flash",
@@ -10122,6 +10168,17 @@
       },
       {
         "currency": "USD",
+        "model": "GPT-5.6 Luna",
+        "provider": "OpenAI",
+        "inputUSDPerMillion": 0.2,
+        "outputUSDPerMillion": 1.2,
+        "source": "https://developers.openai.com/api/docs/models/gpt-5.6-luna",
+        "sourceType": "official-provider",
+        "pricePlatform": "OpenAI API",
+        "note": "Standard API token price. Prompts over 272k input tokens are charged at 2x input and 1.5x output."
+      },
+      {
+        "currency": "USD",
         "model": "GPT-5.6 Sol",
         "provider": "OpenAI",
         "inputUSDPerMillion": 4,
@@ -10131,6 +10188,17 @@
         "pricePlatform": "OpenAI API",
         "effectiveUntil": "2026-11-21",
         "note": "Promotional standard price; available at least through 2026-11-21."
+      },
+      {
+        "currency": "USD",
+        "model": "GPT-5.6 Terra",
+        "provider": "OpenAI",
+        "inputUSDPerMillion": 2,
+        "outputUSDPerMillion": 12,
+        "source": "https://developers.openai.com/api/docs/models/gpt-5.6-terra",
+        "sourceType": "official-provider",
+        "pricePlatform": "OpenAI API",
+        "note": "Standard API token price. Cached input, long-context and tool charges are separate."
       },
       {
         "model": "GPT-6 Astra",
@@ -10253,6 +10321,17 @@
       },
       {
         "currency": "USD",
+        "model": "MiMo V2.6 Pro",
+        "provider": "Xiaomi",
+        "inputUSDPerMillion": 0.435,
+        "outputUSDPerMillion": 0.87,
+        "source": "https://openrouter.ai/xiaomi/mimo-v2.6-pro",
+        "sourceType": "openrouter-route",
+        "pricePlatform": "OpenRouter",
+        "note": "OpenRouter listed route price; not a direct Xiaomi API price."
+      },
+      {
+        "currency": "USD",
         "model": "GLM 5.3",
         "provider": "Z.ai",
         "inputUSDPerMillion": 0.0699,
@@ -10264,9 +10343,10 @@
       }
     ],
     "diagnostics": {
-      "modelEntries": 37,
-      "officialProviderEntries": 31,
-      "aggregatorRouteEntries": 6
+      "modelEntries": 44,
+      "officialProviderEntries": 36,
+      "aggregatorRouteEntries": 8,
+      "hostedPlatformEntries": 0
     }
   },
   "modelNameAudit": {
