@@ -2239,7 +2239,7 @@
         },
         {
           "model": "Wonder Full",
-          "provider": "Other",
+          "provider": "Meta",
           "score": 94,
           "configuration": "Not reported",
           "harness": "Lean 4 proof checker",
@@ -2250,7 +2250,8 @@
           "costPerTestUSD": 0.86,
           "tokensPerTestDisplay": "654.27k",
           "durationPerTestDisplay": "11m36s",
-          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard",
+          "providerEvidence": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/"
         },
         {
           "model": "Kimi K3.1 Pro",
@@ -2314,7 +2315,7 @@
         },
         {
           "model": "Wonder",
-          "provider": "Other",
+          "provider": "Meta",
           "score": 84,
           "configuration": "Not reported",
           "harness": "Lean 4 proof checker",
@@ -2325,7 +2326,8 @@
           "costPerTestUSD": 1.31,
           "tokensPerTestDisplay": "871.96k",
           "durationPerTestDisplay": "15m29s",
-          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard",
+          "providerEvidence": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/"
         },
         {
           "model": "GPT-6 Sol",
@@ -2449,7 +2451,7 @@
         },
         {
           "model": "Ember-1",
-          "provider": "Other",
+          "provider": "Fireworks",
           "score": 61,
           "configuration": "Not reported",
           "harness": "Lean 4 proof checker",
@@ -2460,7 +2462,8 @@
           "costPerTestUSD": 1.74,
           "tokensPerTestDisplay": "1.19m",
           "durationPerTestDisplay": "21m09s",
-          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard",
+          "providerEvidence": "https://fireworks.ai/models/fireworks/ember-1"
         },
         {
           "model": "GPT-5.6 Luna",
@@ -2749,7 +2752,7 @@
         },
         {
           "model": "Beam 1.0",
-          "provider": "Other",
+          "provider": "Reflection",
           "score": 18,
           "configuration": "Not reported",
           "harness": "Lean 4 proof checker",
@@ -2760,7 +2763,8 @@
           "costPerTestUSD": null,
           "tokensPerTestDisplay": "659.65k",
           "durationPerTestDisplay": "4m27s",
-          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
+          "costMetricSource": "Vals AI ProofBench 1.1 leaderboard",
+          "providerEvidence": "https://reflection.ai/blog/introducing-beam"
         },
         {
           "model": "MiniMax-M3",
@@ -4893,7 +4897,7 @@
         },
         {
           "model": "Wonder Full",
-          "provider": "Other",
+          "provider": "Meta",
           "score": 58.08,
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
@@ -4904,7 +4908,8 @@
           "costPerTestUSD": 10.53,
           "tokensPerTestDisplay": "31.82m",
           "durationPerTestDisplay": "1h12m",
-          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard",
+          "providerEvidence": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/"
         },
         {
           "model": "Gemini 4 Argon",
@@ -4968,7 +4973,7 @@
         },
         {
           "model": "Wonder",
-          "provider": "Other",
+          "provider": "Meta",
           "score": 49.49,
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
@@ -4979,7 +4984,8 @@
           "costPerTestUSD": 14.66,
           "tokensPerTestDisplay": "34.66m",
           "durationPerTestDisplay": "54m41s",
-          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard",
+          "providerEvidence": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/"
         },
         {
           "model": "GPT-6 Sol",
@@ -5268,7 +5274,7 @@
         },
         {
           "model": "Ember-1",
-          "provider": "Other",
+          "provider": "Fireworks",
           "score": 20.71,
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
@@ -5279,7 +5285,8 @@
           "costPerTestUSD": 19.48,
           "tokensPerTestDisplay": "46.75m",
           "durationPerTestDisplay": "1h55m",
-          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard",
+          "providerEvidence": "https://fireworks.ai/models/fireworks/ember-1"
         },
         {
           "model": "DeepSeek V4.1 Flash",
@@ -5538,7 +5545,7 @@
         },
         {
           "model": "Beam 1.0",
-          "provider": "Other",
+          "provider": "Reflection",
           "score": 4.04,
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
@@ -5549,11 +5556,12 @@
           "costPerTestUSD": null,
           "tokensPerTestDisplay": "12.27m",
           "durationPerTestDisplay": "19m15s",
-          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard",
+          "providerEvidence": "https://reflection.ai/blog/introducing-beam"
         },
         {
           "model": "Mercury 3",
-          "provider": "Other",
+          "provider": "Inception",
           "score": 3.03,
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
@@ -5564,7 +5572,8 @@
           "costPerTestUSD": 0.42,
           "tokensPerTestDisplay": "18.93m",
           "durationPerTestDisplay": "33m07s",
-          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard",
+          "providerEvidence": "https://www.inceptionlabs.ai/models"
         },
         {
           "model": "Gemini 3.1 Pro Preview (02/26)",
@@ -5658,7 +5667,7 @@
         },
         {
           "model": "Mercury 2.5",
-          "provider": "Other",
+          "provider": "Inception",
           "score": 0,
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
@@ -5669,7 +5678,8 @@
           "costPerTestUSD": 0.37,
           "tokensPerTestDisplay": "3.85m",
           "durationPerTestDisplay": "15m14s",
-          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard"
+          "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard",
+          "providerEvidence": "https://www.inceptionlabs.ai/models"
         },
         {
           "model": "Nemotron 3.5 Super VL",
@@ -5769,14 +5779,15 @@
         },
         {
           "model": "Wonder Full",
-          "provider": "Other",
+          "provider": "Meta",
           "score": 37.14,
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-25"
+          "snapshotDate": "2026-10-25",
+          "providerEvidence": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/"
         },
         {
           "model": "Kimi K3.1 Pro",
@@ -5813,14 +5824,15 @@
         },
         {
           "model": "Wonder",
-          "provider": "Other",
+          "provider": "Meta",
           "score": 22.86,
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-25"
+          "snapshotDate": "2026-10-25",
+          "providerEvidence": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/"
         },
         {
           "model": "GPT-5.6 Sol",
@@ -5967,14 +5979,15 @@
         },
         {
           "model": "Ember-1",
-          "provider": "Other",
+          "provider": "Fireworks",
           "score": 5.71,
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-25"
+          "snapshotDate": "2026-10-25",
+          "providerEvidence": "https://fireworks.ai/models/fireworks/ember-1"
         },
         {
           "model": "Muse Spark 1.3",
@@ -6099,14 +6112,15 @@
         },
         {
           "model": "Beam 1.0",
-          "provider": "Other",
+          "provider": "Reflection",
           "score": 1.43,
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-25"
+          "snapshotDate": "2026-10-25",
+          "providerEvidence": "https://reflection.ai/blog/introducing-beam"
         },
         {
           "model": "Hy4 Preview",
@@ -6132,14 +6146,15 @@
         },
         {
           "model": "Mercury 2.5",
-          "provider": "Other",
+          "provider": "Inception",
           "score": 0,
           "configuration": "Mini-SWE-agent",
           "harness": "Mini-SWE-agent (vals.ai run)",
           "evidence": "Terminal-Bench-Science 0.1 from https://www.vals.ai/benchmarks/terminal-bench-science (snapshot 2026-10-25)",
           "source": "https://www.vals.ai/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-25"
+          "snapshotDate": "2026-10-25",
+          "providerEvidence": "https://www.inceptionlabs.ai/models"
         },
         {
           "model": "GPT-5.6 Luna",
@@ -6368,9 +6383,9 @@
       "snapshotDate": "2026-10-26",
       "source": "https://llm-stats.com/benchmarks/osworld-2.0",
       "unit": "% tasks completed",
-      "quality": "Self-reported aggregate mirrored by llm-stats.com (2026-10-26). Unit converted from 0-1 to %. Not independently re-run.",
+      "quality": "LLM Stats secondary aggregate (last updated 2026-10-30) reports 0–1 values but does not make clear in the extracted table whether these are binary-completion accuracy or partial reward. Epoch AI defines the primary OSWorld 2.0 metric as binary accuracy and separately reports partial reward. These 16 values are retained for reference but excluded from QBench Composite Index until the metric is verified against the official export.",
       "coverageLevel": "secondary-mirror-of-primary-board",
-      "indexEligible": true,
+      "indexEligible": false,
       "indexDomain": "Agents & Tool Use",
       "saturationStatus": "not saturated (top 81.8%)",
       "models": [
@@ -7498,25 +7513,27 @@
         },
         {
           "model": "qwen3-coder-480b-a35b",
-          "provider": "Other",
+          "provider": "Alibaba",
           "score": 38.7,
           "configuration": "harness not shown",
           "harness": "not shown",
           "evidence": "SWE-Bench Pro public from https://labs.scale.com/leaderboard/swe_bench_pro_public (snapshot unknown)",
           "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
           "sourceType": "publisher",
-          "snapshotDate": "unknown"
+          "snapshotDate": "unknown",
+          "providerEvidence": "https://qwen.ai/"
         },
         {
           "model": "minimax-2.1",
-          "provider": "Other",
+          "provider": "MiniMax",
           "score": 36.81,
           "configuration": "harness not shown",
           "harness": "not shown",
           "evidence": "SWE-Bench Pro public from https://labs.scale.com/leaderboard/swe_bench_pro_public (snapshot unknown)",
           "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
           "sourceType": "publisher",
-          "snapshotDate": "unknown"
+          "snapshotDate": "unknown",
+          "providerEvidence": "https://www.minimaxi.com/"
         },
         {
           "model": "Gemini 3 Flash",
@@ -7542,69 +7559,75 @@
         },
         {
           "model": "kimi-k2-instruct",
-          "provider": "Other",
+          "provider": "Moonshot AI",
           "score": 27.67,
           "configuration": "harness not shown",
           "harness": "not shown",
           "evidence": "SWE-Bench Pro public from https://labs.scale.com/leaderboard/swe_bench_pro_public (snapshot unknown)",
           "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
           "sourceType": "publisher",
-          "snapshotDate": "unknown"
+          "snapshotDate": "unknown",
+          "providerEvidence": "https://www.moonshot.ai/"
         },
         {
           "model": "qwen3-235b-a22b",
-          "provider": "Other",
+          "provider": "Alibaba",
           "score": 21.41,
           "configuration": "harness not shown",
           "harness": "not shown",
           "evidence": "SWE-Bench Pro public from https://labs.scale.com/leaderboard/swe_bench_pro_public (snapshot unknown)",
           "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
           "sourceType": "publisher",
-          "snapshotDate": "unknown"
+          "snapshotDate": "unknown",
+          "providerEvidence": "https://qwen.ai/"
         },
         {
           "model": "gpt-oss-120b",
-          "provider": "Other",
+          "provider": "OpenAI",
           "score": 16.2,
           "configuration": "harness not shown",
           "harness": "not shown",
           "evidence": "SWE-Bench Pro public from https://labs.scale.com/leaderboard/swe_bench_pro_public (snapshot unknown)",
           "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
           "sourceType": "publisher",
-          "snapshotDate": "unknown"
+          "snapshotDate": "unknown",
+          "providerEvidence": "https://openai.com/"
         },
         {
           "model": "deepseek-v3p2",
-          "provider": "Other",
+          "provider": "DeepSeek",
           "score": 15.56,
           "configuration": "harness not shown",
           "harness": "not shown",
           "evidence": "SWE-Bench Pro public from https://labs.scale.com/leaderboard/swe_bench_pro_public (snapshot unknown)",
           "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
           "sourceType": "publisher",
-          "snapshotDate": "unknown"
+          "snapshotDate": "unknown",
+          "providerEvidence": "https://www.deepseek.com/"
         },
         {
           "model": "gemma-3-27b-it",
-          "provider": "Other",
+          "provider": "Google",
           "score": 11.38,
           "configuration": "harness not shown",
           "harness": "not shown",
           "evidence": "SWE-Bench Pro public from https://labs.scale.com/leaderboard/swe_bench_pro_public (snapshot unknown)",
           "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
           "sourceType": "publisher",
-          "snapshotDate": "unknown"
+          "snapshotDate": "unknown",
+          "providerEvidence": "https://ai.google/"
         },
         {
           "model": "llama3-1-405b-instruct",
-          "provider": "Other",
+          "provider": "Meta",
           "score": 11.18,
           "configuration": "harness not shown",
           "harness": "not shown",
           "evidence": "SWE-Bench Pro public from https://labs.scale.com/leaderboard/swe_bench_pro_public (snapshot unknown)",
           "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
           "sourceType": "publisher",
-          "snapshotDate": "unknown"
+          "snapshotDate": "unknown",
+          "providerEvidence": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/"
         },
         {
           "model": "GLM-4.6",
@@ -7619,25 +7642,27 @@
         },
         {
           "model": "llama4-maverick-17b-instruct",
-          "provider": "Other",
+          "provider": "Meta",
           "score": 5.24,
           "configuration": "harness not shown",
           "harness": "not shown",
           "evidence": "SWE-Bench Pro public from https://labs.scale.com/leaderboard/swe_bench_pro_public (snapshot unknown)",
           "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
           "sourceType": "publisher",
-          "snapshotDate": "unknown"
+          "snapshotDate": "unknown",
+          "providerEvidence": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/"
         },
         {
           "model": "codestral-2405",
-          "provider": "Other",
+          "provider": "Mistral AI",
           "score": 1.51,
           "configuration": "harness not shown",
           "harness": "not shown",
           "evidence": "SWE-Bench Pro public from https://labs.scale.com/leaderboard/swe_bench_pro_public (snapshot unknown)",
           "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public",
           "sourceType": "publisher",
-          "snapshotDate": "unknown"
+          "snapshotDate": "unknown",
+          "providerEvidence": "https://mistral.ai/"
         }
       ]
     },
@@ -9596,7 +9621,7 @@
       "modelsWithAtLeastTwoCategories": 53,
       "eligibleEvaluationCount": 8,
       "excludedEvaluationCount": 0,
-      "note": "Recomputed from current benchmark rows: 18 formal ranks, 36 provisional Index values and 45 single-evaluation models. Single-evaluation models are visible in Models without a composite score. Uncertain rows are excluded.",
+      "note": "OSWorld 2.0's 16 secondary aggregate values are excluded from the composite pending metric verification; the standalone dataset remains visible. Provider labels were normalized using model-maker sources where available.",
       "allEligibleModels": 99,
       "singleEvaluationModels": 45
     },
@@ -9613,10 +9638,9 @@
         {
           "name": "Knowledge Work",
           "benchmarks": [
-            "osworld-2-0",
             "gdpval"
           ],
-          "note": "OSWorld 2.0 is a self-reported aggregate mirrored from llm-stats; GDPval has exactly eight published models."
+          "note": "GDPval is currently the only eligible Knowledge Work evaluation; OSWorld 2.0 is retained separately because the third-party aggregate's 0–1 metric cannot be confirmed as binary accuracy rather than partial reward."
         },
         {
           "name": "Coding",
@@ -9671,6 +9695,10 @@
         {
           "id": "frontiermath-tiers-1-3-v2",
           "reason": "Ceiling-watch: current published scores are high and clustered; kept visible as a separate math benchmark pending a documented inclusion rule and full source-level verification."
+        },
+        {
+          "id": "osworld-2-0",
+          "reason": "LLM Stats 0–1 aggregate does not clearly distinguish the official binary-completion metric from partial reward. Epoch AI confirms these are separate metrics; exclude until the official binary-accuracy export is used."
         }
       ],
       "methodology": "QBench Composite Index 1.0 is independent of Artificial Analysis. Each eligible evaluation needs at least eight unique model names. Within an evaluation, the best published score per exact model name is converted to a midrank percentile. Each domain score is the equal average of the eligible evaluation percentiles available in that domain. The provisional Index is the equal average of the available domain scores. A formal rank requires at least four eligible evaluations spanning at least three of four domains. Models with two or more eligible results but insufficient coverage are shown as coverage-only and are not ranked. Missing scores are never imputed. QBench does not use AA's individual evaluation weights or AA values.",
@@ -9679,14 +9707,13 @@
       "basis": "Four equal-weight domains (Knowledge Work, Coding, Science, General), using AA's category structure only as a taxonomy reference. QBench applies its own public-evaluation percentile method and does not reproduce AA's per-evaluation weighting or native score.",
       "caveats": [
         "Coverage-only Index values are provisional: they average only the domains with observed data and are not directly equivalent to a complete four-domain score.",
-        "Knowledge Work includes OSWorld 2.0 (secondary self-reported aggregate) and GDPval (eight models exactly).",
         "Science currently has one eligible evaluation, so that domain is less robust than the others.",
         "Terminal-Bench 4.0 is a third-party Vals AI evaluation using Mini-SWE-agent, not the official tbench.ai benchmark leaderboard.",
-        "LiveBench 2.0's 25 non-top-six model rows are explicitly sourced to a secondary mirror; six top rows and their per-successful-task costs are sourced directly from the publisher."
+        "LiveBench 2.0's 25 non-top-six model rows are explicitly sourced to a secondary mirror; six top rows and their per-successful-task costs are sourced directly from the publisher.",
+        "Knowledge Work currently has GDPval as its only eligible evaluation. OSWorld 2.0's secondary 0–1 aggregate is kept separate because its metric cannot be confirmed as binary accuracy rather than partial reward."
       ],
       "insufficientCoverage": [],
       "eligibleBenchmarks": [
-        "osworld-2-0",
         "gdpval",
         "terminal-bench-4-0",
         "swe-bench-pro",
