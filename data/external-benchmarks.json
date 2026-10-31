@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.6",
-  "note": "QBench Index 1.2 rebuild, snapshot 2026-10-31. Composite recalculated from five selected source-audited evaluations; legacy and partial datasets remain standalone and do not contribute. No AA scores or index values are used.",
+  "note": "QBench Index 1.2 rebuild, snapshot 2026-10-31: 24 result datasets, 694 model-result/configuration rows, 149 exact model names, 583 model/configuration/harness combinations, 28 provider labels, and 43 benchmark directory entries. Five selected source-audited evaluations contribute to Index 1.2; legacy and partial datasets remain standalone.",
   "benchmarks": [
     {
       "id": "livebench-2.0",
@@ -9102,6 +9102,196 @@
           "evidence": "Scale Labs DrugDiscoveryBench leaderboard; mini-SWE-agent harness only. The benchmark has 82 expert-authored tasks; each setting averages three runs with a 120-minute agent timeout."
         }
       ]
+    },
+    {
+      "id": "swe-bench-pro-v2-hard",
+      "name": "SWE-Bench Pro V2 Hard",
+      "snapshotDate": "2026-10-31",
+      "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
+      "unit": "% resolved",
+      "version": "V2 Hard",
+      "taskCount": 51,
+      "indexEligible": false,
+      "valueNote": "Standalone only: 51-task hard subset and mixed Claude Code, Codex and mini-SWE-agent harnesses. Not comparable enough for the composite Index.",
+      "models": [
+        {
+          "model": "Claude Opus 5",
+          "provider": "Anthropic",
+          "score": 98,
+          "harness": "Claude Code",
+          "configuration": "xhigh",
+          "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2."
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "provider": "Anthropic",
+          "score": 92.2,
+          "harness": "Claude Code",
+          "configuration": "high",
+          "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2."
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "provider": "Google",
+          "score": 92.16,
+          "harness": "mini-swe-agent",
+          "configuration": "high",
+          "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2."
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 90.2,
+          "harness": "Codex",
+          "configuration": "high",
+          "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2."
+        },
+        {
+          "model": "Muse Wonder 1.0",
+          "provider": "Meta",
+          "score": 90.2,
+          "harness": "mini-swe-agent",
+          "configuration": "xhigh",
+          "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2."
+        },
+        {
+          "model": "Kimi K3",
+          "provider": "Moonshot AI",
+          "score": 88.2,
+          "harness": "mini-swe-agent",
+          "configuration": "max",
+          "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2."
+        },
+        {
+          "model": "Claude Sonnet 5",
+          "provider": "Anthropic",
+          "score": 88.2,
+          "harness": "Claude Code",
+          "configuration": "xhigh",
+          "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2."
+        },
+        {
+          "model": "GPT-5.6 Terra",
+          "provider": "OpenAI",
+          "score": 86.3,
+          "harness": "Codex",
+          "configuration": "xhigh",
+          "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2."
+        },
+        {
+          "model": "GLM 5.3",
+          "provider": "Z.ai",
+          "score": 84.3,
+          "harness": "mini-swe-agent",
+          "configuration": "max",
+          "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2."
+        },
+        {
+          "model": "GPT-5.6 Sol",
+          "provider": "OpenAI",
+          "score": 82.4,
+          "harness": "Codex",
+          "configuration": "xhigh",
+          "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2."
+        },
+        {
+          "model": "Muse Spark Open",
+          "provider": "Meta",
+          "score": 82.35,
+          "harness": "mini-swe-agent",
+          "configuration": "xhigh",
+          "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2."
+        },
+        {
+          "model": "Claude Sonnet 5.5",
+          "provider": "Anthropic",
+          "score": 70.59,
+          "harness": "mini-swe-agent",
+          "configuration": "xhigh",
+          "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2."
+        },
+        {
+          "model": "Gemini 3.8 Flash",
+          "provider": "Google",
+          "score": 58.8,
+          "harness": "mini-swe-agent",
+          "configuration": "high",
+          "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2."
+        },
+        {
+          "model": "Inkling",
+          "provider": "Fireworks",
+          "score": 56.9,
+          "harness": "mini-swe-agent",
+          "configuration": "xhigh",
+          "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2."
+        },
+        {
+          "model": "Claude Haiku 5.5",
+          "provider": "Anthropic",
+          "score": 52.94,
+          "harness": "mini-swe-agent",
+          "configuration": "high",
+          "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2.",
+          "standardError": 13.01
+        },
+        {
+          "model": "Claude Haiku 4.5",
+          "provider": "Anthropic",
+          "score": 25.5,
+          "harness": "Claude Code",
+          "configuration": "xhigh",
+          "source": "https://labs.scale.com/leaderboard/swe_bench_pro_public_v2",
+          "sourceType": "publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Scale Labs SWE-Bench Pro V2 Hard leaderboard; 51-task high-difficulty subset. Mixed harnesses are preserved and the dataset is excluded from Index 1.2."
+        }
+      ]
     }
   ],
   "benchmarkCatalog": [
@@ -9822,7 +10012,17 @@
         "snapshotDate": "2026-10-31"
       }
     ],
-    "currentDiagnostics": null,
+    "currentDiagnostics": {
+      "snapshotAsOf": "2026-10-31",
+      "eligibleEvaluationCount": 5,
+      "modelsWithEligibleResults": 70,
+      "rankedModels": 54,
+      "fullEvidenceModels": 14,
+      "broadEvidenceModels": 29,
+      "limitedEvidenceModels": 11,
+      "insufficientEvidenceModels": 16,
+      "note": "Index 1.2 recalculated from five source-audited evaluations; no legacy composite scores are retained."
+    },
     "supplementaryInputsExcluded": [
       "aa-omniscience-v1-1-accuracy-atlas"
     ],
