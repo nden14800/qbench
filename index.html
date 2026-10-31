@@ -625,21 +625,25 @@ function renderModelDetail(id){
  all.sort(function(a,b){return String(a.benchmark.name).localeCompare(String(b.benchmark.name),'en')||a.effort.localeCompare(b.effort);});
  var pricing=(DATA.apiPricing&&DATA.apiPricing.models||[]).filter(function(p){return p.model===r.model;})[0]||{};
  var rowPricing=all.filter(function(x){return x.row.inputUSDPerMillion!=null||x.row.outputUSDPerMillion!=null;})[0];
- var inputPrice=pricing.inputUSDPerMillion!=null?pricing.inputUSDPerMillion:(rowPricing?rowPricing.row.inputUSDPerMillion:null),outputPrice=pricing.outputUSDPerMillion!=null?pricing.outputUSDPerMillion:(rowPricing?rowPricing.row.outputUSDPerMillion:null),priceSource=pricing.source||(rowPricing?rowPricing.row.source:'source not stated');
+ var inputPrice=pricing.inputUSDPerMillion!=null?pricing.inputUSDPerMillion:(rowPricing?rowPricing.row.inputUSDPerMillion:null);
+ var outputPrice=pricing.outputUSDPerMillion!=null?pricing.outputUSDPerMillion:(rowPricing?rowPricing.row.outputUSDPerMillion:null);
+ var priceSource=pricing.source||(rowPricing?rowPricing.row.source:'source not stated');
  var kind=(DATA.modelNameAudit&&DATA.modelNameAudit.modelKinds||[]).filter(function(x){return x.name===r.model;})[0]||{};
- var dates=Array.from(new Set(all.map(function(x){return x.row.releaseDate;}).filter(Boolean))),hasPublic500=all.some(function(x){return x.row.public500Score!=null;});
+ var dates=Array.from(new Set(all.map(function(x){return x.row.releaseDate;}).filter(Boolean)));
+ var hasPublic500=all.some(function(x){return x.row.public500Score!=null;});
  var familyRows=RESULT.domains.map(function(d){return '<tr><td>'+esc(d)+'</td><td class="text-end num">'+fmt(r.domains[d],1)+'</td></tr>';}).join('');
  var effortMap={};all.forEach(function(x){(effortMap[x.effort]=effortMap[x.effort]||[]).push(x);});
  var harnessMap={};all.filter(function(x){return x.benchmark.id==='arc-agi-3'||x.benchmark.id==='arc-agi-3-provider-adapter';}).forEach(function(x){var e=harnessMap[x.effort]=harnessMap[x.effort]||{};e[x.benchmark.id]=scoreOf(x.row);});
  var harnessRows=Object.keys(harnessMap).map(function(e){var h=harnessMap[e],a=h['arc-agi-3'],b=h['arc-agi-3-provider-adapter'];return '<tr><td>'+esc(e==='not-reported'?'Not reported':e)+'</td><td class="text-end num">'+fmt(a,2)+'</td><td class="text-end num">'+fmt(b,2)+'</td><td class="text-end num">'+(a!=null&&b!=null?fmt(b-a,2):'—')+'</td></tr>';}).join('');
  var harnessHtml=harnessRows?'<h3 class="card-title-qb mb-2">ARC-AGI-3 harness comparison</h3><div class="table-responsive mb-4"><table class="table table-sm"><thead><tr><th>Effort</th><th class="text-end">Standard</th><th class="text-end">Provider Adapter</th><th class="text-end">Adapter − Standard</th></tr></thead><tbody>'+harnessRows+'</tbody></table></div><div class="notice-qb mb-4">The two harnesses have materially different execution semantics. This table is diagnostic only; Provider Adapter scores are never pooled with Standard-harness scores in Index 1.3.</div>':'';
-
  var effortRows=Object.keys(effortMap).map(function(e){var items=effortMap[e];return '<tr><td>'+esc(e==='not-reported'?'Not reported':e)+'</td><td class="text-end num">'+items.length+'</td></tr>';}).join('');
  var resultRows=all.map(function(x){
   var m=x.row,b=x.benchmark,unc=m.scoreUncertainty;
   if(unc==null&&m.uncertainty){var um=String(m.uncertainty).match(/([0-9]+(?:\.[0-9]+)?)/);if(um)unc=Number(um[1]);}
-  var cost=m.costPerTestUSD!=null?'m.costPerSuccessfulTaskUSD!=null?'$'+fmt(m.costPerSuccessfulTaskUSD,3):(m.costPerTestUSD!=null&&scoreOf(m)>0?'$'+fmt(m.costPerTestUSD/(scoreOf(m)/100),3)+'*':'—');
-  return '<tr><td>'+esc(b.name)+'</td><td>'+esc(x.effort==='not-reported'?'Not reported':x.effort)+'</td><td class="text-end num">'+fmt(scoreOf(m),2)+(unc!=null?' ± '+fmt(unc,2):'')+'</td>'+public500Cell+'<td>'+esc(m.harness||'Not reported')+'</td><td>'+esc(m.configuration||'—')+'</td><td>'+esc(m.releaseDate||'—')+'</td><td class="num">'+cost+'</td><td class="num">'+derived+'</td><td class="num">'+esc(m.tokensPerTestDisplay||'—')+'</td><td class="num">'+esc(m.durationPerTestDisplay||'—')+'</td><td><a href="'+esc(m.source||b.source||'')+'" target="_blank" rel="noopener">Source</a></td></tr>';
+  var public500Cell=hasPublic500?'<td class="text-end num">'+fmt(m.public500Score,2)+'</td>':'';
+  var costCell=m.costPerTestUSD!=null?'$'+fmt(m.costPerTestUSD,3):'—';
+  var derivedCell=m.costPerSuccessfulTaskUSD!=null?'$'+fmt(m.costPerSuccessfulTaskUSD,3):(m.costPerTestUSD!=null&&scoreOf(m)>0?'$'+fmt(m.costPerTestUSD/(scoreOf(m)/100),3)+'*':'—');
+  return '<tr><td>'+esc(b.name)+'</td><td>'+esc(x.effort==='not-reported'?'Not reported':x.effort)+'</td><td class="text-end num">'+fmt(scoreOf(m),2)+(unc!=null?' ± '+fmt(unc,2):'')+'</td>'+public500Cell+'<td>'+esc(m.harness||'Not reported')+'</td><td>'+esc(m.configuration||'—')+'</td><td>'+esc(m.releaseDate||'—')+'</td><td class="num">'+costCell+'</td><td class="num">'+derivedCell+'</td><td class="num">'+esc(m.tokensPerTestDisplay||'—')+'</td><td class="num">'+esc(m.durationPerTestDisplay||'—')+'</td><td><a href="'+esc(m.source||b.source||'')+'" target="_blank" rel="noopener">Source</a></td></tr>';
  }).join('');
  var price=(inputPrice!=null||outputPrice!=null)?'<div class="qb-detail-stat"><div class="k">API token pricing</div><div class="v">$'+(inputPrice==null?'—':fmt(inputPrice,3))+' / $'+(outputPrice==null?'—':fmt(outputPrice,3))+'</div><div class="small text-muted-qb">Input / output per 1M tokens · '+esc(priceSource)+'</div></div>':'<div class="qb-detail-stat"><div class="k">API token pricing</div><div class="v">Not verified</div></div>';
  $('#model-detail-title').textContent=r.model;
@@ -648,12 +652,12 @@ function renderModelDetail(id){
   '<div class="row row-cols-2 row-cols-lg-4 g-2 mb-3">'+
    '<div class="col"><div class="qb-detail-stat"><div class="k">QBench Index 1.3</div><div class="v">'+fmt(r.index,1)+'</div><div class="small text-muted-qb">'+(r.ranked?'Ranked · '+r.coverage+' evaluations':'Insufficient evidence')+'</div></div></div>'+
    '<div class="col"><div class="qb-detail-stat"><div class="k">Raw family mean</div><div class="v">'+fmt(r.rawIndex,1)+'</div></div></div>'+
-   '<div class="col"><div class="qb-detail-stat"><div class="k">Release date</div><div class="v">'+(dates.length?esc(dates[0]):'—')+'</div></div></div>'+
+   '<div class="col"><div class="qb-detail-stat"><div class="k">Release date</div><div class="v">'+(dates.length?esc(dates.join(' · ')):'—')+'</div></div></div>'+
    '<div class="col"><div class="qb-detail-stat"><div class="k">Provider</div><div class="v">'+esc(r.provider)+'</div></div></div>'+
   '</div><div class="row row-cols-1 row-cols-lg-2 g-2 mb-4"><div class="col">'+price+'</div><div class="col"><div class="qb-detail-stat"><div class="k">Evidence coverage</div><div class="v">'+r.coverage+' / '+RESULT.evals.length+'</div><div class="small text-muted-qb">'+r.domainCount+' / '+RESULT.domains.length+' capability families</div></div></div></div>'+
   '<h3 class="card-title-qb mb-2">Capability family scores</h3><div class="table-responsive mb-4"><table class="table table-sm"><thead><tr><th>Family</th><th class="text-end">Score</th></tr></thead><tbody>'+familyRows+'</tbody></table></div>'+
   '<h3 class="card-title-qb mb-2">Available effort variants</h3><div class="table-responsive mb-4"><table class="table table-sm"><thead><tr><th>Effort</th><th class="text-end">Evaluations</th></tr></thead><tbody>'+effortRows+'</tbody></table></div>'+harnessHtml+
-  '<h3 class="card-title-qb mb-2">Source-level evaluation results</h3><div class="table-responsive"><table class="table table-sm align-middle"><thead><tr><th>Benchmark</th><th>Effort</th><th class="text-end">Score (±)</th><th class="text-end">Public 500 (if reported)</th><th>Harness</th><th>Configuration</th><th>Release date</th><th>Cost/test</th><th>Cost/success</th><th>Tokens/test</th><th>Time/test</th><th>Source</th></tr></thead><tbody>'+resultRows+'</tbody></table></div><div class="small text-muted-qb mt-2">* Cost per successful test is derived from reported cost per test and success rate when no publisher-reported value exists. API token pricing is not task cost.</div>';
+  '<h3 class="card-title-qb mb-2">Source-level evaluation results</h3><div class="table-responsive"><table class="table table-sm align-middle"><thead><tr><th>Benchmark</th><th>Effort</th><th class="text-end">Score (±)</th>'+(hasPublic500?'<th class="text-end">Public 500</th>':'')+'<th>Harness</th><th>Configuration</th><th>Release date</th><th>Cost/test</th><th>Cost/success</th><th>Tokens/test</th><th>Time/test</th><th>Source</th></tr></thead><tbody>'+resultRows+'</tbody></table></div><div class="small text-muted-qb mt-2">* Cost per successful test is derived from reported cost per test and success rate when no publisher-reported value exists. API token pricing is not task cost.</div>';
 }
 
 function csvOut(){
