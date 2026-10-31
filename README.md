@@ -8,10 +8,10 @@ QBench collects model-level results from public benchmark publishers and source-
 
 | Metric | Current snapshot |
 |---|---:|
-| Result datasets | 35 |
-| Model-result / configuration rows | 710 |
-| Exact model names | 182 |
-| Model + configuration + harness combinations | 585 |
+| Result datasets | 37 |
+| Model-result / configuration rows | 900 |
+| Exact model names | 191 |
+| Model + configuration + harness combinations | 683 |
 | Provider labels | 37 |
 | Benchmark directory entries | 74 |
 
@@ -40,11 +40,11 @@ QBench 3.5 is an independent six-domain percentile index. It combines eligible A
 
 ### Current coverage
 
-- **11 evaluations** currently meet the eight-model minimum and are included in the composite.
-- **27 models** meet the model-level ranking threshold.
-- **119 models** have results in at least two eligible evaluations but do not meet the full ranking threshold; they remain coverage-only.
+- **18 evaluations** currently meet the eight-model minimum and are included in the composite.
+- **42 models** meet the model-level ranking threshold.
+- **118 models** have results in at least two eligible evaluations but do not meet the full ranking threshold; they remain coverage-only.
 - Other models with only one eligible evaluation remain discoverable in Model Explorer.
-- Only **4 of the 9 AA v5 core components** currently meet the minimum model coverage. The remaining AA components remain visible in the benchmark directory and are not assigned invented composite values.
+- Only **6 of the 9 AA v5 core components** currently meet the minimum model coverage. The remaining AA components remain visible in the benchmark directory and are not assigned invented composite values.
 
 Eligible evaluations and current unique-model coverage:
 
@@ -52,6 +52,9 @@ Eligible evaluations and current unique-model coverage:
 |---|---|---:|
 | Knowledge & Professional Work | AA-Briefcase v1.1 | 38 |
 | Knowledge & Professional Work | Harvey LAB-AA v1.1 | 21 |
+| Knowledge & Professional Work | GDP.pdf | 11 |
+| Knowledge & Professional Work | AA-Omniscience v1.1 | 11 |
+| Knowledge & Professional Work | MLCR-AA | 16 |
 | Coding & Engineering | Terminal-Bench 4.0 | 23 |
 | Coding & Engineering | SWE-Bench Pro (public set) | 24 |
 | Science & Mathematics | Terminal-Bench-Science 0.1 | 43 |
@@ -60,7 +63,11 @@ Eligible evaluations and current unique-model coverage:
 | Reasoning & Generalization | ARC-AGI-2 | 49 |
 | Reasoning & Generalization | LiveBench 2.0 | 31 |
 | Agents & Tool Use | OSWorld 2.0 | 9 |
+| Agents & Tool Use | AA-AnalystAgent | 29 |
+| Agents & Tool Use | APEX-Agents-AA | 31 |
+| Agents & Tool Use | EnterpriseOps-Gym-AA | 28 |
 | Multimodal & Interaction | AA-3D v1.0 | 23 |
+| Multimodal & Interaction | Code2Video-AA | 27 |
 
 This is a broad comparative percentile index, not a controlled head-to-head test. Some sources use different scaffolds, effort settings, tools, or run protocols. The model table shows coverage alongside the score so partial evidence is not mistaken for complete evaluation.
 
@@ -85,6 +92,11 @@ The directory distinguishes current core evaluations, standalone evaluations, an
 - **LiveBench 2.0:** six leading rows and seven suite scores/cost fields imported from the publisher; other rows are retained from a source-traceable mirror. The publisher's weighted overall score uses suite-specific weights and the publisher discloses Abacus AI sponsorship. The leaderboard is marked ceiling-watch.
 - **OSWorld 2.0:** nine model results attributed to Epoch AI's original board and transcribed from LLMBenchmark.ai. This is a secondary mirror, not a direct Epoch data export.
 - **SWE-Bench Pro public set:** 24 configurations from Scale AI SEAL's public-set leaderboard, mirrored by BenchLeader. The latest public result date in the snapshot is 2026-07-09. This is distinct from SWE-bench Verified and from the V2 Full/HARD boards.
+- **AA-AnalystAgent:** 30 visible configurations from a 50-configuration leaderboard mirror.
+- **APEX-Agents-AA:** 31 visible configurations from a 33-configuration leaderboard mirror.
+- **EnterpriseOps-Gym-AA:** 30 visible configurations from a 50-configuration leaderboard mirror.
+- **MLCR-AA:** 29 visible configurations from a 174-configuration leaderboard mirror; long-context medical reasoning.
+- **Code2Video-AA:** all 27 published model configurations; Elo-based video-generation benchmark.
 
 ### Tracked separately, not included in the composite
 
@@ -93,9 +105,9 @@ The directory distinguishes current core evaluations, standalone evaluations, an
 - **BFCL V4:** seven visible rows from UC Berkeley's official leaderboard. The page snapshot is dated 2026-04-12; it is below the eight-model threshold.
 - **HealthBench Professional:** 40 source-cited provider/system-card results compiled by a third party. It is not a single controlled independent rerun and is excluded pending primary-source verification of each row.
 - **METR Time Horizons:** 18 Official-status rows mirrored by evals.report, expressed in human-expert minutes to 50% task-completion success. METR says its public leaderboard is no longer actively updated; it is retained as historical reference only.
-- **AA top-three-only summaries:** APEX-Agents-AA, AA-AnalystAgent, EnterpriseOps-Gym-AA, ITBench-AA, IFBench and Global-MMLU-Lite currently expose only a limited top-of-leaderboard snapshot in the imported view. These are not expanded with inferred ranks.
-- **GDP.pdf:** only three published all-pass results are imported. It is a top-three summary, not a complete leaderboard.
-- **AA-Omniscience v1.1 Accuracy (Atlas snapshot):** third-party accuracy-only results. The paired hallucination-rate component is missing, so it is not the full AA evaluation and is excluded from the composite.
+- **AA top-three-only / limited snapshots:** ITBench-AA and Global-MMLU-Lite still lack enough verifiable model-level rows for QBench 3.5. IFBench is retained as a limited, near-saturated reference rather than a composite input.
+- **GDP.pdf:** 28 visible configuration rows from a 235-configuration AA leaderboard mirror; partial snapshot, not a complete leaderboard.
+- **AA-Omniscience v1.1:** 28 visible full-score configurations from a 105-configuration AA leaderboard mirror; partial snapshot. The separate 40-row Atlas accuracy-only table lacks the paired hallucination-rate component and remains excluded.
 
 ## Model Explorer and comparison
 
