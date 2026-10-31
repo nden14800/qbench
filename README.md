@@ -4,115 +4,96 @@ Independent AI model benchmark explorer and performance analytics platform.
 
 **公開URL:** https://qbench.pages.dev/ （Cloudflare Pages、`main` ブランチから自動デプロイ）
 
-QBench は、公開されているベンチマーク結果を元に、モデルごとの成績・実行条件・出典・取得日を一覧し、比較・分析できる独立した閲覧ツールです。Artificial Analysis の画面や評価項目を参考にしていますが、同社の数値は使用せず、同社の指数（Intelligence Index）を再現・公式化するものではありません。
+QBench は、公開されているベンチマーク結果を元に、モデルごとの成績・実行条件・出典・取得日を一覧し、比較・分析できる独立した閲覧ツールです。Artificial Analysis（AA）の画面構成と評価基準を参考にしていますが、AA の数値は使用せず、AA の指数（Intelligence Index）を再現・公式化するものではありません。
 
 QBench collects model-level results from public benchmark publishers and source-traceable leaderboard mirrors. It keeps native benchmark units, run configurations, harnesses, snapshot dates and source notes visible. It does not manufacture missing scores.
 
 ## Policy: no Artificial Analysis values
 
-Artificial Analysis (AA) published values are **not** stored or displayed. AA evaluation names, definitions and source links are kept in the benchmark directory as reference only, with their model values removed (2026-10-31). Benchmarks whose values come only from AA are therefore empty and cannot contribute to the composite.
+- AA's published values (scores, Elo, rankings, index numbers) are **not** stored or displayed.
+- AA's evaluation names and definitions may be used as evaluation criteria.
+- Benchmarks whose values exist only from AA have their model values removed (2026-10-31). Their definitions and source links remain in the benchmark directory.
+
+## QBench Composite Index 4.0
+
+QBench Composite Index 4.0 is an independent, percentile-based index with the four-category structure of the AA Intelligence Index v5 (Knowledge Work, Coding, Science, General), equal weight per category. Where an AA evaluation has no non-AA values, QBench uses a current, non-saturated public benchmark instead. **It is not Artificial Analysis' native Intelligence Index score.**
+
+### Method
+
+1. For each eligible benchmark, select the highest published score for each exact model name. Configuration and harness details remain visible in the underlying rows.
+2. Convert each benchmark's model scores to midrank percentiles within that benchmark's cohort, so Elo, percentages and accuracy do not share a raw scale.
+3. Category score = equal average of the percentiles of its eligible benchmarks.
+4. Index = equal average of the available category scores. Missing categories are not imputed.
+5. A benchmark needs **at least 8 unique model names** and `indexEligible: true` in the data.
+6. A model is ranked only with results in **at least 4 eligible evaluations** across **at least 3 of 4 categories**. Models with 2+ results are shown as coverage-only.
+
+### Categories and evaluations (4.0)
+
+| Category | Evaluation(s) in index | Note |
+|---|---|---|
+| Knowledge Work | OSWorld 2.0 | Gap: AA-Briefcase v1.1, AutomationBench-AA and GDP.pdf have no non-AA values yet. |
+| Coding | Terminal-Bench 4.0, SWE-Bench Pro (public set) | SWE-Bench Pro substitutes for AA FrontierCode 2.0 (no non-AA values yet). |
+| Science | Terminal-Bench-Science 0.1, FrontierMath Tiers 1–3 (v2) | FrontierMath substitutes for AA CritPt v2 (no non-AA values yet). |
+| General | HLE-Diamond, ARC-AGI-3, LiveBench 2.0 | ARC-AGI-3 and LiveBench substitute for AA-Omniscience v1.1 (no non-AA values yet). |
+
+### Excluded as saturated
+
+- GPQA Diamond
+- SWE-bench Verified
+- SWE-Bench Pro V2 Full (official; top 99.4%)
+- ARC-AGI-2 (top 95%)
+
+### Current coverage (as rendered on 2026-10-31)
+
+- **8 evaluations** are included in the index.
+- **16 models** are ranked; **32 models** are coverage-only.
+- Knowledge Work rests on a single evaluation (OSWorld 2.0), so that category is less stable than the others.
 
 ## Data snapshot — 2026-10-31
 
 | Metric | Current snapshot |
 |---|---:|
-| Benchmark datasets with model values | 20 |
-| Model-result / configuration rows | 535 |
+| Benchmark datasets with model values | 21 |
+| Model-result / configuration rows | 604 |
 | Exact model names | 147 |
-| Model + configuration + harness combinations | 439 |
+| Model + configuration + harness combinations | 508 |
 | Provider labels | 30 |
 | Benchmark directory entries | 74 |
 
-Counts are based on the checked-in `data/external-benchmarks.json`. A model may have multiple configurations or result rows; model names are not configuration counts.
+Counts come from the checked-in `data/external-benchmarks.json`. A model may have several configurations or rows; model names are not configuration counts.
 
-## QBench Composite Index 3.5
+## Sources
 
-QBench 3.5 is an independent percentile index over six domains. It uses only non-AA benchmark values. **It is not Artificial Analysis' native Intelligence Index score.**
+Primary sources are preferred: publisher leaderboards and pages, Epoch AI, Scale AI, LiveBench, UC Berkeley BFCL, METR, ARC Prize. Several rows come from secondary mirrors, which are labelled per row:
 
-### Method
+- **ARC-AGI-3:** 69 configuration rows mirrored from BenchLM (semi-private scores, snapshot 2026-10-28). Verify against the ARC Prize leaderboard before citing as official.
+- **ARC-AGI-2 (excluded):** evals.report snapshot.
+- **FrontierMath Tiers 1–3:** BenchLeader mirror (2026-10-30) of Epoch AI's Benchmarking Hub; a partial mirror.
+- **OSWorld 2.0:** nine results attributed to Epoch AI's board, via LLMBenchmark.ai.
+- **SWE-Bench Pro public set:** Scale AI SEAL public-set leaderboard, via BenchLeader.
 
-1. For each eligible benchmark, select the highest published score for each exact model name. Configuration and harness details remain visible in the underlying result rows.
-2. Convert each benchmark's model scores to midrank percentiles within that benchmark's available cohort. Elo scores, percentages, task-completion rates and accuracy scores are not placed on one raw scale.
-3. Give each benchmark one primary domain. Average benchmark percentiles equally inside each domain.
-4. Average the available domain scores equally to produce the QBench index. Missing domain scores are not imputed.
-5. A benchmark needs at least **8 unique model names** (and `indexEligible: true` in the data) to contribute. A model is ranked only when it has results in at least **4 eligible evaluations** across at least **3 of 6 domains**.
+A source URL alone does not mean QBench independently reproduced a result.
 
-### Six domains
+## Model Explorer, comparison and charts
 
-- Knowledge & Professional Work
-- Coding & Engineering
-- Science & Mathematics
-- Reasoning & Generalization
-- Agents & Tool Use
-- Multimodal & Interaction
+- Index leaderboard with search, provider filter, sortable category columns and ranked-only switch.
+- QBench Index vs. API price proxy (scatter, Pareto frontier, "most attractive quadrant").
+- Category breakdown for the top ranked models.
+- Benchmark directory with status per benchmark and a bar chart of model scores.
+- Models view with CSV export and up to five-model comparison.
 
-### Current coverage (as rendered on 2026-10-31)
+## API token-price proxy
 
-- **8 evaluations** currently meet the eight-model minimum and are included in the composite.
-- **18 models** meet the model-level ranking threshold.
-- **42 models** have results in at least two eligible evaluations but do not meet the full ranking threshold; they are shown as coverage only.
-- **Knowledge & Professional Work** and **Multimodal & Interaction** currently have **no eligible evaluation**. Until non-AA evaluations are added there, the index covers four of six domains.
+The price axis uses first-party list prices (standard uncached input and output) for each exact model-name match: (input + output) / 2 per 1 million tokens, assuming equal token volumes. The snapshot records 10 mappings from OpenAI, Anthropic and Google pricing pages (2026-10-31).
 
-Eligible evaluations (non-AA values only):
+This is **not cost per task, not observed workload expenditure, and not a score component**. It excludes caching, batch discounts, tool charges, regional uplifts, negotiated prices, taxes and tokenization differences. Models without a verified exact-name mapping are omitted rather than estimated.
 
-| Primary domain | Evaluation | Unique models |
-|---|---|---:|
-| Coding & Engineering | Terminal-Bench 4.0 | 23 |
-| Coding & Engineering | SWE-Bench Pro (public set) | 24 |
-| Science & Mathematics | Terminal-Bench-Science 0.1 | 43 |
-| Science & Mathematics | FrontierMath Tiers 1–3 v2 | 58 |
-| Reasoning & Generalization | HLE-Diamond | 19 |
-| Reasoning & Generalization | ARC-AGI-2 | 49 |
-| Reasoning & Generalization | LiveBench 2.0 | 31 |
-| Agents & Tool Use | OSWorld 2.0 | 9 |
-
-This is a broad comparative percentile index, not a controlled head-to-head test. Some sources use different scaffolds, effort settings, tools, or run protocols. The model table shows coverage alongside the score so partial evidence is not mistaken for complete evaluation.
-
-## Artificial Analysis evaluation directory
-
-QBench's directory lists the AA evaluation entries (names, definitions, source links) for reference. Model values for AA-published results are not included. The directory distinguishes current core evaluations, standalone evaluations and legacy versions, and does not merge retired versions with their replacements.
-
-## Benchmark sources
-
-Included in the composite (non-AA values):
-
-- **LiveBench 2.0:** publisher's official leaderboard rows; the publisher discloses Abacus AI sponsorship and the leaderboard is marked ceiling-watch.
-- **ARC-AGI-2:** 49 model rows from an evals.report snapshot, marked Official by that source. This is a dated secondary snapshot, not the live ARC Prize leaderboard; top scores are marked ceiling-watch.
-- **FrontierMath Tiers 1–3 v2:** 60 visible configurations from BenchLeader's 2026-10-30 mirror of Epoch AI's Benchmarking Hub; a partial mirror, not the full leaderboard. High scores are marked ceiling-watch.
-- **HLE-Diamond, Terminal-Bench 4.0, Terminal-Bench-Science 0.1:** publisher or aggregator rows as recorded in the data file.
-- **SWE-Bench Pro public set:** 24 configurations from Scale AI SEAL's public-set leaderboard, via BenchLeader.
-- **OSWorld 2.0:** nine model results attributed to Epoch AI's board, transcribed from LLMBenchmark.ai; a secondary mirror.
-
-Tracked separately, not in the composite (examples): SWE-Bench Pro V2 Full (ceiling compression), BFCL V4 (below threshold), HealthBench Professional (third-party compilation pending primary-source verification), METR Time Horizons (historical reference only), GPQA Diamond and the Epoch benchmarks listed in the data file.
-
-## Model Explorer and comparison
-
-- Search and filter the imported model set by model name, provider and benchmark coverage.
-- Inspect native scores, configuration, harness, source classification, evidence note, snapshot date and source link.
-- Compare up to five models in a benchmark-by-benchmark matrix. Missing results remain blank.
-- Export model-result rows as CSV.
-- Distinguish a full model-level leaderboard from a top-three summary or a secondary mirror.
-
-## Analytics and charts
-
-The interface includes the QBench composite ranking and six-domain radar, plus horizontal bar ranking, rank and area curves, score histogram, provider box plot, metric scatter, subscore radar and stacked bars, provider-by-domain heatmap, benchmark percentile box plots, cross-benchmark correlation heatmap (shared model names only), six-domain score decomposition, provider capability radar, benchmark coverage treemap, confidence-interval forest plot, API token-price Pareto frontier, benchmark snapshot freshness chart and six-axis parallel-coordinates plot.
-
-Every visualization is derived from imported records. A chart that needs data a source does not publish is left unavailable rather than filled with synthetic values.
-
-## API token-price Pareto view
-
-The Pareto chart pairs the QBench Composite Index 3.5 score with an **equal-token API price proxy**. For each exact model-name match with a first-party published price, the proxy is (standard uncached input price + standard output price) / 2, in USD per 1 million tokens, assuming equal input and output token volumes. The current snapshot records 10 exact model mappings from OpenAI, Anthropic and Google first-party pricing pages (2026-10-31).
-
-This is a unit-price comparison, **not Cost per Task, not observed workload expenditure, and not a QBench score component**. It excludes cache hits/writes, batch discounts, tool/search charges, regional uplifts, negotiated prices, taxes and tokenization differences. Models without a verified exact-name price mapping are omitted rather than estimated.
-
-## Data sources and limitations
-
-Primary sources are preferred: publisher leaderboards and pages, Epoch AI, Scale AI, LiveBench, UC Berkeley BFCL, METR. Secondary mirrors are labelled in row-level metadata. A source URL alone does not mean QBench independently reproduced a result.
+## Limitations
 
 QBench stores the publisher's reported value and unit. Percentile normalization is used only for the composite. It does not convert missing scores to zero, infer missing configurations, merge benchmark versions, or treat an unreported value as a failed run. Scores from different harnesses and configurations are not controlled head-to-head comparisons.
 
 ## Technical
 
-- Static single-file application: `index.html` (no build step)
+- Static single-file application: `index.html` (no build step, no Artificial Analysis dependency)
 - Benchmark data: `data/external-benchmarks.json`
 - Main branch deploys to Cloudflare Pages (https://qbench.pages.dev/)

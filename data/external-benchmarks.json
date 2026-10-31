@@ -3802,9 +3802,9 @@
         }
       ],
       "coverageLevel": "source-cited-model-results",
-      "indexEligible": true,
+      "indexEligible": false,
       "indexDomain": "Reasoning & Generalization",
-      "saturationStatus": "ceiling-watch",
+      "saturationStatus": "saturated (top 95%) - excluded from QBench 4.0",
       "methodology": "Semi-private abstract reasoning puzzle benchmark. The source marks these rows Official and links the originating model result; benchmark is administered by ARC Prize."
     },
     {
@@ -7148,6 +7148,849 @@
       "saturationStatus": "not-rated",
       "models": [],
       "valueNote": "2026-10-31: AA-published values removed under QBench policy. Evaluation definition and source link are retained; no model values are shown."
+    },
+    {
+      "id": "arc-agi-3",
+      "name": "ARC-AGI-3",
+      "snapshotDate": "2026-10-28",
+      "source": "https://benchlm.ai/benchmarks/arcAgi3",
+      "unit": "% (semi-private)",
+      "quality": "69 configuration rows mirrored from BenchLM (secondary). Values are ARC Prize semi-private scores as shown by BenchLM on 2026-10-28; verify against the ARC Prize leaderboard before citing as official.",
+      "coverageLevel": "source-cited-secondary-mirror",
+      "indexEligible": true,
+      "indexDomain": "General",
+      "saturationStatus": "not-saturated (top 62.7%)",
+      "methodology": "Interactive abstract reasoning benchmark administered by ARC Prize. Rows keep the reasoning-effort setting as configuration.",
+      "models": [
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 62.7,
+          "configuration": "Max",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-6 Astra (Max)"
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 59.3,
+          "configuration": "XHigh",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-6 Astra (XHigh)"
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 54.8,
+          "configuration": "High",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-6 Astra (High)"
+        },
+        {
+          "model": "GPT-6.1 Sol",
+          "provider": "OpenAI",
+          "score": 52.7,
+          "configuration": "Max",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-6.1 Sol (Max)"
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "provider": "Google",
+          "score": 49.8,
+          "configuration": "Low",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "Gemini 4 Argon (Low)"
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "provider": "Google",
+          "score": 46.3,
+          "configuration": "Medium",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "Gemini 4 Argon (Medium)"
+        },
+        {
+          "model": "GPT-6.1 Sol",
+          "provider": "OpenAI",
+          "score": 39.9,
+          "configuration": "XHigh",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-6.1 Sol (XHigh)"
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 38.6,
+          "configuration": "Medium",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-6 Astra (Medium)"
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 35.2,
+          "configuration": "None",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-6 Astra (None)"
+        },
+        {
+          "model": "Claude Opus 5",
+          "provider": "Anthropic",
+          "score": 30.2,
+          "configuration": "High",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "Claude Opus 5 (High)"
+        },
+        {
+          "model": "GPT-6.1 Sol",
+          "provider": "OpenAI",
+          "score": 26.7,
+          "configuration": "High",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-6.1 Sol (High)"
+        },
+        {
+          "model": "Claude Sonnet 5.5",
+          "provider": "Anthropic",
+          "score": 24.3,
+          "configuration": "XHigh",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "Claude Sonnet 5.5 (XHigh)"
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 17.5,
+          "configuration": "Low",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-6 Astra (Low)"
+        },
+        {
+          "model": "GPT-6.1 Sol",
+          "provider": "OpenAI",
+          "score": 10.6,
+          "configuration": "Medium",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-6.1 Sol (Medium)"
+        },
+        {
+          "model": "Gemini 3.8 Flash",
+          "provider": "Google",
+          "score": 10.4,
+          "configuration": "High",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "Gemini 3.8 Flash (High)"
+        },
+        {
+          "model": "GPT-5.6 Sol",
+          "provider": "OpenAI",
+          "score": 7.8,
+          "configuration": "Max",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-5.6 Sol (Max)"
+        },
+        {
+          "model": "GPT-5.6 Sol",
+          "provider": "OpenAI",
+          "score": 7,
+          "configuration": "XHigh",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-5.6 Sol (XHigh)"
+        },
+        {
+          "model": "Gemini 3.8 Flash",
+          "provider": "Google",
+          "score": 6,
+          "configuration": "Low",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "Gemini 3.8 Flash (Low)"
+        },
+        {
+          "model": "GPT-6 Sol",
+          "provider": "OpenAI",
+          "score": 4.6,
+          "configuration": "Max",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-6 Sol (Max)"
+        },
+        {
+          "model": "Gemini 3.8 Flash",
+          "provider": "Google",
+          "score": 4,
+          "configuration": "Medium",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "Gemini 3.8 Flash (Medium)"
+        },
+        {
+          "model": "GPT-6.1 Sol",
+          "provider": "OpenAI",
+          "score": 3.9,
+          "configuration": "Low",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-6.1 Sol (Low)"
+        },
+        {
+          "model": "GPT-5.6 Sol",
+          "provider": "OpenAI",
+          "score": 2.1,
+          "configuration": "High",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-5.6 Sol (High)"
+        },
+        {
+          "model": "Grok 4.6",
+          "provider": "xAI",
+          "score": 2.1,
+          "configuration": "XHigh",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "Grok 4.6 (XHigh)"
+        },
+        {
+          "model": "Grok 4.7",
+          "provider": "xAI",
+          "score": 1.8,
+          "configuration": "XHigh",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "Grok 4.7 (XHigh)"
+        },
+        {
+          "model": "GPT-6 Sol",
+          "provider": "OpenAI",
+          "score": 1.8,
+          "configuration": "XHigh",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-6 Sol (XHigh)"
+        },
+        {
+          "model": "Grok 4.7",
+          "provider": "xAI",
+          "score": 1.7,
+          "configuration": "High",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "Grok 4.7 (High)"
+        },
+        {
+          "model": "Grok 4.7",
+          "provider": "xAI",
+          "score": 1.7,
+          "configuration": "Medium",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "Grok 4.7 (Medium)"
+        },
+        {
+          "model": "Claude Opus 4.8",
+          "provider": "Anthropic",
+          "score": 1.5,
+          "configuration": "High",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "Claude Opus 4.8 (High)"
+        },
+        {
+          "model": "Claude Sonnet 5.5",
+          "provider": "Anthropic",
+          "score": 1.2,
+          "configuration": "High",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "Claude Sonnet 5.5 (High)"
+        },
+        {
+          "model": "GPT-5.6 Sol",
+          "provider": "OpenAI",
+          "score": 1.1,
+          "configuration": "Medium",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-5.6 Sol (Medium)"
+        },
+        {
+          "model": "GPT-6 Sol",
+          "provider": "OpenAI",
+          "score": 0.9,
+          "configuration": "High",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-6 Sol (High)"
+        },
+        {
+          "model": "DeepSeek V4.1 Flash",
+          "provider": "DeepSeek",
+          "score": 0.9,
+          "configuration": "Max",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "DeepSeek V4.1 Flash (Max)"
+        },
+        {
+          "model": "GPT-5.6 Terra",
+          "provider": "OpenAI",
+          "score": 0.8,
+          "configuration": "Max",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-5.6 Terra (Max)"
+        },
+        {
+          "model": "GPT-5.6 Terra",
+          "provider": "OpenAI",
+          "score": 0.7,
+          "configuration": "XHigh",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-5.6 Terra (XHigh)"
+        },
+        {
+          "model": "Claude Opus 4.6",
+          "provider": "Anthropic",
+          "score": 0.5,
+          "configuration": "Max",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "Anthropic Opus 4.6 (Max)"
+        },
+        {
+          "model": "GPT-5.6 Terra",
+          "provider": "OpenAI",
+          "score": 0.5,
+          "configuration": "High",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-5.6 Terra (High)"
+        },
+        {
+          "model": "DeepSeek V4.1 Flash",
+          "provider": "DeepSeek",
+          "score": 0.5,
+          "configuration": "High",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "DeepSeek V4.1 Flash (High)"
+        },
+        {
+          "model": "Claude Haiku 5.5",
+          "provider": "Anthropic",
+          "score": 0.5,
+          "configuration": "Max",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "Claude Haiku 5.5 (Max)"
+        },
+        {
+          "model": "GPT-5.5",
+          "provider": "OpenAI",
+          "score": 0.4,
+          "configuration": "High",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-5.5 (High)"
+        },
+        {
+          "model": "Gemini 3.1 Pro",
+          "provider": "Google",
+          "score": 0.4,
+          "configuration": "Preview",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "Gemini 3.1 Pro (Preview)"
+        },
+        {
+          "model": "GPT-6 Sol",
+          "provider": "OpenAI",
+          "score": 0.4,
+          "configuration": "Medium",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-6 Sol (Medium)"
+        },
+        {
+          "model": "Claude Sonnet 5.5",
+          "provider": "Anthropic",
+          "score": 0.4,
+          "configuration": "Low",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "Claude Sonnet 5.5 (Low)"
+        },
+        {
+          "model": "Claude Sonnet 5.5",
+          "provider": "Anthropic",
+          "score": 0.4,
+          "configuration": "Medium",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "Claude Sonnet 5.5 (Medium)"
+        },
+        {
+          "model": "DeepSeek V4.1 Flash",
+          "provider": "DeepSeek",
+          "score": 0.3,
+          "configuration": "Low",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "DeepSeek V4.1 Flash (Low)"
+        },
+        {
+          "model": "DeepSeek V4.1 Flash",
+          "provider": "DeepSeek",
+          "score": 0.3,
+          "configuration": "None",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "DeepSeek V4.1 Flash (None)"
+        },
+        {
+          "model": "GPT-5.6 Sol",
+          "provider": "OpenAI",
+          "score": 0.3,
+          "configuration": "Low",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-5.6 Sol (Low)"
+        },
+        {
+          "model": "Grok 4.5",
+          "provider": "xAI",
+          "score": 0.3,
+          "configuration": "Medium",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "Grok 4.5 (Medium)"
+        },
+        {
+          "model": "Grok 4.5",
+          "provider": "xAI",
+          "score": 0.3,
+          "configuration": "High",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "Grok 4.5 (High)"
+        },
+        {
+          "model": "GPT-6 Sol",
+          "provider": "OpenAI",
+          "score": 0.3,
+          "configuration": "None",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-6 Sol (None)"
+        },
+        {
+          "model": "Grok 4.5",
+          "provider": "xAI",
+          "score": 0.3,
+          "configuration": "Low",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "Grok 4.5 (Low)"
+        },
+        {
+          "model": "Grok 4.7",
+          "provider": "xAI",
+          "score": 0.2,
+          "configuration": "Low",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "Grok 4.7 (Low)"
+        },
+        {
+          "model": "GPT-5.4",
+          "provider": "OpenAI",
+          "score": 0.2,
+          "configuration": "High",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-5.4 (High)"
+        },
+        {
+          "model": "GPT-6 Luna",
+          "provider": "OpenAI",
+          "score": 0.2,
+          "configuration": "Medium",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-6 Luna (Medium)"
+        },
+        {
+          "model": "GPT-6 Luna",
+          "provider": "OpenAI",
+          "score": 0.2,
+          "configuration": "High",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-6 Luna (High)"
+        },
+        {
+          "model": "GPT-5.6 Luna",
+          "provider": "OpenAI",
+          "score": 0.2,
+          "configuration": "Max",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-5.6 Luna (Max)"
+        },
+        {
+          "model": "Claude Opus 4.7",
+          "provider": "Anthropic",
+          "score": 0.2,
+          "configuration": "High",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "Opus 4.7 (High)"
+        },
+        {
+          "model": "GPT-5.6 Luna",
+          "provider": "OpenAI",
+          "score": 0.2,
+          "configuration": "Low",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-5.6 Luna (Low)"
+        },
+        {
+          "model": "GPT-5.6 Luna",
+          "provider": "OpenAI",
+          "score": 0.2,
+          "configuration": "Medium",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-5.6 Luna (Medium)"
+        },
+        {
+          "model": "GPT-6 Luna",
+          "provider": "OpenAI",
+          "score": 0.2,
+          "configuration": "XHigh",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-6 Luna (XHigh)"
+        },
+        {
+          "model": "Muse Spark Open",
+          "provider": "Meta",
+          "score": 0.1,
+          "configuration": "XHigh",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "Muse Spark Open (XHigh)"
+        },
+        {
+          "model": "GPT-6 Sol",
+          "provider": "OpenAI",
+          "score": 0.1,
+          "configuration": "Low",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-6 Sol (Low)"
+        },
+        {
+          "model": "GPT-6 Luna",
+          "provider": "OpenAI",
+          "score": 0.1,
+          "configuration": "Max",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-6 Luna (Max)"
+        },
+        {
+          "model": "GPT-5.6 Luna",
+          "provider": "OpenAI",
+          "score": 0.1,
+          "configuration": "High",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-5.6 Luna (High)"
+        },
+        {
+          "model": "Grok 4.20",
+          "provider": "xAI",
+          "score": 0.1,
+          "configuration": "Beta Reasoning",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "Grok 4.20 (Beta Reasoning)"
+        },
+        {
+          "model": "GPT-5.6 Terra",
+          "provider": "OpenAI",
+          "score": 0.1,
+          "configuration": "Medium",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-5.6 Terra (Medium)"
+        },
+        {
+          "model": "GPT-6 Luna",
+          "provider": "OpenAI",
+          "score": 0,
+          "configuration": "Low",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-6 Luna (Low)"
+        },
+        {
+          "model": "GPT-6 Luna",
+          "provider": "OpenAI",
+          "score": 0,
+          "configuration": "None",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-6 Luna (None)"
+        },
+        {
+          "model": "GPT-5.6 Luna",
+          "provider": "OpenAI",
+          "score": 0,
+          "configuration": "XHigh",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-5.6 Luna (XHigh)"
+        },
+        {
+          "model": "GPT-5.6 Terra",
+          "provider": "OpenAI",
+          "score": 0,
+          "configuration": "Low",
+          "harness": "Standard harness, semi-private set (BenchLM mirror of ARC Prize leaderboard)",
+          "evidence": "BenchLM snapshot 2026-10-28; secondary mirror of ARC Prize semi-private scores; not independently re-run by QBench",
+          "source": "https://benchlm.ai/benchmarks/arcAgi3",
+          "sourceType": "source-cited-secondary",
+          "snapshotDate": "2026-10-28",
+          "rawLabel": "GPT-5.6 Terra (Low)"
+        }
+      ]
     }
   ],
   "benchmarkCatalog": [
@@ -7746,9 +8589,9 @@
   ],
   "composite": {
     "name": "QBench Composite Index",
-    "version": "3.5",
+    "version": "4.0",
     "snapshotAsOf": "2026-10-31",
-    "basis": "Nine evaluation components, four categories, and component weights published for Artificial Analysis Intelligence Index v5. QBench calculates an independent percentile-based score and does not reproduce AA's native score.",
+    "basis": "Four categories, equal weight, mirroring the structure of the Artificial Analysis Intelligence Index v5 (Knowledge Work, Coding, Science, General). Evaluation criteria follow AA where a comparable public benchmark exists, plus current non-saturated benchmarks. No Artificial Analysis values are used; QBench does not reproduce AA native scores.",
     "minimumModelsPerEvaluation": 8,
     "minimumCategoryCoverage": 4,
     "minimumOfficialWeight": 50,
@@ -7764,155 +8607,56 @@
       "hle-diamond"
     ],
     "eligibleBenchmarks": [
-      "livebench-2.0",
-      "frontiermath-tiers-1-3-v2",
-      "arc-agi-2",
-      "hle-diamond",
-      "terminal-bench-4-0",
-      "terminal-bench-science-0-1",
       "osworld-2-0",
-      "swe-bench-pro"
+      "terminal-bench-4-0",
+      "swe-bench-pro",
+      "terminal-bench-science-0-1",
+      "frontiermath-tiers-1-3-v2",
+      "hle-diamond",
+      "arc-agi-3",
+      "livebench-2.0"
     ],
-    "insufficientCoverage": [
-      {
-        "id": "aa-briefcase-v1-1",
-        "name": "AA-Briefcase v1.1",
-        "uniqueModels": 0,
-        "requiredModels": 8
-      },
-      {
-        "id": "harvey-lab-aa-v1-1",
-        "name": "Harvey LAB-AA v1.1",
-        "uniqueModels": 0,
-        "requiredModels": 8
-      },
-      {
-        "id": "gdp-pdf",
-        "name": "GDP.pdf",
-        "uniqueModels": 0,
-        "requiredModels": 8
-      },
-      {
-        "id": "aa-omniscience-v1-1",
-        "name": "AA-Omniscience v1.1",
-        "uniqueModels": 0,
-        "requiredModels": 8
-      },
-      {
-        "id": "mlcr-aa",
-        "name": "MLCR-AA",
-        "uniqueModels": 0,
-        "requiredModels": 8
-      },
-      {
-        "id": "frontiercode-2-0",
-        "name": "FrontierCode 2.0",
-        "uniqueModels": 0,
-        "requiredModels": 8
-      },
-      {
-        "id": "aa-analyst-agent",
-        "name": "AA-AnalystAgent",
-        "uniqueModels": 0,
-        "requiredModels": 8
-      },
-      {
-        "id": "apex-agents-aa",
-        "name": "APEX-Agents-AA",
-        "uniqueModels": 0,
-        "requiredModels": 8
-      },
-      {
-        "id": "enterpriseops-gym-aa",
-        "name": "EnterpriseOps-Gym-AA",
-        "uniqueModels": 0,
-        "requiredModels": 8
-      },
-      {
-        "id": "aa-3d",
-        "name": "AA-3D v1.0",
-        "uniqueModels": 0,
-        "requiredModels": 8
-      },
-      {
-        "id": "code2video-aa",
-        "name": "Code2Video-AA",
-        "uniqueModels": 0,
-        "requiredModels": 8
-      }
-    ],
-    "normalization": "Highest reported score per exact model name is converted to a 0–100 midrank percentile among models with a numeric result; ties receive average ranks.",
+    "insufficientCoverage": [],
+    "normalization": "Within each eligible benchmark, the best published score per exact model name is converted to a midrank percentile. Category scores are equal-weighted averages of benchmark percentiles; the index is the equal-weighted average of available category scores. Missing results are never imputed.",
     "configurationPolicy": "Best reported configuration per model and evaluation. Not a controlled same-effort or same-harness comparison.",
     "domains": [
       {
         "name": "Knowledge Work",
-        "weight": 25,
-        "inputs": [
-          {
-            "id": "aa-briefcase-v1-1",
-            "weight": 15
-          },
-          {
-            "id": "automationbench-aa",
-            "weight": 5
-          },
-          {
-            "id": "gdp-pdf",
-            "weight": 5
-          }
-        ]
+        "benchmarks": [
+          "osworld-2-0"
+        ],
+        "note": "Gap: AA-Briefcase v1.1, AutomationBench-AA and GDP.pdf have no non-AA values yet."
       },
       {
         "name": "Coding",
-        "weight": 25,
-        "inputs": [
-          {
-            "id": "frontiercode-2-0",
-            "weight": 15
-          },
-          {
-            "id": "terminal-bench-4-0",
-            "weight": 10
-          }
-        ]
+        "benchmarks": [
+          "terminal-bench-4-0",
+          "swe-bench-pro"
+        ],
+        "note": "SWE-Bench Pro public set substitutes for AA FrontierCode 2.0 (no non-AA values yet)."
       },
       {
         "name": "Science",
-        "weight": 25,
-        "inputs": [
-          {
-            "id": "terminal-bench-science-0-1",
-            "weight": 15
-          },
-          {
-            "id": "critpt-v2-hard",
-            "weight": 10
-          }
-        ]
+        "benchmarks": [
+          "terminal-bench-science-0-1",
+          "frontiermath-tiers-1-3-v2"
+        ],
+        "note": "FrontierMath Tiers 1-3 substitutes for AA CritPt v2 (Hard) (no non-AA values yet)."
       },
       {
         "name": "General",
-        "weight": 25,
-        "inputs": [
-          {
-            "id": "aa-omniscience-v1-1",
-            "weight": 15
-          },
-          {
-            "id": "hle-diamond",
-            "weight": 10
-          }
-        ]
+        "benchmarks": [
+          "hle-diamond",
+          "arc-agi-3",
+          "livebench-2.0"
+        ],
+        "note": "ARC-AGI-3 and LiveBench substitute for AA-Omniscience v1.1 (no non-AA values yet)."
       }
     ],
     "method": "An evaluation contributes only if it has at least eight unique model names. Available component percentiles are weighted by official relative weights and renormalized within each category; the four categories receive equal 25% weight. A model is ranked only with all four categories and at least 50% official total weight. Missing scores are never imputed and model aliases are not inferred.",
     "caveats": [
-      "Percentiles depend on the imported model cohort and may change with coverage.",
-      "Best reported configurations can differ by evaluation.",
-      "Some public leaderboard runs do not share AA's internal harness; matching benchmark versions do not guarantee identical conditions.",
-      "Below-threshold rows remain in standalone results but do not contribute to the composite.",
-      "AA native scores and QBench percentiles are separate measures.",
-      "The separately imported Benchmark Atlas AA-Omniscience accuracy-only table is not the full accuracy-plus-hallucination-rate component and is excluded from the composite."
+      "Saturated benchmarks are excluded (GPQA Diamond, SWE-bench Verified, SWE-Bench Pro V2 Full, ARC-AGI-2).",
+      " Knowledge Work currently rests on a single benchmark."
     ],
     "sourceNotes": [
       {
@@ -7972,77 +8716,54 @@
       }
     ],
     "currentDiagnostics": {
-      "rankedModels": 18,
-      "coverageOnlyModels": 42,
-      "modelsWithAtLeastTwoCategories": 60,
+      "rankedModels": 16,
+      "coverageOnlyModels": 32,
+      "modelsWithAtLeastTwoCategories": 48,
       "eligibleEvaluationCount": 8,
-      "excludedEvaluationCount": 11,
-      "note": "Verified against the rendered page on 2026-10-31 after AA-published values were removed."
+      "excludedEvaluationCount": 0,
+      "note": "Verified against the rendered QBench 4.0 page on 2026-10-31."
     },
     "supplementaryInputsExcluded": [
       "aa-omniscience-v1-1-accuracy-atlas"
     ],
     "extendedIndex": {
-      "name": "QBench Composite Index 3.5",
-      "normalization": "Within each eligible benchmark, the best published score per exact model name is converted to a midrank percentile. Percentiles are averaged equally within each domain; domain scores are then averaged equally. Missing results are never imputed.",
+      "name": "QBench Composite Index",
+      "normalization": "Within each eligible benchmark, the best published score per exact model name is converted to a midrank percentile. Category scores are equal-weighted averages of benchmark percentiles; the index is the equal-weighted average of available category scores. Missing results are never imputed.",
       "minimumModelsPerEvaluation": 8,
       "minimumEvaluationsPerModel": 4,
       "minimumDomainsPerModel": 3,
       "domains": [
         {
-          "name": "Knowledge & Professional Work",
-          "weight": 1,
+          "name": "Knowledge Work",
           "benchmarks": [
-            "aa-briefcase-v1-1",
-            "harvey-lab-aa-v1-1",
-            "gdp-pdf",
-            "aa-omniscience-v1-1",
-            "mlcr-aa"
-          ]
+            "osworld-2-0"
+          ],
+          "note": "Gap: AA-Briefcase v1.1, AutomationBench-AA and GDP.pdf have no non-AA values yet."
         },
         {
-          "name": "Coding & Engineering",
-          "weight": 1,
+          "name": "Coding",
           "benchmarks": [
             "terminal-bench-4-0",
-            "frontiercode-2-0",
             "swe-bench-pro"
-          ]
+          ],
+          "note": "SWE-Bench Pro public set substitutes for AA FrontierCode 2.0 (no non-AA values yet)."
         },
         {
-          "name": "Science & Mathematics",
-          "weight": 1,
+          "name": "Science",
           "benchmarks": [
             "terminal-bench-science-0-1",
             "frontiermath-tiers-1-3-v2"
-          ]
+          ],
+          "note": "FrontierMath Tiers 1-3 substitutes for AA CritPt v2 (Hard) (no non-AA values yet)."
         },
         {
-          "name": "Reasoning & Generalization",
-          "weight": 1,
+          "name": "General",
           "benchmarks": [
             "hle-diamond",
-            "arc-agi-2",
+            "arc-agi-3",
             "livebench-2.0"
-          ]
-        },
-        {
-          "name": "Agents & Tool Use",
-          "weight": 1,
-          "benchmarks": [
-            "osworld-2-0",
-            "aa-analyst-agent",
-            "apex-agents-aa",
-            "enterpriseops-gym-aa"
-          ]
-        },
-        {
-          "name": "Multimodal & Interaction",
-          "weight": 1,
-          "benchmarks": [
-            "aa-3d",
-            "code2video-aa"
-          ]
+          ],
+          "note": "ARC-AGI-3 and LiveBench substitute for AA-Omniscience v1.1 (no non-AA values yet)."
         }
       ],
       "excludedFromExtendedIndex": [
@@ -8071,8 +8792,28 @@
           "reason": "METR public page says the board is no longer actively updated; last model result is dated 2026-04-07."
         }
       ],
-      "methodology": "QBench Composite Index 3.5: best published configuration per exact model within each eligible benchmark is converted to a midrank percentile. Each benchmark contributes equally inside its single primary domain; six domain means are then averaged equally. A model is ranked only with results in at least four eligible evaluations spanning at least three of six domains. Every contributing evaluation must have at least eight unique model names. Missing scores are not imputed. This broad percentile index is independent of AA's native index and does not claim identical harnesses."
-    }
+      "methodology": "QBench Composite Index 3.5: best published configuration per exact model within each eligible benchmark is converted to a midrank percentile. Each benchmark contributes equally inside its single primary domain; six domain means are then averaged equally. A model is ranked only with results in at least four eligible evaluations spanning at least three of six domains. Every contributing evaluation must have at least eight unique model names. Missing scores are not imputed. This broad percentile index is independent of AA's native index and does not claim identical harnesses.",
+      "version": "4.0",
+      "snapshotAsOf": "2026-10-31",
+      "basis": "Four categories, equal weight, mirroring the structure of the Artificial Analysis Intelligence Index v5 (Knowledge Work, Coding, Science, General). Evaluation criteria follow AA where a comparable public benchmark exists, plus current non-saturated benchmarks. No Artificial Analysis values are used; QBench does not reproduce AA native scores.",
+      "caveats": [
+        "Saturated benchmarks are excluded (GPQA Diamond, SWE-bench Verified, SWE-Bench Pro V2 Full, ARC-AGI-2).",
+        " Knowledge Work currently rests on a single benchmark."
+      ],
+      "insufficientCoverage": [],
+      "eligibleBenchmarks": [
+        "osworld-2-0",
+        "terminal-bench-4-0",
+        "swe-bench-pro",
+        "terminal-bench-science-0-1",
+        "frontiermath-tiers-1-3-v2",
+        "hle-diamond",
+        "arc-agi-3",
+        "livebench-2.0"
+      ]
+    },
+    "minimumEvaluationsPerModel": 4,
+    "minimumDomainsPerModel": 3
   },
   "apiPricing": {
     "snapshotDate": "2026-10-31",
