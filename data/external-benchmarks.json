@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.5",
-  "note": "Snapshot 2026-10-31. Benchmark scores are stored as source-reported values with original units, configuration, harness, confidence intervals and provenance. Unique base-model names and model configurations are counted separately. AA v5-compatible aggregation requires complete coverage of all nine AA v5 components; missing scores are never imputed.",
+  "note": "Snapshot 2026-10-31. The nine AA v5 evaluation components are represented. Four have independent published leaderboards imported; five currently have only AA-published leader-summary values. This is not full nine-component model coverage: no AA-compatible aggregate is computed unless the same model configuration has all nine component scores. Extra benchmarks are maintained separately.",
   "benchmarks": [
     {
       "id": "livebench-2.0",
@@ -3831,6 +3831,159 @@
           "evidence": "Vals AI Terminal-Bench-Science leaderboard, updated 2026-10-25; pass@1, single run per task"
         }
       ]
+    },
+    {
+      "id": "automationbench-aa",
+      "name": "AutomationBench-AA",
+      "snapshotDate": "2026-10-27",
+      "source": "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5",
+      "unit": "% objectives completed with no guardrail violations",
+      "quality": "AA v5 component · only three official leader-summary values imported; not a full leaderboard",
+      "coverageLevel": "published-leader-summary-only",
+      "models": [
+        {
+          "model": "Gemini 4 Carbon",
+          "provider": "Google",
+          "configuration": "High",
+          "score": 77.8,
+          "evidence": "Artificial Analysis Intelligence Index v5 official announcement, 2026-10-27; published leader summary only"
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "provider": "Google",
+          "configuration": "High",
+          "score": 77.5,
+          "evidence": "Artificial Analysis Intelligence Index v5 official announcement, 2026-10-27; published leader summary only"
+        },
+        {
+          "model": "Kimi K3.1 Pro",
+          "provider": "Moonshot AI",
+          "configuration": "Default",
+          "score": 73.3,
+          "evidence": "Artificial Analysis Intelligence Index v5 official announcement, 2026-10-27; published leader summary only"
+        }
+      ]
+    },
+    {
+      "id": "frontiercode-2-0",
+      "name": "FrontierCode 2.0",
+      "snapshotDate": "2026-10-27",
+      "source": "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5",
+      "unit": "% maintainer-mergeable tasks",
+      "quality": "AA v5 component · private 132-task set · official top-results summary only",
+      "coverageLevel": "published-leader-summary-only",
+      "models": [
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "configuration": "Max",
+          "score": 46,
+          "evidence": "Artificial Analysis Intelligence Index v5 official announcement, 2026-10-27; published leader summary only"
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "configuration": "Max",
+          "score": 42,
+          "evidence": "Artificial Analysis Intelligence Index v5 official announcement, 2026-10-27; published leader summary only"
+        },
+        {
+          "model": "GPT-6.1 Terra",
+          "provider": "OpenAI",
+          "configuration": "Max",
+          "score": 42,
+          "evidence": "Artificial Analysis Intelligence Index v5 official announcement, 2026-10-27; published leader summary only"
+        },
+        {
+          "model": "Claude Sonnet 5.5",
+          "provider": "Anthropic",
+          "configuration": "Max",
+          "score": 42,
+          "evidence": "Artificial Analysis Intelligence Index v5 official announcement, 2026-10-27; published leader summary only"
+        },
+        {
+          "model": "DeepSeek V4.1 Flash 1017",
+          "provider": "DeepSeek",
+          "configuration": "Max",
+          "score": 28,
+          "evidence": "Artificial Analysis Intelligence Index v5 official announcement, 2026-10-27; published leader summary only"
+        }
+      ]
+    },
+    {
+      "id": "critpt-v2-hard",
+      "name": "CritPt v2 (Hard Subset)",
+      "snapshotDate": "2026-10-27",
+      "source": "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5",
+      "unit": "% solved",
+      "quality": "AA v5 component · private 40-question hard subset · official leader-summary values only",
+      "coverageLevel": "published-leader-summary-only",
+      "models": [
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "configuration": "High",
+          "score": 72,
+          "evidence": "Artificial Analysis Intelligence Index v5 official announcement, 2026-10-27; published leader summary only"
+        },
+        {
+          "model": "GPT-6.1 Sol",
+          "provider": "OpenAI",
+          "configuration": "Max",
+          "score": 69,
+          "evidence": "Artificial Analysis Intelligence Index v5 official announcement, 2026-10-27; published leader summary only"
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "configuration": "Max",
+          "score": 61,
+          "evidence": "Artificial Analysis Intelligence Index v5 official announcement, 2026-10-27; published leader summary only"
+        },
+        {
+          "model": "Kimi K3.1 Pro",
+          "provider": "Moonshot AI",
+          "configuration": "Max",
+          "score": 45,
+          "evidence": "Artificial Analysis Intelligence Index v5 official announcement, 2026-10-27; published leader summary only"
+        }
+      ]
+    },
+    {
+      "id": "gdp-pdf",
+      "name": "GDP.pdf",
+      "snapshotDate": "2026-10-27",
+      "source": "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5",
+      "unit": "% all-pass",
+      "quality": "AA v5 component · official leader-summary only; one published all-pass result imported",
+      "coverageLevel": "published-leader-summary-only",
+      "models": [
+        {
+          "model": "Muse Wonder Full",
+          "provider": "Meta",
+          "configuration": "Max",
+          "score": 33,
+          "evidence": "Artificial Analysis Intelligence Index v5 official announcement, 2026-10-27; published leader summary only"
+        }
+      ]
+    },
+    {
+      "id": "aa-omniscience-v1-1",
+      "name": "AA-Omniscience v1.1",
+      "snapshotDate": "2026-10-27",
+      "source": "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5",
+      "unit": "Net score (−100 to +100)",
+      "quality": "AA v5 component · official article leader value only; separate accuracy and hallucination submetrics not imported",
+      "coverageLevel": "published-leader-summary-only",
+      "models": [
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "configuration": "Max",
+          "score": 48,
+          "evidence": "Artificial Analysis Intelligence Index v5 official announcement, 2026-10-27; published leader summary only"
+        }
+      ]
     }
   ],
   "composite": {
@@ -3967,7 +4120,7 @@
       "name": "AutomationBench-AA",
       "group": "AA Index v5",
       "source": "https://artificialanalysis.ai/evaluations/automationbench-aa",
-      "status": "leaderboard-access-limited",
+      "status": "leader-summary-imported",
       "note": "657 cross-app workflow tasks; objective completion with guardrail penalties"
     },
     {
@@ -3975,7 +4128,7 @@
       "name": "GDP.pdf",
       "group": "AA Index v5",
       "source": "https://artificialanalysis.ai/evaluations/gdp-pdf",
-      "status": "private-results",
+      "status": "leader-summary-imported",
       "note": "Long professional documents and evidence-based deliverables"
     },
     {
@@ -3991,7 +4144,7 @@
       "name": "FrontierCode 2.0",
       "group": "AA Index v5",
       "source": "https://artificialanalysis.ai/evaluations/frontiercode-2-0",
-      "status": "private-results",
+      "status": "leader-summary-imported",
       "note": "132 real repository tasks graded for maintainer mergeability"
     },
     {
@@ -4007,7 +4160,7 @@
       "name": "CritPt v2 (Hard Subset)",
       "group": "AA Index v5",
       "source": "https://artificialanalysis.ai/evaluations/critpt-v2?critpt-subset=hard",
-      "status": "private-results",
+      "status": "leader-summary-imported",
       "note": "40 hardest research physics tasks, code execution enabled"
     },
     {
@@ -4015,7 +4168,7 @@
       "name": "AA-Omniscience v1.1",
       "group": "AA Index v5",
       "source": "https://artificialanalysis.ai/evaluations/omniscience",
-      "status": "public-summary-only",
+      "status": "leader-summary-imported",
       "note": "Knowledge reliability; correct answers rewarded, hallucinations penalized, abstention not penalized"
     },
     {
