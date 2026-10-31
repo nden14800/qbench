@@ -105,7 +105,15 @@ main{padding:34px 0 70px}.intro{display:flex;justify-content:space-between;align
     <div class="benchmark-list" id="benchmarkCards"></div>
     <div class="section-head"><div><h2>Source result explorer</h2><p>選択したデータセットの全保存結果を、原スコア・設定・信頼区間・ハーネスとともに確認。</p></div><span class="section-kicker">SOURCE-NATIVE VALUES</span></div>
     <div class="panel">
-      <div class="panel-head"><div><div class="panel-title">Published model results</div><div class="panel-sub" id=  <section id="methodology">
+      <div class="panel-head"><div><div class="panel-title">Published model results</div><div class="panel-sub" id="benchmarkMeta">Select a benchmark to inspect its published results.</div></div><select class="control" id="benchmarkSelect" aria-label="Select benchmark"></select></div>
+      <div class="table-wrap"><table class="table" aria-label="Selected benchmark results"><thead id="benchmarkHead"></thead><tbody id="benchmarkRows"><tr><td class="empty">Loading…</td></tr></tbody></table></div>
+      <div class="table-foot" id="benchmarkFoot"></div>
+    </div>
+    <div class="section-head"><div><h2>Frontier research queue</h2><p>難度・信頼性・結果公開状況を確認しながら、次に取り込む評価を管理。</p></div><span class="section-kicker">NOT SCORED UNTIL VERIFIED</span></div>
+    <div class="benchmark-list" id="benchmarkWatchlist"></div>
+  </section>
+
+  <section id="methodology">
     <div class="section-head"><div><h2>Methodology & evidence policy</h2><p>AA v5の方式を基準にしつつ、独立した追加ベンチマークは別枠で分析。</p></div><span class="section-kicker">AUDITABLE / NO IMPUTATION</span></div>
     <div class="method-grid">
       <article class="method-item"><div class="method-index">01 / AA V5</div><h3>Same nine evaluations</h3><p>AA-Briefcase v1.1、AutomationBench-AA、GDP.pdf、Terminal-Bench 4.0、FrontierCode 2.0、Terminal-Bench-Science 0.1、CritPt v2 Hard Subset、AA-Omniscience v1.1、HLE-Diamondを同じ評価セットとして登録。</p></article>
@@ -155,7 +163,7 @@ function renderSummary(){
  const dates=state.data.benchmarks.map(b=>b.snapshotDate).filter(Boolean).sort();
  $('#latestSnapshot').textContent=snapshot(dates[dates.length-1]);
  $('#updatedAt').textContent='DATA SNAPSHOT · '+snapshot(dates[dates.length-1]).toUpperCase();
- $('#cohortLabel').textContent=present+'/'+aa.length+' AA COMPONENTS WITH RESULTS';
+ 
  const full=['aa-briefcase-v1-1','hle-diamond','terminal-bench-4-0','terminal-bench-science-0-1'].filter(id=>(get(id)?.models.length||0)>0).length;
  const rows=aa.reduce((n,id)=>n+(get(id)?.models.length||0),0);
  $('#aaStatus').innerHTML='<strong>AA v5 methodology matched.</strong> All '+aa.length+' official components have at least one source-backed value ('+rows+' result rows). '+full+'/9 have full model-level public tables; the remaining '+(aa.length-full)+' have only published leader summaries. <strong>No model currently has complete, configuration-matched coverage across all nine</strong>, so QBench withholds a calculated AA-equivalent total score. The official AA overall score reference is shown separately below.';
