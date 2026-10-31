@@ -653,7 +653,7 @@ function renderBench(){
  var top=allRows.slice(0,25),p=pal(),costRows=allRows.filter(function(r){return Number(r.costPerTestUSD)>0||Number(r.costPerSuccessfulTaskUSD)>0;});
  var tokenRows=allRows.map(function(r){return {r:r,v:parseTokens(r.tokensPerTestDisplay)};}).filter(function(x){return x.v!=null&&x.v>0;});
  var timeRows=allRows.map(function(r){return {r:r,v:parseDuration(r.durationPerTestDisplay)};}).filter(function(x){return x.v!=null&&x.v>0;});
- var releaseRows=allRows.filter(function(r){return r.releaseDate&&/^\\d{4}-\\d{2}-\\d{2}/.test(String(r.releaseDate));});
+ var releaseRows=allRows.filter(function(r){return r.releaseDate&&/^\d{4}-\d{2}-\d{2}/.test(String(r.releaseDate));});
  var effortGroups={};allRows.forEach(function(r){var e=effortOf(r);if(e!=='not-reported')(effortGroups[r.model]=effortGroups[r.model]||[]).push({effort:e,score:scoreOf(r)});});
  var effortSeries=Object.keys(effortGroups).filter(function(n){return effortGroups[n].length>1;});
  var costHtml=costRows.length>=3?'<h3 class="card-title-qb mt-4 mb-2">Cost per test vs. score</h3><div id="bench-cost-el" style="height:350px"></div><div class="notice-qb">Only publisher-reported benchmark-specific cost per test is plotted. This is not cross-benchmark Index cost per task.</div>':'';
