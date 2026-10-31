@@ -9758,8 +9758,8 @@
       "id": "arc-agi-3",
       "name": "ARC-AGI-3 (Standard harness, Semi-Private)",
       "unit": "Semi-private score (%)",
-      "indexEligible": false,
-      "indexDomain": null,
+      "indexEligible": true,
+      "indexDomain": "Adaptive interactive reasoning",
       "saturationStatus": "not saturated: highest verified standard-harness result in this extract is 62.7%",
       "methodology": "ARC Prize verified semi-private interactive reasoning results. Only the Standard harness is eligible for Index 1.3. The Standard harness allows the model to carry forward notes it chooses to keep throughout the environment. Reasoning effort is a separate model variant; scores from Provider Adapter are not merged.",
       "models": [
@@ -10330,9 +10330,9 @@
       ],
       "source": "https://arcprize.org/results",
       "coverageLevel": "official-publisher-model-page-extract",
-      "valueNote": "40 exact model/effort variants from eight ARC Prize verified model pages. Standard-harness results only. The publisher also reports Provider Adapter scores, which are stored separately because the harness can materially change results.",
+      "valueNote": "40 exact model/effort variants from eight ARC Prize verified model pages. Only Standard-harness semi-private results contribute to Index 1.3. Provider Adapter results remain a separate standalone evaluation because the harness materially changes scores.",
       "snapshotDate": "2026-10-31",
-      "quality": "Official ARC Prize verified results",
+      "quality": "official-publisher; verified model pages; Standard harness only",
       "scoreScale": {
         "minimum": 0,
         "maximum": 100,
@@ -12563,7 +12563,7 @@
       "name": "ARC-AGI-3 (Provider Adapter harness)",
       "group": "ARC-AGI series",
       "source": "https://arcprize.org/results",
-      "status": "standalone-harness-comparison",
+      "status": "standalone-only",
       "note": "Stored separately because Provider Adapter and Standard harness scores are not comparable."
     },
     {
@@ -12587,9 +12587,9 @@
     "name": "QBench Index",
     "version": "1.3",
     "snapshotAsOf": "2026-10-31",
-    "basis": "Six QBench capability families using seven current source-audited evaluations. Scores retain each publisher's reported task-success or accuracy percentage. Exact model/effort variants are separate identities; unreported effort is never inferred.",
+    "basis": "Seven QBench capability families using eight source-audited evaluations. Scores retain publisher-reported 0–100 task-success or accuracy values; exact model/effort variants remain separate. ARC-AGI-3 Standard-harness results are included, while Provider Adapter is separate.",
     "minimumModelsPerEvaluation": 12,
-    "minimumCategoryCoverage": 3,
+    "minimumCategoryCoverage": 2,
     "componentBenchmarks": [
       "terminal-bench-4-0",
       "terminal-bench-science-0-1",
@@ -12597,7 +12597,8 @@
       "mystery-game-puzzles",
       "drug-discovery-bench",
       "mcp-atlas",
-      "hil-bench"
+      "hil-bench",
+      "arc-agi-3"
     ],
     "eligibleBenchmarks": [
       "terminal-bench-4-0",
@@ -12606,11 +12607,12 @@
       "mystery-game-puzzles",
       "drug-discovery-bench",
       "mcp-atlas",
-      "hil-bench"
+      "hil-bench",
+      "arc-agi-3"
     ],
     "insufficientCoverage": [],
-    "normalization": "For each eligible evaluation, retain its reported 0–100 percentage-point score. Average multiple evaluations within each family, then average the six observed families equally. Evidence adjustment: Index = 50 + (Raw family mean − 50) × sqrt(Observed families / 6). This is not an IQ score or confidence interval.",
-    "configurationPolicy": "Create a separate model variant for each exact model name and reported reasoning effort. Never choose the highest score across effort levels. Keep unreported effort separate. Preserve harness, routing, fallback, release date and model metadata. For ARC-AGI-3, only the publisher's Standard harness enters the composite; Provider Adapter is displayed separately.",
+    "normalization": "For each eligible evaluation, retain its reported 0–100 percentage-point score. Average multiple evaluations within each family, then average the seven observed families equally. Evidence adjustment: Index = 50 + (Raw family mean − 50) × sqrt(Observed families / 7). This is not an IQ score or confidence interval.",
+    "configurationPolicy": "Create a separate model variant for each exact model name and reported reasoning effort. Never select the highest score across effort levels. Keep unreported effort separate. Preserve harness, routing, fallback, release date and model metadata. ARC-AGI-3 Standard and Provider Adapter are separate evaluations; only Standard contributes to the Index.",
     "domains": [
       {
         "name": "Software engineering",
@@ -12654,9 +12656,16 @@
           "hil-bench"
         ],
         "note": "300 tasks with 1,131 blockers; 100 held-out tasks. Index uses Pass@3, not the separate ASK-F1 metric."
+      },
+      {
+        "name": "Adaptive interactive reasoning",
+        "benchmarks": [
+          "arc-agi-3"
+        ],
+        "note": "40 verified model/effort variants from eight official model pages. Semi-private Standard-harness scores only; Provider Adapter remains separate."
       }
     ],
-    "method": "QBench Index 1.3 uses eight source-audited evaluations across seven capability families. It retains publisher-reported task-success/accuracy percentages instead of converting within-cohort ranks to percentiles. Model/effort variants are separate identities. Standard and Provider Adapter harnesses are never combined.",
+    "method": "QBench Index 1.3 uses eight source-audited evaluations across seven capability families. It retains publisher-reported task-success/accuracy percentages rather than converting within-cohort ranks to percentiles. Model/effort variants are separate identities. Ranking requires at least two eligible evaluations across two distinct families. Missing values are not imputed.",
     "caveats": [
       "The Index is a seven-family composite of source-reported percentages, not an IQ score, human-equivalence score, or confidence interval.",
       "Direct percentage-point scoring prevents within-cohort rank-percentile inflation. Benchmark difficulty, graders, task formats and guessing opportunities still differ; equal family weights are a transparent convention, not a psychometric equivalence claim.",
@@ -12783,15 +12792,14 @@
     ],
     "currentDiagnostics": {
       "snapshotAsOf": "2026-10-31",
-      "eligibleEvaluationCount": 7,
-      "modelsWithEligibleResults": 114,
-      "totalVariants": 140,
-      "rankedVariants": 18,
-      "fullEvidenceVariants": 0,
-      "broadEvidenceVariants": 8,
-      "limitedEvidenceVariants": 10,
-      "insufficientEvidenceVariants": 122,
-      "note": "Recomputed at runtime from exact model/effort variants and source-reported scores."
+      "eligibleEvaluationCount": 8,
+      "modelsWithEligibleResults": null,
+      "rankedVariants": null,
+      "fullEvidenceVariants": null,
+      "broadEvidenceVariants": null,
+      "limitedEvidenceVariants": null,
+      "insufficientEvidenceVariants": null,
+      "note": "Computed by the Index 1.3 runtime from exact model/effort variants."
     },
     "supplementaryInputsExcluded": [
       "aa-omniscience-v1-1-accuracy-atlas"
@@ -12800,8 +12808,8 @@
       "version": "1.3",
       "snapshotAsOf": "2026-10-31",
       "minimumModelsPerEvaluation": 12,
-      "minimumEvaluationsPerModel": 3,
-      "minimumDomainsPerModel": 3,
+      "minimumEvaluationsPerModel": 2,
+      "minimumDomainsPerModel": 2,
       "domains": [
         {
           "name": "Software engineering",
@@ -12845,6 +12853,13 @@
             "hil-bench"
           ],
           "note": "300 tasks with 1,131 blockers; 100 held-out tasks. Index uses Pass@3, not the separate ASK-F1 metric."
+        },
+        {
+          "name": "Adaptive interactive reasoning",
+          "benchmarks": [
+            "arc-agi-3"
+          ],
+          "note": "40 verified model/effort variants from eight official model pages. Semi-private Standard-harness scores only; Provider Adapter remains separate."
         }
       ],
       "eligibleBenchmarks": [
@@ -12854,7 +12869,8 @@
         "mystery-game-puzzles",
         "drug-discovery-bench",
         "mcp-atlas",
-        "hil-bench"
+        "hil-bench",
+        "arc-agi-3"
       ],
       "excludedFromExtendedIndex": [
         {
@@ -12906,39 +12922,39 @@
           "reason": "Standalone ceiling-watch: leading verified scores approach 95%."
         },
         {
-          "id": "arc-agi-3-provider-adapter",
-          "reason": "Standalone only: Provider Adapter is a different execution harness; only Standard harness contributes to Index 1.3."
-        },
-        {
           "id": "frontiermath-tier-4-v2",
           "reason": "Standalone only: checked-in values conflicted with Epoch AI's currently visible official results; retained only six independently visible source rows pending full CSV reconciliation."
         },
         {
           "id": "furniture-assembly",
           "reason": "Standalone only: Epoch AI's official leaderboard currently exposes no tabular results; only three model values independently confirmed in the launch analysis are retained."
+        },
+        {
+          "id": "arc-agi-3-provider-adapter",
+          "reason": "Standalone only: Provider Adapter is a different execution harness; only the official Standard-harness results contribute to Index 1.3."
         }
       ],
-      "normalization": "For each eligible evaluation, retain its reported 0–100 percentage-point score. Average multiple evaluations within each family, then average the six observed families equally. Evidence adjustment: Index = 50 + (Raw family mean − 50) × sqrt(Observed families / 6). This is not an IQ score or confidence interval.",
-      "methodology": "QBench Index 1.3 uses source-reported percentage-point performance rather than within-cohort percentiles. Each exact model/effort variant is scored separately. Evaluations are averaged within six capability families, and observed families are weighted equally. Ranking requires at least three eligible evaluations across three distinct families. Missing values are not imputed.",
-      "configurationPolicy": "Create a separate model variant for each exact model name and reported reasoning effort. Never choose the highest score across effort levels. Keep unreported effort separate. Preserve harness, routing, fallback, release date and model metadata. For ARC-AGI-3, only the publisher's Standard harness enters the composite; Provider Adapter is displayed separately.",
+      "normalization": "Each evaluation retains its publisher-reported 0–100 percentage-point score. Results are averaged within seven capability families; observed family means are averaged equally. Index = 50 + (Raw family mean − 50) × sqrt(Observed families / 7). Exact model/effort variants remain separate; missing values are not imputed.",
+      "methodology": "QBench Index 1.3 uses eight source-audited evaluations across seven capability families. It retains publisher-reported task-success/accuracy percentages rather than converting within-cohort ranks to percentiles. Model/effort variants are separate identities. Ranking requires at least two eligible evaluations across two distinct families. Missing values are not imputed.",
+      "configurationPolicy": "Create a separate model variant for each exact model name and reported reasoning effort. Never select the highest score across effort levels. Keep unreported effort separate. Preserve harness, routing, fallback, release date and model metadata. ARC-AGI-3 Standard and Provider Adapter are separate evaluations; only Standard contributes to the Index.",
       "caveats": [
         "The Index is a seven-family composite of source-reported percentages, not an IQ score, human-equivalence score, or confidence interval.",
-        "Direct percentage-point scoring prevents within-cohort rank-percentile inflation. Benchmark difficulty, graders, task formats and guessing opportunities still differ; equal family weights are a transparent convention, not a psychometric equivalence claim.",
+        "Direct percentage-point scoring avoids within-cohort rank-percentile inflation. Benchmark difficulty, graders, task formats and guessing opportunities still differ; equal family weights are a transparent convention, not a psychometric equivalence claim.",
         "Effort variants are separate rows. 'Not reported' means the publisher did not identify the reasoning effort; it is never inferred from a harness.",
-        "Harness differences are preserved. ARC-AGI-3 Standard and Provider Adapter are separate evaluations; Provider Adapter is not used in the Index.",
+        "Harness differences are preserved. ARC-AGI-3 Standard and Provider Adapter are separate; only Standard contributes to the Index.",
         "Coverage adjustment shrinks incomplete seven-family results toward 50. This is an evidence adjustment, not a confidence interval.",
-        "Mystery Game Puzzles has 140 tested models on Epoch AI's page; this snapshot contains the 20 model/effort rows surfaced in the official results extract, not all 140.",
+        "Ranking requires at least two evaluations across two distinct families to improve coverage without allowing single-benchmark results to become an Index rank. Rows with less evidence remain visible but unranked.",
+        "Mystery Game Puzzles has 140 tested models on Epoch AI's page; this snapshot contains 20 exact model/effort variants surfaced in the official results extract, not all 140.",
         "DrugDiscoveryBench uses mini-SWE-agent results only. Its 82 expert-authored tasks are averaged over three runs with a 120-minute timeout.",
-        "HLE-Diamond and FrontierMath Tier 4 uncertainty values are displayed but not pooled because source-specific definitions differ.",
+        "MCP Atlas is updated April 8, 2026; it remains a useful held-out tool-use evaluation but is older than the October 2026 snapshots.",
+        "HiL-Bench uses Pass@3 as its task-outcome metric. ASK-F1 measures a distinct help-seeking quality dimension and is not mixed into the Index.",
+        "FrontierMath Tier 4 v2 is excluded after a source audit found a mismatch between checked-in values and Epoch AI's visible official results; six visible source rows remain standalone pending a complete export.",
+        "Furniture Assembly is excluded from the composite because the official Epoch AI leaderboard currently exposes no tabular results; only three values confirmed in the launch analysis remain.",
         "ProofBench remains standalone because several leading general-purpose models tie at 100%.",
-        "ARC-AGI-1 and ARC-AGI-2 semi-private results are retained as standalone ceiling-watch series; they do not enter the Index.",
-        "ARC-AGI-3 uses only official Standard-harness semi-private scores from verified model pages. The extract contains 40 model/effort variants across ten base models, not the full leaderboard.",
+        "ARC-AGI-1 and ARC-AGI-2 semi-private results remain standalone ceiling-watch series; they do not enter the Index.",
+        "LiveBench 2.0 remains standalone because the imported snapshot mixes six official-publisher rows with secondary-mirror results; the official-only subset is below the 12-variant source gate.",
         "API token prices are not measured benchmark cost per task. No task cost is inferred without matching per-run token usage and pricing.",
-        "Missing scores are never imputed, and aliases are not merged without explicit source evidence.",
-        "FrontierMath Tier 4 v2 is excluded after a source audit found a mismatch between checked-in values and Epoch AI's visible leaderboard; six visible source rows remain standalone pending a complete export.",
-        "Furniture Assembly is excluded from the composite because the official leaderboard currently has no tabular results; only three values confirmed in Epoch AI's launch analysis remain.",
-        "MCP Atlas uses the official pass-rate metric over 1,000 tasks, including 500 held-out tasks; explicit effort labels are preserved, otherwise effort is not reported.",
-        "HiL-Bench uses Pass@3 as its task-outcome metric. ASK-F1 measures a different help-seeking quality dimension and is not mixed into the Index."
+        "Missing scores are never imputed, and aliases are not merged without explicit source evidence."
       ],
       "sourceNotes": [
         {
@@ -13047,7 +13063,7 @@
           "snapshotDate": "2026-10-31"
         }
       ],
-      "method": "QBench Index 1.3 uses source-reported percentage-point performance rather than within-cohort percentiles. Each exact model/effort variant is scored separately. Evaluations are averaged within six capability families, and observed families are weighted equally. Ranking requires at least three eligible evaluations across three distinct families. Missing values are not imputed.",
+      "method": "QBench Index 1.3 uses eight source-audited evaluations across seven capability families. It retains publisher-reported task-success/accuracy percentages rather than converting within-cohort ranks to percentiles. Model/effort variants are separate identities. Ranking requires at least two eligible evaluations across two distinct families. Missing values are not imputed.",
       "currentDiagnostics": {
         "snapshotAsOf": "2026-10-31",
         "eligibleEvaluationCount": 7,
