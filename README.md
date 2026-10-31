@@ -6,7 +6,7 @@ Evidence-first AI model benchmark explorer.
 **Repository:** https://github.com/nden14800/qbench  
 **Deployment:** Cloudflare Pages, production branch `main`.
 
-QBench keeps every result attached to its publisher, model variant, reasoning effort, harness, configuration, metric and snapshot. **QBench Index 1.3** is a source-audited composite of eight evaluations across seven capability families. It does not import Artificial Analysis' composite scores or private results.
+QBench keeps every result attached to its publisher, model variant, reasoning effort, harness, configuration, metric and snapshot. **QBench Index 1.3** is a source-audited composite of seven evaluations across six capability families. It does not import Artificial Analysis' composite scores or private results.
 
 ## QBench Index 1.3
 
@@ -14,15 +14,15 @@ QBench keeps every result attached to its publisher, model variant, reasoning ef
 
 | Metric | Result |
 |---|---:|
-| Eligible evaluations | 8 |
-| Capability families | 7 |
-| Base model names with at least one eligible result | 98 |
-| Exact model/effort variants | 162 |
-| Ranked variants | 54 |
+| Eligible evaluations | 7 |
+| Capability families | 6 |
+| Base model names with at least one eligible result | 84 |
+| Exact model/effort variants | 145 |
+| Ranked variants | 52 |
 | Full evidence (7 families) | 0 |
-| Broad evidence (4–6 families) | 7 |
-| Limited evidence (2–3 families) | 47 |
-| Unranked variants | 108 |
+| Broad evidence (4–5 families) | 1 |
+| Limited evidence (2–3 families) | 51 |
+| Unranked variants | 93 |
 
 A base model may appear as several independent effort variants. The leaderboard is therefore a model-variant ranking, not a single best-effort score per model family.
 
@@ -36,10 +36,9 @@ A base model may appear as several independent effort variants. The leaderboard 
 | Expert knowledge | HLE-Diamond | 19 | Scale Labs · 2026-10-31 |
 | Strategic reasoning | Mystery Game Puzzles | 20 | Epoch AI · 2026-10-14 |
 | Tool use | MCP Atlas — Pass Rate (All 1,000 tasks) | 20 | Scale Labs · 2026-04-08 |
-| Help-seeking judgment | HiL-Bench | 30 | Scale Labs · 2026-10-31 |
 | Adaptive interactive reasoning | ARC-AGI-3 Standard harness | 40 | ARC Prize · 2026-10-31 |
 
-MCP Atlas contains 1,000 human-authored tasks across 36 MCP servers and 220 tools, including 500 held-out tasks. QBench uses only the source's explicitly labeled All 1,000 Pass Rate table (20 rows) and preserves Public 500 companion scores separately. The page headline (83.6%) does not match the displayed All 1,000 table maximum (82.2%), so the discrepancy is documented; a separate 34-row Performance Comparison table with an unclear metric label remains standalone. HiL-Bench contains 300 tasks, 1,131 human-validated blockers and 100 private held-out tasks; QBench uses Pass@3 only, not ASK-F1. DrugDiscoveryBench uses the common mini-SWE-agent harness, three-run averages and a 120-minute timeout. Mystery Game Puzzles is a 100-position hidden-identity evaluation; the imported snapshot contains 20 exact model/effort rows from Epoch AI's larger 140-model leaderboard.
+MCP Atlas contains 1,000 human-authored tasks across 36 MCP servers and 220 tools, including 500 held-out tasks. QBench uses only the source's explicitly labeled All 1,000 Pass Rate table (20 rows) and preserves Public 500 companion scores separately. The page headline (83.6%) does not match the displayed All 1,000 table maximum (82.2%), so the discrepancy is documented; a separate 34-row Performance Comparison table with an unclear metric label remains standalone. HiL-Bench is currently standalone: the official 30-row comparison table does not identify its score metric, while the paper's clearly labeled Pass@3 and ASK-F1 results cover only four models, below the 12-variant source gate. DrugDiscoveryBench uses the common mini-SWE-agent harness, three-run averages and a 120-minute timeout. Mystery Game Puzzles is a 100-position hidden-identity evaluation; the imported snapshot contains 20 exact model/effort rows from Epoch AI's larger 140-model leaderboard.
 
 ARC-AGI-3 uses 40 official Standard-harness model/effort variants from ten base models. The Provider Adapter results are stored as a separate standalone evaluation because the harness materially changes scores. For example, GPT-6 Astra's max-effort result is 62.7% on Standard and 98.6% on Provider Adapter; high effort is 54.8% vs 99.9%. These are not mixed in the Index.
 
@@ -47,10 +46,10 @@ ARC-AGI-3 uses 40 official Standard-harness model/effort variants from ten base 
 
 1. **Source gate:** each eligible evaluation needs at least 12 distinct model/effort variants with usable publisher-reported results.
 2. **Native score:** retain the source's 0–100 task-success or accuracy percentage. Do not convert within-cohort rank into a percentile.
-3. **Family aggregation:** average multiple evaluations within the same capability family. Average the seven observed family scores equally.
+3. **Family aggregation:** average multiple evaluations within the same capability family. Average the six observed family scores equally.
 4. **Evidence adjustment:** require at least two eligible evaluations across two distinct families for a rank. Incomplete seven-family coverage is adjusted toward 50.
 
-`Index = 50 + (Raw family mean − 50) × sqrt(Observed families / 7)`
+`Index = 50 + (Raw family mean − 50) × sqrt(Observed families / 6)`
 
 The adjustment is an evidence-coverage convention, not a confidence interval, human-equivalence score or IQ score. Missing values are not imputed. Benchmark metrics remain distinct in the detail view even though the composite uses their reported percentage-point scores; task formats, graders, chance levels and harnesses are not psychometrically interchangeable.
 
@@ -61,7 +60,7 @@ The adjustment is an evidence-coverage convention, not a confidence interval, hu
 - `Not reported` is not interpreted as low, default or high effort.
 - QBench never selects the highest effort result to represent a base model.
 - Harnesses, routes, fallback settings and other configurations remain visible.
-- Duplicate model/effort rows were audited in the eight eligible datasets; no duplicates were found within an evaluation.
+- Duplicate model/effort rows were audited in the seven eligible datasets; no duplicates were found within an evaluation.
 
 ### Standalone evaluations and exclusions
 
@@ -69,6 +68,7 @@ These remain visible in the benchmark directory but do not contribute to the com
 
 - **ARC-AGI-1 and ARC-AGI-2 semi-private:** retained as ceiling-watch series; high-end results approach saturation.
 - **ARC-AGI-3 Provider Adapter:** separate harness from Standard; never pooled into the Index.
+- **HiL-Bench:** the official leaderboard's 30-row Performance Comparison table does not explicitly label its score metric; it conflicts with the paper's clearly labeled Pass@3 results. The paper reports Pass@3 and ASK-F1 for only four models, below the 12-variant source gate; it remains standalone.
 - **MCP Atlas Performance Comparison:** the publisher's 34-row score ± table does not explicitly label the metric; retained separately. The Index uses only the clearly labeled All 1,000-task Pass Rate table.
 - **ProofBench 1.1:** upper-end tie at 100% creates ceiling risk.
 - **GPQA Diamond:** near-ceiling and incomplete checked-in snapshot.
@@ -104,12 +104,12 @@ A larger leaderboard is not automatically a better composite. Incomplete exports
 
 | Metric | Result |
 |---|---:|
-| Benchmark datasets with model values | 49 |
-| Benchmark directory dataset cards | 49 |
-| Benchmark catalog metadata records | 80 |
-| Model-result rows across all datasets | 833 |
-| Exact model names across all datasets | 192 |
-| Model + effort + harness combinations | 701 |
+| Benchmark datasets with model values | 50 |
+| Benchmark directory dataset cards | 50 |
+| Benchmark catalog metadata records | 81 |
+| Model-result rows across all datasets | 837 |
+| Exact model names across all datasets | 193 |
+| Model + effort + harness combinations | 705 |
 | Provider labels | 32 |
 | API price entries | 61 |
 
