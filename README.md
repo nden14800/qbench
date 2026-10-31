@@ -28,7 +28,7 @@ QBench keeps model results tied to the original evaluation, metric, model config
 | Scientific workflows | DrugDiscoveryBench | 14 | Scale Labs, 2026-10-31 |
 | Expert knowledge & reasoning | HLE-Diamond | 19 | Scale Labs, 2026-10-31 |
 
-ProofBench's 54 leaderboard rows include two specialist formal-proof systems; those remain visible in the benchmark detail but are excluded from the general-purpose composite. DrugDiscoveryBench contributes only the mini-SWE-agent runs so that its harness is consistent; other native-harness configurations are not mixed into Index 1.2.
+ProofBench's 54 leaderboard rows include two specialist formal-proof systems; those remain visible in the benchmark detail but are excluded from the general-purpose composite. DrugDiscoveryBench contributes only mini-SWE-agent runs, using the highest listed effort setting per model. Effort levels differ across model families, so this is best-reported capability rather than equal-compute head-to-head; other native-harness configurations are not mixed into Index 1.2.
 
 ### Calculation
 
