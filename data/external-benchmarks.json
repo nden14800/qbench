@@ -4017,7 +4017,7 @@
       "group": "Core evaluations",
       "source": "https://www.tbench.ai/?version=4.0",
       "status": "results-imported",
-      "note": "66 terminal-agent tasks; three trials per task on official board"
+      "note": "66 terminal-agent tasks. QBench uses the public Terminal-Bench leaderboard; the public harness/configuration may differ from AA's private Stirrup evaluation."
     },
     {
       "id": "frontiercode-2-0",
@@ -4057,7 +4057,7 @@
       "group": "Core evaluations",
       "source": "https://labs.scale.com/leaderboard/hle-diamond",
       "status": "results-imported",
-      "note": "1,000 fixed questions: 500 reasoning + 500 knowledge; calibration error retained"
+      "note": "1,000 fixed questions: 500 reasoning + 500 knowledge. QBench uses the Scale AI public leaderboard; AA's internal scoring/harness may differ."
     },
     {
       "id": "arc-agi-2",
