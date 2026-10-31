@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.6",
-  "note": "Snapshot 2026-10-31. 20 datasets contain 507 published model-result rows across 165 unique model names, 330 configurations, and 31 providers. The composite score is calculated only for the 10 models with complete coverage across its six source tables; each individual benchmark leaderboard shows its full available model set.",
+  "note": "Snapshot 2026-10-31: 20 result datasets, 507 model-result rows, 165 unique model names, 330 model configurations, and 31 providers. The composite score includes the 10 models with complete coverage across six input datasets. Individual benchmark leaderboards show all available model results.",
   "benchmarks": [
     {
       "id": "livebench-2.0",
@@ -237,8 +237,7 @@
           "score": 38.7,
           "evidence": "BenchLeader LiveBench 2.0 snapshot 2026-10-30; underlying publisher LiveBench"
         }
-      ],
-      "indexRole": "Separate benchmark"
+      ]
     },
     {
       "id": "gpqa-diamond",
@@ -583,8 +582,7 @@
           "costPerQuestion": 0.008,
           "timePerQuestion": "80s"
         }
-      ],
-      "indexRole": "Separate benchmark"
+      ]
     },
     {
       "id": "frontiermath-tiers-1-3-v2",
@@ -989,8 +987,7 @@
           "evidence": "BenchLeader FrontierMath Tiers 1-3 snapshot 2026-10-30; original publisher Epoch AI",
           "configuration": "high"
         }
-      ],
-      "indexRole": "Separate benchmark"
+      ]
     },
     {
       "id": "frontiermath-tier-4-v2",
@@ -1154,8 +1151,7 @@
           "score": 31.707,
           "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI"
         }
-      ],
-      "indexRole": "Separate benchmark"
+      ]
     },
     {
       "id": "proofbench",
@@ -1460,8 +1456,7 @@
           "score": 26,
           "evidence": "BenchLeader ProofBench snapshot 2026-10-29; original publisher Vals AI"
         }
-      ],
-      "indexRole": "Separate benchmark"
+      ]
     },
     {
       "id": "furniture-assembly",
@@ -1688,8 +1683,7 @@
           "score": 20,
           "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI"
         }
-      ],
-      "indexRole": "Separate benchmark"
+      ]
     },
     {
       "id": "swe-bench-verified",
@@ -1740,8 +1734,7 @@
           "status": "Verified",
           "reportedDate": "2026-06-02"
         }
-      ],
-      "indexRole": "Separate benchmark"
+      ]
     },
     {
       "id": "swe-bench-pro-v2",
@@ -1786,8 +1779,7 @@
           "score": 95.8,
           "evidence": "Published result"
         }
-      ],
-      "indexRole": "Separate benchmark"
+      ]
     },
     {
       "id": "arc-agi-2",
@@ -2277,8 +2269,7 @@
           "score": 0,
           "evidence": "LLMBenchmark.ai catalog snapshot 2026-10-26; original benchmark results attributed to Epoch AI"
         }
-      ],
-      "indexRole": "Separate reference (saturation watch)"
+      ]
     },
     {
       "id": "frontiermath-erdos",
@@ -2340,8 +2331,7 @@
           "configuration": "max",
           "evidence": "Epoch AI official benchmark leaderboard, retrieved 2026-10-29"
         }
-      ],
-      "indexRole": "QBench frontier extension (non-AA)"
+      ]
     },
     {
       "id": "mystery-game-puzzles",
@@ -2494,8 +2484,7 @@
           "uncertainty": "±4.9%",
           "evidence": "Epoch AI official leaderboard search snapshot retrieved 2026-10-30"
         }
-      ],
-      "indexRole": "QBench frontier extension (non-AA)"
+      ]
     },
     {
       "id": "aa-briefcase-v1-1",
@@ -2876,8 +2865,7 @@
           "score": 0,
           "uncertainty": "0 / 0"
         }
-      ],
-      "indexRole": "AA Intelligence Index v5 component"
+      ]
     },
     {
       "id": "hle-diamond",
@@ -3096,8 +3084,7 @@
           "configuration": "published leaderboard",
           "evidence": "Scale AI HLE-Diamond official leaderboard, accessed 2026-10-31"
         }
-      ],
-      "indexRole": "AA Intelligence Index v5 component"
+      ]
     },
     {
       "id": "terminal-bench-4-0",
@@ -3360,8 +3347,7 @@
           "costPerTaskUSD": 1.3,
           "evidence": "Official Terminal-Bench 4.0 leaderboard, accessed 2026-10-31"
         }
-      ],
-      "indexRole": "AA Intelligence Index v5 component"
+      ]
     },
     {
       "id": "terminal-bench-science-0-1",
@@ -3844,8 +3830,7 @@
           "harness": "Mini-SWE-agent",
           "evidence": "Vals AI Terminal-Bench-Science leaderboard, updated 2026-10-25; pass@1, single run per task"
         }
-      ],
-      "indexRole": "AA Intelligence Index v5 component"
+      ]
     },
     {
       "id": "automationbench-aa",
@@ -3877,8 +3862,7 @@
           "score": 73.3,
           "evidence": "Artificial Analysis Intelligence Index v5 official announcement, 2026-10-27; published leader summary only"
         }
-      ],
-      "indexRole": "AA Intelligence Index v5 component"
+      ]
     },
     {
       "id": "frontiercode-2-0",
@@ -3924,8 +3908,7 @@
           "score": 28,
           "evidence": "Artificial Analysis Intelligence Index v5 official announcement, 2026-10-27; published leader summary only"
         }
-      ],
-      "indexRole": "AA Intelligence Index v5 component"
+      ]
     },
     {
       "id": "critpt-v2-hard",
@@ -3964,8 +3947,7 @@
           "score": 45,
           "evidence": "Artificial Analysis Intelligence Index v5 official announcement, 2026-10-27; published leader summary only"
         }
-      ],
-      "indexRole": "AA Intelligence Index v5 component"
+      ]
     },
     {
       "id": "gdp-pdf",
@@ -3983,8 +3965,7 @@
           "score": 33,
           "evidence": "Artificial Analysis Intelligence Index v5 official announcement, 2026-10-27; published leader summary only"
         }
-      ],
-      "indexRole": "AA Intelligence Index v5 component"
+      ]
     },
     {
       "id": "aa-omniscience-v1-1",
@@ -4002,109 +3983,9 @@
           "score": 48,
           "evidence": "Artificial Analysis Intelligence Index v5 official announcement, 2026-10-27; published leader summary only"
         }
-      ],
-      "indexRole": "AA Intelligence Index v5 component"
+      ]
     }
   ],
-  "watchlist": [
-    {
-      "name": "SpireClimb",
-      "category": "Agentic / computer use",
-      "source": "https://epoch.ai/benchmarks/spireclimb",
-      "status": "Candidate · result rows not imported",
-      "reason": "Two roguelike games at maximum difficulty; 135 fixed-seed runs per model across both titles; long-horizon computer-use and tactical planning. Results should be imported only when the published leaderboard data is available."
-    },
-    {
-      "name": "Earthborne Rangers (EBR-bench)",
-      "category": "Continual learning / long horizon",
-      "source": "https://epoch.ai/benchmarks/ebr-bench",
-      "status": "Candidate · protocol-version caution",
-      "reason": "Repeated playthroughs test learning and note-taking. v4 changed card-ban and harness settings; older results are not fully comparable. Await a clean current result extract."
-    },
-    {
-      "name": "FrontierCode 2.0",
-      "category": "Software engineering / agentic coding",
-      "source": "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5",
-      "status": "Private / not imported",
-      "reason": "Private repository tasks graded on whether maintainers would merge the change. Useful methodological reference, but not a public score source."
-    },
-    {
-      "name": "GraphWalks",
-      "category": "Long-context reasoning",
-      "source": "https://epoch.ai/benchmarks/graphwalks/review",
-      "status": "Verified review · result extract pending",
-      "reason": "Independent review verified 1,150 tasks and reproducible solutions; suitable for a long-context reasoning dataset when the model-level table is imported."
-    }
-  ],
-  "aaIndexV5": {
-    "name": "Artificial Analysis Intelligence Index v5.0",
-    "source": "https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index",
-    "snapshotDate": "2026-10-31",
-    "categories": [
-      {
-        "name": "Knowledge Work",
-        "weight": 25,
-        "components": [
-          {
-            "id": "aa-briefcase-v1-1",
-            "weight": 15
-          },
-          {
-            "id": "automationbench-aa",
-            "weight": 5
-          },
-          {
-            "id": "gdp-pdf",
-            "weight": 5
-          }
-        ]
-      },
-      {
-        "name": "Coding",
-        "weight": 25,
-        "components": [
-          {
-            "id": "frontiercode-2-0",
-            "weight": 15
-          },
-          {
-            "id": "terminal-bench-4-0",
-            "weight": 10
-          }
-        ]
-      },
-      {
-        "name": "Science",
-        "weight": 25,
-        "components": [
-          {
-            "id": "terminal-bench-science-0-1",
-            "weight": 15
-          },
-          {
-            "id": "critpt-v2-hard",
-            "weight": 10
-          }
-        ]
-      },
-      {
-        "name": "General",
-        "weight": 25,
-        "components": [
-          {
-            "id": "aa-omniscience-v1-1",
-            "weight": 15
-          },
-          {
-            "id": "hle-diamond",
-            "weight": 10
-          }
-        ]
-      }
-    ],
-    "privateSharePercent": 60,
-    "note": "Weights follow the AA v5 official methodology. QBench only calculates an AA-compatible aggregate when all nine component scores for a model/configuration are available; it never fills missing values."
-  },
   "benchmarkCatalog": [
     {
       "id": "aa-briefcase-v1-1",
@@ -4182,9 +4063,9 @@
       "id": "arc-agi-2",
       "name": "ARC-AGI-2",
       "group": "Additional evaluations",
-      "source": "https://epoch.ai/benchmarks/arc-agi-2",
+      "source": "https://llmbenchmark.ai/benchmarks/epoch-arc-agi-2",
       "status": "results-imported",
-      "note": "Abstract reasoning; creator-administered results"
+      "note": "Abstract reasoning on unseen grid puzzles; tests generalization to novel visual patterns. 80 model entries from a third-party leaderboard snapshot."
     },
     {
       "id": "frontiermath-tiers-1-3-v2",
@@ -4459,33 +4340,8 @@
       "note": "Long-context medical-record synthesis and fragmented-document reasoning"
     }
   ],
-  "aaIndexReference": {
-    "source": "https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index",
-    "snapshotDate": "2026-10-31",
-    "note": "Official Artificial Analysis Index v5 overall scores, shown as a source reference only; not QBench-calculated.",
-    "models": [
-      {
-        "model": "Gemini 4 Carbon",
-        "provider": "Google",
-        "configuration": "High",
-        "score": 59
-      },
-      {
-        "model": "Claude Opus 5.5",
-        "provider": "Anthropic",
-        "configuration": "Max · Default Fallback",
-        "score": 58
-      },
-      {
-        "model": "Claude Opus 5.5",
-        "provider": "Anthropic",
-        "configuration": "Xhigh · Default Fallback",
-        "score": 57
-      }
-    ]
-  },
   "composite": {
-    "name": "QBench Original Index 2.0",
+    "name": "QBench Composite Index",
     "eligibleBenchmarks": [
       "livebench-2.0",
       "gpqa-diamond",
@@ -4541,53 +4397,5 @@
     ],
     "method": "Exact model-name intersection across LiveBench 2.0, GPQA Diamond, FrontierMath Tiers 1–3 v2, FrontierMath Tier 4 v2, ProofBench and Furniture Assembly. FrontierMath family is the arithmetic mean of Tiers 1–3 and Tier 4. Four domains are equally weighted at 25%: Coding & Agentic = LiveBench; Scientific Reasoning = GPQA Diamond; Mathematics & Proof = mean of FrontierMath family and ProofBench; Practical Execution = Furniture Assembly. The overall index is the arithmetic mean of the four domain scores. Missing scores are not imputed and aliases are not inferred.",
     "snapshotAsOf": "2026-10-30"
-  },
-  "qbenchIndex": {
-    "name": "QBench Expanded Index",
-    "version": "1.0-preview",
-    "design": "Artificial Analysis Intelligence Index v5's complete nine-evaluation suite plus QBench-selected frontier evaluations that are not part of AA v5. Four AA-aligned domains remain 25% each. The additional frontier tests extend breadth and stress-test capability; they are displayed alongside the AA core and will only enter the scored extension after per-model, configuration-matched coverage and a published normalization/weighting protocol are available.",
-    "aaComponents": [
-      "aa-briefcase-v1-1",
-      "automationbench-aa",
-      "gdp-pdf",
-      "frontiercode-2-0",
-      "terminal-bench-4-0",
-      "terminal-bench-science-0-1",
-      "critpt-v2-hard",
-      "aa-omniscience-v1-1",
-      "hle-diamond"
-    ],
-    "aaSource": "https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index",
-    "additions": [
-      {
-        "id": "frontiermath-erdos",
-        "role": "active-frontier-extension",
-        "domain": "Mathematics / formal proof",
-        "reason": "68 research-level Erdős problems with Lean proof verification. Epoch AI's official benchmark page currently reports a highest score of 3% (rounded); the stored official leaderboard rows show 2.9% for the leading configurations, indicating substantial headroom. Scores must be refreshed from the official source before recalculating.",
-        "source": "https://epoch.ai/benchmarks/frontiermath-erdos"
-      },
-      {
-        "id": "mystery-game-puzzles",
-        "role": "active-frontier-extension",
-        "domain": "General reasoning / games",
-        "reason": "100 hidden-identity game puzzles; top score 84% across 140 tested models. Adds a non-AA test with room below ceiling.",
-        "source": "https://epoch.ai/benchmarks/mystery-game-puzzles"
-      },
-      {
-        "id": "spireclimb",
-        "role": "candidate-awaiting-result-import",
-        "domain": "Agentic / computer use",
-        "reason": "Long-horizon computer-use and tactical gameplay across two games at maximum difficulty. Epoch reports top score 26%, but model-level rows must be imported from the official source before it can affect scores.",
-        "source": "https://epoch.ai/benchmarks/spireclimb"
-      },
-      {
-        "id": "frontiermath-open-problems",
-        "role": "research-watchlist",
-        "domain": "Research mathematics",
-        "reason": "Programmatically verified solutions to open research problems; solved items are removed to reduce contamination. Access and model-level comparable result rows are not yet available for QBench.",
-        "source": "https://epoch.ai/latest/benchmarking-ai-on-unsolved-math-problems"
-      }
-    ],
-    "scoringStatus": "Preview only: the nine AA components have mixed public/private availability, and no complete same-model/configuration coverage exists. Do not calculate or display a fabricated expanded total. Preserve the existing QBench Original Index 2.0 score separately."
   }
 }
