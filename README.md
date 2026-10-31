@@ -51,7 +51,7 @@ This is a best-reported-configuration index, not a controlled same-effort or sam
 
 ### Data adequacy on 2026-10-31
 
-Four of the nine AA v5 evaluations currently meet the minimum eight-model threshold in QBench's imported data: AA-Briefcase v1.1, Terminal-Bench 4.0, Terminal-Bench-Science 0.1, and HLE-Diamond. The other five remain in the directory but do not affect the composite until sufficient model-level coverage is available. In the current eligible data, 29 models have results in at least two categories; 5 satisfy the strict rank rule and 24 are displayed as coverage-only. The Terminal-Bench-Science source currently uses a third-party leaderboard/harness and is not the same run configuration as AA's own Stirrup evaluation; this limitation is disclosed rather than hidden.
+Four of the nine AA v5 evaluations currently meet the minimum eight-model threshold in QBench's imported data: AA-Briefcase v1.1, Terminal-Bench 4.0, Terminal-Bench-Science 0.1, and HLE-Diamond. The other five remain in the directory but do not affect the composite until sufficient model-level coverage is available. In the current eligible data, 29 models have results in at least two categories; 5 satisfy the strict rank rule and 24 are displayed as coverage-only. Terminal-Bench 4.0 and HLE-Diamond are also imported from public leaderboards rather than AA's private run pipeline. Terminal-Bench-Science comes from Vals AI / Mini-SWE-agent single-run results, not AA's Stirrup three-run evaluation. These rows match the named benchmark versions, not necessarily AA's internal run configurations.
 
 ### Frontier extensions (monitored separately)
 
