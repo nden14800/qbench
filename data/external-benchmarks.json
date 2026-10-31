@@ -4497,7 +4497,7 @@
       "unit": "Elo",
       "quality": "Artificial Analysis official leaderboard · 52 published configurations visible · 91-task private benchmark · 95% confidence intervals",
       "models": [],
-      "indexEligible": true,
+      "indexEligible": false,
       "valueNote": "2026-10-31: AA-published values removed under QBench policy. Evaluation definition and source link are retained; no model values are shown."
     },
     {
@@ -6202,7 +6202,8 @@
       "quality": "AA v5 component · only three official leader-summary values imported; not a full leaderboard",
       "coverageLevel": "published-leader-summary-only",
       "models": [],
-      "valueNote": "2026-10-31: AA-published values removed under QBench policy. Evaluation definition and source link are retained; no model values are shown."
+      "valueNote": "2026-10-31: AA-published values removed under QBench policy. Evaluation definition and source link are retained; no model values are shown.",
+      "indexEligible": false
     },
     {
       "id": "frontiercode-2-0",
@@ -6213,7 +6214,8 @@
       "quality": "AA v5 component · private 132-task set · official top-results summary only",
       "coverageLevel": "published-leader-summary-only",
       "models": [],
-      "valueNote": "2026-10-31: AA-published values removed under QBench policy. Evaluation definition and source link are retained; no model values are shown."
+      "valueNote": "2026-10-31: AA-published values removed under QBench policy. Evaluation definition and source link are retained; no model values are shown.",
+      "indexEligible": false
     },
     {
       "id": "critpt-v2-hard",
@@ -6224,7 +6226,8 @@
       "quality": "AA v5 component · private 40-question hard subset · official leader-summary values only",
       "coverageLevel": "published-leader-summary-only",
       "models": [],
-      "valueNote": "2026-10-31: AA-published values removed under QBench policy. Evaluation definition and source link are retained; no model values are shown."
+      "valueNote": "2026-10-31: AA-published values removed under QBench policy. Evaluation definition and source link are retained; no model values are shown.",
+      "indexEligible": false
     },
     {
       "id": "gdp-pdf",
@@ -6235,7 +6238,7 @@
       "quality": "28 visible configuration rows from BenchLeader's mirror of the Artificial Analysis public GDP.pdf leaderboard (235 configurations reported). This is a partial mirror, not the full 235-row table.",
       "coverageLevel": "28-of-235-secondary-snapshot",
       "models": [],
-      "indexEligible": true,
+      "indexEligible": false,
       "indexDomain": "Knowledge & Professional Work",
       "saturationStatus": "active",
       "valueNote": "2026-10-31: AA-published values removed under QBench policy. Evaluation definition and source link are retained; no model values are shown."
@@ -6249,7 +6252,7 @@
       "quality": "28 visible configuration rows from BenchLeader's mirror of the Artificial Analysis public AA-Omniscience v1.1 leaderboard (105 configurations reported). Scores are the full omniscience score, not accuracy-only; the separate Atlas accuracy table remains supplemental and excluded.",
       "coverageLevel": "28-of-105-secondary-snapshot",
       "models": [],
-      "indexEligible": true,
+      "indexEligible": false,
       "indexDomain": "Knowledge & Professional Work",
       "saturationStatus": "active",
       "valueNote": "2026-10-31: AA-published values removed under QBench policy. Evaluation definition and source link are retained; no model values are shown."
@@ -6263,7 +6266,8 @@
       "quality": "Third-party supplementary import. Accuracy-only measure; paired hallucination-rate results are not included. Not a substitute for the full AA-Omniscience v1.1 component and excluded from QBench Composite Index.",
       "coverageLevel": "third-party-supplementary",
       "models": [],
-      "valueNote": "2026-10-31: AA-published values removed under QBench policy. Evaluation definition and source link are retained; no model values are shown."
+      "valueNote": "2026-10-31: AA-published values removed under QBench policy. Evaluation definition and source link are retained; no model values are shown.",
+      "indexEligible": false
     },
     {
       "id": "aa-3d",
@@ -6273,7 +6277,7 @@
       "unit": "Elo",
       "quality": "Official Artificial Analysis leaderboard · 55 interactive 3D scene tasks · 23 of 23 model configurations · Elo from blind human panel votes with 95% confidence intervals.",
       "coverageLevel": "official-full-visible-leaderboard",
-      "indexEligible": true,
+      "indexEligible": false,
       "indexDomain": "Multimodal & Interaction",
       "saturationStatus": "not-saturated",
       "models": [],
@@ -6287,7 +6291,7 @@
       "unit": "% hallucination-gated all-pass",
       "quality": "Artificial Analysis official leaderboard · private 120-task legal benchmark · 3-judge panel. v1.1 scores are not comparable with v1.0. 25 visible configuration rows; repeated model configurations are retained.",
       "coverageLevel": "official-published-leaderboard",
-      "indexEligible": true,
+      "indexEligible": false,
       "indexDomain": "Knowledge & Professional Work",
       "saturationStatus": "not-saturated",
       "models": [],
@@ -6301,7 +6305,7 @@
       "unit": "% task success",
       "quality": "50 configurations are listed by BenchLeader; 30 visible top rows are imported as a partial mirror of the Artificial Analysis leaderboard.",
       "coverageLevel": "visible-secondary-leaderboard-snapshot",
-      "indexEligible": true,
+      "indexEligible": false,
       "indexDomain": "Agents & Tool Use",
       "saturationStatus": "active",
       "models": [],
@@ -6315,7 +6319,7 @@
       "unit": "% tasks solved",
       "quality": "33 configurations are listed by BenchLeader; 31 visible top rows are imported as a partial mirror of the Artificial Analysis leaderboard.",
       "coverageLevel": "visible-secondary-leaderboard-snapshot",
-      "indexEligible": true,
+      "indexEligible": false,
       "indexDomain": "Agents & Tool Use",
       "saturationStatus": "active",
       "models": [],
@@ -6329,7 +6333,7 @@
       "unit": "% task success",
       "quality": "50 configurations are listed by BenchLeader; 30 visible top rows are imported as a partial mirror of the Artificial Analysis leaderboard.",
       "coverageLevel": "visible-secondary-leaderboard-snapshot",
-      "indexEligible": true,
+      "indexEligible": false,
       "indexDomain": "Agents & Tool Use",
       "saturationStatus": "active",
       "models": [],
@@ -7897,7 +7901,7 @@
       "unit": "Score (%)",
       "quality": "29 visible model configurations from BenchLeader's mirror of the Artificial Analysis MLCR leaderboard; source lists 174 configurations.",
       "coverageLevel": "visible-secondary-leaderboard-snapshot",
-      "indexEligible": true,
+      "indexEligible": false,
       "indexDomain": "Knowledge & Professional Work",
       "saturationStatus": "active",
       "models": [],
@@ -7911,7 +7915,7 @@
       "unit": "Elo rating",
       "quality": "27 model configurations from BenchLeader's mirror of Artificial Analysis Code2Video-AA; the publisher page describes 114 design briefs and head-to-head Elo ranking.",
       "coverageLevel": "visible-secondary-leaderboard-snapshot",
-      "indexEligible": true,
+      "indexEligible": false,
       "indexDomain": "Multimodal & Interaction",
       "saturationStatus": "active",
       "models": [],
@@ -9616,14 +9620,14 @@
       }
     ],
     "currentDiagnostics": {
-      "rankedModels": 18,
-      "coverageOnlyModels": 36,
+      "rankedModels": 17,
+      "coverageOnlyModels": 37,
       "modelsWithAtLeastTwoCategories": 53,
-      "eligibleEvaluationCount": 8,
-      "excludedEvaluationCount": 0,
-      "note": "OSWorld 2.0's 16 secondary aggregate values are excluded from the composite pending metric verification; the standalone dataset remains visible. Provider labels were normalized using model-maker sources where available.",
-      "allEligibleModels": 99,
-      "singleEvaluationModels": 45
+      "eligibleEvaluationCount": 7,
+      "excludedEvaluationCount": 1,
+      "note": "Recomputed after excluding OSWorld 2.0's ambiguous secondary aggregate: 17 formal ranks, 37 provisional Index values and 44 single-evaluation models (98 models with at least one eligible result).",
+      "allEligibleModels": 98,
+      "singleEvaluationModels": 44
     },
     "supplementaryInputsExcluded": [
       "aa-omniscience-v1-1-accuracy-atlas"
