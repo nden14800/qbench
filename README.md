@@ -1,83 +1,109 @@
-# QBench
+# QBench Index 2.0
 
-**Independent AI model benchmark comparison, built around traceable public evidence.**
+**Independent frontier benchmark intelligence, aligned to Artificial Analysis Intelligence Index v5.**
 
-Production: https://qbench.pages.dev  
-Repository: https://github.com/nden14800/qbench
+- Production: https://qbench.pages.dev
+- Repository: https://github.com/nden14800/qbench
+- Latest source snapshot: 2026-10-31
 
-QBench Index 2.0 combines published model results from independent benchmark providers. The current snapshot contains **129 unique model names**, **355 model-result entries**, and **11 benchmark datasets**. The core composite currently has a **10-model exact-name cohort**; additional frontier stress tests remain separate until coverage supports a fair comparison.
+## Current coverage
 
-## Index 2.0 core composite
+- **165 unique base-model names**
+- **330 distinct model / configuration / harness keys** (a source-aware catalog count, not directly comparable to another provider's model-configuration denominator)
+- **507 model-result observations**
+- **20 datasets with imported model-level results**
+- **44 benchmark families catalogued**
+- **9/9 AA v5 components have at least some published result data**
+- **152 AA v5 component result rows**; 4/9 components have full model-level leaderboard extracts, while the remaining components currently contain only AA-published leader summaries.
 
-The core composite uses exact model-name intersection across five benchmark families:
+QBench does **not** calculate an AA-equivalent total score yet. No model configuration currently has a complete, comparable score across all nine AA v5 components. Missing component scores are not imputed, and model aliases are not guessed.
 
-- LiveBench 2.0
-- GPQA Diamond
-- FrontierMath family (Tiers 1–3 v2 and Tier 4 v2 averaged as one family)
-- ProofBench
-- Furniture Assembly Benchmark
+## AA v5-aligned methodology
 
-The index uses four equally weighted domains at 25% each: coding and agentic work (LiveBench 2.0), scientific reasoning (GPQA Diamond), mathematics and proof (FrontierMath family plus ProofBench, split evenly within the domain), and practical task execution (Furniture Assembly). This preserves five underlying benchmark families while preventing any one domain from dominating. Published source scores are retained on their original 0–100 scale. The composite is the arithmetic mean of the four domain scores. Missing results are not imputed, model aliases are not inferred, and the cohort is not padded to inflate model count.
+QBench registers the exact nine evaluations used by Artificial Analysis Intelligence Index v5:
 
-## Frontier stress tests and specialist datasets
+| Category | Weight | Evaluation | Component weight |
+|---|---:|---|---:|
+| Knowledge Work | 25% | AA-Briefcase v1.1 | 15% |
+| Knowledge Work | 25% | AutomationBench-AA | 5% |
+| Knowledge Work | 25% | GDP.pdf | 5% |
+| Coding | 25% | FrontierCode 2.0 | 15% |
+| Coding | 25% | Terminal-Bench 4.0 | 10% |
+| Science | 25% | Terminal-Bench-Science 0.1 | 15% |
+| Science | 25% | CritPt v2 (Hard Subset) | 10% |
+| General | 25% | AA-Omniscience v1.1 | 15% |
+| General | 25% | HLE-Diamond | 10% |
 
-Frontier stress tests are tracked separately from the core composite:
+The official weights are reproduced as published. Scores remain in their native units: for example, AA-Briefcase Elo, HLE accuracy, Terminal-Bench resolution rate, and AA-Omniscience net score are not interchangeable. QBench will only compute a nine-component score for an exact model configuration when every component is available.
 
-- **ARC-AGI-2** — 80 published catalog rows in the 26 October 2026 snapshot; original benchmark results attributed to Epoch AI. This tests abstract visual reasoning and remains separate from the core index until cross-family coverage is adequate.
-- **FrontierMath Erdős** — 7 official Epoch AI evaluation rows on 68 research-level open problems, snapshot 29 October 2026. The top published score is 2.9% (±2.1%), making it a useful frontier stress test rather than a conventional broad leaderboard.
-- **Mystery Game Puzzles** — 20 visible official leaderboard rows imported from an Epoch AI benchmark tested on 140 models. The benchmark uses 100 game-state puzzles with a hidden game identity to reduce benchmark-specific training.
+AA v5 reports that 60% of its Index is based on private test sets or held-out answers. QBench distinguishes full public leaderboard extracts from AA-published leader summaries and does not claim to reproduce private task sets or Artificial Analysis's private evaluation harness.
 
-SWE-bench Pro V2 and SWE-bench Verified remain separate coding references because their model coverage does not match the core cohort.
+## Public result imports
 
-A separate watchlist tracks SpireClimb, Earthborne Rangers (EBR-bench), FrontierCode 2.0 and GraphWalks. These are not counted as imported datasets or given synthetic scores: the current public result extract is incomplete, the protocol is still evolving, or the benchmark is private. SpireClimb is especially promising for long-horizon computer-use evaluation; EBR-bench is useful for continual learning but requires careful handling of its v4 protocol changes.
+Four AA v5 component datasets currently have full model-level leaderboard extracts:
 
-## Evaluation discipline
+- [AA-Briefcase v1.1](https://artificialanalysis.ai/evaluations/aa-briefcase) — official AA leaderboard; Elo and confidence intervals.
+- [HLE-Diamond](https://labs.scale.com/leaderboard/hle-diamond) — Scale AI / CAIS; overall accuracy, reasoning and knowledge partitions, calibration error.
+- [Terminal-Bench 4.0](https://www.tbench.ai/?version=4.0) — official leaderboard; task resolution, harness, token usage and cost.
+- [Terminal-Bench-Science 0.1](https://vals-ai.com/benchmarks/terminal-bench-science) — Vals AI; 70 expert-authored research tasks, Mini-SWE-agent, cost and runtime.
 
-QBench adopts useful principles from high-quality evaluation systems without copying Artificial Analysis scores or branding:
+The other five AA components currently have published leader-summary values only. They are included with that limitation explicitly marked; no missing leaderboard rows are fabricated.
 
-- Balanced domain-level weighting for the core composite.
-- Preserve model configuration / reasoning-effort labels when published.
-- Keep cost, latency, uncertainty and provider routing as separate evidence fields.
-- Keep frontier stress tests outside the composite until coverage and comparability justify inclusion.
-- Display source snapshots and model-level evidence.
-- Do not silently treat all benchmarks as equally reliable. Benchmark review findings and scoring defects should be surfaced as quality warnings.
+The official AA Index overall scores for a small number of configurations are displayed separately as source references, not as QBench-calculated results.
 
-The ARC-AGI-2 snapshot is a curated extract of a third-party catalog that attributes its source results to Epoch AI. The FrontierMath Erdős rows are from Epoch AI's official leaderboard. Each stored row includes provenance metadata. The core composite remains independent of Artificial Analysis Intelligence Index v5: AA v5 evaluation scores are not imported into QBench.
+## Frontier extensions
+
+The benchmark registry expands beyond the nine AA components. It includes result datasets for ARC-AGI-2, FrontierMath Tiers 1–3, FrontierMath Tier 4, FrontierMath Erdős, Mystery Game Puzzles, GPQA Diamond, ProofBench, Furniture Assembly, SWE-bench Verified and SWE-bench Pro V2, among others.
+
+The research queue also tracks harder or broader evaluations such as SpireClimb, Earthborne Rangers, MirrorCode, Mock AIME, Chess Puzzles, OSWorld 2.0, DeepSWE, The Agent Company, Remote Labor Index, and additional Artificial Analysis evaluations. These are not counted as imported result datasets until a source-backed model-level extract is available.
+
+Epoch AI's benchmark hub reported 95 benchmarks and 418 models as of 2026-10-31. Its data is used as a discovery source for frontier extensions; individual entries retain their own provenance and licensing.
+
+## Dashboard
+
+17 interactive chart panels:
+
+1. AA v5 component weights
+2. AA-Briefcase Elo confidence-interval forest plot
+3. HLE reasoning vs. knowledge scatter
+4. HLE accuracy vs. calibration-error scatter
+5. Agent benchmark cost vs. performance
+6. Score distributions by percentage-based evaluation
+7. AA component coverage heatmap
+8. Provider coverage by evaluation
+9. Cross-benchmark score slope graph
+10. Selected source leaderboard
+11. Provider share donut
+12. Result depth by benchmark
+13. Two-model comparison
+14. Model-configuration treemap
+15. Provider-to-benchmark Sankey
+16. AA evidence-coverage funnel
+17. Benchmark registry sunburst
+
+Features include benchmark and provider filters, model search, source-level comparison, per-chart SVG export, filtered CSV export, complete JSON export, source links, dark mode and responsive layouts. Typography uses Geist, Newsreader, Noto Sans JP / Noto Serif JP, and Geist Mono.
 
 ## Data interpretation
 
-This is a descriptive aggregation of third-party public benchmark snapshots, not a QBench-run evaluation, not an official ranking, and not a universal measure of intelligence. Benchmarks differ in task design, difficulty, tool access, reasoning effort, harness and sample size. Small gaps should be interpreted cautiously. A high score on one benchmark does not imply broad capability.
+This is a source-backed collection and comparison of third-party results, not a QBench-run evaluation. Benchmarks differ in prompts, harnesses, number of trials, scoring rules and task difficulty. A score from one benchmark must not be treated as directly equivalent to a score from another. Confidence intervals and source notes are retained where published.
 
-## Interface and analysis
+## Primary sources
 
-- 17 interactive chart panels: model profile, radar comparison, parallel coordinates, score-distribution box plots, rank trajectory, cost/accuracy Pareto frontier, source leaderboard, benchmark coverage heatmap, benchmark leaders, provider model coverage, provider score profile, source score histogram, benchmark correlation matrix, provider coverage by source, index-vs-weakest-domain scatter, index score histogram, and benchmark frontier map.
-- DM Sans interface typography, Instrument Serif editorial headings, Noto Sans JP / Noto Serif JP Japanese typography, and IBM Plex Mono numeric values.
-- Apache ECharts SVG renderer, per-chart SVG export, interactive tooltips and responsive resizing.
-- Search, provider filters, model comparison, benchmark explorer, light/dark theme.
-- Static HTML; no build command or package installation.
-
-## Sources
-
-- [LiveBench 2.0](https://livebench.ai/)
-- [GPQA Diamond / OpenRouter](https://openrouter.ai/benchmarks/gpqa-diamond/)
-- [Epoch AI FrontierMath Tiers 1–3 v2](https://epoch.ai/benchmarks/frontiermath-tiers-1-3-v2)
-- [Epoch AI FrontierMath Tier 4 v2](https://epoch.ai/benchmarks/frontiermath-tier-4-v2)
-- [Epoch AI FrontierMath Erdős](https://epoch.ai/benchmarks/frontiermath-erdos)
-- [Epoch AI Mystery Game Puzzles](https://epoch.ai/benchmarks/mystery-game-puzzles)
-- [Epoch AI SpireClimb](https://epoch.ai/benchmarks/spireclimb)
-- [Epoch AI Earthborne Rangers](https://epoch.ai/benchmarks/ebr-bench)
-- [Epoch AI GraphWalks review](https://epoch.ai/benchmarks/graphwalks/review)
-- [Epoch AI ProofBench](https://epoch.ai/benchmarks/proofbench)
-- [Epoch AI Furniture Assembly](https://epoch.ai/benchmarks/furniture-assembly)
-- [ARC-AGI-2 catalog snapshot](https://llmbenchmark.ai/benchmarks/epoch-arc-agi-2)
-- [BenchLeader LiveBench 2.0 snapshot](https://www.benchleader.com/benchmarks/livebench2_global)
-- [BenchLeader FrontierMath Tiers 1–3 snapshot](https://www.benchleader.com/benchmarks/frontiermath_t1_3)
-- [BenchLeader ProofBench snapshot](https://www.benchleader.com/benchmarks/proofbench)
-- [BenchLM FrontierMath Tier 4 snapshot](https://benchlm.ai/benchmarks/frontiermathv2tier4)
-- [LLMBenchmark Furniture Assembly snapshot](https://llmbenchmark.ai/benchmarks/epoch-furniture-assembly)
-- [SWE-bench Pro V2](https://llmbenchmark.ai/benchmarks/swe-bench-pro)
-- [SWE-bench Verified](https://evals.report/benchmarks/swe-bench-verified?tab=scores)
-- [Artificial Analysis Intelligence Index v5](https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5) — methodology reference only; AA v5 scores are excluded.
+- [Artificial Analysis Intelligence Index v5 announcement](https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5)
+- [Artificial Analysis Intelligence Index v5 evaluation page](https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index)
+- [Artificial Analysis Intelligence Index methodology](https://artificialanalysis.ai/methodology/intelligence-benchmarking)
+- [Epoch AI benchmark hub](https://epoch.ai/benchmarks)
+- [Epoch AI benchmark data and licensing](https://epoch.ai/benchmarks/use-this-data)
+- [FrontierMath program](https://epoch.ai/frontiermath)
+- [ARC-AGI-2](https://epoch.ai/benchmarks/arc-agi-2)
+- [FrontierMath Erdős](https://epoch.ai/benchmarks/frontiermath-erdos)
+- [Mystery Game Puzzles](https://epoch.ai/benchmarks/mystery-game-puzzles)
+- [SpireClimb](https://epoch.ai/benchmarks/spireclimb)
+- [Earthborne Rangers](https://epoch.ai/benchmarks/ebr-bench)
+- [AA-Briefcase v1.1](https://artificialanalysis.ai/evaluations/aa-briefcase)
+- [HLE-Diamond](https://labs.scale.com/leaderboard/hle-diamond)
+- [Terminal-Bench 4.0](https://www.tbench.ai/?version=4.0)
+- [Terminal-Bench-Science](https://vals-ai.com/benchmarks/terminal-bench-science)
 
 ## Cloudflare Pages
 
@@ -87,5 +113,4 @@ This is a descriptive aggregation of third-party public benchmark snapshots, not
 - Production branch: `main`
 - Root directory and output directory: repository root
 - Build command: none
-- Production deployments: automatic on pushes to `main`
-- Preview deployments: disabled
+- Deployments are triggered automatically by pushes to `main`.
