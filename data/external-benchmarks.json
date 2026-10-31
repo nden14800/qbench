@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.6",
-  "note": "QBench Index 1.2 rebuild, snapshot 2026-10-31: 24 result datasets, 694 model-result/configuration rows, 149 exact model names, 583 model/configuration/harness combinations, 28 provider labels, and 43 benchmark directory entries. Five selected source-audited evaluations contribute to Index 1.2; legacy and partial datasets remain standalone.",
+  "note": "QBench Index 1.2 rebuild, snapshot 2026-10-31: 24 result datasets, 694 model-result/configuration rows, 149 exact model names, 583 model/configuration/harness combinations, 28 provider labels, and 43 benchmark directory entries. Five selected source-audited evaluations contribute to Index 1.2; legacy and partial datasets remain standalone. Index 1.3 source-audit continuation: excluded FrontierMath Tier 4 and Furniture Assembly from the composite pending source reconciliation; added Scale Labs MCP Atlas and HiL-Bench.",
   "benchmarks": [
     {
       "id": "livebench-2.0",
@@ -1821,340 +1821,100 @@
       "unit": "% accuracy",
       "models": [
         {
-          "model": "GPT-6.1 Sol",
-          "provider": "OpenAI",
-          "score": 100,
-          "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
-          "snapshotDate": "2026-10-29",
-          "evidence": "Imported from FrontierMath Tier 4 (v2, private) source snapshot 2026-10-29.",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
-        },
-        {
-          "model": "GPT-6 Astra",
-          "provider": "OpenAI",
-          "score": 97.6,
-          "uncertainty": "±2.4",
-          "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
-          "snapshotDate": "2026-10-29",
-          "evidence": "Imported from FrontierMath Tier 4 (v2, private) source snapshot 2026-10-29.",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported",
-          "scoreUncertainty": 2.4,
-          "scoreUncertaintyNote": "Publisher-reported ± value; retain source-specific interpretation."
-        },
-        {
-          "model": "Claude Opus 5.5",
-          "provider": "Anthropic",
-          "score": 95,
-          "uncertainty": "±4.1",
-          "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
-          "snapshotDate": "2026-10-29",
-          "evidence": "Imported from FrontierMath Tier 4 (v2, private) source snapshot 2026-10-29.",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported",
-          "scoreUncertainty": 4.1,
-          "scoreUncertaintyNote": "Publisher-reported ± value; retain source-specific interpretation."
-        },
-        {
-          "model": "Claude Fable 5.1",
-          "provider": "Anthropic",
-          "score": 87.8,
-          "uncertainty": "±5.2",
-          "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
-          "snapshotDate": "2026-10-29",
-          "evidence": "Imported from FrontierMath Tier 4 (v2, private) source snapshot 2026-10-29.",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported",
-          "scoreUncertainty": 5.2,
-          "scoreUncertaintyNote": "Publisher-reported ± value; retain source-specific interpretation."
-        },
-        {
-          "model": "Claude Sonnet 5.5",
-          "provider": "Anthropic",
-          "score": 80.5,
-          "uncertainty": "±6.3",
-          "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
-          "snapshotDate": "2026-10-29",
-          "evidence": "Imported from FrontierMath Tier 4 (v2, private) source snapshot 2026-10-29.",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported",
-          "scoreUncertainty": 6.3,
-          "scoreUncertaintyNote": "Publisher-reported ± value; retain source-specific interpretation."
-        },
-        {
-          "model": "Gemini 4 Argon",
-          "provider": "Google",
-          "score": 78,
-          "uncertainty": "±6.5",
-          "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
-          "snapshotDate": "2026-10-29",
-          "evidence": "Imported from FrontierMath Tier 4 (v2, private) source snapshot 2026-10-29.",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported",
-          "scoreUncertainty": 6.5,
-          "scoreUncertaintyNote": "Publisher-reported ± value; retain source-specific interpretation."
-        },
-        {
-          "model": "GPT-6.1 Terra",
-          "provider": "OpenAI",
-          "score": 92.683,
-          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI",
-          "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
-          "snapshotDate": "2026-10-29",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
-        },
-        {
           "model": "Claude Fable 5",
           "provider": "Anthropic",
-          "score": 90.2,
-          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI",
+          "score": 87.8,
+          "effort": "max",
+          "configuration": "max",
+          "harness": "Epoch AI FrontierMath Tier 4 v2",
           "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
-          "snapshotDate": "2026-10-29",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
-        },
-        {
-          "model": "GPT-6 Sol",
-          "provider": "OpenAI",
-          "score": 90,
-          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI",
-          "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
-          "snapshotDate": "2026-10-29",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
-        },
-        {
-          "model": "GPT-5.6 Sol",
-          "provider": "OpenAI",
-          "score": 83,
-          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI",
-          "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
-          "snapshotDate": "2026-10-29",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
+          "sourceType": "official-publisher",
+          "snapshotDate": "2026-10-31",
+          "scoreUncertainty": 5.2,
+          "evidence": "Epoch AI official leaderboard search result; 87.8% ±5.2%.",
+          "excludeFromIndex": true
         },
         {
           "model": "GPT-5.5 Pro",
           "provider": "OpenAI",
-          "score": 78.049,
-          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI",
+          "score": 78,
+          "effort": "xhigh",
+          "configuration": "xhigh",
+          "harness": "Epoch AI FrontierMath Tier 4 v2",
           "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
-          "snapshotDate": "2026-10-29",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
+          "sourceType": "official-publisher",
+          "snapshotDate": "2026-10-31",
+          "scoreUncertainty": 6.5,
+          "evidence": "Epoch AI official leaderboard search result; 78.0% ±6.5%.",
+          "excludeFromIndex": true
         },
         {
-          "model": "Claude Opus 5",
-          "provider": "Anthropic",
-          "score": 73.171,
-          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI",
-          "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
-          "snapshotDate": "2026-10-29",
+          "model": "AI co-mathematician",
+          "provider": "Google DeepMind",
+          "score": 75.6,
+          "effort": "not-reported",
           "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
+          "harness": "Epoch AI FrontierMath Tier 4 v2",
+          "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
+          "sourceType": "official-publisher",
+          "snapshotDate": "2026-10-31",
+          "scoreUncertainty": 6.7,
+          "evidence": "Epoch AI official leaderboard search result; 75.6% ±6.7%.",
+          "excludeFromIndex": true
         },
         {
           "model": "GPT-5.5",
           "provider": "OpenAI",
           "score": 72.5,
-          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI",
+          "effort": "xhigh",
+          "configuration": "xhigh",
+          "harness": "Epoch AI FrontierMath Tier 4 v2",
           "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
-          "snapshotDate": "2026-10-29",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
-        },
-        {
-          "model": "GPT-5.6 Terra",
-          "provider": "OpenAI",
-          "score": 68.3,
-          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI",
-          "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
-          "snapshotDate": "2026-10-29",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
+          "sourceType": "official-publisher",
+          "snapshotDate": "2026-10-31",
+          "scoreUncertainty": 7.1,
+          "evidence": "Epoch AI official leaderboard search result; 72.5% ±7.1%.",
+          "excludeFromIndex": true
         },
         {
           "model": "GPT-5.4 Pro",
           "provider": "OpenAI",
-          "score": 58.537,
-          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI",
-          "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
-          "snapshotDate": "2026-10-29",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
-        },
-        {
-          "model": "GPT-5.6 Luna",
-          "provider": "OpenAI",
           "score": 58.5,
-          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI",
+          "effort": "xhigh",
+          "configuration": "xhigh",
+          "harness": "Epoch AI FrontierMath Tier 4 v2",
           "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
-          "snapshotDate": "2026-10-29",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
+          "sourceType": "official-publisher",
+          "snapshotDate": "2026-10-31",
+          "scoreUncertainty": 7.8,
+          "evidence": "Epoch AI official leaderboard search result; 58.5% ±7.8%.",
+          "excludeFromIndex": true
         },
         {
           "model": "Claude Opus 4.8",
           "provider": "Anthropic",
-          "score": 56.098,
-          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI",
+          "score": 56.1,
+          "effort": "max",
+          "configuration": "max",
+          "harness": "Epoch AI FrontierMath Tier 4 v2",
           "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
-          "snapshotDate": "2026-10-29",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
-        },
-        {
-          "model": "GPT-6 Luna",
-          "provider": "OpenAI",
-          "score": 56.098,
-          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI",
-          "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
-          "snapshotDate": "2026-10-29",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
-        },
-        {
-          "model": "GPT-5.4",
-          "provider": "OpenAI",
-          "score": 49,
-          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI",
-          "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
-          "snapshotDate": "2026-10-29",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
-        },
-        {
-          "model": "Qwen3.8 Max",
-          "provider": "Alibaba",
-          "score": 46.341,
-          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI",
-          "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
-          "snapshotDate": "2026-10-29",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
-        },
-        {
-          "model": "Claude Haiku 5.5",
-          "provider": "Anthropic",
-          "score": 46.341,
-          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI",
-          "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
-          "snapshotDate": "2026-10-29",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
-        },
-        {
-          "model": "Muse Spark 1.3",
-          "provider": "Meta",
-          "score": 46.341,
-          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI",
-          "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
-          "snapshotDate": "2026-10-29",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
-        },
-        {
-          "model": "Gemini 3.7 Flash",
-          "provider": "Google",
-          "score": 36.585,
-          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI",
-          "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
-          "snapshotDate": "2026-10-29",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
-        },
-        {
-          "model": "Qwen3.7 Max",
-          "provider": "Alibaba",
-          "score": 34.146,
-          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI",
-          "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
-          "snapshotDate": "2026-10-29",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
-        },
-        {
-          "model": "Grok 4.6",
-          "provider": "xAI",
-          "score": 31.707,
-          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI",
-          "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
-          "snapshotDate": "2026-10-29",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
-        },
-        {
-          "model": "Claude Opus 4.7",
-          "provider": "Anthropic",
-          "score": 31.707,
-          "evidence": "BenchLM FrontierMath Tier 4 snapshot 2026-10-29; original publisher Epoch AI",
-          "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
-          "snapshotDate": "2026-10-29",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
+          "sourceType": "official-publisher",
+          "snapshotDate": "2026-10-31",
+          "scoreUncertainty": 7.8,
+          "evidence": "Epoch AI official leaderboard search result; 56.1% ±7.8%.",
+          "excludeFromIndex": true
         }
       ],
-      "indexEligible": true,
+      "indexEligible": false,
       "scoreScale": {
         "minimum": 0,
         "maximum": 100,
         "unit": "percentage points",
         "direction": "higher-is-better"
-      }
+      },
+      "indexDomain": null,
+      "quality": "excluded: source-value mismatch requires reconciliation",
+      "valueNote": "Excluded from Index 1.3 pending a full row-by-row reconciliation with Epoch AI's official export. The checked-in snapshot includes values that conflict with the currently visible Epoch AI leaderboard, so those rows must not affect the composite."
     },
     {
       "id": "proofbench",
@@ -3004,421 +2764,43 @@
       "unit": "% accuracy",
       "models": [
         {
-          "model": "Claude Opus 5.5",
-          "provider": "Anthropic",
-          "score": 83.3,
-          "uncertainty": "±4.7",
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "evidence": "Imported from Furniture Assembly Benchmark source snapshot 2026-10-30.",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "max",
-          "scoreUncertainty": 4.7,
-          "scoreUncertaintyNote": "Publisher-reported ± value; retain source-specific interpretation."
-        },
-        {
-          "model": "GPT-6.1 Sol",
-          "provider": "OpenAI",
-          "score": 80,
-          "uncertainty": "±4.9",
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "evidence": "Imported from Furniture Assembly Benchmark source snapshot 2026-10-30.",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "max",
-          "scoreUncertainty": 4.9,
-          "scoreUncertaintyNote": "Publisher-reported ± value; retain source-specific interpretation."
-        },
-        {
           "model": "GPT-6 Astra",
           "provider": "OpenAI",
           "score": 80,
-          "uncertainty": "±4.9",
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "evidence": "Imported from Furniture Assembly Benchmark source snapshot 2026-10-30.",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "max",
-          "scoreUncertainty": 4.9,
-          "scoreUncertaintyNote": "Publisher-reported ± value; retain source-specific interpretation."
-        },
-        {
-          "model": "Claude Sonnet 5.5",
-          "provider": "Anthropic",
-          "score": 75,
-          "uncertainty": "±5.5",
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "evidence": "Imported from Furniture Assembly Benchmark source snapshot 2026-10-30.",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "max",
-          "scoreUncertainty": 5.5,
-          "scoreUncertaintyNote": "Publisher-reported ± value; retain source-specific interpretation."
-        },
-        {
-          "model": "Gemini 4 Argon",
-          "provider": "Google",
-          "score": 72.5,
-          "uncertainty": "±5.6",
-          "configuration": "high",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "evidence": "Imported from Furniture Assembly Benchmark source snapshot 2026-10-30.",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "high",
-          "scoreUncertainty": 5.6,
-          "scoreUncertaintyNote": "Publisher-reported ± value; retain source-specific interpretation."
+          "effort": "not-reported",
+          "configuration": "Highest reasoning effort supported by model API; exact label not published",
+          "harness": "Epoch AI agentic sandbox; image, manual, zoom and Python tools",
+          "source": "https://epoch.ai/publications/furniture-assembly",
+          "sourceType": "official-publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Epoch AI launch analysis: GPT-6 Astra 80% accuracy."
         },
         {
           "model": "Claude Fable 5.1",
           "provider": "Anthropic",
           "score": 70,
-          "uncertainty": "±5.7",
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "evidence": "Imported from Furniture Assembly Benchmark source snapshot 2026-10-30.",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "max",
-          "scoreUncertainty": 5.7,
-          "scoreUncertaintyNote": "Publisher-reported ± value; retain source-specific interpretation."
+          "effort": "not-reported",
+          "configuration": "Highest reasoning effort supported by model API; exact label not published",
+          "harness": "Epoch AI agentic sandbox; image, manual, zoom and Python tools",
+          "source": "https://epoch.ai/publications/furniture-assembly",
+          "sourceType": "official-publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Epoch AI launch analysis: Claude Fable 5.1 70% accuracy."
         },
         {
           "model": "Claude Opus 5",
           "provider": "Anthropic",
-          "score": 60.8,
-          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "max"
-        },
-        {
-          "model": "GPT-6 Sol",
-          "provider": "OpenAI",
-          "score": 58.3,
-          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "max"
-        },
-        {
-          "model": "GPT-5.6 Sol",
-          "provider": "OpenAI",
-          "score": 56.7,
-          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "max"
-        },
-        {
-          "model": "GPT-5.6 Terra",
-          "provider": "OpenAI",
-          "score": 54.2,
-          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "max"
-        },
-        {
-          "model": "Claude Haiku 5.5",
-          "provider": "Anthropic",
-          "score": 47.5,
-          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "max"
-        },
-        {
-          "model": "GPT-5.5",
-          "provider": "OpenAI",
-          "score": 44.2,
-          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
-          "configuration": "xhigh",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "xhigh"
-        },
-        {
-          "model": "GPT-6 Luna",
-          "provider": "OpenAI",
-          "score": 44.2,
-          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "max"
-        },
-        {
-          "model": "Claude Opus 4.8",
-          "provider": "Anthropic",
-          "score": 42.5,
-          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "max"
-        },
-        {
-          "model": "GPT-5.6 Luna",
-          "provider": "OpenAI",
-          "score": 42.5,
-          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "max"
-        },
-        {
-          "model": "Grok 4.6",
-          "provider": "xAI",
-          "score": 40,
-          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
-          "configuration": "xhigh",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "xhigh"
-        },
-        {
-          "model": "GPT-5.2",
-          "provider": "OpenAI",
-          "score": 38.3,
-          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
-          "configuration": "xhigh",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "xhigh"
-        },
-        {
-          "model": "GPT-5.4",
-          "provider": "OpenAI",
-          "score": 37.5,
-          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
-          "configuration": "xhigh",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "xhigh"
-        },
-        {
-          "model": "Claude Fable 5",
-          "provider": "Anthropic",
-          "score": 35.8,
-          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "max"
-        },
-        {
-          "model": "DeepSeek V4.1 Flash",
-          "provider": "DeepSeek",
-          "score": 34.2,
-          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
-        },
-        {
-          "model": "Kimi K3",
-          "provider": "Moonshot AI",
-          "score": 34.2,
-          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
-        },
-        {
-          "model": "Claude Opus 4.7",
-          "provider": "Anthropic",
-          "score": 33.3,
-          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
-          "configuration": "max",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "max"
-        },
-        {
-          "model": "Gemini 3.8 Flash",
-          "provider": "Google",
-          "score": 31.7,
-          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
-        },
-        {
-          "model": "Claude Opus 4.5",
-          "provider": "Anthropic",
-          "score": 28.3,
-          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
-        },
-        {
-          "model": "Claude Opus 4.6",
-          "provider": "Anthropic",
-          "score": 28.3,
-          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
-        },
-        {
-          "model": "Gemini 3.1 Pro Preview",
-          "provider": "Google",
-          "score": 26.7,
-          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
-        },
-        {
-          "model": "Gemini 3.7 Flash",
-          "provider": "Google",
-          "score": 26.7,
-          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
-        },
-        {
-          "model": "Gemini 3.6 Flash",
-          "provider": "Google",
-          "score": 23.3,
-          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
-        },
-        {
-          "model": "Grok 4.5",
-          "provider": "xAI",
-          "score": 22.5,
-          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
-        },
-        {
-          "model": "Kimi K2.6",
-          "provider": "Moonshot AI",
-          "score": 21.7,
-          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
-        },
-        {
-          "model": "Mistral Large 4",
-          "provider": "Mistral AI",
-          "score": 20.8,
-          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
-        },
-        {
-          "model": "Grok 4.7",
-          "provider": "xAI",
-          "score": 20.8,
-          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
-        },
-        {
-          "model": "Qwen3.8 Max (0902)",
-          "provider": "Alibaba",
-          "score": 20,
-          "evidence": "LLMBenchmark snapshot 2026-10-30; original publisher Epoch AI",
-          "source": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-30",
-          "configuration": "Not reported",
-          "harness": "Not reported",
-          "sourceType": "source-documented",
-          "effort": "not-reported"
+          "score": 61,
+          "effort": "not-reported",
+          "configuration": "Highest reasoning effort supported by model API; exact label not published",
+          "harness": "Epoch AI agentic sandbox; image, manual, zoom and Python tools",
+          "source": "https://epoch.ai/publications/furniture-assembly",
+          "sourceType": "official-publisher",
+          "snapshotDate": "2026-10-31",
+          "evidence": "Epoch AI launch analysis: Claude Opus 5 61% accuracy."
         }
       ],
-      "indexEligible": true,
+      "indexEligible": false,
       "taskCount": 60,
       "scoreScale": {
         "minimum": 0,
@@ -3426,7 +2808,10 @@
         "unit": "percentage points",
         "direction": "higher-is-better"
       },
-      "exampleTask": "Given a photo of an IKEA furniture build and its official assembly manual, decide whether the build is correct so far; if not, identify the mistaken assembly step and describe the issue."
+      "exampleTask": "Given a photo of an IKEA furniture build and its official assembly manual, decide whether the build is correct so far; if not, identify the mistaken assembly step and describe the issue.",
+      "indexDomain": null,
+      "quality": "standalone only: three independently confirmed model rows",
+      "valueNote": "Standalone only: the official Epoch AI leaderboard page currently has no tabular result rows. Only the three model scores independently confirmed in Epoch AI's launch analysis are retained; all other previously stored model rows were removed. The evaluation uses 60 images, an 80-step agentic budget, a multimodal tool environment, and highest API-supported reasoning effort."
     },
     {
       "id": "swe-bench-verified",
@@ -6053,7 +5438,11 @@
           "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
-          "effort": "not-reported"
+          "effort": "not-reported",
+          "costPerTestUSD": 20.8,
+          "tokensPerTestDisplay": "5.94m",
+          "durationPerTestDisplay": "1h49m",
+          "costMetricSource": "Vals AI Terminal-Bench-Science leaderboard"
         },
         {
           "model": "GPT-6.1 Sol",
@@ -6065,7 +5454,11 @@
           "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
-          "effort": "not-reported"
+          "effort": "not-reported",
+          "costPerTestUSD": 3.44,
+          "tokensPerTestDisplay": "4.99m",
+          "durationPerTestDisplay": "1h23m",
+          "costMetricSource": "Vals AI Terminal-Bench-Science leaderboard"
         },
         {
           "model": "Claude Opus 5.5",
@@ -6077,7 +5470,11 @@
           "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
-          "effort": "not-reported"
+          "effort": "not-reported",
+          "costPerTestUSD": 19.12,
+          "tokensPerTestDisplay": "26.38m",
+          "durationPerTestDisplay": "2h28m",
+          "costMetricSource": "Vals AI Terminal-Bench-Science leaderboard"
         },
         {
           "model": "Claude Sonnet 5.5",
@@ -6089,7 +5486,11 @@
           "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
-          "effort": "not-reported"
+          "effort": "not-reported",
+          "costPerTestUSD": 19.57,
+          "tokensPerTestDisplay": "130.65m",
+          "durationPerTestDisplay": "2h46m",
+          "costMetricSource": "Vals AI Terminal-Bench-Science leaderboard"
         },
         {
           "model": "Gemini 4 Argon",
@@ -6101,7 +5502,11 @@
           "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
-          "effort": "not-reported"
+          "effort": "not-reported",
+          "costPerTestUSD": 44.9,
+          "tokensPerTestDisplay": "32.18m",
+          "durationPerTestDisplay": "1h46m",
+          "costMetricSource": "Vals AI Terminal-Bench-Science leaderboard"
         },
         {
           "model": "Claude Fable 5.1",
@@ -6113,7 +5518,11 @@
           "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
-          "effort": "not-reported"
+          "effort": "not-reported",
+          "costPerTestUSD": 38.01,
+          "tokensPerTestDisplay": "20.34m",
+          "durationPerTestDisplay": "2h36m",
+          "costMetricSource": "Vals AI Terminal-Bench-Science leaderboard"
         },
         {
           "model": "Muse Wonder Full",
@@ -6127,7 +5536,11 @@
           "snapshotDate": "2026-10-25",
           "providerEvidence": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/",
           "originalModelName": "Wonder Full",
-          "effort": "not-reported"
+          "effort": "not-reported",
+          "costPerTestUSD": 22.81,
+          "tokensPerTestDisplay": "53.29m",
+          "durationPerTestDisplay": "3h35m",
+          "costMetricSource": "Vals AI Terminal-Bench-Science leaderboard"
         },
         {
           "model": "Kimi K3.1 Pro",
@@ -6139,7 +5552,11 @@
           "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
-          "effort": "not-reported"
+          "effort": "not-reported",
+          "costPerTestUSD": 8.58,
+          "tokensPerTestDisplay": "33.15m",
+          "durationPerTestDisplay": "57m55s",
+          "costMetricSource": "Vals AI Terminal-Bench-Science leaderboard"
         },
         {
           "model": "GPT-6 Sol",
@@ -6151,7 +5568,11 @@
           "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
-          "effort": "not-reported"
+          "effort": "not-reported",
+          "costPerTestUSD": 5.82,
+          "tokensPerTestDisplay": "15.94m",
+          "durationPerTestDisplay": "1h22m",
+          "costMetricSource": "Vals AI Terminal-Bench-Science leaderboard"
         },
         {
           "model": "Claude Opus 5",
@@ -6163,7 +5584,11 @@
           "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
-          "effort": "not-reported"
+          "effort": "not-reported",
+          "costPerTestUSD": 32.54,
+          "tokensPerTestDisplay": "46.71m",
+          "durationPerTestDisplay": "2h12m",
+          "costMetricSource": "Vals AI Terminal-Bench-Science leaderboard"
         },
         {
           "model": "Muse Wonder",
@@ -6177,7 +5602,11 @@
           "snapshotDate": "2026-10-25",
           "providerEvidence": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/",
           "originalModelName": "Wonder",
-          "effort": "not-reported"
+          "effort": "not-reported",
+          "costPerTestUSD": 19.61,
+          "tokensPerTestDisplay": "63.60m",
+          "durationPerTestDisplay": "1h33m",
+          "costMetricSource": "Vals AI Terminal-Bench-Science leaderboard"
         },
         {
           "model": "GPT-5.6 Sol",
@@ -6189,7 +5618,11 @@
           "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
-          "effort": "not-reported"
+          "effort": "not-reported",
+          "costPerTestUSD": 7.32,
+          "tokensPerTestDisplay": "9.55m",
+          "durationPerTestDisplay": "1h44m",
+          "costMetricSource": "Vals AI Terminal-Bench-Science leaderboard"
         },
         {
           "model": "Claude Fable 5",
@@ -6201,7 +5634,11 @@
           "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
-          "effort": "not-reported"
+          "effort": "not-reported",
+          "costPerTestUSD": 51.99,
+          "tokensPerTestDisplay": "37.38m",
+          "durationPerTestDisplay": "1h59m",
+          "costMetricSource": "Vals AI Terminal-Bench-Science leaderboard"
         },
         {
           "model": "Qwen3.8 Max",
@@ -6213,7 +5650,11 @@
           "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
-          "effort": "not-reported"
+          "effort": "not-reported",
+          "costPerTestUSD": 16.68,
+          "tokensPerTestDisplay": "55.24m",
+          "durationPerTestDisplay": "3h24m",
+          "costMetricSource": "Vals AI Terminal-Bench-Science leaderboard"
         },
         {
           "model": "Grok 4.6",
@@ -6225,7 +5666,11 @@
           "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
-          "effort": "not-reported"
+          "effort": "not-reported",
+          "costPerTestUSD": 4.82,
+          "tokensPerTestDisplay": "7.53m",
+          "durationPerTestDisplay": "1h18m",
+          "costMetricSource": "Vals AI Terminal-Bench-Science leaderboard"
         },
         {
           "model": "Muse Spark 1.3 Max",
@@ -6237,7 +5682,11 @@
           "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
-          "effort": "not-reported"
+          "effort": "not-reported",
+          "costPerTestUSD": 6.09,
+          "tokensPerTestDisplay": "28.83m",
+          "durationPerTestDisplay": "1h24m",
+          "costMetricSource": "Vals AI Terminal-Bench-Science leaderboard"
         },
         {
           "model": "Grok 4.7",
@@ -6249,7 +5698,11 @@
           "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
-          "effort": "not-reported"
+          "effort": "not-reported",
+          "costPerTestUSD": 17.04,
+          "tokensPerTestDisplay": "16.72m",
+          "durationPerTestDisplay": "1h33m",
+          "costMetricSource": "Vals AI Terminal-Bench-Science leaderboard"
         },
         {
           "model": "Claude Haiku 5.5",
@@ -6261,7 +5714,11 @@
           "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
-          "effort": "not-reported"
+          "effort": "not-reported",
+          "costPerTestUSD": 4.52,
+          "tokensPerTestDisplay": "71.30m",
+          "durationPerTestDisplay": "1h34m",
+          "costMetricSource": "Vals AI Terminal-Bench-Science leaderboard"
         },
         {
           "model": "GPT-5.6 Terra",
@@ -6273,7 +5730,11 @@
           "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
-          "effort": "not-reported"
+          "effort": "not-reported",
+          "costPerTestUSD": 5.19,
+          "tokensPerTestDisplay": "13.47m",
+          "durationPerTestDisplay": "2h04m",
+          "costMetricSource": "Vals AI Terminal-Bench-Science leaderboard"
         },
         {
           "model": "Gemini 3.8 Flash",
@@ -6285,7 +5746,11 @@
           "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
-          "effort": "not-reported"
+          "effort": "not-reported",
+          "costPerTestUSD": 5.64,
+          "tokensPerTestDisplay": "19.48m",
+          "durationPerTestDisplay": "55m11s",
+          "costMetricSource": "Vals AI Terminal-Bench-Science leaderboard"
         },
         {
           "model": "Gemini 3.7 Flash",
@@ -6297,7 +5762,11 @@
           "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
-          "effort": "not-reported"
+          "effort": "not-reported",
+          "costPerTestUSD": 7.19,
+          "tokensPerTestDisplay": "18.53m",
+          "durationPerTestDisplay": "1h20m",
+          "costMetricSource": "Vals AI Terminal-Bench-Science leaderboard"
         },
         {
           "model": "Gemini 3.5 Flash",
@@ -6309,7 +5778,11 @@
           "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
-          "effort": "not-reported"
+          "effort": "not-reported",
+          "costPerTestUSD": 3.8,
+          "tokensPerTestDisplay": "9.18m",
+          "durationPerTestDisplay": "1h01m",
+          "costMetricSource": "Vals AI Terminal-Bench-Science leaderboard"
         },
         {
           "model": "GLM 5.3",
@@ -6321,7 +5794,11 @@
           "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
-          "effort": "not-reported"
+          "effort": "not-reported",
+          "costPerTestUSD": 15.63,
+          "tokensPerTestDisplay": "53.01m",
+          "durationPerTestDisplay": "2h45m",
+          "costMetricSource": "Vals AI Terminal-Bench-Science leaderboard"
         },
         {
           "model": "Claude Sonnet 5",
@@ -6333,7 +5810,11 @@
           "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
-          "effort": "not-reported"
+          "effort": "not-reported",
+          "costPerTestUSD": 30.3,
+          "tokensPerTestDisplay": "122.60m",
+          "durationPerTestDisplay": "3h06m",
+          "costMetricSource": "Vals AI Terminal-Bench-Science leaderboard"
         },
         {
           "model": "Ember-1",
@@ -6346,7 +5827,11 @@
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
           "providerEvidence": "https://fireworks.ai/models/fireworks/ember-1",
-          "effort": "not-reported"
+          "effort": "not-reported",
+          "costPerTestUSD": 30.76,
+          "tokensPerTestDisplay": "79.92m",
+          "durationPerTestDisplay": "3h23m",
+          "costMetricSource": "Vals AI Terminal-Bench-Science leaderboard"
         },
         {
           "model": "Muse Spark 1.3",
@@ -6358,7 +5843,11 @@
           "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
-          "effort": "not-reported"
+          "effort": "not-reported",
+          "costPerTestUSD": 4.41,
+          "tokensPerTestDisplay": "20.98m",
+          "durationPerTestDisplay": "1h08m",
+          "costMetricSource": "Vals AI Terminal-Bench-Science leaderboard"
         },
         {
           "model": "GPT-6 Luna",
@@ -6370,7 +5859,11 @@
           "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
-          "effort": "not-reported"
+          "effort": "not-reported",
+          "costPerTestUSD": 0.24,
+          "tokensPerTestDisplay": "11.16m",
+          "durationPerTestDisplay": "1h16m",
+          "costMetricSource": "Vals AI Terminal-Bench-Science leaderboard"
         },
         {
           "model": "DeepSeek V4 Flash 0731",
@@ -6382,7 +5875,11 @@
           "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-25",
-          "effort": "not-reported"
+          "effort": "not-reported",
+          "costPerTestUSD": 1.1,
+          "tokensPerTestDisplay": "52.08m",
+          "durationPerTestDisplay": "1h34m",
+          "costMetricSource": "Vals AI Terminal-Bench-Science leaderboard"
         },
         {
           "model": "Gemini 3.6 Flash",
@@ -11524,7 +11021,7 @@
       "name": "FrontierMath Tier 4 v2",
       "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
-      "status": "index-eligible",
+      "status": "standalone-source-audit",
       "note": "Index 1.3 component; exact effort variants and source-reported 0–100 results are preserved."
     },
     {
@@ -11580,7 +11077,7 @@
       "name": "Furniture Assembly Benchmark",
       "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/furniture-assembly",
-      "status": "index-eligible",
+      "status": "standalone-limited-results",
       "note": "Index 1.3 component; exact effort variants and source-reported 0–100 results are preserved."
     },
     {
@@ -11797,7 +11294,7 @@
       "group": "External frontier evaluations",
       "source": "https://livebench.ai/",
       "status": "results-imported",
-      "note": "2026-10-25 release; refreshed task suites and per-suite score breakdowns."
+      "note": "Standalone only: six rows are official-publisher results while remaining rows are secondary-mirror imports; below the 12-variant source gate when filtered to official results."
     },
     {
       "id": "swe-bench-pro-v2",
@@ -12046,37 +11543,51 @@
       "source": "https://arcprize.org/results",
       "status": "standalone-harness-comparison",
       "note": "Stored separately because Provider Adapter and Standard harness scores are not comparable."
+    },
+    {
+      "id": "mcp-atlas",
+      "name": "MCP Atlas",
+      "group": "External frontier evaluations",
+      "source": "https://labs.scale.com/leaderboard/mcp_atlas",
+      "status": "index-eligible",
+      "note": "Scale Labs official leaderboard; 1,000 MCP tool-use tasks, 500 held-out, common evaluation harness."
+    },
+    {
+      "id": "hil-bench",
+      "name": "HiL-Bench (Human-in-Loop Benchmark)",
+      "group": "External frontier evaluations",
+      "source": "https://labs.scale.com/leaderboard/hil",
+      "status": "index-eligible",
+      "note": "Scale Labs official leaderboard; 300 tasks with 100 held-out; composite uses Pass@3 only."
     }
   ],
   "composite": {
     "name": "QBench Index",
     "version": "1.3",
     "snapshotAsOf": "2026-10-31",
-    "basis": "Eight source-audited evaluations across seven capability families. Scores are publisher-reported percentages, not within-cohort rank percentiles. Exact model/effort variants are separate. ARC-AGI-3 uses the official Standard harness only; Provider Adapter is a separate standalone evaluation.",
+    "basis": "Six QBench capability families using seven current source-audited evaluations. Scores retain each publisher's reported task-success or accuracy percentage. Exact model/effort variants are separate identities; unreported effort is never inferred.",
     "minimumModelsPerEvaluation": 12,
     "minimumCategoryCoverage": 3,
     "componentBenchmarks": [
       "terminal-bench-4-0",
       "terminal-bench-science-0-1",
-      "frontiermath-tier-4-v2",
       "hle-diamond",
       "mystery-game-puzzles",
-      "furniture-assembly",
       "drug-discovery-bench",
-      "arc-agi-3"
+      "mcp-atlas",
+      "hil-bench"
     ],
     "eligibleBenchmarks": [
       "terminal-bench-4-0",
       "terminal-bench-science-0-1",
-      "frontiermath-tier-4-v2",
       "hle-diamond",
       "mystery-game-puzzles",
-      "furniture-assembly",
       "drug-discovery-bench",
-      "arc-agi-3"
+      "mcp-atlas",
+      "hil-bench"
     ],
     "insufficientCoverage": [],
-    "normalization": "Each evaluation retains its publisher-reported 0–100 percentage-point score. Results are averaged within seven capability families; observed family means are averaged equally. The evidence adjustment is Index = 50 + (Raw family mean − 50) × sqrt(Observed families / 7). Exact model/effort variants remain separate; missing values are not imputed.",
+    "normalization": "For each eligible evaluation, retain its reported 0–100 percentage-point score. Average multiple evaluations within each family, then average the six observed families equally. Evidence adjustment: Index = 50 + (Raw family mean − 50) × sqrt(Observed families / 6). This is not an IQ score or confidence interval.",
     "configurationPolicy": "Create a separate model variant for each exact model name and reported reasoning effort. Never choose the highest score across effort levels. Keep unreported effort separate. Preserve harness, routing, fallback, release date and model metadata. For ARC-AGI-3, only the publisher's Standard harness enters the composite; Provider Adapter is displayed separately.",
     "domains": [
       {
@@ -12084,7 +11595,7 @@
         "benchmarks": [
           "terminal-bench-4-0"
         ],
-        "note": "66 terminal tasks; one common Mini-SWE-agent evaluation harness."
+        "note": "66 terminal tasks in a common Mini-SWE-agent evaluation harness."
       },
       {
         "name": "Scientific workflows",
@@ -12092,14 +11603,7 @@
           "terminal-bench-science-0-1",
           "drug-discovery-bench"
         ],
-        "note": "Expert-reviewed scientific terminal workflows and 82 expert-authored drug-discovery tasks. These remain distinct evaluations within one scientific-workflows family."
-      },
-      {
-        "name": "Advanced mathematics",
-        "benchmarks": [
-          "frontiermath-tier-4-v2"
-        ],
-        "note": "FrontierMath Tier 4 v2: research-level mathematics. Some leading results are near the ceiling, so ceiling risk is monitored."
+        "note": "Expert-authored scientific terminal workflows and drug-discovery tasks; separate evaluations aggregated within one family."
       },
       {
         "name": "Expert knowledge",
@@ -12113,21 +11617,21 @@
         "benchmarks": [
           "mystery-game-puzzles"
         ],
-        "note": "100 hidden-identity game positions; models must select the best next move. 140 models have been tested by Epoch AI; this snapshot includes the 20 exact model variants surfaced in the official results."
+        "note": "100 hidden-identity game positions; 140 models tested by Epoch AI, with 20 exact model/effort variants in the imported source snapshot."
       },
       {
-        "name": "Multimodal spatial reasoning",
+        "name": "Tool use",
         "benchmarks": [
-          "furniture-assembly"
+          "mcp-atlas"
         ],
-        "note": "60 photos and assembly manuals; model must detect mistakes and identify the incorrect assembly step. Epoch AI reports a 63% average human baseline."
+        "note": "1,000 human-authored MCP tasks across 36 servers and 220 tools, including 500 held-out tasks."
       },
       {
-        "name": "Adaptive interactive reasoning",
+        "name": "Help-seeking judgment",
         "benchmarks": [
-          "arc-agi-3"
+          "hil-bench"
         ],
-        "note": "ARC-AGI-3 semi-private verified results using one consistent Standard harness. Reasoning effort remains a separate variant."
+        "note": "300 tasks with 1,131 blockers; 100 held-out tasks. Index uses Pass@3, not the separate ASK-F1 metric."
       }
     ],
     "method": "QBench Index 1.3 uses eight source-audited evaluations across seven capability families. It retains publisher-reported task-success/accuracy percentages instead of converting within-cohort ranks to percentiles. Model/effort variants are separate identities. Standard and Provider Adapter harnesses are never combined.",
@@ -12202,14 +11706,14 @@
     ],
     "currentDiagnostics": {
       "snapshotAsOf": "2026-10-31",
-      "eligibleEvaluationCount": 8,
+      "eligibleEvaluationCount": 7,
       "modelsWithEligibleResults": null,
       "rankedVariants": null,
       "fullEvidenceVariants": null,
       "broadEvidenceVariants": null,
       "limitedEvidenceVariants": null,
       "insufficientEvidenceVariants": null,
-      "note": "Computed at runtime from exact model/effort variants."
+      "note": "Recomputed by the Index 1.3 runtime from exact model/effort variants; diagnostic counts are generated from the current dataset, not manually entered."
     },
     "supplementaryInputsExcluded": [
       "aa-omniscience-v1-1-accuracy-atlas"
@@ -12226,7 +11730,7 @@
           "benchmarks": [
             "terminal-bench-4-0"
           ],
-          "note": "66 terminal tasks; one common Mini-SWE-agent evaluation harness."
+          "note": "66 terminal tasks in a common Mini-SWE-agent evaluation harness."
         },
         {
           "name": "Scientific workflows",
@@ -12234,14 +11738,7 @@
             "terminal-bench-science-0-1",
             "drug-discovery-bench"
           ],
-          "note": "Expert-reviewed scientific terminal workflows and 82 expert-authored drug-discovery tasks. These remain distinct evaluations within one scientific-workflows family."
-        },
-        {
-          "name": "Advanced mathematics",
-          "benchmarks": [
-            "frontiermath-tier-4-v2"
-          ],
-          "note": "FrontierMath Tier 4 v2: research-level mathematics. Some leading results are near the ceiling, so ceiling risk is monitored."
+          "note": "Expert-authored scientific terminal workflows and drug-discovery tasks; separate evaluations aggregated within one family."
         },
         {
           "name": "Expert knowledge",
@@ -12255,32 +11752,31 @@
           "benchmarks": [
             "mystery-game-puzzles"
           ],
-          "note": "100 hidden-identity game positions; models must select the best next move. 140 models have been tested by Epoch AI; this snapshot includes the 20 exact model variants surfaced in the official results."
+          "note": "100 hidden-identity game positions; 140 models tested by Epoch AI, with 20 exact model/effort variants in the imported source snapshot."
         },
         {
-          "name": "Multimodal spatial reasoning",
+          "name": "Tool use",
           "benchmarks": [
-            "furniture-assembly"
+            "mcp-atlas"
           ],
-          "note": "60 photos and assembly manuals; model must detect mistakes and identify the incorrect assembly step. Epoch AI reports a 63% average human baseline."
+          "note": "1,000 human-authored MCP tasks across 36 servers and 220 tools, including 500 held-out tasks."
         },
         {
-          "name": "Adaptive interactive reasoning",
+          "name": "Help-seeking judgment",
           "benchmarks": [
-            "arc-agi-3"
+            "hil-bench"
           ],
-          "note": "ARC-AGI-3 semi-private verified results using one consistent Standard harness. Reasoning effort remains a separate variant."
+          "note": "300 tasks with 1,131 blockers; 100 held-out tasks. Index uses Pass@3, not the separate ASK-F1 metric."
         }
       ],
       "eligibleBenchmarks": [
         "terminal-bench-4-0",
         "terminal-bench-science-0-1",
-        "frontiermath-tier-4-v2",
         "hle-diamond",
         "mystery-game-puzzles",
-        "furniture-assembly",
         "drug-discovery-bench",
-        "arc-agi-3"
+        "mcp-atlas",
+        "hil-bench"
       ],
       "excludedFromExtendedIndex": [
         {
@@ -12334,10 +11830,18 @@
         {
           "id": "arc-agi-3-provider-adapter",
           "reason": "Standalone only: Provider Adapter is a different execution harness; only Standard harness contributes to Index 1.3."
+        },
+        {
+          "id": "frontiermath-tier-4-v2",
+          "reason": "Standalone only: checked-in values conflicted with Epoch AI's currently visible official results; retained only six independently visible source rows pending full CSV reconciliation."
+        },
+        {
+          "id": "furniture-assembly",
+          "reason": "Standalone only: Epoch AI's official leaderboard currently exposes no tabular results; only three model values independently confirmed in the launch analysis are retained."
         }
       ],
-      "normalization": "Each evaluation retains its publisher-reported 0–100 percentage-point score. Results are averaged within seven capability families; observed family means are averaged equally. The evidence adjustment is Index = 50 + (Raw family mean − 50) × sqrt(Observed families / 7). Exact model/effort variants remain separate; missing values are not imputed.",
-      "methodology": "QBench Index 1.3 uses eight source-audited evaluations across seven capability families. It retains publisher-reported task-success/accuracy percentages instead of converting within-cohort ranks to percentiles. Model/effort variants are separate identities. Standard and Provider Adapter harnesses are never combined.",
+      "normalization": "For each eligible evaluation, retain its reported 0–100 percentage-point score. Average multiple evaluations within each family, then average the six observed families equally. Evidence adjustment: Index = 50 + (Raw family mean − 50) × sqrt(Observed families / 6). This is not an IQ score or confidence interval.",
+      "methodology": "QBench Index 1.3 uses source-reported percentage-point performance rather than within-cohort percentiles. Each exact model/effort variant is scored separately. Evaluations are averaged within six capability families, and observed families are weighted equally. Ranking requires at least three eligible evaluations across three distinct families. Missing values are not imputed.",
       "configurationPolicy": "Create a separate model variant for each exact model name and reported reasoning effort. Never choose the highest score across effort levels. Keep unreported effort separate. Preserve harness, routing, fallback, release date and model metadata. For ARC-AGI-3, only the publisher's Standard harness enters the composite; Provider Adapter is displayed separately.",
       "caveats": [
         "The Index is a seven-family composite of source-reported percentages, not an IQ score, human-equivalence score, or confidence interval.",
@@ -12345,16 +11849,18 @@
         "Effort variants are separate rows. 'Not reported' means the publisher did not identify the reasoning effort; it is never inferred from a harness.",
         "Harness differences are preserved. ARC-AGI-3 Standard and Provider Adapter are separate evaluations; Provider Adapter is not used in the Index.",
         "Coverage adjustment shrinks incomplete seven-family results toward 50. This is an evidence adjustment, not a confidence interval.",
-        "FrontierMath Tier 4 v2 has a small number of very high results, including a 100% result; its ceiling risk is monitored.",
         "Mystery Game Puzzles has 140 tested models on Epoch AI's page; this snapshot contains the 20 model/effort rows surfaced in the official results extract, not all 140.",
-        "Furniture Assembly uses each model's highest supported API effort according to Epoch AI; exact effort labels are preserved where shown and left unreported otherwise.",
         "DrugDiscoveryBench uses mini-SWE-agent results only. Its 82 expert-authored tasks are averaged over three runs with a 120-minute timeout.",
         "HLE-Diamond and FrontierMath Tier 4 uncertainty values are displayed but not pooled because source-specific definitions differ.",
         "ProofBench remains standalone because several leading general-purpose models tie at 100%.",
         "ARC-AGI-1 and ARC-AGI-2 semi-private results are retained as standalone ceiling-watch series; they do not enter the Index.",
         "ARC-AGI-3 uses only official Standard-harness semi-private scores from verified model pages. The extract contains 40 model/effort variants across ten base models, not the full leaderboard.",
         "API token prices are not measured benchmark cost per task. No task cost is inferred without matching per-run token usage and pricing.",
-        "Missing scores are never imputed, and aliases are not merged without explicit source evidence."
+        "Missing scores are never imputed, and aliases are not merged without explicit source evidence.",
+        "FrontierMath Tier 4 v2 is excluded after a source audit found a mismatch between checked-in values and Epoch AI's visible leaderboard; six visible source rows remain standalone pending a complete export.",
+        "Furniture Assembly is excluded from the composite because the official leaderboard currently has no tabular results; only three values confirmed in Epoch AI's launch analysis remain.",
+        "MCP Atlas uses the official pass-rate metric over 1,000 tasks, including 500 held-out tasks; explicit effort labels are preserved, otherwise effort is not reported.",
+        "HiL-Bench uses Pass@3 as its task-outcome metric. ASK-F1 measures a different help-seeking quality dimension and is not mixed into the Index."
       ],
       "sourceNotes": [
         {
@@ -12368,11 +11874,6 @@
           "snapshotDate": "2026-10-31"
         },
         {
-          "label": "Epoch AI — FrontierMath Tier 4 v2",
-          "url": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
-          "snapshotDate": "2026-10-29"
-        },
-        {
           "label": "Scale Labs — HLE-Diamond",
           "url": "https://labs.scale.com/leaderboard/hle-diamond",
           "snapshotDate": "2026-10-31"
@@ -12381,11 +11882,6 @@
           "label": "Epoch AI — Mystery Game Puzzles",
           "url": "https://epoch.ai/benchmarks/mystery-game-puzzles",
           "snapshotDate": "2026-10-14"
-        },
-        {
-          "label": "Epoch AI — Furniture Assembly",
-          "url": "https://epoch.ai/benchmarks/furniture-assembly",
-          "snapshotDate": "2026-10-31"
         },
         {
           "label": "Scale Labs — DrugDiscoveryBench",
@@ -12451,8 +11947,29 @@
           "label": "ARC Prize — Claude Haiku 5.5 verified effort results",
           "url": "https://arcprize.org/results/anthropic-claude-haiku-5-5",
           "snapshotDate": "2026-10-31"
+        },
+        {
+          "label": "Scale Labs — MCP Atlas",
+          "url": "https://labs.scale.com/leaderboard/mcp_atlas",
+          "snapshotDate": "2026-04-08"
+        },
+        {
+          "label": "Scale Labs — HiL-Bench",
+          "url": "https://labs.scale.com/leaderboard/hil",
+          "snapshotDate": "2026-10-31"
+        },
+        {
+          "label": "Epoch AI — Furniture Assembly launch analysis (standalone only)",
+          "url": "https://epoch.ai/publications/furniture-assembly",
+          "snapshotDate": "2026-10-31"
+        },
+        {
+          "label": "Epoch AI — FrontierMath Tier 4 v2 (standalone pending source reconciliation)",
+          "url": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
+          "snapshotDate": "2026-10-31"
         }
-      ]
+      ],
+      "method": "QBench Index 1.3 uses source-reported percentage-point performance rather than within-cohort percentiles. Each exact model/effort variant is scored separately. Evaluations are averaged within six capability families, and observed families are weighted equally. Ranking requires at least three eligible evaluations across three distinct families. Missing values are not imputed."
     },
     "minimumEvaluationsPerModel": 3,
     "minimumDomainsPerModel": 3,
