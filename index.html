@@ -417,7 +417,7 @@ function renderStats(){
     ['Leading model',top?esc(top.model):'—',top?'Index '+fmt(top.index,1)+' / 100':''],
     ['Ranked models',String(ranked.length),'2+ evaluations across 2+ task families'],
     ['Eligible evaluations',String(RESULT.evals.length),'Current source-audited datasets'],
-    ['Models with evidence',String(RESULT.rows.length),full+' full · '+broad+' broad · '+insufficient+' insufficient']
+    ['Models with evidence',String(RESULT.rows.length),full+' full · '+broad+' broad · '+ranked.filter(function(r){return r.domainCount===2;}).length+' limited · '+insufficient+' unranked']
   ];
   $('#stats').innerHTML=items.map(function(it){return '<div class="col"><div class="card stat-card h-100"><div class="card-body py-3"><div class="stat-k">'+it[0]+'</div><div class="stat-v">'+it[1]+'</div><div class="stat-s">'+it[2]+'</div></div></div></div>';}).join('');
   $('#index-sub').textContent=ranked.length+' ranked models · '+RESULT.evals.length+' eligible evaluations · '+(DATA.composite.snapshotAsOf||'—');
