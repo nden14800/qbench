@@ -10200,7 +10200,8 @@
         "Terminal-Bench 4.0 and Terminal-Bench-Science are independent Vals AI runs, not results copied from AA's composite.",
         "DrugDiscoveryBench covers a specialized pharmaceutical workflow; it is one component of Scientific workflows, not a universal measure of science ability.",
         "Older, saturated, partial, mixed-source or mixed-harness datasets remain visible as standalone references and do not affect Index 1.2.",
-        "DrugDiscoveryBench uses each model's highest listed mini-SWE-agent effort setting; reasoning effort is not identical across model families, so that component is a best-reported-capability signal rather than an equal-compute comparison."
+        "DrugDiscoveryBench uses each model's highest listed mini-SWE-agent effort setting; reasoning effort is not identical across model families, so that component is a best-reported-capability signal rather than an equal-compute comparison.",
+        "The composite uses publisher-reported point estimates only. Published ± values, calibration errors and partition scores are shown in benchmark details but are not pooled or propagated into the Index because their statistical definitions and units differ."
       ],
       "sourceNotes": [
         {
