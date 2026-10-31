@@ -129,11 +129,17 @@ The interface includes the QBench composite ranking and six-domain radar, plus:
 - Provider capability radar
 - Benchmark coverage treemap
 - AA-3D confidence-interval forest plot
-- Score-versus-cost frontier for benchmarks that publish cost values
+- QBench Index vs. API token-price Pareto frontier using source-verified standard input/output API list prices; equal-volume proxy only, not measured task cost or Cost per Task
 - Benchmark snapshot freshness chart
 - Six-axis model parallel-coordinates plot
 
 Every visualization is derived from imported records. A chart that needs data not published by a source is left unavailable rather than filled with synthetic values.
+
+## API token-price Pareto view
+
+The Pareto chart pairs the QBench Composite Index 3.5 score with a separate **equal-token API price proxy**. For each exact model-name match with a first-party published price, the proxy is (standard uncached input price + standard output price) / 2, expressed in USD per 1 million tokens and assuming equal input and output token volumes. The current snapshot records 10 exact model mappings from OpenAI, Anthropic and Google first-party pricing pages (2026-10-31).
+
+This is a unit-price comparison, **not Cost per Task, not observed workload expenditure, and not a QBench score component**. It excludes cache hits/writes, batch discounts, tool/search charges, regional uplifts, negotiated prices, taxes and provider-specific tokenization differences. Models without a verified exact-name price mapping are omitted rather than estimated. The frontier is recalculated from the plotted model set: a point is non-dominated when no other plotted model is both no more expensive and at least as high-scoring.
 
 ## Data sources and limitations
 
