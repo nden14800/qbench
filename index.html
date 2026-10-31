@@ -142,7 +142,7 @@ footer{font-size:.8rem;color:var(--qb-muted)}
   <header class="mb-4">
     <h1 class="hero-title font-serif-jp">AI capability, measured with evidence</h1>
     <p class="text-muted-qb mb-0" style="max-width:48rem">QBench Index 1.4 compares models across ten source-audited evaluations grouped into seven capability families. Every result keeps its exact model effort, harness, native score and source; missing scores are never guessed.</p>
-    <div class="row row-cols-2 row-cols-lg-4 g-2 g-md-3 mt-3" id="stats"></div>
+    <div class="row row-cols-1 row-cols-lg-3 g-3 mt-3" id="stats"></div>
   </header>
 
   <!-- INDEX -->
@@ -395,13 +395,47 @@ function renderStats(){
  var broad=ranked.filter(function(r){return r.domainCount>=4&&r.domainCount<RESULT.domains.length;}).length,limited=ranked.filter(function(r){return r.domainCount>=2&&r.domainCount<4;}).length;
  var unranked=RESULT.rows.filter(function(r){return !r.ranked;}).length,baseModels=new Set(RESULT.rows.map(function(r){return r.model;})).size;
  var items=[['Leading variant',top?esc(top.variantLabel):'—',top?'Index '+fmt(top.index,1)+' / 100':''],['Ranked variants',String(ranked.length),(DATA.composite.extendedIndex.minimumEvaluationsPerModel||3)+'+ evaluations across '+(DATA.composite.extendedIndex.minimumDomainsPerModel||3)+'+ families'],['Eligible evaluations',String(RESULT.evals.length),'Current source-audited datasets'],['Model coverage',String(baseModels)+' base models',full+' full · '+broad+' broad · '+limited+' limited · '+unranked+' unranked variants']];
- $('#stats').innerHTML=items.map(function(it){return '<div class="col"><div class="card stat-card h-100"><div class="card-body py-3"><div class="stat-k">'+it[0]+'</div><div class="stat-v">'+it[1]+'</div><div class="stat-s">'+it[2]+'</div></div></div></div>';}).join('');
+ renderSummaryCards(ranked,top,baseModels,full,broad,limited,unranked);
  $('#index-sub').textContent=ranked.length+' ranked model/effort variants · '+baseModels+' base models · '+RESULT.evals.length+' evaluations · '+(DATA.composite.snapshotAsOf||'—');
  var snaps=(DATA.benchmarks||[]).map(function(b){return b.snapshotDate;}).filter(function(d){return d&&/^\d{4}-/.test(d);}).sort();
  $('#footer').innerHTML='QBench Index '+esc(DATA.composite.version||'1.4')+' · data snapshot '+esc(DATA.composite.snapshotAsOf||snaps[snaps.length-1]||'—')+'. '+RESULT.evals.length+' selected evaluations contribute to '+RESULT.domains.length+' equally weighted capability families. API token prices are not task-cost measurements.';
 }
 /* ---------- index table ---------- */
 
+
+/* Three summary cards: top five by Index, leader per evaluation, and coverage. */
+function renderSummaryCards(ranked,top,baseModels,full,broad,limited,unranked){
+  var p=pal(), benchById={};
+  (DATA.benchmarks||[]).forEach(function(b){benchById[b.id]=b;});
+  var top5=ranked.slice(0,5);
+  var leaders=RESULT.evals.map(function(e){
+    var rows=(benchById[e.id]&&benchById[e.id].models||[]).filter(function(r){return r.score!=null;}).slice().sort(function(a,b){return b.score-a.score;});
+    return {name:e.name,lead:rows[0]||null};
+  });
+  $('#stats').innerHTML=
+    '<div class="col"><div class="card h-100"><div class="card-body"><div class="stat-k">Index 1.4 · top 5</div>'+
+      '<div id="sum-top" style="height:200px"></div></div></div></div>'+
+    '<div class="col"><div class="card h-100"><div class="card-body"><div class="stat-k">Leader per evaluation</div>'+
+      '<ul class="list-unstyled small mb-0 mt-2">'+leaders.map(function(l){return '<li class="d-flex justify-content-between gap-2 py-1 border-bottom"><span class="text-muted-qb">'+esc(l.name)+'</span><span class="text-end fw-semibold">'+(l.lead?esc(scatterLabel(l.lead))+' · '+fmt(l.lead.score,1):'—')+'</span></li>';}).join('')+'</ul>'+
+    '</div></div></div>'+
+    '<div class="col"><div class="card h-100"><div class="card-body"><div class="stat-k">Coverage</div>'+
+      '<div class="stat-v mt-1">'+baseModels+' base models</div>'+
+      '<div class="stat-s mt-1">'+RESULT.rows.length+' model/effort variants · '+ranked.length+' ranked</div>'+
+      '<div class="small mt-3"><div class="d-flex justify-content-between py-1 border-bottom"><span>Full evidence (all '+RESULT.domains.length+' families)</span><span class="fw-semibold">'+full+'</span></div>'+
+      '<div class="d-flex justify-content-between py-1 border-bottom"><span>Broad evidence (4–'+(RESULT.domains.length-1)+')</span><span class="fw-semibold">'+broad+'</span></div>'+
+      '<div class="d-flex justify-content-between py-1 border-bottom"><span>Limited evidence (3)</span><span class="fw-semibold">'+limited+'</span></div>'+
+      '<div class="d-flex justify-content-between py-1"><span>Unranked</span><span class="fw-semibold">'+unranked+'</span></div></div>'+
+    '</div></div></div>';
+  var chart=chartInit('sum-top');
+  if(chart&&top5.length){
+    chart.setOption({animation:false,grid:{left:150,right:44,top:6,bottom:22},
+      tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(ps){var r=top5[ps[0].dataIndex];return esc(r.variantLabel)+'<br>Index '+fmt(r.index,1);}},
+      xAxis:Object.assign({type:'value',min:0,max:100},axisStyle(p)),
+      yAxis:Object.assign({type:'category',inverse:true,data:top5.map(scatterLabel)},axisStyle(p)),
+      series:[{type:'bar',barWidth:12,data:top5.map(function(r){return {value:+Number(r.index).toFixed(1),itemStyle:{color:providerColor(r.provider)}};}),
+        label:{show:true,position:'right',formatter:function(e){return fmt(e.value,1);},color:p.ink,fontSize:10}}]});
+  }
+}
 
 /* ---------- index table ---------- */
 
