@@ -10,12 +10,12 @@ Independent AI benchmark leaderboards and model-performance analysis.
 
 | Measure | Count |
 |---|---:|
-| Unique model names across imported datasets | 165 |
-| Model configurations (model + configuration + harness) | 320 |
-| Published result rows | 507 |
-| Datasets with model-level results | 20 |
+| Unique model names across imported datasets | 176 |
+| Model configurations (model + configuration + harness) | 362 |
+| Published result rows | 549 |
+| Datasets with model-level results | 21 |
 | Providers | 31 |
-| Benchmark directory entries | 47 |
+| Benchmark directory entries | 48 |
 
 Counts are derived from data/external-benchmarks.json. A result row is not necessarily a unique model: a source may publish several reasoning efforts, harnesses, or routing configurations for one model. Individual benchmark leaderboards retain the source rows; the main leaderboard groups each model once and shows its best reported configuration. CSV export retains the raw rows.
 
@@ -73,6 +73,11 @@ ARC-AGI-3 public competition standings are team/system submissions, not a compar
 - Epoch AI MirrorCode: https://epoch.ai/benchmarks/mirrorcode
 - Epoch AI EBR-bench: https://epoch.ai/benchmarks/ebr-bench
 - Epoch AI DeepSWE review status: https://epoch.ai/benchmarks/deepswe
+
+## Supplementary score imports
+
+- AA-Omniscience v1.1 Accuracy: 40 third-party Benchmark Atlas results from 2026-10-27. This is accuracy-only; the paired hallucination-rate measure is absent, so it is not a substitute for the full AA component and is excluded from QBench Composite Index 3.0.
+- GDP.pdf: three published all-pass results imported from the official Artificial Analysis evaluation page. The page lists 28 of 238 models and states that no public API is available; the import is therefore explicitly a top-three summary, not a complete leaderboard.
 
 ## Model explorer and analytics
 
