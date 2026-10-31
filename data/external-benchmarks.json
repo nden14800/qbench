@@ -13283,15 +13283,15 @@
     ],
     "currentDiagnostics": {
       "snapshotAsOf": "2026-10-31",
-      "eligibleEvaluationCount": 8,
-      "modelsWithEligibleResults": 98,
-      "totalVariants": 162,
-      "rankedVariants": 54,
+      "eligibleEvaluationCount": 7,
+      "modelsWithEligibleResults": 84,
+      "totalVariants": 145,
+      "rankedVariants": 52,
       "fullEvidenceVariants": 0,
-      "broadEvidenceVariants": 7,
-      "limitedEvidenceVariants": 47,
-      "insufficientEvidenceVariants": 108,
-      "note": "Recomputed at runtime from exact model/effort variants and publisher-reported scores."
+      "broadEvidenceVariants": 1,
+      "limitedEvidenceVariants": 51,
+      "insufficientEvidenceVariants": 93,
+      "note": "Recomputed from current eligible data, exact model/effort identities and the Index 1.3 runtime."
     },
     "supplementaryInputsExcluded": [
       "aa-omniscience-v1-1-accuracy-atlas"
@@ -13565,15 +13565,15 @@
       "method": "QBench Index 1.3 uses eight source-audited evaluations across seven capability families. It retains publisher-reported task-success/accuracy percentages rather than converting within-cohort ranks to percentiles. Model/effort variants are separate identities. Ranking requires at least two eligible evaluations across two distinct families. Missing values are not imputed.",
       "currentDiagnostics": {
         "snapshotAsOf": "2026-10-31",
-        "eligibleEvaluationCount": 8,
-        "modelsWithEligibleResults": 98,
-        "totalVariants": 162,
-        "rankedVariants": 54,
+        "eligibleEvaluationCount": 7,
+        "modelsWithEligibleResults": 84,
+        "totalVariants": 145,
+        "rankedVariants": 52,
         "fullEvidenceVariants": 0,
-        "broadEvidenceVariants": 7,
-        "limitedEvidenceVariants": 47,
-        "insufficientEvidenceVariants": 108,
-        "note": "Recomputed at runtime from exact model/effort variants and publisher-reported scores."
+        "broadEvidenceVariants": 1,
+        "limitedEvidenceVariants": 51,
+        "insufficientEvidenceVariants": 93,
+        "note": "Recomputed from current eligible data, exact model/effort identities and the Index 1.3 runtime."
       }
     },
     "minimumEvaluationsPerModel": 2,
