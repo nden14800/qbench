@@ -310,7 +310,7 @@ function renderProviderMix(){
 function renderSourceRank(){
  const b=get(state.benchmark);if(!b)return;
  const best=new Map();b.models.forEach(r=>{const v=scoreOf(r);if(v===null||!r.model)return;const old=best.get(r.model);if(!old||v>old.score)best.set(r.model,{...r,score:v});});
- const rows=[...best.values()].sort((a,z)=>z.score-a.score),mode=$('#benchmarkChartType')?.value||'bar',ch=chartFor('sourceRankChart');if(!ch)return;
+ const rows=[...best.values()].sort((a,z)=>z.score-a.score),host=$('#sourceRankChart');if(host)host.style.height=Math.max(360,Math.min(rows.length,28)*24+90)+'px';const mode=$('#benchmarkChartType')?.value||'bar',ch=chartFor('sourceRankChart');if(!ch)return;
  if(!rows.length){ch.setOption({title:{text:'No model-level scores are available for this dataset',left:'center',top:'middle'}},true);return;}
  const ax={axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}};
  if(mode==='bar'){const a=rows.slice(0,28);ch.setOption({grid:{left:185,right:50,top:18,bottom:30},xAxis:{type:'value',...ax},yAxis:{type:'category',data:a.map(m=>m.model).reverse(),axisLabel:axis()},series:[{type:'bar',data:a.map(m=>({value:m.score,itemStyle:{color:color(m.provider)}})).reverse(),itemStyle:{borderRadius:[0,4,4,0]},label:{show:true,position:'right'}},],tooltip:{trigger:'axis',formatter:p=>{const m=a[a.length-1-p[0].dataIndex];return '<b>'+esc(m.model)+'</b><br>'+fmt(m.score,3)+' '+esc(b.unit||'');}}},true);
