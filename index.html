@@ -60,7 +60,7 @@ main{padding:34px 0 70px}.intro{display:flex;justify-content:space-between;align
         <div class="toolbar">
           <input class="control search" id="modelSearch" type="search" placeholder="Search model / configuration" aria-label="Search models">
           <select class="control" id="providerFilter" aria-label="Filter by provider"><option value="all">All providers</option></select>
-          <select class="control" id="aaBenchmarkFilter" aria-label="Filter AA evaluation"><option value="all">All 9 AA evaluations</option></select>
+          <select class="control" id="aaBenchmarkFilter" aria-label="Filter AA evaluation"><option value="all">All 9 AA evaluations</option></select><button class="chart-action" id="exportAAResults" type="button">Download CSV</button><button class="chart-action" id="resetFilters" type="button">Reset filters</button>
         </div>
       </div>
       <div class="table-wrap"><table class="table" aria-label="AA v5 component results"><thead><tr><th>Model</th><th>Configuration</th><th>Evaluation</th><th>Score</th><th>Uncertainty</th><th>Harness / evidence</th></tr></thead><tbody id="leaderboardRows"><tr><td colspan="6" class="empty">Loading benchmark data…</td></tr></tbody></table></div>
@@ -105,7 +105,7 @@ main{padding:34px 0 70px}.intro{display:flex;justify-content:space-between;align
     <div class="benchmark-list" id="benchmarkCards"></div>
     <div class="section-head"><div><h2>Source result explorer</h2><p>選択したデータセットの全保存結果を、原スコア・設定・信頼区間・ハーネスとともに確認。</p></div><span class="section-kicker">SOURCE-NATIVE VALUES</span></div>
     <div class="panel">
-      <div class="panel-head"><div><div class="panel-title">Published model results</div><div class="panel-sub" id="benchmarkMeta">Select a benchmark to inspect its published results.</div></div><select class="control" id="benchmarkSelect" aria-label="Select benchmark"></select></div>
+      <div class="panel-head"><div><div class="panel-title">Published model results</div><div class="panel-sub" id="benchmarkMeta">Select a benchmark to inspect its published results.</div></div><div class="toolbar"><select class="control" id="benchmarkSelect" aria-label="Select benchmark"></select><button class="chart-action" id="exportBenchmarkCSV" type="button">Download CSV</button><button class="chart-action" id="exportAllJSON" type="button">Full JSON</button></div></div>
       <div class="table-wrap"><table class="table" aria-label="Selected benchmark results"><thead id="benchmarkHead"></thead><tbody id="benchmarkRows"><tr><td class="empty">Loading…</td></tr></tbody></table></div>
       <div class="table-foot" id="benchmarkFoot"></div>
     </div>
@@ -234,6 +234,7 @@ function renderWeightChart(){
 function renderBriefcaseForest(){
  const b=get('aa-briefcase-v1-1');if(!b)return;
  const rows=b.models.slice().sort((a,z)=>z.score-a.score).slice(0,26).reverse();
+ $('#briefcaseForestChart').style.height=Math.max(480,rows.length*23+85)+'px';
  const data=rows.map((m,i)=>{const nums=String(m.uncertainty||'').match(/[−-]?\d+/g)||[];const lo=Math.abs(Number(nums[0]||0)),hi=Math.abs(Number(nums[1]||0));return [i,m.score-lo,m.score+hi,m.score,m.model,m.configuration||''];});
  setChart('briefcaseForestChart',{textStyle:{fontFamily:chartFont},grid:{left:185,right:35,top:12,bottom:30},xAxis:{type:'value',min:0,max:1900,axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'category',data:rows.map(m=>m.model+' · '+(m.configuration||'')).reverse(),axisLabel:{...axis(),fontSize:10}},series:[{type:'custom',renderItem:(params,api)=>{const y=api.value(0),lo=api.coord([api.value(1),y]),hi=api.coord([api.value(2),y]),mid=api.coord([api.value(3),y]);const c=color(rows[params.dataIndex].provider);return {type:'group',children:[{type:'line',shape:{x1:lo[0],y1:lo[1],x2:hi[0],y2:hi[1]},style:{stroke:c,lineWidth:2}},{type:'line',shape:{x1:lo[0],y1:lo[1]-5,x2:lo[0],y2:lo[1]+5},style:{stroke:c,lineWidth:1.5}},{type:'line',shape:{x1:hi[0],y1:hi[1]-5,x2:hi[0],y2:hi[1]+5},style:{stroke:c,lineWidth:1.5}},{type:'circle',shape:{cx:mid[0],cy:mid[1],r:4},style:{fill:c,stroke:'#fff',lineWidth:1}}]};},encode:{x:[1,2,3],y:0},data}],tooltip:{formatter:p=>{const v=p.value;return '<b>'+esc(v[4])+'</b><br>'+esc(v[5])+'<br>Elo '+fmt(v[3],0)+' · CI '+fmt(v[1],0)+'–'+fmt(v[2],0);}}});
 }
@@ -262,6 +263,7 @@ function renderAACoverage(){
  const all=state.data.benchmarks.filter(b=>ids.includes(b.id)).flatMap(b=>b.models);
  const counts={};all.forEach(m=>counts[m.model]=(counts[m.model]||0)+1);
  const names=Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,45).map(x=>x[0]).reverse();
+ $('#aaCoverageChart').style.height=Math.max(480,names.length*15+135)+'px';
  const data=[];names.forEach((name,y)=>ids.forEach((id,x)=>{const b=get(id);data.push([x,y,b?.models.some(m=>m.model===name)?1:0]);}));
  setChart('aaCoverageChart',{textStyle:{fontFamily:chartFont},grid:{left:165,right:18,top:15,bottom:110},xAxis:{type:'category',data:benchNames,axisLabel:{...axis(),rotate:30,interval:0,fontSize:10}},yAxis:{type:'category',data:names,axisLabel:{...axis(),fontSize:10}},visualMap:{min:0,max:1,show:false,inRange:{color:['#f0f1f3','#477e9f']}},series:[{type:'heatmap',data,itemStyle:{borderColor:'#fff',borderWidth:1}}],tooltip:{formatter:p=>names[p.data[1]]+'<br>'+benchNames[p.data[0]]+'<br>'+(p.data[2]?'Published result stored':'No imported result')}});
 }
@@ -290,6 +292,7 @@ function renderProviderMix(){
 }
 function renderBenchmarkDepth(){
  const rows=state.data.benchmarks.slice().sort((a,b)=>a.models.length-b.models.length);
+ $('#benchmarkDepthChart').style.height=Math.max(440,rows.length*23+75)+'px';
  setChart('benchmarkDepthChart',{textStyle:{fontFamily:chartFont},grid:{left:185,right:45,top:15,bottom:25},xAxis:{type:'value',minInterval:1,axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'category',data:rows.map(b=>b.name),axisLabel:{...axis(),fontSize:10}},series:[{type:'bar',data:rows.map(b=>({value:b.models.length,itemStyle:{color:aaIds().includes(b.id)?'#4d7897':'#a18b6e'}})),barMaxWidth:19,label:{show:true,position:'right',fontSize:10}}],tooltip:{formatter:p=>rows[p.dataIndex].name+'<br>'+p.value+' result rows'}});
 }
 function renderModelCompare(){
@@ -309,6 +312,12 @@ function renderCharts(){
 function renderAll(){
  renderSummary();renderAAFilter();renderLeaderboard();renderAAReference();renderBenchmarkSelect();renderBenchmark();renderBenchmarkCards();renderWatchlist();renderCharts();
 }
+function csvCell(v){const x=String(v??'');return '"'+x.replace(/"/g,'""')+'"';}
+function downloadFile(name,content,type){const blob=new Blob([content],{type});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);}
+function aaFilteredRows(){const q=state.query.toLowerCase(),ids=state.aaFilter==='all'?aaOrder():[state.aaFilter];let rows=[];ids.forEach(id=>{const b=get(id);if(b)b.models.forEach(m=>rows.push({id,b,m}));});return rows.filter(x=>(state.provider==='all'||x.m.provider===state.provider)&&(!q||[x.m.model,config(x.m),x.b.name,x.m.evidence].join(' ').toLowerCase().includes(q)));}
+function exportAAResults(){const rows=aaFilteredRows(),head=['model','provider','configuration','harness','benchmark','score','unit','uncertainty','evidence'];const lines=[head,...rows.map(x=>[x.m.model,x.m.provider,x.m.configuration,x.m.harness,x.b.name,x.m.score,x.b.unit,x.m.uncertainty,x.m.evidence])].map(row=>row.map(csvCell).join(','));downloadFile('qbench-aa-v5-results.csv','\\uFEFF'+lines.join('\\r\\n'),'text/csv;charset=utf-8');}
+function exportBenchmarkResults(){const b=get(state.benchmark);if(!b)return;const keys=[...new Set(b.models.flatMap(m=>Object.keys(m)))];const lines=[['benchmark','unit',...keys],...b.models.map(m=>[b.name,b.unit,...keys.map(k=>m[k])])].map(row=>row.map(csvCell).join(','));downloadFile('qbench-'+b.id+'.csv','\\uFEFF'+lines.join('\\r\\n'),'text/csv;charset=utf-8');}
+function exportAllJSON(){downloadFile('qbench-benchmark-data.json',JSON.stringify(state.data,null,2),'application/json;charset=utf-8');}
 function exportChart(id){const c=echarts.getInstanceByDom($('#'+id));if(!c)return;const a=document.createElement('a');a.href=c.getDataURL({type:'svg',backgroundColor:'#fff'});a.download='qbench-'+id+'.svg';a.click();}
 $('#modelSearch').addEventListener('input',e=>{state.query=e.target.value.trim();renderLeaderboard();});
 $('#providerFilter').addEventListener('change',e=>{state.provider=e.target.value;renderLeaderboard();});
@@ -321,6 +330,10 @@ $('#costBenchmarkFilter').addEventListener('change',e=>{state.costBenchmark=e.ta
 $('#catalogSearch').addEventListener('input',e=>{state.catalogQuery=e.target.value.trim();renderBenchmarkCards();});
 $('#catalogGroupFilter').addEventListener('change',e=>{state.catalogGroup=e.target.value;renderBenchmarkCards();});
 $('#catalogStatusFilter').addEventListener('change',e=>{state.catalogStatus=e.target.value;renderBenchmarkCards();});
+$('#exportAAResults').addEventListener('click',exportAAResults);
+$('#exportBenchmarkCSV').addEventListener('click',exportBenchmarkResults);
+$('#exportAllJSON').addEventListener('click',exportAllJSON);
+$('#resetFilters').addEventListener('click',()=>{state.query='';state.provider='all';state.aaFilter='all';$('#modelSearch').value='';$('#providerFilter').value='all';$('#aaBenchmarkFilter').value='all';renderLeaderboard();});
 $('#themeBtn').addEventListener('click',()=>{const dark=document.documentElement.dataset.theme!=='dark';document.documentElement.dataset.theme=dark?'dark':'light';localStorage.setItem('qbench-theme',dark?'dark':'light');$('#themeBtn').innerHTML=dark?'<i class="bi bi-sun"></i>':'<i class="bi bi-moon-stars"></i>';state.charts.forEach(c=>c.dispose());state.charts=[];renderCharts();});
 $('#menuBtn').addEventListener('click',()=>$('#benchmarks').scrollIntoView({behavior:'smooth'}));
 document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>{document.querySelectorAll('.nav a').forEach(x=>x.classList.toggle('active',x===a));}));
