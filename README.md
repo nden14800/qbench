@@ -16,13 +16,13 @@ QBench keeps every result attached to its publisher, model variant, reasoning ef
 |---|---:|
 | Eligible evaluations | 8 |
 | Capability families | 7 |
-| Base model names with at least one eligible result | 114 |
-| Exact model/effort variants | 175 |
+| Base model names with at least one eligible result | 98 |
+| Exact model/effort variants | 162 |
 | Ranked variants | 54 |
 | Full evidence (7 families) | 0 |
-| Broad evidence (4–6 families) | 8 |
-| Limited evidence (2–3 families) | 46 |
-| Unranked variants | 121 |
+| Broad evidence (4–6 families) | 7 |
+| Limited evidence (2–3 families) | 47 |
+| Unranked variants | 108 |
 
 A base model may appear as several independent effort variants. The leaderboard is therefore a model-variant ranking, not a single best-effort score per model family.
 
@@ -35,11 +35,11 @@ A base model may appear as several independent effort variants. The leaderboard 
 | Scientific workflows | DrugDiscoveryBench | 14 | Scale Labs · 2026-10-31 |
 | Expert knowledge | HLE-Diamond | 19 | Scale Labs · 2026-10-31 |
 | Strategic reasoning | Mystery Game Puzzles | 20 | Epoch AI · 2026-10-14 |
-| Tool use | MCP Atlas | 34 | Scale Labs · 2026-04-08 |
+| Tool use | MCP Atlas — Pass Rate (All 1,000 tasks) | 20 | Scale Labs · 2026-04-08 |
 | Help-seeking judgment | HiL-Bench | 30 | Scale Labs · 2026-10-31 |
 | Adaptive interactive reasoning | ARC-AGI-3 Standard harness | 40 | ARC Prize · 2026-10-31 |
 
-MCP Atlas contains 1,000 human-authored tasks across 36 MCP servers and 220 tools, including 500 held-out tasks. HiL-Bench contains 300 tasks, 1,131 human-validated blockers and 100 private held-out tasks; QBench uses Pass@3 only, not ASK-F1. DrugDiscoveryBench uses the common mini-SWE-agent harness, three-run averages and a 120-minute timeout. Mystery Game Puzzles is a 100-position hidden-identity evaluation; the imported snapshot contains 20 exact model/effort rows from Epoch AI's larger 140-model leaderboard.
+MCP Atlas contains 1,000 human-authored tasks across 36 MCP servers and 220 tools, including 500 held-out tasks. QBench uses only the source's explicitly labeled All 1,000 Pass Rate table (20 rows) and preserves Public 500 companion scores separately. The page headline (83.6%) does not match the displayed All 1,000 table maximum (82.2%), so the discrepancy is documented; a separate 34-row Performance Comparison table with an unclear metric label remains standalone. HiL-Bench contains 300 tasks, 1,131 human-validated blockers and 100 private held-out tasks; QBench uses Pass@3 only, not ASK-F1. DrugDiscoveryBench uses the common mini-SWE-agent harness, three-run averages and a 120-minute timeout. Mystery Game Puzzles is a 100-position hidden-identity evaluation; the imported snapshot contains 20 exact model/effort rows from Epoch AI's larger 140-model leaderboard.
 
 ARC-AGI-3 uses 40 official Standard-harness model/effort variants from ten base models. The Provider Adapter results are stored as a separate standalone evaluation because the harness materially changes scores. For example, GPT-6 Astra's max-effort result is 62.7% on Standard and 98.6% on Provider Adapter; high effort is 54.8% vs 99.9%. These are not mixed in the Index.
 
@@ -103,13 +103,13 @@ A larger leaderboard is not automatically a better composite. Incomplete exports
 
 | Metric | Result |
 |---|---:|
-| Benchmark datasets with model values | 48 |
-| Benchmark directory dataset cards | 48 |
-| Benchmark catalog metadata records | 79 |
-| Model-result rows across all datasets | 813 |
-| Exact model names across all datasets | 188 |
-| Model + effort + harness combinations | 681 |
-| Provider labels | 31 |
+| Benchmark datasets with model values | 49 |
+| Benchmark directory dataset cards | 49 |
+| Benchmark catalog metadata records | 80 |
+| Model-result rows across all datasets | 833 |
+| Exact model names across all datasets | 192 |
+| Model + effort + harness combinations | 701 |
+| Provider labels | 32 |
 | API price entries | 61 |
 
 Counts are from `data/external-benchmarks.json`. A model may appear in multiple datasets and effort settings.
