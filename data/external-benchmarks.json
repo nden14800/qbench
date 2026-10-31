@@ -12668,20 +12668,23 @@
     "method": "QBench Index 1.3 uses eight source-audited evaluations across seven capability families. It retains publisher-reported task-success/accuracy percentages rather than converting within-cohort ranks to percentiles. Model/effort variants are separate identities. Ranking requires at least two eligible evaluations across two distinct families. Missing values are not imputed.",
     "caveats": [
       "The Index is a seven-family composite of source-reported percentages, not an IQ score, human-equivalence score, or confidence interval.",
-      "Direct percentage-point scoring prevents within-cohort rank-percentile inflation. Benchmark difficulty, graders, task formats and guessing opportunities still differ; equal family weights are a transparent convention, not a psychometric equivalence claim.",
+      "Direct percentage-point scoring avoids within-cohort rank-percentile inflation. Benchmark difficulty, graders, task formats and guessing opportunities still differ; equal family weights are a transparent convention, not a psychometric equivalence claim.",
       "Effort variants are separate rows. 'Not reported' means the publisher did not identify the reasoning effort; it is never inferred from a harness.",
-      "Harness differences are preserved. ARC-AGI-3 Standard and Provider Adapter are separate evaluations; Provider Adapter is not used in the Index.",
+      "Harness differences are preserved. ARC-AGI-3 Standard and Provider Adapter are separate; only Standard contributes to the Index.",
       "Coverage adjustment shrinks incomplete seven-family results toward 50. This is an evidence adjustment, not a confidence interval.",
-      "FrontierMath Tier 4 v2 has a small number of very high results, including a 100% result; its ceiling risk is monitored.",
-      "Mystery Game Puzzles has 140 tested models on Epoch AI's page; this snapshot contains the 20 model/effort rows surfaced in the official results extract, not all 140.",
-      "Furniture Assembly uses each model's highest supported API effort according to Epoch AI; exact effort labels are preserved where shown and left unreported otherwise.",
+      "Ranking requires at least two evaluations across two distinct families to improve coverage without allowing single-benchmark results to become an Index rank. Rows with less evidence remain visible but unranked.",
+      "Mystery Game Puzzles has 140 tested models on Epoch AI's page; this snapshot contains 20 exact model/effort variants surfaced in the official results extract, not all 140.",
       "DrugDiscoveryBench uses mini-SWE-agent results only. Its 82 expert-authored tasks are averaged over three runs with a 120-minute timeout.",
-      "HLE-Diamond and FrontierMath Tier 4 uncertainty values are displayed but not pooled because source-specific definitions differ.",
+      "MCP Atlas is updated April 8, 2026; it remains a useful held-out tool-use evaluation but is older than the October 2026 snapshots.",
+      "HiL-Bench uses Pass@3 as its task-outcome metric. ASK-F1 measures a distinct help-seeking quality dimension and is not mixed into the Index.",
+      "FrontierMath Tier 4 v2 is excluded after a source audit found a mismatch between checked-in values and Epoch AI's visible official results; six visible source rows remain standalone pending a complete export.",
+      "Furniture Assembly is excluded from the composite because the official Epoch AI leaderboard currently exposes no tabular results; only three values confirmed in the launch analysis remain.",
       "ProofBench remains standalone because several leading general-purpose models tie at 100%.",
-      "ARC-AGI-1 and ARC-AGI-2 semi-private results are retained as standalone ceiling-watch series; they do not enter the Index.",
-      "ARC-AGI-3 uses only official Standard-harness semi-private scores from verified model pages. The extract contains 40 model/effort variants across ten base models, not the full leaderboard.",
+      "ARC-AGI-1 and ARC-AGI-2 semi-private results remain standalone ceiling-watch series; they do not enter the Index.",
+      "LiveBench 2.0 remains standalone because the imported snapshot mixes six official-publisher rows with secondary-mirror results; the official-only subset is below the 12-variant source gate.",
       "API token prices are not measured benchmark cost per task. No task cost is inferred without matching per-run token usage and pricing.",
-      "Missing scores are never imputed, and aliases are not merged without explicit source evidence."
+      "Missing scores are never imputed, and aliases are not merged without explicit source evidence.",
+      "An IRT-based long-run Progress Index is not published yet. Only eight model/effort variants currently have results across four or more eligible evaluations, and most inputs are aggregate benchmark scores rather than task-level response matrices; a stable longitudinal calibration needs a larger connected overlap set."
     ],
     "sourceNotes": [
       {
@@ -12955,7 +12958,8 @@
         "ARC-AGI-1 and ARC-AGI-2 semi-private results remain standalone ceiling-watch series; they do not enter the Index.",
         "LiveBench 2.0 remains standalone because the imported snapshot mixes six official-publisher rows with secondary-mirror results; the official-only subset is below the 12-variant source gate.",
         "API token prices are not measured benchmark cost per task. No task cost is inferred without matching per-run token usage and pricing.",
-        "Missing scores are never imputed, and aliases are not merged without explicit source evidence."
+        "Missing scores are never imputed, and aliases are not merged without explicit source evidence.",
+        "An IRT-based long-run Progress Index is not published yet. Only eight model/effort variants currently have results across four or more eligible evaluations, and most inputs are aggregate benchmark scores rather than task-level response matrices; a stable longitudinal calibration needs a larger connected overlap set."
       ],
       "sourceNotes": [
         {
