@@ -127,7 +127,7 @@ footer{font-size:.8rem;color:var(--qb-muted)}
 <main class="container-xl py-4">
   <header class="mb-4">
     <h1 class="hero-title font-serif-jp">AI capability, measured with evidence</h1>
-    <p class="text-muted-qb mb-0" style="max-width:48rem">QBench Index 1.2 compares models across five source-audited evaluations grouped into four practical task families. Every result keeps its original metric, configuration and source; missing scores are never guessed.</p>
+    <p class="text-muted-qb mb-0" style="max-width:48rem">QBench Index 1.3 compares models across seven source-audited evaluations grouped into six capability families. Every result keeps its exact model effort, harness, native score and source; missing scores are never guessed.</p>
     <div class="row row-cols-2 row-cols-lg-4 g-2 g-md-3 mt-3" id="stats"></div>
   </header>
 
@@ -141,7 +141,7 @@ footer{font-size:.8rem;color:var(--qb-muted)}
         </div>
         <div class="d-flex flex-wrap align-items-center gap-2 toolbar-qb">
           <input class="form-control form-control-sm" id="q" type="search" placeholder="Search model" aria-label="Search model" style="min-width:200px">
-          <div id="provider-choice"></div>
+          <div id="provider-choice"></div><div id="effort-choice"></div>
           <div class="form-check form-switch m-0">
             <input class="form-check-input" type="checkbox" id="show-unranked">
             <label class="form-check-label small" for="show-unranked">Include unranked</label>
@@ -150,8 +150,8 @@ footer{font-size:.8rem;color:var(--qb-muted)}
       </div>
       <div class="index-explainer mx-3 mt-2 mb-1">
         <div class="fw-semibold mb-1">How QBench Index 1.2 works</div>
-        <div>Each eligible benchmark is converted to a midrank percentile within its own evaluated model cohort. Results are averaged inside four QBench task families, then averaged equally. The final score is adjusted toward 50 when a model has fewer than four task families of evidence.</div>
-        <div class="mt-1"><strong>Rank:</strong> at least 2 eligible evaluations across 2+ task families · <strong>Evidence:</strong> full (4 families), broad (3), or limited (2) · <strong>Insufficient evidence:</strong> retained in Models, without an Index score.</div>
+        <div>Each benchmark keeps its reported 0–100 accuracy or task-success percentage. Results are averaged inside six capability families, then averaged equally. Model effort variants are separate entries; unreported effort is never guessed.</div>
+        <div class="mt-1"><strong>Rank:</strong> at least 3 eligible evaluations across 3+ capability families · <strong>Evidence:</strong> full (6 families), broad (4–5), or limited (3) · <strong>Insufficient evidence:</strong> retained in Models, without an Index score.</div>
       </div>
       <div class="table-responsive" id="index-table-wrap">
         <table class="table table-hover align-middle mb-0" id="index-table">
@@ -166,7 +166,7 @@ footer{font-size:.8rem;color:var(--qb-muted)}
       <div class="card-header py-2">
         <ul class="nav nav-tabs card-header-tabs" id="chart-tabs" role="tablist">
           <li class="nav-item"><button class="nav-link active" type="button" data-chart="composition" role="tab">Composition</button></li>
-          <li class="nav-item"><button class="nav-link" type="button" data-chart="scatter" role="tab">Index vs. API price + Pareto</button></li>
+          <li class="nav-item"><button class="nav-link" type="button" data-chart="scatter" role="tab">Index vs. API price proxy + Pareto</button></li>
           <li class="nav-item"><button class="nav-link" type="button" data-chart="heatmap" role="tab">Heatmap</button></li>
           <li class="nav-item"><button class="nav-link" type="button" data-chart="distribution" role="tab">Index distribution</button></li>
           <li class="nav-item"><button class="nav-link" type="button" data-chart="coverage" role="tab">Evaluation coverage</button></li>
@@ -283,89 +283,55 @@ function pal(){return {ink:cssVar('--bs-body-color')||'#14171f',muted:cssVar('--
 /* ---------- QBench Index 1.2 ---------- */
 var DATA=null,RESULT=null;
 
+function effortOf(r){
+ var e=String(r&&r.effort||'').trim().toLowerCase();if(e&&e!=='not-reported'&&e!=='not reported'&&e!=='unreported')return e;
+ var c=String(r&&r.configuration||'').toLowerCase(),m=c.match(/\b(max|xhigh|extra[- ]?high|high|medium|low|none|non[- ]?reasoning)\b/);
+ return m?m[1].replace('extra-high','xhigh').replace('extra high','xhigh').replace('non-reasoning','none'):'not-reported';
+}
+function variantId(model,effort){return model+'\u241f'+effort;}
+function variantLabel(r){return r.model+(r.effort&&r.effort!=='not-reported'?' ('+r.effort+')':' (effort not reported)');}
 function compute(data){
-  var spec=data.composite.extendedIndex,byId={},kinds={};
-  data.benchmarks.forEach(function(b){byId[b.id]=b;});
-  (data.modelNameAudit&&data.modelNameAudit.modelKinds||[]).forEach(function(x){kinds[x.name]=x;});
-  var min=spec.minimumModelsPerEvaluation,evals=[],pct={};
-  spec.domains.forEach(function(dom){dom.benchmarks.forEach(function(id){
-    var b=byId[id];if(!b||b.indexEligible!==true)return;
-    var best=new Map();
-    (b.models||[]).forEach(function(r){
-      var v=scoreOf(r),kind=kinds[r.model]||{};
-      if(!r.model||v===null||r.uncertain===true||r.excludeFromIndex===true||kind.excludeFromIndex===true)return;
-      var o=best.get(r.model);
-      if(!o||v>o.value)best.set(r.model,{value:v,row:r});
-    });
-    if(best.size<min)return;
-    var vals=[];best.forEach(function(e){vals.push(e.value);});
-    var m=new Map();
-    best.forEach(function(e,name){
-      var less=0,eq=0;
-      vals.forEach(function(v){if(v<e.value)less++;if(v===e.value)eq++;});
-      var p=vals.length<=1?50:100*(less+(eq-1)/2)/(vals.length-1);
-      m.set(name,{pct:p,value:e.value,config:e.row.configuration||'',harness:e.row.harness||'',provider:e.row.provider||'Unknown'});
-    });
-    pct[id]=m;
-    evals.push({id:id,name:b.name,domain:dom.name,unique:best.size,snapshot:b.snapshotDate,source:b.source});
-  });});
-  var names=new Map();
-  Object.keys(pct).forEach(function(id){pct[id].forEach(function(e,n){if(!names.has(n))names.set(n,e.provider);});});
-  var priceMap={};
-  ((data.apiPricing&&data.apiPricing.models)||[]).forEach(function(p){
-    var old=priceMap[p.model];
-    if(!old||(p.sourceType==='official-provider'&&old.sourceType!=='official-provider'))priceMap[p.model]=p;
+ var spec=data.composite.extendedIndex,byId={},kinds={};data.benchmarks.forEach(function(b){byId[b.id]=b;});
+ (data.modelNameAudit&&data.modelNameAudit.modelKinds||[]).forEach(function(x){kinds[x.name]=x;});
+ var min=spec.minimumModelsPerEvaluation,evals=[],scores={};
+ spec.domains.forEach(function(dom){dom.benchmarks.forEach(function(id){
+  var b=byId[id];if(!b||b.indexEligible!==true)return;var rows=new Map();
+  (b.models||[]).forEach(function(r){
+   var v=scoreOf(r),kind=kinds[r.model]||{};
+   if(!r.model||v===null||v<0||v>100||r.uncertain===true||r.excludeFromIndex===true||kind.excludeFromIndex===true)return;
+   if(id==='terminal-bench-science-0-1'&&String(r.harness||'').toLowerCase().indexOf('mini-swe-agent')<0)return;
+   var effort=effortOf(r),key=variantId(r.model,effort);if(rows.has(key))return;
+   rows.set(key,{value:v,row:r,model:r.model,effort:effort,provider:r.provider||'Unknown'});
   });
-  var rows=[];
-  names.forEach(function(provider,name){
-    var ds={},coverage=0,domainCount=0,detail={},values=[];
-    spec.domains.forEach(function(dom){
-      var a=[];
-      dom.benchmarks.forEach(function(id){
-        if(pct[id]&&pct[id].has(name)){
-          var point=pct[id].get(name);a.push(point.pct);values.push(point.pct);coverage++;detail[id]=point;
-        }
-      });
-      ds[dom.name]=a.length?a.reduce(function(x,y){return x+y;},0)/a.length:null;
-      if(ds[dom.name]!==null)domainCount++;
-    });
-    var vals=Object.keys(ds).map(function(k){return ds[k];}).filter(function(v){return v!==null;});
-    var raw=vals.length?vals.reduce(function(x,y){return x+y;},0)/vals.length:null;
-    var evidenceFactor=domainCount?Math.sqrt(domainCount/spec.domains.length):0;
-    var adjusted=raw===null?null:50+(raw-50)*evidenceFactor;
-    var ranked=coverage>=spec.minimumEvaluationsPerModel&&domainCount>=spec.minimumDomainsPerModel;
-    var spread=null;
-    if(values.length){
-      var mean=values.reduce(function(x,y){return x+y;},0)/values.length;
-      spread=Math.sqrt(values.reduce(function(x,y){return x+Math.pow(y-mean,2);},0)/values.length);
-    }
-    var p=priceMap[name]||{},cur=p.currency||'USD';
-    var input=cur==='USD'?p.inputUSDPerMillion:p.inputLocalPerMillion;
-    var output=cur==='USD'?p.outputUSDPerMillion:p.outputLocalPerMillion;
-    var type=p.sourceType||'',label=type==='official-provider'?'Official API':type==='openrouter-route'?'OpenRouter route':'Hosted API';
-    var avg=type==='official-provider'&&cur==='USD'&&input!=null&&output!=null?(Number(input)+Number(output))/2:null;
-    var kind=kinds[name]||{};
-    rows.push({
-      model:name,provider:provider||'Unknown',modelKind:kind.kind||'foundation-model',modelKindLabel:kind.label||'',
-      domains:ds,coverage:coverage,domainCount:domainCount,ranked:ranked,
-      rankTier:domainCount===4?'full':domainCount===3?'broad':'limited',
-      index:ranked?adjusted:null,rawIndex:raw,evidenceFactor:evidenceFactor,spread:spread,
-      price:avg,priceInput:input==null?null:Number(input),priceOutput:output==null?null:Number(output),
-      priceCurrency:cur,priceSource:p.source||null,priceSourceType:type,priceSourceLabel:label,priceNote:p.note||'',detail:detail
-    });
-  });
-  rows.sort(function(a,b){
-    return(Number(b.ranked)-Number(a.ranked))||
-      ((b.index==null?-1:b.index)-(a.index==null?-1:a.index))||
-      a.model.localeCompare(b.model);
-  });
-  rows.filter(function(r){return r.ranked;}).forEach(function(r,i){r.rank=i+1;});
-  return {evals:evals,rows:rows,domains:spec.domains.map(function(d){return d.name;}),spec:spec,byId:byId,pct:pct};
+  if(rows.size<min)return;var map=new Map();
+  rows.forEach(function(e,key){map.set(key,{pct:e.value,value:e.value,config:e.row.configuration||'',harness:e.row.harness||'',provider:e.provider,model:e.model,effort:e.effort,row:e.row});});
+  scores[id]=map;evals.push({id:id,name:b.name,domain:dom.name,unique:rows.size,baseModels:new Set(Array.from(rows.values()).map(function(x){return x.model;})).size,snapshot:b.snapshotDate,source:b.source,taskCount:b.taskCount||null});
+ });});
+ var variants=new Map();Object.keys(scores).forEach(function(id){scores[id].forEach(function(e,key){if(!variants.has(key))variants.set(key,{model:e.model,effort:e.effort,provider:e.provider});});});
+ var priceMap={};((data.apiPricing&&data.apiPricing.models)||[]).forEach(function(p){var old=priceMap[p.model];if(!old||(p.sourceType==='official-provider'&&old.sourceType!=='official-provider'))priceMap[p.model]=p;});
+ var rows=[];
+ variants.forEach(function(identity,key){
+  var ds={},coverage=0,domainCount=0,detail={},values=[];
+  spec.domains.forEach(function(dom){var a=[];dom.benchmarks.forEach(function(id){if(scores[id]&&scores[id].has(key)){var point=scores[id].get(key);a.push(point.value);values.push(point.value);coverage++;detail[id]=point;}});
+   ds[dom.name]=a.length?a.reduce(function(x,y){return x+y;},0)/a.length:null;if(ds[dom.name]!==null)domainCount++;});
+  var vals=Object.keys(ds).map(function(k){return ds[k];}).filter(function(v){return v!==null;}),raw=vals.length?vals.reduce(function(x,y){return x+y;},0)/vals.length:null;
+  var evidenceFactor=domainCount?Math.sqrt(domainCount/spec.domains.length):0,adjusted=raw===null?null:50+(raw-50)*evidenceFactor;
+  var ranked=coverage>=spec.minimumEvaluationsPerModel&&domainCount>=spec.minimumDomainsPerModel,spread=null;
+  if(values.length){var mean=values.reduce(function(x,y){return x+y;},0)/values.length;spread=Math.sqrt(values.reduce(function(x,y){return x+Math.pow(y-mean,2);},0)/values.length);}
+  var p=priceMap[identity.model]||{},cur=p.currency||'USD',input=cur==='USD'?p.inputUSDPerMillion:p.inputLocalPerMillion,output=cur==='USD'?p.outputUSDPerMillion:p.outputLocalPerMillion;
+  var type=p.sourceType||'',label=type==='official-provider'?'Official API':type==='openrouter-route'?'OpenRouter route':'Hosted API';
+  var avg=type==='official-provider'&&cur==='USD'&&input!=null&&output!=null?(Number(input)+Number(output))/2:null,kind=kinds[identity.model]||{};
+  rows.push({variantId:key,model:identity.model,effort:identity.effort,variantLabel:variantLabel(identity),provider:identity.provider||'Unknown',modelKind:kind.kind||'foundation-model',modelKindLabel:kind.label||'',
+   domains:ds,coverage:coverage,domainCount:domainCount,ranked:ranked,rankTier:domainCount===6?'full':domainCount>=4?'broad':domainCount>=3?'limited':'insufficient',
+   index:ranked?adjusted:null,rawIndex:raw,evidenceFactor:evidenceFactor,spread:spread,price:avg,priceInput:input==null?null:Number(input),priceOutput:output==null?null:Number(output),
+   priceCurrency:cur,priceSource:p.source||null,priceSourceType:type,priceSourceLabel:label,priceNote:p.note||'',detail:detail});
+ });
+ rows.sort(function(a,b){return(Number(b.ranked)-Number(a.ranked))||((b.index==null?-1:b.index)-(a.index==null?-1:a.index))||a.model.localeCompare(b.model)||a.effort.localeCompare(b.effort);});
+ rows.filter(function(r){return r.ranked;}).forEach(function(r,i){r.rank=i+1;});
+ return {evals:evals,rows:rows,domains:spec.domains.map(function(d){return d.name;}),spec:spec,byId:byId,pct:scores};
 }
 
-/* ---------- custom select (tenmei-mori style) ---------- */
 
-var openHost=null;
 function closeAll(){
   if(!openHost)return;
   openHost.dataset.open='false';
@@ -404,81 +370,59 @@ function makeChoice(host,options,value,onChange,label){
 }
 
 /* ---------- state ---------- */
-var S={sort:'index',dir:-1,provider:'all',q:'',showUnranked:false,mq:'',mSort:'index',mDir:-1,selected:[],bench:null,pareto:true,quadrant:false,chart:'composition'};
+var S={sort:'index',dir:-1,provider:'all',effort:'all',q:'',showUnranked:false,mq:'',mSort:'index',mDir:-1,selected:[],bench:null,pareto:true,quadrant:false,chart:'composition'};
 
 /* ---------- stats & static text ---------- */
 function renderStats(){
-  var ranked=RESULT.rows.filter(function(r){return r.ranked;});
-  var top=ranked[0];
-  var full=ranked.filter(function(r){return r.domainCount===4;}).length;
-  var broad=ranked.filter(function(r){return r.domainCount===3;}).length;
-  var insufficient=RESULT.rows.filter(function(r){return !r.ranked;}).length;
-  var items=[
-    ['Leading model',top?esc(top.model):'—',top?'Index '+fmt(top.index,1)+' / 100':''],
-    ['Ranked models',String(ranked.length),'2+ evaluations across 2+ task families'],
-    ['Eligible evaluations',String(RESULT.evals.length),'Current source-audited datasets'],
-    ['Models with evidence',String(RESULT.rows.length),full+' full · '+broad+' broad · '+ranked.filter(function(r){return r.domainCount===2;}).length+' limited · '+insufficient+' unranked']
-  ];
-  $('#stats').innerHTML=items.map(function(it){return '<div class="col"><div class="card stat-card h-100"><div class="card-body py-3"><div class="stat-k">'+it[0]+'</div><div class="stat-v">'+it[1]+'</div><div class="stat-s">'+it[2]+'</div></div></div></div>';}).join('');
-  $('#index-sub').textContent=ranked.length+' ranked models · '+RESULT.evals.length+' eligible evaluations · '+(DATA.composite.snapshotAsOf||'—');
-  var snaps=(DATA.benchmarks||[]).map(function(b){return b.snapshotDate;}).filter(function(d){return d&&/^\d{4}-/.test(d);}).sort();
-  $('#footer').innerHTML='QBench Index '+esc(DATA.composite.version||'1.2')+' · data snapshot '+esc(DATA.composite.snapshotAsOf||snaps[snaps.length-1]||'—')+'. Only the five selected source-audited evaluations contribute to the Index.';
+ var ranked=RESULT.rows.filter(function(r){return r.ranked;}),top=ranked[0],full=ranked.filter(function(r){return r.domainCount===6;}).length;
+ var broad=ranked.filter(function(r){return r.domainCount>=4&&r.domainCount<6;}).length,limited=ranked.filter(function(r){return r.domainCount===3;}).length;
+ var unranked=RESULT.rows.filter(function(r){return !r.ranked;}).length,baseModels=new Set(RESULT.rows.map(function(r){return r.model;})).size;
+ var items=[['Leading variant',top?esc(top.variantLabel):'—',top?'Index '+fmt(top.index,1)+' / 100':''],['Ranked variants',String(ranked.length),'3+ evaluations across 3+ families'],['Eligible evaluations',String(RESULT.evals.length),'Current source-audited datasets'],['Model coverage',String(baseModels)+' models',full+' full · '+broad+' broad · '+limited+' limited · '+unranked+' unranked variants']];
+ $('#stats').innerHTML=items.map(function(it){return '<div class="col"><div class="card stat-card h-100"><div class="card-body py-3"><div class="stat-k">'+it[0]+'</div><div class="stat-v">'+it[1]+'</div><div class="stat-s">'+it[2]+'</div></div></div></div>';}).join('');
+ $('#index-sub').textContent=ranked.length+' ranked model/effort variants · '+baseModels+' base models · '+RESULT.evals.length+' evaluations · '+(DATA.composite.snapshotAsOf||'—');
+ var snaps=(DATA.benchmarks||[]).map(function(b){return b.snapshotDate;}).filter(function(d){return d&&/^\d{4}-/.test(d);}).sort();
+ $('#footer').innerHTML='QBench Index '+esc(DATA.composite.version||'1.3')+' · data snapshot '+esc(DATA.composite.snapshotAsOf||snaps[snaps.length-1]||'—')+'. Seven selected evaluations contribute to six equally weighted capability families. API token prices are not task-cost measurements.';
 }
+/* ---------- index table ---------- */
+
 
 /* ---------- index table ---------- */
 
 function indexColumns(){
-  return [{k:'rank',l:'#',num:true},{k:'model',l:'Model'},{k:'provider',l:'Provider'},{k:'index',l:'Index 1.2',num:true}]
-    .concat(RESULT.domains.map(function(d){return {k:'d:'+d,l:d,num:true};}))
-    .concat([{k:'coverage',l:'Evals',num:true},{k:'inputPrice',l:'Input / 1M',num:true},{k:'outputPrice',l:'Output / 1M',num:true}]);
+ return [{k:'rank',l:'#',num:true},{k:'model',l:'Model'},{k:'effort',l:'Effort'},{k:'provider',l:'Provider'},{k:'index',l:'Index 1.3',num:true}]
+ .concat(RESULT.domains.map(function(d){return {k:'d:'+d,l:d,num:true};})).concat([{k:'coverage',l:'Evals',num:true},{k:'inputPrice',l:'Input / 1M',num:true},{k:'outputPrice',l:'Output / 1M',num:true}]);
 }
 function sortVal(r,k){
-  if(k==='rank')return r.rank; if(k==='model')return r.model; if(k==='provider')return r.provider; if(k==='index')return r.index; if(k==='coverage')return r.coverage; if(k==='inputPrice')return r.priceInput;if(k==='outputPrice')return r.priceOutput;
-  if(k.indexOf('d:')===0)return r.domains[k.slice(2)];
-  return null;
+ if(k==='rank')return r.rank;if(k==='model')return r.model;if(k==='effort')return r.effort;if(k==='provider')return r.provider;if(k==='index')return r.index;if(k==='coverage')return r.coverage;if(k==='inputPrice')return r.priceInput;if(k==='outputPrice')return r.priceOutput;
+ if(k.indexOf('d:')===0)return r.domains[k.slice(2)];return null;
 }
 function priceText(v,c){if(v==null||!isFinite(v))return '—';var n=Number(v),d=n<0.001?6:n<0.01?5:n<1?4:3;return(c==='CNY'?'¥':'$')+n.toFixed(d);}
 function priceSourceNote(r){return r.priceSourceLabel?'<small class="d-block text-muted-qb">'+esc(r.priceSourceLabel)+'</small>':'';}
 function modelKindBadge(r){return r.modelKindLabel?'<span class="badge rounded-pill text-bg-light text-secondary border ms-1">'+esc(r.modelKindLabel)+'</span>':'';}
 function renderIndex(){
-  var cols=indexColumns();
-  var rows=RESULT.rows.filter(function(r){
-    if(!r.ranked&&!S.showUnranked)return false;
-    if(S.provider!=='all'&&r.provider!==S.provider)return false;
-    if(S.q&&r.model.toLowerCase().indexOf(S.q.toLowerCase())<0)return false;
-    return true;
-  });
-  rows=rows.slice().sort(function(a,b){
-    var va=sortVal(a,S.sort),vb=sortVal(b,S.sort);
-    if(va==null&&vb==null)return 0;if(va==null)return 1;if(vb==null)return -1;
-    if(typeof va==='string')return S.dir*va.localeCompare(vb,'en');
-    return S.dir*(va-vb);
-  });
-  $('#index-head').innerHTML=cols.map(function(c){
-    var on=S.sort===c.k,arr=on?(S.dir>0?'↑':'↓'):'';
-    return '<th'+(c.num?' class="text-end"':'')+'><button type="button" class="sort-btn" data-sort="'+c.k+'">'+esc(c.l)+'<span class="sort-arrow">'+arr+'</span></button></th>';
-  }).join('');
-  if(!rows.length){$('#index-body').innerHTML='<tr><td colspan="'+cols.length+'" class="empty-qb">No models match.</td></tr>';}
-  else{
-    $('#index-body').innerHTML=rows.map(function(r){
-      var w=Math.max(0,Math.min(100,r.index||0))*0.6;
-      var evidence=r.rankTier==='full'?'full evidence':r.rankTier==='broad'?'broad evidence':'limited evidence';
-      var status=r.ranked?' <span class="badge rounded-pill text-bg-light text-secondary border fw-normal">'+evidence+'</span>':' <span class="badge rounded-pill text-bg-secondary fw-normal">insufficient evidence</span>';
-      var cells=[
-        '<td class="text-end num">'+(r.ranked?r.rank:'—')+'</td>',
-        '<td class="fw-semibold">'+esc(r.model)+modelKindBadge(r)+status+'</td>',
-        '<td>'+esc(r.provider)+'</td>',
-        '<td class="text-end num"><strong>'+fmt(r.index,1)+'</strong><span class="index-bar" style="width:'+w+'px"></span></td>'
-      ];
-      RESULT.domains.forEach(function(d){cells.push('<td class="text-end num">'+fmt(r.domains[d],1)+'</td>');});
-      cells.push('<td class="text-end num">'+r.coverage+' / '+RESULT.evals.length+'</td>');
-      cells.push('<td class="text-end num" title="'+esc(r.priceNote||r.priceSource||'')+'">'+priceText(r.priceInput,r.priceCurrency)+priceSourceNote(r)+'</td>');
-      cells.push('<td class="text-end num" title="'+esc(r.priceNote||r.priceSource||'')+'">'+priceText(r.priceOutput,r.priceCurrency)+priceSourceNote(r)+'</td>');
-      return '<tr class="'+(r.ranked?'':'is-unranked')+'">'+cells.join('')+'</tr>';
-    }).join('');
-  }
-  $('#index-note').innerHTML='<strong>Scoring:</strong> benchmark scores are converted to within-benchmark midrank percentiles. Task-family scores are equally averaged into a raw mean. Final Index = 50 + (raw mean − 50) × √(observed task families ÷ 4). A rank requires at least 2 eligible evaluations across 2 task families. Models with less evidence remain in Models and are not assigned an Index score. No missing scores are imputed.';
+ var cols=indexColumns(),rows=RESULT.rows.filter(function(r){
+  if(!r.ranked&&!S.showUnranked)return false;if(S.provider!=='all'&&r.provider!==S.provider)return false;
+  if(S.effort!=='all'&&r.effort!==S.effort)return false;
+  if(S.q&&(r.model+' '+r.effort).toLowerCase().indexOf(S.q.toLowerCase())<0)return false;return true;
+ });
+ rows=rows.slice().sort(function(a,b){var va=sortVal(a,S.sort),vb=sortVal(b,S.sort);if(va==null&&vb==null)return 0;if(va==null)return 1;if(vb==null)return -1;if(typeof va==='string')return S.dir*va.localeCompare(vb,'en');return S.dir*(va-vb);});
+ $('#index-head').innerHTML=cols.map(function(c){var on=S.sort===c.k,arr=on?(S.dir>0?'↑':'↓'):'';return '<th'+(c.num?' class="text-end"':'')+'><button type="button" class="sort-btn" data-sort="'+c.k+'">'+esc(c.l)+'<span class="sort-arrow">'+arr+'</span></button></th>';}).join('');
+ if(!rows.length){$('#index-body').innerHTML='<tr><td colspan="'+cols.length+'" class="empty-qb">No model variants match.</td></tr>';}
+ else $('#index-body').innerHTML=rows.map(function(r){
+  var w=Math.max(0,Math.min(100,r.index||0))*0.6,evidence=r.rankTier==='full'?'full evidence':r.rankTier==='broad'?'broad evidence':'limited evidence';
+  var status=r.ranked?' <span class="badge rounded-pill text-bg-light text-secondary border fw-normal">'+evidence+'</span>':' <span class="badge rounded-pill text-bg-secondary fw-normal">insufficient evidence</span>';
+  var cells=['<td class="text-end num">'+(r.ranked?r.rank:'—')+'</td>','<td class="fw-semibold">'+esc(r.model)+modelKindBadge(r)+status+'</td>',
+   '<td>'+esc(r.effort==='not-reported'?'Not reported':r.effort)+'</td>','<td>'+esc(r.provider)+'</td>','<td class="text-end num"><strong>'+fmt(r.index,1)+'</strong><span class="index-bar" style="width:'+w+'px"></span></td>'];
+  RESULT.domains.forEach(function(d){cells.push('<td class="text-end num">'+fmt(r.domains[d],1)+'</td>');});
+  cells.push('<td class="text-end num">'+r.coverage+' / '+RESULT.evals.length+'</td>');
+  cells.push('<td class="text-end num" title="'+esc(r.priceNote||r.priceSource||'')+'">'+priceText(r.priceInput,r.priceCurrency)+priceSourceNote(r)+'</td>');
+  cells.push('<td class="text-end num" title="'+esc(r.priceNote||r.priceSource||'')+'">'+priceText(r.priceOutput,r.priceCurrency)+priceSourceNote(r)+'</td>');
+  return '<tr class="'+(r.ranked?'':'is-unranked')+'">'+cells.join('')+'</tr>';
+ }).join('');
+ $('#index-note').innerHTML='<strong>Scoring:</strong> QBench retains source-reported 0–100 task-success/accuracy percentages; it does not convert ranks into 90–100 scores. Six capability families receive equal weight. Final Index = 50 + (Raw family mean − 50) × √(Observed families ÷ 6). Each exact effort setting is a separate model variant. A rank requires 3 evaluations across 3 families. Missing results and effort labels are never imputed. API token prices are shown separately and are not cost per task.';
 }
+/* ---------- charts (ECharts) ---------- */
+
 
 /* ---------- charts (ECharts) ---------- */
 
@@ -535,7 +479,7 @@ function renderScatter(host){
   var provs=[];pts.forEach(function(q){if(provs.indexOf(q.provider)<0)provs.push(q.provider);});
   var series=provs.map(function(pv){return {name:pv,type:'scatter',symbolSize:11,itemStyle:{color:providerColor(pv)},
     label:{show:true,position:'right',formatter:function(e){return e.data[2];},color:p.ink,fontSize:11},
-    data:pts.filter(function(q){return q.provider===pv;}).map(function(q){return [q.price,q.index,q.model];})};});
+    data:pts.filter(function(q){return q.provider===pv;}).map(function(q){return [q.price,q.index,q.variantLabel];})};});
   if(S.pareto&&front.length>1)series.push({name:'Pareto frontier',type:'line',symbol:'none',lineStyle:{type:'dashed',width:2,color:p.good},data:front,silent:true});
   if(S.quadrant&&series.length){
     series[0].markArea={silent:true,itemStyle:{color:p.soft},data:[[{xAxis:Math.min.apply(null,prices)*0.8,yAxis:mi},{xAxis:mp,yAxis:100}]]};
@@ -544,8 +488,8 @@ function renderScatter(host){
     animation:false,
     grid:{left:56,right:24,top:16,bottom:50},
     tooltip:{trigger:'item',formatter:function(e){var d=e.data;return d[2]?esc(d[2])+'<br>Index '+Number(d[1]).toFixed(1)+'<br>$'+Number(d[0]).toFixed(2)+' / 1M tokens':e.seriesName;}},
-    xAxis:Object.assign({type:'log',name:'Official API price proxy, USD per 1M tokens',nameLocation:'middle',nameGap:32,nameTextStyle:{color:p.muted}},axisStyle(p)),
-    yAxis:Object.assign({type:'value',min:0,max:100,name:'QBench Index 1.2',nameTextStyle:{color:p.muted}},axisStyle(p)),
+    xAxis:Object.assign({type:'log',name:'Official API token-price proxy, USD per 1M tokens',nameLocation:'middle',nameGap:32,nameTextStyle:{color:p.muted}},axisStyle(p)),
+    yAxis:Object.assign({type:'value',min:0,max:100,name:'QBench Index 1.3',nameTextStyle:{color:p.muted}},axisStyle(p)),
     series:series
   },true);
   $('#scatter-legend').innerHTML=provs.map(function(pv){return '<span><i style="background:'+providerColor(pv)+'"></i>'+esc(pv)+'</span>';}).join('');
@@ -568,7 +512,7 @@ function renderHeatmap(host){
     tooltip:{position:'top',formatter:function(e){var r=rows[e.data.value[1]],ev=evs[e.data.value[0]];return esc(r.model)+'<br>'+esc(ev.name)+': '+e.data.value[2]+' pct';}},
     grid:{left:170,right:20,top:8,bottom:96},
     xAxis:{type:'category',data:evs.map(function(e){return e.name;}),axisLabel:Object.assign({rotate:30,interval:0,fontSize:11},{color:p.muted}),axisLine:{show:false},axisTick:{show:false}},
-    yAxis:{type:'category',inverse:true,data:rows.map(function(r){return r.model;}),axisLabel:{color:p.ink,fontSize:11,width:150,overflow:'truncate'},axisLine:{show:false},axisTick:{show:false}},
+    yAxis:{type:'category',inverse:true,data:rows.map(function(r){return r.variantLabel;}),axisLabel:{color:p.ink,fontSize:11,width:150,overflow:'truncate'},axisLine:{show:false},axisTick:{show:false}},
     visualMap:{min:0,max:100,orient:'horizontal',left:'center',bottom:0,itemWidth:12,itemHeight:120,text:['100','0'],textStyle:{color:p.muted},
       inRange:{color:dark?['#1f2538','#8b96ff']:['#eef0ff','#4f5bd5']}},
     series:[{type:'heatmap',data:data,label:{show:true,fontSize:10},itemStyle:{borderColor:dark?'#0f131c':'#ffffff',borderWidth:2}}]
@@ -611,7 +555,7 @@ function renderConsistency(host){
   host.innerHTML='<div id="chart-main-el" style="height:460px"></div><div class="notice-qb">Each point is a model. Horizontal position is the standard deviation of its within-benchmark percentiles (lower = more consistent across tests); vertical position is the evidence-adjusted Index. This is descriptive variation, not a confidence interval.</div>';
   var c=chartInit('chart-main-el');
   c.setOption({animation:false,grid:{left:70,right:30,top:24,bottom:64},
-    tooltip:{trigger:'item',textStyle:{fontFamily:family},formatter:function(e){var r=e.data.row;return esc(r.model)+'<br>Index: '+fmt(r.index,1)+'<br>Benchmark spread: '+fmt(r.spread,1)+' pct points<br>Coverage: '+r.coverage+' / '+RESULT.evals.length+' evaluations';}},
+    tooltip:{trigger:'item',textStyle:{fontFamily:family},formatter:function(e){var r=e.data.row;return esc(r.variantLabel)+'<br>Index: '+fmt(r.index,1)+'<br>Benchmark spread: '+fmt(r.spread,1)+' pct points<br>Coverage: '+r.coverage+' / '+RESULT.evals.length+' evaluations';}},
     xAxis:Object.assign({type:'value',name:'Across-benchmark spread (lower is steadier)',nameLocation:'middle',nameGap:38},axisStyle(p)),
     yAxis:Object.assign({type:'value',min:0,max:100,name:'QBench Index 1.2',nameTextStyle:{color:p.muted}},axisStyle(p)),
     series:[{type:'scatter',symbolSize:11,itemStyle:{color:p.accent,opacity:.8},data:rows.map(function(r){return {value:[r.spread,r.index],row:r};})}]
@@ -640,55 +584,34 @@ function renderPriceCatalog(){
   $('#price-catalog-note').textContent=list.length+' priced model entries · snapshot '+(DATA.apiPricing.snapshotDate||'—')+'. Index scatter uses first-party provider API prices only; route prices are separate.';
 }
 function renderModels(){
-  var cols=[{k:'sel',l:'Compare'},{k:'model',l:'Model'},{k:'provider',l:'Provider'},{k:'index',l:'Index 1.2',num:true},{k:'coverage',l:'Evals',num:true},{k:'inputPrice',l:'Input / 1M',num:true},{k:'outputPrice',l:'Output / 1M',num:true}];
-  var rows=RESULT.rows.filter(function(r){return !S.mq||r.model.toLowerCase().indexOf(S.mq.toLowerCase())>=0;});
-  rows=rows.slice().sort(function(a,b){
-    var va=S.mSort==='model'?a.model:S.mSort==='provider'?a.provider:S.mSort==='coverage'?a.coverage:(a.index==null?-1:a.index);
-    var vb=S.mSort==='model'?b.model:S.mSort==='provider'?b.provider:S.mSort==='coverage'?b.coverage:(b.index==null?-1:b.index);
-    if(typeof va==='string')return S.mDir*va.localeCompare(vb,'en');
-    if(va==null&&vb==null)return a.model.localeCompare(b.model);
-    if(va==null)return 1;if(vb==null)return -1;
-    return S.mDir*(va-vb);
-  });
-  $('#models-head').innerHTML=cols.map(function(c){return '<th'+(c.num?' class="text-end"':'')+'>'+(c.k==='sel'?esc(c.l):'<button type="button" class="sort-btn" data-msort="'+c.k+'">'+esc(c.l)+'</button>')+'</th>';}).join('');
-  $('#models-body').innerHTML=rows.length?rows.map(function(r){
-    var on=S.selected.indexOf(r.model)>=0;
-    return '<tr><td><input class="form-check-input" type="checkbox" data-sel="'+esc(r.model)+'"'+(on?' checked':'')+(!r.ranked?' disabled':'')+' aria-label="Compare '+esc(r.model)+'"></td><td class="fw-semibold">'+esc(r.model)+modelKindBadge(r)+(r.ranked?(r.rankTier==='limited'?' <span class="badge rounded-pill text-bg-secondary model-status">ranked · limited evidence</span>':r.rankTier==='broad'?' <span class="badge rounded-pill text-bg-success model-status">ranked · broad evidence</span>':' <span class="badge rounded-pill text-bg-success model-status">ranked · full evidence</span>'):' <span class="badge rounded-pill text-bg-light text-secondary border model-status">insufficient evidence</span>')+'</td><td>'+esc(r.provider)+'</td><td class="text-end num">'+fmt(r.index,1)+'</td><td class="text-end num">'+r.coverage+' / '+RESULT.evals.length+'</td><td class="text-end num">'+priceText(r.priceInput,r.priceCurrency)+priceSourceNote(r)+'</td><td class="text-end num">'+priceText(r.priceOutput,r.priceCurrency)+priceSourceNote(r)+'</td></tr>'
-  }).join(''):'<tr><td colspan="7" class="empty-qb">No models match.</td></tr>';
-  renderCompare();
+ var cols=[{k:'sel',l:'Compare'},{k:'model',l:'Model'},{k:'effort',l:'Effort'},{k:'provider',l:'Provider'},{k:'index',l:'Index 1.3',num:true},{k:'coverage',l:'Evals',num:true},{k:'inputPrice',l:'Input / 1M',num:true},{k:'outputPrice',l:'Output / 1M',num:true}];
+ var rows=RESULT.rows.filter(function(r){return !S.mq||(r.model+' '+r.effort).toLowerCase().indexOf(S.mq.toLowerCase())>=0;});
+ rows=rows.slice().sort(function(a,b){var va=S.mSort==='model'?a.model:S.mSort==='provider'?a.provider:S.mSort==='effort'?a.effort:S.mSort==='coverage'?a.coverage:(a.index==null?-1:a.index);var vb=S.mSort==='model'?b.model:S.mSort==='provider'?b.provider:S.mSort==='effort'?b.effort:S.mSort==='coverage'?b.coverage:(b.index==null?-1:b.index);if(typeof va==='string')return S.mDir*va.localeCompare(vb,'en');if(va==null&&vb==null)return a.model.localeCompare(b.model);if(va==null)return 1;if(vb==null)return -1;return S.mDir*(va-vb);});
+ $('#models-head').innerHTML=cols.map(function(c){return '<th'+(c.num?' class="text-end"':'')+'>'+(c.k==='sel'?esc(c.l):'<button type="button" class="sort-btn" data-msort="'+c.k+'">'+esc(c.l)+'</button>')+'</th>';}).join('');
+ $('#models-body').innerHTML=rows.length?rows.map(function(r){
+  var on=S.selected.indexOf(r.variantId)>=0,status=r.ranked?(r.rankTier==='limited'?' <span class="badge rounded-pill text-bg-secondary model-status">ranked · limited evidence</span>':r.rankTier==='broad'?' <span class="badge rounded-pill text-bg-success model-status">ranked · broad evidence</span>':' <span class="badge rounded-pill text-bg-success model-status">ranked · full evidence</span>'):' <span class="badge rounded-pill text-bg-light text-secondary border model-status">insufficient evidence</span>';
+  return '<tr><td><input class="form-check-input" type="checkbox" data-sel="'+esc(r.variantId)+'"'+(on?' checked':'')+(!r.ranked?' disabled':'')+' aria-label="Compare '+esc(r.variantLabel)+'"></td><td class="fw-semibold">'+esc(r.model)+modelKindBadge(r)+status+'</td><td>'+esc(r.effort==='not-reported'?'Not reported':r.effort)+'</td><td>'+esc(r.provider)+'</td><td class="text-end num">'+fmt(r.index,1)+'</td><td class="text-end num">'+r.coverage+' / '+RESULT.evals.length+'</td><td class="text-end num">'+priceText(r.priceInput,r.priceCurrency)+priceSourceNote(r)+'</td><td class="text-end num">'+priceText(r.priceOutput,r.priceCurrency)+priceSourceNote(r)+'</td></tr>';
+ }).join(''):'<tr><td colspan="8" class="empty-qb">No models match.</td></tr>';
+ renderCompare();
 }
 function renderCompare(){
-  var card=$('#compare-card');
-  if(!S.selected.length){card.hidden=true;return;}
-  card.hidden=false;
-  var sel=S.selected.map(function(n){return RESULT.rows.filter(function(r){return r.model===n;})[0];}).filter(Boolean);
-  var p=pal();
-  var c=chartInit('radar-el');
-  var colors=['#4f5bd5','#16815a','#c27803','#8a5cc7','#d9480f'];
-  c.setOption({animation:false,color:colors,
-    tooltip:{},
-    legend:{bottom:0,textStyle:{color:p.ink}},
-    radar:{indicator:RESULT.domains.map(function(d){return {name:d,max:100};}),
-      axisName:{color:p.ink,fontSize:12},splitLine:{lineStyle:{color:p.grid}},axisLine:{lineStyle:{color:p.grid}},splitArea:{show:false}},
-    series:[{type:'radar',data:sel.map(function(r){return {name:r.model,value:RESULT.domains.map(function(d){return r.domains[d]==null?null:Math.round(r.domains[d]*10)/10;}),areaStyle:{opacity:.08}};})}]
-  },true);
-  var head='<tr><th>Measure</th>'+sel.map(function(r){return '<th class="text-end">'+esc(r.model)+'</th>';}).join('')+'</tr>';
-  var body='<tr class="fw-semibold"><td>QBench Index 1.2</td>'+sel.map(function(r){return '<td class="text-end num"><strong>'+fmt(r.index,1)+'</strong></td>';}).join('')+'</tr>';
-  body+='<tr><td>Raw mean percentile</td>'+sel.map(function(r){return '<td class="text-end num">'+fmt(r.rawIndex,1)+'</td>';}).join('')+'</tr>';
-  body+='<tr><td>Evidence factor</td>'+sel.map(function(r){return '<td class="text-end num">'+fmt(r.evidenceFactor,2)+'</td>';}).join('')+'</tr>';
-  RESULT.domains.forEach(function(d){body+='<tr><td>'+esc(d)+' (task family)</td>'+sel.map(function(r){return '<td class="text-end num">'+fmt(r.domains[d],1)+'</td>';}).join('')+'</tr>';});
-  RESULT.evals.forEach(function(e){body+='<tr><td>'+esc(e.name)+'</td>'+sel.map(function(r){var v=r.detail[e.id];return '<td class="text-end num">'+(v?fmt(v.value,1)+' <span class="text-muted-qb">(pct '+fmt(v.pct,0)+')</span>':'—')+'</td>';}).join('')+'</tr>';});
-  $('#cmp-head').innerHTML=head;
-  $('#cmp-body').innerHTML=body;
+ var card=$('#compare-card');if(!S.selected.length){card.hidden=true;return;}card.hidden=false;
+ var sel=S.selected.map(function(id){return RESULT.rows.filter(function(r){return r.variantId===id;})[0];}).filter(Boolean),p=pal(),c=chartInit('radar-el'),colors=['#4f5bd5','#16815a','#c27803','#8a5cc7','#d9480f'];
+ c.setOption({animation:false,color:colors,tooltip:{},legend:{bottom:0,textStyle:{color:p.ink}},radar:{indicator:RESULT.domains.map(function(d){return {name:d,max:100};}),axisName:{color:p.ink,fontSize:12},splitLine:{lineStyle:{color:p.grid}},axisLine:{lineStyle:{color:p.grid}},splitArea:{show:false}},series:[{type:'radar',data:sel.map(function(r){return {name:r.variantLabel,value:RESULT.domains.map(function(d){return r.domains[d]==null?null:Math.round(r.domains[d]*10)/10;}),areaStyle:{opacity:.08}};})}]},true);
+ var head='<tr><th>Measure</th>'+sel.map(function(r){return '<th class="text-end">'+esc(r.variantLabel)+'</th>';}).join('')+'</tr>';
+ var body='<tr class="fw-semibold"><td>QBench Index 1.3</td>'+sel.map(function(r){return '<td class="text-end num"><strong>'+fmt(r.index,1)+'</strong></td>';}).join('')+'</tr>';
+ body+='<tr><td>Raw family mean</td>'+sel.map(function(r){return '<td class="text-end num">'+fmt(r.rawIndex,1)+'</td>';}).join('')+'</tr><tr><td>Evidence factor</td>'+sel.map(function(r){return '<td class="text-end num">'+fmt(r.evidenceFactor,2)+'</td>';}).join('')+'</tr>';
+ RESULT.domains.forEach(function(d){body+='<tr><td>'+esc(d)+' (family mean)</td>'+sel.map(function(r){return '<td class="text-end num">'+fmt(r.domains[d],1)+'</td>';}).join('')+'</tr>';});
+ RESULT.evals.forEach(function(e){body+='<tr><td>'+esc(e.name)+'</td>'+sel.map(function(r){var v=r.detail[e.id];return '<td class="text-end num">'+(v?fmt(v.value,1)+' <span class="text-muted-qb">('+esc(v.effort==='not-reported'?'effort unreported':v.effort)+')</span>':'—')+'</td>';}).join('')+'</tr>';});
+ $('#cmp-head').innerHTML=head;$('#cmp-body').innerHTML=body;
 }
 function csvOut(){
-  var head=['model','provider','model_kind','index_1_2','raw_mean_percentile','evidence_factor','benchmark_coverage','task_family_coverage','ranked','api_input_price','api_output_price','price_currency','price_source'].concat(RESULT.domains).join(',');
-  var lines=RESULT.rows.map(function(r){
-    return [JSON.stringify(r.model),JSON.stringify(r.provider),JSON.stringify(r.modelKind),fmt(r.index,2),fmt(r.rawIndex,2),fmt(r.evidenceFactor,3),r.coverage,r.domainCount,r.ranked,fmt(r.priceInput,6),fmt(r.priceOutput,6),JSON.stringify(r.priceCurrency),JSON.stringify(r.priceSource)].concat(RESULT.domains.map(function(d){return fmt(r.domains[d],2);})).join(',');
-  });
-  var blob=new Blob([head+'\n'+lines.join('\n')],{type:'text/csv'});
-  var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='qbench-index-1.2.csv';a.click();
+ var head=['variant_id','model','effort','provider','index_1_3','raw_family_mean','evidence_factor','benchmark_coverage','family_coverage','ranked','api_input_price','api_output_price','price_currency','price_source'].concat(RESULT.domains).join(',');
+ var lines=RESULT.rows.map(function(r){return [JSON.stringify(r.variantId),JSON.stringify(r.model),JSON.stringify(r.effort),JSON.stringify(r.provider),fmt(r.index,2),fmt(r.rawIndex,2),fmt(r.evidenceFactor,3),r.coverage,r.domainCount,r.ranked,fmt(r.priceInput,6),fmt(r.priceOutput,6),JSON.stringify(r.priceCurrency),JSON.stringify(r.priceSource)].concat(RESULT.domains.map(function(d){return fmt(r.domains[d],2);})).join(',');});
+ var blob=new Blob([head+'\n'+lines.join('\n')],{type:'text/csv'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='qbench-index-1.3.csv';a.click();
 }
+/* ---------- benchmarks ---------- */
+
 
 /* ---------- benchmarks ---------- */
 
