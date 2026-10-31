@@ -6,37 +6,43 @@
 - Repository: https://github.com/nden14800/qbench
 - Latest source snapshot: 2026-10-31
 
-## Current coverage
+## QBench Original Index 2.0 — existing score retained
 
-- **165 unique base-model names**
-- **330 distinct model / configuration / harness keys** (a source-aware catalog count, not directly comparable to another provider's model-configuration denominator)
-- **507 model-result observations**
-- **20 datasets with imported model-level results**
-- **44 benchmark families catalogued**
-- **9/9 AA v5 components have at least some published result data**
-- **152 AA v5 component result rows**; 4/9 components have full model-level leaderboard extracts, while the remaining components currently contain only AA-published leader summaries.
+QBench keeps its original scored index instead of replacing it with Artificial Analysis. The existing score formula and eligible cohort are preserved:
 
-QBench does **not** calculate an AA-equivalent total score yet. No model configuration currently has a complete, comparable score across all nine AA v5 components. Missing component scores are not imputed, and model aliases are not guessed.
+| Domain | Weight | Input |
+|---|---:|---|
+| Coding & Agentic | 25% | LiveBench 2.0 |
+| Scientific Reasoning | 25% | GPQA Diamond |
+| Mathematics & Proof | 25% | Mean of FrontierMath family and ProofBench |
+| Practical Execution | 25% | Furniture Assembly Benchmark |
 
-## AA v5-aligned methodology
+The FrontierMath family is the arithmetic mean of FrontierMath Tiers 1–3 v2 and FrontierMath Tier 4 v2. Within Mathematics & Proof, FrontierMath family and ProofBench each contribute 12.5% of the total index. The overall index is the arithmetic mean of the four domain scores. Eligibility requires an exact model-name intersection across all six underlying source tables. Missing values are not imputed and aliases are not inferred. The historical Original Index remains separately visible in the leaderboard.
 
-QBench registers the exact nine evaluations used by Artificial Analysis Intelligence Index v5:
+## QBench Expanded Index — AA v5 + QBench frontier extensions
 
-| Category | Weight | Evaluation | Component weight |
-|---|---:|---|---:|
-| Knowledge Work | 25% | AA-Briefcase v1.1 | 15% |
-| Knowledge Work | 25% | AutomationBench-AA | 5% |
-| Knowledge Work | 25% | GDP.pdf | 5% |
-| Coding | 25% | FrontierCode 2.0 | 15% |
-| Coding | 25% | Terminal-Bench 4.0 | 10% |
-| Science | 25% | Terminal-Bench-Science 0.1 | 15% |
-| Science | 25% | CritPt v2 (Hard Subset) | 10% |
-| General | 25% | AA-Omniscience v1.1 | 15% |
-| General | 25% | HLE-Diamond | 10% |
+The expanded evaluation set contains all nine evaluations used by Artificial Analysis Intelligence Index v5, with the official component weights and four 25%-weighted domains:
 
-The official weights are reproduced as published. Scores remain in their native units: for example, AA-Briefcase Elo, HLE accuracy, Terminal-Bench resolution rate, and AA-Omniscience net score are not interchangeable. QBench will only compute a nine-component score for an exact model configuration when every component is available.
+| Category | Evaluation | Total Index weight |
+|---|---|---:|
+| Knowledge Work | AA-Briefcase v1.1 | 15% |
+| Knowledge Work | AutomationBench-AA | 5% |
+| Knowledge Work | GDP.pdf | 5% |
+| Coding | FrontierCode 2.0 | 15% |
+| Coding | Terminal-Bench 4.0 | 10% |
+| Science | Terminal-Bench-Science 0.1 | 15% |
+| Science | CritPt v2 (Hard Subset) | 10% |
+| General | AA-Omniscience v1.1 | 15% |
+| General | HLE-Diamond | 10% |
 
-AA v5 reports that 60% of its Index is based on private test sets or held-out answers. QBench distinguishes full public leaderboard extracts from AA-published leader summaries and does not claim to reproduce private task sets or Artificial Analysis's private evaluation harness.
+QBench then adds independent evaluations that are not part of AA v5:
+
+- **FrontierMath Erdős** — 68 research-level Erdős problems with Lean proof verification. Epoch AI's official benchmark page reports a highest score of 3% in its current public snapshot; the QBench data snapshot includes the published 2.9% rows. This remains a low-scoring, research-mathematics stress test.
+- **Mystery Game Puzzles** — 100 game-state puzzles with the game identity hidden to reduce benchmark-specific preparation. Epoch AI reports a top score of 84% across 140 tested models.
+- **SpireClimb** — maximum-difficulty, long-horizon computer-use gameplay across Slay the Spire 1 and 2. Epoch AI reports a current top score of 26%; QBench is tracking it pending a comparable model-level result import.
+- **FrontierMath: Open Problems** — research-level open problems with programmatically verified solutions. Solved items are removed to limit contamination; this remains a research watchlist because comparable model-level results are not yet imported.
+
+The expanded index is **not assigned a fabricated total score**. AA v5 includes private/held-out data and some components do not have public model-level leaderboards. QBench shows the official AA methodology and source-backed rows separately from the additional frontier tests. A scored Expanded Index requires a published normalization/weighting protocol and complete model/configuration-matched coverage for every included component. The Original Index score remains available while that expanded coverage is built.
 
 ## Public result imports
 
