@@ -10077,7 +10077,7 @@
         },
         {
           "id": "frontiermath-tiers-1-3-v2",
-          "reason": "The checked-in 60-row extract is only half of Epoch AI's 120 evaluated model results; excluded until the complete publisher export replaces it."
+          "reason": "The checked-in extract is partial and is not a complete, source-exported leaderboard snapshot; excluded until the full publisher data and settings can be verified."
         },
         {
           "id": "swe-bench-pro-v2-full",
