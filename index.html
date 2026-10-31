@@ -674,7 +674,8 @@ function renderCompare(){
   },true);
   var head='<tr><th>Measure</th>'+sel.map(function(r){return '<th class="text-end">'+esc(r.model)+'</th>';}).join('')+'</tr>';
   var body='<tr class="fw-semibold"><td>QBench Index 1.2</td>'+sel.map(function(r){return '<td class="text-end num"><strong>'+fmt(r.index,1)+'</strong></td>';}).join('')+'</tr>';
-  body+='<tr><td>Raw mean percentile</td>'+sel.map(function(r){return '<td class="text-end num">'+fmt(r.rawIndex,1)+'</td>';}).join('')+'</tr>';\n  body+='<tr><td>Evidence factor</td>'+sel.map(function(r){return '<td class="text-end num">'+fmt(r.evidenceFactor,2)+'</td>';}).join('')+'</tr>';
+  body+='<tr><td>Raw mean percentile</td>'+sel.map(function(r){return '<td class="text-end num">'+fmt(r.rawIndex,1)+'</td>';}).join('')+'</tr>';
+  body+='<tr><td>Evidence factor</td>'+sel.map(function(r){return '<td class="text-end num">'+fmt(r.evidenceFactor,2)+'</td>';}).join('')+'</tr>';
   RESULT.domains.forEach(function(d){body+='<tr><td>'+esc(d)+' (task family)</td>'+sel.map(function(r){return '<td class="text-end num">'+fmt(r.domains[d],1)+'</td>';}).join('')+'</tr>';});
   RESULT.evals.forEach(function(e){body+='<tr><td>'+esc(e.name)+'</td>'+sel.map(function(r){var v=r.detail[e.id];return '<td class="text-end num">'+(v?fmt(v.value,1)+' <span class="text-muted-qb">(pct '+fmt(v.pct,0)+')</span>':'—')+'</td>';}).join('')+'</tr>';});
   $('#cmp-head').innerHTML=head;
