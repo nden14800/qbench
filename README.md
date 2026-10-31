@@ -17,7 +17,7 @@ The core composite uses exact model-name intersection across five benchmark fami
 - ProofBench
 - Furniture Assembly Benchmark
 
-Each family contributes 20%. Published source scores are retained on their original 0–100 scale. The composite is the arithmetic mean of the five family scores. Missing results are not imputed, model aliases are not inferred, and the cohort is not padded to inflate model count.
+The index uses four equally weighted domains at 25% each: coding and agentic work (LiveBench 2.0), scientific reasoning (GPQA Diamond), mathematics and proof (FrontierMath family plus ProofBench, split evenly within the domain), and practical task execution (Furniture Assembly). This preserves five underlying benchmark families while preventing any one domain from dominating. Published source scores are retained on their original 0–100 scale. The composite is the arithmetic mean of the four domain scores. Missing results are not imputed, model aliases are not inferred, and the cohort is not padded to inflate model count.
 
 ## Frontier stress tests and specialist datasets
 
