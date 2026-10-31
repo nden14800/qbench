@@ -753,7 +753,8 @@ function renderBench(){
 function renderMethod(){
  var sp=DATA.composite,ext=sp.extendedIndex,ranked=RESULT.rows.filter(function(r){return r.ranked;}),familyCount=ext.domains.length;
  var full=ranked.filter(function(r){return r.domainCount===familyCount;}).length,broad=ranked.filter(function(r){return r.domainCount>=4&&r.domainCount<familyCount;}).length;
- var limited=ranked.filter(function(r){return r.domainCount>=ext.minimumDomainsPerModel&&r.domainCount<4;}).length;\n var insufficient=RESULT.rows.filter(function(r){return !r.ranked;}).length,baseModels=new Set(RESULT.rows.map(function(r){return r.model;})).size,evalsByDomain={};
+ var limited=ranked.filter(function(r){return r.domainCount>=ext.minimumDomainsPerModel&&r.domainCount<4;}).length;
+ var insufficient=RESULT.rows.filter(function(r){return !r.ranked;}).length,baseModels=new Set(RESULT.rows.map(function(r){return r.model;})).size,evalsByDomain={};
  RESULT.evals.forEach(function(e){(evalsByDomain[e.domain]=evalsByDomain[e.domain]||[]).push(e);});
  var cats=ext.domains.map(function(dom){var items=evalsByDomain[dom.name]||[],list=items.length?items.map(function(e){return '<span class="metric-chip">'+esc(e.name)+' · '+e.unique+' variants</span>';}).join(' '):'<span class="text-muted-qb">No eligible evaluation</span>';return '<li><strong>'+esc(dom.name)+'</strong><div class="mt-1">'+list+'</div><div class="small text-muted-qb mt-1">'+esc(dom.note||'')+'</div></li>';}).join('');
  var excluded=(ext.excludedFromExtendedIndex||[]).map(function(x){return '<li><strong>'+esc((RESULT.byId[x.id]||{}).name||x.id)+'</strong>: '+esc(x.reason)+'</li>';}).join('');
