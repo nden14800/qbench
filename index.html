@@ -620,7 +620,7 @@ function renderBench(){
   var b=RESULT.byId[S.bench]; if(!b)return;
   var st=benchStatus(b.id),source=b.source||'',costName=b.costMetric||'Cost';
   $('#bench-title').textContent=b.name;
-  $('#bench-sub').innerHTML='Unit: '+esc(b.unit||'—')+' · '+esc(st.t)+' · '+st.n+' unique models · snapshot '+esc(b.snapshotDate||'not stated')+' · <a href="'+esc(source)+'" target="_blank" rel="noopener">Primary benchmark source</a>';
+  $('#bench-sub').innerHTML='Unit: '+esc(b.unit||'—')+' · '+esc(st.t)+' · '+st.n+' unique models · snapshot '+esc(b.snapshotDate||'not stated')+' · <a href="'+esc(source)+'" target="_blank" rel="noopener">Benchmark source</a>';
   var best=new Map();
   (b.models||[]).forEach(function(r){var v=scoreOf(r);if(!r.model||v===null)return;var o=best.get(r.model);if(!o||v>o.value)best.set(r.model,{value:v,c:r.configuration||'',u:r.uncertain===true});});
   var arr=[];best.forEach(function(e,k){arr.push({m:k,v:e.value,c:e.c,u:e.u});});arr.sort(function(a,c){return c.v-a.v;});
@@ -628,7 +628,7 @@ function renderBench(){
   if(!arr.length){host.innerHTML='<div class="empty-qb">No model values are stored for this benchmark.'+(b.valueNote?' '+esc(b.valueNote):'')+'</div>';return;}
   var top=arr.slice(0,25),p=pal();
   var costRows=allRows.filter(function(r){return Number(r.costPerTestUSD)>0||Number(r.costPerSuccessfulTaskUSD)>0;});
-  var costHtml=costRows.length>=3?'<h3 class="card-title-qb mt-4 mb-2">'+esc(costName)+' vs. score</h3><div id="bench-cost-el" style="height:360px"></div><div class="notice-qb">Publisher-reported evaluation-specific cost only. Costs from different benchmarks are not combined.</div>':'';
+  var costHtml=costRows.length>=3?'<h3 class="card-title-qb mt-4 mb-2">'+esc(costName)+' vs. score</h3><div id="bench-cost-el" style="height:360px"></div><div class="notice-qb">Reported evaluation-specific costs are shown only within this benchmark. Cost metrics are not combined across evaluations.</div>':'';
   var header='<tr><th>Model</th><th class="text-end">Score</th><th>Configuration</th><th>Harness</th><th>'+esc(costName)+'</th><th>Tokens / test</th><th>Duration / test</th><th>Source / evidence</th></tr>';
   var body=allRows.map(function(r){
     var cost=r.costPerTestUSD!=null?r.costPerTestUSD:r.costPerSuccessfulTaskUSD;
