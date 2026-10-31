@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.4",
-  "note": "QBench Index 2.0 source catalog. Third-party snapshots only; all source rows retain provenance and snapshot dates. AA Intelligence Index v5 inputs remain excluded from the QBench composite.",
+  "note": "QBench Index 2.0 source catalog: 129 unique model names, 355 stored model-result entries across 11 source datasets. Third-party snapshots only; AA Intelligence Index v5 inputs excluded from the core composite.",
   "benchmarks": [
     {
       "id": "livebench-2.0",
@@ -2381,7 +2381,8 @@
           "provider": "Anthropic",
           "score": 59,
           "uncertainty": "±4.9%",
-          "evidence": "Epoch AI official leaderboard search snapshot retrieved 2026-10-30"
+          "evidence": "Epoch AI official leaderboard search snapshot retrieved 2026-10-30",
+          "configuration": "max"
         },
         {
           "model": "Claude Fable 5.1",
@@ -2409,7 +2410,8 @@
           "provider": "OpenAI",
           "score": 56,
           "uncertainty": "±5.0%",
-          "evidence": "Epoch AI official leaderboard search snapshot retrieved 2026-10-30"
+          "evidence": "Epoch AI official leaderboard search snapshot retrieved 2026-10-30",
+          "configuration": "xhigh"
         },
         {
           "model": "Claude Fable 5",
@@ -2423,7 +2425,8 @@
           "provider": "OpenAI",
           "score": 52,
           "uncertainty": "±5.0%",
-          "evidence": "Epoch AI official leaderboard search snapshot retrieved 2026-10-30"
+          "evidence": "Epoch AI official leaderboard search snapshot retrieved 2026-10-30",
+          "configuration": "high"
         },
         {
           "model": "Muse Wonder",
