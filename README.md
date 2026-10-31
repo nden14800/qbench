@@ -10,53 +10,82 @@ Independent AI benchmark leaderboards and model-performance analysis.
 
 | Measure | Count |
 |---|---:|
-| Unique model names | 165 |
-| Model configurations | 330 |
+| Unique model names across imported datasets | 165 |
+| Model configurations (model + configuration + harness) | 330 |
 | Published result rows | 507 |
 | Datasets with model-level results | 20 |
 | Providers | 31 |
 | Benchmark directory entries | 44 |
-| Models eligible for the composite score | 10 |
+| Models with at least 3 of 4 QBench Composite domains | 29 |
+| Fully covered models with a comparable composite score | 12 |
+| Partial-coverage models shown without a rank | 17 |
 
-The main leaderboard lets users select any of the 20 datasets with published model results. It starts with ARC-AGI-2 (80 model entries) and displays each benchmark's native score, provider, configuration, source, and snapshot date. Search and provider filters apply to the selected leaderboard.
+Counts are derived from `data/external-benchmarks.json`. A result row is not necessarily a unique model: some benchmarks publish several reasoning efforts, harnesses, or routing configurations for one model. The main leaderboard now groups each model into one row, shows its best reported configuration, and lists the other reported configurations in the details column. CSV export retains the raw source rows.
 
-The benchmark directory also lists evaluations that are being tracked but do not yet have imported model-level results. Those entries are not counted as scored datasets.
+The main leaderboard lets users select any of the 20 datasets with published model-level results. It starts with ARC-AGI-2 and displays the source-native score, provider, configuration, source, and snapshot date.
 
-## QBench Composite Index
+## QBench Composite Index v2
 
-The composite score is a separate QBench calculation using six source datasets. Four domains contribute equally (25% each):
+The composite was redesigned on 2026-10-31. Version 1 required an exact model-name intersection across every source table and directly averaged native scores. That left only 10 models and mixed unlike score scales. Version 2 normalizes each dataset independently to a 0–100 percentile rank before combining results.
 
-| Domain | Weight | Input |
+### Domains and weights
+
+| Domain | Weight | Inputs |
 |---|---:|---|
-| Coding & Agentic | 25% | LiveBench 2.0 |
-| Scientific Reasoning | 25% | GPQA Diamond |
-| Mathematics & Proof | 25% | Mean of FrontierMath family and ProofBench |
+| Reasoning & Agentic | 25% | LiveBench 2.0 |
+| Science | 25% | GPQA Diamond |
+| Math & Proof | 25% | FrontierMath Tiers 1–3 v2, FrontierMath Tier 4 v2, ProofBench |
 | Practical Execution | 25% | Furniture Assembly Benchmark |
 
-The FrontierMath family is the arithmetic mean of FrontierMath Tiers 1–3 v2 and FrontierMath Tier 4 v2. Within Mathematics & Proof, the FrontierMath family and ProofBench each contribute 12.5% of the total index. The overall score is the arithmetic mean of the four domain scores.
+Within each source dataset, the best published score for each exact model name is converted to a percentile among unique model names in that dataset. Ties receive average ranks. Each domain is the mean of its available input percentiles; the Math & Proof domain averages the available percentiles from its three input datasets. The four domains have equal 25% weights.
 
-Eligibility requires an exact model-name match across all six underlying result tables: LiveBench 2.0, GPQA Diamond, FrontierMath Tiers 1–3 v2, FrontierMath Tier 4 v2, ProofBench, and Furniture Assembly Benchmark. The current complete intersection contains 10 models. Missing values are not imputed and model aliases are not guessed.
+### Coverage and ranking policy
 
-## Benchmark data
+- A model appears in the coverage explorer when at least 3 of 4 domains are available.
+- Only 4/4 models receive a QBench score and a ranked position.
+- 3/4 models remain visible for coverage, but show no composite score and are not ranked. Missing domains are never imputed.
+- Model names are matched exactly; aliases are not inferred.
+- If a model has multiple configurations in one source dataset, the highest published score is used. The selected configuration is retained in the row's source details.
+- This is a best-reported-configuration index, not a controlled same-effort, same-harness comparison. Configuration differences can affect results.
 
-Every result table retains its source-published score scale. Elo, accuracy, pass rate, cost, confidence intervals, configurations, and harness details are not converted into a shared score unless a documented methodology supports that conversion.
+The current source tables contain 89 distinct model names across the six composite inputs. 29 have at least 3 of 4 domains: 12 have full coverage and are ranked; 17 have partial coverage and are displayed separately without a score.
 
-The statistical analysis section is generated from the imported data and includes:
+### Source snapshots
+
+| Dataset | Snapshot | Source |
+|---|---|---|
+| LiveBench 2.0 | 2026-10-30 | https://livebench.ai/ |
+| GPQA Diamond | 2026-10-30 | https://openrouter.ai/benchmarks/gpqa-diamond/ |
+| FrontierMath Tiers 1–3 v2 | 2026-10-30 | https://epoch.ai/benchmarks/frontiermath-tiers-1-3-v2 |
+| FrontierMath Tier 4 v2 | 2026-10-29 | https://epoch.ai/benchmarks/frontiermath-tier-4-v2 |
+| ProofBench | 2026-10-29 | https://epoch.ai/benchmarks/proofbench |
+| Furniture Assembly Benchmark | 2026-10-30 | https://epoch.ai/benchmarks/furniture-assembly |
+
+Artificial Analysis Intelligence Index v5 is a separate nine-evaluation composite with its own methodology and weights. It is not blended into QBench's formula.
+
+## Benchmark data and interpretation
+
+Every source table retains its native score and unit. Percentiles are used only inside QBench Composite Index v2 to make unlike source scales aggregatable; they are not a replacement for the source score. Percentiles are relative to the models included in each imported dataset and may change when coverage changes.
+
+Epoch AI notes that prompt and evaluation settings can materially affect scores, and that results from different evaluation settings may not be directly comparable. Review each source leaderboard, configuration, harness, and snapshot before drawing fine-grained conclusions.
+
+## Statistical analysis
+
+The analysis section is generated from imported data and includes:
 - Unique model coverage per benchmark.
 - Model/provider coverage.
 - The selected benchmark's score ranking.
 - Unique model counts compared with raw result-row counts.
 
-Benchmark directory descriptions are written to explain what each test measures. Each entry links to its source. A status distinguishes complete result tables, leader summaries, public summaries, and evaluations still being tracked.
-
 ## Data policy
 
 - Keep source URLs and snapshot dates with every dataset.
-- Preserve the source's score unit and model configuration.
+- Preserve each source's score unit and configuration.
 - Distinguish model names from configuration variants.
 - Do not fill missing results or infer aliases.
-- Do not combine unrelated benchmark scales into an aggregate.
-- Update the visible coverage counts from the data file rather than hardcoding them.
+- Never average raw scores from unrelated scales.
+- Show partial coverage explicitly and never assign partial models a comparable composite score.
+- Derive visible counts from data rather than hardcoding them.
 
 ## Development
 

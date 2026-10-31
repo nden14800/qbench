@@ -4341,17 +4341,24 @@
     }
   ],
   "composite": {
-    "name": "QBench Composite Index",
+    "name": "QBench Composite Index v2",
+    "version": "2.0",
+    "snapshotAsOf": "2026-10-31",
     "eligibleBenchmarks": [
       "livebench-2.0",
       "gpqa-diamond",
-      "frontiermath-family",
+      "frontiermath-tiers-1-3-v2",
+      "frontiermath-tier-4-v2",
       "proofbench",
       "furniture-assembly"
     ],
+    "minimumDomainCoverage": 3,
+    "rankingCoverage": 4,
+    "normalization": "Within each source dataset, convert each model's best published score to a 0–100 percentile rank among unique model names in that dataset. Ties receive average ranks. Higher source scores are treated as better.",
+    "configurationPolicy": "When a model has multiple reported configurations in one dataset, retain the highest published score for the composite calculation and record the selected configuration. This is a best-reported-configuration index, not a controlled same-settings comparison.",
     "domains": [
       {
-        "name": "Coding & Agentic",
+        "name": "Reasoning & Agentic",
         "weight": 25,
         "inputs": [
           {
@@ -4361,7 +4368,7 @@
         ]
       },
       {
-        "name": "Scientific Reasoning",
+        "name": "Science",
         "weight": 25,
         "inputs": [
           {
@@ -4371,16 +4378,20 @@
         ]
       },
       {
-        "name": "Mathematics & Proof",
+        "name": "Math & Proof",
         "weight": 25,
         "inputs": [
           {
-            "id": "frontiermath-family",
-            "weight": 12.5
+            "id": "frontiermath-tiers-1-3-v2",
+            "weight": 8.333333333333334
+          },
+          {
+            "id": "frontiermath-tier-4-v2",
+            "weight": 8.333333333333334
           },
           {
             "id": "proofbench",
-            "weight": 12.5
+            "weight": 8.333333333333334
           }
         ]
       },
@@ -4395,7 +4406,44 @@
         ]
       }
     ],
-    "method": "Exact model-name intersection across LiveBench 2.0, GPQA Diamond, FrontierMath Tiers 1–3 v2, FrontierMath Tier 4 v2, ProofBench and Furniture Assembly. FrontierMath family is the arithmetic mean of Tiers 1–3 and Tier 4. Four domains are equally weighted at 25%: Coding & Agentic = LiveBench; Scientific Reasoning = GPQA Diamond; Mathematics & Proof = mean of FrontierMath family and ProofBench; Practical Execution = Furniture Assembly. The overall index is the arithmetic mean of the four domain scores. Missing scores are not imputed and aliases are not inferred.",
-    "snapshotAsOf": "2026-10-30"
+    "method": "QBench Composite Index v2 uses four equally weighted domains. Each source dataset is normalized independently to a percentile rank so unlike native score scales are not averaged directly. The Math & Proof domain averages the available percentiles from FrontierMath Tiers 1–3 v2, FrontierMath Tier 4 v2, and ProofBench. A model is listed in the coverage explorer when at least three of four domains are available. Only models with all four domains receive a comparable composite score and a ranked position; partial-coverage models are shown without an overall score and are not ranked. Model names are matched exactly; aliases are not inferred. Where a dataset contains multiple configurations for one model, the highest published score is used and its configuration is retained as provenance.",
+    "caveats": [
+      "Percentiles are relative to the models present in each imported dataset and can change when the dataset's model coverage changes.",
+      "Best-reported configurations can differ between benchmarks; the index is not a controlled comparison at identical reasoning effort, harness, or routing.",
+      "Benchmark prompts and evaluation settings can affect results. Review the source leaderboard and configuration details before drawing fine-grained conclusions.",
+      "Artificial Analysis Intelligence Index v5 is an independent composite with its own nine evaluations and weights; it is not blended into this QBench score."
+    ],
+    "sourceNotes": [
+      {
+        "label": "LiveBench 2.0",
+        "url": "https://livebench.ai/",
+        "snapshotDate": "2026-10-30"
+      },
+      {
+        "label": "GPQA Diamond",
+        "url": "https://openrouter.ai/benchmarks/gpqa-diamond/",
+        "snapshotDate": "2026-10-30"
+      },
+      {
+        "label": "FrontierMath Tiers 1–3 v2",
+        "url": "https://epoch.ai/benchmarks/frontiermath-tiers-1-3-v2",
+        "snapshotDate": "2026-10-30"
+      },
+      {
+        "label": "FrontierMath Tier 4 v2",
+        "url": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
+        "snapshotDate": "2026-10-29"
+      },
+      {
+        "label": "ProofBench",
+        "url": "https://epoch.ai/benchmarks/proofbench",
+        "snapshotDate": "2026-10-29"
+      },
+      {
+        "label": "Furniture Assembly Benchmark",
+        "url": "https://epoch.ai/benchmarks/furniture-assembly",
+        "snapshotDate": "2026-10-30"
+      }
+    ]
   }
 }

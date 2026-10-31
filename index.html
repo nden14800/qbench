@@ -43,7 +43,7 @@ body{font-size:16px;line-height:1.7}
 .nav a{font-size:13px}.updated{font-size:11px}
 .qbench-index{margin-top:12px}.index-method-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:9px;overflow:hidden;margin-bottom:16px}
 .index-method-strip>div{background:var(--paper);padding:16px 18px;display:flex;flex-direction:column;gap:3px}.index-method-strip strong{font:600 25px var(--mono);color:var(--accent)}.index-method-strip span{font-size:13px;font-weight:650}.index-method-strip small{font-size:11px;color:var(--muted)}
-.index-panel{margin-bottom:16px}.index-table th:last-child,.index-table td:last-child{background:var(--paper-alt)}.index-table td:last-child{font-weight:700}.index-chart-panel{margin-bottom:10px}.index-chart{height:360px}
+.index-panel{margin-bottom:16px}.index-partial-heading td{background:var(--paper-alt);font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.02em}.index-partial td{color:var(--muted)}.index-partial .rank{color:var(--soft)}.index-table th:last-child,.index-table td:last-child{background:var(--paper-alt)}.index-table td:last-child{font-weight:700}.index-chart-panel{margin-bottom:10px}.index-chart{height:360px}
 .expanded-summary{display:grid;grid-template-columns:170px 190px minmax(0,1fr);gap:12px;margin-bottom:16px}.expanded-summary-main,.expanded-summary-note{border:1px solid var(--line);background:var(--paper);border-radius:9px;padding:16px}.expanded-summary-main{display:flex;flex-direction:column}.expanded-summary-main strong{font:600 30px var(--mono);color:var(--accent)}.expanded-summary-main span{font-size:13px;font-weight:650}.expanded-summary-main small{font-size:11px;color:var(--muted);margin-top:4px}.expanded-summary-note{display:flex;flex-direction:column;justify-content:center;gap:5px}.expanded-summary-note b{font-size:13px}.expanded-summary-note span{font-size:12px;color:var(--muted);line-height:1.6}
 .extension-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.extension-card{padding:16px 18px;border:1px solid var(--line);border-radius:9px;background:var(--paper)}.extension-card h3{font-size:14px;margin:0 0 6px}.extension-card p{font-size:12px;color:var(--muted);line-height:1.6;margin:0}.extension-meta{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:12px;font-size:11px}.extension-meta a{color:var(--accent);font-weight:600}.extension-status{font-size:10px;border:1px solid var(--line);border-radius:20px;padding:4px 8px;color:var(--muted)}
 .analytics-details{margin-top:20px;border:1px solid var(--line);border-radius:9px;background:var(--paper);overflow:hidden}.analytics-details>summary{cursor:pointer;list-style:none;padding:16px 20px;font-size:14px;font-weight:650}.analytics-details>summary::-webkit-details-marker{display:none}.analytics-details>summary:after{content:"＋";float:right;color:var(--accent)}.analytics-details[open]>summary:after{content:"−"}.analytics-details[open]>.charts-grid{padding:0 16px 18px}
@@ -95,26 +95,38 @@ body{font-size:16px;line-height:1.7}
 
   <section id="qbench-index" class="qbench-index">
     <div class="section-head">
-      <div><h2>QBench Composite Index</h2><p>6つの評価データを組み合わせた独自スコア。全データがそろうモデルのみ掲載。</p></div>
-      <span class="section-kicker">10 COMPLETE MODELS</span>
+      <div><h2>QBench Composite Index v2</h2><p>異なる評価尺度をデータセット内のパーセンタイルに変換し、4領域で比較。欠損モデルは総合順位に混ぜない。</p></div>
+      <span class="section-kicker" id="qbenchIndexCount">— MODELS</span>
     </div>
-        <div class="panel index-panel">
+    <div class="index-method-strip" style="margin-bottom:12px">
+      <div><strong id="qbenchCompleteCount">—</strong><span>Complete · 4/4 domains</span></div>
+      <div><strong id="qbenchPartialCount">—</strong><span>Partial · 3/4 domains</span></div>
+      <div><strong>25% × 4</strong><span>Equal domain weights</span></div>
+      <div><strong>0–100</strong><span>Within-dataset percentile</span></div>
+    </div>
+    <div class="panel index-panel">
       <div class="panel-head">
-        <div><div class="panel-title">Composite score ranking</div><div class="panel-sub">4領域を各25%で集計。対象データがすべてそろったモデルのみ比較。</div></div>
+        <div><div class="panel-title">Comparable ranking</div><div class="panel-sub">4領域すべてのデータがあるモデルのみ、QBenchスコアと順位を付与。</div></div>
         <div class="toolbar">
-          <input class="control search" id="indexSearch" type="search" placeholder="Search model" aria-label="Search composite score models">
-          <select class="control" id="indexProvider" aria-label="Filter original index by provider"><option value="all">All providers</option></select>
+          <input class="control search" id="indexSearch" type="search" placeholder="Search model" aria-label="Search composite index models">
+          <select class="control" id="indexProvider" aria-label="Filter composite index by provider"><option value="all">All providers</option></select>
         </div>
       </div>
       <div class="table-wrap">
-        <table class="table index-table" aria-label="Composite score leaderboard">
-          <thead><tr><th>Rank / Model</th><th>Coding</th><th>Science</th><th>Math & Proof</th><th>Practical</th><th>Composite score</th></tr></thead>
-          <tbody id="originalIndexRows"><tr><td colspan="6" class="empty">Calculating composite score…</td></tr></tbody>
+        <table class="table index-table" aria-label="QBench Composite Index v2 ranking and coverage">
+          <thead><tr><th>Rank / Model</th><th>Reasoning & Agentic</th><th>Science</th><th>Math & Proof</th><th>Practical</th><th>QBench score</th><th>Coverage</th></tr></thead>
+          <tbody id="originalIndexRows"><tr><td colspan="7" class="empty">Calculating composite score…</td></tr></tbody>
         </table>
       </div>
-      <div class="table-foot" id="originalIndexFoot">Exact-name match across six source datasets; no missing values are estimated.</div>
+      <div class="table-foot" id="originalIndexFoot">Percentile scores and coverage are calculated from the imported source tables.</div>
     </div>
-      </section>
+    <div class="panel" style="margin-top:12px">
+      <div class="panel-body" style="font-size:11px;line-height:1.75;color:var(--muted)">
+        **Method:** Each dataset is normalized separately to a 0–100 percentile; four domains have equal 25% weights. If a model has multiple configurations in one dataset, the best published score is used and its configuration is retained as provenance. Models with 3/4 domains are visible for coverage, but are not assigned a composite score or rank. This is a best-reported-configuration index, not a same-settings benchmark.
+        <br><a class="link" href="https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5" target="_blank" rel="noopener noreferrer">Artificial Analysis Intelligence Index v5</a> is a separate nine-evaluation index and is not mixed into QBench's formula.
+      </div>
+    </div>
+  </section>
 
   <section id="benchmarks">
     <div class="section-head"><div><h2>Benchmark directory</h2><p>各テストの内容・収録モデル数・公開データの状態を確認。</p></div><span class="section-kicker" id="catalogCount">44 EVALUATIONS</span></div>
@@ -167,27 +179,96 @@ const modelOptions=b=>{const rows=b?.models||[];const seen=new Set();return rows
 function chartFor(id){const el=$('#'+id);if(!el||!window.echarts)return null;let c=echarts.getInstanceByDom(el);if(!c){c=echarts.init(el,null,{renderer:'svg'});state.charts.push(c);}return c;}
 function setChart(id,option){const c=chartFor(id);if(c)c.setOption(option,true);}
 function buildOriginalIndex(){
- const live=get('livebench-2.0'),gpqa=get('gpqa-diamond'),fm13=get('frontiermath-tiers-1-3-v2'),fm4=get('frontiermath-tier-4-v2'),proof=get('proofbench'),furniture=get('furniture-assembly');
- const sets=[live,gpqa,fm13,fm4,proof,furniture];
- if(sets.some(x=>!x||!Array.isArray(x.models))) {state.composite=[];return;}
- const maps=sets.map(b=>new Map(b.models.map(m=>[m.model,m])));
- const names=live.models.map(m=>m.model).filter(name=>maps.every(map=>map.has(name)));
- state.composite=names.map(name=>{
-  const l=maps[0].get(name),g=maps[1].get(name),a=maps[2].get(name),b=maps[3].get(name),p=maps[4].get(name),f=maps[5].get(name);
-  const scores=[Number(l.overall??l.score),Number(g.score),(Number(a.score)+Number(b.score))/2,Number(p.score),Number(f.score)];
-  const domains=[scores[0],scores[1],(scores[2]+scores[3])/2,scores[4]];
-  return {model:name,provider:l.provider,scores,domains,index:domains.reduce((sum,x)=>sum+x,0)/4};
- }).filter(x=>x.scores.every(Number.isFinite)).sort((a,b)=>b.index-a.index);
+ const definitions=[
+  {id:'livebench-2.0',domain:0},
+  {id:'gpqa-diamond',domain:1},
+  {id:'frontiermath-tiers-1-3-v2',domain:2},
+  {id:'frontiermath-tier-4-v2',domain:2},
+  {id:'proofbench',domain:2},
+  {id:'furniture-assembly',domain:3}
+ ];
+ const percentileMaps=new Map();
+ definitions.forEach(def=>{
+  const benchmark=get(def.id),bestByModel=new Map();
+  if(!benchmark||!Array.isArray(benchmark.models))return;
+  benchmark.models.forEach(row=>{
+   const value=Number(row.overall??row.score);
+   if(!Number.isFinite(value)||!row.model)return;
+   const prior=bestByModel.get(row.model);
+   if(!prior||value>prior.value)bestByModel.set(row.model,{value,row});
+  });
+  const values=[...bestByModel.values()].map(x=>x.value).sort((a,b)=>a-b);
+  const ranks=new Map();
+  bestByModel.forEach((entry,name)=>{
+   const less=values.filter(v=>v<entry.value).length;
+   const equal=values.filter(v=>v===entry.value).length;
+   const percentile=values.length<=1?50:100*(less+(equal-1)/2)/(values.length-1);
+   ranks.set(name,{percentile,value:entry.value,configuration:config(entry.row),provider:entry.row.provider||'Unknown',benchmark:def.id});
+  });
+  percentileMaps.set(def.id,ranks);
+ });
+ const names=new Set();
+ percentileMaps.forEach(map=>map.forEach((v,k)=>names.add(k)));
+ const output=[];
+ names.forEach(name=>{
+  const detailIds=definitions.map(d=>d.id);
+  const detail=detailIds.map(id=>percentileMaps.get(id)?.get(name)||null);
+  const domainValues=[
+   detail[0]?.percentile,
+   detail[1]?.percentile,
+   [detail[2],detail[3],detail[4]].filter(Boolean).length
+    ?[detail[2],detail[3],detail[4]].filter(Boolean).reduce((sum,x)=>sum+x.percentile,0)/[detail[2],detail[3],detail[4]].filter(Boolean).length
+    :undefined,
+   detail[5]?.percentile
+  ];
+  const coverage=domainValues.filter(Number.isFinite).length;
+  if(coverage<3)return;
+  const providerEntry=detail.find(Boolean);
+  const complete=coverage===4;
+  output.push({
+   model:name,
+   provider:providerEntry?.provider||'Unknown',
+   domains:domainValues,
+   coverage,
+   complete,
+   index:complete?domainValues.reduce((sum,x)=>sum+x,0)/4:null,
+   details:detail
+  });
+ });
+ state.composite=output.sort((a,b)=>Number(b.complete)-Number(a.complete)||(b.index??0)-(a.index??0)||a.model.localeCompare(b.model));
 }
 function renderOriginalIndex(){
- const q=state.indexQuery.toLowerCase(),rows=state.composite.filter(m=>(state.indexProvider==='all'||m.provider===state.indexProvider)&&(!q||(m.model+' '+m.provider).toLowerCase().includes(q)));
+ const q=state.indexQuery.toLowerCase();
+ const filtered=state.composite.filter(m=>(state.indexProvider==='all'||m.provider===state.indexProvider)&&(!q||(m.model+' '+m.provider).toLowerCase().includes(q)));
+ const complete=filtered.filter(m=>m.complete),partial=filtered.filter(m=>!m.complete);
+ const allComplete=state.composite.filter(m=>m.complete);
  const select=$('#indexProvider'),providers=[...new Set(state.composite.map(m=>m.provider))].sort(),prior=state.indexProvider;
  select.innerHTML='<option value="all">All providers</option>'+providers.map(p=>'<option value="'+esc(p)+'">'+esc(p)+'</option>').join('');
  select.value=providers.includes(prior)?prior:'all';state.indexProvider=select.value;
- $('#originalIndexRows').innerHTML=rows.length?rows.map(m=>{const rank=state.composite.indexOf(m)+1;return '<tr><td><div class="model-cell"><span class="rank">'+String(rank).padStart(2,'0')+'</span><span class="provider-mark" style="background:'+color(m.provider)+'"></span><span><span class="model-name">'+esc(m.model)+'</span><span class="provider-name">'+esc(m.provider)+'</span></span></div></td>'+m.domains.map(v=>'<td class="num">'+fmt(v,1)+'</td>').join('')+'<td class="num"><strong class="score-main">'+fmt(m.index,2)+'</strong></td></tr>';}).join(''):'<tr><td colspan="6" class="empty">No complete model matches these filters.</td></tr>';
- $('#originalIndexFoot').textContent=rows.length+' of '+state.composite.length+' complete model configurations shown. Exact model-name intersection across the original six source tables; FrontierMath Tiers 1–3 and Tier 4 are averaged as one family.';
+ $('#qbenchIndexCount').textContent=state.composite.length+' MODELS · '+allComplete.length+' RANKED';
+ $('#qbenchCompleteCount').textContent=allComplete.length;
+ $('#qbenchPartialCount').textContent=state.composite.length-allComplete.length;
+ const renderRow=(m,rank,isPartial)=>{
+  const domainTitles=[
+   ['LiveBench 2.0'],
+   ['GPQA Diamond'],
+   ['FrontierMath Tiers 1–3 v2','FrontierMath Tier 4 v2','ProofBench'],
+   ['Furniture Assembly Benchmark']
+  ];
+  const domainCells=m.domains.map((v,i)=>{
+   const sources=i===2?[2,3,4]:[[0],[1],[5]][i===0?0:i===1?1:2];
+   const used=(i===2?[2,3,4]:i===0?[0]:i===1?[1]:[5]).map(k=>m.details[k]).filter(Boolean);
+   const tip=used.map(x=>x.benchmark+': '+fmt(x.value,2)+' native score · '+x.configuration).join(' / ');
+   return '<td class="num" title="'+esc(tip)+'">'+(Number.isFinite(v)?fmt(v,1)+'<span class="family-label"> pct</span>':'—')+'</td>';
+  }).join('');
+  const coverage=m.coverage+'/4';
+  return '<tr'+(isPartial?' class="index-partial"':'')+'><td><div class="model-cell"><span class="rank">'+(isPartial?'—':String(rank).padStart(2,'0'))+'</span><span class="provider-mark" style="background:'+color(m.provider)+'"></span><span><span class="model-name">'+esc(m.model)+'</span><span class="provider-name">'+esc(m.provider)+(isPartial?' · partial coverage':'')+'</span></span></div></td>'+domainCells+'<td class="num">'+(m.complete?'<strong class="score-main">'+fmt(m.index,2)+'</strong>':'<span class="family-label">Not ranked</span>')+'</td><td class="num">'+coverage+'</td></tr>';
+ };
+ const rows=complete.map((m,i)=>renderRow(m,i+1,false)).join('')+(partial.length?'<tr class="index-partial-heading"><td colspan="7">Partial coverage · '+partial.length+' models · shown for reference, not ranked</td></tr>'+partial.map(m=>renderRow(m,null,true)).join():'');
+ $('#originalIndexRows').innerHTML=rows||'<tr><td colspan="7" class="empty">No models match these filters.</td></tr>';
+ $('#originalIndexFoot').textContent=filtered.length+' models with at least 3/4 domains · '+complete.length+' fully covered and ranked · '+partial.length+' partial and not ranked. Scores are within-dataset percentiles; hover a domain score to inspect the source score and selected configuration. Best reported configuration is used per model and dataset, so settings can differ.';
  const c=chartFor('originalIndexChart');
- if(c)c.setOption({textStyle:{fontFamily:chartFont,fontSize:13},grid:{left:185,right:55,top:18,bottom:32},xAxis:{type:'value',min:0,max:100,axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'category',data:rows.slice(0,15).map(m=>m.model).reverse(),axisLabel:{...axis(),fontSize:12}},series:[{type:'bar',barMaxWidth:22,data:rows.slice(0,15).map(m=>({value:m.index,itemStyle:{color:color(m.provider)}})).reverse(),label:{show:true,position:'right',fontSize:12,formatter:p=>fmt(p.value,2)}}],tooltip:{trigger:'axis',axisPointer:{type:'shadow'}}},true);
+ if(c)c.setOption({textStyle:{fontFamily:chartFont,fontSize:13},grid:{left:185,right:55,top:18,bottom:32},xAxis:{type:'value',min:0,max:100,axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'category',data:complete.slice(0,15).map(m=>m.model).reverse(),axisLabel:{...axis(),fontSize:12}},series:[{type:'bar',barMaxWidth:22,data:complete.slice(0,15).map(m=>({value:m.index,itemStyle:{color:color(m.provider)}})).reverse(),label:{show:true,position:'right',fontSize:12,formatter:p=>fmt(p.value,2)}}],tooltip:{trigger:'axis',axisPointer:{type:'shadow'}}},true);
 }
 function renderSummary(){
  const all=state.data.benchmarks.flatMap(b=>b.models);
@@ -220,15 +301,30 @@ function renderBenchmark(){
  const p=$('#benchmarkProviderFilter'),prior=state.benchmarkProvider;
  p.innerHTML='<option value="all">All providers</option>'+providers.map(x=>'<option value="'+esc(x)+'">'+esc(x)+'</option>').join('');
  p.value=providers.includes(prior)?prior:'all';state.benchmarkProvider=p.value;
+ const groups=new Map();
+ b.models.forEach(m=>{
+  const key=m.model;
+  if(!groups.has(key))groups.set(key,{model:key,provider:m.provider||'—',variants:new Map()});
+  const group=groups.get(key),variantKey=configKey(m),priorVariant=group.variants.get(variantKey);
+  if(!priorVariant||Number(m.score)>Number(priorVariant.score))group.variants.set(variantKey,m);
+ });
+ const allGroups=[...groups.values()].map(g=>{
+  const variants=[...g.variants.values()].sort((a,b)=>Number(b.score)-Number(a.score));
+  return {...g,variants,best:variants[0]};
+ });
  const q=state.benchmarkQuery.toLowerCase();
- const models=b.models.filter(m=>(state.benchmarkProvider==='all'||m.provider===state.benchmarkProvider)&&(!q||[m.model,m.provider,m.configuration,m.harness].join(' ').toLowerCase().includes(q))).slice().sort((a,c)=>Number(c.score)-Number(a.score));
- const unique=new Set(b.models.map(m=>m.model)).size;
- $('#benchmarkMeta').textContent=b.unit+' · Updated '+snapshot(b.snapshotDate)+' · '+unique+' models / '+b.models.length+' results';
+ const models=allGroups.filter(g=>(state.benchmarkProvider==='all'||g.provider===state.benchmarkProvider)&&(!q||[g.model,g.provider,...g.variants.flatMap(m=>[m.configuration,m.harness,m.evidence])].join(' ').toLowerCase().includes(q))).sort((a,c)=>Number(c.best.score)-Number(a.best.score)||a.model.localeCompare(c.model));
+ const unique=allGroups.length;
+ $('#benchmarkMeta').textContent=b.unit+' · Updated '+snapshot(b.snapshotDate)+' · '+unique+' unique models / '+b.models.length+' result rows';
  $('#leaderboardCount').textContent=models.length+' / '+unique+' MODELS';
- $('#leaderboardSource').textContent=b.quality||'Scores are shown on the source-published scale.';
- $('#benchmarkHead').innerHTML='<tr><th>Rank / Model</th><th>Provider</th><th>Configuration</th><th>Score</th><th>Details</th></tr>';
- $('#benchmarkRows').innerHTML=models.map((m,i)=>'<tr><td><div class="model-cell"><span class="rank">'+String(i+1).padStart(2,'0')+'</span><span class="model-name">'+esc(m.model)+'</span></div></td><td style="text-align:left">'+esc(m.provider||'—')+'</td><td style="text-align:left;white-space:normal">'+esc(config(m)||'—')+'</td><td class="num"><strong class="score-main">'+fmt(m.score,2)+'</strong> <span class="family-label">'+esc(b.unit)+'</span></td><td style="text-align:left;white-space:normal;min-width:230px;color:var(--muted)">'+esc(detailValue(m))+'</td></tr>').join('')||'<tr><td colspan="5" class="empty">No models match these filters.</td></tr>';
- $('#benchmarkFoot').innerHTML='Source: <a class="link" href="'+esc(b.source)+'" target="_blank" rel="noopener noreferrer">'+esc(b.source)+'</a> · '+snapshot(b.snapshotDate)+'. '+esc(b.quality||'Published benchmark results.');
+ $('#leaderboardSource').textContent=(b.quality||'Scores are shown on the source-published scale.')+' Each model appears once; the highest reported configuration is shown.';
+ $('#benchmarkHead').innerHTML='<tr><th>Rank / Model</th><th>Provider</th><th>Best configuration</th><th>Best score</th><th>Other reported configurations / details</th></tr>';
+ $('#benchmarkRows').innerHTML=models.map((g,i)=>{
+  const variants=g.variants.map(m=>config(m)+' · '+fmt(m.score,2)).join(' / ');
+  const detail=[detailValue(g.best),g.variants.length>1?g.variants.length+' distinct configurations: '+variants:null].filter(Boolean).join(' · ');
+  return '<tr><td><div class="model-cell"><span class="rank">'+String(i+1).padStart(2,'0')+'</span><span class="model-name">'+esc(g.model)+'</span></div></td><td style="text-align:left">'+esc(g.provider)+'</td><td style="text-align:left;white-space:normal">'+esc(config(g.best)||'—')+'</td><td class="num"><strong class="score-main">'+fmt(g.best.score,2)+'</strong> <span class="family-label">'+esc(b.unit)+'</span></td><td style="text-align:left;white-space:normal;min-width:230px;color:var(--muted)">'+esc(detail)+'</td></tr>';
+ }).join('')||'<tr><td colspan="5" class="empty">No models match these filters.</td></tr>';
+ $('#benchmarkFoot').innerHTML='Source: <a class="link" href="'+esc(b.source)+'" target="_blank" rel="noopener noreferrer">'+esc(b.source)+'</a> · '+snapshot(b.snapshotDate)+'. '+esc(b.quality||'Published benchmark results')+'. Raw rows: '+b.models.length+'; unique model names: '+unique+'. The displayed score is the best published configuration, not a same-settings comparison.';
  renderSourceRank();
 }
 function statusLabel(s){return ({'results-imported':'Full results imported','leader-summary-imported':'Leader summary only','public-summary-only':'Public summary only','private-results':'Private / unavailable','leaderboard-access-limited':'Leaderboard access limited','research-pipeline':'Research pipeline'})[s]||s||'Catalogued';}
