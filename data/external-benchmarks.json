@@ -12041,7 +12041,7 @@
       "group": "AA standalone evaluations",
       "status": "leader-summary-imported",
       "source": "https://artificialanalysis.ai/evaluations/ifbench",
-      "note": "58 verifiable out-of-domain instruction constraints."
+      "note": "58 verifiable out-of-domain instruction constraints. Official AA page exposes only its top-three summary (27 of 451 models); not a full leaderboard."
     },
     {
       "id": "healthbench-aa",
@@ -12089,7 +12089,7 @@
       "group": "AA legacy evaluations",
       "status": "leader-summary-imported",
       "source": "https://artificialanalysis.ai/evaluations/artificial-analysis-long-context-reasoning",
-      "note": "100 long-context reasoning questions over 10k–100k-token documents. Official AA legacy page currently exposes a top-three summary and reports 28 of 589 models; not a full leaderboard."
+      "note": "Legacy long-context reasoning benchmark. v1.1 remains publicly scored, but is not part of the current AA v5 core; only the official top-three summary is imported."
     },
     {
       "id": "scicode",
