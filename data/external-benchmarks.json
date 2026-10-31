@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.6",
-  "note": "Snapshot 2026-10-31: 20 result datasets, 507 model-result rows, 165 unique model names, 330 model configurations, and 31 providers. The composite score includes the 10 models with complete coverage across six input datasets. Individual benchmark leaderboards show all available model results.",
+  "note": "Snapshot 2026-10-31: 20 result datasets, 505 model-result rows, 165 unique model names, 325 model configurations, and 31 providers. QBench Index 3.0 mirrors the nine AA v5 evaluations and category weights; only datasets with at least eight unique model names enter percentile scoring. Four of nine currently meet that data threshold. FrontierMath Erdős and MirrorCode are monitored separately until sufficient comparable model-level coverage is available.",
   "benchmarks": [
     {
       "id": "livebench-2.0",
@@ -2275,61 +2275,44 @@
       "id": "frontiermath-erdos",
       "name": "FrontierMath Erdős",
       "snapshotDate": "2026-10-29",
-      "source": "https://epoch.ai/benchmarks/frontiermath-erdos",
-      "unit": "% accuracy",
-      "quality": "Epoch AI administered · 68 research-level open problems · extremely low solved rate",
+      "source": "https://epoch.ai/latest/announcing-frontiermath-erdos",
+      "unit": "% problems solved",
+      "quality": "Epoch AI official initial run · 68 open Erdős problems · five tested models · GPT-6 Astra solved 2/68 (3%); the other four scored 0%. Small initial sample; monitored separately, not used in the composite.",
       "models": [
         {
           "model": "GPT-6 Astra",
           "provider": "OpenAI",
-          "score": 2.9,
-          "uncertainty": "±2.1%",
-          "configuration": "max",
-          "evidence": "Epoch AI official benchmark leaderboard, retrieved 2026-10-29"
-        },
-        {
-          "model": "Claude Opus 5.5",
-          "provider": "Anthropic",
-          "score": 2.9,
-          "uncertainty": "±2.1%",
-          "configuration": "max",
-          "evidence": "Epoch AI official benchmark leaderboard, retrieved 2026-10-29"
-        },
-        {
-          "model": "Claude Sonnet 5.5",
-          "provider": "Anthropic",
-          "score": 2.9,
-          "uncertainty": "±2.1%",
-          "configuration": "max",
-          "evidence": "Epoch AI official benchmark leaderboard, retrieved 2026-10-29"
-        },
-        {
-          "model": "Claude Fable 5.1",
-          "provider": "Anthropic",
-          "score": 0,
-          "configuration": "max",
-          "evidence": "Epoch AI official benchmark leaderboard, retrieved 2026-10-29"
-        },
-        {
-          "model": "GPT-5.5",
-          "provider": "OpenAI",
-          "score": 0,
-          "configuration": "xhigh",
-          "evidence": "Epoch AI official benchmark leaderboard, retrieved 2026-10-29"
-        },
-        {
-          "model": "Claude Fable 5",
-          "provider": "Anthropic",
-          "score": 0,
-          "configuration": "max",
-          "evidence": "Epoch AI official benchmark leaderboard, retrieved 2026-10-29"
+          "score": 3,
+          "configuration": "initial official run",
+          "evidence": "Epoch AI official initial results: 2 of 68 problems solved (3%); retrieved 2026-10-31"
         },
         {
           "model": "GPT-5.6 Sol",
           "provider": "OpenAI",
           "score": 0,
-          "configuration": "max",
-          "evidence": "Epoch AI official benchmark leaderboard, retrieved 2026-10-29"
+          "configuration": "initial official run",
+          "evidence": "Epoch AI official initial results: 0 of 68 problems solved; retrieved 2026-10-31"
+        },
+        {
+          "model": "GPT-5.5",
+          "provider": "OpenAI",
+          "score": 0,
+          "configuration": "initial official run",
+          "evidence": "Epoch AI official initial results: 0 of 68 problems solved; retrieved 2026-10-31"
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "provider": "Anthropic",
+          "score": 0,
+          "configuration": "initial official run",
+          "evidence": "Epoch AI official initial results: 0 of 68 problems solved; retrieved 2026-10-31"
+        },
+        {
+          "model": "Claude Fable 5",
+          "provider": "Anthropic",
+          "score": 0,
+          "configuration": "initial official run",
+          "evidence": "Epoch AI official initial results: 0 of 68 problems solved; retrieved 2026-10-31"
         }
       ]
     },
@@ -4073,7 +4056,7 @@
       "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/frontiermath-tiers-1-3-v2",
       "status": "results-imported",
-      "note": "Unpublished difficult mathematics problems"
+      "note": "FrontierMath Tiers 1–3 v2. Standalone reference only; current public results are near ceiling, so excluded from QBench Index."
     },
     {
       "id": "frontiermath-tier-4-v2",
@@ -4081,7 +4064,7 @@
       "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
       "status": "results-imported",
-      "note": "Research-level mathematics"
+      "note": "Research-level mathematics. Standalone reference only; public version has reached ceiling-level results, so excluded from QBench Index."
     },
     {
       "id": "frontiermath-erdos",
@@ -4089,7 +4072,7 @@
       "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/frontiermath-erdos",
       "status": "results-imported",
-      "note": "68 open Erdős problems formalized in Lean"
+      "note": "68 open Erdős problems formalized in Lean. Official initial run: GPT-6 Astra 3%, four other tested models 0%; only five models tested, so monitored separately rather than scored in the composite."
     },
     {
       "id": "mystery-game-puzzles",
@@ -4113,7 +4096,7 @@
       "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/ebr-bench",
       "status": "research-pipeline",
-      "note": "Continual learning and long-horizon planning; protocol versions must be separated"
+      "note": "Long-horizon learning and planning monitor. Epoch AI changed the game content and harness in v4; older and newer settings are not fully comparable, so excluded from the composite pending a clean, versioned export."
     },
     {
       "id": "mirrorcode",
@@ -4129,7 +4112,7 @@
       "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/swe-bench-verified",
       "status": "results-imported",
-      "note": "Real GitHub issue resolution"
+      "note": "Legacy reference only. Epoch AI's current benchmark hub reports contamination concerns and a flawed verdict; excluded from QBench Index."
     },
     {
       "id": "furniture-assembly",
@@ -4137,7 +4120,7 @@
       "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/furniture-assembly",
       "status": "results-imported",
-      "note": "Multi-step physical-world task planning"
+      "note": "Multi-step physical-world task planning. Standalone reference; not part of the AA v5-aligned core suite."
     },
     {
       "id": "gpqa-diamond",
@@ -4145,7 +4128,7 @@
       "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/gpqa-diamond",
       "status": "results-imported",
-      "note": "Graduate-level science reasoning"
+      "note": "Graduate-level science reasoning. Retained as a standalone reference; Epoch AI's progress tracker shows the benchmark has crossed its saturation threshold, so excluded from QBench Index."
     },
     {
       "id": "proofbench",
@@ -4153,7 +4136,7 @@
       "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/proofbench",
       "status": "results-imported",
-      "note": "Mathematical proof generation"
+      "note": "Mathematical proof generation. Standalone reference only; current imported results are ceiling-compressed and are not used in QBench Index."
     },
     {
       "id": "mmlu-pro",
@@ -4338,6 +4321,14 @@
       "source": "https://artificialanalysis.ai/evaluations",
       "status": "research-pipeline",
       "note": "Long-context medical-record synthesis and fragmented-document reasoning"
+    },
+    {
+      "id": "deepswe-v1-1-review",
+      "name": "DeepSWE v1.1 (review status)",
+      "group": "Additional evaluations",
+      "source": "https://epoch.ai/benchmarks/deepswe",
+      "status": "research-pipeline",
+      "note": "Not used in QBench Index: Epoch AI currently labels this benchmark Flawed. Reconsider only after the benchmark authors resolve the review findings."
     }
   ],
   "composite": {
