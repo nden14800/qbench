@@ -45,9 +45,9 @@ main{padding:34px 0 70px}.intro{display:flex;justify-content:space-between;align
   </section>
   <section class="metrics" aria-label="Dataset summary">
     <div class="metric"><div class="metric-label">Unique models in source data</div><div class="metric-value" id="modelCount">—</div><div class="metric-note">Across all published dataset snapshots</div></div>
-    <div class="metric"><div class="metric-label">Benchmark families</div><div class="metric-value" id="familyCount">—</div><div class="metric-note">Included in the composite</div></div>
+    <div class="metric"><div class="metric-label">Evaluation categories</div><div class="metric-value" id="familyCount">—</div><div class="metric-note">Four equally weighted domains</div></div>
     <div class="metric"><div class="metric-label">Source snapshots</div><div class="metric-value" id="snapshotCount">—</div><div class="metric-note">Distinct benchmark datasets</div></div>
-    <div class="metric"><div class="metric-label">Weight per family</div><div class="metric-value">20%</div><div class="metric-note">Equal-weight composite</div></div>
+    <div class="metric"><div class="metric-label">Weight per category</div><div class="metric-value">25%</div><div class="metric-note">Balanced domain weighting</div></div>
   </section>
 
   <section id="leaderboard">
@@ -85,7 +85,7 @@ main{padding:34px 0 70px}.intro{display:flex;justify-content:space-between;align
     </div>
     <div class="section-head"><div><h2>Charts & model analysis</h2><p>Interactive views across the full source catalog. Composite-only charts remain limited to the exact-name intersection cohort.</p></div><span class="section-kicker">INTERACTIVE / SVG EXPORT</span></div>
     <div class="charts-grid">
-      <article class="panel"><div class="panel-head"><div><div class="panel-title">Radar comparison</div><div class="panel-sub">Five benchmark families · selected model and optional comparison</div></div><div class="chart-actions"><button class="chart-action" data-export="radarChart">Export SVG</button></div></div><div id="radarChart" class="chart chart-tall" role="img" aria-label="Radar comparison across benchmark families"></div></article>
+      <article class="panel"><div class="panel-head"><div><div class="panel-title">Radar comparison</div><div class="panel-sub">Four balanced domains / five benchmark families · selected model and optional comparison</div></div><div class="chart-actions"><button class="chart-action" data-export="radarChart">Export SVG</button></div></div><div id="radarChart" class="chart chart-tall" role="img" aria-label="Radar comparison across benchmark families"></div></article>
       <article class="panel"><div class="panel-head"><div><div class="panel-title">Parallel coordinates</div><div class="panel-sub">Every comparable model across all five families</div></div><div class="chart-actions"><button class="chart-action" data-export="parallelChart">Export SVG</button></div></div><div id="parallelChart" class="chart chart-tall" role="img" aria-label="Parallel coordinates of all comparable models"></div></article>
       <article class="panel"><div class="panel-head"><div><div class="panel-title">Score distribution</div><div class="panel-sub">Five-family cohort spread · quartiles and median</div></div><div class="chart-actions"><button class="chart-action" data-export="distributionChart">Export SVG</button></div></div><div id="distributionChart" class="chart chart-tall" role="img" aria-label="Boxplot score distributions across benchmark families"></div></article>
       <article class="panel"><div class="panel-head"><div><div class="panel-title">Rank trajectory</div><div class="panel-sub">How each model ranks within each benchmark family</div></div><div class="chart-actions"><button class="chart-action" data-export="rankChart">Export SVG</button></div></div><div id="rankChart" class="chart chart-tall" role="img" aria-label="Model ranking trajectory across benchmark families"></div><div class="chart-note">Ranks are recalculated independently within each family from the comparable cohort.</div></article>
@@ -156,13 +156,14 @@ function buildComposite(){
   state.composite=names.map(name=>{
     const l=maps[0].get(name),g=maps[1].get(name),a=maps[2].get(name),b=maps[3].get(name),p=maps[4].get(name),f=maps[5].get(name);
     const scores=[l.overall ?? l.score,g.score,(a.score+b.score)/2,p.score,f.score];
-    return {model:name,provider:l.provider,scores,live:scores[0],gpqa:scores[1],frontier:scores[2],proof:scores[3],furniture:scores[4],index:scores.reduce((sum,x)=>sum+x,0)/scores.length,gpqaCost:g.costPerQuestion,gpqaTime:g.timePerQuestion,gpqaRouting:g.routing};
+    const categoryScores=[scores[0],scores[1],(scores[2]+scores[3])/2,scores[4]];
+    return {model:name,provider:l.provider,scores,categoryScores,live:scores[0],gpqa:scores[1],frontier:scores[2],proof:scores[3],furniture:scores[4],index:categoryScores.reduce((sum,x)=>sum+x,0)/categoryScores.length,gpqaCost:g.costPerQuestion,gpqaTime:g.timePerQuestion,gpqaRouting:g.routing};
   }).sort((a,b)=>b.index-a.index);
 }
 function renderSummary(){
   const uniqueModels=new Set(state.data.benchmarks.flatMap(b=>b.models.map(m=>m.model)));
   $('#modelCount').textContent=uniqueModels.size;
-  $('#familyCount').textContent=5;
+  $('#familyCount').textContent=4;
   $('#snapshotCount').textContent=state.data.benchmarks.length;
   $('#cohortLabel').textContent=state.composite.length+' MODELS / '+uniqueModels.size+' UNIQUE';
   const dates=state.data.benchmarks.map(b=>b.snapshotDate).sort();
