@@ -32,7 +32,7 @@ The composite was redesigned on 2026-10-31. Version 1 required an exact model-na
 
 | Domain | Weight | Inputs |
 |---|---:|---|
-| Reasoning & Agentic | 25% | LiveBench 2.0 |
+| General & Agentic | 25% | LiveBench 2.0 |
 | Science | 25% | GPQA Diamond |
 | Math & Proof | 25% | FrontierMath Tiers 1–3 v2, FrontierMath Tier 4 v2, ProofBench |
 | Practical Execution | 25% | Furniture Assembly Benchmark |

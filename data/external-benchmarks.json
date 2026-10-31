@@ -4358,7 +4358,7 @@
     "configurationPolicy": "When a model has multiple reported configurations in one dataset, retain the highest published score for the composite calculation and record the selected configuration. This is a best-reported-configuration index, not a controlled same-settings comparison.",
     "domains": [
       {
-        "name": "Reasoning & Agentic",
+        "name": "General & Agentic",
         "weight": 25,
         "inputs": [
           {
