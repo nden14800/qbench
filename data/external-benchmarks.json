@@ -3425,7 +3425,8 @@
         "maximum": 100,
         "unit": "percentage points",
         "direction": "higher-is-better"
-      }
+      },
+      "exampleTask": "Given a photo of an IKEA furniture build and its official assembly manual, decide whether the build is correct so far; if not, identify the mistaken assembly step and describe the issue."
     },
     {
       "id": "swe-bench-verified",
@@ -4653,10 +4654,10 @@
           "evidence": "Epoch AI official Mystery Game Puzzles results; 100 positions; exact displayed effort variant preserved.",
           "source": "https://epoch.ai/benchmarks/mystery-game-puzzles",
           "snapshotDate": "2026-10-14",
-          "configuration": "max",
+          "configuration": "Not reported",
           "harness": "Epoch AI minimal agent scaffold",
           "sourceType": "official-publisher",
-          "effort": "max",
+          "effort": "not-reported",
           "scoreUncertainty": 4.9,
           "scoreUncertaintyNote": "Publisher-reported ± value; retain source-specific interpretation."
         },
@@ -4683,7 +4684,8 @@
         "maximum": 100,
         "unit": "percentage points",
         "direction": "higher-is-better"
-      }
+      },
+      "exampleTask": "Choose the single best next move from a text-described position in a deliberately undisclosed game. The game identity and transcripts are withheld to reduce benchmark-specific preparation."
     },
     {
       "id": "aa-briefcase-v1-1",
