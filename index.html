@@ -638,7 +638,653 @@ function renderModelDetail(id){
  var resultRows=all.map(function(x){
   var m=x.row,b=x.benchmark,unc=m.scoreUncertainty;
   if(unc==null&&m.uncertainty){var um=String(m.uncertainty).match(/([0-9]+(?:\.[0-9]+)?)/);if(um)unc=Number(um[1]);}
-  var cost=m.costPerTestUSD!=null?'$'+fmt(m.costPerTestUSD,3):'—';
+  var cost=m.costPerTestUSD!=null?'
+  var derived=m.costPerSuccessfulTaskUSD!=null?'$'+fmt(m.costPerSuccessfulTaskUSD,3):(m.costPerTestUSD!=null&&scoreOf(m)>0?'$'+fmt(m.costPerTestUSD/(scoreOf(m)/100),3)+'*':'—');
+  return '<tr><td>'+esc(b.name)+'</td><td>'+esc(x.effort==='not-reported'?'Not reported':x.effort)+'</td><td class="text-end num">'+fmt(scoreOf(m),2)+(unc!=null?' ± '+fmt(unc,2):'')+'</td><td class="text-end num">'+fmt(m.public500Score,2)+'</td><td>'+esc(m.harness||'Not reported')+'</td><td>'+esc(m.configuration||'—')+'</td><td>'+esc(m.releaseDate||'—')+'</td><td class="num">'+cost+'</td><td class="num">'+derived+'</td><td class="num">'+esc(m.tokensPerTestDisplay||'—')+'</td><td class="num">'+esc(m.durationPerTestDisplay||'—')+'</td><td><a href="'+esc(m.source||b.source||'')+'" target="_blank" rel="noopener">Source</a></td></tr>';
+ }).join('');
+ var price=(inputPrice!=null||outputPrice!=null)?'<div class="qb-detail-stat"><div class="k">API token pricing</div><div class="v">$'+(inputPrice==null?'—':fmt(inputPrice,3))+' / $'+(outputPrice==null?'—':fmt(outputPrice,3))+'</div><div class="small text-muted-qb">Input / output per 1M tokens · '+esc(priceSource)+'</div></div>':'<div class="qb-detail-stat"><div class="k">API token pricing</div><div class="v">Not verified</div></div>';
+ $('#model-detail-title').textContent=r.model;
+ $('#model-detail-sub').textContent=(kind.label||r.modelKindLabel||'Foundation model')+' · '+r.provider+' · selected effort: '+(r.effort==='not-reported'?'Not reported':r.effort);
+ $('#model-detail-content').innerHTML=
+  '<div class="row row-cols-2 row-cols-lg-4 g-2 mb-3">'+
+   '<div class="col"><div class="qb-detail-stat"><div class="k">QBench Index 1.3</div><div class="v">'+fmt(r.index,1)+'</div><div class="small text-muted-qb">'+(r.ranked?'Ranked · '+r.coverage+' evaluations':'Insufficient evidence')+'</div></div></div>'+
+   '<div class="col"><div class="qb-detail-stat"><div class="k">Raw family mean</div><div class="v">'+fmt(r.rawIndex,1)+'</div></div></div>'+
+   '<div class="col"><div class="qb-detail-stat"><div class="k">Release date</div><div class="v">'+(dates.length?esc(dates[0]):'—')+'</div></div></div>'+
+   '<div class="col"><div class="qb-detail-stat"><div class="k">Provider</div><div class="v">'+esc(r.provider)+'</div></div></div>'+
+  '</div><div class="row row-cols-1 row-cols-lg-2 g-2 mb-4"><div class="col">'+price+'</div><div class="col"><div class="qb-detail-stat"><div class="k">Evidence coverage</div><div class="v">'+r.coverage+' / '+RESULT.evals.length+'</div><div class="small text-muted-qb">'+r.domainCount+' / '+RESULT.domains.length+' capability families</div></div></div></div>'+
+  '<h3 class="card-title-qb mb-2">Capability family scores</h3><div class="table-responsive mb-4"><table class="table table-sm"><thead><tr><th>Family</th><th class="text-end">Score</th></tr></thead><tbody>'+familyRows+'</tbody></table></div>'+
+  '<h3 class="card-title-qb mb-2">Available effort variants</h3><div class="table-responsive mb-4"><table class="table table-sm"><thead><tr><th>Effort</th><th class="text-end">Evaluations</th></tr></thead><tbody>'+effortRows+'</tbody></table></div>'+harnessHtml+
+  '<h3 class="card-title-qb mb-2">Source-level evaluation results</h3><div class="table-responsive"><table class="table table-sm align-middle"><thead><tr><th>Benchmark</th><th>Effort</th><th class="text-end">Score (±)</th><th class="text-end">Public 500 (if reported)</th><th>Harness</th><th>Configuration</th><th>Release date</th><th>Cost/test</th><th>Cost/success</th><th>Tokens/test</th><th>Time/test</th><th>Source</th></tr></thead><tbody>'+resultRows+'</tbody></table></div><div class="small text-muted-qb mt-2">* Cost per successful test is derived from reported cost per test and success rate when no publisher-reported value exists. API token pricing is not task cost.</div>';
+}
+
+function csvOut(){
+ var head=['rank','variant_id','model','effort','provider','index_1_3','raw_family_mean','evidence_factor','benchmark_coverage','family_coverage','ranked','api_input_price','api_output_price','price_currency','price_source'].concat(RESULT.domains).join(',');
+ var lines=RESULT.rows.map(function(r){return [r.ranked?r.rank:'',JSON.stringify(r.variantId),JSON.stringify(r.model),JSON.stringify(r.effort),JSON.stringify(r.provider),fmt(r.index,2),fmt(r.rawIndex,2),fmt(r.evidenceFactor,3),r.coverage,r.domainCount,r.ranked,fmt(r.priceInput,6),fmt(r.priceOutput,6),JSON.stringify(r.priceCurrency),JSON.stringify(r.priceSource)].concat(RESULT.domains.map(function(d){return fmt(r.domains[d],2);})).join(',');});
+ var blob=new Blob([head+'\n'+lines.join('\n')],{type:'text/csv'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='qbench-index-1.3.csv';a.click();
+}
+/* ---------- benchmarks ---------- */
+
+
+/* ---------- benchmarks ---------- */
+
+function benchStatus(id){
+ var b=RESULT.byId[id]||{},rows=(b.models||[]).filter(function(m){return m.uncertain!==true&&scoreOf(m)!==null;});
+ var n=new Set(rows.map(function(m){return variantId(m.model,effortOf(m));})).size;
+ if(RESULT.evals.some(function(e){return e.id===id;}))return {t:'In Index 1.3',c:'text-bg-success',n:n};
+ if(!n)return {t:'No verified results',c:'text-bg-warning',n:0};
+ if(b.indexEligible!==true)return {t:'Standalone evaluation',c:'text-bg-secondary',n:n};
+ return {t:'Below 12-variant minimum',c:'text-bg-warning',n:n};
+}
+function renderBenchGrid(){
+  var list=(DATA.benchmarks||[]).slice().sort(function(a,b){
+    var ia=RESULT.evals.some(function(e){return e.id===a.id;})?0:1, ib=RESULT.evals.some(function(e){return e.id===b.id;})?0:1;
+    return (ia-ib)||String(a.name).localeCompare(String(b.name),'en');
+  });
+  $('#bgrid').innerHTML=list.map(function(b){
+    var st=benchStatus(b.id);
+    return '<div class="col"><button type="button" class="bcard" data-bench="'+esc(b.id)+'" aria-pressed="'+(S.bench===b.id)+'"><div class="bt">'+esc(b.name)+'</div><div class="bm">'+st.n+' model/effort variants · snapshot '+esc(b.snapshotDate||'—')+'</div><div class="mt-2"><span class="badge '+st.c+'">'+esc(st.t)+'</span></div></button></div>';
+  }).join('');
+}
+function parseTokens(s){
+ if(s==null)return null;var t=String(s).trim().toLowerCase().replace(/,/g,''),m=t.match(/^([0-9]+(?:\.[0-9]+)?)\s*([km]?)$/);
+ return m?Number(m[1])*(m[2]==='k'?1000:m[2]==='m'?1000000:1):null;
+}
+function parseDuration(s){
+ if(s==null)return null;var t=String(s).trim().toLowerCase(),total=0,matched=false,m,re=/([0-9]+(?:\.[0-9]+)?)\s*(h|hr|hours?|m|min|minutes?|s|sec|seconds?)/g;
+ while((m=re.exec(t))!==null){matched=true;var n=Number(m[1]),u=m[2];total+=n*(u[0]==='h'?3600:u[0]==='m'?60:1);}
+ return matched?total:null;
+}
+function renderBench(){
+ var host=document.getElementById('bench-chart');
+ if(!S.bench){$('#bench-title').textContent='Select a benchmark';$('#bench-sub').textContent='';host.innerHTML='';return;}
+ var b=RESULT.byId[S.bench];if(!b)return;var st=benchStatus(b.id),source=b.source||'',costName='Cost per test (reported)';
+ $('#bench-title').textContent=b.name;
+ $('#bench-sub').innerHTML='Unit: '+esc(b.unit||'—')+' · '+esc(st.t)+' · '+st.n+' model/effort variants · '+(b.taskCount?b.taskCount+' tasks · ':'')+'snapshot '+esc(b.snapshotDate||'not stated')+' · <a href="'+esc(source)+'" target="_blank" rel="noopener">Benchmark source</a>';
+ var allRows=(b.models||[]).filter(function(r){return !!r.model&&scoreOf(r)!==null;}).slice().sort(function(a,c){return scoreOf(c)-scoreOf(a);});
+ if(!allRows.length){host.innerHTML='<div class="empty-qb">No model values are stored for this benchmark.'+(b.valueNote?' '+esc(b.valueNote):'')+'</div>';return;}
+ var top=allRows.slice(0,25),p=pal();
+ var costRows=allRows.filter(function(r){return Number(r.costPerTestUSD)>0;});
+ var tokenRows=allRows.map(function(r){return {r:r,v:parseTokens(r.tokensPerTestDisplay)};}).filter(function(x){return x.v!=null&&x.v>0;});
+ var timeRows=allRows.map(function(r){return {r:r,v:parseDuration(r.durationPerTestDisplay)};}).filter(function(x){return x.v!=null&&x.v>0;});
+ var releaseRows=allRows.filter(function(r){return r.releaseDate&&/^\d{4}-\d{2}-\d{2}/.test(String(r.releaseDate));});
+ var effortGroups={};allRows.forEach(function(r){var e=effortOf(r);if(e!=='not-reported')(effortGroups[r.model]=effortGroups[r.model]||[]).push({effort:e,score:scoreOf(r)});});
+ var effortSeries=Object.keys(effortGroups).filter(function(n){return effortGroups[n].length>1;});
+ var costHtml=costRows.length>=3?'<h3 class="card-title-qb mt-4 mb-2">Cost per test vs. score</h3><div id="bench-cost-el" style="height:350px"></div><div class="notice-qb">Only publisher-reported benchmark-specific cost per test is plotted. This is not cross-benchmark Index cost per task.</div>':'';
+ var tokenHtml=tokenRows.length>=3?'<h3 class="card-title-qb mt-4 mb-2">Output tokens per test vs. score</h3><div id="bench-token-el" style="height:350px"></div>':'';
+ var timeHtml=timeRows.length>=3?'<h3 class="card-title-qb mt-4 mb-2">Time per test vs. score</h3><div id="bench-time-el" style="height:350px"></div>':'';
+ var releaseHtml=releaseRows.length>=3?'<h3 class="card-title-qb mt-4 mb-2">Score vs. model release date</h3><div id="bench-release-el" style="height:350px"></div>':'';
+ var effortHtml=effortSeries.length?'<h3 class="card-title-qb mt-4 mb-2">Reasoning effort vs. score</h3><div id="bench-effort-el" style="height:350px"></div><div class="notice-qb">Each line is one exact model with multiple published effort variants. Missing effort labels are not inferred.</div>':'';
+ var hasHleParts=allRows.some(function(r){return r.reasoningScore!=null||r.knowledgeScore!=null;}),hasCalib=allRows.some(function(r){return r.calibrationError!=null;}),hasPublic500=allRows.some(function(r){return r.public500Score!=null;});
+ var hasReleaseDate=allRows.some(function(r){return !!r.releaseDate;}),hasInputPrice=allRows.some(function(r){return r.inputUSDPerMillion!=null;}),hasOutputPrice=allRows.some(function(r){return r.outputUSDPerMillion!=null;});
+ var header='<tr><th>Model</th><th>Effort</th><th class="text-end">Score (± if reported)</th>'+
+  (hasHleParts?'<th class="text-end">Reasoning</th><th class="text-end">Knowledge</th>':'')+
+  (hasCalib?'<th class="text-end">Calibration error</th>':'')+(hasPublic500?'<th class="text-end">Public 500 pass rate</th>':'')+
+  '<th>Configuration</th><th>Harness</th><th>'+esc(costName)+'</th><th>Cost / successful test (reported or derived)</th><th>Tokens / test</th><th>Duration / test</th>'+
+  (hasReleaseDate?'<th>Model release date</th>':'')+(hasInputPrice?'<th>Input / 1M tokens</th>':'')+(hasOutputPrice?'<th>Output / 1M tokens</th>':'')+
+  '<th>Snapshot</th><th>Evidence / source</th></tr>';
+ var body=allRows.map(function(r){
+  var cost=r.costPerTestUSD,reportedSuccess=r.costPerSuccessfulTaskUSD;
+  var derived=reportedSuccess!=null?Number(reportedSuccess):(cost!=null&&scoreOf(r)>0?Number(cost)/(scoreOf(r)/100):null),derivedLabel=reportedSuccess!=null?'Publisher-reported':(cost!=null&&scoreOf(r)>0?'Derived from measured cost/test ÷ success rate':'');
+  var src=r.source||source,evidence=r.evidence||'No row-level evidence provided.',unc=r.scoreUncertainty;
+  if(unc==null&&r.uncertainty){var um=String(r.uncertainty).match(/([0-9]+(?:\.[0-9]+)?)/);if(um)unc=Number(um[1]);}
+  var scoreText=fmt(scoreOf(r),2)+(unc!=null?' ± '+fmt(unc,2):'');
+  var extra=(hasHleParts?'<td class="text-end num">'+fmt(r.reasoningScore,2)+'</td><td class="text-end num">'+fmt(r.knowledgeScore,2)+'</td>':'')+(hasCalib?'<td class="text-end num">'+fmt(r.calibrationError,2)+'</td>':'')+(hasPublic500?'<td class="text-end num">'+fmt(r.public500Score,2)+'</td>':'');
+  var kind=(DATA.modelNameAudit&&DATA.modelNameAudit.modelKinds||[]).filter(function(x){return x.name===r.model;})[0],kindLabel=kind?'<span class="badge rounded-pill text-bg-light text-secondary border ms-1">'+esc(kind.label)+'</span>':'';
+  var effort=effortOf(r);
+  var meta=(hasReleaseDate?'<td>'+esc(r.releaseDate||'—')+'</td>':'')+(hasInputPrice?'<td class="num">'+(r.inputUSDPerMillion==null?'—':'$'+fmt(r.inputUSDPerMillion,3))+'</td>':'')+(hasOutputPrice?'<td class="num">'+(r.outputUSDPerMillion==null?'—':'$'+fmt(r.outputUSDPerMillion,3))+'</td>':'');
+  return '<tr><td>'+esc(r.model)+kindLabel+(r.originalModelName?'<small class="d-block text-muted-qb">source label: '+esc(r.originalModelName)+'</small>':'')+'</td><td>'+esc(effort==='not-reported'?'Not reported':effort)+'</td><td class="text-end num">'+scoreText+' <span class="text-muted-qb">'+esc(b.unit||'')+'</span></td>'+extra+'<td>'+esc(r.configuration||'Not reported')+'</td><td>'+esc(r.harness||'Not reported')+'</td><td class="num">'+(cost==null?'—':'$'+fmt(cost,3))+'</td><td class="num">'+(derived==null?'—':'$'+fmt(derived,3))+'</td><td class="num">'+esc(r.tokensPerTestDisplay||'—')+'</td><td class="num">'+esc(r.durationPerTestDisplay||'—')+'</td>'+meta+'<td>'+esc(r.snapshotDate||b.snapshotDate||'Not stated')+'</td><td><span class="badge rounded-pill text-bg-light text-secondary border">'+esc(r.sourceType||'unspecified')+'</span><br><a href="'+esc(src)+'" target="_blank" rel="noopener">Source</a><details class="mt-1"><summary>Evidence</summary><small>'+esc(evidence)+'</small></details></td></tr>';
+ }).join('');
+ var example=b.exampleTask?'<div class="card bg-body-tertiary border-0 p-3 mb-3"><div class="fw-semibold mb-1">Example task / task design</div><div class="small">'+esc(b.exampleTask)+'</div></div>':'';
+ var note=b.valueNote?'<div class="notice-qb mb-3">'+esc(b.valueNote)+'</div>':'';
+ var costNote=costRows.length?'<div class="notice-qb">Cost / successful test is publisher-reported where available; otherwise it is derived from measured benchmark cost per test divided by the reported success rate. It is benchmark-specific, not a universal cost-per-task metric.</div>':'';
+ host.innerHTML=example+note+'<div id="bench-plot-el" style="height:'+(80+top.length*26)+'px"></div><div class="notice-qb">Each bar is a separate model/effort result. No best-effort collapse is applied. Publisher-reported uncertainty is preserved; source-specific meanings are not merged.</div>'+costHtml+costNote+tokenHtml+timeHtml+releaseHtml+effortHtml+
+  '<h3 class="card-title-qb mt-4 mb-2">All model/effort results <span class="metric-chip">'+allRows.length+' rows</span></h3><div class="table-responsive"><table class="table table-hover align-middle bench-results mb-0"><thead>'+header+'</thead><tbody>'+body+'</tbody></table></div>';
+ var c=chartInit('bench-plot-el');
+ if(c)c.setOption({animation:false,grid:{left:270,right:65,top:6,bottom:6},tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(items){var t=top[items[0].dataIndex],unc=t.scoreUncertainty;return esc(variantLabel({model:t.model,effort:effortOf(t)}))+'<br>Score: '+fmt(scoreOf(t),2)+(unc!=null?' ± '+fmt(unc,2):'')+' '+esc(b.unit||'');}},
+  xAxis:Object.assign({type:'value'},axisStyle(p)),yAxis:{type:'category',inverse:true,data:top.map(function(t){return variantLabel({model:t.model,effort:effortOf(t)});}),axisLabel:{color:p.ink,fontSize:12,fontFamily:getComputedStyle(document.body).fontFamily,width:245,overflow:'truncate'},axisLine:{show:false},axisTick:{show:false}},
+  series:[{type:'bar',barWidth:14,itemStyle:{color:p.accent,borderRadius:[0,4,4,0]},label:{show:true,position:'right',color:p.ink,fontSize:11,formatter:function(e){return Number(e.value).toFixed(1);}},data:top.map(function(t){return scoreOf(t);})}]},true);
+ if(costRows.length>=3){
+  var cc=chartInit('bench-cost-el'),front=[],best=-1;
+  costRows.slice().sort(function(a,b){return a.costPerTestUSD-b.costPerTestUSD||scoreOf(b)-scoreOf(a);}).forEach(function(r){if(scoreOf(r)>best){front.push([r.costPerTestUSD,scoreOf(r)]);best=scoreOf(r);}});
+  var cs=[{name:'Cost per test',type:'scatter',symbolSize:11,itemStyle:{color:p.accent},data:costRows.map(function(r){return [r.costPerTestUSD,scoreOf(r),variantLabel({model:r.model,effort:effortOf(r)})];})}];
+  if(front.length>1)cs.push({name:'Pareto frontier',type:'line',symbol:'none',lineStyle:{type:'dashed',width:2,color:p.good},data:front,silent:true});
+  if(cc)cc.setOption({animation:false,grid:{left:72,right:28,top:20,bottom:52},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2]||e.seriesName)+'<br>Cost/test: $'+Number(e.data[0]).toFixed(3)+'<br>Score: '+Number(e.data[1]).toFixed(2);}},xAxis:Object.assign({type:'log',name:'Cost per test (USD)',nameLocation:'middle',nameGap:34},axisStyle(p)),yAxis:Object.assign({type:'value',name:b.unit||'Score'},axisStyle(p)),series:cs},true);
+ }
+ if(tokenRows.length>=3){var tc=chartInit('bench-token-el');if(tc)tc.setOption({animation:false,grid:{left:72,right:28,top:20,bottom:52},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2])+'<br>Tokens/test: '+Math.round(e.data[0]).toLocaleString()+'<br>Score: '+Number(e.data[1]).toFixed(2);}},xAxis:Object.assign({type:'log',name:'Output tokens per test',nameLocation:'middle',nameGap:34},axisStyle(p)),yAxis:Object.assign({type:'value',name:b.unit||'Score'},axisStyle(p)),series:[{type:'scatter',symbolSize:11,itemStyle:{color:p.accent},data:tokenRows.map(function(x){return [x.v,scoreOf(x.r),variantLabel({model:x.r.model,effort:effortOf(x.r)})];})}]},true);}
+ if(timeRows.length>=3){var tm=chartInit('bench-time-el');if(tm)tm.setOption({animation:false,grid:{left:72,right:28,top:20,bottom:52},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2])+'<br>Seconds/test: '+Math.round(e.data[0])+'<br>Score: '+Number(e.data[1]).toFixed(2);}},xAxis:Object.assign({type:'log',name:'Duration per test (seconds)',nameLocation:'middle',nameGap:34},axisStyle(p)),yAxis:Object.assign({type:'value',name:b.unit||'Score'},axisStyle(p)),series:[{type:'scatter',symbolSize:11,itemStyle:{color:p.accent},data:timeRows.map(function(x){return [x.v,scoreOf(x.r),variantLabel({model:x.r.model,effort:effortOf(x.r)})];})}]},true);}
+ if(releaseRows.length>=3){var rc=chartInit('bench-release-el');if(rc)rc.setOption({animation:false,grid:{left:72,right:28,top:20,bottom:52},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2])+'<br>Released: '+esc(e.data[0])+'<br>Score: '+Number(e.data[1]).toFixed(2);}},xAxis:Object.assign({type:'time',name:'Model release date',nameLocation:'middle',nameGap:34},axisStyle(p)),yAxis:Object.assign({type:'value',name:b.unit||'Score'},axisStyle(p)),series:[{type:'scatter',symbolSize:11,itemStyle:{color:p.accent},data:releaseRows.map(function(r){return [r.releaseDate,scoreOf(r),variantLabel({model:r.model,effort:effortOf(r)})];})}]},true);}
+ if(effortSeries.length){var order={none:0,low:1,medium:2,high:3,xhigh:4,max:5},ec=chartInit('bench-effort-el');if(ec)ec.setOption({animation:false,grid:{left:70,right:25,top:20,bottom:55},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2])+'<br>Effort: '+esc(e.data[3])+'<br>Score: '+fmt(e.data[1],2);}},xAxis:Object.assign({},axisStyle(p),{type:'value',min:0,max:5,interval:1,name:'Reasoning effort (ordered)',nameLocation:'middle',nameGap:34,axisLabel:Object.assign({},axisStyle(p).axisLabel,{formatter:function(v){return ['None','Low','Medium','High','Xhigh','Max'][v]||'';}})}),yAxis:Object.assign({type:'value',name:b.unit||'Score'},axisStyle(p)),series:effortSeries.map(function(name){return {name:name,type:'line',symbol:'circle',symbolSize:8,connectNulls:false,data:effortGroups[name].map(function(x){return {value:[order[x.effort],x.score,name,x.effort]};}).sort(function(a,c){return a.value[0]-c.value[0];})};})},true);}
+}
+
+
+function renderMethod(){
+ var sp=DATA.composite,ext=sp.extendedIndex,ranked=RESULT.rows.filter(function(r){return r.ranked;}),familyCount=ext.domains.length;
+ var full=ranked.filter(function(r){return r.domainCount===familyCount;}).length,broad=ranked.filter(function(r){return r.domainCount>=4&&r.domainCount<familyCount;}).length;
+ var limited=ranked.filter(function(r){return r.domainCount>=ext.minimumDomainsPerModel&&r.domainCount<4;}).length;
+ var insufficient=RESULT.rows.filter(function(r){return !r.ranked;}).length,baseModels=new Set(RESULT.rows.map(function(r){return r.model;})).size,evalsByDomain={};
+ RESULT.evals.forEach(function(e){(evalsByDomain[e.domain]=evalsByDomain[e.domain]||[]).push(e);});
+ var cats=ext.domains.map(function(dom){var items=evalsByDomain[dom.name]||[],list=items.length?items.map(function(e){return '<span class="metric-chip">'+esc(e.name)+' · '+e.unique+' variants</span>';}).join(' '):'<span class="text-muted-qb">No eligible evaluation</span>';return '<li><strong>'+esc(dom.name)+'</strong><div class="mt-1">'+list+'</div><div class="small text-muted-qb mt-1">'+esc(dom.note||'')+'</div></li>';}).join('');
+ var excluded=(ext.excludedFromExtendedIndex||[]).map(function(x){return '<li><strong>'+esc((RESULT.byId[x.id]||{}).name||x.id)+'</strong>: '+esc(x.reason)+'</li>';}).join('');
+ var sources=(ext.sourceNotes||[]).map(function(x){return '<li><a href="'+esc(x.url)+'" target="_blank" rel="noopener">'+esc(x.label)+'</a> <span class="text-muted-qb">· '+esc(x.snapshotDate||'date not stated')+'</span></li>';}).join('');
+ var caveats=(ext.caveats||[]).map(function(x){return '<li>'+esc(x)+'</li>';}).join('');
+ var factorText=Array.from({length:familyCount-ext.minimumDomainsPerModel+1},function(_,i){var n=i+ext.minimumDomainsPerModel;return n+' families: '+Math.sqrt(n/familyCount).toFixed(2);}).join(' · ');
+ $('#method').innerHTML='<h2 class="font-serif-jp mb-3">QBench Index 1.3 · Methodology</h2><p>Index 1.3 is a source-audited composite of '+RESULT.evals.length+' evaluations across '+familyCount+' capability families. It uses publisher-reported task-success or accuracy percentages rather than within-cohort ranks. Each exact model/effort variant is a separate entry. No external composite score or proprietary weight is imported.</p>'+
+ '<div class="row row-cols-2 row-cols-lg-4 g-2 my-3"><div class="col"><div class="card p-3"><div class="small text-muted-qb">Ranked variants</div><div class="fs-3 fw-bold num">'+ranked.length+'</div></div></div><div class="col"><div class="card p-3"><div class="small text-muted-qb">Base models</div><div class="fs-3 fw-bold num">'+baseModels+'</div></div></div><div class="col"><div class="card p-3"><div class="small text-muted-qb">Full / broad evidence</div><div class="fs-3 fw-bold num">'+(full+broad)+'</div></div></div><div class="col"><div class="card p-3"><div class="small text-muted-qb">Limited evidence</div><div class="fs-3 fw-bold num">'+limited+'</div></div></div><div class="col"><div class="card p-3"><div class="small text-muted-qb">Insufficient variants</div><div class="fs-3 fw-bold num">'+insufficient+'</div></div></div></div>'+
+ '<h3>Capability families</h3><ol>'+cats+'</ol><h3>How the score is calculated</h3><ol><li><strong>Source gate:</strong> each evaluation needs at least '+ext.minimumModelsPerEvaluation+' distinct model/effort variants with usable source-reported scores.</li><li><strong>Keep the native percentage:</strong> scores remain on their reported 0–100 percentage-point scale. QBench does not turn a benchmark rank into a high percentage score.</li><li><strong>Family aggregation:</strong> evaluations in the same family are averaged; the '+familyCount+' observed family scores are then averaged equally.</li><li><strong>Evidence adjustment:</strong> incomplete '+familyCount+'-family coverage is pulled toward 50. This is a transparent coverage adjustment, not a confidence interval.</li></ol>'+
+ '<div class="card p-3 my-3"><div class="fw-semibold mb-2">Index 1.3 formula</div><div class="num mb-2">Raw family mean = average of observed family percentages</div><div class="num">Index = 50 + (Raw family mean − 50) × √(Observed families ÷ '+familyCount+')</div><div class="small text-muted-qb mt-2">Full evidence: factor 1.00 · '+factorText+'. The score is a composite, not a human intelligence percentage.</div></div>'+
+ '<h3>Model and effort handling</h3><ul><li>Each exact model name and effort level (none, low, medium, high, xhigh, max) is a separate variant.</li><li>Effort is extracted only when the source explicitly reports it. Otherwise it is shown as <strong>Not reported</strong>.</li><li>QBench never selects the highest score from multiple effort settings to represent the base model.</li><li>Harness, routing, fallback, release date and execution conditions remain visible in benchmark details. Mixed-harness rows are not silently combined.</li><li>Ranking requires at least '+ext.minimumEvaluationsPerModel+' evaluations across '+ext.minimumDomainsPerModel+' or more families. Full evidence means '+familyCount+' families; broad means 4–'+(familyCount-1)+'; limited means 2–3.</li><li>Missing scores are never imputed. Aliases are not merged without explicit source evidence.</li></ul>'+
+ '<h3>AA feature reference and boundaries</h3><p>QBench provides exact effort variants, separate harness results, model release-date trends when reported, Pareto and efficiency analysis, confidence/uncertainty display, score-versus-token and score-versus-time charts, and task-design examples where the source provides them. AA-only private results are not invented or silently imported. Cross-index cost per task is not shown unless per-run task cost is available. An IRT-style long-run Progress Index is deferred: only eight variants currently have four-or-more evaluation overlaps, and most inputs are aggregate scores rather than a broad task-level response matrix.</p>'+
+ '<h3>Evaluations excluded from Index 1.3</h3><ul>'+excluded+'</ul><h3>Publisher and evaluator sources</h3><ul>'+sources+'</ul><h3>Limitations</h3><ul>'+caveats+'</ul><h3>Version</h3><p class="text-muted-qb">QBench Index '+esc(sp.version||'1.3')+' · snapshot '+esc(sp.snapshotAsOf||'—')+' · '+RESULT.evals.length+' eligible evaluations.</p>';
+}
+
+
+/* ---------- navigation ---------- */
+
+function renderAll(){
+  renderIndex(); renderChart(); renderModels(); renderPriceCatalog(); renderBenchGrid(); renderBench();
+}
+function show(view){
+  $$('[data-nav]').forEach(function(b){var on=b.dataset.nav===view;b.classList.toggle('active',on);if(on)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
+  $$('section.view').forEach(function(s){s.hidden=s.dataset.view!==view;});
+  renderAll();
+  Object.keys(ECH).forEach(function(k){if(ECH[k]&&!ECH[k].isDisposed())ECH[k].resize();});
+  window.scrollTo(0,0);
+}
+$$('[data-nav]').forEach(function(b){b.addEventListener('click',function(){location.hash=b.dataset.nav;show(b.dataset.nav);});});
+
+document.addEventListener('click',function(e){
+  var th=e.target.closest('[data-sort]');
+  if(th){var k=th.dataset.sort; if(S.sort===k)S.dir=-S.dir; else {S.sort=k;S.dir=(k==='model'||k==='provider')?1:-1;} renderIndex(); return;}
+  var ms=e.target.closest('[data-msort]');
+  if(ms){var mk=ms.dataset.msort; if(S.mSort===mk)S.mDir=-S.mDir; else {S.mSort=mk;S.mDir=(mk==='model'||mk==='provider')?1:-1;} renderModels(); return;}
+  var ct=e.target.closest('[data-chart]');
+  if(ct){S.chart=ct.dataset.chart; renderChart(); return;}
+  var bc=e.target.closest('[data-bench]');
+  if(bc){S.bench=bc.dataset.bench; renderBenchGrid(); renderBench(); return;}
+});
+document.addEventListener('click',function(e){
+ var btn=e.target.closest('[data-model-detail]');
+ if(btn){renderModelDetail(btn.getAttribute('data-model-detail'));var dlg=document.getElementById('model-detail-dialog');if(dlg&&dlg.showModal)dlg.showModal();else if(dlg)dlg.setAttribute('open','');return;}
+ if(e.target.closest('#model-detail-close')){var dlg2=document.getElementById('model-detail-dialog');if(dlg2&&dlg2.close)dlg2.close();else if(dlg2)dlg2.removeAttribute('open');}
+});
+document.addEventListener('change',function(e){
+  var c=e.target.closest('[data-sel]'); if(!c)return;
+  var n=c.dataset.sel;
+  if(c.checked){ if(S.selected.length>=5){c.checked=false;return;} S.selected.push(n); }
+  else S.selected=S.selected.filter(function(x){return x!==n;});
+  renderCompare();
+});
+$('#q').addEventListener('input',function(e){S.q=e.target.value;renderIndex();});
+$('#mq').addEventListener('input',function(e){S.mq=e.target.value;renderModels();});
+$('#price-search').addEventListener('input',function(){renderPriceCatalog();});
+$('#show-unranked').addEventListener('change',function(e){S.showUnranked=e.target.checked;renderIndex();});
+$('#pareto').addEventListener('change',function(e){S.pareto=e.target.checked;renderChart();});
+$('#quadrant').addEventListener('change',function(e){S.quadrant=e.target.checked;renderChart();});
+$('#mcsv').addEventListener('click',csvOut);
+$('#theme').addEventListener('click',function(){
+  var next=isDark()?'light':'dark';
+  document.documentElement.setAttribute('data-bs-theme',next);
+  try{localStorage.setItem('qbench-theme',next);}catch(err){}
+  $('#theme-icon').className='bi '+(next==='dark'?'bi-sun':'bi-moon-stars');
+  renderAll(); renderCompare();
+});
+
+/* ---------- boot ---------- */
+$('#theme-icon').className='bi '+(isDark()?'bi-sun':'bi-moon-stars');
+fetch('data/external-benchmarks.json',{cache:'no-store'})
+  .then(function(r){if(!r.ok)throw new Error('data '+r.status);return r.json();})
+  .then(function(data){
+    DATA=data; RESULT=compute(data);
+    window.QBench={get result(){return RESULT;},get state(){return S;}};
+    var provs=[]; RESULT.rows.forEach(function(r){if(provs.indexOf(r.provider)<0)provs.push(r.provider);}); provs.sort();
+    makeChoice($('#provider-choice'),[{value:'all',label:'All providers'}].concat(provs.map(function(pv){return {value:pv,label:pv};})),'all',function(v){S.provider=v;renderIndex();},'Filter by provider');
+    var efforts=['not-reported','none','low','medium','high','xhigh','max'];makeChoice($('#effort-choice'),[{value:'all',label:'All effort levels'}].concat(efforts.map(function(e){return {value:e,label:e==='not-reported'?'Effort not reported':e};})),'all',function(v){S.effort=v;renderIndex();},'Filter by reasoning effort');
+    renderStats(); renderMethod();
+    var h=(location.hash||'').replace('#','');
+    show(['index','models','benchmarks','methodology'].indexOf(h)>=0?h:'index');
+  })
+  .catch(function(err){
+    $('#stats').innerHTML='<div class="col"><div class="card stat-card"><div class="card-body"><div class="stat-k">Data</div><div class="stat-v">Unavailable</div><div class="stat-s">'+esc(err.message)+'</div></div></div></div>';
+  });
+})();
+</script>
+<dialog id="model-detail-dialog" class="qb-dialog" aria-labelledby="model-detail-title">
+ <div class="qb-dialog-head">
+  <div><h2 id="model-detail-title" class="qb-dialog-title">Model details</h2><div id="model-detail-sub" class="small text-muted-qb mt-1"></div></div>
+  <button type="button" id="model-detail-close" class="qb-dialog-close" aria-label="Close model details">×</button>
+ </div>
+ <div id="model-detail-content" class="qb-dialog-body"></div>
+</dialog>
+</body>
+</html>+(inputPrice==null?'—':fmt(inputPrice,3))+' / :'<div class="qb-detail-stat"><div class="k">API token pricing</div><div class="v">Not verified</div></div>';
+ $('#model-detail-title').textContent=r.model;
+ $('#model-detail-sub').textContent=(kind.label||r.modelKindLabel||'Foundation model')+' · '+r.provider+' · selected effort: '+(r.effort==='not-reported'?'Not reported':r.effort);
+ $('#model-detail-content').innerHTML=
+  '<div class="row row-cols-2 row-cols-lg-4 g-2 mb-3">'+
+   '<div class="col"><div class="qb-detail-stat"><div class="k">QBench Index 1.3</div><div class="v">'+fmt(r.index,1)+'</div><div class="small text-muted-qb">'+(r.ranked?'Ranked · '+r.coverage+' evaluations':'Insufficient evidence')+'</div></div></div>'+
+   '<div class="col"><div class="qb-detail-stat"><div class="k">Raw family mean</div><div class="v">'+fmt(r.rawIndex,1)+'</div></div></div>'+
+   '<div class="col"><div class="qb-detail-stat"><div class="k">Release date</div><div class="v">'+(dates.length?esc(dates[0]):'—')+'</div></div></div>'+
+   '<div class="col"><div class="qb-detail-stat"><div class="k">Provider</div><div class="v">'+esc(r.provider)+'</div></div></div>'+
+  '</div><div class="row row-cols-1 row-cols-lg-2 g-2 mb-4"><div class="col">'+price+'</div><div class="col"><div class="qb-detail-stat"><div class="k">Evidence coverage</div><div class="v">'+r.coverage+' / '+RESULT.evals.length+'</div><div class="small text-muted-qb">'+r.domainCount+' / '+RESULT.domains.length+' capability families</div></div></div></div>'+
+  '<h3 class="card-title-qb mb-2">Capability family scores</h3><div class="table-responsive mb-4"><table class="table table-sm"><thead><tr><th>Family</th><th class="text-end">Score</th></tr></thead><tbody>'+familyRows+'</tbody></table></div>'+
+  '<h3 class="card-title-qb mb-2">Available effort variants</h3><div class="table-responsive mb-4"><table class="table table-sm"><thead><tr><th>Effort</th><th class="text-end">Evaluations</th></tr></thead><tbody>'+effortRows+'</tbody></table></div>'+harnessHtml+
+  '<h3 class="card-title-qb mb-2">Source-level evaluation results</h3><div class="table-responsive"><table class="table table-sm align-middle"><thead><tr><th>Benchmark</th><th>Effort</th><th class="text-end">Score (±)</th><th>Harness</th><th>Configuration</th><th>Release date</th><th>Cost/test</th><th>Cost/success</th><th>Tokens/test</th><th>Time/test</th><th>Source</th></tr></thead><tbody>'+resultRows+'</tbody></table></div><div class="small text-muted-qb mt-2">* Cost per successful test is derived from reported cost per test and success rate when no publisher-reported value exists. API token pricing is not task cost.</div>';
+}
+
+function csvOut(){
+ var head=['variant_id','model','effort','provider','index_1_3','raw_family_mean','evidence_factor','benchmark_coverage','family_coverage','ranked','api_input_price','api_output_price','price_currency','price_source'].concat(RESULT.domains).join(',');
+ var lines=RESULT.rows.map(function(r){return [JSON.stringify(r.variantId),JSON.stringify(r.model),JSON.stringify(r.effort),JSON.stringify(r.provider),fmt(r.index,2),fmt(r.rawIndex,2),fmt(r.evidenceFactor,3),r.coverage,r.domainCount,r.ranked,fmt(r.priceInput,6),fmt(r.priceOutput,6),JSON.stringify(r.priceCurrency),JSON.stringify(r.priceSource)].concat(RESULT.domains.map(function(d){return fmt(r.domains[d],2);})).join(',');});
+ var blob=new Blob([head+'\n'+lines.join('\n')],{type:'text/csv'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='qbench-index-1.3.csv';a.click();
+}
+/* ---------- benchmarks ---------- */
+
+
+/* ---------- benchmarks ---------- */
+
+function benchStatus(id){
+ var b=RESULT.byId[id]||{},rows=(b.models||[]).filter(function(m){return m.uncertain!==true&&scoreOf(m)!==null;});
+ var n=new Set(rows.map(function(m){return variantId(m.model,effortOf(m));})).size;
+ if(RESULT.evals.some(function(e){return e.id===id;}))return {t:'In Index 1.3',c:'text-bg-success',n:n};
+ if(!n)return {t:'No verified results',c:'text-bg-warning',n:0};
+ if(b.indexEligible!==true)return {t:'Standalone evaluation',c:'text-bg-secondary',n:n};
+ return {t:'Below 12-variant minimum',c:'text-bg-warning',n:n};
+}
+function renderBenchGrid(){
+  var list=(DATA.benchmarks||[]).slice().sort(function(a,b){
+    var ia=RESULT.evals.some(function(e){return e.id===a.id;})?0:1, ib=RESULT.evals.some(function(e){return e.id===b.id;})?0:1;
+    return (ia-ib)||String(a.name).localeCompare(String(b.name),'en');
+  });
+  $('#bgrid').innerHTML=list.map(function(b){
+    var st=benchStatus(b.id);
+    return '<div class="col"><button type="button" class="bcard" data-bench="'+esc(b.id)+'" aria-pressed="'+(S.bench===b.id)+'"><div class="bt">'+esc(b.name)+'</div><div class="bm">'+st.n+' model/effort variants · snapshot '+esc(b.snapshotDate||'—')+'</div><div class="mt-2"><span class="badge '+st.c+'">'+esc(st.t)+'</span></div></button></div>';
+  }).join('');
+}
+function parseTokens(s){
+ if(s==null)return null;var t=String(s).trim().toLowerCase().replace(/,/g,''),m=t.match(/^([0-9]+(?:\.[0-9]+)?)\s*([km]?)$/);
+ return m?Number(m[1])*(m[2]==='k'?1000:m[2]==='m'?1000000:1):null;
+}
+function parseDuration(s){
+ if(s==null)return null;var t=String(s).trim().toLowerCase(),total=0,matched=false,m,re=/([0-9]+(?:\.[0-9]+)?)\s*(h|hr|hours?|m|min|minutes?|s|sec|seconds?)/g;
+ while((m=re.exec(t))!==null){matched=true;var n=Number(m[1]),u=m[2];total+=n*(u[0]==='h'?3600:u[0]==='m'?60:1);}
+ return matched?total:null;
+}
+function renderBench(){
+ var host=document.getElementById('bench-chart');
+ if(!S.bench){$('#bench-title').textContent='Select a benchmark';$('#bench-sub').textContent='';host.innerHTML='';return;}
+ var b=RESULT.byId[S.bench];if(!b)return;var st=benchStatus(b.id),source=b.source||'',costName=b.costMetric||'Cost per test';
+ $('#bench-title').textContent=b.name;
+ $('#bench-sub').innerHTML='Unit: '+esc(b.unit||'—')+' · '+esc(st.t)+' · '+st.n+' model/effort variants · '+(b.taskCount?b.taskCount+' tasks · ':'')+'snapshot '+esc(b.snapshotDate||'not stated')+' · <a href="'+esc(source)+'" target="_blank" rel="noopener">Benchmark source</a>';
+ var allRows=(b.models||[]).filter(function(r){return !!r.model&&scoreOf(r)!==null;}).slice().sort(function(a,c){return scoreOf(c)-scoreOf(a);});
+ if(!allRows.length){host.innerHTML='<div class="empty-qb">No model values are stored for this benchmark.'+(b.valueNote?' '+esc(b.valueNote):'')+'</div>';return;}
+ var top=allRows.slice(0,25),p=pal();
+ var costRows=allRows.filter(function(r){return Number(r.costPerTestUSD)>0;});
+ var tokenRows=allRows.map(function(r){return {r:r,v:parseTokens(r.tokensPerTestDisplay)};}).filter(function(x){return x.v!=null&&x.v>0;});
+ var timeRows=allRows.map(function(r){return {r:r,v:parseDuration(r.durationPerTestDisplay)};}).filter(function(x){return x.v!=null&&x.v>0;});
+ var releaseRows=allRows.filter(function(r){return r.releaseDate&&/^\d{4}-\d{2}-\d{2}/.test(String(r.releaseDate));});
+ var effortGroups={};allRows.forEach(function(r){var e=effortOf(r);if(e!=='not-reported')(effortGroups[r.model]=effortGroups[r.model]||[]).push({effort:e,score:scoreOf(r)});});
+ var effortSeries=Object.keys(effortGroups).filter(function(n){return effortGroups[n].length>1;});
+ var costHtml=costRows.length>=3?'<h3 class="card-title-qb mt-4 mb-2">Cost per test vs. score</h3><div id="bench-cost-el" style="height:350px"></div><div class="notice-qb">Only publisher-reported benchmark-specific cost per test is plotted. This is not cross-benchmark Index cost per task.</div>':'';
+ var tokenHtml=tokenRows.length>=3?'<h3 class="card-title-qb mt-4 mb-2">Output tokens per test vs. score</h3><div id="bench-token-el" style="height:350px"></div>':'';
+ var timeHtml=timeRows.length>=3?'<h3 class="card-title-qb mt-4 mb-2">Time per test vs. score</h3><div id="bench-time-el" style="height:350px"></div>':'';
+ var releaseHtml=releaseRows.length>=3?'<h3 class="card-title-qb mt-4 mb-2">Score vs. model release date</h3><div id="bench-release-el" style="height:350px"></div>':'';
+ var effortHtml=effortSeries.length?'<h3 class="card-title-qb mt-4 mb-2">Reasoning effort vs. score</h3><div id="bench-effort-el" style="height:350px"></div><div class="notice-qb">Each line is one exact model with multiple published effort variants. Missing effort labels are not inferred.</div>':'';
+ var hasHleParts=allRows.some(function(r){return r.reasoningScore!=null||r.knowledgeScore!=null;}),hasCalib=allRows.some(function(r){return r.calibrationError!=null;});
+ var hasReleaseDate=allRows.some(function(r){return !!r.releaseDate;}),hasInputPrice=allRows.some(function(r){return r.inputUSDPerMillion!=null;}),hasOutputPrice=allRows.some(function(r){return r.outputUSDPerMillion!=null;});
+ var header='<tr><th>Model</th><th>Effort</th><th class="text-end">Score (± if reported)</th>'+
+  (hasHleParts?'<th class="text-end">Reasoning</th><th class="text-end">Knowledge</th>':'')+
+  (hasCalib?'<th class="text-end">Calibration error</th>':'')+
+  '<th>Configuration</th><th>Harness</th><th>'+esc(costName)+'</th><th>Cost / successful test (reported or derived)</th><th>Tokens / test</th><th>Duration / test</th>'+
+  (hasReleaseDate?'<th>Model release date</th>':'')+(hasInputPrice?'<th>Input / 1M tokens</th>':'')+(hasOutputPrice?'<th>Output / 1M tokens</th>':'')+
+  '<th>Snapshot</th><th>Evidence / source</th></tr>';
+ var body=allRows.map(function(r){
+  var cost=r.costPerTestUSD,reportedSuccess=r.costPerSuccessfulTaskUSD;
+  var derived=reportedSuccess!=null?Number(reportedSuccess):(cost!=null&&scoreOf(r)>0?Number(cost)/(scoreOf(r)/100):null),derivedLabel=reportedSuccess!=null?'Publisher-reported':(cost!=null&&scoreOf(r)>0?'Derived from measured cost/test ÷ success rate':'');
+  var src=r.source||source,evidence=r.evidence||'No row-level evidence provided.',unc=r.scoreUncertainty;
+  if(unc==null&&r.uncertainty){var um=String(r.uncertainty).match(/([0-9]+(?:\.[0-9]+)?)/);if(um)unc=Number(um[1]);}
+  var scoreText=fmt(scoreOf(r),2)+(unc!=null?' ± '+fmt(unc,2):'');
+  var extra=(hasHleParts?'<td class="text-end num">'+fmt(r.reasoningScore,2)+'</td><td class="text-end num">'+fmt(r.knowledgeScore,2)+'</td>':'')+(hasCalib?'<td class="text-end num">'+fmt(r.calibrationError,2)+'</td>':'');
+  var kind=(DATA.modelNameAudit&&DATA.modelNameAudit.modelKinds||[]).filter(function(x){return x.name===r.model;})[0],kindLabel=kind?'<span class="badge rounded-pill text-bg-light text-secondary border ms-1">'+esc(kind.label)+'</span>':'';
+  var effort=effortOf(r);
+  var meta=(hasReleaseDate?'<td>'+esc(r.releaseDate||'—')+'</td>':'')+(hasInputPrice?'<td class="num">'+(r.inputUSDPerMillion==null?'—':'$'+fmt(r.inputUSDPerMillion,3))+'</td>':'')+(hasOutputPrice?'<td class="num">'+(r.outputUSDPerMillion==null?'—':'$'+fmt(r.outputUSDPerMillion,3))+'</td>':'');
+  return '<tr><td>'+esc(r.model)+kindLabel+(r.originalModelName?'<small class="d-block text-muted-qb">source label: '+esc(r.originalModelName)+'</small>':'')+'</td><td>'+esc(effort==='not-reported'?'Not reported':effort)+'</td><td class="text-end num">'+scoreText+' <span class="text-muted-qb">'+esc(b.unit||'')+'</span></td>'+extra+'<td>'+esc(r.configuration||'Not reported')+'</td><td>'+esc(r.harness||'Not reported')+'</td><td class="num">'+(cost==null?'—':'$'+fmt(cost,3))+'</td><td class="num">'+(derived==null?'—':'$'+fmt(derived,3))+'</td><td class="num">'+esc(r.tokensPerTestDisplay||'—')+'</td><td class="num">'+esc(r.durationPerTestDisplay||'—')+'</td>'+meta+'<td>'+esc(r.snapshotDate||b.snapshotDate||'Not stated')+'</td><td><span class="badge rounded-pill text-bg-light text-secondary border">'+esc(r.sourceType||'unspecified')+'</span><br><a href="'+esc(src)+'" target="_blank" rel="noopener">Source</a><details class="mt-1"><summary>Evidence</summary><small>'+esc(evidence)+'</small></details></td></tr>';
+ }).join('');
+ var example=b.exampleTask?'<div class="card bg-body-tertiary border-0 p-3 mb-3"><div class="fw-semibold mb-1">Example task / task design</div><div class="small">'+esc(b.exampleTask)+'</div></div>':'';
+ var note=b.valueNote?'<div class="notice-qb mb-3">'+esc(b.valueNote)+'</div>':'';
+ var costNote=costRows.length?'<div class="notice-qb">Cost / successful test is publisher-reported where available; otherwise it is derived from measured benchmark cost per test divided by the reported success rate. It is benchmark-specific, not a universal cost-per-task metric.</div>':'';
+ host.innerHTML=example+note+'<div id="bench-plot-el" style="height:'+(80+top.length*26)+'px"></div><div class="notice-qb">Each bar is a separate model/effort result. No best-effort collapse is applied. Publisher-reported uncertainty is preserved; source-specific meanings are not merged.</div>'+costHtml+costNote+tokenHtml+timeHtml+releaseHtml+effortHtml+
+  '<h3 class="card-title-qb mt-4 mb-2">All model/effort results <span class="metric-chip">'+allRows.length+' rows</span></h3><div class="table-responsive"><table class="table table-hover align-middle bench-results mb-0"><thead>'+header+'</thead><tbody>'+body+'</tbody></table></div>';
+ var c=chartInit('bench-plot-el');
+ if(c)c.setOption({animation:false,grid:{left:270,right:65,top:6,bottom:6},tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(items){var t=top[items[0].dataIndex],unc=t.scoreUncertainty;return esc(variantLabel({model:t.model,effort:effortOf(t)}))+'<br>Score: '+fmt(scoreOf(t),2)+(unc!=null?' ± '+fmt(unc,2):'')+' '+esc(b.unit||'');}},
+  xAxis:Object.assign({type:'value'},axisStyle(p)),yAxis:{type:'category',inverse:true,data:top.map(function(t){return variantLabel({model:t.model,effort:effortOf(t)});}),axisLabel:{color:p.ink,fontSize:12,fontFamily:getComputedStyle(document.body).fontFamily,width:245,overflow:'truncate'},axisLine:{show:false},axisTick:{show:false}},
+  series:[{type:'bar',barWidth:14,itemStyle:{color:p.accent,borderRadius:[0,4,4,0]},label:{show:true,position:'right',color:p.ink,fontSize:11,formatter:function(e){return Number(e.value).toFixed(1);}},data:top.map(function(t){return scoreOf(t);})}]},true);
+ if(costRows.length>=3){
+  var cc=chartInit('bench-cost-el'),front=[],best=-1;
+  costRows.slice().sort(function(a,b){return a.costPerTestUSD-b.costPerTestUSD||scoreOf(b)-scoreOf(a);}).forEach(function(r){if(scoreOf(r)>best){front.push([r.costPerTestUSD,scoreOf(r)]);best=scoreOf(r);}});
+  var cs=[{name:'Cost per test',type:'scatter',symbolSize:11,itemStyle:{color:p.accent},data:costRows.map(function(r){return [r.costPerTestUSD,scoreOf(r),variantLabel({model:r.model,effort:effortOf(r)})];})}];
+  if(front.length>1)cs.push({name:'Pareto frontier',type:'line',symbol:'none',lineStyle:{type:'dashed',width:2,color:p.good},data:front,silent:true});
+  if(cc)cc.setOption({animation:false,grid:{left:72,right:28,top:20,bottom:52},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2]||e.seriesName)+'<br>Cost/test: $'+Number(e.data[0]).toFixed(3)+'<br>Score: '+Number(e.data[1]).toFixed(2);}},xAxis:Object.assign({type:'log',name:'Cost per test (USD)',nameLocation:'middle',nameGap:34},axisStyle(p)),yAxis:Object.assign({type:'value',name:b.unit||'Score'},axisStyle(p)),series:cs},true);
+ }
+ if(tokenRows.length>=3){var tc=chartInit('bench-token-el');if(tc)tc.setOption({animation:false,grid:{left:72,right:28,top:20,bottom:52},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2])+'<br>Tokens/test: '+Math.round(e.data[0]).toLocaleString()+'<br>Score: '+Number(e.data[1]).toFixed(2);}},xAxis:Object.assign({type:'log',name:'Output tokens per test',nameLocation:'middle',nameGap:34},axisStyle(p)),yAxis:Object.assign({type:'value',name:b.unit||'Score'},axisStyle(p)),series:[{type:'scatter',symbolSize:11,itemStyle:{color:p.accent},data:tokenRows.map(function(x){return [x.v,scoreOf(x.r),variantLabel({model:x.r.model,effort:effortOf(x.r)})];})}]},true);}
+ if(timeRows.length>=3){var tm=chartInit('bench-time-el');if(tm)tm.setOption({animation:false,grid:{left:72,right:28,top:20,bottom:52},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2])+'<br>Seconds/test: '+Math.round(e.data[0])+'<br>Score: '+Number(e.data[1]).toFixed(2);}},xAxis:Object.assign({type:'log',name:'Duration per test (seconds)',nameLocation:'middle',nameGap:34},axisStyle(p)),yAxis:Object.assign({type:'value',name:b.unit||'Score'},axisStyle(p)),series:[{type:'scatter',symbolSize:11,itemStyle:{color:p.accent},data:timeRows.map(function(x){return [x.v,scoreOf(x.r),variantLabel({model:x.r.model,effort:effortOf(x.r)})];})}]},true);}
+ if(releaseRows.length>=3){var rc=chartInit('bench-release-el');if(rc)rc.setOption({animation:false,grid:{left:72,right:28,top:20,bottom:52},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2])+'<br>Released: '+esc(e.data[0])+'<br>Score: '+Number(e.data[1]).toFixed(2);}},xAxis:Object.assign({type:'time',name:'Model release date',nameLocation:'middle',nameGap:34},axisStyle(p)),yAxis:Object.assign({type:'value',name:b.unit||'Score'},axisStyle(p)),series:[{type:'scatter',symbolSize:11,itemStyle:{color:p.accent},data:releaseRows.map(function(r){return [r.releaseDate,scoreOf(r),variantLabel({model:r.model,effort:effortOf(r)})];})}]},true);}
+ if(effortSeries.length){var order={none:0,low:1,medium:2,high:3,xhigh:4,max:5},ec=chartInit('bench-effort-el');if(ec)ec.setOption({animation:false,grid:{left:70,right:25,top:20,bottom:55},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2])+'<br>Effort: '+esc(e.data[3])+'<br>Score: '+fmt(e.data[1],2);}},xAxis:Object.assign({},axisStyle(p),{type:'value',min:0,max:5,interval:1,name:'Reasoning effort (ordered)',nameLocation:'middle',nameGap:34,axisLabel:Object.assign({},axisStyle(p).axisLabel,{formatter:function(v){return ['None','Low','Medium','High','Xhigh','Max'][v]||'';}})}),yAxis:Object.assign({type:'value',name:b.unit||'Score'},axisStyle(p)),series:effortSeries.map(function(name){return {name:name,type:'line',symbol:'circle',symbolSize:8,connectNulls:false,data:effortGroups[name].map(function(x){return {value:[order[x.effort],x.score,name,x.effort]};}).sort(function(a,c){return a.value[0]-c.value[0];})};})},true);}
+}
+
+
+function renderMethod(){
+ var sp=DATA.composite,ext=sp.extendedIndex,ranked=RESULT.rows.filter(function(r){return r.ranked;}),familyCount=ext.domains.length;
+ var full=ranked.filter(function(r){return r.domainCount===familyCount;}).length,broad=ranked.filter(function(r){return r.domainCount>=4&&r.domainCount<familyCount;}).length;
+ var limited=ranked.filter(function(r){return r.domainCount>=ext.minimumDomainsPerModel&&r.domainCount<4;}).length;
+ var insufficient=RESULT.rows.filter(function(r){return !r.ranked;}).length,baseModels=new Set(RESULT.rows.map(function(r){return r.model;})).size,evalsByDomain={};
+ RESULT.evals.forEach(function(e){(evalsByDomain[e.domain]=evalsByDomain[e.domain]||[]).push(e);});
+ var cats=ext.domains.map(function(dom){var items=evalsByDomain[dom.name]||[],list=items.length?items.map(function(e){return '<span class="metric-chip">'+esc(e.name)+' · '+e.unique+' variants</span>';}).join(' '):'<span class="text-muted-qb">No eligible evaluation</span>';return '<li><strong>'+esc(dom.name)+'</strong><div class="mt-1">'+list+'</div><div class="small text-muted-qb mt-1">'+esc(dom.note||'')+'</div></li>';}).join('');
+ var excluded=(ext.excludedFromExtendedIndex||[]).map(function(x){return '<li><strong>'+esc((RESULT.byId[x.id]||{}).name||x.id)+'</strong>: '+esc(x.reason)+'</li>';}).join('');
+ var sources=(ext.sourceNotes||[]).map(function(x){return '<li><a href="'+esc(x.url)+'" target="_blank" rel="noopener">'+esc(x.label)+'</a> <span class="text-muted-qb">· '+esc(x.snapshotDate||'date not stated')+'</span></li>';}).join('');
+ var caveats=(ext.caveats||[]).map(function(x){return '<li>'+esc(x)+'</li>';}).join('');
+ var factorText=Array.from({length:familyCount-ext.minimumDomainsPerModel+1},function(_,i){var n=i+ext.minimumDomainsPerModel;return n+' families: '+Math.sqrt(n/familyCount).toFixed(2);}).join(' · ');
+ $('#method').innerHTML='<h2 class="font-serif-jp mb-3">QBench Index 1.3 · Methodology</h2><p>Index 1.3 is a source-audited composite of '+RESULT.evals.length+' evaluations across '+familyCount+' capability families. It uses publisher-reported task-success or accuracy percentages rather than within-cohort ranks. Each exact model/effort variant is a separate entry. No external composite score or proprietary weight is imported.</p>'+
+ '<div class="row row-cols-2 row-cols-lg-4 g-2 my-3"><div class="col"><div class="card p-3"><div class="small text-muted-qb">Ranked variants</div><div class="fs-3 fw-bold num">'+ranked.length+'</div></div></div><div class="col"><div class="card p-3"><div class="small text-muted-qb">Base models</div><div class="fs-3 fw-bold num">'+baseModels+'</div></div></div><div class="col"><div class="card p-3"><div class="small text-muted-qb">Full / broad evidence</div><div class="fs-3 fw-bold num">'+(full+broad)+'</div></div></div><div class="col"><div class="card p-3"><div class="small text-muted-qb">Limited evidence</div><div class="fs-3 fw-bold num">'+limited+'</div></div></div><div class="col"><div class="card p-3"><div class="small text-muted-qb">Insufficient variants</div><div class="fs-3 fw-bold num">'+insufficient+'</div></div></div></div>'+
+ '<h3>Capability families</h3><ol>'+cats+'</ol><h3>How the score is calculated</h3><ol><li><strong>Source gate:</strong> each evaluation needs at least '+ext.minimumModelsPerEvaluation+' distinct model/effort variants with usable source-reported scores.</li><li><strong>Keep the native percentage:</strong> scores remain on their reported 0–100 percentage-point scale. QBench does not turn a benchmark rank into a high percentage score.</li><li><strong>Family aggregation:</strong> evaluations in the same family are averaged; the '+familyCount+' observed family scores are then averaged equally.</li><li><strong>Evidence adjustment:</strong> incomplete '+familyCount+'-family coverage is pulled toward 50. This is a transparent coverage adjustment, not a confidence interval.</li></ol>'+
+ '<div class="card p-3 my-3"><div class="fw-semibold mb-2">Index 1.3 formula</div><div class="num mb-2">Raw family mean = average of observed family percentages</div><div class="num">Index = 50 + (Raw family mean − 50) × √(Observed families ÷ '+familyCount+')</div><div class="small text-muted-qb mt-2">Full evidence: factor 1.00 · '+factorText+'. The score is a composite, not a human intelligence percentage.</div></div>'+
+ '<h3>Model and effort handling</h3><ul><li>Each exact model name and effort level (none, low, medium, high, xhigh, max) is a separate variant.</li><li>Effort is extracted only when the source explicitly reports it. Otherwise it is shown as <strong>Not reported</strong>.</li><li>QBench never selects the highest score from multiple effort settings to represent the base model.</li><li>Harness, routing, fallback, release date and execution conditions remain visible in benchmark details. Mixed-harness rows are not silently combined.</li><li>Ranking requires at least '+ext.minimumEvaluationsPerModel+' evaluations across '+ext.minimumDomainsPerModel+' or more families. Full evidence means '+familyCount+' families; broad means 4–'+(familyCount-1)+'; limited means 2–3.</li><li>Missing scores are never imputed. Aliases are not merged without explicit source evidence.</li></ul>'+
+ '<h3>AA feature reference and boundaries</h3><p>QBench provides exact effort variants, separate harness results, model release-date trends when reported, Pareto and efficiency analysis, confidence/uncertainty display, score-versus-token and score-versus-time charts, and task-design examples where the source provides them. AA-only private results are not invented or silently imported. Cross-index cost per task is not shown unless per-run task cost is available.</p>'+
+ '<h3>Evaluations excluded from Index 1.3</h3><ul>'+excluded+'</ul><h3>Publisher and evaluator sources</h3><ul>'+sources+'</ul><h3>Limitations</h3><ul>'+caveats+'</ul><h3>Version</h3><p class="text-muted-qb">QBench Index '+esc(sp.version||'1.3')+' · snapshot '+esc(sp.snapshotAsOf||'—')+' · '+RESULT.evals.length+' eligible evaluations.</p>';
+}
+
+
+/* ---------- navigation ---------- */
+
+function renderAll(){
+  renderIndex(); renderChart(); renderModels(); renderPriceCatalog(); renderBenchGrid(); renderBench();
+}
+function show(view){
+  $$('[data-nav]').forEach(function(b){var on=b.dataset.nav===view;b.classList.toggle('active',on);if(on)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
+  $$('section.view').forEach(function(s){s.hidden=s.dataset.view!==view;});
+  renderAll();
+  Object.keys(ECH).forEach(function(k){if(ECH[k]&&!ECH[k].isDisposed())ECH[k].resize();});
+  window.scrollTo(0,0);
+}
+$$('[data-nav]').forEach(function(b){b.addEventListener('click',function(){location.hash=b.dataset.nav;show(b.dataset.nav);});});
+
+document.addEventListener('click',function(e){
+  var th=e.target.closest('[data-sort]');
+  if(th){var k=th.dataset.sort; if(S.sort===k)S.dir=-S.dir; else {S.sort=k;S.dir=(k==='model'||k==='provider')?1:-1;} renderIndex(); return;}
+  var ms=e.target.closest('[data-msort]');
+  if(ms){var mk=ms.dataset.msort; if(S.mSort===mk)S.mDir=-S.mDir; else {S.mSort=mk;S.mDir=(mk==='model'||mk==='provider')?1:-1;} renderModels(); return;}
+  var ct=e.target.closest('[data-chart]');
+  if(ct){S.chart=ct.dataset.chart; renderChart(); return;}
+  var bc=e.target.closest('[data-bench]');
+  if(bc){S.bench=bc.dataset.bench; renderBenchGrid(); renderBench(); return;}
+});
+document.addEventListener('click',function(e){
+ var btn=e.target.closest('[data-model-detail]');
+ if(btn){renderModelDetail(btn.getAttribute('data-model-detail'));var dlg=document.getElementById('model-detail-dialog');if(dlg&&dlg.showModal)dlg.showModal();else if(dlg)dlg.setAttribute('open','');return;}
+ if(e.target.closest('#model-detail-close')){var dlg2=document.getElementById('model-detail-dialog');if(dlg2&&dlg2.close)dlg2.close();else if(dlg2)dlg2.removeAttribute('open');}
+});
+document.addEventListener('change',function(e){
+  var c=e.target.closest('[data-sel]'); if(!c)return;
+  var n=c.dataset.sel;
+  if(c.checked){ if(S.selected.length>=5){c.checked=false;return;} S.selected.push(n); }
+  else S.selected=S.selected.filter(function(x){return x!==n;});
+  renderCompare();
+});
+$('#q').addEventListener('input',function(e){S.q=e.target.value;renderIndex();});
+$('#mq').addEventListener('input',function(e){S.mq=e.target.value;renderModels();});
+$('#price-search').addEventListener('input',function(){renderPriceCatalog();});
+$('#show-unranked').addEventListener('change',function(e){S.showUnranked=e.target.checked;renderIndex();});
+$('#pareto').addEventListener('change',function(e){S.pareto=e.target.checked;renderChart();});
+$('#quadrant').addEventListener('change',function(e){S.quadrant=e.target.checked;renderChart();});
+$('#mcsv').addEventListener('click',csvOut);
+$('#theme').addEventListener('click',function(){
+  var next=isDark()?'light':'dark';
+  document.documentElement.setAttribute('data-bs-theme',next);
+  try{localStorage.setItem('qbench-theme',next);}catch(err){}
+  $('#theme-icon').className='bi '+(next==='dark'?'bi-sun':'bi-moon-stars');
+  renderAll(); renderCompare();
+});
+
+/* ---------- boot ---------- */
+$('#theme-icon').className='bi '+(isDark()?'bi-sun':'bi-moon-stars');
+fetch('data/external-benchmarks.json',{cache:'no-store'})
+  .then(function(r){if(!r.ok)throw new Error('data '+r.status);return r.json();})
+  .then(function(data){
+    DATA=data; RESULT=compute(data);
+    window.QBench={get result(){return RESULT;},get state(){return S;}};
+    var provs=[]; RESULT.rows.forEach(function(r){if(provs.indexOf(r.provider)<0)provs.push(r.provider);}); provs.sort();
+    makeChoice($('#provider-choice'),[{value:'all',label:'All providers'}].concat(provs.map(function(pv){return {value:pv,label:pv};})),'all',function(v){S.provider=v;renderIndex();},'Filter by provider');
+    var efforts=['not-reported','none','low','medium','high','xhigh','max'];makeChoice($('#effort-choice'),[{value:'all',label:'All effort levels'}].concat(efforts.map(function(e){return {value:e,label:e==='not-reported'?'Effort not reported':e};})),'all',function(v){S.effort=v;renderIndex();},'Filter by reasoning effort');
+    renderStats(); renderMethod();
+    var h=(location.hash||'').replace('#','');
+    show(['index','models','benchmarks','methodology'].indexOf(h)>=0?h:'index');
+  })
+  .catch(function(err){
+    $('#stats').innerHTML='<div class="col"><div class="card stat-card"><div class="card-body"><div class="stat-k">Data</div><div class="stat-v">Unavailable</div><div class="stat-s">'+esc(err.message)+'</div></div></div></div>';
+  });
+})();
+</script>
+<dialog id="model-detail-dialog" class="qb-dialog" aria-labelledby="model-detail-title">
+ <div class="qb-dialog-head">
+  <div><h2 id="model-detail-title" class="qb-dialog-title">Model details</h2><div id="model-detail-sub" class="small text-muted-qb mt-1"></div></div>
+  <button type="button" id="model-detail-close" class="qb-dialog-close" aria-label="Close model details">×</button>
+ </div>
+ <div id="model-detail-content" class="qb-dialog-body"></div>
+</dialog>
+</body>
+</html>+(outputPrice==null?'—':fmt(outputPrice,3))+'</div><div class="small text-muted-qb">Input / output per 1M tokens · '+esc(priceSource)+'</div></div>':'<div class="qb-detail-stat"><div class="k">API token pricing</div><div class="v">Not verified</div></div>';
+ $('#model-detail-title').textContent=r.model;
+ $('#model-detail-sub').textContent=(kind.label||r.modelKindLabel||'Foundation model')+' · '+r.provider+' · selected effort: '+(r.effort==='not-reported'?'Not reported':r.effort);
+ $('#model-detail-content').innerHTML=
+  '<div class="row row-cols-2 row-cols-lg-4 g-2 mb-3">'+
+   '<div class="col"><div class="qb-detail-stat"><div class="k">QBench Index 1.3</div><div class="v">'+fmt(r.index,1)+'</div><div class="small text-muted-qb">'+(r.ranked?'Ranked · '+r.coverage+' evaluations':'Insufficient evidence')+'</div></div></div>'+
+   '<div class="col"><div class="qb-detail-stat"><div class="k">Raw family mean</div><div class="v">'+fmt(r.rawIndex,1)+'</div></div></div>'+
+   '<div class="col"><div class="qb-detail-stat"><div class="k">Release date</div><div class="v">'+(dates.length?esc(dates[0]):'—')+'</div></div></div>'+
+   '<div class="col"><div class="qb-detail-stat"><div class="k">Provider</div><div class="v">'+esc(r.provider)+'</div></div></div>'+
+  '</div><div class="row row-cols-1 row-cols-lg-2 g-2 mb-4"><div class="col">'+price+'</div><div class="col"><div class="qb-detail-stat"><div class="k">Evidence coverage</div><div class="v">'+r.coverage+' / '+RESULT.evals.length+'</div><div class="small text-muted-qb">'+r.domainCount+' / '+RESULT.domains.length+' capability families</div></div></div></div>'+
+  '<h3 class="card-title-qb mb-2">Capability family scores</h3><div class="table-responsive mb-4"><table class="table table-sm"><thead><tr><th>Family</th><th class="text-end">Score</th></tr></thead><tbody>'+familyRows+'</tbody></table></div>'+
+  '<h3 class="card-title-qb mb-2">Available effort variants</h3><div class="table-responsive mb-4"><table class="table table-sm"><thead><tr><th>Effort</th><th class="text-end">Evaluations</th></tr></thead><tbody>'+effortRows+'</tbody></table></div>'+harnessHtml+
+  '<h3 class="card-title-qb mb-2">Source-level evaluation results</h3><div class="table-responsive"><table class="table table-sm align-middle"><thead><tr><th>Benchmark</th><th>Effort</th><th class="text-end">Score (±)</th><th>Harness</th><th>Configuration</th><th>Release date</th><th>Cost/test</th><th>Cost/success</th><th>Tokens/test</th><th>Time/test</th><th>Source</th></tr></thead><tbody>'+resultRows+'</tbody></table></div><div class="small text-muted-qb mt-2">* Cost per successful test is derived from reported cost per test and success rate when no publisher-reported value exists. API token pricing is not task cost.</div>';
+}
+
+function csvOut(){
+ var head=['variant_id','model','effort','provider','index_1_3','raw_family_mean','evidence_factor','benchmark_coverage','family_coverage','ranked','api_input_price','api_output_price','price_currency','price_source'].concat(RESULT.domains).join(',');
+ var lines=RESULT.rows.map(function(r){return [JSON.stringify(r.variantId),JSON.stringify(r.model),JSON.stringify(r.effort),JSON.stringify(r.provider),fmt(r.index,2),fmt(r.rawIndex,2),fmt(r.evidenceFactor,3),r.coverage,r.domainCount,r.ranked,fmt(r.priceInput,6),fmt(r.priceOutput,6),JSON.stringify(r.priceCurrency),JSON.stringify(r.priceSource)].concat(RESULT.domains.map(function(d){return fmt(r.domains[d],2);})).join(',');});
+ var blob=new Blob([head+'\n'+lines.join('\n')],{type:'text/csv'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='qbench-index-1.3.csv';a.click();
+}
+/* ---------- benchmarks ---------- */
+
+
+/* ---------- benchmarks ---------- */
+
+function benchStatus(id){
+ var b=RESULT.byId[id]||{},rows=(b.models||[]).filter(function(m){return m.uncertain!==true&&scoreOf(m)!==null;});
+ var n=new Set(rows.map(function(m){return variantId(m.model,effortOf(m));})).size;
+ if(RESULT.evals.some(function(e){return e.id===id;}))return {t:'In Index 1.3',c:'text-bg-success',n:n};
+ if(!n)return {t:'No verified results',c:'text-bg-warning',n:0};
+ if(b.indexEligible!==true)return {t:'Standalone evaluation',c:'text-bg-secondary',n:n};
+ return {t:'Below 12-variant minimum',c:'text-bg-warning',n:n};
+}
+function renderBenchGrid(){
+  var list=(DATA.benchmarks||[]).slice().sort(function(a,b){
+    var ia=RESULT.evals.some(function(e){return e.id===a.id;})?0:1, ib=RESULT.evals.some(function(e){return e.id===b.id;})?0:1;
+    return (ia-ib)||String(a.name).localeCompare(String(b.name),'en');
+  });
+  $('#bgrid').innerHTML=list.map(function(b){
+    var st=benchStatus(b.id);
+    return '<div class="col"><button type="button" class="bcard" data-bench="'+esc(b.id)+'" aria-pressed="'+(S.bench===b.id)+'"><div class="bt">'+esc(b.name)+'</div><div class="bm">'+st.n+' model/effort variants · snapshot '+esc(b.snapshotDate||'—')+'</div><div class="mt-2"><span class="badge '+st.c+'">'+esc(st.t)+'</span></div></button></div>';
+  }).join('');
+}
+function parseTokens(s){
+ if(s==null)return null;var t=String(s).trim().toLowerCase().replace(/,/g,''),m=t.match(/^([0-9]+(?:\.[0-9]+)?)\s*([km]?)$/);
+ return m?Number(m[1])*(m[2]==='k'?1000:m[2]==='m'?1000000:1):null;
+}
+function parseDuration(s){
+ if(s==null)return null;var t=String(s).trim().toLowerCase(),total=0,matched=false,m,re=/([0-9]+(?:\.[0-9]+)?)\s*(h|hr|hours?|m|min|minutes?|s|sec|seconds?)/g;
+ while((m=re.exec(t))!==null){matched=true;var n=Number(m[1]),u=m[2];total+=n*(u[0]==='h'?3600:u[0]==='m'?60:1);}
+ return matched?total:null;
+}
+function renderBench(){
+ var host=document.getElementById('bench-chart');
+ if(!S.bench){$('#bench-title').textContent='Select a benchmark';$('#bench-sub').textContent='';host.innerHTML='';return;}
+ var b=RESULT.byId[S.bench];if(!b)return;var st=benchStatus(b.id),source=b.source||'',costName=b.costMetric||'Cost per test';
+ $('#bench-title').textContent=b.name;
+ $('#bench-sub').innerHTML='Unit: '+esc(b.unit||'—')+' · '+esc(st.t)+' · '+st.n+' model/effort variants · '+(b.taskCount?b.taskCount+' tasks · ':'')+'snapshot '+esc(b.snapshotDate||'not stated')+' · <a href="'+esc(source)+'" target="_blank" rel="noopener">Benchmark source</a>';
+ var allRows=(b.models||[]).filter(function(r){return !!r.model&&scoreOf(r)!==null;}).slice().sort(function(a,c){return scoreOf(c)-scoreOf(a);});
+ if(!allRows.length){host.innerHTML='<div class="empty-qb">No model values are stored for this benchmark.'+(b.valueNote?' '+esc(b.valueNote):'')+'</div>';return;}
+ var top=allRows.slice(0,25),p=pal();
+ var costRows=allRows.filter(function(r){return Number(r.costPerTestUSD)>0;});
+ var tokenRows=allRows.map(function(r){return {r:r,v:parseTokens(r.tokensPerTestDisplay)};}).filter(function(x){return x.v!=null&&x.v>0;});
+ var timeRows=allRows.map(function(r){return {r:r,v:parseDuration(r.durationPerTestDisplay)};}).filter(function(x){return x.v!=null&&x.v>0;});
+ var releaseRows=allRows.filter(function(r){return r.releaseDate&&/^\d{4}-\d{2}-\d{2}/.test(String(r.releaseDate));});
+ var effortGroups={};allRows.forEach(function(r){var e=effortOf(r);if(e!=='not-reported')(effortGroups[r.model]=effortGroups[r.model]||[]).push({effort:e,score:scoreOf(r)});});
+ var effortSeries=Object.keys(effortGroups).filter(function(n){return effortGroups[n].length>1;});
+ var costHtml=costRows.length>=3?'<h3 class="card-title-qb mt-4 mb-2">Cost per test vs. score</h3><div id="bench-cost-el" style="height:350px"></div><div class="notice-qb">Only publisher-reported benchmark-specific cost per test is plotted. This is not cross-benchmark Index cost per task.</div>':'';
+ var tokenHtml=tokenRows.length>=3?'<h3 class="card-title-qb mt-4 mb-2">Output tokens per test vs. score</h3><div id="bench-token-el" style="height:350px"></div>':'';
+ var timeHtml=timeRows.length>=3?'<h3 class="card-title-qb mt-4 mb-2">Time per test vs. score</h3><div id="bench-time-el" style="height:350px"></div>':'';
+ var releaseHtml=releaseRows.length>=3?'<h3 class="card-title-qb mt-4 mb-2">Score vs. model release date</h3><div id="bench-release-el" style="height:350px"></div>':'';
+ var effortHtml=effortSeries.length?'<h3 class="card-title-qb mt-4 mb-2">Reasoning effort vs. score</h3><div id="bench-effort-el" style="height:350px"></div><div class="notice-qb">Each line is one exact model with multiple published effort variants. Missing effort labels are not inferred.</div>':'';
+ var hasHleParts=allRows.some(function(r){return r.reasoningScore!=null||r.knowledgeScore!=null;}),hasCalib=allRows.some(function(r){return r.calibrationError!=null;});
+ var hasReleaseDate=allRows.some(function(r){return !!r.releaseDate;}),hasInputPrice=allRows.some(function(r){return r.inputUSDPerMillion!=null;}),hasOutputPrice=allRows.some(function(r){return r.outputUSDPerMillion!=null;});
+ var header='<tr><th>Model</th><th>Effort</th><th class="text-end">Score (± if reported)</th>'+
+  (hasHleParts?'<th class="text-end">Reasoning</th><th class="text-end">Knowledge</th>':'')+
+  (hasCalib?'<th class="text-end">Calibration error</th>':'')+
+  '<th>Configuration</th><th>Harness</th><th>'+esc(costName)+'</th><th>Cost / successful test (reported or derived)</th><th>Tokens / test</th><th>Duration / test</th>'+
+  (hasReleaseDate?'<th>Model release date</th>':'')+(hasInputPrice?'<th>Input / 1M tokens</th>':'')+(hasOutputPrice?'<th>Output / 1M tokens</th>':'')+
+  '<th>Snapshot</th><th>Evidence / source</th></tr>';
+ var body=allRows.map(function(r){
+  var cost=r.costPerTestUSD,reportedSuccess=r.costPerSuccessfulTaskUSD;
+  var derived=reportedSuccess!=null?Number(reportedSuccess):(cost!=null&&scoreOf(r)>0?Number(cost)/(scoreOf(r)/100):null),derivedLabel=reportedSuccess!=null?'Publisher-reported':(cost!=null&&scoreOf(r)>0?'Derived from measured cost/test ÷ success rate':'');
+  var src=r.source||source,evidence=r.evidence||'No row-level evidence provided.',unc=r.scoreUncertainty;
+  if(unc==null&&r.uncertainty){var um=String(r.uncertainty).match(/([0-9]+(?:\.[0-9]+)?)/);if(um)unc=Number(um[1]);}
+  var scoreText=fmt(scoreOf(r),2)+(unc!=null?' ± '+fmt(unc,2):'');
+  var extra=(hasHleParts?'<td class="text-end num">'+fmt(r.reasoningScore,2)+'</td><td class="text-end num">'+fmt(r.knowledgeScore,2)+'</td>':'')+(hasCalib?'<td class="text-end num">'+fmt(r.calibrationError,2)+'</td>':'');
+  var kind=(DATA.modelNameAudit&&DATA.modelNameAudit.modelKinds||[]).filter(function(x){return x.name===r.model;})[0],kindLabel=kind?'<span class="badge rounded-pill text-bg-light text-secondary border ms-1">'+esc(kind.label)+'</span>':'';
+  var effort=effortOf(r);
+  var meta=(hasReleaseDate?'<td>'+esc(r.releaseDate||'—')+'</td>':'')+(hasInputPrice?'<td class="num">'+(r.inputUSDPerMillion==null?'—':'$'+fmt(r.inputUSDPerMillion,3))+'</td>':'')+(hasOutputPrice?'<td class="num">'+(r.outputUSDPerMillion==null?'—':'$'+fmt(r.outputUSDPerMillion,3))+'</td>':'');
+  return '<tr><td>'+esc(r.model)+kindLabel+(r.originalModelName?'<small class="d-block text-muted-qb">source label: '+esc(r.originalModelName)+'</small>':'')+'</td><td>'+esc(effort==='not-reported'?'Not reported':effort)+'</td><td class="text-end num">'+scoreText+' <span class="text-muted-qb">'+esc(b.unit||'')+'</span></td>'+extra+'<td>'+esc(r.configuration||'Not reported')+'</td><td>'+esc(r.harness||'Not reported')+'</td><td class="num">'+(cost==null?'—':'$'+fmt(cost,3))+'</td><td class="num">'+(derived==null?'—':'$'+fmt(derived,3))+'</td><td class="num">'+esc(r.tokensPerTestDisplay||'—')+'</td><td class="num">'+esc(r.durationPerTestDisplay||'—')+'</td>'+meta+'<td>'+esc(r.snapshotDate||b.snapshotDate||'Not stated')+'</td><td><span class="badge rounded-pill text-bg-light text-secondary border">'+esc(r.sourceType||'unspecified')+'</span><br><a href="'+esc(src)+'" target="_blank" rel="noopener">Source</a><details class="mt-1"><summary>Evidence</summary><small>'+esc(evidence)+'</small></details></td></tr>';
+ }).join('');
+ var example=b.exampleTask?'<div class="card bg-body-tertiary border-0 p-3 mb-3"><div class="fw-semibold mb-1">Example task / task design</div><div class="small">'+esc(b.exampleTask)+'</div></div>':'';
+ var note=b.valueNote?'<div class="notice-qb mb-3">'+esc(b.valueNote)+'</div>':'';
+ var costNote=costRows.length?'<div class="notice-qb">Cost / successful test is publisher-reported where available; otherwise it is derived from measured benchmark cost per test divided by the reported success rate. It is benchmark-specific, not a universal cost-per-task metric.</div>':'';
+ host.innerHTML=example+note+'<div id="bench-plot-el" style="height:'+(80+top.length*26)+'px"></div><div class="notice-qb">Each bar is a separate model/effort result. No best-effort collapse is applied. Publisher-reported uncertainty is preserved; source-specific meanings are not merged.</div>'+costHtml+costNote+tokenHtml+timeHtml+releaseHtml+effortHtml+
+  '<h3 class="card-title-qb mt-4 mb-2">All model/effort results <span class="metric-chip">'+allRows.length+' rows</span></h3><div class="table-responsive"><table class="table table-hover align-middle bench-results mb-0"><thead>'+header+'</thead><tbody>'+body+'</tbody></table></div>';
+ var c=chartInit('bench-plot-el');
+ if(c)c.setOption({animation:false,grid:{left:270,right:65,top:6,bottom:6},tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(items){var t=top[items[0].dataIndex],unc=t.scoreUncertainty;return esc(variantLabel({model:t.model,effort:effortOf(t)}))+'<br>Score: '+fmt(scoreOf(t),2)+(unc!=null?' ± '+fmt(unc,2):'')+' '+esc(b.unit||'');}},
+  xAxis:Object.assign({type:'value'},axisStyle(p)),yAxis:{type:'category',inverse:true,data:top.map(function(t){return variantLabel({model:t.model,effort:effortOf(t)});}),axisLabel:{color:p.ink,fontSize:12,fontFamily:getComputedStyle(document.body).fontFamily,width:245,overflow:'truncate'},axisLine:{show:false},axisTick:{show:false}},
+  series:[{type:'bar',barWidth:14,itemStyle:{color:p.accent,borderRadius:[0,4,4,0]},label:{show:true,position:'right',color:p.ink,fontSize:11,formatter:function(e){return Number(e.value).toFixed(1);}},data:top.map(function(t){return scoreOf(t);})}]},true);
+ if(costRows.length>=3){
+  var cc=chartInit('bench-cost-el'),front=[],best=-1;
+  costRows.slice().sort(function(a,b){return a.costPerTestUSD-b.costPerTestUSD||scoreOf(b)-scoreOf(a);}).forEach(function(r){if(scoreOf(r)>best){front.push([r.costPerTestUSD,scoreOf(r)]);best=scoreOf(r);}});
+  var cs=[{name:'Cost per test',type:'scatter',symbolSize:11,itemStyle:{color:p.accent},data:costRows.map(function(r){return [r.costPerTestUSD,scoreOf(r),variantLabel({model:r.model,effort:effortOf(r)})];})}];
+  if(front.length>1)cs.push({name:'Pareto frontier',type:'line',symbol:'none',lineStyle:{type:'dashed',width:2,color:p.good},data:front,silent:true});
+  if(cc)cc.setOption({animation:false,grid:{left:72,right:28,top:20,bottom:52},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2]||e.seriesName)+'<br>Cost/test: $'+Number(e.data[0]).toFixed(3)+'<br>Score: '+Number(e.data[1]).toFixed(2);}},xAxis:Object.assign({type:'log',name:'Cost per test (USD)',nameLocation:'middle',nameGap:34},axisStyle(p)),yAxis:Object.assign({type:'value',name:b.unit||'Score'},axisStyle(p)),series:cs},true);
+ }
+ if(tokenRows.length>=3){var tc=chartInit('bench-token-el');if(tc)tc.setOption({animation:false,grid:{left:72,right:28,top:20,bottom:52},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2])+'<br>Tokens/test: '+Math.round(e.data[0]).toLocaleString()+'<br>Score: '+Number(e.data[1]).toFixed(2);}},xAxis:Object.assign({type:'log',name:'Output tokens per test',nameLocation:'middle',nameGap:34},axisStyle(p)),yAxis:Object.assign({type:'value',name:b.unit||'Score'},axisStyle(p)),series:[{type:'scatter',symbolSize:11,itemStyle:{color:p.accent},data:tokenRows.map(function(x){return [x.v,scoreOf(x.r),variantLabel({model:x.r.model,effort:effortOf(x.r)})];})}]},true);}
+ if(timeRows.length>=3){var tm=chartInit('bench-time-el');if(tm)tm.setOption({animation:false,grid:{left:72,right:28,top:20,bottom:52},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2])+'<br>Seconds/test: '+Math.round(e.data[0])+'<br>Score: '+Number(e.data[1]).toFixed(2);}},xAxis:Object.assign({type:'log',name:'Duration per test (seconds)',nameLocation:'middle',nameGap:34},axisStyle(p)),yAxis:Object.assign({type:'value',name:b.unit||'Score'},axisStyle(p)),series:[{type:'scatter',symbolSize:11,itemStyle:{color:p.accent},data:timeRows.map(function(x){return [x.v,scoreOf(x.r),variantLabel({model:x.r.model,effort:effortOf(x.r)})];})}]},true);}
+ if(releaseRows.length>=3){var rc=chartInit('bench-release-el');if(rc)rc.setOption({animation:false,grid:{left:72,right:28,top:20,bottom:52},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2])+'<br>Released: '+esc(e.data[0])+'<br>Score: '+Number(e.data[1]).toFixed(2);}},xAxis:Object.assign({type:'time',name:'Model release date',nameLocation:'middle',nameGap:34},axisStyle(p)),yAxis:Object.assign({type:'value',name:b.unit||'Score'},axisStyle(p)),series:[{type:'scatter',symbolSize:11,itemStyle:{color:p.accent},data:releaseRows.map(function(r){return [r.releaseDate,scoreOf(r),variantLabel({model:r.model,effort:effortOf(r)})];})}]},true);}
+ if(effortSeries.length){var order={none:0,low:1,medium:2,high:3,xhigh:4,max:5},ec=chartInit('bench-effort-el');if(ec)ec.setOption({animation:false,grid:{left:70,right:25,top:20,bottom:55},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2])+'<br>Effort: '+esc(e.data[3])+'<br>Score: '+fmt(e.data[1],2);}},xAxis:Object.assign({},axisStyle(p),{type:'value',min:0,max:5,interval:1,name:'Reasoning effort (ordered)',nameLocation:'middle',nameGap:34,axisLabel:Object.assign({},axisStyle(p).axisLabel,{formatter:function(v){return ['None','Low','Medium','High','Xhigh','Max'][v]||'';}})}),yAxis:Object.assign({type:'value',name:b.unit||'Score'},axisStyle(p)),series:effortSeries.map(function(name){return {name:name,type:'line',symbol:'circle',symbolSize:8,connectNulls:false,data:effortGroups[name].map(function(x){return {value:[order[x.effort],x.score,name,x.effort]};}).sort(function(a,c){return a.value[0]-c.value[0];})};})},true);}
+}
+
+
+function renderMethod(){
+ var sp=DATA.composite,ext=sp.extendedIndex,ranked=RESULT.rows.filter(function(r){return r.ranked;}),familyCount=ext.domains.length;
+ var full=ranked.filter(function(r){return r.domainCount===familyCount;}).length,broad=ranked.filter(function(r){return r.domainCount>=4&&r.domainCount<familyCount;}).length;
+ var limited=ranked.filter(function(r){return r.domainCount>=ext.minimumDomainsPerModel&&r.domainCount<4;}).length;
+ var insufficient=RESULT.rows.filter(function(r){return !r.ranked;}).length,baseModels=new Set(RESULT.rows.map(function(r){return r.model;})).size,evalsByDomain={};
+ RESULT.evals.forEach(function(e){(evalsByDomain[e.domain]=evalsByDomain[e.domain]||[]).push(e);});
+ var cats=ext.domains.map(function(dom){var items=evalsByDomain[dom.name]||[],list=items.length?items.map(function(e){return '<span class="metric-chip">'+esc(e.name)+' · '+e.unique+' variants</span>';}).join(' '):'<span class="text-muted-qb">No eligible evaluation</span>';return '<li><strong>'+esc(dom.name)+'</strong><div class="mt-1">'+list+'</div><div class="small text-muted-qb mt-1">'+esc(dom.note||'')+'</div></li>';}).join('');
+ var excluded=(ext.excludedFromExtendedIndex||[]).map(function(x){return '<li><strong>'+esc((RESULT.byId[x.id]||{}).name||x.id)+'</strong>: '+esc(x.reason)+'</li>';}).join('');
+ var sources=(ext.sourceNotes||[]).map(function(x){return '<li><a href="'+esc(x.url)+'" target="_blank" rel="noopener">'+esc(x.label)+'</a> <span class="text-muted-qb">· '+esc(x.snapshotDate||'date not stated')+'</span></li>';}).join('');
+ var caveats=(ext.caveats||[]).map(function(x){return '<li>'+esc(x)+'</li>';}).join('');
+ var factorText=Array.from({length:familyCount-ext.minimumDomainsPerModel+1},function(_,i){var n=i+ext.minimumDomainsPerModel;return n+' families: '+Math.sqrt(n/familyCount).toFixed(2);}).join(' · ');
+ $('#method').innerHTML='<h2 class="font-serif-jp mb-3">QBench Index 1.3 · Methodology</h2><p>Index 1.3 is a source-audited composite of '+RESULT.evals.length+' evaluations across '+familyCount+' capability families. It uses publisher-reported task-success or accuracy percentages rather than within-cohort ranks. Each exact model/effort variant is a separate entry. No external composite score or proprietary weight is imported.</p>'+
+ '<div class="row row-cols-2 row-cols-lg-4 g-2 my-3"><div class="col"><div class="card p-3"><div class="small text-muted-qb">Ranked variants</div><div class="fs-3 fw-bold num">'+ranked.length+'</div></div></div><div class="col"><div class="card p-3"><div class="small text-muted-qb">Base models</div><div class="fs-3 fw-bold num">'+baseModels+'</div></div></div><div class="col"><div class="card p-3"><div class="small text-muted-qb">Full / broad evidence</div><div class="fs-3 fw-bold num">'+(full+broad)+'</div></div></div><div class="col"><div class="card p-3"><div class="small text-muted-qb">Limited evidence</div><div class="fs-3 fw-bold num">'+limited+'</div></div></div><div class="col"><div class="card p-3"><div class="small text-muted-qb">Insufficient variants</div><div class="fs-3 fw-bold num">'+insufficient+'</div></div></div></div>'+
+ '<h3>Capability families</h3><ol>'+cats+'</ol><h3>How the score is calculated</h3><ol><li><strong>Source gate:</strong> each evaluation needs at least '+ext.minimumModelsPerEvaluation+' distinct model/effort variants with usable source-reported scores.</li><li><strong>Keep the native percentage:</strong> scores remain on their reported 0–100 percentage-point scale. QBench does not turn a benchmark rank into a high percentage score.</li><li><strong>Family aggregation:</strong> evaluations in the same family are averaged; the '+familyCount+' observed family scores are then averaged equally.</li><li><strong>Evidence adjustment:</strong> incomplete '+familyCount+'-family coverage is pulled toward 50. This is a transparent coverage adjustment, not a confidence interval.</li></ol>'+
+ '<div class="card p-3 my-3"><div class="fw-semibold mb-2">Index 1.3 formula</div><div class="num mb-2">Raw family mean = average of observed family percentages</div><div class="num">Index = 50 + (Raw family mean − 50) × √(Observed families ÷ '+familyCount+')</div><div class="small text-muted-qb mt-2">Full evidence: factor 1.00 · '+factorText+'. The score is a composite, not a human intelligence percentage.</div></div>'+
+ '<h3>Model and effort handling</h3><ul><li>Each exact model name and effort level (none, low, medium, high, xhigh, max) is a separate variant.</li><li>Effort is extracted only when the source explicitly reports it. Otherwise it is shown as <strong>Not reported</strong>.</li><li>QBench never selects the highest score from multiple effort settings to represent the base model.</li><li>Harness, routing, fallback, release date and execution conditions remain visible in benchmark details. Mixed-harness rows are not silently combined.</li><li>Ranking requires at least '+ext.minimumEvaluationsPerModel+' evaluations across '+ext.minimumDomainsPerModel+' or more families. Full evidence means '+familyCount+' families; broad means 4–'+(familyCount-1)+'; limited means 2–3.</li><li>Missing scores are never imputed. Aliases are not merged without explicit source evidence.</li></ul>'+
+ '<h3>AA feature reference and boundaries</h3><p>QBench provides exact effort variants, separate harness results, model release-date trends when reported, Pareto and efficiency analysis, confidence/uncertainty display, score-versus-token and score-versus-time charts, and task-design examples where the source provides them. AA-only private results are not invented or silently imported. Cross-index cost per task is not shown unless per-run task cost is available.</p>'+
+ '<h3>Evaluations excluded from Index 1.3</h3><ul>'+excluded+'</ul><h3>Publisher and evaluator sources</h3><ul>'+sources+'</ul><h3>Limitations</h3><ul>'+caveats+'</ul><h3>Version</h3><p class="text-muted-qb">QBench Index '+esc(sp.version||'1.3')+' · snapshot '+esc(sp.snapshotAsOf||'—')+' · '+RESULT.evals.length+' eligible evaluations.</p>';
+}
+
+
+/* ---------- navigation ---------- */
+
+function renderAll(){
+  renderIndex(); renderChart(); renderModels(); renderPriceCatalog(); renderBenchGrid(); renderBench();
+}
+function show(view){
+  $$('[data-nav]').forEach(function(b){var on=b.dataset.nav===view;b.classList.toggle('active',on);if(on)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
+  $$('section.view').forEach(function(s){s.hidden=s.dataset.view!==view;});
+  renderAll();
+  Object.keys(ECH).forEach(function(k){if(ECH[k]&&!ECH[k].isDisposed())ECH[k].resize();});
+  window.scrollTo(0,0);
+}
+$$('[data-nav]').forEach(function(b){b.addEventListener('click',function(){location.hash=b.dataset.nav;show(b.dataset.nav);});});
+
+document.addEventListener('click',function(e){
+  var th=e.target.closest('[data-sort]');
+  if(th){var k=th.dataset.sort; if(S.sort===k)S.dir=-S.dir; else {S.sort=k;S.dir=(k==='model'||k==='provider')?1:-1;} renderIndex(); return;}
+  var ms=e.target.closest('[data-msort]');
+  if(ms){var mk=ms.dataset.msort; if(S.mSort===mk)S.mDir=-S.mDir; else {S.mSort=mk;S.mDir=(mk==='model'||mk==='provider')?1:-1;} renderModels(); return;}
+  var ct=e.target.closest('[data-chart]');
+  if(ct){S.chart=ct.dataset.chart; renderChart(); return;}
+  var bc=e.target.closest('[data-bench]');
+  if(bc){S.bench=bc.dataset.bench; renderBenchGrid(); renderBench(); return;}
+});
+document.addEventListener('click',function(e){
+ var btn=e.target.closest('[data-model-detail]');
+ if(btn){renderModelDetail(btn.getAttribute('data-model-detail'));var dlg=document.getElementById('model-detail-dialog');if(dlg&&dlg.showModal)dlg.showModal();else if(dlg)dlg.setAttribute('open','');return;}
+ if(e.target.closest('#model-detail-close')){var dlg2=document.getElementById('model-detail-dialog');if(dlg2&&dlg2.close)dlg2.close();else if(dlg2)dlg2.removeAttribute('open');}
+});
+document.addEventListener('change',function(e){
+  var c=e.target.closest('[data-sel]'); if(!c)return;
+  var n=c.dataset.sel;
+  if(c.checked){ if(S.selected.length>=5){c.checked=false;return;} S.selected.push(n); }
+  else S.selected=S.selected.filter(function(x){return x!==n;});
+  renderCompare();
+});
+$('#q').addEventListener('input',function(e){S.q=e.target.value;renderIndex();});
+$('#mq').addEventListener('input',function(e){S.mq=e.target.value;renderModels();});
+$('#price-search').addEventListener('input',function(){renderPriceCatalog();});
+$('#show-unranked').addEventListener('change',function(e){S.showUnranked=e.target.checked;renderIndex();});
+$('#pareto').addEventListener('change',function(e){S.pareto=e.target.checked;renderChart();});
+$('#quadrant').addEventListener('change',function(e){S.quadrant=e.target.checked;renderChart();});
+$('#mcsv').addEventListener('click',csvOut);
+$('#theme').addEventListener('click',function(){
+  var next=isDark()?'light':'dark';
+  document.documentElement.setAttribute('data-bs-theme',next);
+  try{localStorage.setItem('qbench-theme',next);}catch(err){}
+  $('#theme-icon').className='bi '+(next==='dark'?'bi-sun':'bi-moon-stars');
+  renderAll(); renderCompare();
+});
+
+/* ---------- boot ---------- */
+$('#theme-icon').className='bi '+(isDark()?'bi-sun':'bi-moon-stars');
+fetch('data/external-benchmarks.json',{cache:'no-store'})
+  .then(function(r){if(!r.ok)throw new Error('data '+r.status);return r.json();})
+  .then(function(data){
+    DATA=data; RESULT=compute(data);
+    window.QBench={get result(){return RESULT;},get state(){return S;}};
+    var provs=[]; RESULT.rows.forEach(function(r){if(provs.indexOf(r.provider)<0)provs.push(r.provider);}); provs.sort();
+    makeChoice($('#provider-choice'),[{value:'all',label:'All providers'}].concat(provs.map(function(pv){return {value:pv,label:pv};})),'all',function(v){S.provider=v;renderIndex();},'Filter by provider');
+    var efforts=['not-reported','none','low','medium','high','xhigh','max'];makeChoice($('#effort-choice'),[{value:'all',label:'All effort levels'}].concat(efforts.map(function(e){return {value:e,label:e==='not-reported'?'Effort not reported':e};})),'all',function(v){S.effort=v;renderIndex();},'Filter by reasoning effort');
+    renderStats(); renderMethod();
+    var h=(location.hash||'').replace('#','');
+    show(['index','models','benchmarks','methodology'].indexOf(h)>=0?h:'index');
+  })
+  .catch(function(err){
+    $('#stats').innerHTML='<div class="col"><div class="card stat-card"><div class="card-body"><div class="stat-k">Data</div><div class="stat-v">Unavailable</div><div class="stat-s">'+esc(err.message)+'</div></div></div></div>';
+  });
+})();
+</script>
+<dialog id="model-detail-dialog" class="qb-dialog" aria-labelledby="model-detail-title">
+ <div class="qb-dialog-head">
+  <div><h2 id="model-detail-title" class="qb-dialog-title">Model details</h2><div id="model-detail-sub" class="small text-muted-qb mt-1"></div></div>
+  <button type="button" id="model-detail-close" class="qb-dialog-close" aria-label="Close model details">×</button>
+ </div>
+ <div id="model-detail-content" class="qb-dialog-body"></div>
+</dialog>
+</body>
+</html>+fmt(m.costPerTestUSD,3):'—';
   var derived=m.costPerSuccessfulTaskUSD!=null?'$'+fmt(m.costPerSuccessfulTaskUSD,3):(m.costPerTestUSD!=null&&scoreOf(m)>0?'$'+fmt(m.costPerTestUSD/(scoreOf(m)/100),3)+'*':'—');
   return '<tr><td>'+esc(b.name)+'</td><td>'+esc(x.effort==='not-reported'?'Not reported':x.effort)+'</td><td class="text-end num">'+fmt(scoreOf(m),2)+(unc!=null?' ± '+fmt(unc,2):'')+'</td><td>'+esc(m.harness||'Not reported')+'</td><td>'+esc(m.configuration||'—')+'</td><td>'+esc(m.releaseDate||'—')+'</td><td class="num">'+cost+'</td><td class="num">'+derived+'</td><td class="num">'+esc(m.tokensPerTestDisplay||'—')+'</td><td class="num">'+esc(m.durationPerTestDisplay||'—')+'</td><td><a href="'+esc(m.source||b.source||'')+'" target="_blank" rel="noopener">Source</a></td></tr>';
  }).join('');
@@ -714,11 +1360,11 @@ function renderBench(){
  var timeHtml=timeRows.length>=3?'<h3 class="card-title-qb mt-4 mb-2">Time per test vs. score</h3><div id="bench-time-el" style="height:350px"></div>':'';
  var releaseHtml=releaseRows.length>=3?'<h3 class="card-title-qb mt-4 mb-2">Score vs. model release date</h3><div id="bench-release-el" style="height:350px"></div>':'';
  var effortHtml=effortSeries.length?'<h3 class="card-title-qb mt-4 mb-2">Reasoning effort vs. score</h3><div id="bench-effort-el" style="height:350px"></div><div class="notice-qb">Each line is one exact model with multiple published effort variants. Missing effort labels are not inferred.</div>':'';
- var hasHleParts=allRows.some(function(r){return r.reasoningScore!=null||r.knowledgeScore!=null;}),hasCalib=allRows.some(function(r){return r.calibrationError!=null;});
+ var hasHleParts=allRows.some(function(r){return r.reasoningScore!=null||r.knowledgeScore!=null;}),hasCalib=allRows.some(function(r){return r.calibrationError!=null;}),hasPublic500=allRows.some(function(r){return r.public500Score!=null;});
  var hasReleaseDate=allRows.some(function(r){return !!r.releaseDate;}),hasInputPrice=allRows.some(function(r){return r.inputUSDPerMillion!=null;}),hasOutputPrice=allRows.some(function(r){return r.outputUSDPerMillion!=null;});
  var header='<tr><th>Model</th><th>Effort</th><th class="text-end">Score (± if reported)</th>'+
   (hasHleParts?'<th class="text-end">Reasoning</th><th class="text-end">Knowledge</th>':'')+
-  (hasCalib?'<th class="text-end">Calibration error</th>':'')+
+  (hasCalib?'<th class="text-end">Calibration error</th>':'')+(hasPublic500?'<th class="text-end">Public 500 pass rate</th>':'')+
   '<th>Configuration</th><th>Harness</th><th>'+esc(costName)+'</th><th>Cost / successful test (reported or derived)</th><th>Tokens / test</th><th>Duration / test</th>'+
   (hasReleaseDate?'<th>Model release date</th>':'')+(hasInputPrice?'<th>Input / 1M tokens</th>':'')+(hasOutputPrice?'<th>Output / 1M tokens</th>':'')+
   '<th>Snapshot</th><th>Evidence / source</th></tr>';
@@ -728,7 +1374,7 @@ function renderBench(){
   var src=r.source||source,evidence=r.evidence||'No row-level evidence provided.',unc=r.scoreUncertainty;
   if(unc==null&&r.uncertainty){var um=String(r.uncertainty).match(/([0-9]+(?:\.[0-9]+)?)/);if(um)unc=Number(um[1]);}
   var scoreText=fmt(scoreOf(r),2)+(unc!=null?' ± '+fmt(unc,2):'');
-  var extra=(hasHleParts?'<td class="text-end num">'+fmt(r.reasoningScore,2)+'</td><td class="text-end num">'+fmt(r.knowledgeScore,2)+'</td>':'')+(hasCalib?'<td class="text-end num">'+fmt(r.calibrationError,2)+'</td>':'');
+  var extra=(hasHleParts?'<td class="text-end num">'+fmt(r.reasoningScore,2)+'</td><td class="text-end num">'+fmt(r.knowledgeScore,2)+'</td>':'')+(hasCalib?'<td class="text-end num">'+fmt(r.calibrationError,2)+'</td>':'')+(hasPublic500?'<td class="text-end num">'+fmt(r.public500Score,2)+'</td>':'');
   var kind=(DATA.modelNameAudit&&DATA.modelNameAudit.modelKinds||[]).filter(function(x){return x.name===r.model;})[0],kindLabel=kind?'<span class="badge rounded-pill text-bg-light text-secondary border ms-1">'+esc(kind.label)+'</span>':'';
   var effort=effortOf(r);
   var meta=(hasReleaseDate?'<td>'+esc(r.releaseDate||'—')+'</td>':'')+(hasInputPrice?'<td class="num">'+(r.inputUSDPerMillion==null?'—':'$'+fmt(r.inputUSDPerMillion,3))+'</td>':'')+(hasOutputPrice?'<td class="num">'+(r.outputUSDPerMillion==null?'—':'$'+fmt(r.outputUSDPerMillion,3))+'</td>':'');
