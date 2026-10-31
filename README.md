@@ -104,7 +104,8 @@ A larger leaderboard is not automatically a better composite. Incomplete exports
 | Metric | Result |
 |---|---:|
 | Benchmark datasets with model values | 48 |
-| Benchmark directory entries | 79 |
+| Benchmark directory dataset cards | 48 |
+| Benchmark catalog metadata records | 79 |
 | Model-result rows across all datasets | 813 |
 | Exact model names across all datasets | 188 |
 | Model + effort + harness combinations | 681 |
