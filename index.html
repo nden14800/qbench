@@ -433,7 +433,7 @@ function indexColumns(){
     .concat([{k:'coverage',l:'Evals',num:true},{k:'inputPrice',l:'Input / 1M',num:true},{k:'outputPrice',l:'Output / 1M',num:true}]);
 }
 function sortVal(r,k){
-  if(k==='model')return r.model; if(k==='provider')return r.provider; if(k==='index')return r.index; if(k==='coverage')return r.coverage; if(k==='inputPrice')return r.priceInput;if(k==='outputPrice')return r.priceOutput;
+  if(k==='rank')return r.rank; if(k==='model')return r.model; if(k==='provider')return r.provider; if(k==='index')return r.index; if(k==='coverage')return r.coverage; if(k==='inputPrice')return r.priceInput;if(k==='outputPrice')return r.priceOutput;
   if(k.indexOf('d:')===0)return r.domains[k.slice(2)];
   return null;
 }
