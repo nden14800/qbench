@@ -14,7 +14,7 @@ QBench keeps model results tied to the original evaluation, metric, model config
 - Missing results are never converted to zero or imputed.
 - Model aliases are not merged without explicit source evidence.
 - A model receives a rank only when it has at least **2 eligible evaluation results across 2 or more task families**.
-- The raw benchmark result, source, snapshot, harness and configuration remain available in the benchmark directory.
+- The raw benchmark result, source, snapshot, harness and configuration remain available in the benchmark directory. Publisher-reported ± values and calibration/partition metrics are displayed where available; the composite uses point estimates only and does not pool incompatible uncertainty definitions.
 
 ## QBench Index 1.2
 
