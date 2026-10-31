@@ -15,7 +15,7 @@ Independent AI benchmark leaderboards and model-performance analysis.
 | Published result rows | 505 |
 | Datasets with model-level results | 20 |
 | Providers | 31 |
-| Benchmark directory entries | 45 |
+| Benchmark directory entries | 46 |
 
 Counts are derived from data/external-benchmarks.json. A result row is not necessarily a unique model: a source may publish several reasoning efforts, harnesses, or routing configurations for one model. Individual benchmark leaderboards retain the source rows; the main leaderboard groups each model once and shows its best reported configuration. CSV export retains the raw rows.
 
@@ -60,6 +60,7 @@ These are candidates for future inclusion, not fabricated or backfilled composit
 - **FrontierMath Erdős** — Epoch AI's initial run covered 68 open Erdős problems. GPT-6 Astra solved 2/68 (3%); GPT-5.6 Sol, GPT-5.5, Claude Fable 5.1, and Claude Fable 5 each scored 0%. Only five models were tested in the published initial run, so the dataset is too small for a stable percentile ranking. The QBench records have been corrected to these official results.
 - **MirrorCode** — Epoch AI and METR's long-horizon coding benchmark uses 15 medium/large target programs, two implementation languages, private held-out tests, and three runs per task. Full official model-level coverage is required before inclusion.
 - **Earthborne Rangers (EBR-bench)** — useful long-horizon learning monitor, but its game content and harness changed in v4; versioned results must be separated.
+- **ARC-AGI-3** — highly difficult interactive reasoning environments, but public standings are team/system submissions rather than comparable base-model results, so it is tracked outside the composite.
 - **DeepSWE v1.1** — excluded from the index while Epoch AI labels it **Flawed**.
 
 ARC-AGI-3 public competition standings are team/system submissions, not a comparable base-model leaderboard, so they are not mixed into this model index.
