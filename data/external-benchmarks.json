@@ -11514,6 +11514,100 @@
           "evidence": "BenchLeader mirror of Artificial Analysis public leaderboard; result date 2026-06-04"
         }
       ]
+    },
+    {
+      "id": "mmmu-pro-aa",
+      "name": "MMMU-Pro",
+      "snapshotDate": "2026-10-31",
+      "source": "https://artificialanalysis.ai/evaluations/mmmu-pro",
+      "unit": "% correct",
+      "quality": "Artificial Analysis official leaderboard summary. Only the top three published results are imported; not a full leaderboard. The official page reports 27 of 298 models currently shown.",
+      "coverageLevel": "official-top-three-only",
+      "indexEligible": false,
+      "indexDomain": "Multimodal & Interaction",
+      "saturationStatus": "not-rated",
+      "models": [
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 88,
+          "configuration": "Max · Default Fallback",
+          "harness": "Artificial Analysis Stirrup",
+          "evidence": "Official AA MMMU-Pro page top-three summary; accessed 2026-10-31. Rounded whole-percent result as published.",
+          "source": "https://artificialanalysis.ai/evaluations/mmmu-pro",
+          "sourceType": "official-publisher",
+          "snapshotDate": "2026-10-31"
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 87,
+          "configuration": "Max",
+          "harness": "Artificial Analysis Stirrup",
+          "evidence": "Official AA MMMU-Pro page top-three summary; accessed 2026-10-31. Rounded whole-percent result as published.",
+          "source": "https://artificialanalysis.ai/evaluations/mmmu-pro",
+          "sourceType": "official-publisher",
+          "snapshotDate": "2026-10-31"
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 87,
+          "configuration": "Xhigh · Default Fallback",
+          "harness": "Artificial Analysis Stirrup",
+          "evidence": "Official AA MMMU-Pro page top-three summary; accessed 2026-10-31. Rounded whole-percent result as published.",
+          "source": "https://artificialanalysis.ai/evaluations/mmmu-pro",
+          "sourceType": "official-publisher",
+          "snapshotDate": "2026-10-31"
+        }
+      ]
+    },
+    {
+      "id": "aa-lcr-v1-1",
+      "name": "AA-LCR v1.1",
+      "snapshotDate": "2026-10-31",
+      "source": "https://artificialanalysis.ai/evaluations/artificial-analysis-long-context-reasoning",
+      "unit": "% pass@1",
+      "quality": "Artificial Analysis official legacy leaderboard summary. Only the top three published results are imported; not a full leaderboard. The official page reports 28 of 589 models currently shown.",
+      "coverageLevel": "official-top-three-only",
+      "indexEligible": false,
+      "indexDomain": "Knowledge & Professional Work",
+      "saturationStatus": "not-rated",
+      "models": [
+        {
+          "model": "Kimi K3",
+          "provider": "Kimi",
+          "score": 88.7,
+          "configuration": "Max",
+          "harness": "Artificial Analysis Stirrup",
+          "evidence": "Official AA-LCR v1.1 page top-three summary; accessed 2026-10-31.",
+          "source": "https://artificialanalysis.ai/evaluations/artificial-analysis-long-context-reasoning",
+          "sourceType": "official-publisher",
+          "snapshotDate": "2026-10-31"
+        },
+        {
+          "model": "Step 5 Preview",
+          "provider": "StepFun",
+          "score": 88.3,
+          "configuration": "Not reported",
+          "harness": "Artificial Analysis Stirrup",
+          "evidence": "Official AA-LCR v1.1 page top-three summary; accessed 2026-10-31.",
+          "source": "https://artificialanalysis.ai/evaluations/artificial-analysis-long-context-reasoning",
+          "sourceType": "official-publisher",
+          "snapshotDate": "2026-10-31"
+        },
+        {
+          "model": "Kimi K3.1 Pro",
+          "provider": "Kimi",
+          "score": 86.3,
+          "configuration": "Not reported",
+          "harness": "Artificial Analysis Stirrup",
+          "evidence": "Official AA-LCR v1.1 page top-three summary; accessed 2026-10-31.",
+          "source": "https://artificialanalysis.ai/evaluations/artificial-analysis-long-context-reasoning",
+          "sourceType": "official-publisher",
+          "snapshotDate": "2026-10-31"
+        }
+      ]
     }
   ],
   "benchmarkCatalog": [
@@ -11937,9 +12031,9 @@
       "id": "mmmu-pro-aa",
       "name": "MMMU-Pro",
       "group": "AA standalone evaluations",
-      "status": "research-pipeline",
-      "source": "https://artificialanalysis.ai/evaluations",
-      "note": "1,730 multimodal questions across 30 academic disciplines."
+      "status": "leader-summary-imported",
+      "source": "https://artificialanalysis.ai/evaluations/mmmu-pro",
+      "note": "3,460 multimodal questions across six core academic disciplines. Official AA page currently exposes a top-three summary and reports 27 of 298 models; not a full leaderboard."
     },
     {
       "id": "ifbench-aa",
@@ -11993,9 +12087,9 @@
       "id": "aa-lcr-v1-1",
       "name": "AA-LCR v1.1",
       "group": "AA legacy evaluations",
-      "status": "research-pipeline",
-      "source": "https://artificialanalysis.ai/evaluations",
-      "note": "Retired long-context reasoning evaluation; superseded in v5."
+      "status": "leader-summary-imported",
+      "source": "https://artificialanalysis.ai/evaluations/artificial-analysis-long-context-reasoning",
+      "note": "100 long-context reasoning questions over 10k–100k-token documents. Official AA legacy page currently exposes a top-three summary and reports 28 of 589 models; not a full leaderboard."
     },
     {
       "id": "scicode",
