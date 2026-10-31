@@ -222,10 +222,27 @@ function updateCompareModels(){
  const fill=(id,chosen,exclude)=>{const el=$(id);el.innerHTML=options.map(o=>'<option value="'+esc(o.value)+'">'+esc(o.label)+'</option>').join('');if(options.some(o=>o.value===chosen))el.value=chosen;else if(options.length)el.value=options[exclude?Math.min(1,options.length-1):0].value;return el.value;};
  state.compareA=fill('#compareModelA',state.compareA,false);state.compareB=fill('#compareModelB',state.compareB,true);
 }
+function renderProviderMix(){
+ const unique=new Map();
+ state.data.benchmarks.forEach(b=>b.models.forEach(m=>unique.set(m.model+'|'+m.provider,{model:m.model,provider:m.provider})));
+ const counts={};unique.forEach(x=>counts[x.provider]=(counts[x.provider]||0)+1);
+ const data=Object.entries(counts).sort((a,b)=>b[1]-a[1]).map(([name,value])=>({name,value,itemStyle:{color:color(name)}}));
+ setChart('providerMixChart',{textStyle:{fontFamily:chartFont},legend:{type:'scroll',orient:'vertical',right:5,top:12,bottom:12,textStyle:axis()},series:[{type:'pie',radius:['42%','72%'],center:['36%','52%'],label:{show:false},emphasis:{label:{show:true,fontSize:13,fontWeight:600}},itemStyle:{borderColor:'#fff',borderWidth:2},data}],tooltip:{trigger:'item',formatter:p=>p.name+': '+p.value+' model records ('+p.percent+'%)'}});
+}
+function renderSourceRank(){
+ const b=get(state.benchmark);if(!b)return;
+ const rows=b.models.slice().sort((a,z)=>Number(z.score)-Number(a.score)).slice(0,24);
+ const host=$('#sourceRankChart');if(host)host.style.height=Math.max(360,rows.length*22+70)+'px';
+ setChart('sourceRankChart',{textStyle:{fontFamily:chartFont},grid:{left:175,right:48,top:12,bottom:24},xAxis:{type:'value',axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'category',data:rows.map(m=>m.model+(m.configuration?' · '+m.configuration:'' )).reverse(),axisLabel:{...axis(),fontSize:10}},series:[{type:'bar',barMaxWidth:18,data:rows.map(m=>({value:m.score,itemStyle:{color:color(m.provider)}})).reverse(),label:{show:true,position:'right',fontSize:10,formatter:p=>fmt(p.value,1)}}],tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:items=>{const p=items[0],m=rows[rows.length-1-p.dataIndex];return '<b>'+esc(m.model)+'</b><br>'+fmt(m.score,2)+' '+esc(b.unit)+'<br>'+esc(m.provider||'')+' · '+esc(config(m));}}});
+}
+function renderModelCoverage(){
+ const rows=state.data.benchmarks.map(b=>({name:b.name,models:new Set(b.models.map(m=>m.model)).size,results:b.models.length})).sort((a,b)=>a.models-b.models);
+ setChart('modelCoverageChart',{textStyle:{fontFamily:chartFont},legend:{top:2,textStyle:axis()},grid:{left:175,right:42,top:36,bottom:25},xAxis:{type:'value',minInterval:1,axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'category',data:rows.map(x=>x.name),axisLabel:{...axis(),fontSize:10}},series:[{name:'Unique models',type:'bar',data:rows.map(x=>x.models),barMaxWidth:17,itemStyle:{color:'#587e9d'}},{name:'Result rows',type:'bar',data:rows.map(x=>x.results),barMaxWidth:17,itemStyle:{color:'#b18b64'}}],tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:items=>{const x=rows[items[0].dataIndex];return '<b>'+esc(x.name)+'</b><br>'+x.models+' unique models<br>'+x.results+' result rows';}}});
+}
 function renderBenchmarkDepth(){
  const rows=state.data.benchmarks.slice().sort((a,b)=>new Set(a.models.map(m=>m.model)).size-new Set(b.models.map(m=>m.model)).size);
  $('#benchmarkDepthChart').style.height=Math.max(440,rows.length*23+75)+'px';
- setChart('benchmarkDepthChart',{textStyle:{fontFamily:chartFont},grid:{left:185,right:45,top:15,bottom:25},xAxis:{type:'value',minInterval:1,axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'category',data:rows.map(b=>b.name),axisLabel:{...axis(),fontSize:10}},series:[{type:'bar',data:rows.map(b=>({value:new Set(b.models.map(m=>m.model)).size,itemStyle:{color:'#587e9d'}})),barMaxWidth:19,label:{show:true,position:'right',fontSize:10}}],tooltip:{formatter:p=>rows[p.dataIndex].name+'<br>'+p.value+' result rows'}});
+ setChart('benchmarkDepthChart',{textStyle:{fontFamily:chartFont},grid:{left:185,right:45,top:15,bottom:25},xAxis:{type:'value',minInterval:1,axisLabel:axis(),splitLine:{lineStyle:{color:'rgba(125,135,145,.16)'}}},yAxis:{type:'category',data:rows.map(b=>b.name),axisLabel:{...axis(),fontSize:10}},series:[{type:'bar',data:rows.map(b=>({value:new Set(b.models.map(m=>m.model)).size,itemStyle:{color:'#587e9d'}})),barMaxWidth:19,label:{show:true,position:'right',fontSize:10}}],tooltip:{formatter:p=>rows[p.dataIndex].name+'<br>'+p.value+' unique models'}});
 }
 function renderCharts(){renderBenchmarkDepth();renderProviderMix();renderSourceRank();renderModelCoverage();}
 
