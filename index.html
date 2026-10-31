@@ -624,9 +624,6 @@ function benchStatus(id){
  return {t:'Below 12-variant minimum',c:'text-bg-warning',n:n};
 }
 function renderBenchGrid(){
-
-
-function renderBenchGrid(){
   var list=(DATA.benchmarks||[]).slice().sort(function(a,b){
     var ia=RESULT.evals.some(function(e){return e.id===a.id;})?0:1, ib=RESULT.evals.some(function(e){return e.id===b.id;})?0:1;
     return (ia-ib)||String(a.name).localeCompare(String(b.name),'en');
