@@ -374,14 +374,14 @@ function renderStats(){
   $('#stats').innerHTML=items.map(function(it){return '<div class="col"><div class="card stat-card h-100"><div class="card-body py-3"><div class="stat-k">'+it[0]+'</div><div class="stat-v">'+it[1]+'</div><div class="stat-s">'+it[2]+'</div></div></div></div>';}).join('');
   $('#index-sub').textContent=ranked.length+' formal ranks · '+provisional+' provisional values · '+RESULT.evals.length+' eligible evaluations · snapshot '+(DATA.composite.snapshotAsOf||'—');
   var snaps=(DATA.benchmarks||[]).map(function(b){return b.snapshotDate;}).filter(function(d){return d&&/^\d{4}-/.test(d);}).sort();
-  $('#footer').innerHTML='Data as of '+esc(snaps[snaps.length-1]||'—')+'. QBench stores publisher-reported values and does not reproduce the Artificial Analysis Intelligence Index. Sources are listed per benchmark.';
+  $('#footer').innerHTML='Data snapshot '+esc(DATA.composite.snapshotAsOf||snaps[snaps.length-1]||'—')+'. QBench uses publisher-reported results and explicitly attributed mirrors; it does not reproduce the Artificial Analysis Index.';
 }
 
 /* ---------- index table ---------- */
 function indexColumns(){
   return [{k:'rank',l:'#',num:true},{k:'model',l:'Model'},{k:'provider',l:'Provider'},{k:'index',l:'Index 1.0',num:true}]
     .concat(RESULT.domains.map(function(d){return {k:'d:'+d,l:d,num:true};}))
-    .concat([{k:'coverage',l:'Evals',num:true},{k:'price',l:'Price proxy',num:true}]);
+    .concat([{k:'coverage',l:'Evals',num:true},{k:'price',l:'API token price',num:true}]);
 }
 function sortVal(r,k){
   if(k==='model')return r.model; if(k==='provider')return r.provider; if(k==='index')return r.index; if(k==='coverage')return r.coverage; if(k==='price')return r.price;
@@ -661,6 +661,8 @@ function renderMethod(){
   var evalsByDomain={};
   RESULT.evals.forEach(function(e){(evalsByDomain[e.domain]=evalsByDomain[e.domain]||[]).push(e.name);});
   var ranked=RESULT.rows.filter(function(r){return r.ranked;}).length;
+  var provisional=RESULT.rows.filter(function(r){return r.coverage>=2&&!r.ranked;}).length;
+  var single=RESULT.rows.filter(function(r){return r.coverage===1;}).length;
   var cats=RESULT.spec.domains.map(function(dom){
     var names=(evalsByDomain[dom.name]||[]);
     var list=names.length?names.map(esc).join(', '):'<span class="text-muted-qb">no eligible evaluation yet</span>';
