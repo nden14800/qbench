@@ -448,7 +448,7 @@ function renderSummaryCards(ranked,top,baseModels,full,broad,limited,unranked){
       tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(ps){var r=top5[ps[0].dataIndex];return esc(r.variantLabel)+'<br>Index '+fmt(r.index,1);}},
       xAxis:catAxis(p,{type:'category',data:top5.map(scatterLabel)},{rotate:40,interval:0,fontSize:10,width:110,overflow:'truncate'}),
       yAxis:Object.assign({type:'value',min:0},axisStyle(p)),
-      series:[{type:'bar',barWidth:'50%',data:top5.map(function(r){return {value:+Number(r.index).toFixed(1),itemStyle:{color:providerColor(r.provider),borderRadius:[4,4,0,0]}};}),
+      series:[{type:'bar',barWidth:'50%',data:top5.map(function(r){return {value:+Number(r.index).toFixed(1),itemStyle:{color:providerColor(r.provider),borderRadius:[0,5,5,0]}};}),
         label:{show:true,position:'top',formatter:function(e){return fmt(e.value,1);},color:p.ink,fontSize:10}}]});
   }
 }
@@ -567,16 +567,17 @@ function renderBars(host){
       '<button type="button" class="btn btn-sm btn-link p-0 mt-1" id="bars-clear">Clear selection</button></div></details>'+
     '<div class="form-check form-switch m-0"><input class="form-check-input" type="checkbox" id="bars-values"'+(S.barsValues?' checked':'')+'><label class="form-check-label" for="bars-values">Show values on bars</label></div>'+
     '<span class="text-muted-qb">'+(picked?'Custom selection: '+rows.length+' of '+all.length+' ranked variants':'Showing '+rows.length+' of '+all.length+' ranked variants')+'</span></div>'+
-    '<div id="chart-main-el" style="height:'+Math.max(420,rows.length>20?520:420)+'px"></div>'+
+    '<div id="chart-main-el" style="height:'+Math.max(440,Math.min(1500,rows.length*34+100))+'px"></div>'+
     '<div class="notice-qb">Bars show the Index 1.6 score for each ranked variant. Effort variants are separate rows; unreported effort is not merged.</div>';
   makeChoice($('#bars-n-choice'),['10','20','30','all'].map(function(v){return {value:v,label:v==='all'?'All ('+all.length+')':v};}),String(S.barsN),function(v){S.barsN=v;renderChart();},'Show top ranked variants');
   $('#bars-n-choice .choice__trigger').disabled=!!picked;
   var c=chartInit('chart-main-el');
   if(!c||!rows.length)return;
-  c.setOption({animation:false,grid:{left:56,right:18,top:24,bottom:140},
+  c.setOption({animation:false,grid:{left:190,right:48,top:22,bottom:48,containLabel:true},
     tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(ps){var r=rows[ps[0].dataIndex];return esc(r.variantLabel)+'<br>Index '+fmt(r.index,1)+'<br>Families observed: '+r.domainCount+' / '+RESULT.domains.length;}},
-    xAxis:catAxis(p,{type:'category',data:rows.map(scatterLabel)},{rotate:50,interval:0,fontSize:11,width:130,overflow:'truncate'}),
-    yAxis:Object.assign({type:'value',min:0,name:'QBench Index 1.6',nameLocation:'middle',nameGap:40,nameTextStyle:{color:p.muted}},axisStyle(p)),
+    yAxis:{type:'category',inverse:true,data:rows.map(function(r){return r.variantLabel;}),axisLabel:{color:p.ink,fontSize:11,width:170,overflow:'truncate'},axisLine:{lineStyle:{color:p.grid}},axisTick:{show:false}},
+    xAxis:Object.assign({type:'value',min:0,max:100,name:'QBench Index 1.6',nameLocation:'middle',nameGap:30},axisStyle(p)),
+    
     series:[{type:'bar',barWidth:'60%',data:rows.map(function(r){return {value:+Number(r.index).toFixed(1),itemStyle:{color:providerColor(r.provider),borderRadius:[4,4,0,0]}};}),
       label:{show:!!S.barsValues,position:'top',formatter:function(e){return fmt(e.value,1);},color:p.ink,fontSize:10}}]});
 }
