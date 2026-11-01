@@ -1752,7 +1752,7 @@
           "resultDate": "2025-08-07"
         },
         {
-          "model": "Inkling-Small",
+          "model": "Inkling Small",
           "provider": "Thinking Machines",
           "score": 46.3,
           "configuration": "xhigh",
@@ -2687,7 +2687,7 @@
           "costMetricSource": "Vals AI ProofBench 1.1 leaderboard"
         },
         {
-          "model": "Inkling-Small",
+          "model": "Inkling Small",
           "provider": "Thinking Machines",
           "score": 6,
           "configuration": "Not reported",
@@ -3446,7 +3446,7 @@
           "snapshotDate": "2026-09-24"
         },
         {
-          "model": "Inkling-Small",
+          "model": "Inkling Small",
           "provider": "Thinking Machines",
           "score": 40.14,
           "configuration": "XHigh",
@@ -5357,7 +5357,7 @@
           "effort": "not-reported"
         },
         {
-          "model": "Inkling-Small",
+          "model": "Inkling Small",
           "provider": "Thinking Machines",
           "score": 0,
           "configuration": "Mini-SWE-agent",
@@ -8332,7 +8332,7 @@
         },
         {
           "model": "Inkling",
-          "provider": "Fireworks",
+          "provider": "Thinking Machines",
           "score": 56.9,
           "harness": "mini-swe-agent",
           "configuration": "xhigh",
@@ -11424,9 +11424,9 @@
           "evidence": "Scale Labs MCP Atlas page, Performance Comparison table. The table provides score ± and Rank (UB), but its score metric is not explicitly labeled in the table; preserved without reinterpreting."
         },
         {
-          "model": "Inkling-small",
+          "model": "Inkling Small",
           "originalModelName": "Inkling-small",
-          "provider": "Inkling",
+          "provider": "Thinking Machines",
           "score": 79.2,
           "effort": "not-reported",
           "configuration": "Default model configuration; explicit effort label retained when present",
@@ -11501,7 +11501,7 @@
         {
           "model": "Inkling",
           "originalModelName": "Inkling (xHigh)",
-          "provider": "Inkling",
+          "provider": "Thinking Machines",
           "score": 76,
           "effort": "xhigh",
           "configuration": "Default model configuration; explicit effort label retained when present",
@@ -12505,7 +12505,7 @@
           "durationPerTestDisplay": "31m21s"
         },
         {
-          "model": "Wonder Full",
+          "model": "Muse Wonder Full",
           "provider": "Meta",
           "score": 53.37,
           "effort": "not-reported",
@@ -12519,7 +12519,7 @@
           "durationPerTestDisplay": "27m34s"
         },
         {
-          "model": "Wonder",
+          "model": "Muse Wonder",
           "provider": "Meta",
           "score": 50.48,
           "effort": "not-reported",
@@ -13798,7 +13798,7 @@
           "durationPerTestDisplay": "21m04s"
         },
         {
-          "model": "Wonder Full",
+          "model": "Muse Wonder Full",
           "provider": "Meta",
           "score": 43.0,
           "effort": "not-reported",
@@ -13868,7 +13868,7 @@
           "durationPerTestDisplay": "14m27s"
         },
         {
-          "model": "Wonder",
+          "model": "Muse Wonder",
           "provider": "Meta",
           "score": 36.27,
           "effort": "not-reported",
@@ -14870,7 +14870,7 @@
           "durationPerTestDisplay": "13m13s"
         },
         {
-          "model": "Wonder Full",
+          "model": "Muse Wonder Full",
           "provider": "Meta",
           "score": 67.58,
           "effort": "not-reported",
@@ -14926,7 +14926,7 @@
           "durationPerTestDisplay": "7m24s"
         },
         {
-          "model": "Wonder",
+          "model": "Muse Wonder",
           "provider": "Meta",
           "score": 65.55,
           "effort": "not-reported",
@@ -15543,7 +15543,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "Wonder Full",
+          "model": "Muse Wonder Full",
           "provider": "Meta",
           "score": 49.93,
           "effort": "not-reported",
@@ -16955,7 +16955,7 @@
           "snapshotDate": "2026-10-20"
         },
         {
-          "model": "Wonder Full",
+          "model": "Muse Wonder Full",
           "provider": "Meta",
           "score": 0.5,
           "effort": "not-reported",
@@ -17431,7 +17431,7 @@
       "unit": "% accuracy",
       "models": [
         {
-          "model": "Wonder",
+          "model": "Muse Wonder",
           "provider": "Meta",
           "score": 80.36,
           "effort": "not-reported",
@@ -17551,7 +17551,7 @@
           "snapshotDate": "2026-10-20"
         },
         {
-          "model": "Wonder Full",
+          "model": "Muse Wonder Full",
           "provider": "Meta",
           "score": 73.63,
           "effort": "not-reported",
@@ -18027,7 +18027,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "Wonder Full",
+          "model": "Muse Wonder Full",
           "provider": "Meta",
           "score": 75.0,
           "effort": "not-reported",
@@ -18087,7 +18087,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "Wonder",
+          "model": "Muse Wonder",
           "provider": "Meta",
           "score": 72.5,
           "effort": "not-reported",
@@ -18467,7 +18467,7 @@
           "snapshotDate": "2026-10-30"
         },
         {
-          "model": "Wonder",
+          "model": "Muse Wonder",
           "provider": "Meta",
           "score": 23.75,
           "effort": "not-reported",
@@ -18479,7 +18479,7 @@
           "snapshotDate": "2026-10-30"
         },
         {
-          "model": "Wonder Full",
+          "model": "Muse Wonder Full",
           "provider": "Meta",
           "score": 23.33,
           "effort": "not-reported",
@@ -18907,7 +18907,7 @@
           "snapshotDate": "2026-10-28"
         },
         {
-          "model": "Wonder",
+          "model": "Muse Wonder",
           "provider": "Meta",
           "score": 72.36,
           "effort": "not-reported",
@@ -18943,7 +18943,7 @@
           "snapshotDate": "2026-10-28"
         },
         {
-          "model": "Wonder Full",
+          "model": "Muse Wonder Full",
           "provider": "Meta",
           "score": 62.79,
           "effort": "not-reported",
@@ -19227,7 +19227,7 @@
       "unit": "% accuracy",
       "models": [
         {
-          "model": "Wonder Full",
+          "model": "Muse Wonder Full",
           "provider": "Meta",
           "score": 33.98,
           "effort": "not-reported",
@@ -19287,7 +19287,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "Wonder",
+          "model": "Muse Wonder",
           "provider": "Meta",
           "score": 26.55,
           "effort": "not-reported",
@@ -19607,7 +19607,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "Wonder Full",
+          "model": "Muse Wonder Full",
           "provider": "Meta",
           "score": 47.29,
           "effort": "not-reported",
@@ -19631,7 +19631,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "Wonder",
+          "model": "Muse Wonder",
           "provider": "Meta",
           "score": 45.63,
           "effort": "not-reported",
@@ -19915,7 +19915,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "Wonder Full",
+          "model": "Muse Wonder Full",
           "provider": "Meta",
           "score": 73.33,
           "effort": "not-reported",
@@ -20047,7 +20047,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "Wonder",
+          "model": "Muse Wonder",
           "provider": "Meta",
           "score": 67.04,
           "effort": "not-reported",

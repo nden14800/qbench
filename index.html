@@ -421,12 +421,12 @@ function renderSummaryCards(ranked,top,baseModels,full,broad,limited,unranked){
     return {name:e.name,lead:rows[0]||null};
   });
   $('#stats').innerHTML=
-    '<div class="col"><div class="card h-100"><div class="card-body"><div class="stat-k">Index 1.6 · top 5</div>'+
-      '<div id="sum-top" style="height:260px"></div></div></div></div>'+
-    '<div class="col"><div class="card h-100"><div class="card-body"><div class="stat-k">Leader per evaluation</div>'+
+    '<div class="col"><div class="card"><div class="card-body"><div class="stat-k">Index 1.6 · top 5</div>'+
+      '<div id="sum-top" style="height:240px"></div></div></div></div>'+
+    '<div class="col"><div class="card"><div class="card-body"><div class="stat-k">Leader per evaluation</div>'+
       '<ul class="list-unstyled small mb-0 mt-2">'+leaders.map(function(l){return '<li class="d-flex justify-content-between gap-2 py-1 border-bottom"><span class="text-muted-qb">'+esc(l.name)+'</span><span class="text-end fw-semibold">'+(l.lead?esc(scatterLabel(l.lead))+' · '+fmt(l.lead.score,1):'—')+'</span></li>';}).join('')+'</ul>'+
     '</div></div></div>'+
-    '<div class="col"><div class="card h-100"><div class="card-body"><div class="stat-k">Coverage</div>'+
+    '<div class="col"><div class="card"><div class="card-body"><div class="stat-k">Coverage</div>'+
       '<div class="stat-v mt-1">'+baseModels+' base models</div>'+
       '<div class="stat-s mt-1">'+RESULT.rows.length+' model/effort variants · '+ranked.length+' ranked</div>'+
       '<div class="small mt-3"><div class="d-flex justify-content-between py-1 border-bottom"><span>Full evidence (all '+RESULT.domains.length+' families)</span><span class="fw-semibold">'+full+'</span></div>'+
@@ -439,7 +439,7 @@ function renderSummaryCards(ranked,top,baseModels,full,broad,limited,unranked){
     chart.setOption({animation:false,grid:{left:40,right:12,top:26,bottom:96},
       tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(ps){var r=top5[ps[0].dataIndex];return esc(r.variantLabel)+'<br>Index '+fmt(r.index,1);}},
       xAxis:catAxis(p,{type:'category',data:top5.map(scatterLabel)},{rotate:40,interval:0,fontSize:10,width:110,overflow:'truncate'}),
-      yAxis:Object.assign({type:'value',min:0,max:100},axisStyle(p)),
+      yAxis:Object.assign({type:'value',min:0},axisStyle(p)),
       series:[{type:'bar',barWidth:'50%',data:top5.map(function(r){return {value:+Number(r.index).toFixed(1),itemStyle:{color:providerColor(r.provider),borderRadius:[4,4,0,0]}};}),
         label:{show:true,position:'top',formatter:function(e){return fmt(e.value,1);},color:p.ink,fontSize:10}}]});
   }
@@ -530,7 +530,7 @@ function renderComposition(host){
   c.setOption({animation:false,grid:{left:48,right:18,top:14,bottom:140},
     tooltip:{trigger:'axis',axisPointer:{type:'shadow'},valueFormatter:function(v){return fmt(v,1);}},
     xAxis:catAxis(p,{type:'category',data:top.map(function(r){return r.variantLabel;})},{rotate:50,interval:0,fontSize:11,width:130,overflow:'truncate'}),
-    yAxis:Object.assign({type:'value',max:100},axisStyle(p)),
+    yAxis:Object.assign({type:'value',min:0},axisStyle(p)),
     series:RESULT.domains.map(function(d,i){return {name:d,type:'bar',stack:'idx',barWidth:'60%',itemStyle:{color:p.c[i],borderRadius:[4,4,0,0]},
       data:top.map(function(r){return r.domains[d]==null?0:r.domains[d]/r.domainCount;})};})
   },true);
@@ -547,7 +547,7 @@ function renderBars(host){
   c.setOption({animation:false,grid:{left:56,right:18,top:24,bottom:140},
     tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(ps){var r=rows[ps[0].dataIndex];return esc(r.variantLabel)+'<br>Index '+fmt(r.index,1)+'<br>Families observed: '+r.domainCount+' / '+RESULT.domains.length;}},
     xAxis:catAxis(p,{type:'category',data:rows.map(scatterLabel)},{rotate:50,interval:0,fontSize:11,width:130,overflow:'truncate'}),
-    yAxis:Object.assign({type:'value',min:0,max:100,name:'QBench Index 1.6',nameLocation:'middle',nameGap:40,nameTextStyle:{color:p.muted}},axisStyle(p)),
+    yAxis:Object.assign({type:'value',min:0,name:'QBench Index 1.6',nameLocation:'middle',nameGap:40,nameTextStyle:{color:p.muted}},axisStyle(p)),
     series:[{type:'bar',barWidth:'60%',data:rows.map(function(r){return {value:+Number(r.index).toFixed(1),itemStyle:{color:providerColor(r.provider),borderRadius:[4,4,0,0]}};}),
       label:{show:true,position:'top',formatter:function(e){return fmt(e.value,1);},color:p.ink,fontSize:10}}]});
 }
@@ -573,7 +573,7 @@ function renderEvalGrid(host){
     chart.setOption({animation:false,grid:{left:44,right:12,top:26,bottom:118},
       tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(ps){var r=c.rows[ps[0].dataIndex];return esc(scatterLabel(r))+'<br>'+esc(c.e.name)+': '+fmt(r.score,1)+'%';}},
       xAxis:catAxis(p,{type:'category',data:c.rows.map(scatterLabel)},{rotate:50,interval:0,fontSize:10,width:120,overflow:'truncate'}),
-      yAxis:Object.assign({type:'value',min:0,max:100,axisLabel:{formatter:'{value}%'}},axisStyle(p)),
+      yAxis:Object.assign({type:'value',min:0,axisLabel:{formatter:'{value}%'}},axisStyle(p)),
       series:[{type:'bar',barWidth:'55%',data:c.rows.map(function(r){return {value:+Number(r.score).toFixed(1),itemStyle:{color:providerColor(r.provider),borderRadius:[4,4,0,0]}};}),
         label:{show:true,position:'top',formatter:function(e){return fmt(e.value,1);},color:p.ink,fontSize:10}}]});
   });
@@ -606,7 +606,7 @@ function renderScatter(host){
     grid:{left:56,right:24,top:16,bottom:50},
     tooltip:{trigger:'item',formatter:function(e){var d=e.value||e.data;return d[2]?esc(d[2])+'<br>Index '+Number(d[1]).toFixed(1)+'<br>$'+Number(d[0]).toFixed(2)+' / 1M tokens':e.seriesName;}},
     xAxis:Object.assign({type:'log',name:'Official API token-price proxy, USD per 1M tokens',nameLocation:'middle',nameGap:32,nameTextStyle:{color:p.muted}},axisStyle(p)),
-    yAxis:Object.assign({type:'value',min:0,max:100,name:'QBench Index 1.6',nameTextStyle:{color:p.muted}},axisStyle(p)),
+    yAxis:Object.assign({type:'value',min:0,name:'QBench Index 1.6',nameTextStyle:{color:p.muted}},axisStyle(p)),
     series:series
   },true);
   $('#scatter-legend').innerHTML=provs.map(function(pv){return '<span><i style="background:'+providerColor(pv)+'"></i>'+esc(pv)+'</span>';}).join('');
@@ -673,7 +673,7 @@ function renderConsistency(host){
   c.setOption({animation:false,grid:{left:70,right:30,top:24,bottom:64},
     tooltip:{trigger:'item',textStyle:{fontFamily:family},formatter:function(e){var r=e.data.row;return esc(r.variantLabel)+'<br>Index: '+fmt(r.index,1)+'<br>Benchmark spread: '+fmt(r.spread,1)+' pct points<br>Coverage: '+r.coverage+' / '+RESULT.evals.length+' evaluations';}},
     xAxis:Object.assign({type:'value',name:'Across-benchmark spread (descriptive only)',nameLocation:'middle',nameGap:38},axisStyle(p)),
-    yAxis:Object.assign({type:'value',min:0,max:100,name:'QBench Index 1.6',nameTextStyle:{color:p.muted}},axisStyle(p)),
+    yAxis:Object.assign({type:'value',min:0,name:'QBench Index 1.6',nameTextStyle:{color:p.muted}},axisStyle(p)),
     series:[{type:'scatter',symbolSize:11,itemStyle:{color:p.accent,opacity:.8},data:rows.map(function(r){return {value:[r.spread,r.index],row:r};})}]
   },true);
 }
@@ -848,8 +848,8 @@ function renderBench(){
  var c=chartInit('bench-plot-el');
  var errorData=top.map(function(t,i){var u=t.scoreUncertainty;if(u==null&&t.uncertainty){var um=String(t.uncertainty).match(/([0-9]+(?:\\.[0-9]+)?)/);if(um)u=Number(um[1]);}return u==null?null:[i,scoreOf(t),Number(u)];}).filter(Boolean);
  if(c)c.setOption({animation:false,grid:{left:56,right:18,top:14,bottom:150},tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(items){var t=top[items[0].dataIndex],unc=t.scoreUncertainty;if(unc==null&&t.uncertainty){var um=String(t.uncertainty).match(/([0-9]+(?:\\.[0-9]+)?)/);if(um)unc=Number(um[1]);}return esc(variantLabel({model:t.model,effort:effortOf(t)}))+'<br>Score: '+fmt(scoreOf(t),2)+(unc!=null?' ± '+fmt(unc,2):'')+' '+esc(b.unit||'');}},
-  xAxis:catAxis(p,{type:'category',data:top.map(function(t){return variantLabel({model:t.model,effort:effortOf(t)});})},{rotate:45,interval:0,fontSize:11,width:170,overflow:'truncate'}),yAxis:Object.assign({type:'value',min:0,max:100},axisStyle(p)),
-  series:[{type:'bar',barWidth:'50%',itemStyle:{color:p.accent,borderRadius:[4,4,0,0]},label:{show:true,position:'top',color:p.ink,fontSize:11,formatter:function(e){return Number(e.value).toFixed(1);}},data:top.map(function(t){return scoreOf(t);})}].concat(errorData.length?[{name:'Publisher-reported ±',type:'custom',silent:true,coordinateSystem:'cartesian2d',encode:{x:0,y:1},data:errorData,renderItem:function(params,api){var x=api.value(0),y=api.value(1),u=api.value(2),a=api.coord([x,Math.max(0,y-u)]),z=api.coord([x,Math.min(100,y+u)]),cap=5,style={stroke:p.ink,lineWidth:1.25};return {type:'group',children:[{type:'line',shape:{x1:a[0],y1:a[1],x2:z[0],y2:z[1]},style:style},{type:'line',shape:{x1:a[0]-cap,y1:a[1],x2:a[0]+cap,y2:a[1]},style:style},{type:'line',shape:{x1:z[0]-cap,y1:z[1],x2:z[0]+cap,y2:z[1]},style:style}]};}}]:[])},true);
+  xAxis:catAxis(p,{type:'category',data:top.map(function(t){return variantLabel({model:t.model,effort:effortOf(t)});})},{rotate:45,interval:0,fontSize:11,width:170,overflow:'truncate'}),yAxis:Object.assign({type:'value',min:0},axisStyle(p)),
+  series:[{type:'bar',barWidth:'50%',itemStyle:{color:p.accent,borderRadius:[4,4,0,0]},label:{show:true,position:'top',color:p.ink,fontSize:11,formatter:function(e){return Number(e.value).toFixed(1);}},data:top.map(function(t){return scoreOf(t);})}].concat(errorData.length?[{name:'Publisher-reported ±',type:'custom',silent:true,coordinateSystem:'cartesian2d',encode:{x:0,y:1},data:errorData,renderItem:function(params,api){var x=api.value(0),y=api.value(1),u=api.value(2),a=api.coord([x,Math.max(0,y-u)]),z=api.coord([x,y+u]),cap=5,style={stroke:p.ink,lineWidth:1.25};return {type:'group',children:[{type:'line',shape:{x1:a[0],y1:a[1],x2:z[0],y2:z[1]},style:style},{type:'line',shape:{x1:a[0]-cap,y1:a[1],x2:a[0]+cap,y2:a[1]},style:style},{type:'line',shape:{x1:z[0]-cap,y1:z[1],x2:z[0]+cap,y2:z[1]},style:style}]};}}]:[])},true);
  if(costRows.length>=3){
   var cc=chartInit('bench-cost-el'),front=[],best=-1;
   costRows.slice().sort(function(a,b){return a.costPerTestUSD-b.costPerTestUSD||scoreOf(b)-scoreOf(a);}).forEach(function(r){if(scoreOf(r)>best){front.push([r.costPerTestUSD,scoreOf(r)]);best=scoreOf(r);}});
