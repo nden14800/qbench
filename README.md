@@ -164,6 +164,9 @@ A larger leaderboard is not automatically a better composite. Incomplete exports
 | Model + effort + harness combinations | 1,329 |
 | Canonical provider labels after alias normalization | 33 |
 | API price entries | 71 |
+| Source-verified model catalog entries | 23 |
+| Catalog-only models kept outside rankings | 8 |
+| Benchmark labels awaiting exact model-ID reconciliation | 4 |
 
 Counts are recomputed from `data/external-benchmarks.json`. A model may appear in multiple datasets and effort settings. Display names are not assumed to be canonical API model IDs.
 
@@ -182,7 +185,7 @@ Counts are recomputed from `data/external-benchmarks.json`. A model may appear i
 | Cache read / write prices | 0 | 71 |
 | Context-window / maximum-output metadata | 0 | 1,429 |
 
-The data audit intentionally leaves unavailable fields blank. Five source rows had provider labels normalized for grouping: `Mistral` → `Mistral AI` and `Zhipu` → `Z.ai`. The original labels remain in `providerReported`; see `modelNameAudit.providerAliases` for the source references. The 208 display names are not a verified canonical model-ID catalogue.
+The data audit intentionally leaves unavailable fields blank. Five source rows had provider labels normalized for grouping: `Mistral` → `Mistral AI` and `Zhipu` → `Z.ai`. The original labels remain in `providerReported`; see `modelNameAudit.providerAliases` for the source references. The 208 display names are not a verified canonical model-ID catalogue. A separate source-verified model catalog now contains 23 API/model records, including eight models with no exact eligible benchmark result; these remain unranked. Four Anthropic benchmark labels (Claude Fable 5.1, Claude Opus 5.5, Claude Sonnet 5.5 and Claude Haiku 5.5) do not exactly match the current official API model names and are flagged for reconciliation rather than mapped by guesswork.
 
 ## Sources and verification
 
