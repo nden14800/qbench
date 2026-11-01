@@ -905,7 +905,7 @@ function efficiencyValue(row,metric){
  if(metric.type==='duration')v=parseDuration(v);
  else if(metric.type==='tokens')v=parseTokens(v);
  else v=Number(v);
- return Number.isFinite(Number(v))?Number(v):null;
+ if(v==null||v===''||!Number.isFinite(Number(v)))return null;return Number(v);
 }
 function renderEfficiency(){
  var bench=(DATA.benchmarks||[]).filter(function(b){return b.id===S.effBench;})[0];
