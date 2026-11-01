@@ -981,10 +981,11 @@ function renderCompare(){
  RESULT.evals.forEach(function(e){body+='<tr><td>'+esc(e.name)+'</td>'+sel.map(function(r){var v=r.detail[e.id];return '<td class="text-end num">'+(v?fmt(v.value,1)+' <span class="text-muted-qb">('+esc(v.effort==='not-reported'?'effort unreported':v.effort)+')</span>':'—')+'</td>';}).join('')+'</tr>';});
  $('#cmp-head').innerHTML=head;$('#cmp-body').innerHTML=body;
 }
+function fmtTokens(v){return v==null||!isFinite(Number(v))?'Not reported':Math.round(Number(v)).toLocaleString('en-US');}
 function catalogPricingText(p){
  if(!p)return 'Not published in verified provider pricing';
  var c=p.currency||'USD',unit=p.unit||'per 1M tokens';
- if(p.tiers)return p.tiers.map(function(t){var range=t.minInputTokens?'>'+fmt(t.minInputTokens-1)+'–'+fmt(t.maxInputTokens)+' input tokens':'≤'+fmt(t.maxInputTokens)+' input tokens';return range+': '+c+' '+fmt(t.inputPerMillion,4)+' input / '+fmt(t.outputPerMillion,4)+' output '+unit;}).join(' · ')+(p.region?' · '+p.region:'');
+ if(p.tiers)return p.tiers.map(function(t){var range=t.minInputTokens?'>'+fmtTokens(t.minInputTokens-1)+'–'+fmtTokens(t.maxInputTokens)+' input tokens':'≤'+fmt(t.maxInputTokens)+' input tokens';return range+': '+c+' '+fmt(t.inputPerMillion,4)+' input / '+fmt(t.outputPerMillion,4)+' output '+unit;}).join(' · ')+(p.region?' · '+p.region:'');
  if(p.effectivePeriods)return p.effectivePeriods.map(function(t){var x=(t.from?'from '+t.from:'through '+t.through)+': '+c+' '+(t.inputPerMillion==null?'—':fmt(t.inputPerMillion,4))+' input / '+(t.outputPerMillion==null?'—':fmt(t.outputPerMillion,4))+' output '+unit;if(t.cachedInputPerMillion!=null)x+=' · cached input '+c+' '+fmt(t.cachedInputPerMillion,4);return x;}).join(' · ');
  if(p.dynamicSchedule)return 'Peak: '+c+' '+fmt(p.peak.inputPerMillion,4)+' / '+fmt(p.peak.outputPerMillion,4)+'; off-peak: '+c+' '+fmt(p.offPeak.inputPerMillion,4)+' / '+fmt(p.offPeak.outputPerMillion,4)+' '+unit+(p.peak.cacheHitInputPerMillion!=null?' · cache hit '+c+' '+fmt(p.peak.cacheHitInputPerMillion,4):'');
  if(p.inputPerMillion==null&&p.outputPerMillion==null)return 'Not published';
@@ -1004,9 +1005,9 @@ function catalogMetadataHtml(m){
   ['Lifecycle',(m.lifecycleStatus||'Not reported')+(m.deprecationDate?' · deprecated '+m.deprecationDate:'')+(m.replacementModelId?' · replacement '+m.replacementModelId:'')],
   ['Release date',m.releaseDate?(m.releaseDatePrecision==='day'?m.releaseDate:m.releaseDate+' ('+m.releaseDatePrecision+' precision)'):'Not reported'],
   ['Pricing note',m.pricingStatus||''],
-  ['Context window',m.contextWindowTokens?fmt(m.contextWindowTokens)+' tokens':'Not reported'],
-  ['Hosted endpoint context',m.endpointContextWindowTokens?fmt(m.endpointContextWindowTokens)+' tokens':'Not reported'],
-  ['Maximum output',m.maxOutputTokens?fmt(m.maxOutputTokens)+' tokens':'Not reported'],
+  ['Context window',m.contextWindowTokens?fmtTokens(m.contextWindowTokens)+' tokens':'Not reported'],
+  ['Hosted endpoint context',m.endpointContextWindowTokens?fmtTokens(m.endpointContextWindowTokens)+' tokens':'Not reported'],
+  ['Maximum output',m.maxOutputTokens?fmtTokens(m.maxOutputTokens)+' tokens':'Not reported'],
   ['Input modalities',(m.inputModalities||[]).join(', ')||'Not reported'],
   ['Output modalities',(m.outputModalities||[]).join(', ')||'Not reported'],
   ['Reasoning',r.supported===true?(r.mode||'Supported'):(r.supported===false?'Not supported':'Not reported')],
