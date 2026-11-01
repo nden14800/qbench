@@ -6,7 +6,7 @@ Evidence-first AI model benchmark explorer.
 **Repository:** https://github.com/nden14800/qbench  
 **Deployment:** Cloudflare Pages, production branch `main`.
 
-QBench keeps every result attached to its publisher, model variant, reasoning effort, harness, configuration, metric and snapshot. **QBench Index 1.6** is a source-audited composite of ten evaluations across seven capability families. It does not import Artificial Analysis' composite scores or private results.
+QBench keeps every result attached to its publisher, model variant, reasoning effort, harness, configuration, metric and snapshot. **QBench Index 1.6** is a source-audited composite of eighteen evaluations across eight capability families. It does not import Artificial Analysis' composite scores or private results.
 
 ## QBench Index 1.6
 
@@ -16,7 +16,7 @@ QBench keeps every result attached to its publisher, model variant, reasoning ef
 |---|---:|
 | Eligible evaluations | 18 |
 | Capability families | 8 |
-| Base model names with at least one eligible result | 142 |
+| Distinct model display names with at least one eligible result | 142 |
 | Exact model/effort variants with at least one eligible result | 200 |
 | Ranked variants (3+ evaluations across 3+ families) | 73 |
 | Full evidence (all 8 families) | 0 |
@@ -33,10 +33,10 @@ Counts come from the Index 1.6 runtime in the browser (2026-11-01, after the spe
 ### What changed from the previous index
 
 - **Index 1.6:** six Vals AI evaluations are added: Excel Modeling v1.1 and HLAB-Vals-1.1 (Professional knowledge work), Code Migration v1.1, Vibe Code Bench 1-100 and SWE-bench Multimodal (Software engineering), and BioMysteryBench (Scientific workflows). Ranked variants were 74 right after this addition in an earlier run. In the 2026-11-01 build the count is 73 with the current code and data; the spelling merge did not change it. The source of the earlier 74 was not reproduced. Voice Code Bench (raw audio, not comparable to text tasks) and Immigration Bench (search and no-search conditions mixed, rows unlabeled) are excluded.
-- **Index 1.6:** two evaluations are added: ProgramBench (Software engineering, 64 variants, top 18.5%) and CyberBench v1.1 (new Cybersecurity family, 44 variants). Ranked variants rise from 50 to 73. Index 1.6 is the composite with eight families; the 1.4 gates are unchanged.
+- **Index 1.6:** ProgramBench (Software engineering, 64 variants) and CyberBench v1.1 (Cybersecurity, 44 variants) were added after the six Vals AI evaluations above. The current eight-family composite has 18 eligible evaluations. The ranking gate remains at least three evaluations across three distinct families.
 - **Excluded from 1.5:** TaxEval v2, CorpFin v2 and MMMU Pro (archived; Vals AI reports them as saturated). IOI v2 (top 100%, at the ceiling). Public Benefits Bench v1.1 (a custom judge pipeline that uses one of the scored models as judge). LegalBench (151 rows, active, but no harness is stated).
 - **CyberBench exclusions:** Claude Opus 5.5 (CVP) and Claude Sonnet 5 (Cyber Range) are special-access configurations, and Daybreak Blue has no stated provider.
-- **More evaluations and families:** the index now uses ten evaluations in seven capability families. Before the Vals AI additions it used six evaluations in five families. The new evaluations are Legal Research Bench, Tax Agent Bench and Finance Agent v2.1 (Professional knowledge work), and MedCode (Healthcare).
+- **Coverage:** Index 1.6 now uses 18 eligible evaluations across eight capability families. Six Vals AI datasets were added in the October 2026 update, followed by ProgramBench and CyberBench v1.1.
 - **No shrinkage toward 50:** incomplete family coverage is averaged over observed families only. The square-root evidence factor from Index 1.3 is removed.
 - **Stricter ranking:** a variant is ranked only with at least three evaluations across three families.
 - **Standalone Mystery Game Puzzles:** the imported table holds 20 of the 140 models Epoch AI tested, so it is not a complete publisher table.
@@ -57,6 +57,12 @@ Counts come from the Index 1.6 runtime in the browser (2026-11-01, after the spe
 | Professional knowledge work | Tax Agent Bench | 80 | Vals AI · 2026-10-29 (shared agent harness) |
 | Professional knowledge work | Finance Agent v2.1 | 34 | Vals AI · 2026-10-29 (shared agent harness) |
 | Healthcare | MedCode | 107 | Vals AI · 2026-10-29 (direct model call, no agent harness) |
+| Software engineering | Code Migration v1.1 (Pi agent harness) | 29 | Vals AI · 2026-10-28 |
+| Software engineering | Vibe Code Bench 1-100 (Modified OpenHands) | 26 | Vals AI · 2026-10-29 |
+| Software engineering | SWE-bench Multimodal (mini-SWE-agent, no internet) | 20 | Vals AI · 2026-10-29 |
+| Scientific workflows | BioMysteryBench (Terminus 2) | 29 | Vals AI · 2026-10-29 |
+| Professional knowledge work | Excel Modeling Benchmark v1.1 | 37 | Vals AI · 2026-10-29 |
+| Professional knowledge work | HLAB-Vals-1.1 (Harvey) | 33 | Vals AI · 2026-10-30 |
 
 The Vals AI rows for Legal Research Bench, Tax Agent Bench, Finance Agent v2.1 and MedCode were extracted from the public leaderboard pages with an AI-assisted reader. The top rows of each table were re-extracted in a second call and matched. Provider labels are present for these rows.
 
@@ -76,7 +82,7 @@ The Vals AI rows for Legal Research Bench, Tax Agent Bench, Finance Agent v2.1 a
 4. **Ranking rule:** a variant is ranked only with at least three evaluations across three families.
 
 $$
-\mathrm{Index}_{1.4} = \frac{1}{F_{\text{obs}}} \sum_{f \in \text{observed}} \left( \frac{1}{n_f} \sum_{i=1}^{n_f} s_{f,i} \right)
+\mathrm{Index}_{1.6} = \frac{1}{F_{\text{obs}}} \sum_{f \in \text{observed}} \left( \frac{1}{n_f} \sum_{i=1}^{n_f} s_{f,i} \right)
 $$
 
 where $s_{f,i}$ is the native score of evaluation $i$ in family $f$, $n_f$ is the number of evaluations in that family, and $F_{\text{obs}}$ is the number of observed families. Missing families are not imputed.
@@ -93,7 +99,7 @@ The composite is an average of benchmark percentages. It is not a confidence int
 
 ### Artificial Analysis reference (checked 2026-10-31)
 
-Artificial Analysis Intelligence Index v5.0 averages nine evaluations in four categories (Knowledge Work, Coding, Science and General), each weighted 25% ([methodology](https://artificialanalysis.ai/methodology/intelligence-benchmarking)). Three of its nine evaluations (Terminal-Bench 4.0, HLE-Diamond and Terminal-Bench-Science 0.1) also appear in QBench. QBench 1.4 does not import the AA composite, its private evaluations, or any partial AA leaderboard mirror.
+Artificial Analysis Intelligence Index v5.0 averages nine evaluations in four categories (Knowledge Work, Coding, Science and General), each weighted 25% ([methodology](https://artificialanalysis.ai/methodology/intelligence-benchmarking)). Three of its nine evaluations (Terminal-Bench 4.0, HLE-Diamond and Terminal-Bench-Science 0.1) also appear in QBench. QBench Index 1.6 does not import the AA composite, its private evaluations, or any partial AA leaderboard mirror.
 
 ### Standalone evaluations and exclusions
 
@@ -122,7 +128,7 @@ A larger leaderboard is not automatically a better composite. Incomplete exports
 - **Vibe Code Bench v1.1 (Vals AI):** top score 92.4%, in the ceiling range; rows also mix harnesses.
 - **MedScribe (Vals AI, 109 rows):** top score 91.4%, in the ceiling range.
 - **FrontierSWE v2 (Proximal):** only a partial view of the table is available. A mirror lists 23 models, which is not confirmed against the official page, so it stays out until the full table is verified.
-- **Other Vals AI leaderboards not yet reviewed row by row:** ProgramBench (64 models), IOI v2 (46), CyberBench (47), Public Benefits Bench (50), Excel Modeling (37), SRE Bench (35).
+- **Other Vals AI leaderboards not yet reviewed row by row:** IOI v2, Public Benefits Bench and SRE Bench. ProgramBench, CyberBench v1.1 and Excel Modeling Benchmark v1.1 are now included as separately identified datasets.
 
 ## Model and benchmark analysis features
 
@@ -138,25 +144,42 @@ A larger leaderboard is not automatically a better composite. Incomplete exports
 - Score vs model release-date chart when a source reports the release date.
 - Reasoning-effort vs score chart when a model has multiple published effort settings.
 - Task-design examples where the publisher provides enough public information.
-- Seven-family composition, API token-price proxy, Pareto, score heatmap, distribution, coverage and consistency charts.
+- Eight-family composition, API token-price proxy, Pareto, score heatmap, distribution, coverage and consistency charts.
 - Search, provider and effort filters, sortable tables, CSV export, light/dark themes and responsive layout.
 
 **Data boundary:** API price per 1M tokens is not task cost. Cross-benchmark cost per task, model size, context window, open-weight/proprietary classification, modality and release-date trends are not inferred when source-level fields are missing. QBench only renders these when verifiable inputs exist. An IRT-based long-run Progress Index is not published yet: 54 model/effort variants currently have results in four or more eligible evaluations, but these are aggregate benchmark scores rather than task-level response matrices. A stable longitudinal calibration needs a larger connected overlap set. See [Artificial Analysis Progress Index v1 methodology](https://artificialanalysis.ai/methodology/progress-index/).
 
-## Data snapshot — 2026-10-31
+## Data snapshot — 2026-11-01
 
 | Metric | Result |
 |---|---:|
-| Benchmark datasets with at least one model row | 35 |
-| Benchmark directory dataset cards | 54 |
-| Benchmark catalog metadata records | 84 |
-| Model-result rows across all datasets | 1,147 |
-| Exact model names across all datasets | 255 |
-| Model + effort + harness combinations | 1,031 |
-| Provider labels | 37 |
-| API price entries | 61 |
+| Benchmark datasets | 62 |
+| Benchmark datasets with at least one model row | 43 |
+| Benchmark catalog metadata records | 85 |
+| Model-result rows across all datasets | 1,429 |
+| Distinct model display names across all datasets | 208 |
+| Model + effort + harness combinations | 1,329 |
+| Canonical provider labels after alias normalization | 33 |
+| API price entries | 71 |
 
-Counts are recomputed from `data/external-benchmarks.json` with one definition per row. A model may appear in multiple datasets and effort settings.
+Counts are recomputed from `data/external-benchmarks.json`. A model may appear in multiple datasets and effort settings. Display names are not assumed to be canonical API model IDs.
+
+
+### Data-quality audit — 2026-11-01
+
+| Metadata field | Available | Total |
+|---|---:|---:|
+| Source URL | 1,429 | 1,429 |
+| Source type | 1,429 | 1,429 |
+| Snapshot date | 1,429 | 1,429 |
+| Evaluation harness | 1,429 | 1,429 |
+| Release date | 174 | 1,429 |
+| Explicit reasoning effort | 1,036 | 1,429 |
+| API pricing entries | 71 | 208 distinct display names |
+| Cache read / write prices | 0 | 71 |
+| Context-window / maximum-output metadata | 0 | 1,429 |
+
+The data audit intentionally leaves unavailable fields blank. Five source rows had provider labels normalized for grouping: `Mistral` → `Mistral AI` and `Zhipu` → `Z.ai`. The original labels remain in `providerReported`; see `modelNameAudit.providerAliases` for the source references. The 208 display names are not a verified canonical model-ID catalogue.
 
 ## Sources and verification
 
