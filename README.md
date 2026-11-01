@@ -164,8 +164,8 @@ A larger leaderboard is not automatically a better composite. Incomplete exports
 | Model + effort + harness combinations | 1,329 |
 | Canonical provider labels after alias normalization | 33 |
 | API price entries | 71 |
-| Source-verified model catalog entries | 23 |
-| Catalog-only models kept outside rankings | 4 |
+| Source-verified model catalog entries | 26 |
+| Catalog-only models kept outside rankings | 7 |
 | Benchmark labels awaiting exact model-ID reconciliation | 0 |
 
 Counts are recomputed from `data/external-benchmarks.json`. A model may appear in multiple datasets and effort settings. Display names are not assumed to be canonical API model IDs.
@@ -185,7 +185,7 @@ Counts are recomputed from `data/external-benchmarks.json`. A model may appear i
 | Cache read / write prices | 0 | 71 |
 | Context-window / maximum-output metadata | 0 | 1,429 |
 
-The data audit intentionally leaves unavailable fields blank. Five source rows had provider labels normalized for grouping: `Mistral` → `Mistral AI` and `Zhipu` → `Z.ai`. The original labels remain in `providerReported`; see `modelNameAudit.providerAliases` for the source references. The 208 display names are not a verified canonical model-ID catalogue. A separate source-verified model catalog now contains 23 API/model records, including four models with no exact eligible benchmark result; these remain unranked. The four Anthropic benchmark labels have been reconciled against current official model pages and exact API IDs: `claude-fable-5-1`, `claude-opus-5-5`, `claude-sonnet-5-5` and `claude-haiku-5-5`. Their official prices, context limits, cache rates and release dates are stored separately from benchmark scores.
+The data audit intentionally leaves unavailable fields blank. Five source rows had provider labels normalized for grouping: `Mistral` → `Mistral AI` and `Zhipu` → `Z.ai`. The original labels remain in `providerReported`; see `modelNameAudit.providerAliases` for the source references. The 208 display names are not a verified canonical model-ID catalogue. A separate source-verified model catalog now contains 26 API/model records, including seven models with no exact eligible benchmark result; these remain unranked. The four Anthropic benchmark labels have been reconciled against current official model pages and exact API IDs: `claude-fable-5-1`, `claude-opus-5-5`, `claude-sonnet-5-5` and `claude-haiku-5-5`. Their official prices, context limits, cache rates and release dates are stored separately from benchmark scores.
 
 ## Sources and verification
 
