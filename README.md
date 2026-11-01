@@ -166,6 +166,7 @@ A larger leaderboard is not automatically a better composite. Incomplete exports
 | API price entries | 71 |
 | Source-verified model catalog entries | 26 |
 | Catalog-only models kept outside rankings | 7 |
+| Benchmarks with explicit version labels | 31 / 62 |
 | Benchmark labels awaiting exact model-ID reconciliation | 0 |
 
 Counts are recomputed from `data/external-benchmarks.json`. A model may appear in multiple datasets and effort settings. Display names are not assumed to be canonical API model IDs.
@@ -177,13 +178,19 @@ Counts are recomputed from `data/external-benchmarks.json`. A model may appear i
 |---|---:|---:|
 | Source URL | 1,429 | 1,429 |
 | Source type | 1,429 | 1,429 |
-| Snapshot date | 1,429 | 1,429 |
+| Valid ISO snapshot date | 1,396 | 1,429 |
+| Snapshot date unknown / unparseable | 33 | 1,429 |
+| Benchmarks with explicit version label | 31 | 62 |
 | Evaluation harness | 1,429 | 1,429 |
 | Release date | 174 | 1,429 |
 | Explicit reasoning effort | 1,036 | 1,429 |
 | API pricing entries | 71 | 208 distinct display names |
 | Cache read / write prices | 0 | 71 |
-| Context-window / maximum-output metadata | 0 | 1,429 |
+| Context-window / maximum-output metadata on result rows | 0 | 1,429 |
+| Model catalog context windows | 25 | 26 |
+| Model catalog maximum output limits | 13 | 26 |
+| Model catalog API pricing | 19 | 26 |
+| Model catalog cache pricing | 9 | 26 |
 
 The data audit intentionally leaves unavailable fields blank. Five source rows had provider labels normalized for grouping: `Mistral` → `Mistral AI` and `Zhipu` → `Z.ai`. The original labels remain in `providerReported`; see `modelNameAudit.providerAliases` for the source references. The 208 display names are not a verified canonical model-ID catalogue. A separate source-verified model catalog now contains 26 API/model records, including seven models with no exact eligible benchmark result; these remain unranked. The four Anthropic benchmark labels have been reconciled against current official model pages and exact API IDs: `claude-fable-5-1`, `claude-opus-5-5`, `claude-sonnet-5-5` and `claude-haiku-5-5`. Their official prices, context limits, cache rates and release dates are stored separately from benchmark scores.
 
