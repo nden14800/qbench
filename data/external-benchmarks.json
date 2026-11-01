@@ -1321,7 +1321,7 @@
           "snapshotDate": "2026-10-30",
           "publisherSource": "https://epoch.ai/benchmarks/frontiermath-tiers-1-3-v2",
           "resultDate": "2026-09-02",
-          "duplicateConflict": true
+          "effort": "xhigh"
         },
         {
           "model": "Muse Spark 1.3",
@@ -1335,7 +1335,7 @@
           "snapshotDate": "2026-10-30",
           "publisherSource": "https://epoch.ai/benchmarks/frontiermath-tiers-1-3-v2",
           "resultDate": "2026-09-02",
-          "duplicateConflict": true
+          "effort": "max"
         },
         {
           "model": "GPT-5.2 Pro",
@@ -1570,7 +1570,7 @@
           "snapshotDate": "2026-10-30",
           "publisherSource": "https://epoch.ai/benchmarks/frontiermath-tiers-1-3-v2",
           "resultDate": "2026-06-16",
-          "duplicateConflict": true
+          "effort": "max"
         },
         {
           "model": "Gemini 3.6 Flash",
@@ -1688,7 +1688,7 @@
           "snapshotDate": "2026-10-30",
           "publisherSource": "https://epoch.ai/benchmarks/frontiermath-tiers-1-3-v2",
           "resultDate": "2026-06-16",
-          "duplicateConflict": true
+          "effort": "low"
         },
         {
           "model": "Kimi K2.7 Code",
@@ -6501,7 +6501,7 @@
           "source": "https://gorilla.cs.berkeley.edu/leaderboard",
           "sourceType": "official-publisher",
           "snapshotDate": "2026-04-12",
-          "duplicateConflict": true
+          "effort": "Prompt-based"
         },
         {
           "model": "GLM-4.6",
@@ -6546,7 +6546,7 @@
           "source": "https://gorilla.cs.berkeley.edu/leaderboard",
           "sourceType": "official-publisher",
           "snapshotDate": "2026-04-12",
-          "duplicateConflict": true
+          "effort": "Native function calling"
         }
       ]
     },
@@ -6572,7 +6572,7 @@
           "source": "https://www.healthbenchprofessional.com/",
           "sourceType": "source-cited-secondary",
           "snapshotDate": "2026-10-23",
-          "duplicateConflict": true
+          "effort": "Anthropic-run evaluation"
         },
         {
           "model": "Claude Sonnet 5.5",
@@ -6595,7 +6595,7 @@
           "source": "https://www.healthbenchprofessional.com/",
           "sourceType": "source-cited-secondary",
           "snapshotDate": "2026-10-23",
-          "duplicateConflict": true
+          "effort": "Published system-card run"
         },
         {
           "model": "Claude Opus 5.5",
@@ -6618,7 +6618,7 @@
           "source": "https://www.healthbenchprofessional.com/",
           "sourceType": "source-cited-secondary",
           "snapshotDate": "2026-10-23",
-          "duplicateConflict": true
+          "effort": "Anthropic-run evaluation"
         },
         {
           "model": "Claude Haiku 5.5",
@@ -6641,7 +6641,7 @@
           "source": "https://www.healthbenchprofessional.com/",
           "sourceType": "source-cited-secondary",
           "snapshotDate": "2026-10-23",
-          "duplicateConflict": true
+          "effort": "OpenAI system-card run"
         },
         {
           "model": "GPT-6.1 Sol",
@@ -6664,7 +6664,7 @@
           "source": "https://www.healthbenchprofessional.com/",
           "sourceType": "source-cited-secondary",
           "snapshotDate": "2026-10-23",
-          "duplicateConflict": true
+          "effort": "September system-card snapshot"
         },
         {
           "model": "Claude Fable 5.1",
@@ -6687,7 +6687,7 @@
           "source": "https://www.healthbenchprofessional.com/",
           "sourceType": "source-cited-secondary",
           "snapshotDate": "2026-10-23",
-          "duplicateConflict": true
+          "effort": "OpenAI system-card run"
         },
         {
           "model": "GPT-6 Sol",
@@ -6710,7 +6710,7 @@
           "source": "https://www.healthbenchprofessional.com/",
           "sourceType": "source-cited-secondary",
           "snapshotDate": "2026-10-23",
-          "duplicateConflict": true
+          "effort": "Published system-card run"
         },
         {
           "model": "Claude Opus 5",
@@ -6766,7 +6766,7 @@
           "source": "https://www.healthbenchprofessional.com/",
           "sourceType": "source-cited-secondary",
           "snapshotDate": "2026-10-23",
-          "duplicateConflict": true
+          "effort": "Opus 4.8 grader run"
         },
         {
           "model": "Grok 4.7",
@@ -6789,7 +6789,7 @@
           "source": "https://www.healthbenchprofessional.com/",
           "sourceType": "source-cited-secondary",
           "snapshotDate": "2026-10-23",
-          "duplicateConflict": true
+          "effort": "Published system-card run"
         },
         {
           "model": "GPT-5.6 Luna",
@@ -6801,7 +6801,7 @@
           "source": "https://www.healthbenchprofessional.com/",
           "sourceType": "source-cited-secondary",
           "snapshotDate": "2026-10-23",
-          "duplicateConflict": true
+          "effort": "Published system-card run"
         },
         {
           "model": "Gemini 4 Argon",
@@ -6835,7 +6835,7 @@
           "source": "https://www.healthbenchprofessional.com/",
           "sourceType": "source-cited-secondary",
           "snapshotDate": "2026-10-23",
-          "duplicateConflict": true
+          "effort": "August system-card addendum"
         },
         {
           "model": "Kimi K3",
@@ -6968,7 +6968,7 @@
           "source": "https://www.healthbenchprofessional.com/",
           "sourceType": "source-cited-secondary",
           "snapshotDate": "2026-10-23",
-          "duplicateConflict": true
+          "effort": "August system-card addendum"
         },
         {
           "model": "GPT-5.1",
@@ -23318,7 +23318,8 @@
       "Routers, multi-agent systems and specialist formal provers remain visible in benchmark details but are excluded from the general-purpose composite.",
       "Pareto 26.10 Preview remains a historical preview result; stable model IDs are pareto and pareto-26.10.",
       "NVIDIA Nemotron Super VL 3.5 is canonicalized to Nemotron 3.5 Super VL; the NVFP4 quantized variant remains distinct.",
-      "2026-11-01 consistency pass: spelling variants (case, spaces vs hyphens, lowercase API IDs) are merged to one display name per model; originals kept in originalModelName. Exact duplicates after merging were dropped. Same model and effort with different scores inside one benchmark are kept and flagged duplicateConflict until the source is checked."
+      "2026-11-01 consistency pass: spelling variants (case, spaces vs hyphens, lowercase API IDs) are merged to one display name per model; originals kept in originalModelName. Exact duplicates after merging were dropped. Same model and effort with different scores inside one benchmark are kept and flagged duplicateConflict until the source is checked.",
+      "2026-11-01: rows that shared model and effort but had different source configurations (FrontierMath v2, BFCL v4, HealthBench Professional; 9 rows) now use the source configuration as their effort label, so each source run is its own variant. Index evaluations are not affected."
     ]
   }
 }
