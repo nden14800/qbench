@@ -618,7 +618,7 @@ function renderScatter(host){
   var pts=RESULT.rows.filter(function(r){return r.ranked&&r.price!=null&&r.index!=null;});
   if(!pts.length){emptyChart(host,'No ranked model has a verified price mapping.');return;}
   var p=pal();
-  host.innerHTML='<div id="chart-main-el" style="height:440px"></div>'+
+  host.innerHTML='<div class="small text-muted-qb mb-2">Hover points for model and effort details. Labels are limited to avoid overlap.</div><div id="chart-main-el" style="height:560px;min-height:440px"></div>'+
     '<div class="chart-legend" id="scatter-legend"></div>'+
     '<div class="notice-qb">Dashed line: Pareto frontier (highest index at each price level). The scatter uses first-party provider API rates only, assumes equal input/output volumes and is not cost per task.</div>';
   var c=chartInit('chart-main-el');
@@ -629,15 +629,15 @@ function renderScatter(host){
   var mi=pts.reduce(function(a,q){return a+q.index;},0)/pts.length;
   var provs=[];pts.forEach(function(q){if(provs.indexOf(q.provider)<0)provs.push(q.provider);});
   var series=provs.map(function(pv){return {name:pv,type:'scatter',symbolSize:11,itemStyle:{color:providerColor(pv)},
-    label:{show:true,position:'top',formatter:function(e){return e.value[2];},color:p.ink,fontSize:11},
-    data:pts.filter(function(q){return q.provider===pv;}).map(function(q,i){return {value:[q.price,q.index,scatterLabel(q)],label:{position:i%2?'bottom':'top'}};})};});
+    label:{show:false,color:p.ink,fontSize:11},
+    data:pts.filter(function(q){return q.provider===pv;}).map(function(q){return {value:[q.price,q.index,scatterLabel(q)]};})};});
   if(S.pareto&&front.length>1)series.push({name:'Pareto frontier',type:'line',symbol:'none',lineStyle:{type:'dashed',width:2,color:p.good},data:front,silent:true});
   if(S.quadrant&&series.length){
     series[0].markArea={silent:true,itemStyle:{color:p.soft},data:[[{xAxis:Math.min.apply(null,prices)*0.8,yAxis:mi},{xAxis:mp,yAxis:100}]]};
   }
   c.setOption({
     animation:false,
-    grid:{left:56,right:24,top:16,bottom:50},
+    grid:{left:82,right:34,top:24,bottom:72,containLabel:true},
     tooltip:{trigger:'item',formatter:function(e){var d=e.value||e.data;return d[2]?esc(d[2])+'<br>Index '+Number(d[1]).toFixed(1)+'<br>$'+Number(d[0]).toFixed(2)+' / 1M tokens':e.seriesName;}},
     xAxis:Object.assign({type:'log',name:'Official API token-price proxy, USD per 1M tokens',nameLocation:'middle',nameGap:32,nameTextStyle:{color:p.muted}},axisStyle(p)),
     yAxis:Object.assign({type:'value',min:0,name:'QBench Index 1.6',nameTextStyle:{color:p.muted}},axisStyle(p)),
