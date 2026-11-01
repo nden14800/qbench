@@ -13332,7 +13332,7 @@
         {
           "model": "Gemini 3.6 Flash",
           "provider": "Google",
-          "score": 25.0,
+          "score": 25,
           "effort": "not-reported",
           "configuration": "All-Pass, shared harness",
           "harness": "Vals shared agent harness: courtlistener_search, web_search, retrieve_information, parse_html_page, submit_final_result; 3-hour limit per task; GPT 5.4 judge",
@@ -13664,7 +13664,7 @@
           "source": "https://www.vals.ai/benchmarks/legal_research",
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-29",
-          "costPerTestUSD": 0.0,
+          "costPerTestUSD": 0,
           "durationPerTestDisplay": "4m45s"
         },
         {
@@ -13696,7 +13696,7 @@
         {
           "model": "Ling 3.0 Flash",
           "provider": "Ant Group",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "All-Pass, shared harness",
           "harness": "Vals shared agent harness: courtlistener_search, web_search, retrieve_information, parse_html_page, submit_final_result; 3-hour limit per task; GPT 5.4 judge",
@@ -13832,7 +13832,7 @@
         {
           "model": "Muse Wonder Full",
           "provider": "Meta",
-          "score": 43.0,
+          "score": 43,
           "effort": "not-reported",
           "configuration": "Accuracy, shared harness",
           "harness": "Vals shared agent harness: web_search, lookup_authority, fetch_document, retrieve_information, calculator; 3-hour limit per task; GPT 5.4 judge",
@@ -14157,7 +14157,7 @@
         {
           "model": "Claude Opus 4.8",
           "provider": "Anthropic",
-          "score": 30.0,
+          "score": 30,
           "effort": "not-reported",
           "configuration": "Accuracy, shared harness",
           "harness": "Vals shared agent harness: web_search, lookup_authority, fetch_document, retrieve_information, calculator; 3-hour limit per task; GPT 5.4 judge",
@@ -14566,7 +14566,7 @@
         {
           "model": "GPT-6 Sol",
           "provider": "OpenAI",
-          "score": 15.0,
+          "score": 15,
           "effort": "not-reported",
           "configuration": "Accuracy, shared harness",
           "harness": "Vals shared agent harness: web_search, lookup_authority, fetch_document, retrieve_information, calculator; 3-hour limit per task; GPT 5.4 judge",
@@ -15011,7 +15011,7 @@
         {
           "model": "GLM 5.3",
           "provider": "Z.ai",
-          "score": 65.0,
+          "score": 65,
           "effort": "not-reported",
           "configuration": "Accuracy, shared harness",
           "harness": "Vals shared agent harness: edgar_search, web_search, parse_html_page, retrieve_information, calculator, price_history; 2-hour limit per task; 3-judge jury",
@@ -16417,7 +16417,7 @@
         {
           "model": "Qwen 3.5 Flash",
           "provider": "Alibaba",
-          "score": 33.0,
+          "score": 33,
           "effort": "not-reported",
           "configuration": "Direct model call",
           "harness": "No agent harness: direct model call with temperature 1 and at most 30k output tokens (Vals MedCode)",
@@ -16715,7 +16715,7 @@
         {
           "model": "Claude Fable 5.1",
           "provider": "Anthropic",
-          "score": 7.0,
+          "score": 7,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -16751,7 +16751,7 @@
         {
           "model": "GPT-6.1 Sol",
           "provider": "OpenAI",
-          "score": 3.0,
+          "score": 3,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -16763,7 +16763,7 @@
         {
           "model": "Claude Opus 5",
           "provider": "Anthropic",
-          "score": 3.0,
+          "score": 3,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -16811,7 +16811,7 @@
         {
           "model": "Claude Fable 5",
           "provider": "Anthropic",
-          "score": 2.0,
+          "score": 2,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -16823,7 +16823,7 @@
         {
           "model": "GPT-6 Sol",
           "provider": "OpenAI",
-          "score": 2.0,
+          "score": 2,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -16835,7 +16835,7 @@
         {
           "model": "Kimi K3",
           "provider": "Moonshot AI",
-          "score": 2.0,
+          "score": 2,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -16871,7 +16871,7 @@
         {
           "model": "Grok 4.6",
           "provider": "xAI",
-          "score": 1.0,
+          "score": 1,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -16883,7 +16883,7 @@
         {
           "model": "Claude Opus 4.8",
           "provider": "Anthropic",
-          "score": 1.0,
+          "score": 1,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -16895,7 +16895,7 @@
         {
           "model": "Gemini 3.8 Flash",
           "provider": "Google",
-          "score": 1.0,
+          "score": 1,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17077,7 +17077,7 @@
         {
           "model": "Hy4 Preview",
           "provider": "Tencent",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17089,7 +17089,7 @@
         {
           "model": "DeepSeek V4 Pro 0813",
           "provider": "DeepSeek",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17101,7 +17101,7 @@
         {
           "model": "Claude Sonnet 5",
           "provider": "Anthropic",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17113,7 +17113,7 @@
         {
           "model": "Qwen3.8 Max",
           "provider": "Alibaba",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17126,7 +17126,7 @@
         {
           "model": "Gemini 3.7 Flash",
           "provider": "Google",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17138,7 +17138,7 @@
         {
           "model": "Claude Opus 4.7",
           "provider": "Anthropic",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17150,7 +17150,7 @@
         {
           "model": "GPT-5.6 Luna",
           "provider": "OpenAI",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17162,7 +17162,7 @@
         {
           "model": "DeepSeek V4 Flash 0731",
           "provider": "DeepSeek",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17174,7 +17174,7 @@
         {
           "model": "GPT-5.4",
           "provider": "OpenAI",
-          "score": 0.0,
+          "score": 0,
           "effort": "xhigh",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17187,7 +17187,7 @@
         {
           "model": "GLM 5.3 Flash",
           "provider": "Z.ai",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17199,7 +17199,7 @@
         {
           "model": "Grok 4.5",
           "provider": "xAI",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17211,7 +17211,7 @@
         {
           "model": "GPT-5.4 Mini",
           "provider": "OpenAI",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17224,7 +17224,7 @@
         {
           "model": "Gemini 3.6 Flash",
           "provider": "Google",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17236,7 +17236,7 @@
         {
           "model": "Muse Spark 1.1",
           "provider": "Meta",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17248,7 +17248,7 @@
         {
           "model": "Gemini 3.5 Flash",
           "provider": "Google",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17260,7 +17260,7 @@
         {
           "model": "GLM-5.1",
           "provider": "Z.ai",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17273,7 +17273,7 @@
         {
           "model": "Gemini 3.1 Pro Preview (02/26)",
           "provider": "Google",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17285,7 +17285,7 @@
         {
           "model": "Qwen 3.6 Plus",
           "provider": "Alibaba",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17297,7 +17297,7 @@
         {
           "model": "Qwen3.8 27B",
           "provider": "Alibaba",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17310,7 +17310,7 @@
         {
           "model": "Kimi K2.7 Code",
           "provider": "Moonshot AI",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17322,7 +17322,7 @@
         {
           "model": "Kimi K2.6",
           "provider": "Moonshot AI",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17334,7 +17334,7 @@
         {
           "model": "Nemotron 3 Ultra",
           "provider": "NVIDIA",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17346,7 +17346,7 @@
         {
           "model": "DeepSeek V4",
           "provider": "DeepSeek",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17358,7 +17358,7 @@
         {
           "model": "Gemini 3 Flash (12/25)",
           "provider": "Google",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17370,7 +17370,7 @@
         {
           "model": "Gemini 3.5 Flash-Lite",
           "provider": "Google",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17383,7 +17383,7 @@
         {
           "model": "Claude Haiku 4.5 (Thinking)",
           "provider": "Anthropic",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17395,7 +17395,7 @@
         {
           "model": "Grok 4.3",
           "provider": "xAI",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17407,7 +17407,7 @@
         {
           "model": "Nemotron 3.5 Lightning",
           "provider": "NVIDIA",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17419,7 +17419,7 @@
         {
           "model": "Laguna XS.2",
           "provider": "Poolside",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17431,7 +17431,7 @@
         {
           "model": "Inkling",
           "provider": "Thinking Machines",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17443,7 +17443,7 @@
         {
           "model": "Laguna M.1",
           "provider": "Poolside",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17455,7 +17455,7 @@
         {
           "model": "Gemini 3.1 Flash Lite Preview",
           "provider": "Google",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17467,7 +17467,7 @@
         {
           "model": "MiniMax-M2.7",
           "provider": "MiniMax",
-          "score": 0.0,
+          "score": 0,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
@@ -17824,7 +17824,7 @@
         {
           "model": "MiniMax M3",
           "provider": "MiniMax",
-          "score": 65.0,
+          "score": 65,
           "effort": "not-reported",
           "configuration": "Mini-SWE-agent harness (Vals AI)",
           "harness": "Mini-SWE-agent (Vals CyberBench v1.1)",
@@ -18099,7 +18099,7 @@
         {
           "model": "Muse Wonder Full",
           "provider": "Meta",
-          "score": 75.0,
+          "score": 75,
           "effort": "not-reported",
           "configuration": "Vals AI public leaderboard",
           "harness": "Shared agent harness (bash, execute, submit)",
@@ -18220,7 +18220,7 @@
         {
           "model": "Kimi K3.1 Pro",
           "provider": "Moonshot AI",
-          "score": 70.0,
+          "score": 70,
           "effort": "not-reported",
           "configuration": "Vals AI public leaderboard",
           "harness": "Shared agent harness (bash, execute, submit)",
@@ -18531,7 +18531,7 @@
         {
           "model": "Muse Spark Open",
           "provider": "Meta",
-          "score": 25.0,
+          "score": 25,
           "effort": "not-reported",
           "configuration": "Vals AI public leaderboard",
           "harness": "Harvey harness with tools, skills and grading protocol",
@@ -18821,7 +18821,7 @@
         {
           "model": "Mercury 3",
           "provider": "Inception",
-          "score": 5.0,
+          "score": 5,
           "effort": "not-reported",
           "configuration": "Vals AI public leaderboard",
           "harness": "Harvey harness with tools, skills and grading protocol",
@@ -19130,7 +19130,7 @@
         {
           "model": "Step 5 Preview",
           "provider": "StepFun",
-          "score": 47.0,
+          "score": 47,
           "effort": "not-reported",
           "configuration": "Vals AI public leaderboard",
           "harness": "Pi agent harness",
@@ -19343,7 +19343,7 @@
         {
           "model": "Claude Fable 5.1",
           "provider": "Anthropic",
-          "score": 28.0,
+          "score": 28,
           "effort": "not-reported",
           "configuration": "Vals AI public leaderboard",
           "harness": "Modified OpenHands V1 environment",
@@ -20216,7 +20216,7 @@
         {
           "model": "Gemini 3.1 Pro Preview (02/26)",
           "provider": "Google",
-          "score": 60.0,
+          "score": 60,
           "effort": "not-reported",
           "configuration": "Vals AI public leaderboard",
           "harness": "Terminus 2 harness in bioinformatics sandboxes",
@@ -21210,15 +21210,26 @@
     ],
     "currentDiagnostics": {
       "snapshotAsOf": "2026-10-31",
-      "eligibleEvaluationCount": 7,
-      "modelsWithEligibleResults": 84,
-      "totalVariants": 145,
-      "rankedVariants": 52,
+      "eligibleEvaluationCount": 18,
+      "capabilityFamilyCount": 8,
+      "modelsWithEligibleResults": 142,
+      "totalVariants": 200,
+      "rankedVariants": 73,
       "fullEvidenceVariants": 0,
-      "broadEvidenceVariants": 1,
-      "limitedEvidenceVariants": 51,
-      "insufficientEvidenceVariants": 93,
-      "note": "Recomputed for Index 1.6 from the current eligible data (see methodology page for the live counts)."
+      "broadEvidenceVariants": 48,
+      "limitedEvidenceVariants": 25,
+      "insufficientEvidenceVariants": 127,
+      "coverageByFamilyCount": {
+        "1": 108,
+        "2": 19,
+        "3": 25,
+        "4": 13,
+        "5": 23,
+        "6": 12
+      },
+      "minimumEvaluationsPerModel": 3,
+      "minimumDomainsPerModel": 3,
+      "note": "Recomputed from the current indexEligible datasets using the runtime's model/effort deduplication, the Terminal-Bench-Science Mini-SWE-agent harness filter, and the 12-variant per-evaluation gate."
     },
     "supplementaryInputsExcluded": [
       "aa-omniscience-v1-1-accuracy-atlas"
@@ -21530,16 +21541,26 @@
       "method": "QBench Index 1.6 uses eighteen source-audited evaluations across eight capability families. It retains publisher-reported percentages rather than converting within-cohort ranks to percentiles. Model/effort variants are separate identities. A variant is ranked only with at least three evaluations across three distinct capability families. Missing values are not imputed.",
       "currentDiagnostics": {
         "snapshotAsOf": "2026-10-31",
-        "eligibleEvaluationCount": 10,
-        "capabilityFamilyCount": 7,
-        "modelsWithEligibleResults": 156,
-        "totalVariants": 209,
-        "rankedVariants": 50,
+        "eligibleEvaluationCount": 18,
+        "capabilityFamilyCount": 8,
+        "modelsWithEligibleResults": 142,
+        "totalVariants": 200,
+        "rankedVariants": 73,
         "fullEvidenceVariants": 0,
-        "broadEvidenceVariants": 32,
-        "limitedEvidenceVariants": 18,
-        "insufficientEvidenceVariants": 159,
-        "note": "Counts from the Index 1.6 runtime (browser run on 2026-10-31 against the local build); unranked = total variants minus ranked."
+        "broadEvidenceVariants": 48,
+        "limitedEvidenceVariants": 25,
+        "insufficientEvidenceVariants": 127,
+        "coverageByFamilyCount": {
+          "1": 108,
+          "2": 19,
+          "3": 25,
+          "4": 13,
+          "5": 23,
+          "6": 12
+        },
+        "minimumEvaluationsPerModel": 3,
+        "minimumDomainsPerModel": 3,
+        "note": "Recomputed from the current indexEligible datasets using the runtime's model/effort deduplication, the Terminal-Bench-Science Mini-SWE-agent harness filter, and the 12-variant per-evaluation gate."
       }
     },
     "minimumEvaluationsPerModel": 3,
@@ -23321,5 +23342,46 @@
       "2026-11-01 consistency pass: spelling variants (case, spaces vs hyphens, lowercase API IDs) are merged to one display name per model; originals kept in originalModelName. Exact duplicates after merging were dropped. Same model and effort with different scores inside one benchmark are kept and flagged duplicateConflict until the source is checked.",
       "2026-11-01: rows that shared model and effort but had different source configurations (FrontierMath v2, BFCL v4, HealthBench Professional; 9 rows) now use the source configuration as their effort label, so each source run is its own variant. Index evaluations are not affected."
     ]
+  },
+  "dataQualityAudit": {
+    "asOf": "2026-11-01",
+    "resultRows": 1429,
+    "uniqueResultModelNames": 208,
+    "rowsWithReleaseDate": 174,
+    "rowsWithExplicitEffort": 1036,
+    "rowsWithSource": 1429,
+    "rowsWithSourceType": 1429,
+    "rowsWithSnapshotDate": 1429,
+    "rowsWithHarness": 1429,
+    "pricingEntries": 71,
+    "uniquePricedModelNames": 71,
+    "pricingEntriesWithCacheRead": 0,
+    "pricingEntriesWithCacheWrite": 0,
+    "rowsWithContextWindow": 0,
+    "rowsWithMaxOutputTokens": 0,
+    "providerNameConflicts": [
+      {
+        "model": "Mistral Medium 3.5",
+        "providers": [
+          "Mistral",
+          "Mistral AI"
+        ]
+      },
+      {
+        "model": "GLM-5.1",
+        "providers": [
+          "Z.ai",
+          "Zhipu"
+        ]
+      },
+      {
+        "model": "GLM-4.7",
+        "providers": [
+          "Z.ai",
+          "Zhipu"
+        ]
+      }
+    ],
+    "note": "Counts are a snapshot audit of the checked-in dataset, not inferred model metadata. Missing fields remain unavailable."
   }
 }
