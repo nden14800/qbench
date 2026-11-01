@@ -23398,5 +23398,1301 @@
         "source": "https://www.zhipuai.cn/en/about"
       }
     ]
-  }
+  },
+  "modelCatalog": [
+    {
+      "id": "openai:gpt-6-astra",
+      "displayName": "GPT-6 Astra",
+      "provider": "OpenAI",
+      "apiModelId": "gpt-6-astra",
+      "hostingProvider": null,
+      "benchmarkStatus": "evaluated",
+      "identityStatus": "verified",
+      "lifecycleStatus": "active",
+      "releaseDate": null,
+      "releaseDatePrecision": null,
+      "contextWindowTokens": 1050000,
+      "maxOutputTokens": 128000,
+      "endpointContextWindowTokens": null,
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "reasoning": {
+        "supported": true,
+        "mode": "configurable",
+        "efforts": [
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max"
+        ],
+        "defaultEffort": null
+      },
+      "weights": {
+        "openWeights": null,
+        "license": null,
+        "availability": null
+      },
+      "pricing": {
+        "currency": "USD",
+        "unit": "per 1M tokens",
+        "inputPerMillion": 10,
+        "outputPerMillion": 50,
+        "cachedInputPerMillion": 1,
+        "cacheWritePerMillion": 12.5,
+        "longContext": {
+          "thresholdTokens": 272000,
+          "inputPerMillion": 20,
+          "outputPerMillion": 75,
+          "cachedInputPerMillion": 2,
+          "cacheWritePerMillion": 25
+        },
+        "sourceStatus": "verified",
+        "sourceUrl": "https://developers.openai.com/api/docs/pricing"
+      },
+      "metadataStatus": "verified",
+      "sourceRefs": [
+        {
+          "label": "Official model documentation",
+          "url": "https://developers.openai.com/api/docs/models"
+        },
+        {
+          "label": "Official API pricing",
+          "url": "https://developers.openai.com/api/docs/pricing"
+        }
+      ],
+      "lastVerifiedAt": "2026-11-01"
+    },
+    {
+      "id": "openai:gpt-6-1-sol",
+      "displayName": "GPT-6.1 Sol",
+      "provider": "OpenAI",
+      "apiModelId": "gpt-6.1-sol",
+      "hostingProvider": null,
+      "benchmarkStatus": "evaluated",
+      "identityStatus": "verified",
+      "lifecycleStatus": "active",
+      "releaseDate": null,
+      "releaseDatePrecision": null,
+      "contextWindowTokens": 1050000,
+      "maxOutputTokens": 128000,
+      "endpointContextWindowTokens": null,
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "reasoning": {
+        "supported": true,
+        "mode": "configurable",
+        "efforts": [
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max"
+        ],
+        "defaultEffort": null
+      },
+      "weights": {
+        "openWeights": null,
+        "license": null,
+        "availability": null
+      },
+      "pricing": {
+        "currency": "USD",
+        "unit": "per 1M tokens",
+        "inputPerMillion": 2,
+        "outputPerMillion": 10,
+        "cachedInputPerMillion": 0.1,
+        "cacheWritePerMillion": 2.5,
+        "longContext": {
+          "thresholdTokens": 272000,
+          "inputPerMillion": 4,
+          "outputPerMillion": 15,
+          "cachedInputPerMillion": 0.2,
+          "cacheWritePerMillion": 5
+        },
+        "sourceStatus": "verified",
+        "sourceUrl": "https://developers.openai.com/api/docs/pricing"
+      },
+      "metadataStatus": "verified",
+      "sourceRefs": [
+        {
+          "label": "Official model documentation",
+          "url": "https://developers.openai.com/api/docs/models"
+        },
+        {
+          "label": "Official API pricing",
+          "url": "https://developers.openai.com/api/docs/pricing"
+        }
+      ],
+      "lastVerifiedAt": "2026-11-01"
+    },
+    {
+      "id": "openai:gpt-6-1-terra",
+      "displayName": "GPT-6.1 Terra",
+      "provider": "OpenAI",
+      "apiModelId": "gpt-6.1-terra",
+      "hostingProvider": null,
+      "benchmarkStatus": "evaluated",
+      "identityStatus": "verified",
+      "lifecycleStatus": "active",
+      "releaseDate": null,
+      "releaseDatePrecision": null,
+      "contextWindowTokens": 1050000,
+      "maxOutputTokens": 128000,
+      "endpointContextWindowTokens": null,
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "reasoning": {
+        "supported": true,
+        "mode": "configurable",
+        "efforts": [
+          "none",
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max"
+        ],
+        "defaultEffort": null
+      },
+      "weights": {
+        "openWeights": null,
+        "license": null,
+        "availability": null
+      },
+      "pricing": {
+        "currency": "USD",
+        "unit": "per 1M tokens",
+        "inputPerMillion": 1,
+        "outputPerMillion": 5,
+        "sourceStatus": "verified",
+        "sourceUrl": "https://developers.openai.com/api/docs/pricing"
+      },
+      "metadataStatus": "verified",
+      "sourceRefs": [
+        {
+          "label": "Official model documentation",
+          "url": "https://developers.openai.com/api/docs/models"
+        },
+        {
+          "label": "Official API pricing",
+          "url": "https://developers.openai.com/api/docs/pricing"
+        }
+      ],
+      "lastVerifiedAt": "2026-11-01"
+    },
+    {
+      "id": "openai:gpt-6-luna",
+      "displayName": "GPT-6 Luna",
+      "provider": "OpenAI",
+      "apiModelId": "gpt-6-luna",
+      "hostingProvider": null,
+      "benchmarkStatus": "evaluated",
+      "identityStatus": "verified",
+      "lifecycleStatus": "active",
+      "releaseDate": null,
+      "releaseDatePrecision": null,
+      "contextWindowTokens": 1050000,
+      "maxOutputTokens": 128000,
+      "endpointContextWindowTokens": null,
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "reasoning": {
+        "supported": true,
+        "mode": "configurable",
+        "efforts": [
+          "none",
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max"
+        ],
+        "defaultEffort": null
+      },
+      "weights": {
+        "openWeights": null,
+        "license": null,
+        "availability": null
+      },
+      "pricing": {
+        "currency": "USD",
+        "unit": "per 1M tokens",
+        "inputPerMillion": 0.1,
+        "outputPerMillion": 0.5,
+        "cachedInputPerMillion": 0.01,
+        "cacheWritePerMillion": 0.125,
+        "longContext": {
+          "thresholdTokens": 272000,
+          "inputPerMillion": 0.2,
+          "outputPerMillion": 0.75,
+          "cachedInputPerMillion": 0.02,
+          "cacheWritePerMillion": 0.25
+        },
+        "sourceStatus": "verified",
+        "sourceUrl": "https://developers.openai.com/api/docs/pricing"
+      },
+      "metadataStatus": "verified",
+      "sourceRefs": [
+        {
+          "label": "Official model documentation",
+          "url": "https://developers.openai.com/api/docs/models"
+        },
+        {
+          "label": "Official API pricing",
+          "url": "https://developers.openai.com/api/docs/pricing"
+        }
+      ],
+      "lastVerifiedAt": "2026-11-01"
+    },
+    {
+      "id": "anthropic:claude-fable-5",
+      "displayName": "Claude Fable 5",
+      "provider": "Anthropic",
+      "apiModelId": "claude-fable-5",
+      "hostingProvider": null,
+      "benchmarkStatus": "unmeasured",
+      "identityStatus": "verified",
+      "lifecycleStatus": "active",
+      "releaseDate": null,
+      "releaseDatePrecision": null,
+      "contextWindowTokens": 1000000,
+      "maxOutputTokens": 128000,
+      "endpointContextWindowTokens": null,
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "reasoning": {
+        "supported": true,
+        "mode": "adaptive-always-on",
+        "efforts": null,
+        "defaultEffort": "always-on"
+      },
+      "weights": {
+        "openWeights": null,
+        "license": null,
+        "availability": null
+      },
+      "pricing": null,
+      "metadataStatus": "verified",
+      "sourceRefs": [
+        {
+          "label": "Official model overview",
+          "url": "https://docs.anthropic.com/en/docs/about-claude/models"
+        },
+        {
+          "label": "Official API lifecycle and model IDs",
+          "url": "https://docs.anthropic.com/en/docs/about-claude/model-deprecations"
+        }
+      ],
+      "lastVerifiedAt": "2026-11-01"
+    },
+    {
+      "id": "anthropic:claude-opus-5",
+      "displayName": "Claude Opus 5",
+      "provider": "Anthropic",
+      "apiModelId": "claude-opus-5",
+      "hostingProvider": null,
+      "benchmarkStatus": "unmeasured",
+      "identityStatus": "verified",
+      "lifecycleStatus": "active",
+      "releaseDate": null,
+      "releaseDatePrecision": null,
+      "contextWindowTokens": 1000000,
+      "maxOutputTokens": 128000,
+      "endpointContextWindowTokens": null,
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "reasoning": {
+        "supported": true,
+        "mode": "adaptive",
+        "efforts": null,
+        "defaultEffort": "on"
+      },
+      "weights": {
+        "openWeights": null,
+        "license": null,
+        "availability": null
+      },
+      "pricing": null,
+      "metadataStatus": "verified",
+      "sourceRefs": [
+        {
+          "label": "Official model overview",
+          "url": "https://docs.anthropic.com/en/docs/about-claude/models"
+        },
+        {
+          "label": "Official API lifecycle and model IDs",
+          "url": "https://docs.anthropic.com/en/docs/about-claude/model-deprecations"
+        }
+      ],
+      "lastVerifiedAt": "2026-11-01"
+    },
+    {
+      "id": "anthropic:claude-sonnet-5",
+      "displayName": "Claude Sonnet 5",
+      "provider": "Anthropic",
+      "apiModelId": "claude-sonnet-5",
+      "hostingProvider": null,
+      "benchmarkStatus": "unmeasured",
+      "identityStatus": "verified",
+      "lifecycleStatus": "active",
+      "releaseDate": null,
+      "releaseDatePrecision": null,
+      "contextWindowTokens": 1000000,
+      "maxOutputTokens": 128000,
+      "endpointContextWindowTokens": null,
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "reasoning": {
+        "supported": true,
+        "mode": "adaptive",
+        "efforts": null,
+        "defaultEffort": "on"
+      },
+      "weights": {
+        "openWeights": null,
+        "license": null,
+        "availability": null
+      },
+      "pricing": null,
+      "metadataStatus": "verified",
+      "sourceRefs": [
+        {
+          "label": "Official model overview",
+          "url": "https://docs.anthropic.com/en/docs/about-claude/models"
+        },
+        {
+          "label": "Official API lifecycle and model IDs",
+          "url": "https://docs.anthropic.com/en/docs/about-claude/model-deprecations"
+        }
+      ],
+      "lastVerifiedAt": "2026-11-01"
+    },
+    {
+      "id": "anthropic:claude-haiku-4-5",
+      "displayName": "Claude Haiku 4.5",
+      "provider": "Anthropic",
+      "apiModelId": "claude-haiku-4-5-20251001",
+      "hostingProvider": null,
+      "benchmarkStatus": "unmeasured",
+      "identityStatus": "verified",
+      "lifecycleStatus": "active",
+      "releaseDate": null,
+      "releaseDatePrecision": null,
+      "contextWindowTokens": 200000,
+      "maxOutputTokens": null,
+      "endpointContextWindowTokens": null,
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "reasoning": {
+        "supported": null,
+        "mode": null,
+        "efforts": null,
+        "defaultEffort": null
+      },
+      "weights": {
+        "openWeights": null,
+        "license": null,
+        "availability": null
+      },
+      "pricing": null,
+      "metadataStatus": "verified",
+      "sourceRefs": [
+        {
+          "label": "Official model overview",
+          "url": "https://docs.anthropic.com/en/docs/about-claude/models"
+        },
+        {
+          "label": "Official API lifecycle and model IDs",
+          "url": "https://docs.anthropic.com/en/docs/about-claude/model-deprecations"
+        }
+      ],
+      "lastVerifiedAt": "2026-11-01"
+    },
+    {
+      "id": "google:gemini-4-argon",
+      "displayName": "Gemini 4 Argon",
+      "provider": "Google",
+      "apiModelId": "gemini-4-argon",
+      "hostingProvider": null,
+      "benchmarkStatus": "evaluated",
+      "identityStatus": "verified",
+      "lifecycleStatus": "active",
+      "releaseDate": null,
+      "releaseDatePrecision": null,
+      "contextWindowTokens": 1000000,
+      "maxOutputTokens": 1000000,
+      "endpointContextWindowTokens": null,
+      "inputModalities": [
+        "text",
+        "image",
+        "audio",
+        "video"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "reasoning": {
+        "supported": true,
+        "mode": "reasoning",
+        "efforts": null,
+        "defaultEffort": null
+      },
+      "weights": {
+        "openWeights": null,
+        "license": null,
+        "availability": null
+      },
+      "pricing": {
+        "currency": "USD",
+        "unit": "per 1M tokens",
+        "effectivePeriods": [
+          {
+            "through": "2026-11-30",
+            "inputPerMillion": 2,
+            "outputPerMillion": 10,
+            "cachedInputPerMillion": 0.1
+          },
+          {
+            "from": "2026-12-01",
+            "inputPerMillion": 4,
+            "outputPerMillion": 20,
+            "cachedInputPerMillion": 0.2
+          }
+        ],
+        "sourceStatus": "verified",
+        "sourceUrl": "https://ai.google.dev/gemini-api/docs/pricing"
+      },
+      "metadataStatus": "verified",
+      "sourceRefs": [
+        {
+          "label": "Official Gemini model list",
+          "url": "https://ai.google.dev/gemini-api/docs/models"
+        },
+        {
+          "label": "Official Gemini API pricing",
+          "url": "https://ai.google.dev/gemini-api/docs/pricing"
+        }
+      ],
+      "lastVerifiedAt": "2026-11-01"
+    },
+    {
+      "id": "google:gemini-3-8-flash",
+      "displayName": "Gemini 3.8 Flash",
+      "provider": "Google",
+      "apiModelId": "gemini-3.8-flash",
+      "hostingProvider": null,
+      "benchmarkStatus": "evaluated",
+      "identityStatus": "verified",
+      "lifecycleStatus": "active",
+      "releaseDate": null,
+      "releaseDatePrecision": null,
+      "contextWindowTokens": 1000000,
+      "maxOutputTokens": 64000,
+      "endpointContextWindowTokens": null,
+      "inputModalities": [
+        "text",
+        "image",
+        "audio",
+        "video"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "reasoning": {
+        "supported": true,
+        "mode": "thinking-level",
+        "efforts": [
+          "low",
+          "medium",
+          "high"
+        ],
+        "defaultEffort": "medium"
+      },
+      "weights": {
+        "openWeights": null,
+        "license": null,
+        "availability": null
+      },
+      "pricing": {
+        "currency": "USD",
+        "unit": "per 1M tokens",
+        "effectivePeriods": [
+          {
+            "through": "2026-12-31",
+            "inputPerMillion": 0.75,
+            "outputPerMillion": 3.75,
+            "cachedInputPerMillion": 0.075
+          },
+          {
+            "from": "2027-01-01",
+            "inputPerMillion": 1.5,
+            "outputPerMillion": 7.5,
+            "cachedInputPerMillion": 0.15
+          }
+        ],
+        "sourceStatus": "verified",
+        "sourceUrl": "https://ai.google.dev/gemini-api/docs/pricing"
+      },
+      "metadataStatus": "verified",
+      "sourceRefs": [
+        {
+          "label": "Official Gemini model list",
+          "url": "https://ai.google.dev/gemini-api/docs/models"
+        },
+        {
+          "label": "Official Gemini API pricing",
+          "url": "https://ai.google.dev/gemini-api/docs/pricing"
+        }
+      ],
+      "lastVerifiedAt": "2026-11-01"
+    },
+    {
+      "id": "xai:grok-4-7",
+      "displayName": "Grok 4.7",
+      "provider": "xAI",
+      "apiModelId": "grok-4.7",
+      "hostingProvider": null,
+      "benchmarkStatus": "evaluated",
+      "identityStatus": "verified",
+      "lifecycleStatus": "active",
+      "releaseDate": null,
+      "releaseDatePrecision": null,
+      "contextWindowTokens": 500000,
+      "maxOutputTokens": null,
+      "endpointContextWindowTokens": null,
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "reasoning": {
+        "supported": true,
+        "mode": "configurable",
+        "efforts": null,
+        "defaultEffort": null
+      },
+      "weights": {
+        "openWeights": null,
+        "license": null,
+        "availability": null
+      },
+      "pricing": {
+        "currency": "USD",
+        "unit": "per 1M tokens",
+        "inputPerMillion": 2,
+        "outputPerMillion": 6,
+        "longContext": {
+          "thresholdTokens": 200000,
+          "inputPerMillion": 4,
+          "outputPerMillion": 12
+        },
+        "sourceStatus": "verified",
+        "sourceUrl": "https://docs.x.ai/docs/pricing"
+      },
+      "metadataStatus": "verified",
+      "sourceRefs": [
+        {
+          "label": "Official model documentation",
+          "url": "https://docs.x.ai/docs/models"
+        },
+        {
+          "label": "Official API pricing",
+          "url": "https://docs.x.ai/docs/pricing"
+        }
+      ],
+      "lastVerifiedAt": "2026-11-01"
+    },
+    {
+      "id": "deepseek:flash-1017",
+      "displayName": "DeepSeek V4.1 Flash 1017",
+      "provider": "DeepSeek",
+      "apiModelId": "deepseek-flash",
+      "hostingProvider": null,
+      "benchmarkStatus": "evaluated",
+      "identityStatus": "verified",
+      "lifecycleStatus": "active",
+      "releaseDate": null,
+      "releaseDatePrecision": null,
+      "contextWindowTokens": 1048576,
+      "maxOutputTokens": 393216,
+      "endpointContextWindowTokens": null,
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "reasoning": {
+        "supported": true,
+        "mode": "configurable",
+        "efforts": [
+          "low",
+          "high",
+          "max"
+        ],
+        "defaultEffort": "high"
+      },
+      "weights": {
+        "openWeights": null,
+        "license": null,
+        "availability": null
+      },
+      "pricing": {
+        "currency": "USD",
+        "unit": "per 1M tokens",
+        "dynamicSchedule": true,
+        "peak": {
+          "inputPerMillion": 0.3,
+          "outputPerMillion": 1.2,
+          "cacheHitInputPerMillion": 0.006
+        },
+        "offPeak": {
+          "inputPerMillion": 0.15,
+          "outputPerMillion": 0.6,
+          "cacheHitInputPerMillion": 0.003
+        },
+        "sourceStatus": "verified",
+        "sourceUrl": "https://api-docs.deepseek.com/quick_start/pricing",
+        "note": "Dynamic peak/off-peak schedule; the active rate depends on the provider-defined time window."
+      },
+      "metadataStatus": "verified",
+      "sourceRefs": [
+        {
+          "label": "Official model list",
+          "url": "https://api-docs.deepseek.com/quick_start/model_list"
+        },
+        {
+          "label": "Official API pricing",
+          "url": "https://api-docs.deepseek.com/quick_start/pricing"
+        }
+      ],
+      "lastVerifiedAt": "2026-11-01"
+    },
+    {
+      "id": "deepseek:v4-pro-0813",
+      "displayName": "DeepSeek V4 Pro 0813",
+      "provider": "DeepSeek",
+      "apiModelId": "deepseek-v4-pro",
+      "hostingProvider": null,
+      "benchmarkStatus": "evaluated",
+      "identityStatus": "verified",
+      "lifecycleStatus": "active",
+      "releaseDate": null,
+      "releaseDatePrecision": null,
+      "contextWindowTokens": 1048576,
+      "maxOutputTokens": 393216,
+      "endpointContextWindowTokens": null,
+      "inputModalities": [
+        "text"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "reasoning": {
+        "supported": true,
+        "mode": "configurable",
+        "efforts": [
+          "low",
+          "high",
+          "max"
+        ],
+        "defaultEffort": "high"
+      },
+      "weights": {
+        "openWeights": null,
+        "license": null,
+        "availability": null
+      },
+      "pricing": {
+        "currency": "USD",
+        "unit": "per 1M tokens",
+        "dynamicSchedule": true,
+        "peak": {
+          "inputPerMillion": 1.32,
+          "outputPerMillion": 3.96,
+          "cacheHitInputPerMillion": 0.044
+        },
+        "offPeak": {
+          "inputPerMillion": 0.66,
+          "outputPerMillion": 1.98,
+          "cacheHitInputPerMillion": 0.022
+        },
+        "sourceStatus": "verified",
+        "sourceUrl": "https://api-docs.deepseek.com/quick_start/pricing",
+        "note": "Dynamic peak/off-peak schedule; the active rate depends on the provider-defined time window."
+      },
+      "metadataStatus": "verified",
+      "sourceRefs": [
+        {
+          "label": "Official model list",
+          "url": "https://api-docs.deepseek.com/quick_start/model_list"
+        },
+        {
+          "label": "Official API pricing",
+          "url": "https://api-docs.deepseek.com/quick_start/pricing"
+        }
+      ],
+      "lastVerifiedAt": "2026-11-01"
+    },
+    {
+      "id": "mistral:large-4",
+      "displayName": "Mistral Large 4",
+      "provider": "Mistral AI",
+      "apiModelId": "mistral-large-4",
+      "hostingProvider": null,
+      "benchmarkStatus": "evaluated",
+      "identityStatus": "verified",
+      "lifecycleStatus": "active",
+      "releaseDate": null,
+      "releaseDatePrecision": null,
+      "contextWindowTokens": 1000000,
+      "maxOutputTokens": null,
+      "endpointContextWindowTokens": null,
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "reasoning": {
+        "supported": true,
+        "mode": "configurable",
+        "efforts": [
+          "high"
+        ],
+        "defaultEffort": null
+      },
+      "weights": {
+        "openWeights": null,
+        "license": "Mistral Ecosystem Open Weight License v26.10",
+        "availability": "Announced; downloadable weights not verified as available in the current official model documentation."
+      },
+      "pricing": {
+        "currency": "USD",
+        "unit": "per 1M tokens",
+        "inputPerMillion": 1.36,
+        "outputPerMillion": 4.18,
+        "cachedInputPerMillion": 0.14,
+        "sourceStatus": "reported-official",
+        "sourceUrl": "https://docs.mistral.ai/models/mistral-large-4",
+        "note": "Launch promotion at 50% off was time-limited to the first two weeks after the 2026-10-06 release; standard rates shown here."
+      },
+      "metadataStatus": "verified",
+      "sourceRefs": [
+        {
+          "label": "Official model card",
+          "url": "https://docs.mistral.ai/models/mistral-large-4"
+        },
+        {
+          "label": "Official model directory",
+          "url": "https://docs.mistral.ai/getting-started/models"
+        },
+        {
+          "label": "Official API pricing",
+          "url": "https://docs.mistral.ai/getting-started/pricing"
+        }
+      ],
+      "lastVerifiedAt": "2026-11-01"
+    },
+    {
+      "id": "mistral:medium-3-5",
+      "displayName": "Mistral Medium 3.5",
+      "provider": "Mistral AI",
+      "apiModelId": "mistral-medium-3-5",
+      "hostingProvider": null,
+      "benchmarkStatus": "evaluated",
+      "identityStatus": "verified",
+      "lifecycleStatus": "active",
+      "releaseDate": null,
+      "releaseDatePrecision": null,
+      "contextWindowTokens": 256000,
+      "maxOutputTokens": null,
+      "endpointContextWindowTokens": null,
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "reasoning": {
+        "supported": null,
+        "mode": null,
+        "efforts": null,
+        "defaultEffort": null
+      },
+      "weights": {
+        "openWeights": true,
+        "license": "Modified MIT",
+        "availability": "Weights published"
+      },
+      "pricing": {
+        "currency": "USD",
+        "unit": "per 1M tokens",
+        "inputPerMillion": 1.5,
+        "outputPerMillion": 7.5,
+        "cachedInputPerMillion": 0.15,
+        "sourceStatus": "verified",
+        "sourceUrl": "https://docs.mistral.ai/getting-started/pricing"
+      },
+      "metadataStatus": "verified",
+      "sourceRefs": [
+        {
+          "label": "Official model card",
+          "url": "https://docs.mistral.ai/models/mistral-medium-3-5"
+        },
+        {
+          "label": "Official model directory",
+          "url": "https://docs.mistral.ai/getting-started/models"
+        },
+        {
+          "label": "Official API pricing",
+          "url": "https://docs.mistral.ai/getting-started/pricing"
+        }
+      ],
+      "lastVerifiedAt": "2026-11-01"
+    },
+    {
+      "id": "qwen:qwen3-8-max",
+      "displayName": "Qwen3.8 Max",
+      "provider": "Alibaba / Qwen",
+      "apiModelId": "qwen3.8-max",
+      "hostingProvider": null,
+      "benchmarkStatus": "evaluated",
+      "identityStatus": "verified",
+      "lifecycleStatus": "active",
+      "releaseDate": null,
+      "releaseDatePrecision": null,
+      "contextWindowTokens": 1000000,
+      "maxOutputTokens": null,
+      "endpointContextWindowTokens": null,
+      "inputModalities": [
+        "text",
+        "image",
+        "video"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "reasoning": {
+        "supported": true,
+        "mode": "thinking",
+        "efforts": null,
+        "defaultEffort": null
+      },
+      "weights": {
+        "openWeights": null,
+        "license": null,
+        "availability": null
+      },
+      "pricing": {
+        "currency": "CNY",
+        "unit": "per 1M tokens",
+        "inputPerMillion": 12,
+        "outputPerMillion": 36,
+        "sourceStatus": "verified",
+        "sourceUrl": "https://help.aliyun.com/en/model-studio/pricing"
+      },
+      "metadataStatus": "verified",
+      "sourceRefs": [
+        {
+          "label": "Official Model Studio model list",
+          "url": "https://help.aliyun.com/en/model-studio/models"
+        },
+        {
+          "label": "Official Model Studio pricing",
+          "url": "https://help.aliyun.com/en/model-studio/pricing"
+        }
+      ],
+      "lastVerifiedAt": "2026-11-01"
+    },
+    {
+      "id": "qwen:qwen3-8-flash",
+      "displayName": "Qwen3.8 Flash",
+      "provider": "Alibaba / Qwen",
+      "apiModelId": "qwen3.8-flash",
+      "hostingProvider": null,
+      "benchmarkStatus": "evaluated",
+      "identityStatus": "verified",
+      "lifecycleStatus": "active",
+      "releaseDate": null,
+      "releaseDatePrecision": null,
+      "contextWindowTokens": 1000000,
+      "maxOutputTokens": null,
+      "endpointContextWindowTokens": null,
+      "inputModalities": [
+        "text"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "reasoning": {
+        "supported": true,
+        "mode": "thinking",
+        "efforts": null,
+        "defaultEffort": null
+      },
+      "weights": {
+        "openWeights": null,
+        "license": null,
+        "availability": null
+      },
+      "pricing": null,
+      "metadataStatus": "partial",
+      "sourceRefs": [
+        {
+          "label": "Official Model Studio model list",
+          "url": "https://help.aliyun.com/en/model-studio/models"
+        }
+      ],
+      "lastVerifiedAt": "2026-11-01"
+    },
+    {
+      "id": "minimax:m3-1-flash",
+      "displayName": "MiniMax M3.1 Flash",
+      "provider": "MiniMax",
+      "apiModelId": "minimaxai/minimax-m3.1-flash",
+      "hostingProvider": "NVIDIA NIM",
+      "benchmarkStatus": "evaluated",
+      "identityStatus": "verified",
+      "lifecycleStatus": "active",
+      "releaseDate": null,
+      "releaseDatePrecision": null,
+      "contextWindowTokens": 1000000,
+      "maxOutputTokens": null,
+      "endpointContextWindowTokens": null,
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "reasoning": {
+        "supported": true,
+        "mode": "configurable",
+        "efforts": [
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max"
+        ],
+        "defaultEffort": null
+      },
+      "weights": {
+        "openWeights": null,
+        "license": "MiniMax Community License",
+        "availability": "Model-card license documented; weight download status not confirmed here."
+      },
+      "pricing": null,
+      "metadataStatus": "partial",
+      "sourceRefs": [
+        {
+          "label": "NVIDIA NIM model card",
+          "url": "https://build.nvidia.com/minimaxai/minimax-m3-1-flash"
+        }
+      ],
+      "lastVerifiedAt": "2026-11-01"
+    },
+    {
+      "id": "zai:glm-5-3",
+      "displayName": "GLM-5.3",
+      "provider": "Z.ai",
+      "apiModelId": "z-ai/glm-5.3",
+      "hostingProvider": "NVIDIA NIM / Mistral AI",
+      "benchmarkStatus": "unmeasured",
+      "identityStatus": "verified",
+      "lifecycleStatus": "active",
+      "releaseDate": null,
+      "releaseDatePrecision": null,
+      "contextWindowTokens": 1000000,
+      "maxOutputTokens": null,
+      "endpointContextWindowTokens": null,
+      "inputModalities": [
+        "text"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "reasoning": {
+        "supported": true,
+        "mode": "configurable",
+        "efforts": null,
+        "defaultEffort": null
+      },
+      "weights": {
+        "openWeights": null,
+        "license": "MIT",
+        "availability": "License reported by hosted model card; download status not independently confirmed."
+      },
+      "pricing": null,
+      "metadataStatus": "partial",
+      "sourceRefs": [
+        {
+          "label": "NVIDIA NIM model card",
+          "url": "https://build.nvidia.com/z-ai/glm-5-3"
+        },
+        {
+          "label": "Mistral hosted model directory",
+          "url": "https://docs.mistral.ai/getting-started/models"
+        }
+      ],
+      "lastVerifiedAt": "2026-11-01"
+    },
+    {
+      "id": "zai:glm-5-3-flash",
+      "displayName": "GLM-5.3 Flash",
+      "provider": "Z.ai",
+      "apiModelId": "z-ai/glm-5.3-flash",
+      "hostingProvider": "NVIDIA NIM",
+      "benchmarkStatus": "unmeasured",
+      "identityStatus": "verified",
+      "lifecycleStatus": "active",
+      "releaseDate": null,
+      "releaseDatePrecision": null,
+      "contextWindowTokens": 1000000,
+      "maxOutputTokens": null,
+      "endpointContextWindowTokens": null,
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "reasoning": {
+        "supported": true,
+        "mode": "configurable",
+        "efforts": [
+          "low",
+          "high",
+          "max"
+        ],
+        "defaultEffort": "max"
+      },
+      "weights": {
+        "openWeights": null,
+        "license": "MIT",
+        "availability": "License reported by hosted model card; download status not independently confirmed."
+      },
+      "pricing": null,
+      "metadataStatus": "partial",
+      "sourceRefs": [
+        {
+          "label": "NVIDIA NIM model card",
+          "url": "https://build.nvidia.com/z-ai/glm-5-3-flash"
+        }
+      ],
+      "lastVerifiedAt": "2026-11-01"
+    },
+    {
+      "id": "meta:muse-glimmer-30b",
+      "displayName": "Muse Glimmer 30B",
+      "provider": "Meta",
+      "apiModelId": "meta/muse-glimmer-30b",
+      "hostingProvider": "NVIDIA NIM",
+      "benchmarkStatus": "unmeasured",
+      "identityStatus": "verified",
+      "lifecycleStatus": "active",
+      "releaseDate": null,
+      "releaseDatePrecision": null,
+      "contextWindowTokens": 131072,
+      "maxOutputTokens": null,
+      "endpointContextWindowTokens": null,
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "reasoning": {
+        "supported": true,
+        "mode": "configurable",
+        "efforts": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ],
+        "defaultEffort": null
+      },
+      "weights": {
+        "openWeights": true,
+        "license": "Apache 2.0",
+        "availability": "Download available"
+      },
+      "pricing": null,
+      "metadataStatus": "verified",
+      "sourceRefs": [
+        {
+          "label": "NVIDIA NIM model card",
+          "url": "https://build.nvidia.com/meta/muse-glimmer-30b"
+        }
+      ],
+      "lastVerifiedAt": "2026-11-01"
+    },
+    {
+      "id": "nvidia:nemotron-3-5-super-vl-120b-a12b",
+      "displayName": "Nemotron 3.5 Super VL 120B A12B NVFP4",
+      "provider": "NVIDIA",
+      "apiModelId": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+      "hostingProvider": "NVIDIA NIM",
+      "benchmarkStatus": "unmeasured",
+      "identityStatus": "verified",
+      "lifecycleStatus": "active",
+      "releaseDate": "2026-10-15",
+      "releaseDatePrecision": "day",
+      "contextWindowTokens": 1000000,
+      "maxOutputTokens": null,
+      "endpointContextWindowTokens": 262144,
+      "inputModalities": [
+        "text",
+        "image",
+        "video"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "reasoning": {
+        "supported": true,
+        "mode": "configurable",
+        "efforts": null,
+        "defaultEffort": null
+      },
+      "weights": {
+        "openWeights": null,
+        "license": "OpenMDW 1.1",
+        "availability": "Model license documented; hosted endpoint download status differs."
+      },
+      "pricing": null,
+      "metadataStatus": "verified",
+      "sourceRefs": [
+        {
+          "label": "NVIDIA NIM model card",
+          "url": "https://build.nvidia.com/nvidia/nemotron-3-5-super-vl-120b-a12b/modelcard"
+        }
+      ],
+      "lastVerifiedAt": "2026-11-01"
+    },
+    {
+      "id": "moonshot:kimi-k3",
+      "displayName": "Kimi K3",
+      "provider": "Moonshot AI",
+      "apiModelId": "kimi-k3",
+      "hostingProvider": "Alibaba Cloud Model Studio",
+      "benchmarkStatus": "evaluated",
+      "identityStatus": "verified",
+      "lifecycleStatus": "active",
+      "releaseDate": null,
+      "releaseDatePrecision": null,
+      "contextWindowTokens": null,
+      "maxOutputTokens": null,
+      "endpointContextWindowTokens": null,
+      "inputModalities": null,
+      "outputModalities": null,
+      "reasoning": {
+        "supported": null,
+        "mode": null,
+        "efforts": null,
+        "defaultEffort": null
+      },
+      "weights": {
+        "openWeights": null,
+        "license": null,
+        "availability": null
+      },
+      "pricing": null,
+      "metadataStatus": "partial",
+      "sourceRefs": [
+        {
+          "label": "Alibaba Cloud Model Studio model list",
+          "url": "https://help.aliyun.com/en/model-studio/models"
+        }
+      ],
+      "lastVerifiedAt": "2026-11-01"
+    }
+  ],
+  "modelCatalogSchemaVersion": "1.0",
+  "modelCatalogUpdatedAt": "2026-11-01",
+  "modelIdentityAudit": [
+    {
+      "benchmarkDisplayName": "Claude Fable 5.1",
+      "provider": "Anthropic",
+      "identityStatus": "unresolved",
+      "officialCandidate": "Claude Fable 5 (claude-fable-5)",
+      "reason": "The current official Anthropic model directory lists Claude Fable 5, not Claude Fable 5.1. No official source confirms that the benchmark label is the same API model. Do not merge or attach official pricing/specifications.",
+      "sourceUrl": "https://docs.anthropic.com/en/docs/about-claude/models"
+    },
+    {
+      "benchmarkDisplayName": "Claude Opus 5.5",
+      "provider": "Anthropic",
+      "identityStatus": "unresolved",
+      "officialCandidate": "Claude Opus 5 (claude-opus-5)",
+      "reason": "The current official Anthropic model directory lists Claude Opus 5, not Claude Opus 5.5. No official source confirms that the benchmark label is the same API model. Do not merge or attach official pricing/specifications.",
+      "sourceUrl": "https://docs.anthropic.com/en/docs/about-claude/models"
+    },
+    {
+      "benchmarkDisplayName": "Claude Sonnet 5.5",
+      "provider": "Anthropic",
+      "identityStatus": "unresolved",
+      "officialCandidate": "Claude Sonnet 5 (claude-sonnet-5)",
+      "reason": "The current official Anthropic model directory lists Claude Sonnet 5, not Claude Sonnet 5.5. No official source confirms that the benchmark label is the same API model. Do not merge or attach official pricing/specifications.",
+      "sourceUrl": "https://docs.anthropic.com/en/docs/about-claude/models"
+    },
+    {
+      "benchmarkDisplayName": "Claude Haiku 5.5",
+      "provider": "Anthropic",
+      "identityStatus": "unresolved",
+      "officialCandidate": "Claude Haiku 4.5 (claude-haiku-4-5-20251001)",
+      "reason": "The current official Anthropic model directory lists Claude Haiku 4.5, not Claude Haiku 5.5. No official source confirms that the benchmark label is the same API model. Do not merge or attach official pricing/specifications.",
+      "sourceUrl": "https://docs.anthropic.com/en/docs/about-claude/models"
+    }
+  ]
 }
