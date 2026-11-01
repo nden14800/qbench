@@ -24,7 +24,9 @@ QBench keeps every result attached to its publisher, model variant, reasoning ef
 | Limited evidence (3 families) | 26 |
 | Unranked variants | 136 |
 
-Counts come from the Index 1.6 runtime in the browser (2026-10-31). A base model can appear as several effort variants, so the leaderboard ranks model variants, not base model names.
+Counts come from the Index 1.6 runtime in the browser (2026-10-31).
+
+**Model provenance (checked 2026-11-01):** Ember-1 is listed with provider Fireworks. Vercel's changelog (27 Sep 2026) describes it as "Ember-1 from Fireworks" and says it is "built on Kimi K3", so Fireworks is the brand and Moonshot AI's Kimi K3 is the base model. The provider field stays Fireworks. Sources: https://vercel.com/changelog/ember-1-from-fireworks-now-available-on-ai-gateway and https://openrouter.ai/models/fireworks/ember-1 A base model can appear as several effort variants, so the leaderboard ranks model variants, not base model names.
 
 ### What changed from the previous index
 
