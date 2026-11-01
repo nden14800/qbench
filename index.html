@@ -8,7 +8,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Zen+Old+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" rel="stylesheet">
@@ -124,6 +124,92 @@ footer{font-size:.8rem;color:var(--qb-muted)}
 #index-table td,#index-table th{white-space:nowrap}
 #index-table td{padding-top:.4rem;padding-bottom:.4rem}
 #index-table td:nth-child(2){white-space:normal;min-width:180px}
+
+/* QBench visual system refresh — editorial research-lab layout */
+:root{
+ --qb-accent:#315f50;--qb-accent-soft:rgba(49,95,80,.10);--qb-muted:#73786f;
+ --qb-good:#2e8060;--qb-warn:#a56a25;--qb-bad:#b84e42;--qb-grid:#e6e4dc;
+ --qb-c1:#315f50;--qb-c2:#bd7652;--qb-c3:#617b9a;--qb-c4:#a48b53;
+ --bs-body-bg:#fbfaf6;--bs-tertiary-bg:#f3f2ec;--bs-body-color:#252923;
+ --bs-secondary-color:#73786f;--bs-border-color:#e4e2d9;
+}
+html[data-bs-theme="dark"]{
+ --qb-accent:#8db7a4;--qb-accent-soft:rgba(141,183,164,.14);--qb-muted:#a0a79e;
+ --qb-good:#77c5a0;--qb-warn:#e0b16c;--qb-bad:#ed9588;--qb-grid:#353b37;
+ --qb-c1:#8db7a4;--qb-c2:#d39473;--qb-c3:#91a9c5;--qb-c4:#c5ae70;
+ --bs-body-bg:#171b19;--bs-tertiary-bg:#111512;--bs-body-color:#edf0e9;
+ --bs-secondary-color:#a0a79e;--bs-border-color:#343b36;
+}
+body{font-family:"Manrope","Noto Sans JP",sans-serif;letter-spacing:-.018em;background:var(--bs-tertiary-bg);color:var(--bs-body-color)}
+.navbar{background:color-mix(in srgb,var(--bs-body-bg) 94%,transparent)!important;backdrop-filter:blur(18px);border-color:var(--bs-border-color)!important;min-height:68px}
+.navbar .container-xl{max-width:1440px;padding-left:clamp(18px,4vw,64px);padding-right:clamp(18px,4vw,64px)}
+.navbar-brand{font-family:"Manrope",sans-serif!important;font-weight:800!important;letter-spacing:-.06em}
+.brand-mark{width:30px;height:30px}
+.nav-pills{gap:5px}
+.nav-pills .nav-link{border-radius:9px;padding:.58rem .9rem;font-size:.82rem;font-weight:700;letter-spacing:.01em}
+main.container-xl,footer.container-xl{max-width:1440px;padding-left:clamp(18px,4vw,64px);padding-right:clamp(18px,4vw,64px)}
+main.container-xl{padding-top:clamp(26px,4vw,58px)!important}
+.qb-hero{padding:clamp(24px,4vw,54px);border:1px solid var(--bs-border-color);border-radius:22px;background:var(--bs-body-bg);position:relative;overflow:hidden}
+.qb-hero:after{content:"";position:absolute;width:420px;height:420px;border:1px solid var(--qb-grid);border-radius:50%;right:-180px;top:-230px;box-shadow:0 0 0 34px color-mix(in srgb,var(--qb-grid) 34%,transparent),0 0 0 70px color-mix(in srgb,var(--qb-grid) 20%,transparent);pointer-events:none}
+.qb-hero-top{display:flex;align-items:flex-end;justify-content:space-between;gap:36px;position:relative;z-index:1}
+.qb-kicker,.qb-aside-label,.qb-aside-meta{font-family:"IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.12em;font-size:.68rem;color:var(--qb-muted)}
+.qb-kicker{display:flex;align-items:center;gap:9px;margin-bottom:20px;color:var(--qb-accent);font-weight:600}
+.qb-live-dot{width:7px;height:7px;border-radius:50%;background:var(--qb-good);box-shadow:0 0 0 4px var(--qb-accent-soft)}
+.hero-title{font-family:"Manrope","Noto Sans JP",sans-serif!important;font-size:clamp(2.35rem,5vw,4.65rem)!important;line-height:1.02!important;font-weight:800!important;letter-spacing:-.075em!important;margin:0 0 18px!important}
+.hero-title span{color:var(--qb-accent)}
+.qb-hero-copy{max-width:680px;color:var(--qb-muted);font-size:clamp(.95rem,1.4vw,1.1rem);line-height:1.8;margin:0}
+.qb-hero-aside{min-width:220px;max-width:250px;padding:18px 0 4px 25px;border-left:1px solid var(--bs-border-color);position:relative;z-index:1}
+.qb-aside-index{font-size:1.55rem;letter-spacing:-.05em;margin:12px 0}
+.qb-aside-index strong{font-family:"IBM Plex Mono",monospace;color:var(--qb-accent)}
+.qb-aside-rule{height:1px;background:var(--bs-border-color);margin:14px 0}
+.qb-aside-meta{line-height:2;text-transform:none;letter-spacing:0;font-family:"Manrope","Noto Sans JP",sans-serif;font-size:.76rem}
+.stat-card{border:1px solid var(--bs-border-color)!important;border-radius:13px!important;background:color-mix(in srgb,var(--bs-tertiary-bg) 60%,var(--bs-body-bg))!important;padding:6px 8px}
+.stat-card .stat-k{font-family:"IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.09em;font-size:.65rem}
+.stat-card .stat-v{font-size:1.65rem;font-weight:800;letter-spacing:-.06em}
+.card{border:1px solid var(--bs-border-color)!important;border-radius:17px!important;background:var(--bs-body-bg);box-shadow:0 8px 28px rgba(25,30,25,.035)!important;overflow:hidden}
+.card-header{padding:19px 22px!important;border-bottom:1px solid var(--bs-border-color)!important}
+.card-title-qb{font-size:1.05rem;font-weight:800;letter-spacing:-.035em}
+.card-body{padding:22px}
+.toolbar-qb{gap:9px!important}
+.form-control,.form-select,.choice__trigger{border:1px solid var(--bs-border-color)!important;border-radius:9px!important;background-color:var(--bs-body-bg)!important;min-height:40px;box-shadow:none!important}
+.form-control:focus,.form-select:focus,.choice__trigger:focus{border-color:var(--qb-accent)!important;box-shadow:0 0 0 3px var(--qb-accent-soft)!important}
+.btn{border-radius:9px;font-weight:700;letter-spacing:-.01em}
+.btn-outline-secondary{--bs-btn-color:var(--bs-body-color);--bs-btn-border-color:var(--bs-border-color);--bs-btn-hover-bg:var(--qb-accent-soft);--bs-btn-hover-color:var(--qb-accent);--bs-btn-hover-border-color:var(--qb-accent)}
+.nav-tabs{border-bottom:1px solid var(--bs-border-color);gap:5px;flex-wrap:wrap}
+.nav-tabs .nav-link{border:0!important;border-radius:9px!important;padding:.7rem .9rem;color:var(--qb-muted);font-size:.78rem;font-weight:700}
+.nav-tabs .nav-link.active{background:var(--qb-accent-soft)!important;color:var(--qb-accent)!important}
+.index-explainer{padding:13px 16px;background:var(--bs-tertiary-bg);border:1px solid var(--bs-border-color);border-radius:10px;font-size:.82rem;line-height:1.8}
+#index-table-wrap{max-height:680px;overflow:auto}
+#index-table{font-size:.83rem}
+#index-table thead th{font-family:"IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.06em;font-size:.65rem;color:var(--qb-muted);padding:13px 14px}
+#index-table td{padding:13px 14px;border-color:var(--bs-border-color)}
+#index-table tbody tr:hover{background:var(--qb-accent-soft)}
+.chart-legend{display:flex;flex-wrap:wrap;gap:9px 18px;padding:14px 4px 0;color:var(--qb-muted);font-size:.75rem}
+.chart-legend span{display:inline-flex;align-items:center;gap:7px}
+.chart-legend i{width:9px;height:9px;border-radius:3px}
+.notice-qb{border:1px solid var(--bs-border-color);background:var(--bs-tertiary-bg);border-radius:10px;padding:12px 15px;margin-top:14px;color:var(--qb-muted);font-size:.76rem;line-height:1.7}
+#chart-main{min-width:0}
+.prose-qb{line-height:1.85}
+.prose-qb h2,.prose-qb h3{letter-spacing:-.035em;font-weight:800}
+footer{color:var(--qb-muted);font-size:.78rem}
+@media(max-width:767px){
+ .qb-hero-top{display:block}
+ .qb-hero-aside{display:none}
+ .qb-hero{padding:24px 20px;border-radius:16px}
+ .hero-title{font-size:clamp(2.2rem,11vw,3.2rem)!important}
+ .navbar .container-xl{gap:10px}
+ .navbar .nav-pills{order:3;width:100%;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px}
+ .navbar .nav-link{white-space:nowrap}
+ main.container-xl{padding-top:18px!important}
+ .card-header,.card-body{padding:16px!important}
+ #index-table{font-size:.76rem}
+ #index-table td,#index-table th{padding:10px 11px}
+ .toolbar-qb{width:100%}
+ .toolbar-qb>*{max-width:100%}
+}
+@media(prefers-reduced-motion:no-preference){
+ .card,.btn,.nav-link{transition:background-color .18s ease,border-color .18s ease,box-shadow .18s ease}
+}
 </style>
 </head>
 <body>
@@ -146,10 +232,9 @@ footer{font-size:.8rem;color:var(--qb-muted)}
 </nav>
 
 <main class="container-xl py-4">
-  <header class="mb-4">
-    <h1 class="hero-title font-serif-jp">AI capability, measured with evidence</h1>
-    <p class="text-muted-qb mb-0" style="max-width:48rem">QBench Index 1.6 compares models across eighteen source-audited evaluations grouped into eight capability families. Every result keeps its exact model effort, harness, native score and source; missing scores are never guessed.</p>
-    <div class="row row-cols-1 row-cols-lg-3 g-3 mt-3" id="stats"></div>
+  <header class="qb-hero mb-4">
+    <div class="qb-hero-top"><div><div class="qb-kicker"><span class="qb-live-dot"></span> INDEPENDENT MODEL EVALUATION</div><h1 class="hero-title">Intelligence, measured.<br><span>Evidence over hype.</span></h1><p class="qb-hero-copy">A transparent view of frontier AI capabilities, grounded in published benchmark results. Every model keeps its exact effort setting, source and reported score.</p></div><div class="qb-hero-aside"><div class="qb-aside-label">CURRENT COMPOSITE</div><div class="qb-aside-index">QBench <strong>1.6</strong></div><div class="qb-aside-rule"></div><div class="qb-aside-meta">8 capability families<br>Source-audited evaluations<br>Equal-weight observed means</div></div></div>
+    <div class="row row-cols-1 row-cols-md-3 g-3 mt-4" id="stats"></div>
   </header>
 
   <!-- INDEX -->
@@ -538,14 +623,14 @@ function renderComposition(host){
   var top=RESULT.rows.filter(function(r){return r.ranked;}).slice(0,15);
   if(!top.length){emptyChart(host,'No ranked model yet.');return;}
   var p=pal(),family=getComputedStyle(document.body).fontFamily||'DM Sans, Zen Kaku Gothic New, sans-serif';
-  host.innerHTML='<div id="chart-main-el" style="height:'+Math.max(480,top.length*36+120)+'px"></div>'+
+  host.innerHTML='<div id="chart-main-el" style="height:460px"></div>'+
     '<div class="chart-legend">'+RESULT.domains.map(function(d,i){return '<span><i style="background:'+p.c[i]+'"></i>'+esc(d)+'</span>';}).join('')+'</div>'+
     '<div class="notice-qb">Bar height = raw mean of the observed capability-family percentages. The Index is the equal-weight mean of observed family scores; families with no result are left out, not imputed.</div>';
   var c=chartInit('chart-main-el');
-  c.setOption({animation:false,grid:{left:190,right:30,top:20,bottom:52,containLabel:true},
+  c.setOption({animation:false,grid:{left:48,right:18,top:14,bottom:140},
     tooltip:{trigger:'axis',axisPointer:{type:'shadow'},valueFormatter:function(v){return fmt(v,1);}},
-    yAxis:{type:'category',inverse:true,data:top.map(function(r){return r.variantLabel;}),axisLabel:{color:p.ink,fontSize:11,width:170,overflow:'truncate'},axisLine:{lineStyle:{color:p.grid}},axisTick:{show:false}},
-    xAxis:Object.assign({type:'value',min:0,max:100,name:'Observed family contribution',nameLocation:'middle',nameGap:32},axisStyle(p)),
+    xAxis:catAxis(p,{type:'category',data:top.map(function(r){return r.variantLabel;})},{rotate:50,interval:0,fontSize:11,width:130,overflow:'truncate'}),
+    yAxis:Object.assign({type:'value',min:0},axisStyle(p)),
     series:RESULT.domains.map(function(d,i){return {name:d,type:'bar',stack:'idx',barWidth:'60%',itemStyle:{color:p.c[i],borderRadius:[4,4,0,0]},
       data:top.map(function(r){return r.domains[d]==null?0:r.domains[d]/r.domainCount;})};})
   },true);
@@ -573,13 +658,12 @@ function renderBars(host){
   $('#bars-n-choice .choice__trigger').disabled=!!picked;
   var c=chartInit('chart-main-el');
   if(!c||!rows.length)return;
-  c.setOption({animation:false,grid:{left:190,right:48,top:22,bottom:48,containLabel:true},
+  c.setOption({animation:false,grid:{left:56,right:18,top:24,bottom:140},
     tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(ps){var r=rows[ps[0].dataIndex];return esc(r.variantLabel)+'<br>Index '+fmt(r.index,1)+'<br>Families observed: '+r.domainCount+' / '+RESULT.domains.length;}},
-    yAxis:{type:'category',inverse:true,data:rows.map(function(r){return r.variantLabel;}),axisLabel:{color:p.ink,fontSize:11,width:170,overflow:'truncate'},axisLine:{lineStyle:{color:p.grid}},axisTick:{show:false}},
-    xAxis:Object.assign({type:'value',min:0,max:100,name:'QBench Index 1.6',nameLocation:'middle',nameGap:30},axisStyle(p)),
-    
+    xAxis:catAxis(p,{type:'category',data:rows.map(scatterLabel)},{rotate:50,interval:0,fontSize:11,width:130,overflow:'truncate'}),
+    yAxis:Object.assign({type:'value',min:0,name:'QBench Index 1.6',nameLocation:'middle',nameGap:40,nameTextStyle:{color:p.muted}},axisStyle(p)),
     series:[{type:'bar',barWidth:'60%',data:rows.map(function(r){return {value:+Number(r.index).toFixed(1),itemStyle:{color:providerColor(r.provider),borderRadius:[4,4,0,0]}};}),
-      label:{show:!!S.barsValues,position:'right',formatter:function(e){return fmt(e.value,1);},color:p.ink,fontSize:10}}]});
+      label:{show:!!S.barsValues,position:'top',formatter:function(e){return fmt(e.value,1);},color:p.ink,fontSize:10}}]});
 }
 /* Small multiples: one ranked bar panel per eligible evaluation, top variants by native score. */
 function renderEvalGrid(host){
@@ -619,29 +703,31 @@ function renderScatter(host){
   var pts=RESULT.rows.filter(function(r){return r.ranked&&r.price!=null&&r.index!=null;});
   if(!pts.length){emptyChart(host,'No ranked model has a verified price mapping.');return;}
   var p=pal();
-  host.innerHTML='<div class="small text-muted-qb mb-2">Hover points for model and effort details. Labels are limited to avoid overlap.</div><div id="chart-main-el" style="height:560px;min-height:440px"></div>'+
+  host.innerHTML='<div class="small text-muted-qb mb-2">Model names appear only on the Pareto frontier. Hover any point to inspect every model and effort variant.</div><div id="chart-main-el" style="height:520px;min-height:420px"></div>'+
     '<div class="chart-legend" id="scatter-legend"></div>'+
-    '<div class="notice-qb">Dashed line: Pareto frontier (highest index at each price level). The scatter uses first-party provider API rates only, assumes equal input/output volumes and is not cost per task.</div>';
-  var c=chartInit('chart-main-el');
-  var front=[],best=-1;
-  pts.slice().sort(function(a,b){return a.price-b.price||b.index-a.index;}).forEach(function(q){if(q.index>best){front.push([q.price,q.index]);best=q.index;}});
-  var prices=pts.map(function(q){return q.price;});
-  var mp=prices.reduce(function(a,b){return a+b;},0)/prices.length;
+    '<div class="notice-qb">Pareto frontier: models for which no lower-priced model has an equal or higher Index score. Official provider API rates only; equal input/output volumes are assumed. This is a token-price proxy, not cost per task.</div>';
+  var c=chartInit('chart-main-el'),frontRows=[],best=-1;
+  pts.slice().sort(function(a,b){return a.price-b.price||b.index-a.index;}).forEach(function(q){if(q.index>best){frontRows.push(q);best=q.index;}});
+  var frontIds=new Set(frontRows.map(function(q){return q.variantId;}));
+  var front=frontRows.map(function(q){return [q.price,q.index];});
+  var prices=pts.map(function(q){return q.price;}),mp=prices.reduce(function(a,b){return a+b;},0)/prices.length;
   var mi=pts.reduce(function(a,q){return a+q.index;},0)/pts.length;
   var provs=[];pts.forEach(function(q){if(provs.indexOf(q.provider)<0)provs.push(q.provider);});
-  var series=provs.map(function(pv){return {name:pv,type:'scatter',symbolSize:11,itemStyle:{color:providerColor(pv)},
-    label:{show:false,color:p.ink,fontSize:11},
-    data:pts.filter(function(q){return q.provider===pv;}).map(function(q){return {value:[q.price,q.index,scatterLabel(q)]};})};});
-  if(S.pareto&&front.length>1)series.push({name:'Pareto frontier',type:'line',symbol:'none',lineStyle:{type:'dashed',width:2,color:p.good},data:front,silent:true});
-  if(S.quadrant&&series.length){
-    series[0].markArea={silent:true,itemStyle:{color:p.soft},data:[[{xAxis:Math.min.apply(null,prices)*0.8,yAxis:mi},{xAxis:mp,yAxis:100}]]};
-  }
-  c.setOption({
-    animation:false,
-    grid:{left:82,right:34,top:24,bottom:72,containLabel:true},
-    tooltip:{trigger:'item',formatter:function(e){var d=e.value||e.data;return d[2]?esc(d[2])+'<br>Index '+Number(d[1]).toFixed(1)+'<br>$'+Number(d[0]).toFixed(2)+' / 1M tokens':e.seriesName;}},
-    xAxis:Object.assign({type:'log',name:'Official API token-price proxy, USD per 1M tokens',nameLocation:'middle',nameGap:32,nameTextStyle:{color:p.muted}},axisStyle(p)),
-    yAxis:Object.assign({type:'value',min:0,name:'QBench Index 1.6',nameTextStyle:{color:p.muted}},axisStyle(p)),
+  var series=provs.map(function(pv){return {name:pv,type:'scatter',symbol:'roundRect',symbolSize:13,
+    itemStyle:{color:providerColor(pv),borderColor:p.ink,borderWidth:1,opacity:.92},
+    label:{show:false,position:'top',color:p.ink,fontSize:11,fontWeight:600},
+    labelLayout:{hideOverlap:true,moveOverlap:'shiftY'},
+    labelLine:{show:true,smooth:true,length:7,length2:5},
+    data:pts.filter(function(q){return q.provider===pv;}).map(function(q){
+      var onFront=frontIds.has(q.variantId);
+      return {name:scatterLabel(q),value:[q.price,q.index,scatterLabel(q)],label:{show:onFront,formatter:function(){return q.model+(q.effort&&q.effort!=='not-reported'?' · '+q.effort:'');},position:'top'}};
+    })};});
+  if(S.pareto&&front.length>1)series.push({name:'Pareto frontier',type:'line',symbol:'none',lineStyle:{type:'dashed',width:2.5,color:p.good},data:front,silent:true,z:3});
+  if(S.quadrant&&series.length)series[0].markArea={silent:true,itemStyle:{color:p.soft},data:[[{xAxis:Math.min.apply(null,prices)*.8,yAxis:mi},{xAxis:mp,yAxis:100}]]};
+  c.setOption({animation:false,grid:{left:76,right:34,top:52,bottom:76,containLabel:true},
+    tooltip:{trigger:'item',confine:true,formatter:function(e){var d=e.value||e.data;if(!d||!Array.isArray(d))return esc(e.seriesName);var q=pts.find(function(x){return scatterLabel(x)===d[2]&&x.price===d[0]&&x.index===d[1];});return '<strong>'+esc(d[2]||e.seriesName)+'</strong><br>QBench Index 1.6: '+Number(d[1]).toFixed(2)+'<br>API price proxy: $'+Number(d[0]).toFixed(3)+' / 1M tokens'+(q?'<br>Effort: '+esc(q.effort)+'<br>Provider: '+esc(q.provider):'');}},
+    xAxis:Object.assign({type:'log',name:'Official API price proxy · USD / 1M tokens',nameLocation:'middle',nameGap:40,nameTextStyle:{color:p.muted,fontSize:11},axisLabel:{hideOverlap:true}},axisStyle(p)),
+    yAxis:Object.assign({type:'value',min:0,name:'QBench Index 1.6',nameLocation:'middle',nameGap:50,nameTextStyle:{color:p.muted,fontSize:11}},axisStyle(p)),
     series:series
   },true);
   $('#scatter-legend').innerHTML=provs.map(function(pv){return '<span><i style="background:'+providerColor(pv)+'"></i>'+esc(pv)+'</span>';}).join('');
