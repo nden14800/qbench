@@ -447,7 +447,7 @@ function renderSummaryCards(ranked,top,baseModels,full,broad,limited,unranked){
     chart.setOption({animation:false,grid:{left:40,right:12,top:26,bottom:96},
       tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(ps){var r=top5[ps[0].dataIndex];return esc(r.variantLabel)+'<br>Index '+fmt(r.index,1);}},
       xAxis:catAxis(p,{type:'category',data:top5.map(scatterLabel)},{rotate:40,interval:0,fontSize:10,width:110,overflow:'truncate'}),
-      yAxis:Object.assign({type:'value',min:0},axisStyle(p)),
+      
       series:[{type:'bar',barWidth:'50%',data:top5.map(function(r){return {value:+Number(r.index).toFixed(1),itemStyle:{color:providerColor(r.provider),borderRadius:[0,5,5,0]}};}),
         label:{show:true,position:'top',formatter:function(e){return fmt(e.value,1);},color:p.ink,fontSize:10}}]});
   }
@@ -538,13 +538,14 @@ function renderComposition(host){
   var top=RESULT.rows.filter(function(r){return r.ranked;}).slice(0,15);
   if(!top.length){emptyChart(host,'No ranked model yet.');return;}
   var p=pal(),family=getComputedStyle(document.body).fontFamily||'DM Sans, Zen Kaku Gothic New, sans-serif';
-  host.innerHTML='<div id="chart-main-el" style="height:460px"></div>'+
+  host.innerHTML='<div id="chart-main-el" style="height:'+Math.max(480,top.length*36+120)+'px"></div>'+
     '<div class="chart-legend">'+RESULT.domains.map(function(d,i){return '<span><i style="background:'+p.c[i]+'"></i>'+esc(d)+'</span>';}).join('')+'</div>'+
     '<div class="notice-qb">Bar height = raw mean of the observed capability-family percentages. The Index is the equal-weight mean of observed family scores; families with no result are left out, not imputed.</div>';
   var c=chartInit('chart-main-el');
-  c.setOption({animation:false,grid:{left:48,right:18,top:14,bottom:140},
+  c.setOption({animation:false,grid:{left:190,right:30,top:20,bottom:52,containLabel:true},
     tooltip:{trigger:'axis',axisPointer:{type:'shadow'},valueFormatter:function(v){return fmt(v,1);}},
-    xAxis:catAxis(p,{type:'category',data:top.map(function(r){return r.variantLabel;})},{rotate:50,interval:0,fontSize:11,width:130,overflow:'truncate'}),
+    yAxis:{type:'category',inverse:true,data:top.map(function(r){return r.variantLabel;}),axisLabel:{color:p.ink,fontSize:11,width:170,overflow:'truncate'},axisLine:{lineStyle:{color:p.grid}},axisTick:{show:false}},
+    xAxis:Object.assign({type:'value',min:0,max:100,name:'Observed family contribution',nameLocation:'middle',nameGap:32},axisStyle(p)),
     yAxis:Object.assign({type:'value',min:0},axisStyle(p)),
     series:RESULT.domains.map(function(d,i){return {name:d,type:'bar',stack:'idx',barWidth:'60%',itemStyle:{color:p.c[i],borderRadius:[4,4,0,0]},
       data:top.map(function(r){return r.domains[d]==null?0:r.domains[d]/r.domainCount;})};})
