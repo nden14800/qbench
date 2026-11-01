@@ -17,18 +17,18 @@ QBench keeps every result attached to its publisher, model variant, reasoning ef
 | Eligible evaluations | 18 |
 | Capability families | 8 |
 | Base model names with at least one eligible result | 157 |
-| Exact model/effort variants with at least one eligible result | 212 |
-| Ranked variants (3+ evaluations across 3+ families) | 74 |
+| Exact model/effort variants with at least one eligible result | 209 |
+| Ranked variants (3+ evaluations across 3+ families) | 73 |
 | Full evidence (all 8 families) | 0 |
 | Broad evidence (4–7 families) | 47 |
-| Limited evidence (3 families) | 27 |
-| Unranked variants | 138 |
+| Limited evidence (3 families) | 26 |
+| Unranked variants | 136 |
 
 Counts come from the Index 1.6 runtime in the browser (2026-10-31). A base model can appear as several effort variants, so the leaderboard ranks model variants, not base model names.
 
 ### What changed from the previous index
 
-- **Index 1.6:** six Vals AI evaluations are added: Excel Modeling v1.1 and HLAB-Vals-1.1 (Professional knowledge work), Code Migration v1.1, Vibe Code Bench 1-100 and SWE-bench Multimodal (Software engineering), and BioMysteryBench (Scientific workflows). Ranked variants rise from 73 to 74. Voice Code Bench (raw audio, not comparable to text tasks) and Immigration Bench (search and no-search conditions mixed, rows unlabeled) are excluded.
+- **Index 1.6:** six Vals AI evaluations are added: Excel Modeling v1.1 and HLAB-Vals-1.1 (Professional knowledge work), Code Migration v1.1, Vibe Code Bench 1-100 and SWE-bench Multimodal (Software engineering), and BioMysteryBench (Scientific workflows). Ranked variants were 74 right after this addition; the current build shows 73 after later name and provider corrections (the drop has not been re-audited variant by variant). Voice Code Bench (raw audio, not comparable to text tasks) and Immigration Bench (search and no-search conditions mixed, rows unlabeled) are excluded.
 - **Index 1.6:** two evaluations are added: ProgramBench (Software engineering, 64 variants, top 18.5%) and CyberBench v1.1 (new Cybersecurity family, 44 variants). Ranked variants rise from 50 to 73. Index 1.6 is the composite with eight families; the 1.4 gates are unchanged.
 - **Excluded from 1.5:** TaxEval v2, CorpFin v2 and MMMU Pro (archived; Vals AI reports them as saturated). IOI v2 (top 100%, at the ceiling). Public Benefits Bench v1.1 (a custom judge pipeline that uses one of the scored models as judge). LegalBench (151 rows, active, but no harness is stated).
 - **CyberBench exclusions:** Claude Opus 5.5 (CVP) and Claude Sonnet 5 (Cyber Range) are special-access configurations, and Daybreak Blue has no stated provider.
