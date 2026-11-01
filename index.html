@@ -984,13 +984,16 @@ function renderCompare(){
 function catalogPricingText(p){
  if(!p)return 'Not published in verified provider pricing';
  var c=p.currency||'USD',unit=p.unit||'per 1M tokens';
- if(p.effectivePeriods)return p.effectivePeriods.map(function(t){return (t.from?'from '+t.from:'through '+t.through)+': '+c+' '+(t.inputPerMillion==null?'—':fmt(t.inputPerMillion,4))+' input / '+(t.outputPerMillion==null?'—':fmt(t.outputPerMillion,4))+' output '+unit;}).join(' · ');
- if(p.dynamicSchedule)return 'Peak: '+c+' '+fmt(p.peak.inputPerMillion,4)+' / '+fmt(p.peak.outputPerMillion,4)+'; off-peak: '+c+' '+fmt(p.offPeak.inputPerMillion,4)+' / '+fmt(p.offPeak.outputPerMillion,4)+' '+unit;
+ if(p.effectivePeriods)return p.effectivePeriods.map(function(t){var x=(t.from?'from '+t.from:'through '+t.through)+': '+c+' '+(t.inputPerMillion==null?'—':fmt(t.inputPerMillion,4))+' input / '+(t.outputPerMillion==null?'—':fmt(t.outputPerMillion,4))+' output '+unit;if(t.cachedInputPerMillion!=null)x+=' · cached input '+c+' '+fmt(t.cachedInputPerMillion,4);return x;}).join(' · ');
+ if(p.dynamicSchedule)return 'Peak: '+c+' '+fmt(p.peak.inputPerMillion,4)+' / '+fmt(p.peak.outputPerMillion,4)+'; off-peak: '+c+' '+fmt(p.offPeak.inputPerMillion,4)+' / '+fmt(p.offPeak.outputPerMillion,4)+' '+unit+(p.peak.cacheHitInputPerMillion!=null?' · cache hit '+c+' '+fmt(p.peak.cacheHitInputPerMillion,4):'');
  if(p.inputPerMillion==null&&p.outputPerMillion==null)return 'Not published';
  var text=c+' '+(p.inputPerMillion==null?'—':fmt(p.inputPerMillion,4))+' input / '+(p.outputPerMillion==null?'—':fmt(p.outputPerMillion,4))+' output '+unit;
  if(p.cachedInputPerMillion!=null)text+=' · cached input '+c+' '+fmt(p.cachedInputPerMillion,4);
  if(p.cacheWritePerMillion!=null)text+=' · cache write '+c+' '+fmt(p.cacheWritePerMillion,4);
- if(p.longContext)text+=' · long context >'+fmt(p.longContext.thresholdTokens)+' tokens: '+c+' '+fmt(p.longContext.inputPerMillion,4)+' / '+fmt(p.longContext.outputPerMillion,4);
+ if(p.cacheWrite5mPerMillion!=null)text+=' · 5m cache write '+c+' '+fmt(p.cacheWrite5mPerMillion,4);
+ if(p.cacheWrite1hPerMillion!=null)text+=' · 1h cache write '+c+' '+fmt(p.cacheWrite1hPerMillion,4);
+ if(p.longContext)text+=' · long context >'+fmt(p.longContext.thresholdTokens)+' tokens: '+c+' '+fmt(p.longContext.inputPerMillion,4)+' / '+fmt(p.longContext.outputPerMillion,4)+(p.longContext.cachedInputPerMillion!=null?' · cache read '+c+' '+fmt(p.longContext.cachedInputPerMillion,4):'');
+ if(p.sourceStatus)text+=' · '+p.sourceStatus;
  return text;
 }
 function catalogMetadataHtml(m){
