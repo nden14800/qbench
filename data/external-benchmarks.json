@@ -23380,7 +23380,7 @@
     "rowsWithContextWindow": 0,
     "rowsWithMaxOutputTokens": 0,
     "providerNameConflicts": [],
-    "note": "Counts are a snapshot audit of the checked-in dataset, not inferred model metadata. Missing fields remain unavailable. Provider aliases are normalized for display while original labels remain in providerReported. Official model IDs, specifications and pricing are recorded separately from benchmark results; catalog-only models remain unranked. Mistral Large 4 pricing and context were corrected to the current official model card; Mistral Medium 3.5 is marked deprecated as of 2026-10-31 and its unverified price removed.",
+    "note": "Counts are a snapshot audit of the checked-in dataset, not inferred model metadata. Missing fields remain unavailable. Provider aliases are normalized for display while original labels remain in providerReported. Official model IDs, specifications and pricing are recorded separately from benchmark results; catalog-only models remain unranked. Mistral Large 4 pricing and context were corrected to the current official model card; Mistral Medium 3.5 is marked deprecated as of 2026-10-31 and its unverified price removed. Added three current official API entries (Qwen3.7 Plus, Qwen3.7 Flash, MiMo V2.6 Pro UltraSpeed); region and input-length tier pricing is retained rather than flattened.",
     "providerNameAliasesApplied": 5,
     "providerAliasCounts": {
       "Zhipu": 2,
@@ -23398,8 +23398,8 @@
         "source": "https://www.zhipuai.cn/en/about"
       }
     ],
-    "modelCatalogEntries": 23,
-    "unrankedCatalogEntries": 4,
+    "modelCatalogEntries": 26,
+    "unrankedCatalogEntries": 7,
     "unresolvedModelIdentityAliases": 0
   },
   "modelCatalog": [
@@ -24351,7 +24351,8 @@
         "inputPerMillion": 12,
         "outputPerMillion": 36,
         "sourceStatus": "verified",
-        "sourceUrl": "https://help.aliyun.com/en/model-studio/pricing"
+        "sourceUrl": "https://help.aliyun.com/en/model-studio/pricing",
+        "region": "Japan (Tokyo) · Global deployment"
       },
       "metadataStatus": "verified",
       "sourceRefs": [
@@ -24388,7 +24389,7 @@
       ],
       "reasoning": {
         "supported": true,
-        "mode": "thinking",
+        "mode": "thinking / non-thinking",
         "efforts": null,
         "defaultEffort": null
       },
@@ -24397,12 +24398,24 @@
         "license": null,
         "availability": null
       },
-      "pricing": null,
+      "pricing": {
+        "currency": "CNY",
+        "unit": "per 1M tokens",
+        "region": "Japan (Tokyo) · Global deployment",
+        "inputPerMillion": 0.8,
+        "outputPerMillion": 2.7,
+        "sourceStatus": "verified",
+        "sourceUrl": "https://help.aliyun.com/en/model-studio/model-pricing"
+      },
       "metadataStatus": "partial",
       "sourceRefs": [
         {
-          "label": "Official Model Studio model list",
+          "label": "Official Qwen model list",
           "url": "https://help.aliyun.com/en/model-studio/models"
+        },
+        {
+          "label": "Official model pricing by region",
+          "url": "https://help.aliyun.com/en/model-studio/model-pricing"
         }
       ],
       "lastVerifiedAt": "2026-11-01"
@@ -24673,6 +24686,196 @@
         {
           "label": "Alibaba Cloud Model Studio model list",
           "url": "https://help.aliyun.com/en/model-studio/models"
+        }
+      ],
+      "lastVerifiedAt": "2026-11-01"
+    },
+    {
+      "id": "qwen:qwen3-7-plus",
+      "displayName": "Qwen3.7 Plus",
+      "provider": "Alibaba / Qwen",
+      "apiModelId": "qwen3.7-plus",
+      "hostingProvider": "Alibaba Cloud Model Studio",
+      "benchmarkStatus": "unmeasured",
+      "identityStatus": "verified",
+      "lifecycleStatus": "active",
+      "releaseDate": null,
+      "releaseDatePrecision": null,
+      "contextWindowTokens": 1000000,
+      "maxOutputTokens": null,
+      "endpointContextWindowTokens": null,
+      "inputModalities": [
+        "text"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "reasoning": {
+        "supported": true,
+        "mode": "thinking / non-thinking",
+        "efforts": null,
+        "defaultEffort": null
+      },
+      "weights": {
+        "openWeights": null,
+        "license": null,
+        "availability": null
+      },
+      "pricing": {
+        "currency": "CNY",
+        "unit": "per 1M tokens",
+        "region": "Japan (Tokyo) · Global deployment",
+        "tiers": [
+          {
+            "maxInputTokens": 256000,
+            "inputPerMillion": 2.998,
+            "outputPerMillion": 11.991
+          },
+          {
+            "minInputTokens": 256001,
+            "maxInputTokens": 1000000,
+            "inputPerMillion": 8.993,
+            "outputPerMillion": 35.972
+          }
+        ],
+        "sourceStatus": "verified",
+        "sourceUrl": "https://help.aliyun.com/en/model-studio/model-pricing"
+      },
+      "metadataStatus": "verified",
+      "sourceRefs": [
+        {
+          "label": "Official Alibaba Cloud model list",
+          "url": "https://help.aliyun.com/en/model-studio/models"
+        },
+        {
+          "label": "Official Tokyo-region pricing and snapshot ID",
+          "url": "https://help.aliyun.com/en/model-studio/model-pricing"
+        }
+      ],
+      "lastVerifiedAt": "2026-11-01",
+      "snapshotModelId": "qwen3.7-plus-2026-05-26"
+    },
+    {
+      "id": "qwen:qwen3-7-flash",
+      "displayName": "Qwen3.7 Flash",
+      "provider": "Alibaba / Qwen",
+      "apiModelId": "qwen3.7-flash",
+      "hostingProvider": "Alibaba Cloud Model Studio",
+      "benchmarkStatus": "unmeasured",
+      "identityStatus": "verified",
+      "lifecycleStatus": "active",
+      "releaseDate": null,
+      "releaseDatePrecision": null,
+      "contextWindowTokens": 1000000,
+      "maxOutputTokens": null,
+      "endpointContextWindowTokens": null,
+      "inputModalities": [
+        "text"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "reasoning": {
+        "supported": true,
+        "mode": "thinking / non-thinking",
+        "efforts": null,
+        "defaultEffort": null
+      },
+      "weights": {
+        "openWeights": null,
+        "license": null,
+        "availability": null
+      },
+      "pricing": {
+        "currency": "CNY",
+        "unit": "per 1M tokens",
+        "region": "Japan (Tokyo) · Global deployment",
+        "tiers": [
+          {
+            "maxInputTokens": 32000,
+            "inputPerMillion": 0.2,
+            "outputPerMillion": 0.8
+          },
+          {
+            "minInputTokens": 32001,
+            "maxInputTokens": 256000,
+            "inputPerMillion": 0.6,
+            "outputPerMillion": 2.4
+          },
+          {
+            "minInputTokens": 256001,
+            "maxInputTokens": 1000000,
+            "inputPerMillion": 1.2,
+            "outputPerMillion": 4.8
+          }
+        ],
+        "sourceStatus": "verified",
+        "sourceUrl": "https://help.aliyun.com/en/model-studio/model-pricing"
+      },
+      "metadataStatus": "verified",
+      "sourceRefs": [
+        {
+          "label": "Official Alibaba Cloud model list",
+          "url": "https://help.aliyun.com/en/model-studio/models"
+        },
+        {
+          "label": "Official Tokyo-region pricing and snapshot ID",
+          "url": "https://help.aliyun.com/en/model-studio/model-pricing"
+        }
+      ],
+      "lastVerifiedAt": "2026-11-01",
+      "snapshotModelId": "qwen3.7-flash-2026-07-15"
+    },
+    {
+      "id": "xiaomi:mimo-v2-6-pro-ultraspeed",
+      "displayName": "MiMo V2.6 Pro UltraSpeed",
+      "provider": "Xiaomi",
+      "apiModelId": "xiaomi/mimo-v2.6-pro-ultraspeed",
+      "hostingProvider": "Alibaba Cloud Model Studio",
+      "benchmarkStatus": "unmeasured",
+      "identityStatus": "verified",
+      "lifecycleStatus": "active",
+      "releaseDate": null,
+      "releaseDatePrecision": null,
+      "contextWindowTokens": 1048576,
+      "maxOutputTokens": 131072,
+      "endpointContextWindowTokens": null,
+      "inputModalities": [
+        "text",
+        "image",
+        "video",
+        "audio"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "reasoning": {
+        "supported": true,
+        "mode": "thinking mode supported",
+        "efforts": null,
+        "defaultEffort": null
+      },
+      "weights": {
+        "openWeights": null,
+        "license": null,
+        "availability": null
+      },
+      "pricing": {
+        "currency": "CNY",
+        "unit": "per 1M tokens",
+        "region": "China (Beijing) only",
+        "inputPerMillion": 30,
+        "outputPerMillion": 60,
+        "cachedInputPerMillion": 0.25,
+        "sourceStatus": "verified",
+        "sourceUrl": "https://help.aliyun.com/en/model-studio/mimo-v2-6-pro-ultraspeed",
+        "note": "Provider page currently publishes this price for China (Beijing); no other region is assumed."
+      },
+      "metadataStatus": "verified",
+      "sourceRefs": [
+        {
+          "label": "Official MiMo model information, modalities, context and price",
+          "url": "https://help.aliyun.com/en/model-studio/mimo-v2-6-pro-ultraspeed"
         }
       ],
       "lastVerifiedAt": "2026-11-01"
