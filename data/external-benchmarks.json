@@ -11029,7 +11029,7 @@
         },
         {
           "model": "GLM-5.1",
-          "provider": "Zhipu",
+          "provider": "Z.ai",
           "score": 75.6,
           "public500Score": 78.6,
           "effort": "not-reported",
@@ -11040,7 +11040,8 @@
           "snapshotDate": "2026-04-08",
           "source": "https://labs.scale.com/leaderboard/mcp_atlas",
           "sourceType": "official-publisher",
-          "evidence": "Scale Labs MCP Atlas Key Findings table row labeled Pass Rate % (All 1000); the Public 500 companion value is preserved separately."
+          "evidence": "Scale Labs MCP Atlas Key Findings table row labeled Pass Rate % (All 1000); the Public 500 companion value is preserved separately.",
+          "providerReported": "Zhipu"
         },
         {
           "model": "GPT-5.5",
@@ -11179,7 +11180,7 @@
         },
         {
           "model": "GLM-4.7",
-          "provider": "Zhipu",
+          "provider": "Z.ai",
           "score": 58.1,
           "public500Score": 61.2,
           "effort": "not-reported",
@@ -11190,7 +11191,8 @@
           "snapshotDate": "2026-04-08",
           "source": "https://labs.scale.com/leaderboard/mcp_atlas",
           "sourceType": "official-publisher",
-          "evidence": "Scale Labs MCP Atlas Key Findings table row labeled Pass Rate % (All 1000); the Public 500 companion value is preserved separately."
+          "evidence": "Scale Labs MCP Atlas Key Findings table row labeled Pass Rate % (All 1000); the Public 500 companion value is preserved separately.",
+          "providerReported": "Zhipu"
         },
         {
           "model": "Gemini 3.1 Flash Lite",
@@ -13598,7 +13600,7 @@
         },
         {
           "model": "Mistral Medium 3.5",
-          "provider": "Mistral",
+          "provider": "Mistral AI",
           "score": 9.13,
           "effort": "not-reported",
           "configuration": "All-Pass, shared harness",
@@ -13608,7 +13610,8 @@
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-29",
           "costPerTestUSD": 1.31,
-          "durationPerTestDisplay": "10m13s"
+          "durationPerTestDisplay": "10m13s",
+          "providerReported": "Mistral"
         },
         {
           "model": "GPT-5.4 Nano",
@@ -14805,7 +14808,7 @@
         },
         {
           "model": "Mistral Medium 3.5",
-          "provider": "Mistral",
+          "provider": "Mistral AI",
           "score": 4.48,
           "effort": "not-reported",
           "configuration": "Accuracy, shared harness",
@@ -14815,7 +14818,8 @@
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-29",
           "costPerTestUSD": 1.44,
-          "durationPerTestDisplay": "7m11s"
+          "durationPerTestDisplay": "7m11s",
+          "providerReported": "Mistral"
         },
         {
           "model": "Gemini 3.1 Flash Lite Preview",
@@ -16404,7 +16408,7 @@
         },
         {
           "model": "Mistral Medium 3.5",
-          "provider": "Mistral",
+          "provider": "Mistral AI",
           "score": 33.75,
           "effort": "not-reported",
           "configuration": "Direct model call",
@@ -16412,7 +16416,8 @@
           "evidence": "Vals AI MedCode leaderboard (https://www.vals.ai/benchmarks/medcode, snapshot 2026-10-29); row extracted from the public table; top rows cross-checked by a second extraction",
           "source": "https://www.vals.ai/benchmarks/medcode",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "providerReported": "Mistral"
         },
         {
           "model": "Qwen 3.5 Flash",
@@ -23340,7 +23345,22 @@
       "Pareto 26.10 Preview remains a historical preview result; stable model IDs are pareto and pareto-26.10.",
       "NVIDIA Nemotron Super VL 3.5 is canonicalized to Nemotron 3.5 Super VL; the NVFP4 quantized variant remains distinct.",
       "2026-11-01 consistency pass: spelling variants (case, spaces vs hyphens, lowercase API IDs) are merged to one display name per model; originals kept in originalModelName. Exact duplicates after merging were dropped. Same model and effort with different scores inside one benchmark are kept and flagged duplicateConflict until the source is checked.",
-      "2026-11-01: rows that shared model and effort but had different source configurations (FrontierMath v2, BFCL v4, HealthBench Professional; 9 rows) now use the source configuration as their effort label, so each source run is its own variant. Index evaluations are not affected."
+      "2026-11-01: rows that shared model and effort but had different source configurations (FrontierMath v2, BFCL v4, HealthBench Professional; 9 rows) now use the source configuration as their effort label, so each source run is its own variant. Index evaluations are not affected.",
+      "2026-11-01 provider normalization: Mistral → Mistral AI and Zhipu → Z.ai. Original evaluator/provider labels are preserved in providerReported; the canonical display label is used for cross-benchmark provider grouping."
+    ],
+    "providerAliases": [
+      {
+        "from": "Mistral",
+        "to": "Mistral AI",
+        "source": "https://docs.mistral.ai/models/mistral-medium-3-5-26-04",
+        "note": "Provider display-name normalization; source-reported label is retained in providerReported."
+      },
+      {
+        "from": "Zhipu",
+        "to": "Z.ai",
+        "source": "https://www.zhipuai.cn/en/about",
+        "note": "Z.ai identifies its GLM model organization under the Zhipu / Z.AI company identity; source-reported label is retained in providerReported."
+      }
     ]
   },
   "dataQualityAudit": {
@@ -23359,29 +23379,24 @@
     "pricingEntriesWithCacheWrite": 0,
     "rowsWithContextWindow": 0,
     "rowsWithMaxOutputTokens": 0,
-    "providerNameConflicts": [
+    "providerNameConflicts": [],
+    "note": "Counts are a snapshot audit of the checked-in dataset, not inferred model metadata. Missing fields remain unavailable. Provider aliases are normalized for display while original labels remain in providerReported.",
+    "providerNameAliasesApplied": 5,
+    "providerAliasCounts": {
+      "Zhipu": 2,
+      "Mistral": 3
+    },
+    "providerAliasSources": [
       {
-        "model": "Mistral Medium 3.5",
-        "providers": [
-          "Mistral",
-          "Mistral AI"
-        ]
+        "from": "Mistral",
+        "to": "Mistral AI",
+        "source": "https://docs.mistral.ai/models/mistral-medium-3-5-26-04"
       },
       {
-        "model": "GLM-5.1",
-        "providers": [
-          "Z.ai",
-          "Zhipu"
-        ]
-      },
-      {
-        "model": "GLM-4.7",
-        "providers": [
-          "Z.ai",
-          "Zhipu"
-        ]
+        "from": "Zhipu",
+        "to": "Z.ai",
+        "source": "https://www.zhipuai.cn/en/about"
       }
-    ],
-    "note": "Counts are a snapshot audit of the checked-in dataset, not inferred model metadata. Missing fields remain unavailable."
+    ]
   }
 }
