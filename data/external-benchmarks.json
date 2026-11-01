@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.6",
-  "note": "QBench Index 1.5 rebuild, snapshot 2026-10-31. Twelve source-audited evaluations across eight capability families contribute to Index 1.5. Mystery Game Puzzles is standalone because its visible table is partial. Partial mirrors, mixed-harness sets, ceiling-watch series and ambiguous metric tables remain standalone.",
+  "note": "QBench Index 1.6 rebuild, snapshot 2026-10-31. Eighteen source-audited evaluations across eight capability families contribute to Index 1.6. Mystery Game Puzzles is standalone because its visible table is partial. Partial mirrors, mixed-harness sets, ceiling-watch series and ambiguous metric tables remain standalone.",
   "benchmarks": [
     {
       "id": "livebench-2.0",
@@ -1914,7 +1914,7 @@
       },
       "indexDomain": null,
       "quality": "excluded: source-value mismatch requires reconciliation",
-      "valueNote": "Excluded from Index 1.5 pending a full row-by-row reconciliation with Epoch AI's official export. The checked-in snapshot includes values that conflict with the currently visible Epoch AI leaderboard, so those rows must not affect the composite."
+      "valueNote": "Excluded from Index 1.6 pending a full row-by-row reconciliation with Epoch AI's official export. The checked-in snapshot includes values that conflict with the currently visible Epoch AI leaderboard, so those rows must not affect the composite."
     },
     {
       "id": "proofbench",
@@ -9066,7 +9066,7 @@
       ],
       "source": "https://arcprize.org/results",
       "coverageLevel": "official-publisher-model-page-extract",
-      "valueNote": "48 exact model/effort rows across eight publisher model pages. High-end saturation is the reason this evaluation is standalone and does not contribute to Index 1.5.",
+      "valueNote": "48 exact model/effort rows across eight publisher model pages. High-end saturation is the reason this evaluation is standalone and does not contribute to Index 1.6.",
       "snapshotDate": "2026-10-31",
       "quality": "Official ARC Prize verified results",
       "scoreScale": {
@@ -9761,7 +9761,7 @@
       "indexEligible": true,
       "indexDomain": "Adaptive interactive reasoning",
       "saturationStatus": "not saturated: highest verified standard-harness result in this extract is 62.7%",
-      "methodology": "ARC Prize verified semi-private interactive reasoning results. Only the Standard harness is eligible for Index 1.5. The Standard harness allows the model to carry forward notes it chooses to keep throughout the environment. Reasoning effort is a separate model variant; scores from Provider Adapter are not merged.",
+      "methodology": "ARC Prize verified semi-private interactive reasoning results. Only the Standard harness is eligible for Index 1.6. The Standard harness allows the model to carry forward notes it chooses to keep throughout the environment. Reasoning effort is a separate model variant; scores from Provider Adapter are not merged.",
       "models": [
         {
           "model": "Claude Haiku 5.5",
@@ -10330,7 +10330,7 @@
       ],
       "source": "https://arcprize.org/results",
       "coverageLevel": "official-publisher-model-page-extract",
-      "valueNote": "40 exact model/effort variants from eight ARC Prize verified model pages. Only Standard-harness semi-private results contribute to Index 1.5. Provider Adapter results remain a separate standalone evaluation because the harness materially changes scores.",
+      "valueNote": "40 exact model/effort variants from eight ARC Prize verified model pages. Only Standard-harness semi-private results contribute to Index 1.6. Provider Adapter results remain a separate standalone evaluation because the harness materially changes scores.",
       "snapshotDate": "2026-10-31",
       "quality": "official-publisher; verified model pages; Standard harness only",
       "scoreScale": {
@@ -10939,7 +10939,7 @@
       "source": "https://labs.scale.com/leaderboard/mcp_atlas",
       "snapshotDate": "2026-04-08",
       "coverageLevel": "official-publisher-explicit-all-1000-table",
-      "valueNote": "Index 1.5 uses only the page's explicitly labeled Pass Rate % (All 1000) column. The Public 500 score is retained separately per row. Important source caveat: the page headline says 83.6% top pass rate, while the displayed All 1000 table's highest listed row is 82.2%; the page does not reconcile the difference. QBench preserves the 20 explicit table rows and does not claim a complete current leaderboard.",
+      "valueNote": "Index 1.6 uses only the page's explicitly labeled Pass Rate % (All 1000) column. The Public 500 score is retained separately per row. Important source caveat: the page headline says 83.6% top pass rate, while the displayed All 1000 table's highest listed row is 82.2%; the page does not reconcile the difference. QBench preserves the 20 explicit table rows and does not claim a complete current leaderboard.",
       "exampleTask": "Use literature search to retrieve a paper abstract about ad-control effectiveness, then query a separate campaign database for the highest-engagement campaign started during 2015–2023 and report its date and locality. This requires tool discovery, cross-server retrieval and synthesis.",
       "scoreScale": {
         "minimum": 0,
@@ -11775,7 +11775,7 @@
       "quality": "Official publisher table; metric label not explicit",
       "costMetric": "Not published in the benchmark table",
       "valueNote": "This is the separate 34-row Performance Comparison table from the official page. Its metric label is not explicit in the table. It may not be the same metric as the clearly labeled Pass Rate table; therefore it is standalone and excluded from the composite.",
-      "methodology": "Scale Labs' MCP Atlas page includes a 34-row Performance Comparison table with score ± values and a rank based on confidence-bound separation. The table does not explicitly label the metric in its heading. Preserve these publisher-reported values as a separate diagnostic dataset; do not treat them as Pass Rate or mix them into Index 1.5."
+      "methodology": "Scale Labs' MCP Atlas page includes a 34-row Performance Comparison table with score ± values and a rank based on confidence-bound separation. The table does not explicitly label the metric in its heading. Preserve these publisher-reported values as a separate diagnostic dataset; do not treat them as Pass Rate or mix them into Index 1.6."
     },
     {
       "id": "hil-bench-performance-comparison",
@@ -12272,7 +12272,7 @@
       "quality": "Official publisher table; metric label not explicit",
       "costMetric": "Not published in the benchmark table",
       "valueNote": "Official 30-row Performance Comparison table. Its metric label is not explicit in the table and its score range conflicts with the paper's clearly labeled Pass@3 results. Do not treat these values as Pass@3 or ASK-F1.",
-      "methodology": "Scale Labs' official HiL-Bench page includes a 30-row Performance Comparison table with score ± values, but the table heading does not identify whether the value is Pass@3, ASK-F1, full-information performance or another aggregate. The page's methodology separately defines Pass@3 and ASK-F1, so this table is preserved without metric reinterpretation and excluded from Index 1.5."
+      "methodology": "Scale Labs' official HiL-Bench page includes a 30-row Performance Comparison table with score ± values, but the table heading does not identify whether the value is Pass@3, ASK-F1, full-information performance or another aggregate. The page's methodology separately defines Pass@3 and ASK-F1, so this table is preserved without metric reinterpretation and excluded from Index 1.6."
     },
     {
       "id": "hil-bench-paper-results",
@@ -17970,6 +17970,2214 @@
         "unit": "percentage points",
         "direction": "higher-is-better"
       }
+    },
+    {
+      "id": "emb-v1-1",
+      "name": "Excel Modeling Benchmark v1.1",
+      "snapshotDate": "2026-10-29",
+      "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+      "unit": "% accuracy (category mean)",
+      "models": [
+        {
+          "model": "Claude Fable 5.1",
+          "provider": "Anthropic",
+          "score": 76.73,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Gemini 4 Carbon",
+          "provider": "Google",
+          "score": 76.47,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Claude Sonnet 5.5",
+          "provider": "Anthropic",
+          "score": 75.9,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 75.84,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Wonder Full",
+          "provider": "Meta",
+          "score": 75.0,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "provider": "Google",
+          "score": 74.83,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "GPT-6.1 Terra",
+          "provider": "OpenAI",
+          "score": 73.33,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Gemini 3.8 Flash",
+          "provider": "Google",
+          "score": 72.87,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 72.68,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Wonder",
+          "provider": "Meta",
+          "score": 72.5,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Qwen 3.8 Max 0902",
+          "provider": "Alibaba",
+          "score": 71.98,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Grok 4.7",
+          "provider": "xAI",
+          "score": 71.5,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Kimi K3",
+          "provider": "Moonshot AI",
+          "score": 71.26,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "GPT-6.1 Sol",
+          "provider": "OpenAI",
+          "score": 71.09,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Kimi K3.1 Pro",
+          "provider": "Moonshot AI",
+          "score": 70.0,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "GPT-6 Luna",
+          "provider": "OpenAI",
+          "score": 69.95,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Step 5 Preview",
+          "provider": "StepFun",
+          "score": 69.55,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "DeepSeek V4.1 Flash 1017",
+          "provider": "DeepSeek",
+          "score": 69.17,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "GLM 5.3",
+          "provider": "Z.ai",
+          "score": 69.11,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Mistral Large 4",
+          "provider": "Mistral AI",
+          "score": 68.97,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Hy4 Preview",
+          "provider": "Tencent",
+          "score": 68.95,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "MiMo V2.6 Flash",
+          "provider": "Xiaomi",
+          "score": 68.88,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Mistral Large 4 OSS",
+          "provider": "Mistral AI",
+          "score": 68.67,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "MiniMax-M3.1-Flash",
+          "provider": "MiniMax",
+          "score": 67.84,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "DeepSeek V4.1 Flash",
+          "provider": "DeepSeek",
+          "score": 67.76,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "MiMo V2.6 Pro",
+          "provider": "Xiaomi",
+          "score": 67.35,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "GLM 5.3 Flash",
+          "provider": "Z.ai",
+          "score": 66.25,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Qwen 3.8 Max",
+          "provider": "Alibaba",
+          "score": 65.99,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Claude Haiku 5.5",
+          "provider": "Anthropic",
+          "score": 65.48,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "DeepSeek V4 Pro 0813",
+          "provider": "DeepSeek",
+          "score": 65.13,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Beam 1.0",
+          "provider": "Reflection",
+          "score": 64.73,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Muse Spark Open",
+          "provider": "Meta",
+          "score": 61.98,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "MiniMax-M3",
+          "provider": "MiniMax",
+          "score": 59.75,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Mercury 3",
+          "provider": "Inception",
+          "score": 57.88,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Nemotron 3.5 Super VL",
+          "provider": "NVIDIA",
+          "score": 52.77,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Inkling",
+          "provider": "Thinking Machines",
+          "score": 40.97,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Inkling Small",
+          "provider": "Thinking Machines",
+          "score": 40.82,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        }
+      ],
+      "indexEligible": true,
+      "indexDomain": "Professional knowledge work",
+      "saturationStatus": "not saturated (top 76.73%)",
+      "quality": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29. Named harness: Shared agent harness (bash, execute, submit). Table complete (37 rows). Extracted with an AI-assisted reader; rows verified against the page by a second pass. Scores kept as published.",
+      "costMetric": null,
+      "scoreScale": {
+        "minimum": 0,
+        "maximum": 100,
+        "unit": "percentage points",
+        "direction": "higher-is-better"
+      }
+    },
+    {
+      "id": "hlab",
+      "name": "HLAB-Vals-1.1 (Harvey)",
+      "snapshotDate": "2026-10-30",
+      "source": "https://www.vals.ai/benchmarks/hlab",
+      "unit": "% task pass rate",
+      "models": [
+        {
+          "model": "Gemini 4 Argon",
+          "provider": "Google",
+          "score": 27.08,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "Muse Spark Open",
+          "provider": "Meta",
+          "score": 25.0,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "Wonder",
+          "provider": "Meta",
+          "score": 23.75,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "Wonder Full",
+          "provider": "Meta",
+          "score": 23.33,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "Grok 4.7",
+          "provider": "xAI",
+          "score": 18.33,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "Gemini 4 Carbon",
+          "provider": "Google",
+          "score": 17.5,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "Mistral Large 4",
+          "provider": "Mistral AI",
+          "score": 17.5,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "Mistral Large 4 OSS",
+          "provider": "Mistral AI",
+          "score": 15.83,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "Qwen 3.8 Max 0902",
+          "provider": "Alibaba",
+          "score": 15.42,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "GLM 5.3",
+          "provider": "Z.ai",
+          "score": 14.58,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "DeepSeek V4.1 Flash 1017",
+          "provider": "DeepSeek",
+          "score": 14.17,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "MiMo V2.6 Pro",
+          "provider": "Xiaomi",
+          "score": 13.75,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "MiMo V2.6 Flash",
+          "provider": "Xiaomi",
+          "score": 13.33,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "Step 5 Preview",
+          "provider": "StepFun",
+          "score": 12.92,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "Kimi K3",
+          "provider": "Moonshot AI",
+          "score": 12.92,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "Gemini 3.8 Flash",
+          "provider": "Google",
+          "score": 12.08,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "Kimi K3.1 Pro",
+          "provider": "Moonshot AI",
+          "score": 11.67,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "DeepSeek V4 Pro 0813",
+          "provider": "DeepSeek",
+          "score": 10.83,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "GLM 5.3 Flash",
+          "provider": "Z.ai",
+          "score": 10.42,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "Claude Sonnet 5.5",
+          "provider": "Anthropic",
+          "score": 10.42,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 9.17,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "Hy4 Preview",
+          "provider": "Tencent",
+          "score": 8.75,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "MiniMax-M3.1-Flash",
+          "provider": "MiniMax",
+          "score": 7.5,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 7.08,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "GPT-6.1 Sol",
+          "provider": "OpenAI",
+          "score": 6.25,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "Mercury 3",
+          "provider": "Inception",
+          "score": 5.0,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "Beam 1.0",
+          "provider": "Reflection",
+          "score": 4.58,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "GPT-6 Luna",
+          "provider": "OpenAI",
+          "score": 4.17,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "Claude Haiku 5.5",
+          "provider": "Anthropic",
+          "score": 4.17,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "Nemotron 3.5 Super VL",
+          "provider": "NVIDIA",
+          "score": 3.75,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "Inkling",
+          "provider": "Thinking Machines",
+          "score": 3.75,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "Inkling Small",
+          "provider": "Thinking Machines",
+          "score": 2.92,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "model": "GPT-6.1 Terra",
+          "provider": "OpenAI",
+          "score": 1.67,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Harvey harness with tools, skills and grading protocol",
+          "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
+          "source": "https://www.vals.ai/benchmarks/hlab",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-30"
+        }
+      ],
+      "indexEligible": true,
+      "indexDomain": "Professional knowledge work",
+      "saturationStatus": "not saturated (top 27.08%)",
+      "quality": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30. Named harness: Harvey harness with tools, skills and grading protocol. Table complete (33 rows). Extracted with an AI-assisted reader; rows verified against the page by a second pass. Scores kept as published.",
+      "costMetric": null,
+      "scoreScale": {
+        "minimum": 0,
+        "maximum": 100,
+        "unit": "percentage points",
+        "direction": "higher-is-better"
+      }
+    },
+    {
+      "id": "code-migration-v1-1",
+      "name": "Code Migration v1.1",
+      "snapshotDate": "2026-10-28",
+      "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+      "unit": "% accuracy (hidden-test pass rate)",
+      "models": [
+        {
+          "model": "Claude Sonnet 5.5",
+          "provider": "Anthropic",
+          "score": 86.88,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Pi agent harness",
+          "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
+          "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-28"
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 81.01,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Pi agent harness",
+          "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
+          "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-28"
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 80.58,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Pi agent harness",
+          "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
+          "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-28"
+        },
+        {
+          "model": "GPT-6.1 Sol",
+          "provider": "OpenAI",
+          "score": 77.32,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Pi agent harness",
+          "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
+          "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-28"
+        },
+        {
+          "model": "Wonder",
+          "provider": "Meta",
+          "score": 72.36,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Pi agent harness",
+          "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
+          "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-28"
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "provider": "Google",
+          "score": 70.8,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Pi agent harness",
+          "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
+          "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-28"
+        },
+        {
+          "model": "DeepSeek V4.1 Flash 1017",
+          "provider": "DeepSeek",
+          "score": 67.52,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Pi agent harness",
+          "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
+          "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-28"
+        },
+        {
+          "model": "Wonder Full",
+          "provider": "Meta",
+          "score": 62.79,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Pi agent harness",
+          "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
+          "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-28"
+        },
+        {
+          "model": "DeepSeek V4.1 Flash",
+          "provider": "DeepSeek",
+          "score": 58.94,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Pi agent harness",
+          "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
+          "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-28"
+        },
+        {
+          "model": "Qwen 3.8 Max 0902",
+          "provider": "Alibaba",
+          "score": 57.19,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Pi agent harness",
+          "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
+          "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-28"
+        },
+        {
+          "model": "GLM 5.3",
+          "provider": "Z.ai",
+          "score": 55.07,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Pi agent harness",
+          "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
+          "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-28"
+        },
+        {
+          "model": "Grok 4.7",
+          "provider": "xAI",
+          "score": 53.22,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Pi agent harness",
+          "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
+          "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-28"
+        },
+        {
+          "model": "Claude Haiku 5.5",
+          "provider": "Anthropic",
+          "score": 52.36,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Pi agent harness",
+          "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
+          "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-28"
+        },
+        {
+          "model": "DeepSeek V4 Pro 0813",
+          "provider": "DeepSeek",
+          "score": 51.99,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Pi agent harness",
+          "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
+          "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-28"
+        },
+        {
+          "model": "GLM 5.3 Flash",
+          "provider": "Z.ai",
+          "score": 51.65,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Pi agent harness",
+          "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
+          "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-28"
+        },
+        {
+          "model": "MiMo V2.6 Pro",
+          "provider": "Xiaomi",
+          "score": 48.79,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Pi agent harness",
+          "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
+          "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-28"
+        },
+        {
+          "model": "Step 5 Preview",
+          "provider": "StepFun",
+          "score": 47.0,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Pi agent harness",
+          "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
+          "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-28"
+        },
+        {
+          "model": "GPT-6 Luna",
+          "provider": "OpenAI",
+          "score": 46.67,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Pi agent harness",
+          "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
+          "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-28"
+        },
+        {
+          "model": "Hy4 Preview",
+          "provider": "Tencent",
+          "score": 45.36,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Pi agent harness",
+          "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
+          "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-28"
+        },
+        {
+          "model": "MiMo V2.6 Flash",
+          "provider": "Xiaomi",
+          "score": 39.55,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Pi agent harness",
+          "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
+          "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-28"
+        },
+        {
+          "model": "Mercury 3",
+          "provider": "Inception",
+          "score": 39.26,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Pi agent harness",
+          "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
+          "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-28"
+        },
+        {
+          "model": "Gemini 3.8 Flash",
+          "provider": "Google",
+          "score": 38.65,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Pi agent harness",
+          "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
+          "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-28"
+        },
+        {
+          "model": "Kimi K3",
+          "provider": "Moonshot AI",
+          "score": 28.59,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Pi agent harness",
+          "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
+          "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-28"
+        },
+        {
+          "model": "Muse Spark Open",
+          "provider": "Meta",
+          "score": 26.89,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Pi agent harness",
+          "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
+          "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-28"
+        },
+        {
+          "model": "Beam 1.0",
+          "provider": "Reflection",
+          "score": 22.85,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Pi agent harness",
+          "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
+          "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-28"
+        },
+        {
+          "model": "MiniMax-M3",
+          "provider": "MiniMax",
+          "score": 20.9,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Pi agent harness",
+          "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
+          "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-28"
+        },
+        {
+          "model": "Nemotron 3.5 Super VL",
+          "provider": "NVIDIA",
+          "score": 16.44,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Pi agent harness",
+          "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
+          "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-28"
+        },
+        {
+          "model": "Inkling Small",
+          "provider": "Thinking Machines",
+          "score": 10.43,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Pi agent harness",
+          "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
+          "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-28"
+        },
+        {
+          "model": "Inkling",
+          "provider": "Thinking Machines",
+          "score": 8.82,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Pi agent harness",
+          "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
+          "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-28"
+        }
+      ],
+      "indexEligible": true,
+      "indexDomain": "Software engineering",
+      "saturationStatus": "not saturated (top 86.88%)",
+      "quality": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28. Named harness: Pi agent harness. Table complete (29 rows). Extracted with an AI-assisted reader; rows verified against the page by a second pass. Scores kept as published.",
+      "costMetric": null,
+      "scoreScale": {
+        "minimum": 0,
+        "maximum": 100,
+        "unit": "percentage points",
+        "direction": "higher-is-better"
+      }
+    },
+    {
+      "id": "vcb-1-100",
+      "name": "Vibe Code Bench 1-100",
+      "snapshotDate": "2026-10-29",
+      "source": "https://www.vals.ai/benchmarks/vcb-1-100",
+      "unit": "% accuracy",
+      "models": [
+        {
+          "model": "Wonder Full",
+          "provider": "Meta",
+          "score": 33.98,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Modified OpenHands V1 environment",
+          "evidence": "Vals AI Vibe Code Bench 1-100 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/vcb-1-100",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 30.36,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Modified OpenHands V1 environment",
+          "evidence": "Vals AI Vibe Code Bench 1-100 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/vcb-1-100",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Claude Opus 5",
+          "provider": "Anthropic",
+          "score": 28.53,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Modified OpenHands V1 environment",
+          "evidence": "Vals AI Vibe Code Bench 1-100 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/vcb-1-100",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "provider": "Anthropic",
+          "score": 28.0,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Modified OpenHands V1 environment",
+          "evidence": "Vals AI Vibe Code Bench 1-100 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/vcb-1-100",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 27.64,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Modified OpenHands V1 environment",
+          "evidence": "Vals AI Vibe Code Bench 1-100 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/vcb-1-100",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Wonder",
+          "provider": "Meta",
+          "score": 26.55,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Modified OpenHands V1 environment",
+          "evidence": "Vals AI Vibe Code Bench 1-100 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/vcb-1-100",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Qwen 3.8 Max 0902",
+          "provider": "Alibaba",
+          "score": 24.83,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Modified OpenHands V1 environment",
+          "evidence": "Vals AI Vibe Code Bench 1-100 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/vcb-1-100",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "GPT-5.6 Luna",
+          "provider": "OpenAI",
+          "score": 22.59,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Modified OpenHands V1 environment",
+          "evidence": "Vals AI Vibe Code Bench 1-100 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/vcb-1-100",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "provider": "Google",
+          "score": 21.2,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Modified OpenHands V1 environment",
+          "evidence": "Vals AI Vibe Code Bench 1-100 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/vcb-1-100",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Muse Spark 1.3 Max",
+          "provider": "Meta",
+          "score": 20.46,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Modified OpenHands V1 environment",
+          "evidence": "Vals AI Vibe Code Bench 1-100 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/vcb-1-100",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Claude Haiku 5.5",
+          "provider": "Anthropic",
+          "score": 20.41,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Modified OpenHands V1 environment",
+          "evidence": "Vals AI Vibe Code Bench 1-100 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/vcb-1-100",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "GPT-5.6 Sol",
+          "provider": "OpenAI",
+          "score": 20.01,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Modified OpenHands V1 environment",
+          "evidence": "Vals AI Vibe Code Bench 1-100 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/vcb-1-100",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "GLM 5.3",
+          "provider": "Z.ai",
+          "score": 19.99,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Modified OpenHands V1 environment",
+          "evidence": "Vals AI Vibe Code Bench 1-100 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/vcb-1-100",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Gemini 3.8 Flash",
+          "provider": "Google",
+          "score": 18.77,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Modified OpenHands V1 environment",
+          "evidence": "Vals AI Vibe Code Bench 1-100 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/vcb-1-100",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Kimi K3",
+          "provider": "Moonshot AI",
+          "score": 18.24,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Modified OpenHands V1 environment",
+          "evidence": "Vals AI Vibe Code Bench 1-100 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/vcb-1-100",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "DeepSeek V4 Pro 0813",
+          "provider": "DeepSeek",
+          "score": 17.53,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Modified OpenHands V1 environment",
+          "evidence": "Vals AI Vibe Code Bench 1-100 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/vcb-1-100",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "DeepSeek V4.1 Flash",
+          "provider": "DeepSeek",
+          "score": 16.38,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Modified OpenHands V1 environment",
+          "evidence": "Vals AI Vibe Code Bench 1-100 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/vcb-1-100",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "GLM 5.3 Flash",
+          "provider": "Z.ai",
+          "score": 16.03,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Modified OpenHands V1 environment",
+          "evidence": "Vals AI Vibe Code Bench 1-100 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/vcb-1-100",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "GPT-5.6 Terra",
+          "provider": "OpenAI",
+          "score": 14.82,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Modified OpenHands V1 environment",
+          "evidence": "Vals AI Vibe Code Bench 1-100 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/vcb-1-100",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Grok 4.6",
+          "provider": "xAI",
+          "score": 14.75,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Modified OpenHands V1 environment",
+          "evidence": "Vals AI Vibe Code Bench 1-100 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/vcb-1-100",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Mistral Large 4",
+          "provider": "Mistral AI",
+          "score": 14.26,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Modified OpenHands V1 environment",
+          "evidence": "Vals AI Vibe Code Bench 1-100 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/vcb-1-100",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Claude Sonnet 5",
+          "provider": "Anthropic",
+          "score": 13.82,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Modified OpenHands V1 environment",
+          "evidence": "Vals AI Vibe Code Bench 1-100 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/vcb-1-100",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Qwen 3.8 Max",
+          "provider": "Alibaba",
+          "score": 12.83,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Modified OpenHands V1 environment",
+          "evidence": "Vals AI Vibe Code Bench 1-100 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/vcb-1-100",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "MiniMax-M3",
+          "provider": "MiniMax",
+          "score": 9.22,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Modified OpenHands V1 environment",
+          "evidence": "Vals AI Vibe Code Bench 1-100 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/vcb-1-100",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Inkling",
+          "provider": "Thinking Machines",
+          "score": 7.33,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Modified OpenHands V1 environment",
+          "evidence": "Vals AI Vibe Code Bench 1-100 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/vcb-1-100",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Gemini 3.1 Pro Preview (02/26)",
+          "provider": "Google",
+          "score": 6.69,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Modified OpenHands V1 environment",
+          "evidence": "Vals AI Vibe Code Bench 1-100 leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/vcb-1-100",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        }
+      ],
+      "indexEligible": true,
+      "indexDomain": "Software engineering",
+      "saturationStatus": "not saturated (top 33.98%)",
+      "quality": "Vals AI Vibe Code Bench 1-100 leaderboard, updated 2026-10-29. Named harness: Modified OpenHands V1 environment. Table complete (26 rows). Extracted with an AI-assisted reader; rows verified against the page by a second pass. Scores kept as published.",
+      "costMetric": null,
+      "scoreScale": {
+        "minimum": 0,
+        "maximum": 100,
+        "unit": "percentage points",
+        "direction": "higher-is-better"
+      }
+    },
+    {
+      "id": "swebench-multimodal",
+      "name": "SWE-bench Multimodal",
+      "snapshotDate": "2026-10-29",
+      "source": "https://www.vals.ai/benchmarks/swebench-multimodal",
+      "unit": "% accuracy",
+      "models": [
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 70.21,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "mini-swe-agent (no internet)",
+          "evidence": "Vals AI SWE-bench Multimodal leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/swebench-multimodal",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "provider": "Anthropic",
+          "score": 61.25,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "mini-swe-agent (no internet)",
+          "evidence": "Vals AI SWE-bench Multimodal leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/swebench-multimodal",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Claude Sonnet 5.5",
+          "provider": "Anthropic",
+          "score": 58.33,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "mini-swe-agent (no internet)",
+          "evidence": "Vals AI SWE-bench Multimodal leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/swebench-multimodal",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "provider": "Google",
+          "score": 56.04,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "mini-swe-agent (no internet)",
+          "evidence": "Vals AI SWE-bench Multimodal leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/swebench-multimodal",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Wonder Full",
+          "provider": "Meta",
+          "score": 47.29,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "mini-swe-agent (no internet)",
+          "evidence": "Vals AI SWE-bench Multimodal leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/swebench-multimodal",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "DeepSeek V4.1 Flash",
+          "provider": "DeepSeek",
+          "score": 46.46,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "mini-swe-agent (no internet)",
+          "evidence": "Vals AI SWE-bench Multimodal leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/swebench-multimodal",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Wonder",
+          "provider": "Meta",
+          "score": 45.63,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "mini-swe-agent (no internet)",
+          "evidence": "Vals AI SWE-bench Multimodal leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/swebench-multimodal",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Kimi K3",
+          "provider": "Moonshot AI",
+          "score": 44.17,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "mini-swe-agent (no internet)",
+          "evidence": "Vals AI SWE-bench Multimodal leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/swebench-multimodal",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Claude Haiku 5.5",
+          "provider": "Anthropic",
+          "score": 43.96,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "mini-swe-agent (no internet)",
+          "evidence": "Vals AI SWE-bench Multimodal leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/swebench-multimodal",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "GPT-6.1 Sol",
+          "provider": "OpenAI",
+          "score": 43.54,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "mini-swe-agent (no internet)",
+          "evidence": "Vals AI SWE-bench Multimodal leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/swebench-multimodal",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 43.33,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "mini-swe-agent (no internet)",
+          "evidence": "Vals AI SWE-bench Multimodal leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/swebench-multimodal",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Muse Spark 1.3 Max",
+          "provider": "Meta",
+          "score": 43.13,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "mini-swe-agent (no internet)",
+          "evidence": "Vals AI SWE-bench Multimodal leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/swebench-multimodal",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Grok 4.7",
+          "provider": "xAI",
+          "score": 42.92,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "mini-swe-agent (no internet)",
+          "evidence": "Vals AI SWE-bench Multimodal leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/swebench-multimodal",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Qwen 3.8 Max",
+          "provider": "Alibaba",
+          "score": 42.5,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "mini-swe-agent (no internet)",
+          "evidence": "Vals AI SWE-bench Multimodal leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/swebench-multimodal",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "MiMo V2.6 Pro",
+          "provider": "Xiaomi",
+          "score": 41.25,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "mini-swe-agent (no internet)",
+          "evidence": "Vals AI SWE-bench Multimodal leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/swebench-multimodal",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Gemini 3.8 Flash",
+          "provider": "Google",
+          "score": 40.83,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "mini-swe-agent (no internet)",
+          "evidence": "Vals AI SWE-bench Multimodal leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/swebench-multimodal",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Step 5 Preview",
+          "provider": "StepFun",
+          "score": 40.83,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "mini-swe-agent (no internet)",
+          "evidence": "Vals AI SWE-bench Multimodal leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/swebench-multimodal",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "GPT-6 Luna",
+          "provider": "OpenAI",
+          "score": 37.5,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "mini-swe-agent (no internet)",
+          "evidence": "Vals AI SWE-bench Multimodal leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/swebench-multimodal",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "MiniMax-M3",
+          "provider": "MiniMax",
+          "score": 33.33,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "mini-swe-agent (no internet)",
+          "evidence": "Vals AI SWE-bench Multimodal leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/swebench-multimodal",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Mistral Large 4",
+          "provider": "Mistral AI",
+          "score": 33.13,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "mini-swe-agent (no internet)",
+          "evidence": "Vals AI SWE-bench Multimodal leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/swebench-multimodal",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        }
+      ],
+      "indexEligible": true,
+      "indexDomain": "Software engineering",
+      "saturationStatus": "not saturated (top 70.21%)",
+      "quality": "Vals AI SWE-bench Multimodal leaderboard, updated 2026-10-29. Named harness: mini-swe-agent (no internet). Table complete (20 rows). Extracted with an AI-assisted reader; rows verified against the page by a second pass. Scores kept as published.",
+      "costMetric": null,
+      "scoreScale": {
+        "minimum": 0,
+        "maximum": 100,
+        "unit": "percentage points",
+        "direction": "higher-is-better"
+      }
+    },
+    {
+      "id": "biomysterybench",
+      "name": "BioMysteryBench",
+      "snapshotDate": "2026-10-29",
+      "source": "https://www.vals.ai/benchmarks/biomysterybench",
+      "unit": "% accuracy (three-run average)",
+      "models": [
+        {
+          "model": "Claude Sonnet 5.5",
+          "provider": "Anthropic",
+          "score": 81.11,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Terminus 2 harness in bioinformatics sandboxes",
+          "evidence": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/biomysterybench",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "GPT-6.1 Sol",
+          "provider": "OpenAI",
+          "score": 79.63,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Terminus 2 harness in bioinformatics sandboxes",
+          "evidence": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/biomysterybench",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 79.26,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Terminus 2 harness in bioinformatics sandboxes",
+          "evidence": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/biomysterybench",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 79.26,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Terminus 2 harness in bioinformatics sandboxes",
+          "evidence": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/biomysterybench",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Claude Opus 5",
+          "provider": "Anthropic",
+          "score": 79.26,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Terminus 2 harness in bioinformatics sandboxes",
+          "evidence": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/biomysterybench",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "provider": "Google",
+          "score": 76.3,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Terminus 2 harness in bioinformatics sandboxes",
+          "evidence": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/biomysterybench",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Kimi K3.1 Pro",
+          "provider": "Moonshot AI",
+          "score": 75.56,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Terminus 2 harness in bioinformatics sandboxes",
+          "evidence": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/biomysterybench",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "GPT-6 Sol",
+          "provider": "OpenAI",
+          "score": 74.81,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Terminus 2 harness in bioinformatics sandboxes",
+          "evidence": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/biomysterybench",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Wonder Full",
+          "provider": "Meta",
+          "score": 73.33,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Terminus 2 harness in bioinformatics sandboxes",
+          "evidence": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/biomysterybench",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Kimi K3",
+          "provider": "Moonshot AI",
+          "score": 72.59,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Terminus 2 harness in bioinformatics sandboxes",
+          "evidence": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/biomysterybench",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Grok 4.6",
+          "provider": "xAI",
+          "score": 72.22,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Terminus 2 harness in bioinformatics sandboxes",
+          "evidence": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/biomysterybench",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "GPT-5.6 Sol",
+          "provider": "OpenAI",
+          "score": 71.11,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Terminus 2 harness in bioinformatics sandboxes",
+          "evidence": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/biomysterybench",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Claude Haiku 5.5",
+          "provider": "Anthropic",
+          "score": 70.37,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Terminus 2 harness in bioinformatics sandboxes",
+          "evidence": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/biomysterybench",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Grok 4.7",
+          "provider": "xAI",
+          "score": 69.26,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Terminus 2 harness in bioinformatics sandboxes",
+          "evidence": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/biomysterybench",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Hy4 Preview",
+          "provider": "Tencent",
+          "score": 69.26,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Terminus 2 harness in bioinformatics sandboxes",
+          "evidence": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/biomysterybench",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "MiMo V2.6 Flash",
+          "provider": "Xiaomi",
+          "score": 69.26,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Terminus 2 harness in bioinformatics sandboxes",
+          "evidence": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/biomysterybench",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "DeepSeek V4.1 Flash",
+          "provider": "DeepSeek",
+          "score": 67.78,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Terminus 2 harness in bioinformatics sandboxes",
+          "evidence": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/biomysterybench",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Step 5 Preview",
+          "provider": "StepFun",
+          "score": 67.41,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Terminus 2 harness in bioinformatics sandboxes",
+          "evidence": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/biomysterybench",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Ember-1",
+          "provider": "Fireworks",
+          "score": 67.04,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Terminus 2 harness in bioinformatics sandboxes",
+          "evidence": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/biomysterybench",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Wonder",
+          "provider": "Meta",
+          "score": 67.04,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Terminus 2 harness in bioinformatics sandboxes",
+          "evidence": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/biomysterybench",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Mistral Large 4",
+          "provider": "Mistral AI",
+          "score": 67.04,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Terminus 2 harness in bioinformatics sandboxes",
+          "evidence": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/biomysterybench",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Muse Spark 1.2",
+          "provider": "Meta",
+          "score": 64.81,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Terminus 2 harness in bioinformatics sandboxes",
+          "evidence": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/biomysterybench",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "DeepSeek V4 Flash 0731",
+          "provider": "DeepSeek",
+          "score": 64.44,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Terminus 2 harness in bioinformatics sandboxes",
+          "evidence": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/biomysterybench",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Gemini 3.8 Flash",
+          "provider": "Google",
+          "score": 62.22,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Terminus 2 harness in bioinformatics sandboxes",
+          "evidence": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/biomysterybench",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "GPT-6 Luna",
+          "provider": "OpenAI",
+          "score": 61.48,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Terminus 2 harness in bioinformatics sandboxes",
+          "evidence": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/biomysterybench",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "GPT-5.6 Luna",
+          "provider": "OpenAI",
+          "score": 61.48,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Terminus 2 harness in bioinformatics sandboxes",
+          "evidence": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/biomysterybench",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Gemini 3.1 Pro Preview (02/26)",
+          "provider": "Google",
+          "score": 60.0,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Terminus 2 harness in bioinformatics sandboxes",
+          "evidence": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/biomysterybench",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Gemini 3.6 Flash",
+          "provider": "Google",
+          "score": 58.52,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Terminus 2 harness in bioinformatics sandboxes",
+          "evidence": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/biomysterybench",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Beam 1.0",
+          "provider": "Reflection",
+          "score": 42.59,
+          "effort": "not-reported",
+          "configuration": "Vals AI public leaderboard",
+          "harness": "Terminus 2 harness in bioinformatics sandboxes",
+          "evidence": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29",
+          "source": "https://www.vals.ai/benchmarks/biomysterybench",
+          "sourceType": "source-documented",
+          "snapshotDate": "2026-10-29"
+        }
+      ],
+      "indexEligible": true,
+      "indexDomain": "Scientific workflows",
+      "saturationStatus": "not saturated (top 81.11%)",
+      "quality": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29. Named harness: Terminus 2 harness in bioinformatics sandboxes. Table complete (29 rows). Extracted with an AI-assisted reader; rows verified against the page by a second pass. Scores kept as published.",
+      "costMetric": null,
+      "scoreScale": {
+        "minimum": 0,
+        "maximum": 100,
+        "unit": "percentage points",
+        "direction": "higher-is-better"
+      }
     }
   ],
   "benchmarkCatalog": [
@@ -18003,7 +20211,7 @@
       "group": "Core evaluations",
       "source": "https://www.tbench.ai/?version=4.0",
       "status": "index-eligible",
-      "note": "Index 1.5 component; exact effort variants and source-reported 0–100 results are preserved."
+      "note": "Index 1.6 component; exact effort variants and source-reported 0–100 results are preserved."
     },
     {
       "id": "frontiercode-2-0",
@@ -18019,7 +20227,7 @@
       "group": "Core evaluations",
       "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
       "status": "index-eligible",
-      "note": "Index 1.5 component; exact effort variants and source-reported 0–100 results are preserved."
+      "note": "Index 1.6 component; exact effort variants and source-reported 0–100 results are preserved."
     },
     {
       "id": "critpt-v2-hard",
@@ -18043,7 +20251,7 @@
       "group": "Core evaluations",
       "source": "https://labs.scale.com/leaderboard/hle-diamond",
       "status": "index-eligible",
-      "note": "Index 1.5 component; exact effort variants and source-reported 0–100 results are preserved."
+      "note": "Index 1.6 component; exact effort variants and source-reported 0–100 results are preserved."
     },
     {
       "id": "arc-agi-2",
@@ -18067,7 +20275,7 @@
       "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
       "status": "standalone-source-audit",
-      "note": "Index 1.5 component; exact effort variants and source-reported 0–100 results are preserved."
+      "note": "Index 1.6 component; exact effort variants and source-reported 0–100 results are preserved."
     },
     {
       "id": "frontiermath-erdos",
@@ -18083,7 +20291,7 @@
       "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/mystery-game-puzzles",
       "status": "index-eligible",
-      "note": "Index 1.5 component; exact effort variants and source-reported 0–100 results are preserved."
+      "note": "Index 1.6 component; exact effort variants and source-reported 0–100 results are preserved."
     },
     {
       "id": "spireclimb",
@@ -18123,7 +20331,7 @@
       "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/furniture-assembly",
       "status": "standalone-limited-results",
-      "note": "Index 1.5 component; exact effort variants and source-reported 0–100 results are preserved."
+      "note": "Index 1.6 component; exact effort variants and source-reported 0–100 results are preserved."
     },
     {
       "id": "gpqa-diamond",
@@ -18139,7 +20347,7 @@
       "group": "Additional evaluations",
       "source": "https://epoch.ai/benchmarks/proofbench",
       "status": "standalone-ceiling-watch",
-      "note": "Standalone only; upper-end ceiling ties exclude it from Index 1.5."
+      "note": "Standalone only; upper-end ceiling ties exclude it from Index 1.6."
     },
     {
       "id": "mmlu-pro",
@@ -18648,9 +20856,9 @@
   ],
   "composite": {
     "name": "QBench Index",
-    "version": "1.5",
+    "version": "1.6",
     "snapshotAsOf": "2026-10-31",
-    "basis": "Twelve source-audited evaluations across eight capability families. Each contributing evaluation must be a complete publisher-reported table with at least 12 distinct model/effort variants, one stated harness, and a top score that is not ceiling-saturated. Scores are publisher-reported percentages, not within-cohort rank percentiles. Exact model/effort variants are separate. Partial mirrors, ambiguous metric tables and below-gate sources remain standalone.",
+    "basis": "Eighteen source-audited evaluations across eight capability families. Each contributing evaluation must be a complete publisher-reported table with at least 12 distinct model/effort variants, one stated harness, and a top score that is not ceiling-saturated. Scores are publisher-reported percentages, not within-cohort rank percentiles. Exact model/effort variants are separate. Partial mirrors, ambiguous metric tables and below-gate sources remain standalone.",
     "minimumModelsPerEvaluation": 12,
     "minimumCategoryCoverage": 2,
     "componentBenchmarks": [
@@ -18665,7 +20873,13 @@
       "finance-agent-v2-1",
       "medcode",
       "programbench",
-      "cyberbench-v1-1"
+      "cyberbench-v1-1",
+      "emb-v1-1",
+      "hlab",
+      "code-migration-v1-1",
+      "vcb-1-100",
+      "swebench-multimodal",
+      "biomysterybench"
     ],
     "eligibleBenchmarks": [
       "terminal-bench-4-0",
@@ -18679,7 +20893,13 @@
       "finance-agent-v2-1",
       "medcode",
       "programbench",
-      "cyberbench-v1-1"
+      "cyberbench-v1-1",
+      "emb-v1-1",
+      "hlab",
+      "code-migration-v1-1",
+      "vcb-1-100",
+      "swebench-multimodal",
+      "biomysterybench"
     ],
     "insufficientCoverage": [],
     "normalization": "Each evaluation retains its publisher-reported 0–100 percentage-point score. Results are averaged within each capability family. The observed family means are averaged with equal weight: Index = (sum of observed family means) ÷ (number of observed families). Missing families are not imputed.",
@@ -18689,7 +20909,10 @@
         "name": "Software engineering",
         "benchmarks": [
           "terminal-bench-4-0",
-          "programbench"
+          "programbench",
+          "code-migration-v1-1",
+          "vcb-1-100",
+          "swebench-multimodal"
         ],
         "note": "66 terminal tasks in a common Mini-SWE-agent evaluation harness."
       },
@@ -18697,7 +20920,8 @@
         "name": "Scientific workflows",
         "benchmarks": [
           "terminal-bench-science-0-1",
-          "drug-discovery-bench"
+          "drug-discovery-bench",
+          "biomysterybench"
         ],
         "note": "Expert-authored scientific terminal workflows and drug-discovery tasks; separate evaluations aggregated within one family."
       },
@@ -18727,7 +20951,9 @@
         "benchmarks": [
           "legal-research-bench",
           "tax-agent-bench",
-          "finance-agent-v2-1"
+          "finance-agent-v2-1",
+          "emb-v1-1",
+          "hlab"
         ],
         "note": "Legal research, tax and finance agent tasks from Vals AI. Each benchmark uses one shared agent harness; rows are kept only when the publisher table is complete."
       },
@@ -18746,7 +20972,7 @@
         "note": "CyberBench v1.1 from Vals AI: security tasks under a named mini-swe-agent harness; ambiguous and special-access rows excluded."
       }
     ],
-    "method": "QBench Index 1.5 averages publisher-reported percentages within eight capability families, then averages the observed families with equal weight. Incomplete family coverage is not shrunk toward 50. A variant is ranked only with at least three evaluations across three capability families.",
+    "method": "QBench Index 1.6 averages publisher-reported percentages within eight capability families, then averages the observed families with equal weight. Incomplete family coverage is not shrunk toward 50. A variant is ranked only with at least three evaluations across three capability families.",
     "caveats": [
       "The Index is a five-family composite of source-reported percentages, not an IQ score, human-equivalence score, or confidence interval.",
       "Direct percentage-point scoring avoids within-cohort rank-percentile inflation. Benchmark difficulty, graders, task formats and guessing opportunities still differ; equal family weights are a transparent convention, not a psychometric equivalence claim.",
@@ -18754,7 +20980,7 @@
       "Harness differences are preserved. ARC-AGI-3 Standard and Provider Adapter are separate; only Standard contributes to the Index.",
       "Incomplete family coverage is not shrunk toward 50. The Index averages only the observed families, and a variant is ranked only with three or more families.",
       "Ranking requires at least three evaluations across three distinct capability families. Rows with less evidence remain visible but unranked.",
-      "Mystery Game Puzzles has 140 tested models on Epoch AI's page; this snapshot contains 20 exact model/effort variants surfaced in the official results extract, not all 140. It is excluded from Index 1.5 because the visible table is incomplete.",
+      "Mystery Game Puzzles has 140 tested models on Epoch AI's page; this snapshot contains 20 exact model/effort variants surfaced in the official results extract, not all 140. It is excluded from Index 1.6 because the visible table is incomplete.",
       "DrugDiscoveryBench uses mini-SWE-agent results only. Its 82 expert-authored tasks are averaged over three runs with a 120-minute timeout.",
       "MCP Atlas is updated April 8, 2026; it remains a useful held-out tool-use evaluation but is older than the October 2026 snapshots.",
       "HiL-Bench remains standalone: its official leaderboard's 30-row comparison table does not explicitly label the score metric, while the paper's clearly labeled Pass@3 and ASK-F1 results cover only four models, below the 12-variant source gate.",
@@ -18909,13 +21135,13 @@
       "broadEvidenceVariants": 1,
       "limitedEvidenceVariants": 51,
       "insufficientEvidenceVariants": 93,
-      "note": "Recomputed for Index 1.5 from the current eligible data (see methodology page for the live counts)."
+      "note": "Recomputed for Index 1.6 from the current eligible data (see methodology page for the live counts)."
     },
     "supplementaryInputsExcluded": [
       "aa-omniscience-v1-1-accuracy-atlas"
     ],
     "extendedIndex": {
-      "version": "1.5",
+      "version": "1.6",
       "snapshotAsOf": "2026-10-31",
       "minimumModelsPerEvaluation": 12,
       "minimumEvaluationsPerModel": 3,
@@ -18925,7 +21151,10 @@
           "name": "Software engineering",
           "benchmarks": [
             "terminal-bench-4-0",
-            "programbench"
+            "programbench",
+            "code-migration-v1-1",
+            "vcb-1-100",
+            "swebench-multimodal"
           ],
           "note": "66 terminal tasks in a common Mini-SWE-agent evaluation harness."
         },
@@ -18933,7 +21162,8 @@
           "name": "Scientific workflows",
           "benchmarks": [
             "terminal-bench-science-0-1",
-            "drug-discovery-bench"
+            "drug-discovery-bench",
+            "biomysterybench"
           ],
           "note": "Expert-authored scientific terminal workflows and drug-discovery tasks; separate evaluations aggregated within one family."
         },
@@ -18963,7 +21193,9 @@
           "benchmarks": [
             "legal-research-bench",
             "tax-agent-bench",
-            "finance-agent-v2-1"
+            "finance-agent-v2-1",
+            "emb-v1-1",
+            "hlab"
           ],
           "note": "Legal research, tax and finance agent tasks from Vals AI. Each benchmark uses one shared agent harness; rows are kept only when the publisher table is complete."
         },
@@ -18994,12 +21226,18 @@
         "finance-agent-v2-1",
         "medcode",
         "programbench",
-        "cyberbench-v1-1"
+        "cyberbench-v1-1",
+        "emb-v1-1",
+        "hlab",
+        "code-migration-v1-1",
+        "vcb-1-100",
+        "swebench-multimodal",
+        "biomysterybench"
       ],
       "excludedFromExtendedIndex": [
         {
           "id": "mystery-game-puzzles",
-          "reason": "Standalone in Index 1.5: the imported table holds 20 of the 140 models Epoch AI tested, so the publisher table is incomplete."
+          "reason": "Standalone in Index 1.6: the imported table holds 20 of the 140 models Epoch AI tested, so the publisher table is incomplete."
         },
         {
           "id": "proofbench",
@@ -19059,11 +21297,11 @@
         },
         {
           "id": "arc-agi-3-provider-adapter",
-          "reason": "Standalone only: Provider Adapter is a different execution harness; only the official Standard-harness results contribute to Index 1.5."
+          "reason": "Standalone only: Provider Adapter is a different execution harness; only the official Standard-harness results contribute to Index 1.6."
         },
         {
           "id": "mcp-atlas-performance-comparison",
-          "reason": "Official 34-row Performance Comparison table does not explicitly label whether the score is Pass Rate or mean claim coverage; retained separately and not used in Index 1.5."
+          "reason": "Official 34-row Performance Comparison table does not explicitly label whether the score is Pass Rate or mean claim coverage; retained separately and not used in Index 1.6."
         },
         {
           "id": "hil-bench-performance-comparison",
@@ -19075,7 +21313,7 @@
         }
       ],
       "normalization": "Each evaluation retains its publisher-reported 0–100 percentage-point score. Results are averaged within each of eight capability families. The observed family means are averaged with equal weight: Index = (sum of observed family means) ÷ (number of observed families). Missing families are not imputed; incomplete coverage is not shrunk toward 50.",
-      "methodology": "QBench Index 1.5 uses twelve source-audited evaluations across eight capability families. It retains publisher-reported percentages, exact model/effort variants and comparable harnesses; ambiguous publisher comparison scores remain standalone.",
+      "methodology": "QBench Index 1.6 uses eighteen source-audited evaluations across eight capability families. It retains publisher-reported percentages, exact model/effort variants and comparable harnesses; ambiguous publisher comparison scores remain standalone.",
       "configurationPolicy": "Create a separate model variant for each exact model name and reported reasoning effort. Never select the highest score across effort levels. Keep unreported effort separate. Preserve harness, routing, fallback, release date and model metadata. ARC-AGI-3 Standard and Provider Adapter are separate evaluations; only Standard contributes to the Index.",
       "caveats": [
         "The Index is a seven-family composite of source-reported percentages, not an IQ score, human-equivalence score, or confidence interval.",
@@ -19206,7 +21444,7 @@
           "snapshotDate": "2026-10-31"
         }
       ],
-      "method": "QBench Index 1.5 uses twelve source-audited evaluations across eight capability families. It retains publisher-reported percentages rather than converting within-cohort ranks to percentiles. Model/effort variants are separate identities. A variant is ranked only with at least three evaluations across three distinct capability families. Missing values are not imputed.",
+      "method": "QBench Index 1.6 uses eighteen source-audited evaluations across eight capability families. It retains publisher-reported percentages rather than converting within-cohort ranks to percentiles. Model/effort variants are separate identities. A variant is ranked only with at least three evaluations across three distinct capability families. Missing values are not imputed.",
       "currentDiagnostics": {
         "snapshotAsOf": "2026-10-31",
         "eligibleEvaluationCount": 10,
@@ -19218,7 +21456,7 @@
         "broadEvidenceVariants": 32,
         "limitedEvidenceVariants": 18,
         "insufficientEvidenceVariants": 159,
-        "note": "Counts from the Index 1.5 runtime (browser run on 2026-10-31 against the local build); unranked = total variants minus ranked."
+        "note": "Counts from the Index 1.6 runtime (browser run on 2026-10-31 against the local build); unranked = total variants minus ranked."
       }
     },
     "minimumEvaluationsPerModel": 3,
@@ -19295,7 +21533,7 @@
         "group": "Core evaluations",
         "source": "https://www.tbench.ai/?version=4.0",
         "status": "index-eligible",
-        "note": "Index 1.5 component; exact effort variants and source-reported 0–100 results are preserved."
+        "note": "Index 1.6 component; exact effort variants and source-reported 0–100 results are preserved."
       },
       {
         "id": "frontiercode-2-0",
@@ -19311,7 +21549,7 @@
         "group": "Core evaluations",
         "source": "https://vals-ai.com/benchmarks/terminal-bench-science",
         "status": "index-eligible",
-        "note": "Index 1.5 component; exact effort variants and source-reported 0–100 results are preserved."
+        "note": "Index 1.6 component; exact effort variants and source-reported 0–100 results are preserved."
       },
       {
         "id": "critpt-v2-hard",
@@ -19335,7 +21573,7 @@
         "group": "Core evaluations",
         "source": "https://labs.scale.com/leaderboard/hle-diamond",
         "status": "index-eligible",
-        "note": "Index 1.5 component; exact effort variants and source-reported 0–100 results are preserved."
+        "note": "Index 1.6 component; exact effort variants and source-reported 0–100 results are preserved."
       },
       {
         "id": "arc-agi-2",
@@ -19359,7 +21597,7 @@
         "group": "Additional evaluations",
         "source": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
         "status": "standalone-source-audit",
-        "note": "Index 1.5 component; exact effort variants and source-reported 0–100 results are preserved."
+        "note": "Index 1.6 component; exact effort variants and source-reported 0–100 results are preserved."
       },
       {
         "id": "frontiermath-erdos",
@@ -19375,7 +21613,7 @@
         "group": "Additional evaluations",
         "source": "https://epoch.ai/benchmarks/mystery-game-puzzles",
         "status": "index-eligible",
-        "note": "Index 1.5 component; exact effort variants and source-reported 0–100 results are preserved."
+        "note": "Index 1.6 component; exact effort variants and source-reported 0–100 results are preserved."
       },
       {
         "id": "spireclimb",
@@ -19415,7 +21653,7 @@
         "group": "Additional evaluations",
         "source": "https://epoch.ai/benchmarks/furniture-assembly",
         "status": "standalone-limited-results",
-        "note": "Index 1.5 component; exact effort variants and source-reported 0–100 results are preserved."
+        "note": "Index 1.6 component; exact effort variants and source-reported 0–100 results are preserved."
       },
       {
         "id": "gpqa-diamond",
@@ -19431,7 +21669,7 @@
         "group": "Additional evaluations",
         "source": "https://epoch.ai/benchmarks/proofbench",
         "status": "standalone-ceiling-watch",
-        "note": "Standalone only; upper-end ceiling ties exclude it from Index 1.5."
+        "note": "Standalone only; upper-end ceiling ties exclude it from Index 1.6."
       },
       {
         "id": "mmlu-pro",

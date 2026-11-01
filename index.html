@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>QBench — AI Model Benchmark Index 1.5</title>
-<meta name="description" content="QBench: source-audited AI model benchmarks, transparent Index 1.5 scoring, model comparison, evaluation details and API price data.">
+<title>QBench — AI Model Benchmark Index 1.6</title>
+<meta name="description" content="QBench: source-audited AI model benchmarks, transparent Index 1.6 scoring, model comparison, evaluation details and API price data.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -148,16 +148,16 @@ footer{font-size:.8rem;color:var(--qb-muted)}
 <main class="container-xl py-4">
   <header class="mb-4">
     <h1 class="hero-title font-serif-jp">AI capability, measured with evidence</h1>
-    <p class="text-muted-qb mb-0" style="max-width:48rem">QBench Index 1.5 compares models across twelve source-audited evaluations grouped into eight capability families. Every result keeps its exact model effort, harness, native score and source; missing scores are never guessed.</p>
+    <p class="text-muted-qb mb-0" style="max-width:48rem">QBench Index 1.6 compares models across eighteen source-audited evaluations grouped into eight capability families. Every result keeps its exact model effort, harness, native score and source; missing scores are never guessed.</p>
     <div class="row row-cols-1 row-cols-lg-3 g-3 mt-3" id="stats"></div>
   </header>
 
   <!-- INDEX -->
-  <section class="view" data-view="index" aria-label="QBench Index 1.5">
+  <section class="view" data-view="index" aria-label="QBench Index 1.6">
     <div class="card mb-3">
       <div class="card-header d-flex flex-wrap align-items-start justify-content-between gap-2 py-3">
         <div>
-          <h2 class="card-title-qb">QBench Index 1.5 leaderboard</h2>
+          <h2 class="card-title-qb">QBench Index 1.6 leaderboard</h2>
           <div class="text-muted-qb small mt-1" id="index-sub"></div>
         </div>
         <div class="d-flex flex-wrap align-items-center gap-2 toolbar-qb">
@@ -169,7 +169,7 @@ footer{font-size:.8rem;color:var(--qb-muted)}
           </div>
         </div>
       </div>
-      <details class="index-explainer mx-3 mt-2 mb-1"><summary class="fw-semibold mb-1" style="cursor:pointer">How QBench Index 1.5 works</summary>
+      <details class="index-explainer mx-3 mt-2 mb-1"><summary class="fw-semibold mb-1" style="cursor:pointer">How QBench Index 1.6 works</summary>
         <div>Each benchmark keeps its reported 0–100 accuracy or task-success percentage. Results are averaged inside eight capability families, then the observed family means are averaged equally. Missing families are left out, not imputed and not pulled toward 50. Model effort variants are separate entries; unreported effort is never guessed.</div>
         <div class="mt-1"><strong>Rank:</strong> at least 3 eligible evaluations across 3+ capability families · <strong>Evidence:</strong> full (all 8 families), broad (4–7), or limited (3) · <strong>Insufficient evidence:</strong> retained in Models, without an Index score.</div>
       </details>
@@ -304,7 +304,7 @@ function cssVar(n){return getComputedStyle(document.documentElement).getProperty
 function isDark(){return document.documentElement.getAttribute('data-bs-theme')==='dark';}
 function pal(){return {ink:cssVar('--bs-body-color')||'#14171f',muted:cssVar('--qb-muted')||'#667085',grid:cssVar('--qb-grid')||'#e4e7ee',accent:cssVar('--qb-accent')||'#4f5bd5',soft:cssVar('--qb-accent-soft'),good:cssVar('--qb-good')||'#16815a',c:[cssVar('--qb-c1')||'#4f5bd5',cssVar('--qb-c2')||'#16815a',cssVar('--qb-c3')||'#c27803',cssVar('--qb-c4')||'#8a5cc7','#0d9488','#d97706','#64748b']};}
 
-/* ---------- QBench Index 1.5 ---------- */
+/* ---------- QBench Index 1.6 ---------- */
 var DATA=null,RESULT=null;
 
 function effortOf(r){
@@ -421,7 +421,7 @@ function renderSummaryCards(ranked,top,baseModels,full,broad,limited,unranked){
     return {name:e.name,lead:rows[0]||null};
   });
   $('#stats').innerHTML=
-    '<div class="col"><div class="card h-100"><div class="card-body"><div class="stat-k">Index 1.5 · top 5</div>'+
+    '<div class="col"><div class="card h-100"><div class="card-body"><div class="stat-k">Index 1.6 · top 5</div>'+
       '<div id="sum-top" style="height:260px"></div></div></div></div>'+
     '<div class="col"><div class="card h-100"><div class="card-body"><div class="stat-k">Leader per evaluation</div>'+
       '<ul class="list-unstyled small mb-0 mt-2">'+leaders.map(function(l){return '<li class="d-flex justify-content-between gap-2 py-1 border-bottom"><span class="text-muted-qb">'+esc(l.name)+'</span><span class="text-end fw-semibold">'+(l.lead?esc(scatterLabel(l.lead))+' · '+fmt(l.lead.score,1):'—')+'</span></li>';}).join('')+'</ul>'+
@@ -448,7 +448,7 @@ function renderSummaryCards(ranked,top,baseModels,full,broad,limited,unranked){
 /* ---------- index table ---------- */
 
 function indexColumns(){
- return [{k:'rank',l:'#',num:true},{k:'model',l:'Model'},{k:'effort',l:'Effort'},{k:'provider',l:'Provider'},{k:'index',l:'Index 1.5',num:true}]
+ return [{k:'rank',l:'#',num:true},{k:'model',l:'Model'},{k:'effort',l:'Effort'},{k:'provider',l:'Provider'},{k:'index',l:'Index 1.6',num:true}]
  .concat(RESULT.domains.map(function(d){return {k:'d:'+d,l:d,num:true};})).concat([{k:'coverage',l:'Evals',num:true},{k:'inputPrice',l:'Input / 1M',num:true},{k:'outputPrice',l:'Output / 1M',num:true}]);
 }
 function sortVal(r,k){
@@ -536,18 +536,18 @@ function renderComposition(host){
   },true);
 }
 
-/* Leaderboard-style bars: ranked variants sorted by Index 1.5 (AA-style score bars). */
+/* Leaderboard-style bars: ranked variants sorted by Index 1.6 (AA-style score bars). */
 function renderBars(host){
   var rows=RESULT.rows.filter(function(r){return r.ranked&&r.index!=null;}).slice().sort(function(a,b){return b.index-a.index;});
   if(!rows.length){emptyChart(host,'No ranked variant is available.');return;}
   var p=pal();
   host.innerHTML='<div id="chart-main-el" style="height:460px"></div>'+
-    '<div class="notice-qb">Bars show the Index 1.5 score for each ranked variant. Effort variants are separate rows; unreported effort is not merged.</div>';
+    '<div class="notice-qb">Bars show the Index 1.6 score for each ranked variant. Effort variants are separate rows; unreported effort is not merged.</div>';
   var c=chartInit('chart-main-el');
   c.setOption({animation:false,grid:{left:56,right:18,top:24,bottom:140},
     tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(ps){var r=rows[ps[0].dataIndex];return esc(r.variantLabel)+'<br>Index '+fmt(r.index,1)+'<br>Families observed: '+r.domainCount+' / '+RESULT.domains.length;}},
     xAxis:catAxis(p,{type:'category',data:rows.map(scatterLabel)},{rotate:50,interval:0,fontSize:11,width:130,overflow:'truncate'}),
-    yAxis:Object.assign({type:'value',min:0,max:100,name:'QBench Index 1.5',nameLocation:'middle',nameGap:40,nameTextStyle:{color:p.muted}},axisStyle(p)),
+    yAxis:Object.assign({type:'value',min:0,max:100,name:'QBench Index 1.6',nameLocation:'middle',nameGap:40,nameTextStyle:{color:p.muted}},axisStyle(p)),
     series:[{type:'bar',barWidth:'60%',data:rows.map(function(r){return {value:+Number(r.index).toFixed(1),itemStyle:{color:providerColor(r.provider),borderRadius:[4,4,0,0]}};}),
       label:{show:true,position:'top',formatter:function(e){return fmt(e.value,1);},color:p.ink,fontSize:10}}]});
 }
@@ -606,7 +606,7 @@ function renderScatter(host){
     grid:{left:56,right:24,top:16,bottom:50},
     tooltip:{trigger:'item',formatter:function(e){var d=e.value||e.data;return d[2]?esc(d[2])+'<br>Index '+Number(d[1]).toFixed(1)+'<br>$'+Number(d[0]).toFixed(2)+' / 1M tokens':e.seriesName;}},
     xAxis:Object.assign({type:'log',name:'Official API token-price proxy, USD per 1M tokens',nameLocation:'middle',nameGap:32,nameTextStyle:{color:p.muted}},axisStyle(p)),
-    yAxis:Object.assign({type:'value',min:0,max:100,name:'QBench Index 1.5',nameTextStyle:{color:p.muted}},axisStyle(p)),
+    yAxis:Object.assign({type:'value',min:0,max:100,name:'QBench Index 1.6',nameTextStyle:{color:p.muted}},axisStyle(p)),
     series:series
   },true);
   $('#scatter-legend').innerHTML=provs.map(function(pv){return '<span><i style="background:'+providerColor(pv)+'"></i>'+esc(pv)+'</span>';}).join('');
@@ -642,7 +642,7 @@ function renderDistribution(host){
   var p=pal(),labels=[],bins=[];
   for(var i=0;i<10;i++){labels.push((i*10)+'–'+((i+1)*10));bins.push(0);}
   rows.forEach(function(r){var bin=Math.max(0,Math.min(9,Math.floor(r.index/10)));bins[bin]++;});
-  host.innerHTML='<div id="chart-main-el" style="height:360px"></div><div class="notice-qb">Distribution of Index 1.5 scores for all ranked models.</div>';
+  host.innerHTML='<div id="chart-main-el" style="height:360px"></div><div class="notice-qb">Distribution of Index 1.6 scores for all ranked models.</div>';
   var c=chartInit('chart-main-el');if(!c)return;
   c.setOption({animation:false,grid:{left:48,right:18,top:18,bottom:48},tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},xAxis:Object.assign({type:'category',data:labels,name:'Index band'},axisStyle(p)),yAxis:Object.assign({type:'value',minInterval:1,name:'Models'},axisStyle(p)),series:[{name:'Ranked models',type:'bar',barWidth:28,itemStyle:{color:p.c[0],borderRadius:[4,4,0,0]},data:bins}]},true);
 }
@@ -668,12 +668,12 @@ function renderConsistency(host){
   var rows=RESULT.rows.filter(function(r){return r.ranked&&r.spread!=null;});
   if(!rows.length){emptyChart(host,'No consistency data available.');return;}
   var p=pal(),family=getComputedStyle(document.body).fontFamily||'DM Sans, sans-serif';
-  host.innerHTML='<div id="chart-main-el" style="height:460px"></div><div class="notice-qb">Each point is a model/effort variant. Horizontal position is the standard deviation of reported benchmark percentages; vertical position is the Index 1.5 score. Different tasks and benchmark difficulty make this descriptive spread unsuitable as a model-stability ranking or confidence interval.</div>';
+  host.innerHTML='<div id="chart-main-el" style="height:460px"></div><div class="notice-qb">Each point is a model/effort variant. Horizontal position is the standard deviation of reported benchmark percentages; vertical position is the Index 1.6 score. Different tasks and benchmark difficulty make this descriptive spread unsuitable as a model-stability ranking or confidence interval.</div>';
   var c=chartInit('chart-main-el');
   c.setOption({animation:false,grid:{left:70,right:30,top:24,bottom:64},
     tooltip:{trigger:'item',textStyle:{fontFamily:family},formatter:function(e){var r=e.data.row;return esc(r.variantLabel)+'<br>Index: '+fmt(r.index,1)+'<br>Benchmark spread: '+fmt(r.spread,1)+' pct points<br>Coverage: '+r.coverage+' / '+RESULT.evals.length+' evaluations';}},
     xAxis:Object.assign({type:'value',name:'Across-benchmark spread (descriptive only)',nameLocation:'middle',nameGap:38},axisStyle(p)),
-    yAxis:Object.assign({type:'value',min:0,max:100,name:'QBench Index 1.5',nameTextStyle:{color:p.muted}},axisStyle(p)),
+    yAxis:Object.assign({type:'value',min:0,max:100,name:'QBench Index 1.6',nameTextStyle:{color:p.muted}},axisStyle(p)),
     series:[{type:'scatter',symbolSize:11,itemStyle:{color:p.accent,opacity:.8},data:rows.map(function(r){return {value:[r.spread,r.index],row:r};})}]
   },true);
 }
@@ -700,7 +700,7 @@ function renderPriceCatalog(){
   $('#price-catalog-note').textContent=list.length+' priced model entries · snapshot '+(DATA.apiPricing.snapshotDate||'—')+'. Index scatter uses first-party provider API prices only; route prices are separate.';
 }
 function renderModels(){
- var cols=[{k:'sel',l:'Compare'},{k:'model',l:'Model'},{k:'effort',l:'Effort'},{k:'provider',l:'Provider'},{k:'index',l:'Index 1.5',num:true},{k:'coverage',l:'Evals',num:true},{k:'inputPrice',l:'Input / 1M',num:true},{k:'outputPrice',l:'Output / 1M',num:true}];
+ var cols=[{k:'sel',l:'Compare'},{k:'model',l:'Model'},{k:'effort',l:'Effort'},{k:'provider',l:'Provider'},{k:'index',l:'Index 1.6',num:true},{k:'coverage',l:'Evals',num:true},{k:'inputPrice',l:'Input / 1M',num:true},{k:'outputPrice',l:'Output / 1M',num:true}];
  var rows=RESULT.rows.filter(function(r){return !S.mq||(r.model+' '+r.effort).toLowerCase().indexOf(S.mq.toLowerCase())>=0;});
  rows=rows.slice().sort(function(a,b){var va=S.mSort==='model'?a.model:S.mSort==='provider'?a.provider:S.mSort==='effort'?a.effort:S.mSort==='coverage'?a.coverage:(a.index==null?-1:a.index);var vb=S.mSort==='model'?b.model:S.mSort==='provider'?b.provider:S.mSort==='effort'?b.effort:S.mSort==='coverage'?b.coverage:(b.index==null?-1:b.index);if(typeof va==='string')return S.mDir*va.localeCompare(vb,'en');if(va==null&&vb==null)return a.model.localeCompare(b.model);if(va==null)return 1;if(vb==null)return -1;return S.mDir*(va-vb);});
  $('#models-head').innerHTML=cols.map(function(c){return '<th'+(c.num?' class="text-end"':'')+'>'+(c.k==='sel'?esc(c.l):'<button type="button" class="sort-btn" data-msort="'+c.k+'">'+esc(c.l)+'</button>')+'</th>';}).join('');
@@ -715,7 +715,7 @@ function renderCompare(){
  var sel=S.selected.map(function(id){return RESULT.rows.filter(function(r){return r.variantId===id;})[0];}).filter(Boolean),p=pal(),c=chartInit('radar-el'),colors=['#4f5bd5','#16815a','#c27803','#8a5cc7','#d9480f'];
  c.setOption({animation:false,color:colors,tooltip:{},legend:{bottom:0,textStyle:{color:p.ink}},radar:{indicator:RESULT.domains.map(function(d){return {name:d,max:100};}),axisName:{color:p.ink,fontSize:12},splitLine:{lineStyle:{color:p.grid}},axisLine:{lineStyle:{color:p.grid}},splitArea:{show:false}},series:[{type:'radar',data:sel.map(function(r){return {name:r.variantLabel,value:RESULT.domains.map(function(d){return r.domains[d]==null?null:Math.round(r.domains[d]*10)/10;}),areaStyle:{opacity:.08}};})}]},true);
  var head='<tr><th>Measure</th>'+sel.map(function(r){return '<th class="text-end">'+esc(r.variantLabel)+'</th>';}).join('')+'</tr>';
- var body='<tr class="fw-semibold"><td>QBench Index 1.5</td>'+sel.map(function(r){return '<td class="text-end num"><strong>'+fmt(r.index,1)+'</strong></td>';}).join('')+'</tr>';
+ var body='<tr class="fw-semibold"><td>QBench Index 1.6</td>'+sel.map(function(r){return '<td class="text-end num"><strong>'+fmt(r.index,1)+'</strong></td>';}).join('')+'</tr>';
  body+='<tr><td>Raw family mean</td>'+sel.map(function(r){return '<td class="text-end num">'+fmt(r.rawIndex,1)+'</td>';}).join('')+'</tr><tr><td>Families observed</td>'+sel.map(function(r){return '<td class="text-end num">'+r.domainCount+' / '+RESULT.domains.length+'</td>';}).join('')+'</tr>';
  RESULT.domains.forEach(function(d){body+='<tr><td>'+esc(d)+' (family mean)</td>'+sel.map(function(r){return '<td class="text-end num">'+fmt(r.domains[d],1)+'</td>';}).join('')+'</tr>';});
  RESULT.evals.forEach(function(e){body+='<tr><td>'+esc(e.name)+'</td>'+sel.map(function(r){var v=r.detail[e.id];return '<td class="text-end num">'+(v?fmt(v.value,1)+' <span class="text-muted-qb">('+esc(v.effort==='not-reported'?'effort unreported':v.effort)+')</span>':'—')+'</td>';}).join('')+'</tr>';});
@@ -737,7 +737,7 @@ function renderModelDetail(id){
  var effortMap={};all.forEach(function(x){(effortMap[x.effort]=effortMap[x.effort]||[]).push(x);});
  var harnessMap={};all.filter(function(x){return x.benchmark.id==='arc-agi-3'||x.benchmark.id==='arc-agi-3-provider-adapter';}).forEach(function(x){var e=harnessMap[x.effort]=harnessMap[x.effort]||{};e[x.benchmark.id]=scoreOf(x.row);});
  var harnessRows=Object.keys(harnessMap).map(function(e){var h=harnessMap[e],a=h['arc-agi-3'],b=h['arc-agi-3-provider-adapter'];return '<tr><td>'+esc(e==='not-reported'?'Not reported':e)+'</td><td class="text-end num">'+fmt(a,2)+'</td><td class="text-end num">'+fmt(b,2)+'</td><td class="text-end num">'+(a!=null&&b!=null?fmt(b-a,2):'—')+'</td></tr>';}).join('');
- var harnessHtml=harnessRows?'<h3 class="card-title-qb mb-2">ARC-AGI-3 harness comparison</h3><div class="table-responsive mb-4"><table class="table table-sm"><thead><tr><th>Effort</th><th class="text-end">Standard</th><th class="text-end">Provider Adapter</th><th class="text-end">Adapter − Standard</th></tr></thead><tbody>'+harnessRows+'</tbody></table></div><div class="notice-qb mb-4">The two harnesses have materially different execution semantics. This table is diagnostic only; Provider Adapter scores are never pooled with Standard-harness scores in Index 1.5.</div>':'';
+ var harnessHtml=harnessRows?'<h3 class="card-title-qb mb-2">ARC-AGI-3 harness comparison</h3><div class="table-responsive mb-4"><table class="table table-sm"><thead><tr><th>Effort</th><th class="text-end">Standard</th><th class="text-end">Provider Adapter</th><th class="text-end">Adapter − Standard</th></tr></thead><tbody>'+harnessRows+'</tbody></table></div><div class="notice-qb mb-4">The two harnesses have materially different execution semantics. This table is diagnostic only; Provider Adapter scores are never pooled with Standard-harness scores in Index 1.6.</div>':'';
  var effortRows=Object.keys(effortMap).map(function(e){var items=effortMap[e];return '<tr><td>'+esc(e==='not-reported'?'Not reported':e)+'</td><td class="text-end num">'+items.length+'</td></tr>';}).join('');
  var resultRows=all.map(function(x){
   var m=x.row,b=x.benchmark,unc=m.scoreUncertainty;
@@ -752,7 +752,7 @@ function renderModelDetail(id){
  $('#model-detail-sub').textContent=(kind.label||r.modelKindLabel||'Foundation model')+' · '+r.provider+' · selected effort: '+(r.effort==='not-reported'?'Not reported':r.effort);
  $('#model-detail-content').innerHTML=
   '<div class="row row-cols-2 row-cols-lg-4 g-2 mb-3">'+
-   '<div class="col"><div class="qb-detail-stat"><div class="k">QBench Index 1.5</div><div class="v">'+fmt(r.index,1)+'</div><div class="small text-muted-qb">'+(r.ranked?'Ranked · '+r.coverage+' evaluations':'Insufficient evidence')+'</div></div></div>'+
+   '<div class="col"><div class="qb-detail-stat"><div class="k">QBench Index 1.6</div><div class="v">'+fmt(r.index,1)+'</div><div class="small text-muted-qb">'+(r.ranked?'Ranked · '+r.coverage+' evaluations':'Insufficient evidence')+'</div></div></div>'+
    '<div class="col"><div class="qb-detail-stat"><div class="k">Raw family mean</div><div class="v">'+fmt(r.rawIndex,1)+'</div></div></div>'+
    '<div class="col"><div class="qb-detail-stat"><div class="k">Release date</div><div class="v">'+(dates.length?esc(dates.join(' · ')):'—')+'</div></div></div>'+
    '<div class="col"><div class="qb-detail-stat"><div class="k">Provider</div><div class="v">'+esc(r.provider)+'</div></div></div>'+
@@ -775,7 +775,7 @@ function csvOut(){
 function benchStatus(id){
  var b=RESULT.byId[id]||{},rows=(b.models||[]).filter(function(m){return m.uncertain!==true&&scoreOf(m)!==null;});
  var n=new Set(rows.map(function(m){return variantId(m.model,effortOf(m));})).size;
- if(RESULT.evals.some(function(e){return e.id===id;}))return {t:'In Index 1.5',c:'text-bg-success',n:n};
+ if(RESULT.evals.some(function(e){return e.id===id;}))return {t:'In Index 1.6',c:'text-bg-success',n:n};
  if(!n)return {t:'No verified results',c:'text-bg-warning',n:0};
  if(b.indexEligible!==true)return {t:'Standalone evaluation',c:'text-bg-secondary',n:n};
  return {t:'Below 12-variant minimum',c:'text-bg-warning',n:n};
@@ -875,13 +875,13 @@ function renderMethod(){
  var sources=(ext.sourceNotes||[]).map(function(x){return '<li><a href="'+esc(x.url)+'" target="_blank" rel="noopener">'+esc(x.label)+'</a> <span class="text-muted-qb">· '+esc(x.snapshotDate||'date not stated')+'</span></li>';}).join('');
  var caveats=(ext.caveats||[]).map(function(x){return '<li>'+esc(x)+'</li>';}).join('');
 
- $('#method').innerHTML='<h2 class="font-serif-jp mb-3">QBench Index 1.5 · Methodology</h2><p>Index 1.5 is a source-audited composite of '+RESULT.evals.length+' evaluations across '+familyCount+' capability families. Only complete, publisher-reported tables that pass the gates below are eligible. Each exact model/effort variant is a separate entry. No external composite score or proprietary weight is imported.</p>'+
+ $('#method').innerHTML='<h2 class="font-serif-jp mb-3">QBench Index 1.6 · Methodology</h2><p>Index 1.6 is a source-audited composite of '+RESULT.evals.length+' evaluations across '+familyCount+' capability families. Only complete, publisher-reported tables that pass the gates below are eligible. Each exact model/effort variant is a separate entry. No external composite score or proprietary weight is imported.</p>'+
  '<div class="row row-cols-2 row-cols-lg-4 g-2 my-3"><div class="col"><div class="card p-3"><div class="small text-muted-qb">Ranked variants</div><div class="fs-3 fw-bold num">'+ranked.length+'</div></div></div><div class="col"><div class="card p-3"><div class="small text-muted-qb">Base models</div><div class="fs-3 fw-bold num">'+baseModels+'</div></div></div><div class="col"><div class="card p-3"><div class="small text-muted-qb">Full / broad evidence</div><div class="fs-3 fw-bold num">'+(full+broad)+'</div></div></div><div class="col"><div class="card p-3"><div class="small text-muted-qb">Limited evidence</div><div class="fs-3 fw-bold num">'+limited+'</div></div></div><div class="col"><div class="card p-3"><div class="small text-muted-qb">Insufficient variants</div><div class="fs-3 fw-bold num">'+insufficient+'</div></div></div></div>'+
  '<h3>Capability families</h3><ol>'+cats+'</ol><h3>How the score is calculated</h3><ol><li><strong>Source gate:</strong> each evaluation needs a complete publisher table with at least '+ext.minimumModelsPerEvaluation+' distinct model/effort variants, one stated harness, and a top score that is not ceiling-saturated.</li><li><strong>Keep the native percentage:</strong> scores stay on their reported 0–100 scale. A benchmark rank is never converted into a percentile score.</li><li><strong>Family mean:</strong> evaluations in the same family are averaged.</li><li><strong>Index:</strong> the observed family means are averaged with equal weight. A family with no result is left out; it is not imputed or pulled toward 50.</li><li><strong>Ranking rule:</strong> a variant is ranked only with at least '+ext.minimumEvaluationsPerModel+' evaluations across at least '+ext.minimumDomainsPerModel+' capability families.</li></ol>'+
- '<div class="card p-3 my-3"><div class="fw-semibold mb-2">Index 1.5 formula</div><div class="mb-2">$$\\mathrm{Family\\ mean}_f = \\frac{1}{n_f}\\sum_{i=1}^{n_f} s_{f,i}$$</div><div class="mb-2">$$\\mathrm{Index}_{1.4} = \\frac{1}{F_{\\text{obs}}}\\sum_{f \\in \\text{observed}} \\mathrm{Family\\ mean}_f$$</div><div class="small text-muted-qb mt-2">where $s_{f,i}$ is the native score of evaluation $i$ in family $f$, $n_f$ is the number of evaluations in that family, and $F_{\\text{obs}}$ is the number of observed families. Families in this index: '+familyCount+'. A variant is ranked when '+ext.minimumDomainsPerModel+' or more are observed. The score is a composite of benchmark percentages, not a human intelligence percentage.</div></div>'+
+ '<div class="card p-3 my-3"><div class="fw-semibold mb-2">Index 1.6 formula</div><div class="mb-2">$$\\mathrm{Family\\ mean}_f = \\frac{1}{n_f}\\sum_{i=1}^{n_f} s_{f,i}$$</div><div class="mb-2">$$\\mathrm{Index}_{1.4} = \\frac{1}{F_{\\text{obs}}}\\sum_{f \\in \\text{observed}} \\mathrm{Family\\ mean}_f$$</div><div class="small text-muted-qb mt-2">where $s_{f,i}$ is the native score of evaluation $i$ in family $f$, $n_f$ is the number of evaluations in that family, and $F_{\\text{obs}}$ is the number of observed families. Families in this index: '+familyCount+'. A variant is ranked when '+ext.minimumDomainsPerModel+' or more are observed. The score is a composite of benchmark percentages, not a human intelligence percentage.</div></div>'+
  '<h3>Model and effort handling</h3><ul><li>Each exact model name and effort level (none, low, medium, high, xhigh, max) is a separate variant.</li><li>Effort is extracted only when the source explicitly reports it. Otherwise it is shown as <strong>Not reported</strong>.</li><li>QBench never selects the highest score from multiple effort settings to represent the base model.</li><li>Harness, routing, fallback, release date and execution conditions remain visible in benchmark details. Mixed-harness rows are not silently combined.</li><li>Ranking requires at least '+ext.minimumEvaluationsPerModel+' evaluations across '+ext.minimumDomainsPerModel+' or more families. Full evidence means all '+familyCount+' families; broad means 4 to '+(familyCount-1)+'; limited means '+ext.minimumDomainsPerModel+' to 3.</li><li>Missing scores are never imputed. Aliases are not merged without explicit source evidence.</li></ul>'+
  '<h3>Artificial Analysis reference and boundaries</h3><p>Artificial Analysis Intelligence Index v5.0 weights nine evaluations in four categories at 25% each: Knowledge Work, Coding, Science and General. QBench 1.4 does not import that composite or its private or partial results. Where an Artificial Analysis leaderboard is only available as a partial mirror, QBench keeps it out of the Index instead of approximating it.</p>'+
- '<h3>Evaluations excluded from Index 1.5</h3><ul>'+excluded+'</ul><h3>Publisher and evaluator sources</h3><ul>'+sources+'</ul><h3>Limitations</h3><ul>'+caveats+'</ul><h3>Version</h3><p class="text-muted-qb">QBench Index '+esc(sp.version||'1.4')+' · snapshot '+esc(sp.snapshotAsOf||'—')+' · '+RESULT.evals.length+' eligible evaluations.</p>';
+ '<h3>Evaluations excluded from Index 1.6</h3><ul>'+excluded+'</ul><h3>Publisher and evaluator sources</h3><ul>'+sources+'</ul><h3>Limitations</h3><ul>'+caveats+'</ul><h3>Version</h3><p class="text-muted-qb">QBench Index '+esc(sp.version||'1.4')+' · snapshot '+esc(sp.snapshotAsOf||'—')+' · '+RESULT.evals.length+' eligible evaluations.</p>';
  if(window.renderMathInElement){renderMathInElement(document.getElementById('method'),{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});}
 }
 
