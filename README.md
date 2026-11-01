@@ -135,10 +135,13 @@ A larger leaderboard is not automatically a better composite. Incomplete exports
 - Index bars: ranked variants sorted by Index 1.6 in a leaderboard-style bar chart.
 - PNG export on every chart from the toolbar icon, on a theme-aware background.
 - Model detail view: release date, provider, API token pricing, family scores, all available effort variants and source-level benchmark results.
+- Provider landscape: distinct model names, eligible variants, ranked variants, mean Index and priced-model coverage by canonical provider label.
+- Measured task economics: select one benchmark and compare only its published cost/test, cost/successful-task, duration and token metrics; no cross-benchmark cost aggregation or imputed values.
 - Effort filter and separate model/effort leaderboard rows.
 - Comparison radar and per-evaluation comparison table.
 - ARC-AGI-3 Standard vs Provider Adapter harness comparison by effort.
 - Benchmark result bars, uncertainty values, reasoning/knowledge splits and calibration error where published.
+- Six top-level views: Index, Models, Benchmarks, Providers, Efficiency and Methodology.
 - Benchmark-specific cost-per-test, cost-per-successful-test, output tokens per test and duration per test where source data exists.
 - Efficiency scatter charts and benchmark-specific Pareto frontier. Index-level scatter labels show the model name, with the effort level only when it is reported.
 - Score vs model release-date chart when a source reports the release date.
