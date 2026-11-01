@@ -22973,6 +22973,116 @@
         "sourceType": "openrouter-route",
         "pricePlatform": "OpenRouter",
         "note": "Current 50% promotional route price; listed standard price is $0.15/$0.50 per 1M tokens."
+      },
+      {
+        "currency": "USD",
+        "model": "Claude Opus 4.5 (Thinking)",
+        "provider": "Anthropic",
+        "inputUSDPerMillion": 5,
+        "outputUSDPerMillion": 25,
+        "source": "https://claude.com/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "Anthropic API",
+        "note": "Same token price as Opus 4.5 (listed on the official page); thinking mode is not priced separately"
+      },
+      {
+        "currency": "USD",
+        "model": "Claude Opus 4.5 (Nonthinking)",
+        "provider": "Anthropic",
+        "inputUSDPerMillion": 5,
+        "outputUSDPerMillion": 25,
+        "source": "https://claude.com/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "Anthropic API",
+        "note": "Same token price as Opus 4.5"
+      },
+      {
+        "currency": "USD",
+        "model": "Claude Opus 4.6 (Thinking)",
+        "provider": "Anthropic",
+        "inputUSDPerMillion": 5,
+        "outputUSDPerMillion": 25,
+        "source": "https://claude.com/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "Anthropic API",
+        "note": "Same token price as Opus 4.6"
+      },
+      {
+        "currency": "USD",
+        "model": "Claude Opus 4.6 (Nonthinking)",
+        "provider": "Anthropic",
+        "inputUSDPerMillion": 5,
+        "outputUSDPerMillion": 25,
+        "source": "https://claude.com/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "Anthropic API",
+        "note": "Same token price as Opus 4.6"
+      },
+      {
+        "currency": "USD",
+        "model": "Claude Sonnet 4.5 (Thinking)",
+        "provider": "Anthropic",
+        "inputUSDPerMillion": 3,
+        "outputUSDPerMillion": 15,
+        "source": "https://claude.com/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "Anthropic API",
+        "note": "Same token price as Sonnet 4.5"
+      },
+      {
+        "currency": "USD",
+        "model": "Claude Sonnet 4.5 (Nonthinking)",
+        "provider": "Anthropic",
+        "inputUSDPerMillion": 3,
+        "outputUSDPerMillion": 15,
+        "source": "https://claude.com/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "Anthropic API",
+        "note": "Same token price as Sonnet 4.5"
+      },
+      {
+        "currency": "USD",
+        "model": "Claude Haiku 4.5 (Thinking)",
+        "provider": "Anthropic",
+        "inputUSDPerMillion": 1,
+        "outputUSDPerMillion": 5,
+        "source": "https://claude.com/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "Anthropic API",
+        "note": "Same token price as Haiku 4.5"
+      },
+      {
+        "currency": "USD",
+        "model": "Gemini 3.1 Pro Preview",
+        "provider": "Google",
+        "inputUSDPerMillion": 2,
+        "outputUSDPerMillion": 12,
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "Google Gemini API (paid tier)",
+        "note": "Paid tier, prompts up to 200k tokens; prompts over 200k are $4 / $18"
+      },
+      {
+        "currency": "USD",
+        "model": "Gemini 3.5 Flash-Lite",
+        "provider": "Google",
+        "inputUSDPerMillion": 0.3,
+        "outputUSDPerMillion": 2.5,
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "Google Gemini API (paid tier)",
+        "note": "Paid tier, standard text/image/video input"
+      },
+      {
+        "currency": "USD",
+        "model": "Gemini 3.1 Flash Lite",
+        "provider": "Google",
+        "inputUSDPerMillion": 0.25,
+        "outputUSDPerMillion": 1.5,
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "sourceType": "official-provider",
+        "pricePlatform": "Google Gemini API (paid tier)",
+        "note": "Paid tier, text/image/video input (audio input is $0.50)"
       }
     ],
     "diagnostics": {
