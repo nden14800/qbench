@@ -23380,7 +23380,7 @@
     "rowsWithContextWindow": 0,
     "rowsWithMaxOutputTokens": 0,
     "providerNameConflicts": [],
-    "note": "Counts are a snapshot audit of the checked-in dataset, not inferred model metadata. Missing fields remain unavailable. Provider aliases are normalized for display while original labels remain in providerReported. Official model inventory is maintained separately from benchmark rows; exact identity mismatches remain unmerged and unranked.",
+    "note": "Counts are a snapshot audit of the checked-in dataset, not inferred model metadata. Missing fields remain unavailable. Provider aliases are normalized for display while original labels remain in providerReported. Official model IDs, specifications and pricing are recorded separately from benchmark results; catalog-only models remain unranked.",
     "providerNameAliasesApplied": 5,
     "providerAliasCounts": {
       "Zhipu": 2,
@@ -23399,8 +23399,8 @@
       }
     ],
     "modelCatalogEntries": 23,
-    "unrankedCatalogEntries": 8,
-    "unresolvedModelIdentityAliases": 4
+    "unrankedCatalogEntries": 4,
+    "unresolvedModelIdentityAliases": 0
   },
   "modelCatalog": [
     {
@@ -23669,16 +23669,16 @@
       "lastVerifiedAt": "2026-11-01"
     },
     {
-      "id": "anthropic:claude-fable-5",
-      "displayName": "Claude Fable 5",
+      "id": "anthropic:claude-fable-5-1",
+      "displayName": "Claude Fable 5.1",
       "provider": "Anthropic",
-      "apiModelId": "claude-fable-5",
+      "apiModelId": "claude-fable-5-1",
       "hostingProvider": null,
-      "benchmarkStatus": "unmeasured",
+      "benchmarkStatus": "evaluated",
       "identityStatus": "verified",
-      "lifecycleStatus": "active",
-      "releaseDate": null,
-      "releaseDatePrecision": null,
+      "lifecycleStatus": "active_latest",
+      "releaseDate": "2026-09-01",
+      "releaseDatePrecision": "day",
       "contextWindowTokens": 1000000,
       "maxOutputTokens": 128000,
       "endpointContextWindowTokens": null,
@@ -23693,38 +23693,98 @@
         "supported": true,
         "mode": "adaptive-always-on",
         "efforts": null,
-        "defaultEffort": "always-on"
+        "defaultEffort": "high"
       },
       "weights": {
         "openWeights": null,
         "license": null,
         "availability": null
       },
-      "pricing": null,
+      "pricing": {
+        "currency": "USD",
+        "unit": "per 1M tokens",
+        "inputPerMillion": 10,
+        "outputPerMillion": 50,
+        "cachedInputPerMillion": 0.25,
+        "cacheWrite5mPerMillion": 12.5,
+        "cacheWrite1hPerMillion": 20,
+        "batchDiscountPercent": 50,
+        "sourceStatus": "verified",
+        "sourceUrl": "https://platform.claude.com/docs/en/models/fable-5-1/overview"
+      },
       "metadataStatus": "verified",
       "sourceRefs": [
         {
-          "label": "Official model overview",
-          "url": "https://docs.anthropic.com/en/docs/about-claude/models"
-        },
-        {
-          "label": "Official API lifecycle and model IDs",
-          "url": "https://docs.anthropic.com/en/docs/about-claude/model-deprecations"
+          "label": "Official model overview, specifications and model ID",
+          "url": "https://platform.claude.com/docs/en/models/fable-5-1/overview"
         }
       ],
       "lastVerifiedAt": "2026-11-01"
     },
     {
-      "id": "anthropic:claude-opus-5",
-      "displayName": "Claude Opus 5",
+      "id": "anthropic:claude-opus-5-5",
+      "displayName": "Claude Opus 5.5",
       "provider": "Anthropic",
-      "apiModelId": "claude-opus-5",
+      "apiModelId": "claude-opus-5-5",
       "hostingProvider": null,
-      "benchmarkStatus": "unmeasured",
+      "benchmarkStatus": "evaluated",
       "identityStatus": "verified",
-      "lifecycleStatus": "active",
-      "releaseDate": null,
-      "releaseDatePrecision": null,
+      "lifecycleStatus": "active_latest",
+      "releaseDate": "2026-09-22",
+      "releaseDatePrecision": "day",
+      "contextWindowTokens": 1000000,
+      "maxOutputTokens": 128000,
+      "endpointContextWindowTokens": null,
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "reasoning": {
+        "supported": true,
+        "mode": "adaptive-always-on",
+        "efforts": null,
+        "defaultEffort": "medium"
+      },
+      "weights": {
+        "openWeights": null,
+        "license": null,
+        "availability": null
+      },
+      "pricing": {
+        "currency": "USD",
+        "unit": "per 1M tokens",
+        "inputPerMillion": 4,
+        "outputPerMillion": 20,
+        "cachedInputPerMillion": 0.2,
+        "cacheWrite5mPerMillion": 5,
+        "cacheWrite1hPerMillion": 8,
+        "batchDiscountPercent": 50,
+        "sourceStatus": "verified",
+        "sourceUrl": "https://platform.claude.com/docs/en/models/opus-5-5/overview"
+      },
+      "metadataStatus": "verified",
+      "sourceRefs": [
+        {
+          "label": "Official model overview, specifications and model ID",
+          "url": "https://platform.claude.com/docs/en/models/opus-5-5/overview"
+        }
+      ],
+      "lastVerifiedAt": "2026-11-01"
+    },
+    {
+      "id": "anthropic:claude-sonnet-5-5",
+      "displayName": "Claude Sonnet 5.5",
+      "provider": "Anthropic",
+      "apiModelId": "claude-sonnet-5-5",
+      "hostingProvider": null,
+      "benchmarkStatus": "evaluated",
+      "identityStatus": "verified",
+      "lifecycleStatus": "active_latest",
+      "releaseDate": "2026-09-28",
+      "releaseDatePrecision": "day",
       "contextWindowTokens": 1000000,
       "maxOutputTokens": 128000,
       "endpointContextWindowTokens": null,
@@ -23739,38 +23799,45 @@
         "supported": true,
         "mode": "adaptive",
         "efforts": null,
-        "defaultEffort": "on"
+        "defaultEffort": "high"
       },
       "weights": {
         "openWeights": null,
         "license": null,
         "availability": null
       },
-      "pricing": null,
+      "pricing": {
+        "currency": "USD",
+        "unit": "per 1M tokens",
+        "inputPerMillion": 2,
+        "outputPerMillion": 10,
+        "cachedInputPerMillion": 0.1,
+        "cacheWrite5mPerMillion": 2.5,
+        "cacheWrite1hPerMillion": 4,
+        "batchDiscountPercent": 50,
+        "sourceStatus": "verified",
+        "sourceUrl": "https://platform.claude.com/docs/en/models/sonnet-5-5/overview"
+      },
       "metadataStatus": "verified",
       "sourceRefs": [
         {
-          "label": "Official model overview",
-          "url": "https://docs.anthropic.com/en/docs/about-claude/models"
-        },
-        {
-          "label": "Official API lifecycle and model IDs",
-          "url": "https://docs.anthropic.com/en/docs/about-claude/model-deprecations"
+          "label": "Official model overview, specifications and model ID",
+          "url": "https://platform.claude.com/docs/en/models/sonnet-5-5/overview"
         }
       ],
       "lastVerifiedAt": "2026-11-01"
     },
     {
-      "id": "anthropic:claude-sonnet-5",
-      "displayName": "Claude Sonnet 5",
+      "id": "anthropic:claude-haiku-5-5",
+      "displayName": "Claude Haiku 5.5",
       "provider": "Anthropic",
-      "apiModelId": "claude-sonnet-5",
+      "apiModelId": "claude-haiku-5-5",
       "hostingProvider": null,
-      "benchmarkStatus": "unmeasured",
+      "benchmarkStatus": "evaluated",
       "identityStatus": "verified",
-      "lifecycleStatus": "active",
-      "releaseDate": null,
-      "releaseDatePrecision": null,
+      "lifecycleStatus": "active_latest",
+      "releaseDate": "2026-10-07",
+      "releaseDatePrecision": "day",
       "contextWindowTokens": 1000000,
       "maxOutputTokens": 128000,
       "endpointContextWindowTokens": null,
@@ -23785,69 +23852,38 @@
         "supported": true,
         "mode": "adaptive",
         "efforts": null,
-        "defaultEffort": "on"
+        "defaultEffort": "medium"
       },
       "weights": {
         "openWeights": null,
         "license": null,
         "availability": null
       },
-      "pricing": null,
-      "metadataStatus": "verified",
-      "sourceRefs": [
-        {
-          "label": "Official model overview",
-          "url": "https://docs.anthropic.com/en/docs/about-claude/models"
-        },
-        {
-          "label": "Official API lifecycle and model IDs",
-          "url": "https://docs.anthropic.com/en/docs/about-claude/model-deprecations"
+      "pricing": {
+        "currency": "USD",
+        "unit": "per 1M tokens",
+        "inputPerMillion": 0.1,
+        "outputPerMillion": 0.5,
+        "cachedInputPerMillion": 0.01,
+        "cacheWrite5mPerMillion": 0.125,
+        "cacheWrite1hPerMillion": 0.2,
+        "batchDiscountPercent": 50,
+        "sourceStatus": "verified",
+        "sourceUrl": "https://platform.claude.com/docs/en/models/haiku-5-5/overview",
+        "longContext": {
+          "thresholdTokens": 100000,
+          "inputPerMillion": 0.5,
+          "outputPerMillion": 2.5,
+          "cachedInputPerMillion": 0.05,
+          "cacheWrite5mPerMillion": 0.625,
+          "cacheWrite1hPerMillion": 1
         }
-      ],
-      "lastVerifiedAt": "2026-11-01"
-    },
-    {
-      "id": "anthropic:claude-haiku-4-5",
-      "displayName": "Claude Haiku 4.5",
-      "provider": "Anthropic",
-      "apiModelId": "claude-haiku-4-5-20251001",
-      "hostingProvider": null,
-      "benchmarkStatus": "unmeasured",
-      "identityStatus": "verified",
-      "lifecycleStatus": "active",
-      "releaseDate": null,
-      "releaseDatePrecision": null,
-      "contextWindowTokens": 200000,
-      "maxOutputTokens": null,
-      "endpointContextWindowTokens": null,
-      "inputModalities": [
-        "text",
-        "image"
-      ],
-      "outputModalities": [
-        "text"
-      ],
-      "reasoning": {
-        "supported": null,
-        "mode": null,
-        "efforts": null,
-        "defaultEffort": null
       },
-      "weights": {
-        "openWeights": null,
-        "license": null,
-        "availability": null
-      },
-      "pricing": null,
       "metadataStatus": "verified",
       "sourceRefs": [
         {
-          "label": "Official model overview",
-          "url": "https://docs.anthropic.com/en/docs/about-claude/models"
-        },
-        {
-          "label": "Official API lifecycle and model IDs",
-          "url": "https://docs.anthropic.com/en/docs/about-claude/model-deprecations"
+          "label": "Official model overview, specifications and model ID",
+          "url": "https://platform.claude.com/docs/en/models/haiku-5-5/overview"
         }
       ],
       "lastVerifiedAt": "2026-11-01"
@@ -24664,38 +24700,5 @@
   ],
   "modelCatalogSchemaVersion": "1.0",
   "modelCatalogUpdatedAt": "2026-11-01",
-  "modelIdentityAudit": [
-    {
-      "benchmarkDisplayName": "Claude Fable 5.1",
-      "provider": "Anthropic",
-      "identityStatus": "unresolved",
-      "officialCandidate": "Claude Fable 5 (claude-fable-5)",
-      "reason": "The current official Anthropic model directory lists Claude Fable 5, not Claude Fable 5.1. No official source confirms that the benchmark label is the same API model. Do not merge or attach official pricing/specifications.",
-      "sourceUrl": "https://docs.anthropic.com/en/docs/about-claude/models"
-    },
-    {
-      "benchmarkDisplayName": "Claude Opus 5.5",
-      "provider": "Anthropic",
-      "identityStatus": "unresolved",
-      "officialCandidate": "Claude Opus 5 (claude-opus-5)",
-      "reason": "The current official Anthropic model directory lists Claude Opus 5, not Claude Opus 5.5. No official source confirms that the benchmark label is the same API model. Do not merge or attach official pricing/specifications.",
-      "sourceUrl": "https://docs.anthropic.com/en/docs/about-claude/models"
-    },
-    {
-      "benchmarkDisplayName": "Claude Sonnet 5.5",
-      "provider": "Anthropic",
-      "identityStatus": "unresolved",
-      "officialCandidate": "Claude Sonnet 5 (claude-sonnet-5)",
-      "reason": "The current official Anthropic model directory lists Claude Sonnet 5, not Claude Sonnet 5.5. No official source confirms that the benchmark label is the same API model. Do not merge or attach official pricing/specifications.",
-      "sourceUrl": "https://docs.anthropic.com/en/docs/about-claude/models"
-    },
-    {
-      "benchmarkDisplayName": "Claude Haiku 5.5",
-      "provider": "Anthropic",
-      "identityStatus": "unresolved",
-      "officialCandidate": "Claude Haiku 4.5 (claude-haiku-4-5-20251001)",
-      "reason": "The current official Anthropic model directory lists Claude Haiku 4.5, not Claude Haiku 5.5. No official source confirms that the benchmark label is the same API model. Do not merge or attach official pricing/specifications.",
-      "sourceUrl": "https://docs.anthropic.com/en/docs/about-claude/models"
-    }
-  ]
+  "modelIdentityAudit": []
 }
