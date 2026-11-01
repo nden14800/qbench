@@ -561,9 +561,7 @@ function renderBars(host){
   if(picked&&!picked.length){emptyChart(host,'No selected variant is ranked. Choose models below or clear the selection.');}
   var pickList=all.map(function(r){var on=S.barsPick.indexOf(r.variantId)>=0;return '<label class="d-flex align-items-center gap-2 py-1 text-nowrap"><input class="form-check-input m-0" type="checkbox" data-pick="'+esc(r.variantId)+'"'+(on?' checked':'')+'><span>'+esc(r.variantLabel)+' <span class="text-muted-qb">'+fmt(r.index,1)+'</span></span></label>';}).join('');
   host.innerHTML='<div class="d-flex flex-wrap align-items-center gap-3 mb-2 small">'+
-    '<label class="d-flex align-items-center gap-2">Show top <select class="form-select form-select-sm" id="bars-n" style="width:auto"'+(picked?' disabled':'')+'>'+
-      ['10','20','30','all'].map(function(v){return '<option value="'+v+'"'+(String(S.barsN)===v?' selected':'')+'>'+(v==='all'?'all ('+all.length+')':v)+'</option>';}).join('')+
-    '</select></label>'+
+    '<div class="d-flex align-items-center gap-2"><span>Show top</span><div id="bars-n-choice" style="width:112px"></div></div>'+
     '<details class="position-relative"><summary class="btn btn-sm btn-outline-secondary">Choose models'+(S.barsPick.length?' ('+S.barsPick.length+')':'')+'</summary>'+
       '<div class="card position-absolute p-2 shadow-sm" style="z-index:5;max-height:300px;overflow:auto;min-width:260px">'+pickList+
       '<button type="button" class="btn btn-sm btn-link p-0 mt-1" id="bars-clear">Clear selection</button></div></details>'+
@@ -571,6 +569,8 @@ function renderBars(host){
     '<span class="text-muted-qb">'+(picked?'Custom selection: '+rows.length+' of '+all.length+' ranked variants':'Showing '+rows.length+' of '+all.length+' ranked variants')+'</span></div>'+
     '<div id="chart-main-el" style="height:'+Math.max(420,rows.length>20?520:420)+'px"></div>'+
     '<div class="notice-qb">Bars show the Index 1.6 score for each ranked variant. Effort variants are separate rows; unreported effort is not merged.</div>';
+  makeChoice($('#bars-n-choice'),['10','20','30','all'].map(function(v){return {value:v,label:v==='all'?'All ('+all.length+')':v};}),String(S.barsN),function(v){S.barsN=v;renderChart();},'Show top ranked variants');
+  $('#bars-n-choice .choice__trigger').disabled=!!picked;
   var c=chartInit('chart-main-el');
   if(!c||!rows.length)return;
   c.setOption({animation:false,grid:{left:56,right:18,top:24,bottom:140},
@@ -713,7 +713,6 @@ function renderConsistency(host){
 }
 
 document.addEventListener('change',function(e){
-  if(e.target.id==='bars-n'){S.barsN=e.target.value;renderChart();}
   if(e.target.id==='bars-values'){S.barsValues=e.target.checked;renderChart();}
   if(e.target.dataset&&e.target.dataset.pick){
     var id=e.target.dataset.pick;
