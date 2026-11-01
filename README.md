@@ -6,28 +6,31 @@ Evidence-first AI model benchmark explorer.
 **Repository:** https://github.com/nden14800/qbench  
 **Deployment:** Cloudflare Pages, production branch `main`.
 
-QBench keeps every result attached to its publisher, model variant, reasoning effort, harness, configuration, metric and snapshot. **QBench Index 1.4** is a source-audited composite of ten evaluations across seven capability families. It does not import Artificial Analysis' composite scores or private results.
+QBench keeps every result attached to its publisher, model variant, reasoning effort, harness, configuration, metric and snapshot. **QBench Index 1.5** is a source-audited composite of ten evaluations across seven capability families. It does not import Artificial Analysis' composite scores or private results.
 
-## QBench Index 1.4
+## QBench Index 1.5
 
 ### Current coverage — 2026-10-31
 
 | Metric | Result |
 |---|---:|
-| Eligible evaluations | 10 |
-| Capability families | 7 |
-| Base model names with at least one eligible result | 156 |
-| Exact model/effort variants with at least one eligible result | 209 |
-| Ranked variants (3+ evaluations across 3+ families) | 50 |
-| Full evidence (all 7 families) | 0 |
-| Broad evidence (4–6 families) | 32 |
-| Limited evidence (3 families) | 18 |
-| Unranked variants | 159 |
+| Eligible evaluations | 12 |
+| Capability families | 8 |
+| Base model names with at least one eligible result | 157 |
+| Exact model/effort variants with at least one eligible result | 212 |
+| Ranked variants (3+ evaluations across 3+ families) | 73 |
+| Full evidence (all 8 families) | 0 |
+| Broad evidence (4–7 families) | 44 |
+| Limited evidence (3 families) | 29 |
+| Unranked variants | 139 |
 
-Counts come from the Index 1.4 runtime in the browser (2026-10-31). A base model can appear as several effort variants, so the leaderboard ranks model variants, not base model names.
+Counts come from the Index 1.5 runtime in the browser (2026-10-31). A base model can appear as several effort variants, so the leaderboard ranks model variants, not base model names.
 
 ### What changed from the previous index
 
+- **Index 1.5:** two evaluations are added: ProgramBench (Software engineering, 64 variants, top 18.5%) and CyberBench v1.1 (new Cybersecurity family, 44 variants). Ranked variants rise from 50 to 73. Index 1.5 is the composite with eight families; the 1.4 gates are unchanged.
+- **Excluded from 1.5:** TaxEval v2, CorpFin v2 and MMMU Pro (archived; Vals AI reports them as saturated). IOI v2 (top 100%, at the ceiling). Public Benefits Bench v1.1 (a custom judge pipeline that uses one of the scored models as judge). LegalBench (151 rows, active, but no harness is stated).
+- **CyberBench exclusions:** Claude Opus 5.5 (CVP) and Claude Sonnet 5 (Cyber Range) are special-access configurations, and Daybreak Blue has no stated provider.
 - **More evaluations and families:** the index now uses ten evaluations in seven capability families. Before the Vals AI additions it used six evaluations in five families. The new evaluations are Legal Research Bench, Tax Agent Bench and Finance Agent v2.1 (Professional knowledge work), and MedCode (Healthcare).
 - **No shrinkage toward 50:** incomplete family coverage is averaged over observed families only. The square-root evidence factor from Index 1.3 is removed.
 - **Stricter ranking:** a variant is ranked only with at least three evaluations across three families.
@@ -38,6 +41,8 @@ Counts come from the Index 1.4 runtime in the browser (2026-10-31). A base model
 | Capability family | Evaluation | Variants | Source · snapshot |
 |---|---|---:|---|
 | Software engineering | Terminal-Bench 4.0 | 59 | Vals AI · 2026-10-29 |
+| Software engineering | ProgramBench (mini-SWE-agent, Valkyrie) | 64 | Vals AI · 2026-10-20 |
+| Cybersecurity | CyberBench v1.1 (mini-swe-agent; 44 rows after exclusions) | 44 | Vals AI · 2026-10-20 |
 | Scientific workflows | Terminal-Bench-Science 0.1 | 43 | Vals AI · 2026-10-25 (42 Mini-SWE-agent rows and 1 Terminus 2 row; see open items) |
 | Scientific workflows | DrugDiscoveryBench | 14 | Scale Labs · 2026-10-31 (mini-SWE-agent) |
 | Expert knowledge | HLE-Diamond | 19 | Scale Labs · 2026-10-31 |
@@ -50,7 +55,7 @@ Counts come from the Index 1.4 runtime in the browser (2026-10-31). A base model
 
 The Vals AI rows for Legal Research Bench, Tax Agent Bench, Finance Agent v2.1 and MedCode were extracted from the public leaderboard pages with an AI-assisted reader. The top rows of each table were re-extracted in a second call and matched. Provider labels are present for these rows.
 
-### Index 1.4 gates
+### Index 1.5 gates
 
 1. **Complete publisher table:** the evaluation must be a full publisher-reported table. Partial mirrors and visible-row extracts stay standalone.
 2. **Variant count:** at least 12 distinct model/effort variants.
@@ -116,7 +121,7 @@ A larger leaderboard is not automatically a better composite. Incomplete exports
 
 ## Model and benchmark analysis features
 
-- Index bars: ranked variants sorted by Index 1.4 in a leaderboard-style bar chart.
+- Index bars: ranked variants sorted by Index 1.5 in a leaderboard-style bar chart.
 - PNG export on every chart from the toolbar icon, on a theme-aware background.
 - Model detail view: release date, provider, API token pricing, family scores, all available effort variants and source-level benchmark results.
 - Effort filter and separate model/effort leaderboard rows.
