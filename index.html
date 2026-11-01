@@ -118,6 +118,12 @@ footer{font-size:.8rem;color:var(--qb-muted)}
 .qb-detail-stat .k{font-size:.72rem;color:var(--qb-muted)}
 .qb-detail-stat .v{font-size:1.3rem;font-weight:800;font-variant-numeric:tabular-nums}
 
+/* Leaderboard: bounded height with a sticky header, so a long table scrolls inside its card. */
+#index-table-wrap{max-height:620px;overflow:auto}
+#index-table thead th{position:sticky;top:0;z-index:2;background:var(--bs-body-bg);box-shadow:inset 0 -1px 0 var(--bs-border-color)}
+#index-table td,#index-table th{white-space:nowrap}
+#index-table td{padding-top:.4rem;padding-bottom:.4rem}
+#index-table td:nth-child(2){white-space:normal;min-width:180px}
 </style>
 </head>
 <body>
@@ -163,11 +169,10 @@ footer{font-size:.8rem;color:var(--qb-muted)}
           </div>
         </div>
       </div>
-      <div class="index-explainer mx-3 mt-2 mb-1">
-        <div class="fw-semibold mb-1">How QBench Index 1.4 works</div>
+      <details class="index-explainer mx-3 mt-2 mb-1"><summary class="fw-semibold mb-1" style="cursor:pointer">How QBench Index 1.4 works</summary>
         <div>Each benchmark keeps its reported 0–100 accuracy or task-success percentage. Results are averaged inside seven capability families, then the observed family means are averaged equally. Missing families are left out, not imputed and not pulled toward 50. Model effort variants are separate entries; unreported effort is never guessed.</div>
         <div class="mt-1"><strong>Rank:</strong> at least 3 eligible evaluations across 3+ capability families · <strong>Evidence:</strong> full (all 7 families), broad (4–6), or limited (3) · <strong>Insufficient evidence:</strong> retained in Models, without an Index score.</div>
-      </div>
+      </details>
       <div class="table-responsive" id="index-table-wrap">
         <table class="table table-hover align-middle mb-0" id="index-table">
           <thead><tr id="index-head"></tr></thead>
