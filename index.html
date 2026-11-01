@@ -447,7 +447,7 @@ function renderSummaryCards(ranked,top,baseModels,full,broad,limited,unranked){
     chart.setOption({animation:false,grid:{left:40,right:12,top:26,bottom:96},
       tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(ps){var r=top5[ps[0].dataIndex];return esc(r.variantLabel)+'<br>Index '+fmt(r.index,1);}},
       xAxis:catAxis(p,{type:'category',data:top5.map(scatterLabel)},{rotate:40,interval:0,fontSize:10,width:110,overflow:'truncate'}),
-      
+      yAxis:Object.assign({type:'value',min:0},axisStyle(p)),
       series:[{type:'bar',barWidth:'50%',data:top5.map(function(r){return {value:+Number(r.index).toFixed(1),itemStyle:{color:providerColor(r.provider),borderRadius:[0,5,5,0]}};}),
         label:{show:true,position:'top',formatter:function(e){return fmt(e.value,1);},color:p.ink,fontSize:10}}]});
   }
@@ -546,7 +546,6 @@ function renderComposition(host){
     tooltip:{trigger:'axis',axisPointer:{type:'shadow'},valueFormatter:function(v){return fmt(v,1);}},
     yAxis:{type:'category',inverse:true,data:top.map(function(r){return r.variantLabel;}),axisLabel:{color:p.ink,fontSize:11,width:170,overflow:'truncate'},axisLine:{lineStyle:{color:p.grid}},axisTick:{show:false}},
     xAxis:Object.assign({type:'value',min:0,max:100,name:'Observed family contribution',nameLocation:'middle',nameGap:32},axisStyle(p)),
-    yAxis:Object.assign({type:'value',min:0},axisStyle(p)),
     series:RESULT.domains.map(function(d,i){return {name:d,type:'bar',stack:'idx',barWidth:'60%',itemStyle:{color:p.c[i],borderRadius:[4,4,0,0]},
       data:top.map(function(r){return r.domains[d]==null?0:r.domains[d]/r.domainCount;})};})
   },true);
@@ -580,7 +579,7 @@ function renderBars(host){
     xAxis:Object.assign({type:'value',min:0,max:100,name:'QBench Index 1.6',nameLocation:'middle',nameGap:30},axisStyle(p)),
     
     series:[{type:'bar',barWidth:'60%',data:rows.map(function(r){return {value:+Number(r.index).toFixed(1),itemStyle:{color:providerColor(r.provider),borderRadius:[4,4,0,0]}};}),
-      label:{show:!!S.barsValues,position:'top',formatter:function(e){return fmt(e.value,1);},color:p.ink,fontSize:10}}]});
+      label:{show:!!S.barsValues,position:'right',formatter:function(e){return fmt(e.value,1);},color:p.ink,fontSize:10}}]});
 }
 /* Small multiples: one ranked bar panel per eligible evaluation, top variants by native score. */
 function renderEvalGrid(host){
