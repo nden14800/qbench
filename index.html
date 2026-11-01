@@ -192,14 +192,12 @@ html{scroll-behavior:smooth}
 .qb-kicker .qb-live-dot{display:inline-block;width:7px;height:7px;margin-right:7px;border-radius:50%;background:var(--qb-good);box-shadow:0 0 0 0 color-mix(in srgb,var(--qb-good) 30%,transparent);animation:qb-pulse 2.4s ease-out infinite}
 .stat-card{transition:transform .24s var(--qb-motion),box-shadow .24s ease!important}
 .stat-card:hover{transform:translateY(-3px);box-shadow:0 9px 24px rgba(18,28,45,.07)!important}
-.bars-chart-viewport{width:100%;height:490px;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;border:1px solid var(--bs-border-color);border-radius:8px;background:var(--bs-body-bg);scrollbar-width:thin;scrollbar-color:var(--qb-muted) transparent}
-.bars-chart-viewport>div{max-width:none}
 .bars-count{margin-left:auto}
 #chart-main-el{contain:layout paint}
 @keyframes qb-view-in{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
 @keyframes qb-hero-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 @keyframes qb-pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--qb-good) 32%,transparent)}70%{box-shadow:0 0 0 7px transparent}100%{box-shadow:0 0 0 0 transparent}}
-@media(max-width:767.98px){.bars-chart-viewport{height:490px}.bars-toolbar{align-items:flex-start!important}.bars-count{width:100%;margin-left:0}}
+@media(max-width:767.98px){.bars-toolbar{align-items:flex-start!important}.bars-count{width:100%;margin-left:0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.view,.qb-hero{animation:none!important}.qb-kicker .qb-live-dot{animation:none!important}*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}}
 
 </style>
@@ -644,17 +642,17 @@ function renderBars(host){
       '<button type="button" class="btn btn-sm btn-link p-0 mt-1" id="bars-clear">Clear selection</button></div></details>'+
     '<div class="form-check form-switch m-0"><input class="form-check-input" type="checkbox" id="bars-values"'+(S.barsValues?' checked':'')+'><label class="form-check-label" for="bars-values">Show values on bars</label></div>'+
     '<span class="text-muted-qb bars-count">'+(picked?'Custom selection: '+rows.length+' of '+all.length+' ranked variants':'Showing '+rows.length+' of '+all.length+' ranked variants')+'</span></div>'+
-    '<div class="bars-chart-viewport"><div id="chart-main-el" style="height:470px;width:'+Math.max(720,rows.length*54+110)+'px"></div></div>'+
-    '<div class="notice-qb">Bars show the Index 1.6 score for each ranked variant. Effort variants are separate rows; unreported effort is not merged. Scroll horizontally to inspect every model; chart height stays fixed.</div>';
+    '<div id="chart-main-el" class="bars-chart-canvas" style="height:470px;width:100%"></div>'+
+    '<div class="notice-qb">Bars show the Index 1.6 score for each ranked variant. Every selected model remains in the chart; labels are thinned automatically when needed to preserve a clean, fixed-size plot.</div>';
   makeChoice($('#bars-n-choice'),['10','20','30','all'].map(function(v){return {value:v,label:v==='all'?'All ('+all.length+')':v};}),String(S.barsN),function(v){S.barsN=v;renderChart();},'Show top ranked variants');
   $('#bars-n-choice .choice__trigger').disabled=!!picked;
   var c=chartInit('chart-main-el');
   if(!c||!rows.length)return;
   c.setOption({animation:true,animationDuration:850,animationDurationUpdate:520,animationEasing:'cubicOut',animationEasingUpdate:'cubicInOut',grid:{left:56,right:22,top:28,bottom:142,containLabel:true},
     tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(ps){var r=rows[ps[0].dataIndex];return esc(r.variantLabel)+'<br>Index '+fmt(r.index,1)+'<br>Families observed: '+r.domainCount+' / '+RESULT.domains.length;}},
-    xAxis:catAxis(p,{type:'category',data:rows.map(scatterLabel)},{rotate:48,interval:0,fontSize:10,width:125,overflow:'truncate',hideOverlap:false}),
+    xAxis:catAxis(p,{type:'category',data:rows.map(scatterLabel)},{rotate:rows.length>14?55:42,interval:rows.length>24?Math.ceil(rows.length/18)-1:0,fontSize:rows.length>36?9:10,width:112,overflow:'truncate',hideOverlap:true,showMinLabel:true,showMaxLabel:true}),
     yAxis:Object.assign({type:'value',min:0,name:'QBench Index 1.6',nameLocation:'middle',nameGap:40,nameTextStyle:{color:p.muted}},axisStyle(p)),
-    series:[{type:'bar',barMaxWidth:30,barMinHeight:2,barCategoryGap:'32%',data:rows.map(function(r){return {value:+Number(r.index).toFixed(1),itemStyle:{color:providerColor(r.provider),borderRadius:[5,5,0,0],shadowBlur:5,shadowColor:providerColor(r.provider)+'35'}};}),
+    series:[{type:'bar',barMaxWidth:26,barMinHeight:1,barCategoryGap:rows.length>35?'18%':'30%',data:rows.map(function(r){return {value:+Number(r.index).toFixed(1),itemStyle:{color:providerColor(r.provider),borderRadius:[5,5,0,0],shadowBlur:5,shadowColor:providerColor(r.provider)+'35'}};}),
       label:{show:!!S.barsValues,position:'top',formatter:function(e){return fmt(e.value,1);},color:p.ink,fontSize:10}}]});
 }
 /* Small multiples: one ranked bar panel per eligible evaluation, top variants by native score. */
