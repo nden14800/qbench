@@ -438,7 +438,9 @@
       "quality": "LiveBench 2.0 publisher release 2026-10-25. The first six overall rows and their published Cost per successful task values are taken directly from LiveBench; the remaining model scores are explicitly attributed to BenchLeader's 2026-10-30 mirror and are not presented as directly publisher-verified.",
       "costMetric": "Cost per successful task",
       "costMetricUnit": "USD per successful task",
-      "costMetricSource": "https://livebench.ai/"
+      "costMetricSource": "https://livebench.ai/",
+      "version": "2.0",
+      "versionEvidence": "published benchmark display name"
     },
     {
       "id": "gpqa-diamond",
@@ -1815,7 +1817,9 @@
       "quality": "60 visible model-configuration rows imported from BenchLeader's 31 Oct 2026 mirror; BenchLeader says all 120 published configurations originate from Epoch AI Benchmarking Hub. Epoch describes the task set as private, expert-authored, automatically checked problems; scores are means of several runs. The 60-row import is not the full 120-row leaderboard.",
       "coverageLevel": "60-of-120-traceable-secondary-snapshot",
       "publisherSource": "https://epoch.ai/benchmarks/frontiermath-tiers-1-3-v2",
-      "methodology": "Private research-level mathematics problems authored by professional mathematicians; tiers 1–3 span hard undergraduate through specialist-level tasks. Epoch AI reports mean performance across multiple runs; tool use may be available."
+      "methodology": "Private research-level mathematics problems authored by professional mathematicians; tiers 1–3 span hard undergraduate through specialist-level tasks. Epoch AI reports mean performance across multiple runs; tool use may be available.",
+      "version": "v2",
+      "versionEvidence": "published benchmark display name"
     },
     {
       "id": "frontiermath-tier-4-v2",
@@ -1918,7 +1922,9 @@
       },
       "indexDomain": null,
       "quality": "excluded: source-value mismatch requires reconciliation",
-      "valueNote": "Excluded from Index 1.6 pending a full row-by-row reconciliation with Epoch AI's official export. The checked-in snapshot includes values that conflict with the currently visible Epoch AI leaderboard, so those rows must not affect the composite."
+      "valueNote": "Excluded from Index 1.6 pending a full row-by-row reconciliation with Epoch AI's official export. The checked-in snapshot includes values that conflict with the currently visible Epoch AI leaderboard, so those rows must not affect the composite.",
+      "version": "v2",
+      "versionEvidence": "published benchmark display name"
     },
     {
       "id": "proofbench",
@@ -2758,7 +2764,9 @@
       "costMetricUnit": "USD per full benchmark test",
       "costMetricSource": "https://www.vals.ai/benchmarks/proof_bench",
       "quality": "Vals AI ProofBench v1.1 snapshot 2026-10-29. Complete 54-row leaderboard; public and private splits each contain 100 problems, expert-vetted Lean 4 formalizations and up to 40 interaction turns. Four entries tie at 100%; AlephProver and Aristotle are specialist formal-proof systems retained in details but excluded from the general-purpose Index.",
-      "indexDomain": "Science"
+      "indexDomain": "Science",
+      "version": "1.1",
+      "versionEvidence": "published benchmark display name"
     },
     {
       "id": "furniture-assembly",
@@ -3109,7 +3117,9 @@
           "snapshotDate": "2026-09-22",
           "uncertainty": null
         }
-      ]
+      ],
+      "version": "V2",
+      "versionEvidence": "published benchmark display name"
     },
     {
       "id": "arc-agi-2",
@@ -3664,7 +3674,9 @@
       "indexEligible": false,
       "indexDomain": "Reasoning & Generalization",
       "saturationStatus": "saturated (top 95%) - excluded from QBench 1.0",
-      "methodology": "Semi-private abstract reasoning puzzle benchmark. The source marks these rows Official and links the originating model result; benchmark is administered by ARC Prize."
+      "methodology": "Semi-private abstract reasoning puzzle benchmark. The source marks these rows Official and links the originating model result; benchmark is administered by ARC Prize.",
+      "version": "2",
+      "versionEvidence": "published benchmark display name"
     },
     {
       "id": "frontiermath-erdos",
@@ -4085,7 +4097,9 @@
       "quality": "Artificial Analysis official leaderboard · 52 published configurations visible · 91-task private benchmark · 95% confidence intervals",
       "models": [],
       "indexEligible": false,
-      "valueNote": "2026-10-31: AA-published values removed under QBench policy. Evaluation definition and source link are retained; no model values are shown."
+      "valueNote": "2026-10-31: AA-published values removed under QBench policy. Evaluation definition and source link are retained; no model values are shown.",
+      "version": "v1.1",
+      "versionEvidence": "published benchmark display name"
     },
     {
       "id": "hle-diamond",
@@ -5423,7 +5437,9 @@
         "maximum": 100,
         "unit": "percentage points",
         "direction": "higher-is-better"
-      }
+      },
+      "version": "4.0",
+      "versionEvidence": "published benchmark display name"
     },
     {
       "id": "terminal-bench-science-0-1",
@@ -6077,7 +6093,9 @@
         "maximum": 100,
         "unit": "percentage points",
         "direction": "higher-is-better"
-      }
+      },
+      "version": "0.1",
+      "versionEvidence": "published benchmark display name"
     },
     {
       "id": "automationbench-aa",
@@ -6101,7 +6119,9 @@
       "coverageLevel": "published-leader-summary-only",
       "models": [],
       "valueNote": "2026-10-31: AA-published values removed under QBench policy. Evaluation definition and source link are retained; no model values are shown.",
-      "indexEligible": false
+      "indexEligible": false,
+      "version": "2.0",
+      "versionEvidence": "published benchmark display name"
     },
     {
       "id": "critpt-v2-hard",
@@ -6113,7 +6133,9 @@
       "coverageLevel": "published-leader-summary-only",
       "models": [],
       "valueNote": "2026-10-31: AA-published values removed under QBench policy. Evaluation definition and source link are retained; no model values are shown.",
-      "indexEligible": false
+      "indexEligible": false,
+      "version": "v2",
+      "versionEvidence": "published benchmark display name"
     },
     {
       "id": "gdp-pdf",
@@ -6141,7 +6163,9 @@
       "indexEligible": false,
       "indexDomain": "Knowledge & Professional Work",
       "saturationStatus": "active",
-      "valueNote": "2026-10-31: AA-published values removed under QBench policy. Evaluation definition and source link are retained; no model values are shown."
+      "valueNote": "2026-10-31: AA-published values removed under QBench policy. Evaluation definition and source link are retained; no model values are shown.",
+      "version": "v1.1",
+      "versionEvidence": "published benchmark display name"
     },
     {
       "id": "aa-omniscience-v1-1-accuracy-atlas",
@@ -6153,7 +6177,9 @@
       "coverageLevel": "third-party-supplementary",
       "models": [],
       "valueNote": "2026-10-31: AA-published values removed under QBench policy. Evaluation definition and source link are retained; no model values are shown.",
-      "indexEligible": false
+      "indexEligible": false,
+      "version": "v1.1",
+      "versionEvidence": "published benchmark display name"
     },
     {
       "id": "aa-3d",
@@ -6167,7 +6193,9 @@
       "indexDomain": "Multimodal & Interaction",
       "saturationStatus": "not-saturated",
       "models": [],
-      "valueNote": "2026-10-31: AA-published values removed under QBench policy. Evaluation definition and source link are retained; no model values are shown."
+      "valueNote": "2026-10-31: AA-published values removed under QBench policy. Evaluation definition and source link are retained; no model values are shown.",
+      "version": "v1.0",
+      "versionEvidence": "published benchmark display name"
     },
     {
       "id": "harvey-lab-aa-v1-1",
@@ -6181,7 +6209,9 @@
       "indexDomain": "Knowledge & Professional Work",
       "saturationStatus": "not-saturated",
       "models": [],
-      "valueNote": "2026-10-31: AA-published values removed under QBench policy. Evaluation definition and source link are retained; no model values are shown."
+      "valueNote": "2026-10-31: AA-published values removed under QBench policy. Evaluation definition and source link are retained; no model values are shown.",
+      "version": "v1.1",
+      "versionEvidence": "published benchmark display name"
     },
     {
       "id": "aa-analyst-agent",
@@ -6455,7 +6485,9 @@
           "sourceType": "mirror",
           "snapshotDate": "2026-10-31"
         }
-      ]
+      ],
+      "version": "2.0",
+      "versionEvidence": "published benchmark display name"
     },
     {
       "id": "bfcl-v4",
@@ -6548,7 +6580,9 @@
           "snapshotDate": "2026-04-12",
           "effort": "Native function calling"
         }
-      ]
+      ],
+      "version": "V4",
+      "versionEvidence": "published benchmark display name"
     },
     {
       "id": "healthbench-professional",
@@ -7263,7 +7297,9 @@
           "resultDate": "2024-05-13"
         }
       ],
-      "publisherSource": "https://metr.org/time-horizons/"
+      "publisherSource": "https://metr.org/time-horizons/",
+      "version": "1.1",
+      "versionEvidence": "published benchmark display name"
     },
     {
       "id": "swe-bench-pro",
@@ -7791,7 +7827,9 @@
           "uncertainty": "±2.36",
           "variant": "Full"
         }
-      ]
+      ],
+      "version": "V2",
+      "versionEvidence": "published benchmark display name"
     },
     {
       "id": "mlcr-aa",
@@ -7847,7 +7885,9 @@
       "indexDomain": "Knowledge & Professional Work",
       "saturationStatus": "not-rated",
       "models": [],
-      "valueNote": "2026-10-31: AA-published values removed under QBench policy. Evaluation definition and source link are retained; no model values are shown."
+      "valueNote": "2026-10-31: AA-published values removed under QBench policy. Evaluation definition and source link are retained; no model values are shown.",
+      "version": "v1.1",
+      "versionEvidence": "published benchmark display name"
     },
     {
       "id": "gdpval",
@@ -9094,7 +9134,9 @@
         "unit": "percentage points",
         "direction": "higher-is-better"
       },
-      "publicEvaluationTaskCount": 400
+      "publicEvaluationTaskCount": 400,
+      "version": "1",
+      "versionEvidence": "published benchmark display name"
     },
     {
       "id": "arc-agi-2-semi-private",
@@ -9771,7 +9813,9 @@
         "unit": "percentage points",
         "direction": "higher-is-better"
       },
-      "publicEvaluationTaskCount": 120
+      "publicEvaluationTaskCount": 120,
+      "version": "2",
+      "versionEvidence": "published benchmark display name"
     },
     {
       "id": "arc-agi-3",
@@ -10357,7 +10401,9 @@
         "maximum": 100,
         "unit": "percentage points",
         "direction": "higher-is-better"
-      }
+      },
+      "version": "3",
+      "versionEvidence": "published benchmark display name"
     },
     {
       "id": "arc-agi-3-provider-adapter",
@@ -10943,7 +10989,9 @@
         "maximum": 100,
         "unit": "percentage points",
         "direction": "higher-is-better"
-      }
+      },
+      "version": "3",
+      "versionEvidence": "published benchmark display name"
     },
     {
       "id": "mcp-atlas",
@@ -15377,7 +15425,9 @@
         "maximum": 100,
         "unit": "percentage points",
         "direction": "higher-is-better"
-      }
+      },
+      "version": "v2.1",
+      "versionEvidence": "published benchmark display name"
     },
     {
       "id": "medcode",
@@ -18044,7 +18094,9 @@
         "maximum": 100,
         "unit": "percentage points",
         "direction": "higher-is-better"
-      }
+      },
+      "version": "v1.1",
+      "versionEvidence": "published benchmark display name"
     },
     {
       "id": "emb-v1-1",
@@ -18512,7 +18564,9 @@
         "maximum": 100,
         "unit": "percentage points",
         "direction": "higher-is-better"
-      }
+      },
+      "version": "v1.1",
+      "versionEvidence": "published benchmark display name"
     },
     {
       "id": "hlab",
@@ -18930,7 +18984,9 @@
         "maximum": 100,
         "unit": "percentage points",
         "direction": "higher-is-better"
-      }
+      },
+      "version": "1.1",
+      "versionEvidence": "published benchmark display name"
     },
     {
       "id": "code-migration-v1-1",
@@ -19300,7 +19356,9 @@
         "maximum": 100,
         "unit": "percentage points",
         "direction": "higher-is-better"
-      }
+      },
+      "version": "v1.1",
+      "versionEvidence": "published benchmark display name"
     },
     {
       "id": "vcb-1-100",
@@ -23371,7 +23429,7 @@
     "rowsWithExplicitEffort": 1036,
     "rowsWithSource": 1429,
     "rowsWithSourceType": 1429,
-    "rowsWithSnapshotDate": 1429,
+    "rowsWithSnapshotDate": 1396,
     "rowsWithHarness": 1429,
     "pricingEntries": 71,
     "uniquePricedModelNames": 71,
@@ -23380,7 +23438,7 @@
     "rowsWithContextWindow": 0,
     "rowsWithMaxOutputTokens": 0,
     "providerNameConflicts": [],
-    "note": "Counts are a snapshot audit of the checked-in dataset, not inferred model metadata. Missing fields remain unavailable. Provider aliases are normalized for display while original labels remain in providerReported. Official model IDs, specifications and pricing are recorded separately from benchmark results; catalog-only models remain unranked. Mistral Large 4 pricing and context were corrected to the current official model card; Mistral Medium 3.5 is marked deprecated as of 2026-10-31 and its unverified price removed. Added three current official API entries (Qwen3.7 Plus, Qwen3.7 Flash, MiMo V2.6 Pro UltraSpeed); region and input-length tier pricing is retained rather than flattened.",
+    "note": "Counts are a snapshot audit of the checked-in dataset, not inferred model metadata. Missing fields remain unavailable. Provider aliases are normalized for display while original labels remain in providerReported. Official model IDs, specifications and pricing are recorded separately from benchmark results; catalog-only models remain unranked. Mistral Large 4 pricing and context were corrected to the current official model card; Mistral Medium 3.5 is marked deprecated as of 2026-10-31 and its unverified price removed. Added three current official API entries (Qwen3.7 Plus, Qwen3.7 Flash, MiMo V2.6 Pro UltraSpeed); region and input-length tier pricing is retained rather than flattened. Explicit benchmark version labels are captured from the published benchmark display name where present; missing versions remain Not stated. Snapshot-date completeness counts valid ISO dates only; 'unknown' is not counted as a date.",
     "providerNameAliasesApplied": 5,
     "providerAliasCounts": {
       "Zhipu": 2,
@@ -23400,7 +23458,16 @@
     ],
     "modelCatalogEntries": 26,
     "unrankedCatalogEntries": 7,
-    "unresolvedModelIdentityAliases": 0
+    "unresolvedModelIdentityAliases": 0,
+    "benchmarksWithVersionLabel": 31,
+    "benchmarksWithoutVersionLabel": 31,
+    "rowsWithUnknownSnapshotDate": 33,
+    "catalogEntriesWithContextWindow": 25,
+    "catalogEntriesWithMaxOutputTokens": 13,
+    "catalogEntriesWithPricing": 19,
+    "catalogEntriesWithCachePricing": 9,
+    "catalogEntriesWithReasoningEffort": 14,
+    "catalogEntriesWithReleaseDate": 8
   },
   "modelCatalog": [
     {
