@@ -23380,7 +23380,7 @@
     "rowsWithContextWindow": 0,
     "rowsWithMaxOutputTokens": 0,
     "providerNameConflicts": [],
-    "note": "Counts are a snapshot audit of the checked-in dataset, not inferred model metadata. Missing fields remain unavailable. Provider aliases are normalized for display while original labels remain in providerReported. Official model IDs, specifications and pricing are recorded separately from benchmark results; catalog-only models remain unranked.",
+    "note": "Counts are a snapshot audit of the checked-in dataset, not inferred model metadata. Missing fields remain unavailable. Provider aliases are normalized for display while original labels remain in providerReported. Official model IDs, specifications and pricing are recorded separately from benchmark results; catalog-only models remain unranked. Mistral Large 4 pricing and context were corrected to the current official model card; Mistral Medium 3.5 is marked deprecated as of 2026-10-31 and its unverified price removed.",
     "providerNameAliasesApplied": 5,
     "providerAliasCounts": {
       "Zhipu": 2,
@@ -24226,9 +24226,9 @@
       "benchmarkStatus": "evaluated",
       "identityStatus": "verified",
       "lifecycleStatus": "active",
-      "releaseDate": null,
-      "releaseDatePrecision": null,
-      "contextWindowTokens": 1000000,
+      "releaseDate": "2026-10-06",
+      "releaseDatePrecision": "day",
+      "contextWindowTokens": 1050000,
       "maxOutputTokens": null,
       "endpointContextWindowTokens": null,
       "inputModalities": [
@@ -24247,33 +24247,28 @@
         "defaultEffort": null
       },
       "weights": {
-        "openWeights": null,
+        "openWeights": true,
         "license": "Mistral Ecosystem Open Weight License v26.10",
-        "availability": "Announced; downloadable weights not verified as available in the current official model documentation."
+        "availability": "Public preview; open-weight release documented by Mistral."
       },
       "pricing": {
         "currency": "USD",
         "unit": "per 1M tokens",
-        "inputPerMillion": 1.36,
-        "outputPerMillion": 4.18,
-        "cachedInputPerMillion": 0.14,
-        "sourceStatus": "reported-official",
-        "sourceUrl": "https://docs.mistral.ai/models/mistral-large-4",
-        "note": "Launch promotion at 50% off was time-limited to the first two weeks after the 2026-10-06 release; standard rates shown here."
+        "inputPerMillion": 0.7,
+        "outputPerMillion": 2.1,
+        "cachedInputPerMillion": 0.07,
+        "sourceStatus": "verified",
+        "sourceUrl": "https://docs.mistral.ai/models/mistral-large-4-0"
       },
       "metadataStatus": "verified",
       "sourceRefs": [
         {
-          "label": "Official model card",
-          "url": "https://docs.mistral.ai/models/mistral-large-4"
+          "label": "Official Mistral Large 4 model card, release, context and price",
+          "url": "https://docs.mistral.ai/models/mistral-large-4-0"
         },
         {
-          "label": "Official model directory",
-          "url": "https://docs.mistral.ai/getting-started/models"
-        },
-        {
-          "label": "Official API pricing",
-          "url": "https://docs.mistral.ai/getting-started/pricing"
+          "label": "Official Mistral model directory",
+          "url": "https://docs.mistral.ai/models"
         }
       ],
       "lastVerifiedAt": "2026-11-01"
@@ -24286,7 +24281,7 @@
       "hostingProvider": null,
       "benchmarkStatus": "evaluated",
       "identityStatus": "verified",
-      "lifecycleStatus": "active",
+      "lifecycleStatus": "deprecated",
       "releaseDate": null,
       "releaseDatePrecision": null,
       "contextWindowTokens": 256000,
@@ -24310,31 +24305,22 @@
         "license": "Modified MIT",
         "availability": "Weights published"
       },
-      "pricing": {
-        "currency": "USD",
-        "unit": "per 1M tokens",
-        "inputPerMillion": 1.5,
-        "outputPerMillion": 7.5,
-        "cachedInputPerMillion": 0.15,
-        "sourceStatus": "verified",
-        "sourceUrl": "https://docs.mistral.ai/getting-started/pricing"
-      },
+      "pricing": null,
       "metadataStatus": "verified",
       "sourceRefs": [
         {
-          "label": "Official model card",
-          "url": "https://docs.mistral.ai/models/mistral-medium-3-5"
+          "label": "Official Mistral Medium 3.5 model card and deprecation notice",
+          "url": "https://docs.mistral.ai/models/mistral-medium-3-5-26-04"
         },
         {
-          "label": "Official model directory",
-          "url": "https://docs.mistral.ai/getting-started/models"
-        },
-        {
-          "label": "Official API pricing",
-          "url": "https://docs.mistral.ai/getting-started/pricing"
+          "label": "Official Mistral model directory",
+          "url": "https://docs.mistral.ai/models"
         }
       ],
-      "lastVerifiedAt": "2026-11-01"
+      "lastVerifiedAt": "2026-11-01",
+      "deprecationDate": "2026-10-31",
+      "replacementModelId": "mistral-large-4",
+      "pricingStatus": "Not included: model deprecated on 2026-10-31; current official price not verified."
     },
     {
       "id": "qwen:qwen3-8-max",
@@ -24440,11 +24426,11 @@
       "benchmarkStatus": "evaluated",
       "identityStatus": "verified",
       "lifecycleStatus": "active",
-      "releaseDate": null,
-      "releaseDatePrecision": null,
+      "releaseDate": "2026-10-22",
+      "releaseDatePrecision": "day",
       "contextWindowTokens": 1000000,
       "maxOutputTokens": null,
-      "endpointContextWindowTokens": null,
+      "endpointContextWindowTokens": 262144,
       "inputModalities": [
         "text",
         "image"
@@ -24473,8 +24459,12 @@
       "metadataStatus": "partial",
       "sourceRefs": [
         {
-          "label": "NVIDIA NIM model card",
-          "url": "https://build.nvidia.com/minimaxai/minimax-m3-1-flash"
+          "label": "NVIDIA NIM MiniMax-M3.1-Flash model card (release, model context, endpoint and license)",
+          "url": "https://build.nvidia.com/minimaxai/minimax-m3.1-flash/modelcard"
+        },
+        {
+          "label": "Alibaba Cloud Model Studio model list",
+          "url": "https://help.aliyun.com/en/model-studio/models"
         }
       ],
       "lastVerifiedAt": "2026-11-01"
