@@ -23380,7 +23380,7 @@
     "rowsWithContextWindow": 0,
     "rowsWithMaxOutputTokens": 0,
     "providerNameConflicts": [],
-    "note": "Counts are a snapshot audit of the checked-in dataset, not inferred model metadata. Missing fields remain unavailable. Provider aliases are normalized for display while original labels remain in providerReported.",
+    "note": "Counts are a snapshot audit of the checked-in dataset, not inferred model metadata. Missing fields remain unavailable. Provider aliases are normalized for display while original labels remain in providerReported. Official model inventory is maintained separately from benchmark rows; exact identity mismatches remain unmerged and unranked.",
     "providerNameAliasesApplied": 5,
     "providerAliasCounts": {
       "Zhipu": 2,
@@ -23397,7 +23397,10 @@
         "to": "Z.ai",
         "source": "https://www.zhipuai.cn/en/about"
       }
-    ]
+    ],
+    "modelCatalogEntries": 23,
+    "unrankedCatalogEntries": 8,
+    "unresolvedModelIdentityAliases": 4
   },
   "modelCatalog": [
     {
