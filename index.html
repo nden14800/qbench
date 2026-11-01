@@ -1000,8 +1000,9 @@ function catalogMetadataHtml(m){
  var r=m.reasoning||{},w=m.weights||{},p=m.pricing||{};
  var rows=[
   ['Official API model ID',m.apiModelId||'Not published'],
-  ['Lifecycle',m.lifecycleStatus||'Not reported'],
+  ['Lifecycle',(m.lifecycleStatus||'Not reported')+(m.deprecationDate?' · deprecated '+m.deprecationDate:'')+(m.replacementModelId?' · replacement '+m.replacementModelId:'')],
   ['Release date',m.releaseDate?(m.releaseDatePrecision==='day'?m.releaseDate:m.releaseDate+' ('+m.releaseDatePrecision+' precision)'):'Not reported'],
+  ['Pricing note',m.pricingStatus||''],
   ['Context window',m.contextWindowTokens?fmt(m.contextWindowTokens)+' tokens':'Not reported'],
   ['Hosted endpoint context',m.endpointContextWindowTokens?fmt(m.endpointContextWindowTokens)+' tokens':'Not reported'],
   ['Maximum output',m.maxOutputTokens?fmt(m.maxOutputTokens)+' tokens':'Not reported'],
