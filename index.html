@@ -395,7 +395,7 @@ function makeChoice(host,options,value,onChange,label){
 }
 
 /* ---------- state ---------- */
-var S={sort:'index',dir:-1,provider:'all',effort:'all',q:'',showUnranked:false,mq:'',mSort:'index',mDir:-1,selected:[],bench:null,pareto:true,quadrant:false,chart:'composition'};
+var S={sort:'index',dir:-1,provider:'all',effort:'all',q:'',showUnranked:false,mq:'',mSort:'index',mDir:-1,selected:[],bench:null,pareto:true,quadrant:false,chart:'composition',barsN:'20',barsValues:false};
 
 /* ---------- stats & static text ---------- */
 function renderStats(){
@@ -406,7 +406,7 @@ function renderStats(){
  renderSummaryCards(ranked,top,baseModels,full,broad,limited,unranked);
  $('#index-sub').textContent=ranked.length+' ranked model/effort variants · '+baseModels+' base models · '+RESULT.evals.length+' evaluations · '+(DATA.composite.snapshotAsOf||'—');
  var snaps=(DATA.benchmarks||[]).map(function(b){return b.snapshotDate;}).filter(function(d){return d&&/^\d{4}-/.test(d);}).sort();
- $('#footer').innerHTML='QBench Index '+esc(DATA.composite.version||'1.4')+' · data snapshot '+esc(DATA.composite.snapshotAsOf||snaps[snaps.length-1]||'—')+'. '+RESULT.evals.length+' selected evaluations contribute to '+RESULT.domains.length+' equally weighted capability families. API token prices are not task-cost measurements.';
+ $('#footer').innerHTML='QBench Index '+esc(DATA.composite.version||'1.4')+' · data collected '+esc(DATA.composite.snapshotAsOf||snaps[snaps.length-1]||'—')+' (JST) · page updated 2026-11-01 (JST). '+RESULT.evals.length+' selected evaluations contribute to '+RESULT.domains.length+' equally weighted capability families. API token prices are not task-cost measurements.';
 }
 /* ---------- index table ---------- */
 
@@ -538,10 +538,17 @@ function renderComposition(host){
 
 /* Leaderboard-style bars: ranked variants sorted by Index 1.6 (AA-style score bars). */
 function renderBars(host){
-  var rows=RESULT.rows.filter(function(r){return r.ranked&&r.index!=null;}).slice().sort(function(a,b){return b.index-a.index;});
-  if(!rows.length){emptyChart(host,'No ranked variant is available.');return;}
+  var all=RESULT.rows.filter(function(r){return r.ranked&&r.index!=null;}).slice().sort(function(a,b){return b.index-a.index;});
+  if(!all.length){emptyChart(host,'No ranked variant is available.');return;}
+  var n=S.barsN==='all'?all.length:Math.min(all.length,Number(S.barsN)||20), rows=all.slice(0,n);
   var p=pal();
-  host.innerHTML='<div id="chart-main-el" style="height:460px"></div>'+
+  host.innerHTML='<div class="d-flex flex-wrap align-items-center gap-3 mb-2 small">'+
+    '<label class="d-flex align-items-center gap-2">Show top <select class="form-select form-select-sm" id="bars-n" style="width:auto">'+
+      ['10','20','30','all'].map(function(v){return '<option value="'+v+'"'+(String(S.barsN)===v?' selected':'')+'>'+(v==='all'?'all ('+all.length+')':v)+'</option>';}).join('')+
+    '</select></label>'+
+    '<div class="form-check form-switch m-0"><input class="form-check-input" type="checkbox" id="bars-values"'+(S.barsValues?' checked':'')+'><label class="form-check-label" for="bars-values">Show values on bars</label></div>'+
+    '<span class="text-muted-qb">Showing '+rows.length+' of '+all.length+' ranked variants</span></div>'+
+    '<div id="chart-main-el" style="height:'+Math.max(420,rows.length>20?520:420)+'px"></div>'+
     '<div class="notice-qb">Bars show the Index 1.6 score for each ranked variant. Effort variants are separate rows; unreported effort is not merged.</div>';
   var c=chartInit('chart-main-el');
   c.setOption({animation:false,grid:{left:56,right:18,top:24,bottom:140},
@@ -549,14 +556,15 @@ function renderBars(host){
     xAxis:catAxis(p,{type:'category',data:rows.map(scatterLabel)},{rotate:50,interval:0,fontSize:11,width:130,overflow:'truncate'}),
     yAxis:Object.assign({type:'value',min:0,name:'QBench Index 1.6',nameLocation:'middle',nameGap:40,nameTextStyle:{color:p.muted}},axisStyle(p)),
     series:[{type:'bar',barWidth:'60%',data:rows.map(function(r){return {value:+Number(r.index).toFixed(1),itemStyle:{color:providerColor(r.provider),borderRadius:[4,4,0,0]}};}),
-      label:{show:true,position:'top',formatter:function(e){return fmt(e.value,1);},color:p.ink,fontSize:10}}]});
+      label:{show:!!S.barsValues,position:'top',formatter:function(e){return fmt(e.value,1);},color:p.ink,fontSize:10}}]});
 }
 /* Small multiples: one ranked bar panel per eligible evaluation, top variants by native score. */
 function renderEvalGrid(host){
   var p=pal(), benchById={};
   (DATA.benchmarks||[]).forEach(function(b){benchById[b.id]=b;});
+  var inTable=new Set(RESULT.rows.filter(function(r){return $('#show-unranked')&&$('#show-unranked').checked?true:r.ranked;}).map(function(r){return r.variantId;}));
   var panels=RESULT.evals.map(function(e){
-    var all=(benchById[e.id]&&benchById[e.id].models||[]).filter(function(r){return r.score!=null;});
+    var all=(benchById[e.id]&&benchById[e.id].models||[]).filter(function(r){return r.score!=null&&inTable.has(variantId(r.model,effortOf(r)));});
     var rows=all.slice().sort(function(a,b){return b.score-a.score;}).slice(0,10);
     return {e:e,rows:rows,total:all.length};
   });
@@ -678,6 +686,10 @@ function renderConsistency(host){
   },true);
 }
 
+document.addEventListener('change',function(e){
+  if(e.target.id==='bars-n'){S.barsN=e.target.value;renderChart();}
+  if(e.target.id==='bars-values'){S.barsValues=e.target.checked;renderChart();}
+});
 function renderChart(){
   var host=$('#chart-main');
   $('#chart-controls').style.display=S.chart==='scatter'?'':'none';
