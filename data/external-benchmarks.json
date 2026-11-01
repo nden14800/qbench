@@ -1320,7 +1320,8 @@
           "sourceType": "curated-secondary",
           "snapshotDate": "2026-10-30",
           "publisherSource": "https://epoch.ai/benchmarks/frontiermath-tiers-1-3-v2",
-          "resultDate": "2026-09-02"
+          "resultDate": "2026-09-02",
+          "duplicateConflict": true
         },
         {
           "model": "Muse Spark 1.3",
@@ -1333,7 +1334,8 @@
           "sourceType": "curated-secondary",
           "snapshotDate": "2026-10-30",
           "publisherSource": "https://epoch.ai/benchmarks/frontiermath-tiers-1-3-v2",
-          "resultDate": "2026-09-02"
+          "resultDate": "2026-09-02",
+          "duplicateConflict": true
         },
         {
           "model": "GPT-5.2 Pro",
@@ -1567,7 +1569,8 @@
           "sourceType": "curated-secondary",
           "snapshotDate": "2026-10-30",
           "publisherSource": "https://epoch.ai/benchmarks/frontiermath-tiers-1-3-v2",
-          "resultDate": "2026-06-16"
+          "resultDate": "2026-06-16",
+          "duplicateConflict": true
         },
         {
           "model": "Gemini 3.6 Flash",
@@ -1684,7 +1687,8 @@
           "sourceType": "curated-secondary",
           "snapshotDate": "2026-10-30",
           "publisherSource": "https://epoch.ai/benchmarks/frontiermath-tiers-1-3-v2",
-          "resultDate": "2026-06-16"
+          "resultDate": "2026-06-16",
+          "duplicateConflict": true
         },
         {
           "model": "Kimi K2.7 Code",
@@ -4698,7 +4702,7 @@
           "effort": "not-reported"
         },
         {
-          "model": "Qwen3.8 Max (0902)",
+          "model": "Qwen3.8 Max 0902",
           "provider": "Alibaba",
           "score": 38.89,
           "configuration": "Mini-SWE-agent",
@@ -4711,7 +4715,8 @@
           "tokensPerTestDisplay": "39.16m",
           "durationPerTestDisplay": "2h23m",
           "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard",
-          "effort": "not-reported"
+          "effort": "not-reported",
+          "originalModelName": "Qwen3.8 Max (0902)"
         },
         {
           "model": "GPT-5.6 Sol",
@@ -6495,7 +6500,8 @@
           "evidence": "Berkeley Function-Calling Leaderboard V4 official table; models evaluated using commit f7cf735; last updated 2026-04-12",
           "source": "https://gorilla.cs.berkeley.edu/leaderboard",
           "sourceType": "official-publisher",
-          "snapshotDate": "2026-04-12"
+          "snapshotDate": "2026-04-12",
+          "duplicateConflict": true
         },
         {
           "model": "GLM-4.6",
@@ -6539,7 +6545,8 @@
           "evidence": "Berkeley Function-Calling Leaderboard V4 official table; models evaluated using commit f7cf735; last updated 2026-04-12",
           "source": "https://gorilla.cs.berkeley.edu/leaderboard",
           "sourceType": "official-publisher",
-          "snapshotDate": "2026-04-12"
+          "snapshotDate": "2026-04-12",
+          "duplicateConflict": true
         }
       ]
     },
@@ -6564,7 +6571,8 @@
           "evidence": "HealthBench Professional aggregator snapshot 2026-10-23; compiled from published documents; length-adjusted score",
           "source": "https://www.healthbenchprofessional.com/",
           "sourceType": "source-cited-secondary",
-          "snapshotDate": "2026-10-23"
+          "snapshotDate": "2026-10-23",
+          "duplicateConflict": true
         },
         {
           "model": "Claude Sonnet 5.5",
@@ -6586,7 +6594,8 @@
           "evidence": "HealthBench Professional aggregator snapshot 2026-10-23; compiled from published documents; length-adjusted score",
           "source": "https://www.healthbenchprofessional.com/",
           "sourceType": "source-cited-secondary",
-          "snapshotDate": "2026-10-23"
+          "snapshotDate": "2026-10-23",
+          "duplicateConflict": true
         },
         {
           "model": "Claude Opus 5.5",
@@ -6608,7 +6617,8 @@
           "evidence": "HealthBench Professional aggregator snapshot 2026-10-23; compiled from published documents; length-adjusted score",
           "source": "https://www.healthbenchprofessional.com/",
           "sourceType": "source-cited-secondary",
-          "snapshotDate": "2026-10-23"
+          "snapshotDate": "2026-10-23",
+          "duplicateConflict": true
         },
         {
           "model": "Claude Haiku 5.5",
@@ -6630,7 +6640,8 @@
           "evidence": "HealthBench Professional aggregator snapshot 2026-10-23; compiled from published documents; length-adjusted score",
           "source": "https://www.healthbenchprofessional.com/",
           "sourceType": "source-cited-secondary",
-          "snapshotDate": "2026-10-23"
+          "snapshotDate": "2026-10-23",
+          "duplicateConflict": true
         },
         {
           "model": "GPT-6.1 Sol",
@@ -6652,7 +6663,8 @@
           "evidence": "HealthBench Professional aggregator snapshot 2026-10-23; compiled from published documents; length-adjusted score",
           "source": "https://www.healthbenchprofessional.com/",
           "sourceType": "source-cited-secondary",
-          "snapshotDate": "2026-10-23"
+          "snapshotDate": "2026-10-23",
+          "duplicateConflict": true
         },
         {
           "model": "Claude Fable 5.1",
@@ -6674,7 +6686,8 @@
           "evidence": "HealthBench Professional aggregator snapshot 2026-10-23; compiled from published documents; length-adjusted score",
           "source": "https://www.healthbenchprofessional.com/",
           "sourceType": "source-cited-secondary",
-          "snapshotDate": "2026-10-23"
+          "snapshotDate": "2026-10-23",
+          "duplicateConflict": true
         },
         {
           "model": "GPT-6 Sol",
@@ -6696,7 +6709,8 @@
           "evidence": "HealthBench Professional aggregator snapshot 2026-10-23; compiled from published documents; length-adjusted score",
           "source": "https://www.healthbenchprofessional.com/",
           "sourceType": "source-cited-secondary",
-          "snapshotDate": "2026-10-23"
+          "snapshotDate": "2026-10-23",
+          "duplicateConflict": true
         },
         {
           "model": "Claude Opus 5",
@@ -6751,7 +6765,8 @@
           "evidence": "HealthBench Professional aggregator snapshot 2026-10-23; compiled from published documents; length-adjusted score",
           "source": "https://www.healthbenchprofessional.com/",
           "sourceType": "source-cited-secondary",
-          "snapshotDate": "2026-10-23"
+          "snapshotDate": "2026-10-23",
+          "duplicateConflict": true
         },
         {
           "model": "Grok 4.7",
@@ -6773,7 +6788,8 @@
           "evidence": "HealthBench Professional aggregator snapshot 2026-10-23; compiled from published documents; length-adjusted score",
           "source": "https://www.healthbenchprofessional.com/",
           "sourceType": "source-cited-secondary",
-          "snapshotDate": "2026-10-23"
+          "snapshotDate": "2026-10-23",
+          "duplicateConflict": true
         },
         {
           "model": "GPT-5.6 Luna",
@@ -6784,7 +6800,8 @@
           "evidence": "HealthBench Professional aggregator snapshot 2026-10-23; compiled from published documents; length-adjusted score",
           "source": "https://www.healthbenchprofessional.com/",
           "sourceType": "source-cited-secondary",
-          "snapshotDate": "2026-10-23"
+          "snapshotDate": "2026-10-23",
+          "duplicateConflict": true
         },
         {
           "model": "Gemini 4 Argon",
@@ -6817,7 +6834,8 @@
           "evidence": "HealthBench Professional aggregator snapshot 2026-10-23; compiled from published documents; length-adjusted score",
           "source": "https://www.healthbenchprofessional.com/",
           "sourceType": "source-cited-secondary",
-          "snapshotDate": "2026-10-23"
+          "snapshotDate": "2026-10-23",
+          "duplicateConflict": true
         },
         {
           "model": "Kimi K3",
@@ -6949,7 +6967,8 @@
           "evidence": "HealthBench Professional aggregator snapshot 2026-10-23; compiled from published documents; length-adjusted score",
           "source": "https://www.healthbenchprofessional.com/",
           "sourceType": "source-cited-secondary",
-          "snapshotDate": "2026-10-23"
+          "snapshotDate": "2026-10-23",
+          "duplicateConflict": true
         },
         {
           "model": "GPT-5.1",
@@ -8126,7 +8145,7 @@
           "effort": "max"
         },
         {
-          "model": "Qwen 3.7 Max",
+          "model": "Qwen3.7 Max",
           "provider": "Alibaba",
           "score": 29.3,
           "configuration": "xhigh",
@@ -11289,7 +11308,7 @@
           "evidence": "Scale Labs MCP Atlas page, Performance Comparison table. The table provides score ± and Rank (UB), but its score metric is not explicitly labeled in the table; preserved without reinterpreting."
         },
         {
-          "model": "claude-opus-5",
+          "model": "Claude Opus 5",
           "originalModelName": "claude-opus-5 (xhigh)",
           "provider": "Anthropic",
           "score": 85.8,
@@ -11364,7 +11383,7 @@
           "evidence": "Scale Labs MCP Atlas page, Performance Comparison table. The table provides score ± and Rank (UB), but its score metric is not explicitly labeled in the table; preserved without reinterpreting."
         },
         {
-          "model": "kimi-k3",
+          "model": "Kimi K3",
           "originalModelName": "kimi-k3 (max)",
           "provider": "Moonshot AI",
           "score": 82.3,
@@ -11394,7 +11413,7 @@
           "evidence": "Scale Labs MCP Atlas page, Performance Comparison table. The table provides score ± and Rank (UB), but its score metric is not explicitly labeled in the table; preserved without reinterpreting."
         },
         {
-          "model": "claude-opus-4-8",
+          "model": "Claude Opus 4.8",
           "originalModelName": "claude-opus-4-8 (max)",
           "provider": "Anthropic",
           "score": 82.2,
@@ -11439,7 +11458,7 @@
           "evidence": "Scale Labs MCP Atlas page, Performance Comparison table. The table provides score ± and Rank (UB), but its score metric is not explicitly labeled in the table; preserved without reinterpreting."
         },
         {
-          "model": "claude-opus-4-7",
+          "model": "Claude Opus 4.7",
           "originalModelName": "claude-opus-4-7 (max)",
           "provider": "Anthropic",
           "score": 79.1,
@@ -11454,7 +11473,7 @@
           "evidence": "Scale Labs MCP Atlas page, Performance Comparison table. The table provides score ± and Rank (UB), but its score metric is not explicitly labeled in the table; preserved without reinterpreting."
         },
         {
-          "model": "gemini-3.1-pro-preview",
+          "model": "Gemini 3.1 Pro Preview",
           "originalModelName": "gemini-3.1-pro-preview (high)",
           "provider": "Google",
           "score": 78.2,
@@ -11484,7 +11503,7 @@
           "evidence": "Scale Labs MCP Atlas page, Performance Comparison table. The table provides score ± and Rank (UB), but its score metric is not explicitly labeled in the table; preserved without reinterpreting."
         },
         {
-          "model": "claude-opus-4-6",
+          "model": "Claude Opus 4.6",
           "originalModelName": "claude-opus-4-6 (max)",
           "provider": "Anthropic",
           "score": 76.8,
@@ -11529,7 +11548,7 @@
           "evidence": "Scale Labs MCP Atlas page, Performance Comparison table. The table provides score ± and Rank (UB), but its score metric is not explicitly labeled in the table; preserved without reinterpreting."
         },
         {
-          "model": "gpt-5.5",
+          "model": "GPT-5.5",
           "originalModelName": "gpt-5.5 (xhigh)",
           "provider": "OpenAI",
           "score": 75.3,
@@ -11544,7 +11563,7 @@
           "evidence": "Scale Labs MCP Atlas page, Performance Comparison table. The table provides score ± and Rank (UB), but its score metric is not explicitly labeled in the table; preserved without reinterpreting."
         },
         {
-          "model": "gpt-5.4",
+          "model": "GPT-5.4",
           "originalModelName": "gpt-5.4 (xhigh)",
           "provider": "OpenAI",
           "score": 70.6,
@@ -11559,7 +11578,7 @@
           "evidence": "Scale Labs MCP Atlas page, Performance Comparison table. The table provides score ± and Rank (UB), but its score metric is not explicitly labeled in the table; preserved without reinterpreting."
         },
         {
-          "model": "gemini-3-pro-preview",
+          "model": "Gemini 3 Pro Preview",
           "originalModelName": "gemini-3-pro-preview",
           "provider": "Google",
           "score": 70.3,
@@ -11574,7 +11593,7 @@
           "evidence": "Scale Labs MCP Atlas page, Performance Comparison table. The table provides score ± and Rank (UB), but its score metric is not explicitly labeled in the table; preserved without reinterpreting."
         },
         {
-          "model": "claude-opus-4-5",
+          "model": "Claude Opus 4.5",
           "originalModelName": "claude-opus-4-5 (high)",
           "provider": "Anthropic",
           "score": 69.8,
@@ -11589,7 +11608,7 @@
           "evidence": "Scale Labs MCP Atlas page, Performance Comparison table. The table provides score ± and Rank (UB), but its score metric is not explicitly labeled in the table; preserved without reinterpreting."
         },
         {
-          "model": "claude-sonnet-4-6",
+          "model": "Claude Sonnet 4.6",
           "originalModelName": "claude-sonnet-4-6",
           "provider": "Anthropic",
           "score": 69.5,
@@ -11604,7 +11623,7 @@
           "evidence": "Scale Labs MCP Atlas page, Performance Comparison table. The table provides score ± and Rank (UB), but its score metric is not explicitly labeled in the table; preserved without reinterpreting."
         },
         {
-          "model": "gpt-5.2",
+          "model": "GPT-5.2",
           "originalModelName": "gpt-5.2 (xhigh)",
           "provider": "OpenAI",
           "score": 67.6,
@@ -11649,7 +11668,7 @@
           "evidence": "Scale Labs MCP Atlas page, Performance Comparison table. The table provides score ± and Rank (UB), but its score metric is not explicitly labeled in the table; preserved without reinterpreting."
         },
         {
-          "model": "gemini-3-flash-preview",
+          "model": "Gemini 3 Flash Preview",
           "originalModelName": "gemini-3-flash-preview",
           "provider": "Google",
           "score": 62,
@@ -11664,7 +11683,7 @@
           "evidence": "Scale Labs MCP Atlas page, Performance Comparison table. The table provides score ± and Rank (UB), but its score metric is not explicitly labeled in the table; preserved without reinterpreting."
         },
         {
-          "model": "claude-sonnet-4-5",
+          "model": "Claude Sonnet 4.5",
           "originalModelName": "claude-sonnet-4-5 (thinking)",
           "provider": "Anthropic",
           "score": 59.5,
@@ -11694,7 +11713,7 @@
           "evidence": "Scale Labs MCP Atlas page, Performance Comparison table. The table provides score ± and Rank (UB), but its score metric is not explicitly labeled in the table; preserved without reinterpreting."
         },
         {
-          "model": "gemini-3.1-flash-lite",
+          "model": "Gemini 3.1 Flash Lite",
           "originalModelName": "gemini-3.1-flash-lite (high)",
           "provider": "Google",
           "score": 57.1,
@@ -11709,7 +11728,7 @@
           "evidence": "Scale Labs MCP Atlas page, Performance Comparison table. The table provides score ± and Rank (UB), but its score metric is not explicitly labeled in the table; preserved without reinterpreting."
         },
         {
-          "model": "gpt-5.4-mini",
+          "model": "GPT-5.4 Mini",
           "originalModelName": "gpt-5.4-mini (xhigh)",
           "provider": "OpenAI",
           "score": 56.7,
@@ -11724,7 +11743,7 @@
           "evidence": "Scale Labs MCP Atlas page, Performance Comparison table. The table provides score ± and Rank (UB), but its score metric is not explicitly labeled in the table; preserved without reinterpreting."
         },
         {
-          "model": "gpt-5.1",
+          "model": "GPT-5.1",
           "originalModelName": "gpt-5.1 (high)",
           "provider": "OpenAI",
           "score": 50.1,
@@ -11754,7 +11773,7 @@
           "evidence": "Scale Labs MCP Atlas page, Performance Comparison table. The table provides score ± and Rank (UB), but its score metric is not explicitly labeled in the table; preserved without reinterpreting."
         },
         {
-          "model": "claude-haiku-4-5",
+          "model": "Claude Haiku 4.5",
           "originalModelName": "claude-haiku-4-5",
           "provider": "Anthropic",
           "score": 40.2,
@@ -11818,7 +11837,7 @@
           "evidence": "Scale Labs HiL-Bench Performance Comparison table. The table reports score ± but does not explicitly label the metric; retained without reinterpreting."
         },
         {
-          "model": "GPT 6 Astra",
+          "model": "GPT-6 Astra",
           "originalModelName": "GPT 6 Astra",
           "provider": "OpenAI",
           "score": 65.32,
@@ -11834,7 +11853,7 @@
           "evidence": "Scale Labs HiL-Bench Performance Comparison table. The table reports score ± but does not explicitly label the metric; retained without reinterpreting."
         },
         {
-          "model": "GPT 6.1 Sol",
+          "model": "GPT-6.1 Sol",
           "originalModelName": "GPT 6.1 Sol",
           "provider": "OpenAI",
           "score": 62.33,
@@ -12010,7 +12029,7 @@
           "evidence": "Scale Labs HiL-Bench Performance Comparison table. The table reports score ± but does not explicitly label the metric; retained without reinterpreting."
         },
         {
-          "model": "Kimi k3",
+          "model": "Kimi K3",
           "originalModelName": "Kimi k3",
           "provider": "Moonshot AI",
           "score": 42.67,
@@ -12058,7 +12077,7 @@
           "evidence": "Scale Labs HiL-Bench Performance Comparison table. The table reports score ± but does not explicitly label the metric; retained without reinterpreting."
         },
         {
-          "model": "GPT 5.5",
+          "model": "GPT-5.5",
           "originalModelName": "GPT 5.5",
           "provider": "OpenAI",
           "score": 39.67,
@@ -12154,7 +12173,7 @@
           "evidence": "Scale Labs HiL-Bench Performance Comparison table. The table reports score ± but does not explicitly label the metric; retained without reinterpreting."
         },
         {
-          "model": "GPT 5.6 Sol",
+          "model": "GPT-5.6 Sol",
           "originalModelName": "GPT 5.6 Sol",
           "provider": "OpenAI",
           "score": 32.33,
@@ -12202,7 +12221,7 @@
           "evidence": "Scale Labs HiL-Bench Performance Comparison table. The table reports score ± but does not explicitly label the metric; retained without reinterpreting."
         },
         {
-          "model": "Kimi k2.6",
+          "model": "Kimi K2.6",
           "originalModelName": "Kimi k2.6",
           "provider": "Moonshot AI",
           "score": 18.67,
@@ -12218,7 +12237,7 @@
           "evidence": "Scale Labs HiL-Bench Performance Comparison table. The table reports score ± but does not explicitly label the metric; retained without reinterpreting."
         },
         {
-          "model": "GPT 5.4",
+          "model": "GPT-5.4",
           "originalModelName": "GPT 5.4",
           "provider": "OpenAI",
           "score": 9.67,
@@ -12250,7 +12269,7 @@
           "evidence": "Scale Labs HiL-Bench Performance Comparison table. The table reports score ± but does not explicitly label the metric; retained without reinterpreting."
         },
         {
-          "model": "GPT 5.3 Codex",
+          "model": "GPT-5.3-Codex",
           "originalModelName": "GPT 5.3 Codex",
           "provider": "OpenAI",
           "score": 4.33,
@@ -12330,7 +12349,7 @@
       ],
       "models": [
         {
-          "model": "GPT-5.3 Codex",
+          "model": "GPT-5.3-Codex",
           "provider": "OpenAI",
           "score": 3.65,
           "sweFullInfoPassAt3": 67.3,
@@ -12351,7 +12370,8 @@
           "snapshotDate": "2026-10-31",
           "source": "https://static.scale.com/uploads/67a153343e046988406ef320/HiL_Bench.pdf",
           "sourceType": "official-publisher-paper",
-          "evidence": "Paper Table 1, page 5. Combined Pass@3 is derived as the equal-weight average of SWE and SQL Pass@3 because each domain has 150 tasks. Per-domain ASK-F1, precision and recall are reported directly; no combined ASK-F1 is inferred."
+          "evidence": "Paper Table 1, page 5. Combined Pass@3 is derived as the equal-weight average of SWE and SQL Pass@3 because each domain has 150 tasks. Per-domain ASK-F1, precision and recall are reported directly; no combined ASK-F1 is inferred.",
+          "originalModelName": "GPT-5.3 Codex"
         },
         {
           "model": "GPT-5.4",
@@ -12617,7 +12637,7 @@
           "durationPerTestDisplay": "1h33m"
         },
         {
-          "model": "Qwen 3.8 Max",
+          "model": "Qwen3.8 Max",
           "provider": "Alibaba",
           "score": 47.6,
           "effort": "not-reported",
@@ -12628,7 +12648,8 @@
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-29",
           "costPerTestUSD": 2.49,
-          "durationPerTestDisplay": "1h01m"
+          "durationPerTestDisplay": "1h01m",
+          "originalModelName": "Qwen 3.8 Max"
         },
         {
           "model": "Grok 4.7",
@@ -12673,7 +12694,7 @@
           "durationPerTestDisplay": "12m40s"
         },
         {
-          "model": "Qwen 3.8 Max 0902",
+          "model": "Qwen3.8 Max 0902",
           "provider": "Alibaba",
           "score": 46.15,
           "effort": "not-reported",
@@ -12684,7 +12705,8 @@
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-29",
           "costPerTestUSD": 5.31,
-          "durationPerTestDisplay": "2h07m"
+          "durationPerTestDisplay": "2h07m",
+          "originalModelName": "Qwen 3.8 Max 0902"
         },
         {
           "model": "DeepSeek V4.1 Flash 1017",
@@ -12883,7 +12905,7 @@
           "durationPerTestDisplay": "36m08s"
         },
         {
-          "model": "GPT 5.5",
+          "model": "GPT-5.5",
           "provider": "OpenAI",
           "score": 40.38,
           "effort": "not-reported",
@@ -12894,7 +12916,8 @@
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-29",
           "costPerTestUSD": 7.4,
-          "durationPerTestDisplay": "37m45s"
+          "durationPerTestDisplay": "37m45s",
+          "originalModelName": "GPT 5.5"
         },
         {
           "model": "GPT-6 Astra",
@@ -13051,7 +13074,7 @@
           "durationPerTestDisplay": "39m34s"
         },
         {
-          "model": "Qwen 3.8 27B",
+          "model": "Qwen3.8 27B",
           "provider": "Alibaba",
           "score": 36.06,
           "effort": "not-reported",
@@ -13062,7 +13085,8 @@
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-29",
           "costPerTestUSD": 2.16,
-          "durationPerTestDisplay": "26m41s"
+          "durationPerTestDisplay": "26m41s",
+          "originalModelName": "Qwen 3.8 27B"
         },
         {
           "model": "Mistral Large 4 OSS",
@@ -13093,7 +13117,7 @@
           "durationPerTestDisplay": "4m49s"
         },
         {
-          "model": "MiniMax-M3.1-Flash",
+          "model": "MiniMax M3.1 Flash",
           "provider": "MiniMax",
           "score": 34.13,
           "effort": "not-reported",
@@ -13104,7 +13128,8 @@
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-29",
           "costPerTestUSD": 0.44,
-          "durationPerTestDisplay": "48m32s"
+          "durationPerTestDisplay": "48m32s",
+          "originalModelName": "MiniMax-M3.1-Flash"
         },
         {
           "model": "Mistral Large 4",
@@ -13177,7 +13202,7 @@
           "durationPerTestDisplay": "42m28s"
         },
         {
-          "model": "MiniMax-M3",
+          "model": "MiniMax M3",
           "provider": "MiniMax",
           "score": 29.81,
           "effort": "not-reported",
@@ -13188,7 +13213,8 @@
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-29",
           "costPerTestUSD": 0.34,
-          "durationPerTestDisplay": "13m34s"
+          "durationPerTestDisplay": "13m34s",
+          "originalModelName": "MiniMax-M3"
         },
         {
           "model": "Beam 1.0",
@@ -13246,7 +13272,7 @@
           "durationPerTestDisplay": "14m29s"
         },
         {
-          "model": "GLM 5.1",
+          "model": "GLM-5.1",
           "provider": "Z.ai",
           "score": 27.89,
           "effort": "not-reported",
@@ -13257,7 +13283,8 @@
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-29",
           "costPerTestUSD": 0.39,
-          "durationPerTestDisplay": "5m26s"
+          "durationPerTestDisplay": "5m26s",
+          "originalModelName": "GLM 5.1"
         },
         {
           "model": "GPT-6.1 Terra",
@@ -13288,7 +13315,7 @@
           "durationPerTestDisplay": "12m55s"
         },
         {
-          "model": "Qwen 3.7 Max",
+          "model": "Qwen3.7 Max",
           "provider": "Alibaba",
           "score": 25.48,
           "effort": "not-reported",
@@ -13299,7 +13326,8 @@
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-29",
           "costPerTestUSD": 1.4,
-          "durationPerTestDisplay": "13m29s"
+          "durationPerTestDisplay": "13m29s",
+          "originalModelName": "Qwen 3.7 Max"
         },
         {
           "model": "Gemini 3.6 Flash",
@@ -13469,7 +13497,7 @@
           "durationPerTestDisplay": "10m59s"
         },
         {
-          "model": "Gemini 3.5 Flash Lite",
+          "model": "Gemini 3.5 Flash-Lite",
           "provider": "Google",
           "score": 13.94,
           "effort": "not-reported",
@@ -13480,7 +13508,8 @@
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-29",
           "costPerTestUSD": 0.12,
-          "durationPerTestDisplay": "59.20s"
+          "durationPerTestDisplay": "59.20s",
+          "originalModelName": "Gemini 3.5 Flash Lite"
         },
         {
           "model": "Grok 4.20 (Reasoning)",
@@ -13497,7 +13526,7 @@
           "durationPerTestDisplay": "4m04s"
         },
         {
-          "model": "GPT 5.4 Mini",
+          "model": "GPT-5.4 Mini",
           "provider": "OpenAI",
           "score": 12.5,
           "effort": "not-reported",
@@ -13508,7 +13537,8 @@
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-29",
           "costPerTestUSD": 1.86,
-          "durationPerTestDisplay": "37m36s"
+          "durationPerTestDisplay": "37m36s",
+          "originalModelName": "GPT 5.4 Mini"
         },
         {
           "model": "Claude Haiku 4.5 (Thinking)",
@@ -13581,7 +13611,7 @@
           "durationPerTestDisplay": "10m13s"
         },
         {
-          "model": "GPT 5.4 Nano",
+          "model": "GPT-5.4 Nano",
           "provider": "OpenAI",
           "score": 6.25,
           "effort": "not-reported",
@@ -13592,7 +13622,8 @@
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-29",
           "costPerTestUSD": 0.14,
-          "durationPerTestDisplay": "8m47s"
+          "durationPerTestDisplay": "8m47s",
+          "originalModelName": "GPT 5.4 Nano"
         },
         {
           "model": "Mercury 2.5",
@@ -13700,7 +13731,7 @@
       "unit": "% accuracy",
       "models": [
         {
-          "model": "Qwen 3.8 Max 0902",
+          "model": "Qwen3.8 Max 0902",
           "provider": "Alibaba",
           "score": 49.66,
           "effort": "not-reported",
@@ -13711,7 +13742,8 @@
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-29",
           "costPerTestUSD": 4.07,
-          "durationPerTestDisplay": "1h27m"
+          "durationPerTestDisplay": "1h27m",
+          "originalModelName": "Qwen 3.8 Max 0902"
         },
         {
           "model": "Claude Fable 5.1",
@@ -13980,7 +14012,7 @@
           "durationPerTestDisplay": "25m48s"
         },
         {
-          "model": "MiniMax-M3.1-Flash",
+          "model": "MiniMax M3.1 Flash",
           "provider": "MiniMax",
           "score": 32.14,
           "effort": "not-reported",
@@ -13991,7 +14023,8 @@
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-29",
           "costPerTestUSD": 0.32,
-          "durationPerTestDisplay": "32m43s"
+          "durationPerTestDisplay": "32m43s",
+          "originalModelName": "MiniMax-M3.1-Flash"
         },
         {
           "model": "Gemini 3.8 Flash",
@@ -14008,7 +14041,7 @@
           "durationPerTestDisplay": "2m58s"
         },
         {
-          "model": "Qwen 3.8 Max",
+          "model": "Qwen3.8 Max",
           "provider": "Alibaba",
           "score": 32.09,
           "effort": "not-reported",
@@ -14019,7 +14052,8 @@
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-29",
           "costPerTestUSD": 1.55,
-          "durationPerTestDisplay": "40m36s"
+          "durationPerTestDisplay": "40m36s",
+          "originalModelName": "Qwen 3.8 Max"
         },
         {
           "model": "Claude Haiku 5.5",
@@ -14078,7 +14112,7 @@
           "durationPerTestDisplay": "30m46s"
         },
         {
-          "model": "Qwen 3.8 27B",
+          "model": "Qwen3.8 27B",
           "provider": "Alibaba",
           "score": 30.89,
           "effort": "not-reported",
@@ -14089,7 +14123,8 @@
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-29",
           "costPerTestUSD": 0.82,
-          "durationPerTestDisplay": "22m14s"
+          "durationPerTestDisplay": "22m14s",
+          "originalModelName": "Qwen 3.8 27B"
         },
         {
           "model": "Mistral Large 4",
@@ -14344,7 +14379,7 @@
           "durationPerTestDisplay": "87.24s"
         },
         {
-          "model": "GPT 5.5",
+          "model": "GPT-5.5",
           "provider": "OpenAI",
           "score": 21.76,
           "effort": "not-reported",
@@ -14355,7 +14390,8 @@
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-29",
           "costPerTestUSD": 4.07,
-          "durationPerTestDisplay": "15m52s"
+          "durationPerTestDisplay": "15m52s",
+          "originalModelName": "GPT 5.5"
         },
         {
           "model": "GPT-6.1 Sol",
@@ -14414,7 +14450,7 @@
           "durationPerTestDisplay": "5m34s"
         },
         {
-          "model": "MiniMax-M3",
+          "model": "MiniMax M3",
           "provider": "MiniMax",
           "score": 20.59,
           "effort": "not-reported",
@@ -14425,7 +14461,8 @@
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-29",
           "costPerTestUSD": 0.16,
-          "durationPerTestDisplay": "5m15s"
+          "durationPerTestDisplay": "5m15s",
+          "originalModelName": "MiniMax-M3"
         },
         {
           "model": "GPT-6 Luna",
@@ -14470,7 +14507,7 @@
           "durationPerTestDisplay": "105.32s"
         },
         {
-          "model": "Qwen 3.7 Max",
+          "model": "Qwen3.7 Max",
           "provider": "Alibaba",
           "score": 15.83,
           "effort": "not-reported",
@@ -14481,7 +14518,8 @@
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-29",
           "costPerTestUSD": 0.44,
-          "durationPerTestDisplay": "3m30s"
+          "durationPerTestDisplay": "3m30s",
+          "originalModelName": "Qwen 3.7 Max"
         },
         {
           "model": "Inkling Small",
@@ -14637,7 +14675,7 @@
           "durationPerTestDisplay": "57.99s"
         },
         {
-          "model": "GPT 5.4 Mini",
+          "model": "GPT-5.4 Mini",
           "provider": "OpenAI",
           "score": 8.81,
           "effort": "not-reported",
@@ -14648,7 +14686,8 @@
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-29",
           "costPerTestUSD": 0.81,
-          "durationPerTestDisplay": "16m46s"
+          "durationPerTestDisplay": "16m46s",
+          "originalModelName": "GPT 5.4 Mini"
         },
         {
           "model": "MiMo V2.5",
@@ -14679,7 +14718,7 @@
           "durationPerTestDisplay": "6m18s"
         },
         {
-          "model": "Gemini 3.5 Flash Lite",
+          "model": "Gemini 3.5 Flash-Lite",
           "provider": "Google",
           "score": 7.25,
           "effort": "not-reported",
@@ -14690,7 +14729,8 @@
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-29",
           "costPerTestUSD": 0.08,
-          "durationPerTestDisplay": "47.46s"
+          "durationPerTestDisplay": "47.46s",
+          "originalModelName": "Gemini 3.5 Flash Lite"
         },
         {
           "model": "Grok 4.20 (Reasoning)",
@@ -14749,7 +14789,7 @@
           "durationPerTestDisplay": "2m35s"
         },
         {
-          "model": "GPT 5.4 Nano",
+          "model": "GPT-5.4 Nano",
           "provider": "OpenAI",
           "score": 4.97,
           "effort": "not-reported",
@@ -14760,7 +14800,8 @@
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-29",
           "costPerTestUSD": 0.07,
-          "durationPerTestDisplay": "3m40s"
+          "durationPerTestDisplay": "3m40s",
+          "originalModelName": "GPT 5.4 Nano"
         },
         {
           "model": "Mistral Medium 3.5",
@@ -15178,7 +15219,7 @@
           "durationPerTestDisplay": "9m03s"
         },
         {
-          "model": "Qwen 3.8 Max 0902",
+          "model": "Qwen3.8 Max 0902",
           "provider": "Alibaba",
           "score": 58.83,
           "effort": "not-reported",
@@ -15189,10 +15230,11 @@
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-29",
           "costPerTestUSD": 2.99,
-          "durationPerTestDisplay": "55m20s"
+          "durationPerTestDisplay": "55m20s",
+          "originalModelName": "Qwen 3.8 Max 0902"
         },
         {
-          "model": "MiniMax-M3.1-Flash",
+          "model": "MiniMax M3.1 Flash",
           "provider": "MiniMax",
           "score": 58.83,
           "effort": "not-reported",
@@ -15203,7 +15245,8 @@
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-29",
           "costPerTestUSD": 0.16,
-          "durationPerTestDisplay": "15m04s"
+          "durationPerTestDisplay": "15m04s",
+          "originalModelName": "MiniMax-M3.1-Flash"
         },
         {
           "model": "DeepSeek V4 Pro 0813",
@@ -15262,7 +15305,7 @@
           "durationPerTestDisplay": "3m53s"
         },
         {
-          "model": "MiniMax-M3",
+          "model": "MiniMax M3",
           "provider": "MiniMax",
           "score": 54.34,
           "effort": "not-reported",
@@ -15273,7 +15316,8 @@
           "sourceType": "third-party-evaluator",
           "snapshotDate": "2026-10-29",
           "costPerTestUSD": 0.3,
-          "durationPerTestDisplay": "3m09s"
+          "durationPerTestDisplay": "3m09s",
+          "originalModelName": "MiniMax-M3"
         },
         {
           "model": "Beam 1.0",
@@ -15483,7 +15527,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "GPT 5.1",
+          "model": "GPT-5.1",
           "provider": "OpenAI",
           "score": 52.73,
           "effort": "not-reported",
@@ -15492,7 +15536,8 @@
           "evidence": "Vals AI MedCode leaderboard (https://www.vals.ai/benchmarks/medcode, snapshot 2026-10-29); row extracted from the public table; top rows cross-checked by a second extraction",
           "source": "https://www.vals.ai/benchmarks/medcode",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "originalModelName": "GPT 5.1"
         },
         {
           "model": "Gemini 3 Pro (11/25)",
@@ -15567,7 +15612,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "GPT 5.2",
+          "model": "GPT-5.2",
           "provider": "OpenAI",
           "score": 49.75,
           "effort": "not-reported",
@@ -15576,10 +15621,11 @@
           "evidence": "Vals AI MedCode leaderboard (https://www.vals.ai/benchmarks/medcode, snapshot 2026-10-29); row extracted from the public table; top rows cross-checked by a second extraction",
           "source": "https://www.vals.ai/benchmarks/medcode",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "originalModelName": "GPT 5.2"
         },
         {
-          "model": "GPT 5",
+          "model": "GPT-5",
           "provider": "OpenAI",
           "score": 49.63,
           "effort": "not-reported",
@@ -15588,7 +15634,8 @@
           "evidence": "Vals AI MedCode leaderboard (https://www.vals.ai/benchmarks/medcode, snapshot 2026-10-29); row extracted from the public table; top rows cross-checked by a second extraction",
           "source": "https://www.vals.ai/benchmarks/medcode",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "originalModelName": "GPT 5"
         },
         {
           "model": "Grok 4.7",
@@ -15651,7 +15698,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "GPT 5.5",
+          "model": "GPT-5.5",
           "provider": "OpenAI",
           "score": 49.1,
           "effort": "not-reported",
@@ -15660,7 +15707,8 @@
           "evidence": "Vals AI MedCode leaderboard (https://www.vals.ai/benchmarks/medcode, snapshot 2026-10-29); row extracted from the public table; top rows cross-checked by a second extraction",
           "source": "https://www.vals.ai/benchmarks/medcode",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "originalModelName": "GPT 5.5"
         },
         {
           "model": "GPT-6.1 Sol",
@@ -15771,7 +15819,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "MiniMax-M3",
+          "model": "MiniMax M3",
           "provider": "MiniMax",
           "score": 46.29,
           "effort": "not-reported",
@@ -15780,7 +15828,8 @@
           "evidence": "Vals AI MedCode leaderboard (https://www.vals.ai/benchmarks/medcode, snapshot 2026-10-29); row extracted from the public table; top rows cross-checked by a second extraction",
           "source": "https://www.vals.ai/benchmarks/medcode",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "originalModelName": "MiniMax-M3"
         },
         {
           "model": "Claude Opus 4.5 (Nonthinking)",
@@ -15855,7 +15904,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "Gemini 3.5 Flash Lite",
+          "model": "Gemini 3.5 Flash-Lite",
           "provider": "Google",
           "score": 43.49,
           "effort": "not-reported",
@@ -15864,7 +15913,8 @@
           "evidence": "Vals AI MedCode leaderboard (https://www.vals.ai/benchmarks/medcode, snapshot 2026-10-29); row extracted from the public table; top rows cross-checked by a second extraction",
           "source": "https://www.vals.ai/benchmarks/medcode",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "originalModelName": "Gemini 3.5 Flash Lite"
         },
         {
           "model": "GPT-5.6 Terra",
@@ -15903,7 +15953,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "GPT 5 Mini",
+          "model": "GPT-5 mini",
           "provider": "OpenAI",
           "score": 43.05,
           "effort": "not-reported",
@@ -15912,7 +15962,8 @@
           "evidence": "Vals AI MedCode leaderboard (https://www.vals.ai/benchmarks/medcode, snapshot 2026-10-29); row extracted from the public table; top rows cross-checked by a second extraction",
           "source": "https://www.vals.ai/benchmarks/medcode",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "originalModelName": "GPT 5 Mini"
         },
         {
           "model": "GLM 5.3",
@@ -15951,7 +16002,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "GLM 5.1",
+          "model": "GLM-5.1",
           "provider": "Z.ai",
           "score": 41.6,
           "effort": "not-reported",
@@ -15960,7 +16011,8 @@
           "evidence": "Vals AI MedCode leaderboard (https://www.vals.ai/benchmarks/medcode, snapshot 2026-10-29); row extracted from the public table; top rows cross-checked by a second extraction",
           "source": "https://www.vals.ai/benchmarks/medcode",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "originalModelName": "GLM 5.1"
         },
         {
           "model": "DeepSeek V4 Flash 0731",
@@ -16035,7 +16087,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "GPT 5.4 Nano",
+          "model": "GPT-5.4 Nano",
           "provider": "OpenAI",
           "score": 41.03,
           "effort": "not-reported",
@@ -16044,7 +16096,8 @@
           "evidence": "Vals AI MedCode leaderboard (https://www.vals.ai/benchmarks/medcode, snapshot 2026-10-29); row extracted from the public table; top rows cross-checked by a second extraction",
           "source": "https://www.vals.ai/benchmarks/medcode",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "originalModelName": "GPT 5.4 Nano"
         },
         {
           "model": "GLM 5.2",
@@ -16071,7 +16124,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "Qwen 3.8 Max",
+          "model": "Qwen3.8 Max",
           "provider": "Alibaba",
           "score": 40.67,
           "effort": "not-reported",
@@ -16080,7 +16133,8 @@
           "evidence": "Vals AI MedCode leaderboard (https://www.vals.ai/benchmarks/medcode, snapshot 2026-10-29); row extracted from the public table; top rows cross-checked by a second extraction",
           "source": "https://www.vals.ai/benchmarks/medcode",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "originalModelName": "Qwen 3.8 Max"
         },
         {
           "model": "Claude Sonnet 4.5 (Nonthinking)",
@@ -16167,7 +16221,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "Qwen 3.7 Max",
+          "model": "Qwen3.7 Max",
           "provider": "Alibaba",
           "score": 38.75,
           "effort": "not-reported",
@@ -16176,7 +16230,8 @@
           "evidence": "Vals AI MedCode leaderboard (https://www.vals.ai/benchmarks/medcode, snapshot 2026-10-29); row extracted from the public table; top rows cross-checked by a second extraction",
           "source": "https://www.vals.ai/benchmarks/medcode",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "originalModelName": "Qwen 3.7 Max"
         },
         {
           "model": "Nemotron 3 Ultra",
@@ -16335,7 +16390,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "o4 Mini",
+          "model": "o4-mini",
           "provider": "OpenAI",
           "score": 33.79,
           "effort": "not-reported",
@@ -16344,7 +16399,8 @@
           "evidence": "Vals AI MedCode leaderboard (https://www.vals.ai/benchmarks/medcode, snapshot 2026-10-29); row extracted from the public table; top rows cross-checked by a second extraction",
           "source": "https://www.vals.ai/benchmarks/medcode",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "originalModelName": "o4 Mini"
         },
         {
           "model": "Mistral Medium 3.5",
@@ -16371,7 +16427,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "GLM 4.7",
+          "model": "GLM-4.7",
           "provider": "Z.ai",
           "score": 32.77,
           "effort": "not-reported",
@@ -16380,7 +16436,8 @@
           "evidence": "Vals AI MedCode leaderboard (https://www.vals.ai/benchmarks/medcode, snapshot 2026-10-29); row extracted from the public table; top rows cross-checked by a second extraction",
           "source": "https://www.vals.ai/benchmarks/medcode",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "originalModelName": "GLM 4.7"
         },
         {
           "model": "Claude Haiku 4.5 (Thinking)",
@@ -16515,7 +16572,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "Qwen 3.8 27B",
+          "model": "Qwen3.8 27B",
           "provider": "Alibaba",
           "score": 28.7,
           "effort": "not-reported",
@@ -16524,7 +16581,8 @@
           "evidence": "Vals AI MedCode leaderboard (https://www.vals.ai/benchmarks/medcode, snapshot 2026-10-29); row extracted from the public table; top rows cross-checked by a second extraction",
           "source": "https://www.vals.ai/benchmarks/medcode",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "originalModelName": "Qwen 3.8 27B"
         },
         {
           "model": "Grok 4.1 Fast Non-Reasoning",
@@ -16919,7 +16977,7 @@
           "snapshotDate": "2026-10-20"
         },
         {
-          "model": "GPT 5.5",
+          "model": "GPT-5.5",
           "provider": "OpenAI",
           "score": 0.5,
           "effort": "not-reported",
@@ -16928,7 +16986,8 @@
           "evidence": "Vals AI ProgramBench leaderboard, updated 2026-10-20; mini-SWE-agent (Valkyrie) harness",
           "source": "https://www.vals.ai/benchmarks/programbench",
           "sourceType": "source-documented",
-          "snapshotDate": "2026-10-20"
+          "snapshotDate": "2026-10-20",
+          "originalModelName": "GPT 5.5"
         },
         {
           "model": "GLM 5.2",
@@ -16967,7 +17026,7 @@
           "snapshotDate": "2026-10-20"
         },
         {
-          "model": "GPT 5.4",
+          "model": "GPT-5.4",
           "provider": "OpenAI",
           "score": 0.5,
           "effort": "high",
@@ -16976,7 +17035,8 @@
           "evidence": "Vals AI ProgramBench leaderboard, updated 2026-10-20; mini-SWE-agent (Valkyrie) harness",
           "source": "https://www.vals.ai/benchmarks/programbench",
           "sourceType": "source-documented",
-          "snapshotDate": "2026-10-20"
+          "snapshotDate": "2026-10-20",
+          "originalModelName": "GPT 5.4"
         },
         {
           "model": "Muse Spark 1.2",
@@ -17051,7 +17111,7 @@
           "snapshotDate": "2026-10-20"
         },
         {
-          "model": "Qwen 3.8 Max",
+          "model": "Qwen3.8 Max",
           "provider": "Alibaba",
           "score": 0.0,
           "effort": "not-reported",
@@ -17060,7 +17120,8 @@
           "evidence": "Vals AI ProgramBench leaderboard, updated 2026-10-20; mini-SWE-agent (Valkyrie) harness",
           "source": "https://www.vals.ai/benchmarks/programbench",
           "sourceType": "source-documented",
-          "snapshotDate": "2026-10-20"
+          "snapshotDate": "2026-10-20",
+          "originalModelName": "Qwen 3.8 Max"
         },
         {
           "model": "Gemini 3.7 Flash",
@@ -17111,7 +17172,7 @@
           "snapshotDate": "2026-10-20"
         },
         {
-          "model": "GPT 5.4",
+          "model": "GPT-5.4",
           "provider": "OpenAI",
           "score": 0.0,
           "effort": "xhigh",
@@ -17120,7 +17181,8 @@
           "evidence": "Vals AI ProgramBench leaderboard, updated 2026-10-20; mini-SWE-agent (Valkyrie) harness",
           "source": "https://www.vals.ai/benchmarks/programbench",
           "sourceType": "source-documented",
-          "snapshotDate": "2026-10-20"
+          "snapshotDate": "2026-10-20",
+          "originalModelName": "GPT 5.4"
         },
         {
           "model": "GLM 5.3 Flash",
@@ -17147,7 +17209,7 @@
           "snapshotDate": "2026-10-20"
         },
         {
-          "model": "GPT 5.4 Mini",
+          "model": "GPT-5.4 Mini",
           "provider": "OpenAI",
           "score": 0.0,
           "effort": "not-reported",
@@ -17156,7 +17218,8 @@
           "evidence": "Vals AI ProgramBench leaderboard, updated 2026-10-20; mini-SWE-agent (Valkyrie) harness",
           "source": "https://www.vals.ai/benchmarks/programbench",
           "sourceType": "source-documented",
-          "snapshotDate": "2026-10-20"
+          "snapshotDate": "2026-10-20",
+          "originalModelName": "GPT 5.4 Mini"
         },
         {
           "model": "Gemini 3.6 Flash",
@@ -17195,7 +17258,7 @@
           "snapshotDate": "2026-10-20"
         },
         {
-          "model": "GLM 5.1",
+          "model": "GLM-5.1",
           "provider": "Z.ai",
           "score": 0.0,
           "effort": "not-reported",
@@ -17204,7 +17267,8 @@
           "evidence": "Vals AI ProgramBench leaderboard, updated 2026-10-20; mini-SWE-agent (Valkyrie) harness",
           "source": "https://www.vals.ai/benchmarks/programbench",
           "sourceType": "source-documented",
-          "snapshotDate": "2026-10-20"
+          "snapshotDate": "2026-10-20",
+          "originalModelName": "GLM 5.1"
         },
         {
           "model": "Gemini 3.1 Pro Preview (02/26)",
@@ -17231,7 +17295,7 @@
           "snapshotDate": "2026-10-20"
         },
         {
-          "model": "Qwen 3.8 27B",
+          "model": "Qwen3.8 27B",
           "provider": "Alibaba",
           "score": 0.0,
           "effort": "not-reported",
@@ -17240,7 +17304,8 @@
           "evidence": "Vals AI ProgramBench leaderboard, updated 2026-10-20; mini-SWE-agent (Valkyrie) harness",
           "source": "https://www.vals.ai/benchmarks/programbench",
           "sourceType": "source-documented",
-          "snapshotDate": "2026-10-20"
+          "snapshotDate": "2026-10-20",
+          "originalModelName": "Qwen 3.8 27B"
         },
         {
           "model": "Kimi K2.7 Code",
@@ -17303,7 +17368,7 @@
           "snapshotDate": "2026-10-20"
         },
         {
-          "model": "Gemini 3.5 Flash Lite",
+          "model": "Gemini 3.5 Flash-Lite",
           "provider": "Google",
           "score": 0.0,
           "effort": "not-reported",
@@ -17312,7 +17377,8 @@
           "evidence": "Vals AI ProgramBench leaderboard, updated 2026-10-20; mini-SWE-agent (Valkyrie) harness",
           "source": "https://www.vals.ai/benchmarks/programbench",
           "sourceType": "source-documented",
-          "snapshotDate": "2026-10-20"
+          "snapshotDate": "2026-10-20",
+          "originalModelName": "Gemini 3.5 Flash Lite"
         },
         {
           "model": "Claude Haiku 4.5 (Thinking)",
@@ -17695,7 +17761,7 @@
           "snapshotDate": "2026-10-20"
         },
         {
-          "model": "Qwen 3.8 27B",
+          "model": "Qwen3.8 27B",
           "provider": "Alibaba",
           "score": 67.8,
           "effort": "not-reported",
@@ -17704,7 +17770,8 @@
           "evidence": "Vals AI CyberBench v1.1 leaderboard, updated 2026-10-20; mini-swe-agent harness",
           "source": "https://www.vals.ai/benchmarks/cyber",
           "sourceType": "source-documented",
-          "snapshotDate": "2026-10-20"
+          "snapshotDate": "2026-10-20",
+          "originalModelName": "Qwen 3.8 27B"
         },
         {
           "model": "Grok 4.6",
@@ -17755,7 +17822,7 @@
           "snapshotDate": "2026-10-20"
         },
         {
-          "model": "MiniMax-M3",
+          "model": "MiniMax M3",
           "provider": "MiniMax",
           "score": 65.0,
           "effort": "not-reported",
@@ -17764,7 +17831,8 @@
           "evidence": "Vals AI CyberBench v1.1 leaderboard, updated 2026-10-20; mini-swe-agent harness",
           "source": "https://www.vals.ai/benchmarks/cyber",
           "sourceType": "source-documented",
-          "snapshotDate": "2026-10-20"
+          "snapshotDate": "2026-10-20",
+          "originalModelName": "MiniMax-M3"
         },
         {
           "model": "Inkling Small",
@@ -17803,7 +17871,7 @@
           "snapshotDate": "2026-10-20"
         },
         {
-          "model": "Gemini 3.5 Flash Lite",
+          "model": "Gemini 3.5 Flash-Lite",
           "provider": "Google",
           "score": 59.11,
           "effort": "not-reported",
@@ -17812,7 +17880,8 @@
           "evidence": "Vals AI CyberBench v1.1 leaderboard, updated 2026-10-20; mini-swe-agent harness",
           "source": "https://www.vals.ai/benchmarks/cyber",
           "sourceType": "source-documented",
-          "snapshotDate": "2026-10-20"
+          "snapshotDate": "2026-10-20",
+          "originalModelName": "Gemini 3.5 Flash Lite"
         },
         {
           "model": "Ling 3.0 Flash Fin",
@@ -17923,7 +17992,7 @@
           "snapshotDate": "2026-10-20"
         },
         {
-          "model": "Qwen 3.8 Max",
+          "model": "Qwen3.8 Max",
           "provider": "Alibaba",
           "score": 28.57,
           "effort": "not-reported",
@@ -17932,7 +18001,8 @@
           "evidence": "Vals AI CyberBench v1.1 leaderboard, updated 2026-10-20; mini-swe-agent harness",
           "source": "https://www.vals.ai/benchmarks/cyber",
           "sourceType": "source-documented",
-          "snapshotDate": "2026-10-20"
+          "snapshotDate": "2026-10-20",
+          "originalModelName": "Qwen 3.8 Max"
         },
         {
           "model": "GPT-5.6 Luna",
@@ -18099,7 +18169,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "Qwen 3.8 Max 0902",
+          "model": "Qwen3.8 Max 0902",
           "provider": "Alibaba",
           "score": 71.98,
           "effort": "not-reported",
@@ -18108,7 +18178,8 @@
           "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
           "source": "https://www.vals.ai/benchmarks/emb-v1-1",
           "sourceType": "source-documented",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "originalModelName": "Qwen 3.8 Max 0902"
         },
         {
           "model": "Grok 4.7",
@@ -18255,7 +18326,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "MiniMax-M3.1-Flash",
+          "model": "MiniMax M3.1 Flash",
           "provider": "MiniMax",
           "score": 67.84,
           "effort": "not-reported",
@@ -18264,7 +18335,8 @@
           "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
           "source": "https://www.vals.ai/benchmarks/emb-v1-1",
           "sourceType": "source-documented",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "originalModelName": "MiniMax-M3.1-Flash"
         },
         {
           "model": "DeepSeek V4.1 Flash",
@@ -18303,7 +18375,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "Qwen 3.8 Max",
+          "model": "Qwen3.8 Max",
           "provider": "Alibaba",
           "score": 65.99,
           "effort": "not-reported",
@@ -18312,7 +18384,8 @@
           "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
           "source": "https://www.vals.ai/benchmarks/emb-v1-1",
           "sourceType": "source-documented",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "originalModelName": "Qwen 3.8 Max"
         },
         {
           "model": "Claude Haiku 5.5",
@@ -18363,7 +18436,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "MiniMax-M3",
+          "model": "MiniMax M3",
           "provider": "MiniMax",
           "score": 59.75,
           "effort": "not-reported",
@@ -18372,7 +18445,8 @@
           "evidence": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29",
           "source": "https://www.vals.ai/benchmarks/emb-v1-1",
           "sourceType": "source-documented",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "originalModelName": "MiniMax-M3"
         },
         {
           "model": "Mercury 3",
@@ -18539,7 +18613,7 @@
           "snapshotDate": "2026-10-30"
         },
         {
-          "model": "Qwen 3.8 Max 0902",
+          "model": "Qwen3.8 Max 0902",
           "provider": "Alibaba",
           "score": 15.42,
           "effort": "not-reported",
@@ -18548,7 +18622,8 @@
           "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
           "source": "https://www.vals.ai/benchmarks/hlab",
           "sourceType": "source-documented",
-          "snapshotDate": "2026-10-30"
+          "snapshotDate": "2026-10-30",
+          "originalModelName": "Qwen 3.8 Max 0902"
         },
         {
           "model": "GLM 5.3",
@@ -18707,7 +18782,7 @@
           "snapshotDate": "2026-10-30"
         },
         {
-          "model": "MiniMax-M3.1-Flash",
+          "model": "MiniMax M3.1 Flash",
           "provider": "MiniMax",
           "score": 7.5,
           "effort": "not-reported",
@@ -18716,7 +18791,8 @@
           "evidence": "Vals AI HLAB-Vals-1.1 (Harvey) leaderboard, updated 2026-10-30",
           "source": "https://www.vals.ai/benchmarks/hlab",
           "sourceType": "source-documented",
-          "snapshotDate": "2026-10-30"
+          "snapshotDate": "2026-10-30",
+          "originalModelName": "MiniMax-M3.1-Flash"
         },
         {
           "model": "GPT-6 Astra",
@@ -18967,7 +19043,7 @@
           "snapshotDate": "2026-10-28"
         },
         {
-          "model": "Qwen 3.8 Max 0902",
+          "model": "Qwen3.8 Max 0902",
           "provider": "Alibaba",
           "score": 57.19,
           "effort": "not-reported",
@@ -18976,7 +19052,8 @@
           "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
           "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
           "sourceType": "source-documented",
-          "snapshotDate": "2026-10-28"
+          "snapshotDate": "2026-10-28",
+          "originalModelName": "Qwen 3.8 Max 0902"
         },
         {
           "model": "GLM 5.3",
@@ -19159,7 +19236,7 @@
           "snapshotDate": "2026-10-28"
         },
         {
-          "model": "MiniMax-M3",
+          "model": "MiniMax M3",
           "provider": "MiniMax",
           "score": 20.9,
           "effort": "not-reported",
@@ -19168,7 +19245,8 @@
           "evidence": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28",
           "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
           "sourceType": "source-documented",
-          "snapshotDate": "2026-10-28"
+          "snapshotDate": "2026-10-28",
+          "originalModelName": "MiniMax-M3"
         },
         {
           "model": "Nemotron 3.5 Super VL",
@@ -19299,7 +19377,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "Qwen 3.8 Max 0902",
+          "model": "Qwen3.8 Max 0902",
           "provider": "Alibaba",
           "score": 24.83,
           "effort": "not-reported",
@@ -19308,7 +19386,8 @@
           "evidence": "Vals AI Vibe Code Bench 1-100 leaderboard, updated 2026-10-29",
           "source": "https://www.vals.ai/benchmarks/vcb-1-100",
           "sourceType": "source-documented",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "originalModelName": "Qwen 3.8 Max 0902"
         },
         {
           "model": "GPT-5.6 Luna",
@@ -19491,7 +19570,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "Qwen 3.8 Max",
+          "model": "Qwen3.8 Max",
           "provider": "Alibaba",
           "score": 12.83,
           "effort": "not-reported",
@@ -19500,10 +19579,11 @@
           "evidence": "Vals AI Vibe Code Bench 1-100 leaderboard, updated 2026-10-29",
           "source": "https://www.vals.ai/benchmarks/vcb-1-100",
           "sourceType": "source-documented",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "originalModelName": "Qwen 3.8 Max"
         },
         {
-          "model": "MiniMax-M3",
+          "model": "MiniMax M3",
           "provider": "MiniMax",
           "score": 9.22,
           "effort": "not-reported",
@@ -19512,7 +19592,8 @@
           "evidence": "Vals AI Vibe Code Bench 1-100 leaderboard, updated 2026-10-29",
           "source": "https://www.vals.ai/benchmarks/vcb-1-100",
           "sourceType": "source-documented",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "originalModelName": "MiniMax-M3"
         },
         {
           "model": "Inkling",
@@ -19715,7 +19796,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "Qwen 3.8 Max",
+          "model": "Qwen3.8 Max",
           "provider": "Alibaba",
           "score": 42.5,
           "effort": "not-reported",
@@ -19724,7 +19805,8 @@
           "evidence": "Vals AI SWE-bench Multimodal leaderboard, updated 2026-10-29",
           "source": "https://www.vals.ai/benchmarks/swebench-multimodal",
           "sourceType": "source-documented",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "originalModelName": "Qwen 3.8 Max"
         },
         {
           "model": "MiMo V2.6 Pro",
@@ -19775,7 +19857,7 @@
           "snapshotDate": "2026-10-29"
         },
         {
-          "model": "MiniMax-M3",
+          "model": "MiniMax M3",
           "provider": "MiniMax",
           "score": 33.33,
           "effort": "not-reported",
@@ -19784,7 +19866,8 @@
           "evidence": "Vals AI SWE-bench Multimodal leaderboard, updated 2026-10-29",
           "source": "https://www.vals.ai/benchmarks/swebench-multimodal",
           "sourceType": "source-documented",
-          "snapshotDate": "2026-10-29"
+          "snapshotDate": "2026-10-29",
+          "originalModelName": "MiniMax-M3"
         },
         {
           "model": "Mistral Large 4",
@@ -23234,7 +23317,8 @@
       "Original source spellings are retained as originalModelName after canonical normalization.",
       "Routers, multi-agent systems and specialist formal provers remain visible in benchmark details but are excluded from the general-purpose composite.",
       "Pareto 26.10 Preview remains a historical preview result; stable model IDs are pareto and pareto-26.10.",
-      "NVIDIA Nemotron Super VL 3.5 is canonicalized to Nemotron 3.5 Super VL; the NVFP4 quantized variant remains distinct."
+      "NVIDIA Nemotron Super VL 3.5 is canonicalized to Nemotron 3.5 Super VL; the NVFP4 quantized variant remains distinct.",
+      "2026-11-01 consistency pass: spelling variants (case, spaces vs hyphens, lowercase API IDs) are merged to one display name per model; originals kept in originalModelName. Exact duplicates after merging were dropped. Same model and effort with different scores inside one benchmark are kept and flagged duplicateConflict until the source is checked."
     ]
   }
 }

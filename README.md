@@ -10,27 +10,29 @@ QBench keeps every result attached to its publisher, model variant, reasoning ef
 
 ## QBench Index 1.6
 
-### Current coverage — 2026-10-31
+### Current coverage — 2026-11-01
 
 | Metric | Result |
 |---|---:|
 | Eligible evaluations | 18 |
 | Capability families | 8 |
-| Base model names with at least one eligible result | 157 |
-| Exact model/effort variants with at least one eligible result | 209 |
+| Base model names with at least one eligible result | 142 |
+| Exact model/effort variants with at least one eligible result | 200 |
 | Ranked variants (3+ evaluations across 3+ families) | 73 |
 | Full evidence (all 8 families) | 0 |
 | Broad evidence (4–7 families) | 47 |
 | Limited evidence (3 families) | 26 |
-| Unranked variants | 136 |
+| Unranked variants | 127 |
 
-Counts come from the Index 1.6 runtime in the browser (2026-10-31).
+Counts come from the Index 1.6 runtime in the browser (2026-11-01, after the spelling merge below).
+
+**Spelling merge (2026-11-01):** 92 model-name spellings (for example `GPT 5.5` and `gpt-5.5`, `claude-opus-4-8`, `Gemini 3.1 Pro Preview` and `gemini-3.1-pro-preview`) were merged to one display name. This reduced base model names from 157 to 142 and variants from 209 to 200. Original spellings are kept in `originalModelName`. Nine same-model, same-effort duplicates inside one benchmark (FrontierMath v2, BFCL v4, HealthBench Professional) have different scores; they are kept and flagged `duplicateConflict` until the source is checked. None of these benchmarks is in the Index.
 
 **Model provenance (checked 2026-11-01):** Ember-1 is listed with provider Fireworks. Vercel's changelog (27 Sep 2026) describes it as "Ember-1 from Fireworks" and says it is "built on Kimi K3", so Fireworks is the brand and Moonshot AI's Kimi K3 is the base model. The provider field stays Fireworks. Sources: https://vercel.com/changelog/ember-1-from-fireworks-now-available-on-ai-gateway and https://openrouter.ai/models/fireworks/ember-1 A base model can appear as several effort variants, so the leaderboard ranks model variants, not base model names.
 
 ### What changed from the previous index
 
-- **Index 1.6:** six Vals AI evaluations are added: Excel Modeling v1.1 and HLAB-Vals-1.1 (Professional knowledge work), Code Migration v1.1, Vibe Code Bench 1-100 and SWE-bench Multimodal (Software engineering), and BioMysteryBench (Scientific workflows). Ranked variants were 74 right after this addition; the current build shows 73 after later name and provider corrections (the drop has not been re-audited variant by variant). Voice Code Bench (raw audio, not comparable to text tasks) and Immigration Bench (search and no-search conditions mixed, rows unlabeled) are excluded.
+- **Index 1.6:** six Vals AI evaluations are added: Excel Modeling v1.1 and HLAB-Vals-1.1 (Professional knowledge work), Code Migration v1.1, Vibe Code Bench 1-100 and SWE-bench Multimodal (Software engineering), and BioMysteryBench (Scientific workflows). Ranked variants were 74 right after this addition in an earlier run. In the 2026-11-01 build the count is 73 with the current code and data; the spelling merge did not change it. The source of the earlier 74 was not reproduced. Voice Code Bench (raw audio, not comparable to text tasks) and Immigration Bench (search and no-search conditions mixed, rows unlabeled) are excluded.
 - **Index 1.6:** two evaluations are added: ProgramBench (Software engineering, 64 variants, top 18.5%) and CyberBench v1.1 (new Cybersecurity family, 44 variants). Ranked variants rise from 50 to 73. Index 1.6 is the composite with eight families; the 1.4 gates are unchanged.
 - **Excluded from 1.5:** TaxEval v2, CorpFin v2 and MMMU Pro (archived; Vals AI reports them as saturated). IOI v2 (top 100%, at the ceiling). Public Benefits Bench v1.1 (a custom judge pipeline that uses one of the scored models as judge). LegalBench (151 rows, active, but no harness is stated).
 - **CyberBench exclusions:** Claude Opus 5.5 (CVP) and Claude Sonnet 5 (Cyber Range) are special-access configurations, and Daybreak Blue has no stated provider.
