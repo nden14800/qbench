@@ -1110,7 +1110,7 @@ function renderBenchGrid(){
   });
   $('#bgrid').innerHTML=list.map(function(b){
     var st=benchStatus(b.id);
-    return '<div class="col"><button type="button" class="bcard" data-bench="'+esc(b.id)+'" aria-pressed="'+(S.bench===b.id)+'"><div class="bt">'+esc(b.name)+'</div><div class="bm">'+st.n+' model/effort variants · snapshot '+esc(b.snapshotDate||'—')+'</div><div class="mt-2"><span class="badge '+st.c+'">'+esc(st.t)+'</span></div></button></div>';
+    return '<div class="col"><button type="button" class="bcard" data-bench="'+esc(b.id)+'" aria-pressed="'+(S.bench===b.id)+'"><div class="bt">'+esc(b.name)+'</div><div class="bm">'Version '+esc(b.version||'not stated')+' · '+st.n+' model/effort variants · snapshot '+esc(b.snapshotDate||'—')+'</div><div class="mt-2"><span class="badge '+st.c+'">'+esc(st.t)+'</span></div></button></div>';
   }).join('');
 }
 function parseTokens(s){
@@ -1127,7 +1127,7 @@ function renderBench(){
  if(!S.bench){$('#bench-title').textContent='Select a benchmark';$('#bench-sub').textContent='';host.innerHTML='';return;}
  var b=RESULT.byId[S.bench];if(!b)return;var st=benchStatus(b.id),source=b.source||'',costName='Cost per test (reported)';
  $('#bench-title').textContent=b.name;
- $('#bench-sub').innerHTML='Unit: '+esc(b.unit||'—')+' · '+esc(st.t)+' · '+st.n+' model/effort variants · '+(b.taskCount?b.taskCount+' tasks · ':'')+'snapshot '+esc(b.snapshotDate||'not stated')+' · <a href="'+esc(source)+'" target="_blank" rel="noopener">Benchmark source</a>';
+ $('#bench-sub').innerHTML='Unit: '+esc(b.unit||'—')+' · Version '+esc(b.version||'not stated')+' · '+esc(st.t)+' · '+st.n+' model/effort variants · '+(b.taskCount?b.taskCount+' tasks · ':'')+'snapshot '+esc(b.snapshotDate||'not stated')+' · <a href="'+esc(source)+'" target="_blank" rel="noopener">Benchmark source</a>';
  var allRows=(b.models||[]).filter(function(r){return !!r.model&&scoreOf(r)!==null;}).slice().sort(function(a,c){return scoreOf(c)-scoreOf(a);});
  if(!allRows.length){host.innerHTML='<div class="empty-qb"><strong>No published model scores are available in this snapshot.</strong><br><span class="text-muted-qb">The benchmark definition and original source are retained. Scores are shown only when a verifiable published result is available.</span></div>';return;}
  var top=allRows.slice(0,25),p=pal();
@@ -1203,14 +1203,21 @@ function renderMethod(){
  '<tr><td>Result rows with source URL</td><td class="text-end num">'+fmt(qa.rowsWithSource||0)+'</td><td class="text-end num">'+fmt(qa.resultRows||0)+'</td><td>Recorded</td></tr>'+
  '<tr><td>Result rows with source type</td><td class="text-end num">'+fmt(qa.rowsWithSourceType||0)+'</td><td class="text-end num">'+fmt(qa.resultRows||0)+'</td><td>Recorded</td></tr>'+
  '<tr><td>Result rows with snapshot date</td><td class="text-end num">'+fmt(qa.rowsWithSnapshotDate||0)+'</td><td class="text-end num">'+fmt(qa.resultRows||0)+'</td><td>Recorded</td></tr>'+
+ '<tr><td>Benchmarks with explicit version label</td><td class="text-end num">'+fmt(qa.benchmarksWithVersionLabel||0)+'</td><td class="text-end num">'+fmt((DATA.benchmarks||[]).length)+'</td><td>Partial · otherwise not stated</td></tr>'+
  '<tr><td>Result rows with harness</td><td class="text-end num">'+fmt(qa.rowsWithHarness||0)+'</td><td class="text-end num">'+fmt(qa.resultRows||0)+'</td><td>Recorded</td></tr>'+
  '<tr><td>Result rows with release date</td><td class="text-end num">'+fmt(qa.rowsWithReleaseDate||0)+'</td><td class="text-end num">'+fmt(qa.resultRows||0)+'</td><td>Partial</td></tr>'+
  '<tr><td>Result rows with explicit effort</td><td class="text-end num">'+fmt(qa.rowsWithExplicitEffort||0)+'</td><td class="text-end num">'+fmt(qa.resultRows||0)+'</td><td>Partial</td></tr>'+
  '<tr><td>API pricing entries</td><td class="text-end num">'+fmt(qa.pricingEntries||0)+'</td><td class="text-end num">'+fmt(qa.uniqueResultModelNames||0)+'</td><td>Partial model coverage</td></tr>'+
+ '<tr><td>Model catalog entries with context window</td><td class="text-end num">'+fmt(qa.catalogEntriesWithContextWindow||0)+'</td><td class="text-end num">'+fmt(qa.modelCatalogEntries||0)+'</td><td>Partial</td></tr>'+
+ '<tr><td>Model catalog entries with max output</td><td class="text-end num">'+fmt(qa.catalogEntriesWithMaxOutputTokens||0)+'</td><td class="text-end num">'+fmt(qa.modelCatalogEntries||0)+'</td><td>Partial</td></tr>'+
+ '<tr><td>Model catalog entries with API pricing</td><td class="text-end num">'+fmt(qa.catalogEntriesWithPricing||0)+'</td><td class="text-end num">'+fmt(qa.modelCatalogEntries||0)+'</td><td>Partial · region and tier rules retained</td></tr>'+
+ '<tr><td>Model catalog entries with cache pricing</td><td class="text-end num">'+fmt(qa.catalogEntriesWithCachePricing||0)+'</td><td class="text-end num">'+fmt(qa.modelCatalogEntries||0)+'</td><td>Partial</td></tr>'+
+ '<tr><td>Model catalog entries with reasoning-effort metadata</td><td class="text-end num">'+fmt(qa.catalogEntriesWithReasoningEffort||0)+'</td><td class="text-end num">'+fmt(qa.modelCatalogEntries||0)+'</td><td>Partial</td></tr>'+
  '<tr><td>Pricing entries with cache read / write rates</td><td class="text-end num">'+fmt((qa.pricingEntriesWithCacheRead||0)+(qa.pricingEntriesWithCacheWrite||0))+'</td><td class="text-end num">'+fmt((qa.pricingEntries||0)*2)+'</td><td>Not yet collected</td></tr>'+
  '<tr><td>Rows with context window / max output limits</td><td class="text-end num">'+fmt((qa.rowsWithContextWindow||0)+(qa.rowsWithMaxOutputTokens||0))+'</td><td class="text-end num">'+fmt((qa.resultRows||0)*2)+'</td><td>Not yet collected</td></tr>'+
  '</tbody></table></div>'+
- '<p class="small text-muted-qb mb-1">'+fmt(qa.resultRows||0)+' result rows across '+(DATA.benchmarks||[]).length+' datasets; '+fmt(qa.uniqueResultModelNames||0)+' distinct model display names. These names are not yet a verified canonical model-ID catalogue.</p>'+
+ '<p class="small text-muted-qb mb-1">'+fmt(qa.resultRows||0)+' result rows across '+(DATA.benchmarks||[]).length+' benchmark datasets; '+fmt(qa.uniqueResultModelNames||0)+' distinct result model display names; '+fmt(qa.modelCatalogEntries||0)+' source-verified API/model catalogue records, including '+fmt(qa.unrankedCatalogEntries||0)+' catalog-only models kept outside the leaderboard.</p>'+
+ '<p class="small text-muted-qb">Explicit version labels are available for '+fmt(qa.benchmarksWithVersionLabel||0)+' of '+(DATA.benchmarks||[]).length+' benchmarks. Where no version label is present in the published benchmark name or source metadata, QBench displays “Not stated” rather than inferring one. Snapshot-date completeness excludes unknown values.</p>'+
  '<p class="small text-muted-qb">Provider aliases normalized with source labels preserved: '+(qa.providerNameAliasesApplied||0)+'. Unresolved provider-name conflicts: '+(qa.providerNameConflicts||[]).length+'. Audit snapshot: '+esc(qa.asOf||'—')+'. API token prices are separate from measured task costs.</p>';
 
  $('#method').innerHTML='<h2 class="font-serif-jp mb-3">QBench Index 1.6 · Methodology</h2><p>Index 1.6 is a source-audited composite of '+RESULT.evals.length+' evaluations across '+familyCount+' capability families. Each included evaluation is reviewed against its publisher source and execution conditions. After deduplication and evaluation-specific filters, it must contain at least '+ext.minimumModelsPerEvaluation+' distinct model/effort variants. This gate does not mean every model was measured on every benchmark. Each exact model/effort variant is a separate entry. No external composite score or proprietary weight is imported.</p>'+
