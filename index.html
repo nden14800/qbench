@@ -83,7 +83,7 @@ body{font-family:"DM Sans","Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sys
 .bench-results td:first-child{min-width:145px;font-weight:600}
 .bench-results td:last-child{min-width:170px}
 .bench-results details summary{cursor:pointer;color:var(--qb-accent)}
-@media(max-width:767.98px){main.container-xl{padding-left:12px;padding-right:12px}.navbar .nav{width:100%;order:3;flex-wrap:nowrap;overflow-x:auto;white-space:nowrap}.navbar .ms-auto{position:absolute;right:12px;top:12px}#index-table-wrap{overflow-x:visible}#index-table{table-layout:fixed;width:100%}#index-head th:nth-child(3),#index-body td:nth-child(3),#index-head th:nth-child(5),#index-body td:nth-child(5),#index-head th:nth-child(6),#index-body td:nth-child(6),#index-head th:nth-child(7),#index-body td:nth-child(7),#index-head th:nth-child(8),#index-body td:nth-child(8),#index-head th:nth-child(10),#index-body td:nth-child(10){display:none}#index-head th:nth-child(1),#index-body td:nth-child(1){width:2.5rem}#index-head th:nth-child(2),#index-body td:nth-child(2){width:44%}#index-head th:nth-child(4),#index-body td:nth-child(4){width:5.4rem}#index-head th:nth-child(9),#index-body td:nth-child(9){width:4rem}#chart-tabs{flex-wrap:nowrap;overflow-x:auto}#chart-tabs .nav-link{white-space:nowrap;font-size:.78rem;padding:.45rem .58rem}.table{font-size:.78rem}}
+@media(max-width:767.98px){main.container-xl{padding-left:12px;padding-right:12px}.navbar .nav{width:100%;order:3;flex-wrap:nowrap;overflow-x:auto;white-space:nowrap}.navbar .ms-auto{position:absolute;right:12px;top:12px}#index-table-wrap{overflow-x:visible}#index-table{table-layout:fixed;width:100%}#index-head th:nth-child(3),#index-body td:nth-child(3){display:none}#index-head th:nth-child(2),#index-body td:nth-child(2){width:44%}#index-head th:nth-child(1),#index-body td:nth-child(1){width:2.5rem}#index-head th:nth-child(4),#index-body td:nth-child(4){width:5.4rem}#chart-tabs{flex-wrap:nowrap;overflow-x:auto}#chart-tabs .nav-link{white-space:nowrap;font-size:.78rem;padding:.45rem .58rem}.table{font-size:.78rem}}
 .prose-qb h3{font-size:1.05rem;font-weight:700;margin:1.6rem 0 .5rem}
 .prose-qb li{margin:.3rem 0}
 .empty-qb{padding:2.5rem 1rem;text-align:center;color:var(--qb-muted)}
@@ -166,6 +166,14 @@ footer{font-size:.8rem;color:var(--qb-muted)}
           <div class="form-check form-switch m-0">
             <input class="form-check-input" type="checkbox" id="show-unranked">
             <label class="form-check-label small" for="show-unranked">Include unranked</label>
+          </div>
+          <div class="form-check form-switch m-0">
+            <input class="form-check-input" type="checkbox" id="show-fam">
+            <label class="form-check-label small" for="show-fam">Family scores</label>
+          </div>
+          <div class="form-check form-switch m-0">
+            <input class="form-check-input" type="checkbox" id="show-price">
+            <label class="form-check-label small" for="show-price">Prices</label>
           </div>
         </div>
       </div>
@@ -395,7 +403,7 @@ function makeChoice(host,options,value,onChange,label){
 }
 
 /* ---------- state ---------- */
-var S={sort:'index',dir:-1,provider:'all',effort:'all',q:'',showUnranked:false,mq:'',mSort:'index',mDir:-1,selected:[],bench:null,pareto:true,quadrant:false,chart:'composition',barsN:'20',barsValues:false};
+var S={sort:'index',dir:-1,provider:'all',effort:'all',q:'',showUnranked:false,mq:'',mSort:'index',mDir:-1,selected:[],bench:null,pareto:true,quadrant:false,chart:'composition',barsN:'20',barsValues:false,barsPick:[],famCols:false,priceCols:false};
 
 /* ---------- stats & static text ---------- */
 function renderStats(){
@@ -448,8 +456,11 @@ function renderSummaryCards(ranked,top,baseModels,full,broad,limited,unranked){
 /* ---------- index table ---------- */
 
 function indexColumns(){
- return [{k:'rank',l:'#',num:true},{k:'model',l:'Model'},{k:'effort',l:'Effort'},{k:'provider',l:'Provider'},{k:'index',l:'Index 1.6',num:true}]
- .concat(RESULT.domains.map(function(d){return {k:'d:'+d,l:d,num:true};})).concat([{k:'coverage',l:'Evals',num:true},{k:'inputPrice',l:'Input / 1M',num:true},{k:'outputPrice',l:'Output / 1M',num:true}]);
+ var base=[{k:'rank',l:'#',num:true},{k:'model',l:'Model'},{k:'effort',l:'Effort'},{k:'provider',l:'Provider'},{k:'index',l:'Index 1.6',num:true}];
+ var fam=S.famCols?RESULT.domains.map(function(d){return {k:'d:'+d,l:d,num:true};}):[];
+ var tail=[{k:'coverage',l:'Evals',num:true}];
+ var price=S.priceCols?[{k:'inputPrice',l:'Input / 1M',num:true},{k:'outputPrice',l:'Output / 1M',num:true}]:[];
+ return base.concat(fam).concat(tail).concat(price);
 }
 function sortVal(r,k){
  if(k==='rank')return r.rank;if(k==='model')return r.model;if(k==='effort')return r.effort;if(k==='provider')return r.provider;if(k==='index')return r.index;if(k==='coverage')return r.coverage;if(k==='inputPrice')return r.priceInput;if(k==='outputPrice')return r.priceOutput;
@@ -470,13 +481,17 @@ function renderIndex(){
  else $('#index-body').innerHTML=rows.map(function(r){
   var w=Math.max(0,Math.min(100,r.index||0))*0.6,evidence=r.rankTier==='full'?'full evidence':r.rankTier==='broad'?'broad evidence':'limited evidence';
   var status=r.ranked?' <span class="badge rounded-pill text-bg-light text-secondary border fw-normal">'+evidence+'</span>':' <span class="badge rounded-pill text-bg-secondary fw-normal">insufficient evidence</span>';
-  var cells=['<td class="text-end num">'+(r.ranked?r.rank:'—')+'</td>','<td class="fw-semibold"><button type="button" class="qb-model-link" data-model-detail="'+esc(r.variantId)+'">'+esc(r.model)+'</button>'+modelKindBadge(r)+status+'</td>',
-   '<td>'+esc(r.effort==='not-reported'?'Not reported':r.effort)+'</td>','<td>'+esc(r.provider)+'</td>','<td class="text-end num"><strong>'+fmt(r.index,1)+'</strong><span class="index-bar" style="width:'+w+'px"></span></td>'];
-  RESULT.domains.forEach(function(d){cells.push('<td class="text-end num">'+fmt(r.domains[d],1)+'</td>');});
-  cells.push('<td class="text-end num">'+r.coverage+' / '+RESULT.evals.length+'</td>');
-  cells.push('<td class="text-end num" title="'+esc(r.priceNote||r.priceSource||'')+'">'+priceText(r.priceInput,r.priceCurrency)+priceSourceNote(r)+'</td>');
-  cells.push('<td class="text-end num" title="'+esc(r.priceNote||r.priceSource||'')+'">'+priceText(r.priceOutput,r.priceCurrency)+priceSourceNote(r)+'</td>');
-  return '<tr class="'+(r.ranked?'':'is-unranked')+'">'+cells.join('')+'</tr>';
+  var cells=[['rank','<td class="text-end num">'+(r.ranked?r.rank:'—')+'</td>'],
+   ['model','<td class="fw-semibold"><button type="button" class="qb-model-link" data-model-detail="'+esc(r.variantId)+'">'+esc(r.model)+'</button>'+modelKindBadge(r)+status+'</td>'],
+   ['effort','<td>'+esc(r.effort==='not-reported'?'Not reported':r.effort)+'</td>'],['provider','<td>'+esc(r.provider)+'</td>'],
+   ['index','<td class="text-end num"><strong>'+fmt(r.index,1)+'</strong><span class="index-bar" style="width:'+w+'px"></span></td>']];
+  RESULT.domains.forEach(function(d){if(S.famCols)cells.push(['d:'+d,'<td class="text-end num">'+fmt(r.domains[d],1)+'</td>']);});
+  cells.push(['coverage','<td class="text-end num">'+r.coverage+' / '+RESULT.evals.length+'</td>']);
+  if(S.priceCols){
+   cells.push(['inputPrice','<td class="text-end num" title="'+esc(r.priceNote||r.priceSource||'')+'">'+priceText(r.priceInput,r.priceCurrency)+priceSourceNote(r)+'</td>']);
+   cells.push(['outputPrice','<td class="text-end num" title="'+esc(r.priceNote||r.priceSource||'')+'">'+priceText(r.priceOutput,r.priceCurrency)+priceSourceNote(r)+'</td>']);
+  }
+  return '<tr class="'+(r.ranked?'':'is-unranked')+'">'+cells.map(function(c){return c[1];}).join('')+'</tr>';
  }).join('');
  $('#index-note').innerHTML='<strong>Scoring:</strong> QBench retains source-reported 0–100 task-success/accuracy percentages; it does not convert ranks into 90–100 scores. '+RESULT.domains.length+' capability families receive equal weight. Index = mean of the observed family means; missing families are not imputed or pulled toward 50. Each exact effort setting is a separate model variant. A rank requires '+(DATA.composite.extendedIndex.minimumEvaluationsPerModel||3)+' evaluations across '+(DATA.composite.extendedIndex.minimumDomainsPerModel||3)+' families. Missing results and effort labels are never imputed. API token prices are shown separately and are not cost per task.';
 }
@@ -540,17 +555,24 @@ function renderComposition(host){
 function renderBars(host){
   var all=RESULT.rows.filter(function(r){return r.ranked&&r.index!=null;}).slice().sort(function(a,b){return b.index-a.index;});
   if(!all.length){emptyChart(host,'No ranked variant is available.');return;}
-  var n=S.barsN==='all'?all.length:Math.min(all.length,Number(S.barsN)||20), rows=all.slice(0,n);
+  var picked=S.barsPick.length?all.filter(function(r){return S.barsPick.indexOf(r.variantId)>=0;}):null;
+  var n=S.barsN==='all'?all.length:Math.min(all.length,Number(S.barsN)||20), rows=picked||all.slice(0,n);
   var p=pal();
+  if(picked&&!picked.length){emptyChart(host,'No selected variant is ranked. Choose models below or clear the selection.');}
+  var pickList=all.map(function(r){var on=S.barsPick.indexOf(r.variantId)>=0;return '<label class="d-flex align-items-center gap-2 py-1 text-nowrap"><input class="form-check-input m-0" type="checkbox" data-pick="'+esc(r.variantId)+'"'+(on?' checked':'')+'><span>'+esc(r.variantLabel)+' <span class="text-muted-qb">'+fmt(r.index,1)+'</span></span></label>';}).join('');
   host.innerHTML='<div class="d-flex flex-wrap align-items-center gap-3 mb-2 small">'+
-    '<label class="d-flex align-items-center gap-2">Show top <select class="form-select form-select-sm" id="bars-n" style="width:auto">'+
+    '<label class="d-flex align-items-center gap-2">Show top <select class="form-select form-select-sm" id="bars-n" style="width:auto"'+(picked?' disabled':'')+'>'+
       ['10','20','30','all'].map(function(v){return '<option value="'+v+'"'+(String(S.barsN)===v?' selected':'')+'>'+(v==='all'?'all ('+all.length+')':v)+'</option>';}).join('')+
     '</select></label>'+
+    '<details class="position-relative"><summary class="btn btn-sm btn-outline-secondary">Choose models'+(S.barsPick.length?' ('+S.barsPick.length+')':'')+'</summary>'+
+      '<div class="card position-absolute p-2 shadow-sm" style="z-index:5;max-height:300px;overflow:auto;min-width:260px">'+pickList+
+      '<button type="button" class="btn btn-sm btn-link p-0 mt-1" id="bars-clear">Clear selection</button></div></details>'+
     '<div class="form-check form-switch m-0"><input class="form-check-input" type="checkbox" id="bars-values"'+(S.barsValues?' checked':'')+'><label class="form-check-label" for="bars-values">Show values on bars</label></div>'+
-    '<span class="text-muted-qb">Showing '+rows.length+' of '+all.length+' ranked variants</span></div>'+
+    '<span class="text-muted-qb">'+(picked?'Custom selection: '+rows.length+' of '+all.length+' ranked variants':'Showing '+rows.length+' of '+all.length+' ranked variants')+'</span></div>'+
     '<div id="chart-main-el" style="height:'+Math.max(420,rows.length>20?520:420)+'px"></div>'+
     '<div class="notice-qb">Bars show the Index 1.6 score for each ranked variant. Effort variants are separate rows; unreported effort is not merged.</div>';
   var c=chartInit('chart-main-el');
+  if(!c||!rows.length)return;
   c.setOption({animation:false,grid:{left:56,right:18,top:24,bottom:140},
     tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(ps){var r=rows[ps[0].dataIndex];return esc(r.variantLabel)+'<br>Index '+fmt(r.index,1)+'<br>Families observed: '+r.domainCount+' / '+RESULT.domains.length;}},
     xAxis:catAxis(p,{type:'category',data:rows.map(scatterLabel)},{rotate:50,interval:0,fontSize:11,width:130,overflow:'truncate'}),
@@ -689,6 +711,14 @@ function renderConsistency(host){
 document.addEventListener('change',function(e){
   if(e.target.id==='bars-n'){S.barsN=e.target.value;renderChart();}
   if(e.target.id==='bars-values'){S.barsValues=e.target.checked;renderChart();}
+  if(e.target.dataset&&e.target.dataset.pick){
+    var id=e.target.dataset.pick;
+    S.barsPick=e.target.checked?S.barsPick.concat([id]):S.barsPick.filter(function(x){return x!==id;});
+    renderChart();
+  }
+});
+document.addEventListener('click',function(e){
+  if(e.target.id==='bars-clear'){S.barsPick=[];renderChart();}
 });
 function renderChart(){
   var host=$('#chart-main');
@@ -938,6 +968,8 @@ $('#q').addEventListener('input',function(e){S.q=e.target.value;renderIndex();})
 $('#mq').addEventListener('input',function(e){S.mq=e.target.value;renderModels();});
 $('#price-search').addEventListener('input',function(){renderPriceCatalog();});
 $('#show-unranked').addEventListener('change',function(e){S.showUnranked=e.target.checked;renderIndex();});
+$('#show-fam').addEventListener('change',function(e){S.famCols=e.target.checked;renderIndex();});
+$('#show-price').addEventListener('change',function(e){S.priceCols=e.target.checked;renderIndex();});
 $('#pareto').addEventListener('change',function(e){S.pareto=e.target.checked;renderChart();});
 $('#quadrant').addEventListener('change',function(e){S.quadrant=e.target.checked;renderChart();});
 $('#mcsv').addEventListener('click',csvOut);
