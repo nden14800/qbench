@@ -584,25 +584,29 @@ function renderBars(host){
 function renderEvalGrid(host){
   var p=pal(), benchById={};
   (DATA.benchmarks||[]).forEach(function(b){benchById[b.id]=b;});
-  var inTable=new Set(RESULT.rows.filter(function(r){return $('#show-unranked')&&$('#show-unranked').checked?true:r.ranked;}).map(function(r){return r.variantId;}));
+  /* Every scored result is shown so no evaluation panel is empty; unranked variants are labelled. */
+  var rankedSet=new Set(RESULT.rows.filter(function(r){return r.ranked;}).map(function(r){return r.variantId;}));
   var panels=RESULT.evals.map(function(e){
-    var all=(benchById[e.id]&&benchById[e.id].models||[]).filter(function(r){return r.score!=null&&inTable.has(variantId(r.model,effortOf(r)));});
-    var rows=all.slice().sort(function(a,b){return b.score-a.score;}).slice(0,10);
-    return {e:e,rows:rows,total:all.length};
+    var all=(benchById[e.id]&&benchById[e.id].models||[]).filter(function(r){return r.score!=null;});
+    var rows=all.slice().sort(function(a,b){return b.score-a.score;}).slice(0,10).map(function(r){
+      return Object.assign({},r,{_ranked:rankedSet.has(variantId(r.model,effortOf(r)))});
+    });
+    var unranked=all.filter(function(r){return !rankedSet.has(variantId(r.model,effortOf(r)));}).length;
+    return {e:e,rows:rows,total:all.length,unranked:unranked};
   });
   host.innerHTML='<div class="row row-cols-1 row-cols-lg-2 g-3">'+panels.map(function(c,i){
     return '<div class="col"><div class="card h-100"><div class="card-body">'+
       '<div class="fw-semibold">'+esc(c.e.name)+'</div>'+
-      '<div class="text-muted-qb small mb-2">'+esc(c.e.domain||'')+' · top '+c.rows.length+' of '+c.total+' model/effort variants</div>'+
+      '<div class="text-muted-qb small mb-2">'+esc(c.e.domain||'')+' · top '+c.rows.length+' of '+c.total+' model/effort variants'+(c.unranked?' · '+c.unranked+' unranked':'')+'</div>'+
       '<div id="eg-'+i+'" style="height:320px"></div>'+
       '</div></div></div>';
   }).join('')+'</div>'+
-  '<div class="notice-qb mt-3">Each panel uses that evaluation\'s native percentage. Panels are not averaged together; use the Index bars view for the composite.</div>';
+  '<div class="notice-qb mt-3">Each panel uses that evaluation\'s native percentage. Panels are not averaged together; use the Index bars view for the composite. Variants marked “unranked” have fewer than the minimum evaluations for an Index score, but their result is shown here so every evaluation has data.</div>';
   panels.forEach(function(c,i){
     var chart=chartInit('eg-'+i); if(!chart)return;
     chart.setOption({animation:false,grid:{left:44,right:12,top:26,bottom:118},
-      tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(ps){var r=c.rows[ps[0].dataIndex];return esc(scatterLabel(r))+'<br>'+esc(c.e.name)+': '+fmt(r.score,1)+'%';}},
-      xAxis:catAxis(p,{type:'category',data:c.rows.map(scatterLabel)},{rotate:50,interval:0,fontSize:10,width:120,overflow:'truncate'}),
+      tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(ps){var r=c.rows[ps[0].dataIndex];return esc(scatterLabel(r))+(r._ranked?'':' (unranked)')+'<br>'+esc(c.e.name)+': '+fmt(r.score,1)+'%';}},
+      xAxis:catAxis(p,{type:'category',data:c.rows.map(function(r){return scatterLabel(r)+(r._ranked?'':' · unranked');})},{rotate:50,interval:0,fontSize:10,width:120,overflow:'truncate'}),
       yAxis:Object.assign({type:'value',min:0,axisLabel:{formatter:'{value}%'}},axisStyle(p)),
       series:[{type:'bar',barWidth:'55%',data:c.rows.map(function(r){return {value:+Number(r.score).toFixed(1),itemStyle:{color:providerColor(r.provider),borderRadius:[4,4,0,0]}};}),
         label:{show:true,position:'top',formatter:function(e){return fmt(e.value,1);},color:p.ink,fontSize:10}}]});
