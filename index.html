@@ -933,7 +933,12 @@ function renderEfficiency(){
  }
  $('#efficiency-note').textContent=bench.name+' · '+metric.label+' · '+points.length+' measured model rows shown. Values are compared only within this benchmark snapshot and its stated harness. No missing metric is estimated.';
  $('#efficiency-body').innerHTML=rows.length?rows.map(function(r){
-  var cost=r.costPerTestUSD!=null?'
+  var cost=r.costPerTestUSD!=null?'$'+fmt(r.costPerTestUSD,4):'—';
+   var success=r.costPerSuccessfulTaskUSD!=null?'$'+fmt(r.costPerSuccessfulTaskUSD,4):'—';
+   var duration=r.durationPerTestDisplay||'—',tokens=r.tokensPerTestDisplay||'—';
+   return '<tr><td class="fw-semibold">'+esc(r.model)+'</td><td>'+esc(r.provider||'Unknown')+'</td><td>'+esc(effortOf(r))+'</td><td class="text-end num">'+fmt(scoreOf(r),2)+'</td><td class="text-end num">'+cost+'</td><td class="text-end num">'+success+'</td><td class="text-end num">'+esc(duration)+'</td><td class="text-end num">'+esc(tokens)+'</td><td><a href="'+esc(r.source||bench.source||'#')+'" target="_blank" rel="noopener">Source</a></td></tr>';
+  }).join(''):'<tr><td colspan="9" class="empty-qb">No measured rows match.</td></tr>';
+}
 function renderPriceCatalog(){
   var list=((DATA.apiPricing&&DATA.apiPricing.models)||[]).slice();
   var q=($('#price-search')&&$('#price-search').value||'').trim().toLowerCase();
