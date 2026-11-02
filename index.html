@@ -244,26 +244,21 @@ footer{line-height:1.8}
 .view[data-view="benchmarks"] #bgrid>.col{width:auto;max-width:none}
 .view[data-view="benchmarks"] .bcard{min-height:0;padding:13px 14px}
 .view[data-view="providers"]>.page-heading,.view[data-view="efficiency"]>.page-heading{grid-column:1/-1}
-.view[data-view="providers"],.view[data-view="efficiency"]{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);align-items:start}
-.view[data-view="providers"]>.card,.view[data-view="efficiency"]>.card{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);align-items:stretch}
-.view[data-view="providers"]>.card>.card-header,.view[data-view="efficiency"]>.card>.card-header{grid-column:1/-1}
-.view[data-view="providers"]>.card>.card-body,.view[data-view="efficiency"]>.card>.card-body{grid-column:1;grid-row:2}
-.view[data-view="providers"]>.card>.table-responsive,.view[data-view="efficiency"]>.card>.table-responsive{grid-column:2;grid-row:2;max-height:690px;overflow:auto;border-left:1px solid var(--qb-border)}
-.view[data-view="providers"]>.card>.table-responsive .table,.view[data-view="efficiency"]>.card>.table-responsive .table{min-width:650px}
+/* Providers and Efficiency use the full content width; chart and table stack cleanly. */
+.view[data-view="providers"],.view[data-view="efficiency"]{grid-template-columns:minmax(0,1fr);align-items:stretch}
+.view[data-view="providers"]>.page-heading,.view[data-view="efficiency"]>.page-heading{grid-column:1}
+.view[data-view="providers"]>.card,.view[data-view="efficiency"]>.card{display:block;width:100%;min-width:0;grid-column:1}
+.view[data-view="providers"]>.card>.card-header,.view[data-view="efficiency"]>.card>.card-header{width:100%}
+.view[data-view="providers"]>.card>.card-body,.view[data-view="efficiency"]>.card>.card-body{width:100%;min-width:0}
+.view[data-view="providers"]>.card>.table-responsive,.view[data-view="efficiency"]>.card>.table-responsive{width:100%;max-height:620px;overflow:auto;border-top:1px solid var(--qb-border);border-left:0}
+.view[data-view="providers"]>.card>.table-responsive .table,.view[data-view="efficiency"]>.card>.table-responsive .table{min-width:760px}
 .view[data-view="providers"]>.card>.table-responsive thead th,.view[data-view="efficiency"]>.card>.table-responsive thead th{position:sticky;top:0}
-@media(max-width:1050px){
- .view[data-view="providers"],.view[data-view="efficiency"]{grid-template-columns:minmax(0,1fr)}
- .view[data-view="providers"]>.card,.view[data-view="efficiency"]>.card{grid-template-columns:minmax(0,1fr)}
- .view[data-view="providers"]>.card>.card-body,.view[data-view="efficiency"]>.card>.card-body{grid-column:1;grid-row:2}
- .view[data-view="providers"]>.card>.table-responsive,.view[data-view="efficiency"]>.card>.table-responsive{grid-column:1;grid-row:3;border-left:0;border-top:1px solid var(--qb-border)}
-}
 @media(max-width:767.98px){
  .view[data-view="models"]{grid-template-columns:minmax(0,1fr)}
  #price-catalog-card,#official-model-inventory,#model-results-card,#compare-card{grid-column:1}
  .view[data-view="benchmarks"]{grid-template-columns:minmax(0,1fr)}
  #benchmark-directory-card{position:static;max-height:none}
  .view[data-view="benchmarks"] #bgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
- .view[data-view="providers"]>.card,.view[data-view="efficiency"]>.card{display:block}
  .view[data-view="providers"]>.card>.table-responsive,.view[data-view="efficiency"]>.card>.table-responsive{max-height:560px}
 }
 
@@ -325,6 +320,11 @@ main.container-xl{padding-top:25px!important}.view{gap:16px;min-width:0}
 }
 @media(prefers-reduced-motion:reduce){.view{animation:none!important}.bcard{transition:none!important}}
 
+
+/* ECharts must never inherit a collapsed grid/flex row as its drawing height. */
+#provider-chart,#efficiency-chart,#radar-el,#chart-main-el,.qb-chart-stage [id$="-el"],[id^="bench-"][id$="-el"]{
+ min-height:340px!important;min-width:0;box-sizing:border-box;flex-shrink:0
+}
 </style>
 </head>
 <body>
@@ -815,14 +815,39 @@ function renderIndex(){
 /* ---------- charts (ECharts) ---------- */
 
 var ECH={},ECH_OBS={};
+function chartMinimumHeight(el){
+ if(!el)return 340;
+ var inline=parseFloat(el.style&&el.style.height)||0;
+ var declared=parseFloat(el.style&&el.style.minHeight)||0;
+ return Math.max(340,inline,declared);
+}
+function resizeChartSafely(chart,el,width,height){
+ if(!chart||chart.isDisposed()||!el||width<16)return;
+ var minHeight=chartMinimumHeight(el);
+ if(height<minHeight){
+  el.style.minHeight=minHeight+'px';
+  height=minHeight;
+ }
+ chart.resize({width:Math.round(width),height:Math.round(height)});
+}
 function bindChartResize(id,el,chart){
  if(!el||!chart||typeof ResizeObserver==='undefined')return;
  if(ECH_OBS[id]&&ECH_OBS[id].el===el)return;
  if(ECH_OBS[id]){try{ECH_OBS[id].observer.disconnect();}catch(e){}delete ECH_OBS[id];}
+ var pending=0,lastWidth=0,lastHeight=0;
  var observer=new ResizeObserver(function(entries){
   var box=entries&&entries[0]&&entries[0].contentRect;
-  if(!box||box.width<16||box.height<16||chart.isDisposed())return;
-  requestAnimationFrame(function(){if(!chart.isDisposed())chart.resize({width:Math.round(box.width),height:Math.round(box.height)});});
+  if(!box||box.width<16||chart.isDisposed())return;
+  lastWidth=box.width;lastHeight=box.height;
+  if(pending)return;
+  pending=requestAnimationFrame(function(){
+   pending=0;
+   if(chart.isDisposed())return;
+   var rect=el.getBoundingClientRect();
+   var width=rect.width||lastWidth;
+   var height=Math.max(rect.height||lastHeight,chartMinimumHeight(el));
+   resizeChartSafely(chart,el,width,height);
+  });
  });
  observer.observe(el);ECH_OBS[id]={el:el,observer:observer};
 }
@@ -830,7 +855,7 @@ function resizeVisibleCharts(){
  Object.keys(ECH).forEach(function(id){
   var chart=ECH[id];if(!chart||chart.isDisposed())return;
   var el=chart.getDom(),r=el&&el.getBoundingClientRect();
-  if(r&&r.width>16&&r.height>16)chart.resize({width:Math.round(r.width),height:Math.round(r.height)});
+  if(r&&r.width>16)resizeChartSafely(chart,el,r.width,Math.max(r.height,chartMinimumHeight(el)));
  });
 }
 function sharedScatterControls(el){
