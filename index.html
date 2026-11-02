@@ -1714,8 +1714,9 @@ function renderCommandResults(query){
   ['efficiency','Efficiency','Measured task cost, time and tokens','bi-speedometer2'],
   ['methodology','Methodology','Index formula, gates and data quality','bi-journal-text']
  ],pageMatches=pages.filter(function(p){return !q||(p[1]+' '+p[2]).toLowerCase().indexOf(q)>=0;});
- var models=q?RESULT.rows.filter(function(r){return (r.model+' '+r.provider+' '+r.effort).toLowerCase().indexOf(q)>=0;}).slice(0,8):[];
- var catalog=q?(DATA.modelCatalog||[]).filter(function(m){return (m.displayName+' '+m.provider+' '+(m.apiModelId||'')).toLowerCase().indexOf(q)>=0;}).slice(0,4):[];
+ var modelRows=(RESULT&&RESULT.rows)||[],catalogRows=(DATA&&DATA.modelCatalog)||[];
+ var models=q?modelRows.filter(function(r){return (r.model+' '+r.provider+' '+r.effort).toLowerCase().indexOf(q)>=0;}).slice(0,8):[];
+ var catalog=q?catalogRows.filter(function(m){return (m.displayName+' '+m.provider+' '+(m.apiModelId||'')).toLowerCase().indexOf(q)>=0;}).slice(0,4):[];
  var html='';
  if(pageMatches.length){html+='<div class="command-group-label">Workspace</div>'+pageMatches.map(function(p){return '<button type="button" class="command-item" data-command-nav="'+p[0]+'"><span class="command-icon"><i class="bi '+p[3]+'" aria-hidden="true"></i></span><span><span class="command-title">'+p[1]+'</span><span class="command-meta">'+p[2]+'</span></span></button>';}).join('');}
  if(models.length){html+='<div class="command-group-label">Benchmark results · model variants</div>'+models.map(function(r){return '<button type="button" class="command-item" data-command-model="'+esc(r.variantId)+'"><span class="command-icon"><i class="bi bi-cpu" aria-hidden="true"></i></span><span><span class="command-title">'+esc(r.model)+'</span><span class="command-meta">'+esc(r.provider)+' · '+esc(r.effort==='not-reported'?'Effort not reported':r.effort)+' · '+(r.index==null?'Not ranked':'Index '+fmt(r.index,1))+'</span></span></button>';}).join('');}
@@ -1737,6 +1738,16 @@ function renderCompareDock(){
 }
 document.getElementById('command-open').addEventListener('click',openCommandPalette);
 document.getElementById('command-query').addEventListener('input',function(e){renderCommandResults(e.target.value);});
+document.getElementById('command-query').addEventListener('keydown',function(e){
+ if(e.key==='ArrowDown'){var first=document.querySelector('#command-results .command-item');if(first){e.preventDefault();first.focus();}}
+ if(e.key==='Enter'){var items=document.querySelectorAll('#command-results .command-item');if(items.length===1){e.preventDefault();items[0].click();}else if(items.length){e.preventDefault();items[0].focus();}}
+});
+document.getElementById('command-results').addEventListener('keydown',function(e){
+ if(e.key!=='ArrowDown'&&e.key!=='ArrowUp')return;
+ var items=Array.prototype.slice.call(this.querySelectorAll('.command-item')),at=items.indexOf(document.activeElement);e.preventDefault();
+ if(e.key==='ArrowDown')items[Math.min(items.length-1,at+1)]?.focus();
+ else if(at<=0)document.getElementById('command-query').focus();else items[at-1].focus();
+});
 document.addEventListener('keydown',function(e){
  if((e.metaKey||e.ctrlKey)&&String(e.key).toLowerCase()==='k'){e.preventDefault();openCommandPalette();}
 });
