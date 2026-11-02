@@ -239,7 +239,7 @@ footer{line-height:1.8}
 #official-model-inventory{grid-column:2}
 .view[data-view="benchmarks"]{grid-template-columns:minmax(265px,.78fr) minmax(0,1.55fr);align-items:start}
 .view[data-view="benchmarks"]>.page-heading{grid-column:1/-1}
-.view[data-view="benchmarks"]>.card:first-of-type{position:sticky;top:128px;max-height:calc(100vh - 148px);overflow:auto}
+#benchmark-directory-card{position:sticky;top:128px;max-height:calc(100vh - 148px);overflow:auto}
 .view[data-view="benchmarks"] #bgrid{display:grid!important;grid-template-columns:1fr;gap:8px}
 .view[data-view="benchmarks"] #bgrid>.col{width:auto;max-width:none}
 .view[data-view="benchmarks"] .bcard{min-height:0;padding:13px 14px}
@@ -261,7 +261,7 @@ footer{line-height:1.8}
  .view[data-view="models"]{grid-template-columns:minmax(0,1fr)}
  #price-catalog-card,#official-model-inventory,#model-results-card,#compare-card{grid-column:1}
  .view[data-view="benchmarks"]{grid-template-columns:minmax(0,1fr)}
- .view[data-view="benchmarks"]>.card:first-of-type{position:static;max-height:none}
+ #benchmark-directory-card{position:static;max-height:none}
  .view[data-view="benchmarks"] #bgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
  .view[data-view="providers"]>.card,.view[data-view="efficiency"]>.card{display:block}
  .view[data-view="providers"]>.card>.table-responsive,.view[data-view="efficiency"]>.card>.table-responsive{max-height:560px}
@@ -472,7 +472,7 @@ footer{line-height:1.8}
   <!-- BENCHMARKS -->
   <section class="view" data-view="benchmarks" aria-label="Benchmarks" hidden>
     <div class="page-heading"><div><div class="page-eyebrow">EVALUATION LIBRARY</div><h1 class="page-title">Benchmark <span>directory</span></h1><p class="page-description">Browse source-audited evaluations, versions, snapshots and model-level results. Select any benchmark to inspect its underlying evidence.</p></div><div class="page-heading-aside"><div class="label">EVIDENCE FIRST</div><strong>Publisher-level results</strong><small>Version and snapshot metadata<br>Eligibility shown explicitly</small></div></div>
-    <div class="card mb-3">
+    <div class="card mb-3" id="benchmark-directory-card">
       <div class="card-header py-3">
         <h2 class="card-title-qb">Benchmark directory</h2>
         <div class="text-muted-qb small mt-1">Select a benchmark to see its model scores. The status shows whether it enters the index.</div>
