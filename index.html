@@ -364,6 +364,7 @@ footer.container-xl{padding-top:20px!important;padding-bottom:28px!important}
  .choice{min-width:0;width:100%}
 }
 
+.scatter-options{padding:13px;border:1px solid var(--bs-border-color);border-radius:7px;background:var(--bs-tertiary-bg)}.scatter-options .form-label{font-weight:650;color:var(--qb-muted)}.scatter-options .form-select{font-size:.76rem;min-height:35px}
 </style>
 </head>
 <body>
@@ -433,29 +434,23 @@ footer.container-xl{padding-top:20px!important;padding-bottom:28px!important}
 
     <div class="card">
       <div class="card-header py-2">
-        <ul class="nav nav-tabs card-header-tabs" id="chart-tabs" role="tablist">
-          <li class="nav-item"><button class="nav-link active" type="button" data-chart="composition" role="tab">Composition</button></li>
-          <li class="nav-item"><button class="nav-link" type="button" data-chart="bars" role="tab">Index bars</button></li>
-          <li class="nav-item"><button class="nav-link" type="button" data-chart="evalgrid" role="tab">Evaluation grid</button></li>
-          <li class="nav-item"><button class="nav-link" type="button" data-chart="scatter" role="tab">Index vs. API price proxy + Pareto</button></li>
-          <li class="nav-item"><button class="nav-link" type="button" data-chart="heatmap" role="tab">Heatmap</button></li>
-          <li class="nav-item"><button class="nav-link" type="button" data-chart="distribution" role="tab">Index distribution</button></li>
-          <li class="nav-item"><button class="nav-link" type="button" data-chart="coverage" role="tab">Evaluation coverage</button></li>
-          <li class="nav-item"><button class="nav-link" type="button" data-chart="consistency" role="tab">Consistency</button></li>
-        </ul>
+        <div class="px-3 py-2"><div class="fw-semibold">Scatter plot explorer</div><div class="small text-muted-qb">Explore model performance, price, evidence coverage and consistency on a common coordinate system.</div></div>
       </div>
       <div class="card-body">
-        <div class="small text-muted-qb mb-2">Pareto frontier: open “Index vs. API price + Pareto”. The dashed frontier is on by default; the API token-price proxy is not cost per task.</div>
-        <div class="d-flex flex-wrap gap-3 mb-2" id="chart-controls" hidden>
-          <div class="form-check form-switch m-0">
-            <input class="form-check-input" type="checkbox" id="pareto" checked>
-            <label class="form-check-label small" for="pareto">Pareto frontier</label>
-          </div>
-          <div class="form-check form-switch m-0">
-            <input class="form-check-input" type="checkbox" id="quadrant">
-            <label class="form-check-label small" for="quadrant">Most attractive quadrant</label>
-          </div>
-        </div>
+        <div id="chart-controls" class="scatter-options mb-3"><div class="row g-2 align-items-end">
+<div class="col-6 col-md-2"><label class="form-label small mb-1" for="scatter-x">X axis</label><select class="form-select" id="scatter-x"><option value="price">API price proxy</option><option value="index">QBench Index</option><option value="coverage">Evaluation coverage</option><option value="spread">Benchmark spread</option></select></div>
+<div class="col-6 col-md-2"><label class="form-label small mb-1" for="scatter-y">Y axis</label><select class="form-select" id="scatter-y"><option value="index">QBench Index</option><option value="price">API price proxy</option><option value="coverage">Evaluation coverage</option><option value="spread">Benchmark spread</option></select></div>
+<div class="col-6 col-md-2"><label class="form-label small mb-1" for="scatter-color">Color by</label><select class="form-select" id="scatter-color"><option value="provider">Provider</option><option value="effort">Reasoning effort</option><option value="evidence">Evidence tier</option></select></div>
+<div class="col-6 col-md-2"><label class="form-label small mb-1" for="scatter-size">Point size</label><select class="form-select" id="scatter-size"><option value="fixed">Fixed</option><option value="coverage">Coverage</option></select></div>
+<div class="col-6 col-md-2"><label class="form-label small mb-1" for="scatter-shape">Point shape</label><select class="form-select" id="scatter-shape"><option value="circle">Circle</option><option value="diamond">Diamond</option><option value="rect">Square</option><option value="triangle">Triangle</option></select></div>
+<div class="col-6 col-md-2"><label class="form-label small mb-1" for="scatter-x-scale">X scale</label><select class="form-select" id="scatter-x-scale"><option value="auto">Auto</option><option value="linear">Linear</option><option value="log">Logarithmic</option></select></div>
+<div class="col-6 col-md-2"><label class="form-label small mb-1" for="scatter-y-scale">Y scale</label><select class="form-select" id="scatter-y-scale"><option value="auto">Auto</option><option value="linear">Linear</option><option value="log">Logarithmic</option></select></div>
+<div class="col-6 col-md-2"><div class="form-check"><input class="form-check-input" type="checkbox" id="scatter-labels"><label class="form-check-label small" for="scatter-labels">Show labels</label></div></div>
+<div class="col-6 col-md-2"><div class="form-check"><input class="form-check-input" type="checkbox" id="scatter-zoom" checked><label class="form-check-label small" for="scatter-zoom">Zoom controls</label></div></div>
+<div class="col-6 col-md-2"><div class="form-check"><input class="form-check-input" type="checkbox" id="scatter-mean"><label class="form-check-label small" for="scatter-mean">Mean reference lines</label></div></div>
+<div class="col-6 col-md-2"><div class="form-check"><input class="form-check-input" type="checkbox" id="pareto" checked><label class="form-check-label small" for="pareto">Pareto frontier</label></div></div>
+<div class="col-6 col-md-2"><div class="form-check"><input class="form-check-input" type="checkbox" id="quadrant"><label class="form-check-label small" for="quadrant">Highlight quadrant</label></div></div>
+</div><div class="d-flex justify-content-between flex-wrap gap-2 mt-2"><span class="small text-muted-qb" id="scatter-count"></span><button class="btn btn-sm btn-outline-secondary" id="scatter-reset" type="button">Reset options</button></div></div>
         <div id="chart-main"></div>
       </div>
     </div>
@@ -700,7 +695,7 @@ function makeChoice(host,options,value,onChange,label){
 }
 
 /* ---------- state ---------- */
-var S={sort:'index',dir:-1,provider:'all',effort:'all',q:'',showUnranked:false,mq:'',mSort:'index',mDir:-1,selected:[],bench:null,pareto:true,quadrant:false,chart:'composition',barsN:'20',barsValues:false,barsPick:[],famCols:false,priceCols:false,effBench:'',effQ:'',catalogQ:''};
+var S={sort:'index',dir:-1,provider:'all',effort:'all',q:'',showUnranked:false,mq:'',mSort:'index',mDir:-1,selected:[],bench:null,pareto:true,quadrant:false,chart:'scatter',scatterX:'price',scatterY:'index',scatterColor:'provider',scatterSize:'fixed',scatterShape:'circle',scatterXScale:'log',scatterYScale:'linear',scatterLabels:false,scatterZoom:true,scatterMean:false,barsN:'20',barsValues:false,barsPick:[],famCols:false,priceCols:false,effBench:'',effQ:'',catalogQ:''};
 
 /* ---------- stats & static text ---------- */
 function renderStats(){
@@ -912,39 +907,25 @@ function renderEvalGrid(host){
 /* Short point label: model name, plus effort only when the source reports it. */
 function scatterLabel(q){return q.model+(q.effort&&q.effort!=='not-reported'?' ('+q.effort+')':'');}
 function renderScatter(host){
-  var pts=RESULT.rows.filter(function(r){return r.ranked&&r.price!=null&&r.index!=null;});
-  if(!pts.length){emptyChart(host,'No ranked model has a verified price mapping.');return;}
-  var p=pal();
-  host.innerHTML='<div class="small text-muted-qb mb-2">Model names appear only on the Pareto frontier. Hover any point to inspect every model and effort variant.</div><div id="chart-main-el" style="height:520px;min-height:420px"></div>'+
-    '<div class="chart-legend" id="scatter-legend"></div>'+
-    '<div class="notice-qb">Pareto frontier: models for which no lower-priced model has an equal or higher Index score. Official provider API rates only; equal input/output volumes are assumed. This is a token-price proxy, not cost per task.</div>';
-  var c=chartInit('chart-main-el'),frontRows=[],best=-1;
-  pts.slice().sort(function(a,b){return a.price-b.price||b.index-a.index;}).forEach(function(q){if(q.index>best){frontRows.push(q);best=q.index;}});
-  var frontIds=new Set(frontRows.map(function(q){return q.variantId;}));
-  var front=frontRows.map(function(q){return [q.price,q.index];});
-  var prices=pts.map(function(q){return q.price;}),mp=prices.reduce(function(a,b){return a+b;},0)/prices.length;
-  var mi=pts.reduce(function(a,q){return a+q.index;},0)/pts.length;
-  var models=[];pts.forEach(function(q){if(models.indexOf(q.model)<0)models.push(q.model);});
-  var series=models.map(function(model){return {name:model,type:'scatter',symbol:'circle',symbolSize:11,
-    itemStyle:{color:modelColor(model,(pts.filter(function(q){return q.model===model;})[0]||{}).provider),borderColor:p.ink,borderWidth:1,opacity:.92},
-    label:{show:false,position:'top',color:p.ink,fontSize:11,fontWeight:600},
-    labelLayout:{hideOverlap:true,moveOverlap:'shiftY'},
-    labelLine:{show:true,smooth:true,length:7,length2:5},
-    data:pts.filter(function(q){return q.model===model;}).map(function(q){
-      var onFront=frontIds.has(q.variantId);
-      return {name:scatterLabel(q),value:[q.price,q.index,scatterLabel(q)],label:{show:onFront,formatter:function(){return q.model+(q.effort&&q.effort!=='not-reported'?' · '+q.effort:'');},position:'top'}};
-    })};});
-  if(S.pareto&&front.length>1)series.push({name:'Pareto frontier',type:'line',symbol:'none',lineStyle:{type:'dashed',width:2.5,color:p.good},data:front,silent:true,z:3});
-  if(S.quadrant&&series.length)series[0].markArea={silent:true,itemStyle:{color:p.soft},data:[[{xAxis:Math.min.apply(null,prices)*.8,yAxis:mi},{xAxis:mp,yAxis:100}]]};
-  c.setOption({animation:false,grid:{left:76,right:34,top:52,bottom:76,containLabel:true},
-    tooltip:{trigger:'item',confine:true,formatter:function(e){var d=e.value||e.data;if(!d||!Array.isArray(d))return esc(e.seriesName);var q=pts.find(function(x){return scatterLabel(x)===d[2]&&x.price===d[0]&&x.index===d[1];});return '<strong>'+esc(d[2]||e.seriesName)+'</strong><br>QBench Index 1.6: '+Number(d[1]).toFixed(2)+'<br>API price proxy: $'+Number(d[0]).toFixed(3)+' / 1M tokens'+(q?'<br>Effort: '+esc(q.effort)+'<br>Provider: '+esc(q.provider):'');}},
-    xAxis:Object.assign({type:'log',name:'Official API price proxy · USD / 1M tokens',nameLocation:'middle',nameGap:40,nameTextStyle:{color:p.muted,fontSize:11},axisLabel:{hideOverlap:true}},axisStyle(p)),
-    yAxis:Object.assign({type:'value',scale:true,boundaryGap:['8%','12%'],name:'QBench Index 1.6',nameLocation:'middle',nameGap:50,nameTextStyle:{color:p.muted,fontSize:11}},axisStyle(p)),
-    series:series
-  },true);
-  $('#scatter-legend').innerHTML=models.map(function(model){return '<span><i style="background:'+modelColor(model,(pts.filter(function(q){return q.model===model;})[0]||{}).provider)+'"></i>'+esc(model)+'</span>';}).join('');
+ var all=RESULT.rows.filter(function(r){return r.ranked&&r.index!=null;}),m={
+ price:{label:'Official API price proxy · USD / 1M tokens',get:function(r){return r.price;},positive:true},index:{label:'QBench Index 1.6',get:function(r){return r.index;}},coverage:{label:'Evaluation coverage · count',get:function(r){return r.coverage;}},spread:{label:'Across-benchmark spread · percentage points',get:function(r){return r.spread;}}};
+ var xm=m[S.scatterX]||m.price,ym=m[S.scatterY]||m.index,pts=all.map(function(r){return {row:r,x:xm.get(r),y:ym.get(r)};}).filter(function(q){return Number.isFinite(Number(q.x))&&Number.isFinite(Number(q.y))&&(!xm.positive||q.x>0)&&(!ym.positive||q.y>0);});
+ if(!pts.length){emptyChart(host,'No verified rows contain both selected axis metrics. Try another X/Y combination.');$('#scatter-count').textContent='0 plotted points';return;}
+ var p=pal(),groups={},keys=[];pts.forEach(function(q){var k=S.scatterColor==='effort'?(q.row.effort||'not-reported'):S.scatterColor==='evidence'?(q.row.rankTier||'unranked'):(q.row.provider||'Unknown');if(keys.indexOf(k)<0)keys.push(k);(groups[k]=groups[k]||[]).push(q);});
+ var ec={none:p.c[0],low:p.c[1],medium:p.c[2],high:p.c[3],xhigh:'#a45c9c',max:'#b85c5c','not-reported':p.muted},tc={full:p.good,broad:p.c[1],limited:p.c[2],insufficient:p.muted};
+ function col(k,rows){return S.scatterColor==='effort'?(ec[k]||p.muted):S.scatterColor==='evidence'?(tc[k]||p.muted):modelColor(rows[0].row.model,rows[0].row.provider);}
+ var series=keys.map(function(k){var rows=groups[k];return {name:k,type:'scatter',symbol:S.scatterShape||'circle',symbolSize:function(v){return S.scatterSize==='coverage'?Math.max(7,Math.min(24,6+Number(v[2]||0)*1.2)):11;},itemStyle:{color:col(k,rows),borderColor:p.ink,borderWidth:1,opacity:.84},label:{show:!!S.scatterLabels,position:'top',color:p.ink,fontSize:10,formatter:function(e){var r=e.data.row;return r.model+(r.effort&&r.effort!=='not-reported'?' · '+r.effort:'');}},labelLayout:{hideOverlap:true,moveOverlap:'shiftY'},data:rows.map(function(q){return {name:q.row.variantLabel,value:[Number(q.x),Number(q.y),q.row.coverage],row:q.row};})};});
+ var xs=pts.map(function(q){return Number(q.x);}),ys=pts.map(function(q){return Number(q.y);}),mx=xs.reduce(function(a,b){return a+b;},0)/xs.length,my=ys.reduce(function(a,b){return a+b;},0)/ys.length,xscl=S.scatterXScale==='auto'?(S.scatterX==='price'?'log':'linear'):S.scatterXScale,yscl=S.scatterYScale==='auto'?'linear':S.scatterYScale;
+ if(xscl==='log'&&xs.some(function(v){return v<=0;}))xscl='linear';if(yscl==='log'&&ys.some(function(v){return v<=0;}))yscl='linear';
+ if(S.pareto&&S.scatterX==='price'&&S.scatterY==='index'){var fr=[],best=-Infinity;pts.slice().sort(function(a,b){return a.x-b.x||b.y-a.y;}).forEach(function(q){if(q.y>best){fr.push([q.x,q.y]);best=q.y;}});if(fr.length>1)series.push({name:'Pareto frontier',type:'line',symbol:'none',lineStyle:{type:'dashed',width:2,color:p.good},data:fr,silent:true,z:5});}
+ if(S.scatterMean&&series.length)series[0].markLine={silent:true,symbol:'none',lineStyle:{type:'dashed',color:p.muted},data:[{xAxis:mx},{yAxis:my}]};
+ if(S.quadrant&&series.length)series[0].markArea={silent:true,itemStyle:{color:p.soft},data:[[{xAxis:xscl==='log'?Math.min.apply(null,xs):mx,yAxis:my},{xAxis:mx,yAxis:Math.max.apply(null,ys)}]]};
+ var zoom=S.scatterZoom?[{type:'inside',xAxisIndex:0,yAxisIndex:0,filterMode:'none'},{type:'slider',xAxisIndex:0,height:18,bottom:10},{type:'slider',yAxisIndex:0,width:16,right:4}]:[];
+ host.innerHTML='<div id="chart-main-el" style="height:540px;min-height:420px;width:100%"></div><div class="chart-legend" id="scatter-legend"></div><div class="notice-qb">Each dot is one exact model/effort variant. Missing values are excluded, never estimated. Hover a point for its metadata. API price is an official provider token-price proxy, not cost per task.</div>';
+ var c=chartInit('chart-main-el');c.setOption({animation:false,grid:{left:78,right:S.scatterZoom?44:28,top:30,bottom:S.scatterZoom?90:64,containLabel:true},tooltip:{trigger:'item',confine:true,formatter:function(e){var r=e.data&&e.data.row;if(!r)return esc(e.seriesName);return '<strong>'+esc(r.variantLabel)+'</strong><br>Provider: '+esc(r.provider)+'<br>Effort: '+esc(r.effort)+'<br>Index: '+fmt(r.index,2)+'<br>Coverage: '+r.coverage+' / '+RESULT.evals.length+'<br>API price proxy: '+(r.price==null?'Not verified':'$'+fmt(r.price,4)+' / 1M tokens')+'<br>Benchmark spread: '+fmt(r.spread,2)+'<br>Evidence: '+esc(r.rankTier||'unranked');}},dataZoom:zoom,xAxis:Object.assign({type:xscl,scale:true,name:xm.label,nameLocation:'middle',nameGap:44,nameTextStyle:{color:p.muted,fontSize:11},axisLabel:{hideOverlap:true}},axisStyle(p)),yAxis:Object.assign({type:yscl,scale:true,name:ym.label,nameLocation:'middle',nameGap:54,nameTextStyle:{color:p.muted,fontSize:11},axisLabel:{hideOverlap:true}},axisStyle(p)),series:series},true);
+ $('#scatter-count').textContent=pts.length+' / '+all.length+' ranked variants plotted · '+keys.length+' color groups';
+ $('#scatter-legend').innerHTML=keys.map(function(k){return '<span><i style="background:'+col(k,groups[k])+'"></i>'+esc(k)+'</span>';}).join('');
 }
-
 function renderHeatmap(host){
   var rows=RESULT.rows.filter(function(r){return r.ranked;}).slice(0,25);
   var evs=RESULT.evals;
@@ -1022,13 +1003,7 @@ document.addEventListener('change',function(e){
 document.addEventListener('click',function(e){
   if(e.target.id==='bars-clear'){S.barsPick=[];renderChart();}
 });
-function renderChart(){
-  var host=$('#chart-main');
-  $('#chart-controls').style.display=S.chart==='scatter'?'':'none';
-  $$('#chart-tabs [data-chart]').forEach(function(b){var on=b.dataset.chart===S.chart;b.classList.toggle('active',on);b.setAttribute('aria-selected',String(on));});
-  var fn={composition:renderComposition,bars:renderBars,evalgrid:renderEvalGrid,scatter:renderScatter,heatmap:renderHeatmap,distribution:renderDistribution,coverage:renderCoverage,consistency:renderConsistency}[S.chart]||renderComposition;
-  fn(host);
-}
+function renderChart(){renderScatter($('#chart-main'));}
 
 /* ---------- provider analysis ---------- */
 function renderProviders(){
@@ -1442,8 +1417,9 @@ $('#catalog-search').addEventListener('input',function(e){S.catalogQ=e.target.va
 $('#show-unranked').addEventListener('change',function(e){S.showUnranked=e.target.checked;renderIndex();});
 $('#show-fam').addEventListener('change',function(e){S.famCols=e.target.checked;renderIndex();});
 $('#show-price').addEventListener('change',function(e){S.priceCols=e.target.checked;renderIndex();});
-$('#pareto').addEventListener('change',function(e){S.pareto=e.target.checked;renderChart();});
-$('#quadrant').addEventListener('change',function(e){S.quadrant=e.target.checked;renderChart();});
+[['scatter-x','scatterX'],['scatter-y','scatterY'],['scatter-color','scatterColor'],['scatter-size','scatterSize'],['scatter-shape','scatterShape'],['scatter-x-scale','scatterXScale'],['scatter-y-scale','scatterYScale']].forEach(function(x){var el=document.getElementById(x[0]);el.value=S[x[1]];el.addEventListener('change',function(){S[x[1]]=el.value;renderChart();});});
+[['scatter-labels','scatterLabels'],['scatter-zoom','scatterZoom'],['scatter-mean','scatterMean'],['pareto','pareto'],['quadrant','quadrant']].forEach(function(x){var el=document.getElementById(x[0]);el.checked=!!S[x[1]];el.addEventListener('change',function(){S[x[1]]=el.checked;renderChart();});});
+$('#scatter-reset').addEventListener('click',function(){Object.assign(S,{scatterX:'price',scatterY:'index',scatterColor:'provider',scatterSize:'fixed',scatterShape:'circle',scatterXScale:'log',scatterYScale:'linear',scatterLabels:false,scatterZoom:true,scatterMean:false,pareto:true,quadrant:false});[['scatter-x','scatterX'],['scatter-y','scatterY'],['scatter-color','scatterColor'],['scatter-size','scatterSize'],['scatter-shape','scatterShape'],['scatter-x-scale','scatterXScale'],['scatter-y-scale','scatterYScale']].forEach(function(x){document.getElementById(x[0]).value=S[x[1]];});[['scatter-labels','scatterLabels'],['scatter-zoom','scatterZoom'],['scatter-mean','scatterMean'],['pareto','pareto'],['quadrant','quadrant']].forEach(function(x){document.getElementById(x[0]).checked=S[x[1]];});renderChart();});
 $('#mcsv').addEventListener('click',csvOut);
 $('#theme').addEventListener('click',function(){
   var next=isDark()?'light':'dark';
