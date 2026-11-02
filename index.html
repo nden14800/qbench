@@ -1420,14 +1420,16 @@ function renderCommandResults(query){
   ['efficiency','Efficiency','Measured task cost, time and tokens','bi-speedometer2'],
   ['methodology','Methodology','Index formula, gates and data quality','bi-journal-text']
  ],pageMatches=pages.filter(function(p){return !q||(p[1]+' '+p[2]).toLowerCase().indexOf(q)>=0;});
- var modelRows=(RESULT&&RESULT.rows)||[],catalogRows=(DATA&&DATA.modelCatalog)||[];
+ var modelRows=(RESULT&&RESULT.rows)||[],catalogRows=(DATA&&DATA.modelCatalog)||[],benchmarkRows=(DATA&&DATA.benchmarks)||[];
  var models=q?modelRows.filter(function(r){return (r.model+' '+r.provider+' '+r.effort).toLowerCase().indexOf(q)>=0;}).slice(0,8):[];
  var catalog=q?catalogRows.filter(function(m){return (m.displayName+' '+m.provider+' '+(m.apiModelId||'')).toLowerCase().indexOf(q)>=0;}).slice(0,4):[];
+ var benchmarks=q?benchmarkRows.filter(function(b){return (b.name+' '+b.domain+' '+(b.version||'')+' '+(b.source||'')).toLowerCase().indexOf(q)>=0;}).slice(0,6):[];
  var html='';
  if(pageMatches.length){html+='<div class="command-group-label">Workspace</div>'+pageMatches.map(function(p){return '<button type="button" class="command-item" data-command-nav="'+p[0]+'"><span class="command-icon"><i class="bi '+p[3]+'" aria-hidden="true"></i></span><span><span class="command-title">'+p[1]+'</span><span class="command-meta">'+p[2]+'</span></span></button>';}).join('');}
  if(models.length){html+='<div class="command-group-label">Benchmark results · model variants</div>'+models.map(function(r){return '<button type="button" class="command-item" data-command-model="'+esc(r.variantId)+'"><span class="command-icon"><i class="bi bi-cpu" aria-hidden="true"></i></span><span><span class="command-title">'+esc(r.model)+'</span><span class="command-meta">'+esc(r.provider)+' · '+esc(r.effort==='not-reported'?'Effort not reported':r.effort)+' · '+(r.index==null?'Not ranked':'Index '+fmt(r.index,1))+'</span></span></button>';}).join('');}
  if(catalog.length){html+='<div class="command-group-label">Official API inventory</div>'+catalog.map(function(m){return '<button type="button" class="command-item" data-command-model="catalog:'+esc(m.id)+'"><span class="command-icon"><i class="bi bi-box" aria-hidden="true"></i></span><span><span class="command-title">'+esc(m.displayName)+'</span><span class="command-meta">'+esc(m.provider)+' · Official model inventory · Not ranked</span></span></button>';}).join('');}
- host.innerHTML=html||'<div class="command-empty">No matching section or model. Try a shorter search.</div>';
+ if(benchmarks.length){html+='<div class="command-group-label">Benchmark directory</div>'+benchmarks.map(function(b){var st=benchStatus(b.id);return '<button type="button" class="command-item" data-command-bench="'+esc(b.id)+'"><span class="command-icon"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i></span><span><span class="command-title">'+esc(b.name)+'</span><span class="command-meta">'+esc(b.domain||'Evaluation')+' · '+esc(b.version||'Version not stated')+' · '+st.n+' model/effort variants</span></span></button>';}).join('');}
+ host.innerHTML=html||'<div class="command-empty">No matching section, model or benchmark. Try a shorter search.</div>';
 }
 var commandReturnFocus=null;
 function closeCommandPalette(){
@@ -1476,6 +1478,8 @@ document.addEventListener('keydown',function(e){
 document.addEventListener('click',function(e){
  var nav=e.target.closest('[data-command-nav]');
  if(nav){var target=nav.getAttribute('data-command-nav');closeCommandPalette();location.hash=target;show(target);return;}
+ var benchmark=e.target.closest('[data-command-bench]');
+ if(benchmark){var benchId=benchmark.getAttribute('data-command-bench');closeCommandPalette();S.bench=benchId;location.hash='benchmarks';show('benchmarks');renderBenchGrid();renderBench();return;}
  var model=e.target.closest('[data-command-model]');
  if(model){var id=model.getAttribute('data-command-model');closeCommandPalette();renderModelDetail(id);var dlg=document.getElementById('model-detail-dialog');if(dlg&&dlg.showModal)dlg.showModal();return;}
  if(e.target.closest('#compare-dock-open')){
