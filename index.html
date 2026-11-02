@@ -706,7 +706,7 @@ function makeChoice(host,options,value,onChange,label){
 
 function enhanceNativeSelects(root){
  var scope=root||document;
- $('.form-select',scope).forEach(function(sel){
+ $$('.form-select',scope).forEach(function(sel){
   if(sel.dataset.choiceEnhanced==='true')return;
   var options=Array.prototype.map.call(sel.options,function(o){return {value:o.value,label:o.textContent};});
   if(!options.length)return;
