@@ -162,7 +162,7 @@ main.container-xl{padding-top:26px!important}
 .toolbar-qb{gap:9px!important}
 .form-control,.form-select,.choice__trigger{min-height:38px;border:1px solid var(--bs-border-color)!important;border-radius:6px!important;background:var(--bs-body-bg)!important;color:var(--bs-body-color)!important;font-size:.79rem;box-shadow:none!important}
 .form-control:focus,.form-select:focus,.choice__trigger:focus-visible,.choice[data-open="true"] .choice__trigger{border-color:var(--qb-accent)!important;box-shadow:0 0 0 3px var(--qb-accent-soft)!important}
-.choice{min-width:170px}.choice__trigger{padding:0 11px}.choice__pop{border-radius:7px;box-shadow:0 12px 28px rgba(16,24,40,.14)}.choice__opt{min-height:35px;font-size:.8rem}
+.qb-native-select{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important;opacity:0!important;pointer-events:none!important}.choice-native-host{width:100%;min-width:0}.choice-native-host .choice{width:100%;min-width:0}.choice{min-width:170px}.choice__trigger{padding:0 11px}.choice__pop{border-radius:7px;box-shadow:0 12px 28px rgba(16,24,40,.14)}.choice__opt{min-height:35px;font-size:.8rem}
 .btn{border-radius:6px;font-size:.79rem;font-weight:650;padding:.48rem .8rem}
 .nav-tabs{display:flex;gap:5px;flex-wrap:nowrap;overflow-x:auto;border-bottom:1px solid var(--bs-border-color);padding:0 16px;scrollbar-width:thin}
 .nav-tabs .nav-link{white-space:nowrap;border:0!important;border-bottom:2px solid transparent!important;border-radius:0!important;padding:12px 13px;color:var(--qb-muted);font-size:.76rem;font-weight:650}
@@ -703,6 +703,23 @@ function makeChoice(host,options,value,onChange,label){
   sync();
 }
 
+
+function enhanceNativeSelects(root){
+ var scope=root||document;
+ $('.form-select',scope).forEach(function(sel){
+  if(sel.dataset.choiceEnhanced==='true')return;
+  var options=Array.prototype.map.call(sel.options,function(o){return {value:o.value,label:o.textContent};});
+  if(!options.length)return;
+  var label=sel.labels&&sel.labels[0]?sel.labels[0].textContent.trim():(sel.getAttribute('aria-label')||'Select option');
+  var host=document.createElement('div');host.className='choice-native-host';
+  sel.insertAdjacentElement('afterend',host);
+  sel.classList.add('qb-native-select');sel.dataset.choiceEnhanced='true';
+  makeChoice(host,options,sel.value,function(value){
+   if(sel.value!==value){sel.value=value;sel.dispatchEvent(new Event('change',{bubbles:true}));}
+  },label);
+ });
+}
+
 /* ---------- state ---------- */
 var S={sort:'index',dir:-1,provider:'all',effort:'all',q:'',showUnranked:false,mq:'',mSort:'index',mDir:-1,selected:[],bench:null,pareto:true,quadrant:false,chart:'composition',scatterX:'price',scatterY:'index',scatterColor:'provider',scatterSize:'fixed',scatterShape:'circle',scatterXScale:'log',scatterYScale:'linear',scatterLabels:false,scatterZoom:true,scatterMean:false,barsN:'20',barsValues:false,barsPick:[],famCols:false,priceCols:false,effBench:'',effQ:'',catalogQ:''};
 
@@ -817,6 +834,7 @@ function sharedScatterControls(el){
  select('scatterYScale','Y-axis scale',[['auto','Auto'],['linear','Linear'],['log','Logarithmic']])+
  check('scatterLabels','Show point labels')+check('scatterZoom','Zoom controls')+'</div>';
  host.insertBefore(box,el);
+  enhanceNativeSelects(box);
 }
 function chartInit(id){
   var el=document.getElementById(id);if(!el)return null;
@@ -1500,6 +1518,7 @@ document.addEventListener('click',function(e){
 
 /* ---------- boot ---------- */
 $('#theme-icon').className='bi '+(isDark()?'bi-sun':'bi-moon-stars');
+enhanceNativeSelects(document);
 fetch('data/external-benchmarks.json',{cache:'no-store'})
   .then(function(r){if(!r.ok)throw new Error('data '+r.status);return r.json();})
   .then(function(data){
