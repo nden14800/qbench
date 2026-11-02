@@ -407,20 +407,30 @@ main.container-xl{padding-top:25px!important}.view{gap:16px;min-width:0}
         </ul>
       </div>
       <div class="card-body">
-        <div id="chart-controls" class="scatter-options mb-3"><div class="row g-2 align-items-end">
-<div class="col-6 col-md-2"><label class="form-label small mb-1" for="scatter-x">X axis</label><select class="form-select" id="scatter-x"><option value="price">API price proxy</option><option value="index">QBench Index</option><option value="coverage">Evaluation coverage</option><option value="spread">Benchmark spread</option></select></div>
-<div class="col-6 col-md-2"><label class="form-label small mb-1" for="scatter-y">Y axis</label><select class="form-select" id="scatter-y"><option value="index">QBench Index</option><option value="price">API price proxy</option><option value="coverage">Evaluation coverage</option><option value="spread">Benchmark spread</option></select></div>
-<div class="col-6 col-md-2"><label class="form-label small mb-1" for="scatter-color">Color by</label><select class="form-select" id="scatter-color"><option value="provider">Provider</option><option value="effort">Reasoning effort</option><option value="evidence">Evidence tier</option></select></div>
-<div class="col-6 col-md-2"><label class="form-label small mb-1" for="scatter-size">Point size</label><select class="form-select" id="scatter-size"><option value="fixed">Fixed</option><option value="coverage">Coverage</option></select></div>
-<div class="col-6 col-md-2"><label class="form-label small mb-1" for="scatter-shape">Point shape</label><select class="form-select" id="scatter-shape"><option value="circle">Circle</option><option value="diamond">Diamond</option><option value="rect">Square</option><option value="triangle">Triangle</option></select></div>
-<div class="col-6 col-md-2"><label class="form-label small mb-1" for="scatter-x-scale">X scale</label><select class="form-select" id="scatter-x-scale"><option value="auto">Auto</option><option value="linear">Linear</option><option value="log">Logarithmic</option></select></div>
-<div class="col-6 col-md-2"><label class="form-label small mb-1" for="scatter-y-scale">Y scale</label><select class="form-select" id="scatter-y-scale"><option value="auto">Auto</option><option value="linear">Linear</option><option value="log">Logarithmic</option></select></div>
-<div class="col-6 col-md-2"><div class="form-check"><input class="form-check-input" type="checkbox" id="scatter-labels"><label class="form-check-label small" for="scatter-labels">Show labels</label></div></div>
-<div class="col-6 col-md-2"><div class="form-check"><input class="form-check-input" type="checkbox" id="scatter-zoom" checked><label class="form-check-label small" for="scatter-zoom">Zoom controls</label></div></div>
-<div class="col-6 col-md-2"><div class="form-check"><input class="form-check-input" type="checkbox" id="scatter-mean"><label class="form-check-label small" for="scatter-mean">Mean reference lines</label></div></div>
-<div class="col-6 col-md-2"><div class="form-check"><input class="form-check-input" type="checkbox" id="pareto" checked><label class="form-check-label small" for="pareto">Pareto frontier</label></div></div>
-<div class="col-6 col-md-2"><div class="form-check"><input class="form-check-input" type="checkbox" id="quadrant"><label class="form-check-label small" for="quadrant">Highlight quadrant</label></div></div>
-</div><div class="d-flex justify-content-between flex-wrap gap-2 mt-2"><span class="small text-muted-qb" id="scatter-count"></span><button class="btn btn-sm btn-outline-secondary" id="scatter-reset" type="button">Reset options</button></div></div>
+        <button type="button" class="btn btn-sm btn-outline-secondary mb-2" id="scatter-options-toggle" aria-expanded="false"><i class="bi bi-sliders" aria-hidden="true"></i> Options</button>
+        <div id="chart-controls" class="scatter-options mb-3" hidden>
+          <div class="d-flex align-items-center justify-content-between gap-2 mb-2"><strong class="small">Chart options</strong><span class="small text-muted-qb">Core controls · advanced settings optional</span></div>
+          <div class="row g-2 align-items-end">
+            <div class="col-6 col-md-3"><label class="form-label small mb-1" for="scatter-x">X axis</label><select class="form-select" id="scatter-x"><option value="price">API price proxy</option><option value="index">QBench Index</option><option value="coverage">Evaluation coverage</option><option value="spread">Benchmark spread</option></select></div>
+            <div class="col-6 col-md-3"><label class="form-label small mb-1" for="scatter-y">Y axis</label><select class="form-select" id="scatter-y"><option value="index">QBench Index</option><option value="price">API price proxy</option><option value="coverage">Evaluation coverage</option><option value="spread">Benchmark spread</option></select></div>
+            <div class="col-6 col-md-3"><label class="form-label small mb-1" for="scatter-color">Color by</label><select class="form-select" id="scatter-color"><option value="provider">Provider</option><option value="effort">Reasoning effort</option><option value="evidence">Evidence tier</option></select></div>
+            <div class="col-6 col-md-3"><div class="form-check"><input class="form-check-input" type="checkbox" id="scatter-zoom" checked><label class="form-check-label small" for="scatter-zoom">Zoom controls</label></div></div>
+            <div class="col-6 col-md-3"><div class="form-check"><input class="form-check-input" type="checkbox" id="pareto" checked><label class="form-check-label small" for="pareto">Pareto frontier</label></div></div>
+          </div>
+          <details class="mt-3">
+            <summary class="small fw-semibold">Advanced options</summary>
+            <div class="row g-2 align-items-end pt-2">
+              <div class="col-6 col-md-3"><label class="form-label small mb-1" for="scatter-size">Point size</label><select class="form-select" id="scatter-size"><option value="fixed">Fixed</option><option value="coverage">Coverage</option></select></div>
+              <div class="col-6 col-md-3"><label class="form-label small mb-1" for="scatter-shape">Point shape</label><select class="form-select" id="scatter-shape"><option value="circle">Circle</option><option value="diamond">Diamond</option><option value="rect">Square</option><option value="triangle">Triangle</option></select></div>
+              <div class="col-6 col-md-3"><label class="form-label small mb-1" for="scatter-x-scale">X scale</label><select class="form-select" id="scatter-x-scale"><option value="auto">Auto</option><option value="linear">Linear</option><option value="log">Logarithmic</option></select></div>
+              <div class="col-6 col-md-3"><label class="form-label small mb-1" for="scatter-y-scale">Y scale</label><select class="form-select" id="scatter-y-scale"><option value="auto">Auto</option><option value="linear">Linear</option><option value="log">Logarithmic</option></select></div>
+              <div class="col-6 col-md-3"><div class="form-check"><input class="form-check-input" type="checkbox" id="scatter-labels"><label class="form-check-label small" for="scatter-labels">Show labels</label></div></div>
+              <div class="col-6 col-md-3"><div class="form-check"><input class="form-check-input" type="checkbox" id="scatter-mean"><label class="form-check-label small" for="scatter-mean">Mean reference lines</label></div></div>
+              <div class="col-6 col-md-3"><div class="form-check"><input class="form-check-input" type="checkbox" id="quadrant"><label class="form-check-label small" for="quadrant">Highlight quadrant</label></div></div>
+            </div>
+          </details>
+          <div class="d-flex justify-content-between flex-wrap gap-2 mt-3"><span class="small text-muted-qb" id="scatter-count"></span><button class="btn btn-sm btn-outline-secondary" id="scatter-reset" type="button">Reset options</button></div>
+        </div>
         <div class="qb-chart-stage"><div id="chart-main"></div></div>
       </div>
     </div>
@@ -851,6 +861,7 @@ function chartInit(id){
     /* Every chart gets a PNG export in the toolbar (theme-aware background). */
     var rawSet=cur.setOption;
     cur.setOption=function(opt){
+      if(opt&&typeof opt==='object')sanitizeChartSeries(opt);
       if(opt&&typeof opt==='object'&&!opt.toolbox){
         opt.toolbox={right:4,top:0,itemSize:14,iconStyle:{borderColor:pal().muted},
           feature:{saveAsImage:{title:'Save as PNG',name:'qbench-'+id,pixelRatio:2,backgroundColor:cssVar('--bs-body-bg')||'#ffffff'}}};
@@ -895,7 +906,34 @@ function axisStyle(p){
   var family=getComputedStyle(document.body).fontFamily||'DM Sans, Zen Kaku Gothic New, sans-serif';
   return {axisLabel:{color:p.muted,fontSize:12,fontFamily:family},axisLine:{lineStyle:{color:p.grid}},splitLine:{lineStyle:{color:p.grid}}};
 }
-function emptyChart(host,msg){host.innerHTML='<div class="empty-qb">'+esc(msg)+'</div>';}
+function disposeChartForHost(host){
+ if(!host)return;
+ Object.keys(ECH).forEach(function(id){
+  var chart=ECH[id];if(!chart||chart.isDisposed())return;
+  if(chart.getDom()===host){
+   if(ECH_OBS[id]){try{ECH_OBS[id].observer.disconnect();}catch(e){}delete ECH_OBS[id];}
+   try{chart.dispose();}catch(e){}delete ECH[id];
+  }
+ });
+}
+function cleanChartValue(value){
+ if(typeof value==='number')return Number.isFinite(value)?value:'-';
+ if(Array.isArray(value))return value.map(cleanChartValue);
+ if(value&&typeof value==='object'){
+  var out=Object.assign({},value);
+  if(Object.prototype.hasOwnProperty.call(out,'value'))out.value=cleanChartValue(out.value);
+  return out;
+ }
+ return value;
+}
+function sanitizeChartSeries(option){
+ if(!option||!Array.isArray(option.series))return;
+ option.series.forEach(function(series){
+  if(!series||!Array.isArray(series.data))return;
+  series.data=series.data.map(cleanChartValue);
+ });
+}
+function emptyChart(host,msg){disposeChartForHost(host);host.innerHTML='<div class="empty-qb">'+esc(msg)+'</div>';}
 
 function renderComposition(host){
   var top=RESULT.rows.filter(function(r){return r.ranked;}).slice(0,15);
@@ -1076,7 +1114,9 @@ document.addEventListener('click',function(e){
 });
 function renderChart(){
   var host=$('#chart-main');
-  $('#chart-controls').style.display=S.chart==='scatter'?'':'none';
+  var optionsButton=$('#scatter-options-toggle'),optionsPanel=$('#chart-controls');
+  if(optionsButton){optionsButton.hidden=S.chart!=='scatter';optionsButton.setAttribute('aria-expanded',String(!!S.scatterOptionsOpen));}
+  if(optionsPanel)optionsPanel.hidden=S.chart!=='scatter'||!S.scatterOptionsOpen;
   $$('#chart-tabs [data-chart]').forEach(function(b){var on=b.dataset.chart===S.chart;b.classList.toggle('active',on);b.setAttribute('aria-selected',String(on));});
   var fn={composition:renderComposition,bars:renderBars,evalgrid:renderEvalGrid,scatter:renderScatter,heatmap:renderHeatmap,distribution:renderDistribution,coverage:renderCoverage,consistency:renderConsistency}[S.chart]||renderComposition;
   fn(host);
@@ -1117,21 +1157,25 @@ function renderProviders(){
 /* ---------- measured efficiency ---------- */
 function efficiencyMetric(b){
  var rows=b&&b.models||[];
- if(rows.some(function(r){return r.costPerTestUSD!=null;}))return {key:'costPerTestUSD',label:'Cost per test',axis:'USD / test',type:'currency'};
- if(rows.some(function(r){return r.costPerSuccessfulTaskUSD!=null;}))return {key:'costPerSuccessfulTaskUSD',label:'Cost per successful task',axis:'USD / successful task',type:'currency'};
- if(rows.some(function(r){return r.costPerQuestion!=null;}))return {key:'costPerQuestion',label:'Cost per question',axis:'USD / question',type:'currency'};
- if(rows.some(function(r){return r.durationPerTestDisplay!=null;}))return {key:'durationPerTestDisplay',label:'Duration per test',axis:'Seconds / test',type:'duration'};
- if(rows.some(function(r){return r.timePerQuestion!=null;}))return {key:'timePerQuestion',label:'Time per question',axis:'Seconds / question',type:'duration'};
- if(rows.some(function(r){return r.tokensPerTestDisplay!=null;}))return {key:'tokensPerTestDisplay',label:'Tokens per test',axis:'Tokens / test',type:'tokens'};
- return null;
+ var candidates=[
+  {key:'costPerTestUSD',label:'Cost per test',axis:'USD / test',type:'currency'},
+  {key:'costPerSuccessfulTaskUSD',label:'Cost per successful task',axis:'USD / successful task',type:'currency'},
+  {key:'costPerQuestion',label:'Cost per question',axis:'USD / question',type:'currency'},
+  {key:'durationPerTestDisplay',label:'Duration per test',axis:'Seconds / test',type:'duration'},
+  {key:'timePerQuestion',label:'Time per question',axis:'Seconds / question',type:'duration'},
+  {key:'tokensPerTestDisplay',label:'Tokens per test',axis:'Tokens / test',type:'tokens'}
+ ];
+ return candidates.map(function(m){return {metric:m,count:rows.filter(function(r){return efficiencyValue(r,m)!=null;}).length};})
+  .filter(function(x){return x.count>0;}).sort(function(a,b){return b.count-a.count||candidates.indexOf(a.metric)-candidates.indexOf(b.metric);})[0]?.metric||null;
 }
 function efficiencyValue(row,metric){
- var v=row[metric.key];
+ var v=row&&row[metric.key];
  if(v==null||v==='')return null;
  if(metric.type==='duration')v=parseDuration(v);
  else if(metric.type==='tokens')v=parseTokens(v);
+ else if(typeof v==='string')v=Number(v.replace(/[$,\\s]/g,''));
  else v=Number(v);
- if(v==null||v===''||!Number.isFinite(Number(v)))return null;return Number(v);
+ return Number.isFinite(v)?v:null;
 }
 function renderEfficiency(){
  var bench=(DATA.benchmarks||[]).filter(function(b){return b.id===S.effBench;})[0];
@@ -1470,6 +1514,7 @@ function show(view){
 $$('[data-nav]').forEach(function(b){b.addEventListener('click',function(){location.hash=b.dataset.nav;show(b.dataset.nav);});});
 
 document.addEventListener('click',function(e){
+  if(e.target.closest('#scatter-options-toggle')){S.scatterOptionsOpen=!S.scatterOptionsOpen;renderChart();return;}
   var th=e.target.closest('[data-sort]');
   if(th){var k=th.dataset.sort; if(S.sort===k)S.dir=-S.dir; else {S.sort=k;S.dir=(k==='model'||k==='provider')?1:-1;} renderIndex(); return;}
   var ms=e.target.closest('[data-msort]');
@@ -1501,7 +1546,7 @@ $('#show-fam').addEventListener('change',function(e){S.famCols=e.target.checked;
 $('#show-price').addEventListener('change',function(e){S.priceCols=e.target.checked;renderIndex();});
 [['scatter-x','scatterX'],['scatter-y','scatterY'],['scatter-color','scatterColor'],['scatter-size','scatterSize'],['scatter-shape','scatterShape'],['scatter-x-scale','scatterXScale'],['scatter-y-scale','scatterYScale']].forEach(function(x){var el=document.getElementById(x[0]);el.value=S[x[1]];el.addEventListener('change',function(){S[x[1]]=el.value;renderChart();});});
 [['scatter-labels','scatterLabels'],['scatter-zoom','scatterZoom'],['scatter-mean','scatterMean'],['pareto','pareto'],['quadrant','quadrant']].forEach(function(x){var el=document.getElementById(x[0]);el.checked=!!S[x[1]];el.addEventListener('change',function(){S[x[1]]=el.checked;renderChart();});});
-$('#scatter-reset').addEventListener('click',function(){Object.assign(S,{scatterX:'price',scatterY:'index',scatterColor:'provider',scatterSize:'fixed',scatterShape:'circle',scatterXScale:'log',scatterYScale:'linear',scatterLabels:false,scatterZoom:true,scatterMean:false,pareto:true,quadrant:false});[['scatter-x','scatterX'],['scatter-y','scatterY'],['scatter-color','scatterColor'],['scatter-size','scatterSize'],['scatter-shape','scatterShape'],['scatter-x-scale','scatterXScale'],['scatter-y-scale','scatterYScale']].forEach(function(x){document.getElementById(x[0]).value=S[x[1]];});[['scatter-labels','scatterLabels'],['scatter-zoom','scatterZoom'],['scatter-mean','scatterMean'],['pareto','pareto'],['quadrant','quadrant']].forEach(function(x){document.getElementById(x[0]).checked=S[x[1]];});renderChart();});
+$('#scatter-reset').addEventListener('click',function(){Object.assign(S,{scatterX:'price',scatterY:'index',scatterColor:'provider',scatterSize:'fixed',scatterShape:'circle',scatterXScale:'log',scatterYScale:'linear',scatterLabels:false,scatterZoom:true,scatterMean:false,pareto:true,quadrant:false,scatterOptionsOpen:false});[['scatter-x','scatterX'],['scatter-y','scatterY'],['scatter-color','scatterColor'],['scatter-size','scatterSize'],['scatter-shape','scatterShape'],['scatter-x-scale','scatterXScale'],['scatter-y-scale','scatterYScale']].forEach(function(x){document.getElementById(x[0]).value=S[x[1]];});[['scatter-labels','scatterLabels'],['scatter-zoom','scatterZoom'],['scatter-mean','scatterMean'],['pareto','pareto'],['quadrant','quadrant']].forEach(function(x){document.getElementById(x[0]).checked=S[x[1]];});renderChart();});
 $('#mcsv').addEventListener('click',csvOut);
 $('#theme').addEventListener('click',function(){
   var next=isDark()?'light':'dark';
