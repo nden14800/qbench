@@ -1519,7 +1519,7 @@ document.addEventListener('click',function(e){
 });
 
 /* ---------- boot ---------- */
-$('#theme-icon').className='bi '+(isDark()?'bi-sun':'bi-moon-stars');
+$('#theme-icon use').setAttribute('href','#bi-'+(isDark()?'sun':'moon-stars'));
 enhanceNativeSelects(document);
 fetch('data/external-benchmarks.json',{cache:'no-store'})
   .then(function(r){if(!r.ok)throw new Error('data '+r.status);return r.json();})
