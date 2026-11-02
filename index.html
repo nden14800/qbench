@@ -234,6 +234,7 @@ footer{line-height:1.8}
 
 /* Page-specific compositions: each workspace gets a distinct information architecture. */
 .view[data-view="models"]{grid-template-columns:repeat(2,minmax(0,1fr))}
+#compare-card{grid-column:1/-1}#compare-card .card-body{display:grid;gap:18px}.compare-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.compare-selection{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.compare-chip{display:inline-flex;align-items:center;gap:7px;padding:6px 9px;border:1px solid var(--qb-border);border-radius:999px;background:var(--qb-canvas);font-size:.7rem;font-weight:700}.compare-chip button{display:inline-grid;place-items:center;width:19px;height:19px;padding:0;border:0;border-radius:50%;background:var(--qb-border);color:var(--qb-muted)}.compare-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.compare-kpi{min-width:0;padding:14px 15px;border:1px solid var(--qb-border);border-radius:11px;background:var(--qb-canvas)}.compare-kpi .k{font:750 .6rem "IBM Plex Mono",monospace;letter-spacing:.07em;text-transform:uppercase;color:var(--qb-muted)}.compare-kpi .v{margin-top:6px;font-size:1.05rem;font-weight:850;letter-spacing:-.035em;overflow-wrap:anywhere}.compare-kpi .s{margin-top:4px;font-size:.68rem;color:var(--qb-muted);line-height:1.5}.compare-filter{display:flex;gap:5px;flex-wrap:wrap}.compare-filter .btn{min-height:32px;padding:5px 10px;font-size:.69rem}.compare-filter .btn[aria-pressed="true"]{background:var(--qb-accent-soft);border-color:var(--qb-accent);color:var(--qb-accent)}#cmp-table tbody tr[data-cmp-group="benchmark"] td:first-child{padding-left:27px!important}#cmp-table .cmp-best{color:var(--qb-good);font-weight:850}#cmp-table .cmp-missing{color:var(--qb-muted);opacity:.65}.compare-note{font-size:.69rem;color:var(--qb-muted);line-height:1.65}@media(max-width:767.98px){.compare-summary{grid-template-columns:1fr}.compare-toolbar{align-items:flex-start}#compare-card .card-body{padding:14px!important}}
 .view[data-view="models"]>.page-heading,#model-results-card,#compare-card{grid-column:1/-1}
 #price-catalog-card{grid-column:1}
 #official-model-inventory{grid-column:2}
@@ -474,18 +475,17 @@ main.container-xl{padding-top:25px!important}.view{gap:16px;min-width:0}
       <div class="card-body pt-2 small text-muted-qb" id="catalog-only-note"></div>
     </div>
     <div class="card" id="compare-card" hidden>
-      <div class="card-header py-3">
-        <h2 class="card-title-qb">Comparison</h2>
-        <div class="text-muted-qb small mt-1">Category radar uses source-reported capability-family percentages. Empty spokes mean the category has no result for that model/effort variant.</div>
+      <div class="card-header py-3 d-flex flex-wrap align-items-center justify-content-between gap-2">
+        <div><h2 class="card-title-qb">Model comparison</h2><div class="text-muted-qb small mt-1">Exact model/effort variants · missing evidence stays blank · unranked variants remain visibly unranked</div></div>
+        <div class="d-flex flex-wrap gap-2"><button type="button" class="btn btn-outline-secondary btn-sm" id="compare-share"><i class="bi bi-link-45deg" aria-hidden="true"></i> Copy share link</button><button type="button" class="btn btn-outline-secondary btn-sm" id="compare-export"><i class="bi bi-download" aria-hidden="true"></i> Export CSV</button></div>
       </div>
       <div class="card-body">
-        <div id="radar-el" style="height:380px"></div>
-        <div class="table-responsive mt-3">
-          <table class="table align-middle mb-0">
-            <thead id="cmp-head"></thead>
-            <tbody id="cmp-body"></tbody>
-          </table>
-        </div>
+        <div class="compare-toolbar"><div class="compare-selection" id="compare-selection" aria-label="Selected models"></div><div class="d-flex align-items-center gap-2"><button type="button" class="btn btn-outline-secondary btn-sm" id="compare-top-five">Add top ranked</button><span class="small text-muted-qb" id="compare-status" role="status"></span></div></div>
+        <div class="compare-summary" id="compare-summary" aria-live="polite"></div>
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2"><div class="compare-filter" role="group" aria-label="Comparison detail"><button type="button" class="btn btn-outline-secondary" data-cmp-filter="all" aria-pressed="true">All evidence</button><button type="button" class="btn btn-outline-secondary" data-cmp-filter="families" aria-pressed="false">Capability families</button><button type="button" class="btn btn-outline-secondary" data-cmp-filter="benchmarks" aria-pressed="false">Benchmarks</button></div><div class="compare-filter" role="group" aria-label="Comparison chart type"><button type="button" class="btn btn-outline-secondary" data-cmp-chart="radar" aria-pressed="true">Radar</button><button type="button" class="btn btn-outline-secondary" data-cmp-chart="bar" aria-pressed="false">Grouped bars</button></div></div>
+        <div id="radar-el" style="height:390px"></div>
+        <div class="table-responsive"><table class="table align-middle mb-0" id="cmp-table"><thead id="cmp-head"></thead><tbody id="cmp-body"></tbody></table></div>
+        <p class="compare-note mb-0">Comparison rules: Index values are shown only for variants that pass QBench Index 1.6 eligibility. Benchmark rows retain their publisher-reported scores and effort labels; scores from different benchmarks are not directly interchangeable. A dash means no eligible reported result, not zero.</p>
       </div>
     </div>
   </section>
@@ -717,7 +717,7 @@ function enhanceNativeSelects(root){
 }
 
 /* ---------- state ---------- */
-var S={sort:'index',dir:-1,provider:'all',effort:'all',q:'',showUnranked:false,mq:'',mSort:'index',mDir:-1,selected:[],bench:null,pareto:true,quadrant:false,chart:'composition',scatterX:'price',scatterY:'index',scatterColor:'provider',scatterSize:'fixed',scatterShape:'circle',scatterXScale:'log',scatterYScale:'linear',scatterLabels:false,scatterZoom:true,scatterMean:false,barsN:'20',barsValues:false,barsPick:[],famCols:false,priceCols:false,effBench:'',effQ:'',catalogQ:''};
+var S={sort:'index',dir:-1,provider:'all',effort:'all',q:'',showUnranked:false,mq:'',mSort:'index',mDir:-1,selected:[],bench:null,pareto:true,quadrant:false,chart:'composition',scatterX:'price',scatterY:'index',scatterColor:'provider',scatterSize:'fixed',scatterShape:'circle',scatterXScale:'log',scatterYScale:'linear',scatterLabels:false,scatterZoom:true,scatterMean:false,barsN:'20',barsValues:false,barsPick:[],famCols:false,priceCols:false,effBench:'',effQ:'',catalogQ:'',compareChart:'radar',compareFilter:'all'};
 
 /* ---------- stats & static text ---------- */
 function renderStats(){
@@ -1258,16 +1258,41 @@ function renderModels(){
  renderCompare();
 }
 function renderCompare(){
- var card=$('#compare-card');if(!S.selected.length){card.hidden=true;renderCompareDock();return;}card.hidden=false;
- var sel=S.selected.map(function(id){return RESULT.rows.filter(function(r){return r.variantId===id;})[0];}).filter(Boolean),p=pal(),c=chartInit('radar-el'),colors=sel.map(function(r){return modelColor(r.model,r.provider);});
- c.setOption({animation:false,color:colors,tooltip:{},legend:{bottom:0,textStyle:{color:p.ink}},radar:{indicator:RESULT.domains.map(function(d){return {name:d,max:100};}),axisName:{color:p.ink,fontSize:12},splitLine:{lineStyle:{color:p.grid}},axisLine:{lineStyle:{color:p.grid}},splitArea:{show:false}},series:[{type:'radar',data:sel.map(function(r){return {name:r.variantLabel,value:RESULT.domains.map(function(d){return r.domains[d]==null?null:Math.round(r.domains[d]*10)/10;}),areaStyle:{opacity:.08}};})}]},true);
- var head='<tr><th>Measure</th>'+sel.map(function(r){return '<th class="text-end">'+esc(r.variantLabel)+'</th>';}).join('')+'</tr>';
- var body='<tr class="fw-semibold"><td>QBench Index 1.6</td>'+sel.map(function(r){return '<td class="text-end num"><strong>'+fmt(r.index,1)+'</strong></td>';}).join('')+'</tr>';
- body+='<tr><td>Raw family mean</td>'+sel.map(function(r){return '<td class="text-end num">'+fmt(r.rawIndex,1)+'</td>';}).join('')+'</tr><tr><td>Families observed</td>'+sel.map(function(r){return '<td class="text-end num">'+r.domainCount+' / '+RESULT.domains.length+'</td>';}).join('')+'</tr>';
- RESULT.domains.forEach(function(d){body+='<tr><td>'+esc(d)+' (family mean)</td>'+sel.map(function(r){return '<td class="text-end num">'+fmt(r.domains[d],1)+'</td>';}).join('')+'</tr>';});
- RESULT.evals.forEach(function(e){body+='<tr><td>'+esc(e.name)+'</td>'+sel.map(function(r){var v=r.detail[e.id];return '<td class="text-end num">'+(v?fmt(v.value,1)+' <span class="text-muted-qb">('+esc(v.effort==='not-reported'?'effort unreported':v.effort)+')</span>':'—')+'</td>';}).join('')+'</tr>';});
- $('#cmp-head').innerHTML=head;$('#cmp-body').innerHTML=body;renderCompareDock();
+ var card=$('#compare-card'),sel=S.selected.map(function(id){return RESULT.rows.filter(function(r){return r.variantId===id;})[0];}).filter(Boolean);
+ if(!sel.length){card.hidden=true;renderCompareDock();return;}card.hidden=false;
+ var p=pal(),colors=sel.map(function(r){return modelColor(r.model,r.provider);}),chart=chartInit('radar-el');
+ if(S.compareChart==='bar'){chart.setOption({animation:false,color:colors,tooltip:{trigger:'axis'},legend:{top:0,textStyle:{color:p.ink}},grid:{left:48,right:22,top:48,bottom:70},xAxis:{type:'category',data:RESULT.domains,axisLabel:{color:p.muted,interval:0,rotate:18},axisLine:{lineStyle:{color:p.grid}}},yAxis:{type:'value',min:0,max:100,axisLabel:{color:p.muted},splitLine:{lineStyle:{color:p.grid}}},series:sel.map(function(r){return {name:r.variantLabel,type:'bar',barMaxWidth:34,data:RESULT.domains.map(function(d){return r.domains[d]==null?null:Math.round(r.domains[d]*10)/10;})};})},true);}
+ else{chart.setOption({animation:false,color:colors,tooltip:{trigger:'item'},legend:{bottom:0,textStyle:{color:p.ink}},radar:{indicator:RESULT.domains.map(function(d){return {name:d,max:100};}),axisName:{color:p.ink,fontSize:12},splitLine:{lineStyle:{color:p.grid}},axisLine:{lineStyle:{color:p.grid}},splitArea:{show:false}},series:[{type:'radar',data:sel.map(function(r){return {name:r.variantLabel,value:RESULT.domains.map(function(d){return r.domains[d]==null?null:Math.round(r.domains[d]*10)/10;}),areaStyle:{opacity:.08}};})}]},true);}
+ $('#compare-selection').innerHTML=sel.map(function(r){return '<span class="compare-chip">'+esc(r.variantLabel)+'<button type="button" data-cmp-remove="'+esc(r.variantId)+'" aria-label="Remove '+esc(r.variantLabel)+'"><i class="bi bi-x" aria-hidden="true"></i></button></span>';}).join('');
+ var ranked=sel.filter(function(r){return r.index!=null;}).sort(function(a,b){return b.index-a.index;}),coverage=sel.slice().sort(function(a,b){return b.coverage-a.coverage;}),lead=ranked[0],next=ranked[1],gap=lead&&next?lead.index-next.index:null;
+ var prices=sel.filter(function(r){return r.priceSourceType==='official-provider'&&r.priceCurrency==='USD'&&r.priceInput!=null;}).sort(function(a,b){return a.priceInput-b.priceInput;});
+ function kpi(k,v,d){return '<div class="compare-kpi"><div class="k">'+k+'</div><div class="v">'+v+'</div><div class="s">'+d+'</div></div>';}
+ $('#compare-summary').innerHTML=kpi('Index leader',lead?esc(lead.variantLabel):'No ranked variant',lead?'Index 1.6 · '+fmt(lead.index,1)+(gap==null?'':' · +'+fmt(gap,1)+' pts vs next ranked'):'Selected variants do not meet ranking eligibility')+kpi('Evidence coverage',coverage.length?esc(coverage[0].variantLabel):'—',coverage.length?coverage[0].coverage+' / '+RESULT.evals.length+' evaluations · '+coverage[0].domainCount+' / '+RESULT.domains.length+' families':'No benchmark evidence')+kpi('Lowest official input price',prices.length?esc(prices[0].variantLabel):'Not available',prices.length?'$'+fmt(prices[0].priceInput,2)+' / 1M tokens · '+esc(prices[0].priceSourceLabel):'No comparable first-party USD input price in this selection');
+ var head='<tr><th scope="col">Measure</th>'+sel.map(function(r){return '<th scope="col" class="text-end">'+esc(r.variantLabel)+'</th>';}).join('')+'</tr>',rows=[];
+ function addRow(group,label,get,format,mode){var vals=sel.map(get),valid=vals.map(function(v){return v==null||!isFinite(Number(v))?null:{v:Number(v)};}).filter(Boolean),best=null;if(valid.length&&mode)best=valid.reduce(function(x,y){return mode==='min'?(x.v<=y.v?x:y):(x.v>=y.v?x:y);}).v;rows.push('<tr data-cmp-group="'+group+'"><td>'+label+'</td>'+vals.map(function(v,i){var hi=best!==null&&v!=null&&Number(v)===best;return '<td class="text-end num '+(v==null?'cmp-missing':hi?'cmp-best':'')+'">'+(v==null?'—':format(v,sel[i]))+'</td>';}).join('')+'</tr>');}
+ addRow('core','QBench Index 1.6',function(r){return r.index;},function(v){return '<strong>'+fmt(v,1)+'</strong>';},'max');
+ addRow('core','Raw family mean (descriptive)',function(r){return r.rawIndex;},function(v){return fmt(v,1);},'max');
+ addRow('core','Evaluations observed',function(r){return r.coverage;},function(v){return v+' / '+RESULT.evals.length;},'max');
+ addRow('core','Capability families observed',function(r){return r.domainCount;},function(v){return v+' / '+RESULT.domains.length;},'max');
+ addRow('core','Input price / 1M tokens (official USD)',function(r){return r.priceSourceType==='official-provider'&&r.priceCurrency==='USD'?r.priceInput:null;},function(v){return '$'+fmt(v,2);},'min');
+ addRow('core','Output price / 1M tokens (official USD)',function(r){return r.priceSourceType==='official-provider'&&r.priceCurrency==='USD'?r.priceOutput:null;},function(v){return '$'+fmt(v,2);},'min');
+ RESULT.domains.forEach(function(d){addRow('family',esc(d)+' <span class="text-muted-qb">(family mean)</span>',function(r){return r.domains[d];},function(v){return fmt(v,1);},'max');});
+ RESULT.evals.forEach(function(e){addRow('benchmark',esc(e.name)+' <span class="text-muted-qb">· '+esc(e.domain)+'</span>',function(r){return r.detail[e.id]?r.detail[e.id].value:null;},function(v,r){var d=r.detail[e.id];return fmt(v,1)+(d&&d.effort&&d.effort!=='not-reported'?' <span class="text-muted-qb">('+esc(d.effort)+')</span>':'');},null);});
+ $('#cmp-head').innerHTML=head;$('#cmp-body').innerHTML=rows.join('');
+ $$('#cmp-body tr').forEach(function(tr){var g=tr.getAttribute('data-cmp-group');tr.hidden=S.compareFilter==='families'?g!=='family':S.compareFilter==='benchmarks'?g!=='benchmark':false;});
+ $$('[data-cmp-filter]').forEach(function(x){x.setAttribute('aria-pressed',String(x.getAttribute('data-cmp-filter')===S.compareFilter));});
+ $$('[data-cmp-chart]').forEach(function(x){x.setAttribute('aria-pressed',String(x.getAttribute('data-cmp-chart')===S.compareChart));});
+ renderCompareDock();
 }
+function comparisonCsv(){
+ var sel=S.selected.map(function(id){return RESULT.rows.filter(function(r){return r.variantId===id;})[0];}).filter(Boolean);if(!sel.length)return;
+ var rows=[['Measure'].concat(sel.map(function(r){return r.variantLabel;})),['QBench Index 1.6'].concat(sel.map(function(r){return r.index==null?'':r.index;})),['Raw family mean'].concat(sel.map(function(r){return r.rawIndex==null?'':r.rawIndex;})),['Evaluations observed'].concat(sel.map(function(r){return r.coverage;})),['Families observed'].concat(sel.map(function(r){return r.domainCount;}))];
+ RESULT.domains.forEach(function(d){rows.push([d+' family mean'].concat(sel.map(function(r){return r.domains[d]==null?'':r.domains[d];})));});
+ RESULT.evals.forEach(function(e){rows.push([e.name].concat(sel.map(function(r){return r.detail[e.id]?r.detail[e.id].value:'';})));});
+ var csv='\\uFEFF'+rows.map(function(row){return row.map(function(v){return '"'+String(v==null?'':v).replace(/"/g,'""')+'"';}).join(',');}).join('\\r\\n');
+ var blob=new Blob([csv],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='qbench-model-comparison.csv';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+}
+function comparisonShareUrl(){var u=new URL(window.location.href);u.searchParams.set('compare',S.selected.map(encodeURIComponent).join(','));u.hash='models';return u.toString();}
 function fmtCount(v){return v==null?'0':Math.round(Number(v)).toLocaleString('en-US');}
 function fmtTokens(v){return v==null||!isFinite(Number(v))?'Not reported':Math.round(Number(v)).toLocaleString('en-US');}
 function catalogPricingText(p){
@@ -1554,6 +1579,14 @@ document.addEventListener('click',function(e){
  if(btn){renderModelDetail(btn.getAttribute('data-model-detail'));var dlg=document.getElementById('model-detail-dialog');if(dlg&&dlg.showModal)dlg.showModal();else if(dlg)dlg.setAttribute('open','');return;}
  if(e.target.closest('#model-detail-close')){var dlg2=document.getElementById('model-detail-dialog');if(dlg2&&dlg2.close)dlg2.close();else if(dlg2)dlg2.removeAttribute('open');}
 });
+document.addEventListener('click',function(e){
+ var rm=e.target.closest('[data-cmp-remove]');if(rm){S.selected=S.selected.filter(function(id){return id!==rm.getAttribute('data-cmp-remove');});renderModels();return;}
+ var fl=e.target.closest('[data-cmp-filter]');if(fl){S.compareFilter=fl.getAttribute('data-cmp-filter');renderCompare();return;}
+ var ch=e.target.closest('[data-cmp-chart]');if(ch){S.compareChart=ch.getAttribute('data-cmp-chart');renderCompare();return;}
+ if(e.target.closest('#compare-top-five')){S.selected=RESULT.rows.filter(function(r){return r.ranked;}).slice(0,5).map(function(r){return r.variantId;});renderModels();$('#compare-status').textContent='Top 5 ranked variants added';return;}
+ if(e.target.closest('#compare-export')){comparisonCsv();return;}
+ if(e.target.closest('#compare-share')){var status=$('#compare-status');if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(comparisonShareUrl()).then(function(){status.textContent='Share link copied';}).catch(function(){status.textContent='Clipboard unavailable · copy the address bar URL';});else status.textContent='Clipboard unavailable · copy the address bar URL';return;}
+});
 document.addEventListener('change',function(e){
   var c=e.target.closest('[data-sel]'); if(!c)return;
   var n=c.dataset.sel;
@@ -1695,6 +1728,7 @@ fetch('data/external-benchmarks.json',{cache:'no-store'})
     S.effBench=effBenchmarks.length?effBenchmarks[0].id:'';
     makeChoice($('#efficiency-benchmark-choice'),effBenchmarks.map(function(b){return {value:b.id,label:b.name};}),S.effBench,function(v){S.effBench=v;S.effQ='';$('#efficiency-search').value='';renderEfficiency();},'Select benchmark for efficiency analysis');
     renderStats(); renderMethod();
+    var cp=new URLSearchParams(location.search).get('compare');if(cp){S.selected=cp.split(',').map(function(x){try{return decodeURIComponent(x);}catch(e){return '';}}).filter(function(id,i,arr){return id&&arr.indexOf(id)===i&&RESULT.rows.some(function(r){return r.variantId===id;});}).slice(0,5);}
     var h=(location.hash||'').replace('#','');
     show(['index','models','benchmarks','providers','efficiency','methodology'].indexOf(h)>=0?h:'index');
   })
