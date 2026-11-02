@@ -267,6 +267,64 @@ footer{line-height:1.8}
  .view[data-view="providers"]>.card>.table-responsive,.view[data-view="efficiency"]>.card>.table-responsive{max-height:560px}
 }
 
+
+/* QBench Research Workspace */
+:root{--qb-accent:#315fbd;--qb-accent-soft:rgba(49,95,189,.09);--qb-canvas:#f2f5f9;--qb-surface:#fff;--qb-border:#dce3ed;--qb-ink:#142238;--qb-muted:#68778d;--qb-radius:12px;--qb-shadow:0 2px 10px rgba(18,35,60,.035)}
+html[data-bs-theme="dark"]{--qb-canvas:#0b1220;--qb-surface:#111c2d;--qb-border:#29374b;--qb-ink:#edf3ff;--qb-muted:#9eacc1;--qb-accent:#8db4ff;--qb-accent-soft:rgba(141,180,255,.12);--qb-shadow:0 3px 18px rgba(0,0,0,.18)}
+body{font-size:14px;letter-spacing:-.018em;background:var(--qb-canvas)}
+.site-header{background:color-mix(in srgb,var(--qb-surface) 96%,transparent);box-shadow:0 1px 0 var(--qb-border)}
+.site-header-inner,main.container-xl,footer.container-xl{max-width:1680px}
+.site-topline{height:58px}.navbar-brand{font-size:1.25rem;letter-spacing:-.07em}.brand-mark{width:29px;height:29px}
+.site-nav{min-height:46px;gap:4px}.site-nav .nav-link{min-height:40px;padding:0 14px;border-radius:7px 7px 0 0;font-size:.76rem}
+main.container-xl{padding-top:25px!important}.view{gap:16px;min-width:0}
+.page-heading{align-items:center;margin:0 0 3px;padding:22px 26px;border:1px solid var(--qb-border);border-radius:13px;background:var(--qb-surface)}
+.view[data-view="index"]>.page-heading{min-height:178px;padding:28px 32px;border-color:#1c3455;background:linear-gradient(112deg,#101d31 0%,#172d4a 58%,#203f69 100%);color:#fff;box-shadow:0 10px 28px rgba(16,32,54,.13)}
+.view[data-view="index"] .page-eyebrow{color:#a9c8ff}.view[data-view="index"] .page-eyebrow:before{background:#62d6ad;box-shadow:0 0 0 4px rgba(98,214,173,.15)}
+.view[data-view="index"] .page-title{color:#fff;font-size:clamp(2.2rem,4vw,3.45rem);letter-spacing:-.08em}.view[data-view="index"] .page-title span{color:#a9c8ff}
+.view[data-view="index"] .page-description{max-width:760px;color:#c0cce0;font-size:.86rem}
+.view[data-view="index"] .page-heading-aside{border-color:rgba(255,255,255,.18)}
+.view[data-view="index"] .page-heading-aside .label,.view[data-view="index"] .page-heading-aside small{color:#aabbd2}
+.view[data-view="index"] .page-heading-aside strong{color:#fff;font-size:1.15rem}
+.page-eyebrow{font-size:.61rem;letter-spacing:.15em}.page-title{font-size:clamp(1.8rem,3vw,2.55rem);letter-spacing:-.07em}.page-description{font-size:.82rem;line-height:1.7}
+#stats{gap:10px!important;margin:0!important}#stats .card,#stats .stat-card{padding:15px 18px!important;border-radius:10px!important;border-left:3px solid var(--qb-accent)!important;box-shadow:var(--qb-shadow)!important}
+#stats .stat-v,.stat-card .stat-v{font-size:1.8rem!important;letter-spacing:-.07em}
+.card{border-radius:12px!important;box-shadow:var(--qb-shadow)!important;min-width:0}.card-header{padding:16px 20px!important}.card-body{padding:19px 20px!important;min-width:0}.card-title-qb{font-size:.96rem!important;letter-spacing:-.035em}
+#chart-suite-card{order:2;border-color:var(--qb-border);overflow:visible}#leaderboard-card{order:3}
+.analysis-head{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:21px 23px 17px;border-bottom:1px solid var(--qb-border)}
+.analysis-kicker{margin-bottom:5px;color:var(--qb-accent);font:750 .59rem "IBM Plex Mono",monospace;letter-spacing:.15em}
+.analysis-head h2{margin:0;color:var(--qb-ink);font-size:1.16rem;font-weight:850;letter-spacing:-.05em}
+.analysis-head p{margin:5px 0 0;color:var(--qb-muted);font-size:.74rem}
+.analysis-head-meta{display:flex;align-items:center;gap:8px;color:var(--qb-muted);font:700 .58rem "IBM Plex Mono",monospace;letter-spacing:.08em;white-space:nowrap}
+.analysis-live-dot{width:7px;height:7px;border-radius:50%;background:#20a879;box-shadow:0 0 0 4px rgba(32,168,121,.12)}
+#chart-suite-card>.card-header{padding:0!important;border-bottom:1px solid var(--qb-border)!important}
+.view[data-view="index"] #chart-tabs{padding:0 17px!important;background:var(--qb-canvas);gap:2px}
+#chart-tabs .nav-link{min-height:46px;padding:0 13px!important;font-size:.7rem!important;letter-spacing:-.01em}
+#chart-tabs .nav-link.active{background:var(--qb-surface)!important}
+#chart-suite-card>.card-body{padding:18px 20px 20px!important}
+.qb-chart-stage,#chart-main{width:100%;min-width:0;max-width:100%;position:relative}
+#chart-main-el,.qb-chart-stage [id$="-el"],#provider-chart,#efficiency-chart,#radar-el,[id^="bench-"][id$="-el"]{display:block;width:100%!important;max-width:100%;min-width:0;position:relative;contain:layout paint}
+#chart-main-el{min-height:360px}.chart-legend{padding:8px 2px 0;border-top:1px solid var(--qb-border);gap:9px 16px;font-size:.68rem}
+.notice-qb{border-radius:8px;font-size:.7rem}#leaderboard-card .toolbar-qb{max-width:100%}
+#index-table-wrap{max-height:720px;min-width:0}#index-table{font-size:.76rem!important}#index-table th{font-size:.59rem!important}#index-table td{padding:11px 13px!important}
+.table-responsive{max-width:100%;min-width:0}.table{font-size:.75rem!important}.table thead th{font-size:.59rem!important;letter-spacing:.06em}.table td{padding:10px 13px!important}
+.view-heading h2{font-size:1.3rem}.view[data-view="models"] .card,.view[data-view="benchmarks"] .card,.view[data-view="providers"] .card,.view[data-view="efficiency"] .card{box-shadow:none!important}
+.bcard{border-radius:9px;min-height:126px;padding:16px}.bcard .bt{font-size:.82rem;line-height:1.45}.bcard .bm{font-size:.67rem}
+.qb-dialog{border-radius:14px}#compare-dock{border-radius:12px}
+@media(max-width:900px){.page-heading{padding:19px 20px}.view[data-view="index"]>.page-heading{padding:22px}.page-heading-aside{min-width:180px}}
+@media(max-width:767.98px){
+ main.container-xl{padding:14px 12px 78px!important}.site-topline{height:54px}.site-nav{min-height:43px}.site-nav .nav-link{min-height:38px;padding:0 10px;font-size:.7rem}
+ .page-heading,.view[data-view="index"]>.page-heading{display:block;padding:20px 17px;min-height:0}.page-heading-aside{display:none}
+ .view[data-view="index"] .page-title{font-size:2.15rem}.page-description{font-size:.76rem}
+ #stats{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:7px!important}#stats .card,#stats .stat-card{padding:11px 10px!important}
+ #stats .stat-k,.stat-card .stat-k{font-size:.52rem}#stats .stat-v,.stat-card .stat-v{font-size:1.35rem!important}#stats .stat-s,.stat-card .stat-s{font-size:.6rem}
+ .analysis-head{align-items:flex-start;padding:16px 15px 13px}.analysis-head-meta{font-size:.5rem}.analysis-head h2{font-size:1rem}.analysis-head p{font-size:.68rem}
+ #chart-suite-card>.card-body{padding:13px 12px 15px!important}#chart-tabs .nav-link{min-height:42px;padding:0 10px!important;font-size:.66rem!important}#chart-main-el{min-height:340px}
+ .card-header{padding:14px 14px!important}.card-body{padding:15px 13px!important}#leaderboard-card .card-header{align-items:stretch!important}
+ #leaderboard-card .toolbar-qb{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}#leaderboard-card .toolbar-qb>*{min-width:0!important;width:100%}#leaderboard-card #q{grid-column:1/-1}
+ .table td{padding:9px 10px!important}.analysis-head-meta{display:none}
+}
+@media(prefers-reduced-motion:reduce){.view{animation:none!important}.bcard{transition:none!important}}
+
 </style>
 </head>
 <body>
@@ -335,6 +393,7 @@ footer{line-height:1.8}
     </div>
 
     <div class="card" id="chart-suite-card">
+      <div class="analysis-head"><div><div class="analysis-kicker">VISUAL ANALYSIS</div><h2>Benchmark intelligence workspace</h2><p>Explore score composition, model rankings, benchmark coverage and price trade-offs.</p></div><div class="analysis-head-meta"><span class="analysis-live-dot"></span> SOURCE-BASED DATA</div></div>
       <div class="card-header py-2">
         <ul class="nav nav-tabs card-header-tabs" id="chart-tabs" role="tablist">
           <li class="nav-item"><button class="nav-link active" type="button" data-chart="composition" role="tab">Composition</button></li>
@@ -362,7 +421,7 @@ footer{line-height:1.8}
 <div class="col-6 col-md-2"><div class="form-check"><input class="form-check-input" type="checkbox" id="pareto" checked><label class="form-check-label small" for="pareto">Pareto frontier</label></div></div>
 <div class="col-6 col-md-2"><div class="form-check"><input class="form-check-input" type="checkbox" id="quadrant"><label class="form-check-label small" for="quadrant">Highlight quadrant</label></div></div>
 </div><div class="d-flex justify-content-between flex-wrap gap-2 mt-2"><span class="small text-muted-qb" id="scatter-count"></span><button class="btn btn-sm btn-outline-secondary" id="scatter-reset" type="button">Reset options</button></div></div>
-        <div id="chart-main"></div>
+        <div class="qb-chart-stage"><div id="chart-main"></div></div>
       </div>
     </div>
   </section>
@@ -745,7 +804,26 @@ function renderIndex(){
 
 /* ---------- charts (ECharts) ---------- */
 
-var ECH={};
+var ECH={},ECH_OBS={},ECH_RESIZE_FRAME=0;
+function bindChartResize(id,el,chart){
+ if(!el||!chart||typeof ResizeObserver==='undefined')return;
+ if(ECH_OBS[id]&&ECH_OBS[id].el===el)return;
+ if(ECH_OBS[id]){try{ECH_OBS[id].observer.disconnect();}catch(e){}delete ECH_OBS[id];}
+ var observer=new ResizeObserver(function(entries){
+  var box=entries&&entries[0]&&entries[0].contentRect;
+  if(!box||box.width<16||box.height<16||chart.isDisposed())return;
+  if(ECH_RESIZE_FRAME)cancelAnimationFrame(ECH_RESIZE_FRAME);
+  ECH_RESIZE_FRAME=requestAnimationFrame(function(){if(!chart.isDisposed())chart.resize({width:Math.round(box.width),height:Math.round(box.height)});});
+ });
+ observer.observe(el);ECH_OBS[id]={el:el,observer:observer};
+}
+function resizeVisibleCharts(){
+ Object.keys(ECH).forEach(function(id){
+  var chart=ECH[id];if(!chart||chart.isDisposed())return;
+  var el=chart.getDom(),r=el&&el.getBoundingClientRect();
+  if(r&&r.width>16&&r.height>16)chart.resize({width:Math.round(r.width),height:Math.round(r.height)});
+ });
+}
 function sharedScatterControls(el){
  if(!el||el.id==='chart-main-el')return;
  var host=el.parentElement;
@@ -766,7 +844,7 @@ function sharedScatterControls(el){
 function chartInit(id){
   var el=document.getElementById(id);if(!el)return null;
   var cur=ECH[id];
-  if(cur&&(cur.getDom()!==el||cur.isDisposed())){if(!cur.isDisposed())cur.dispose();cur=null;}
+  if(cur&&(cur.getDom()!==el||cur.isDisposed())){if(ECH_OBS[id]){try{ECH_OBS[id].observer.disconnect();}catch(e){}delete ECH_OBS[id];}if(!cur.isDisposed())cur.dispose();cur=null;}
   if(!cur){
     var family=getComputedStyle(document.body).fontFamily||'DM Sans, Zen Kaku Gothic New, sans-serif';
     cur=echarts.init(el,{textStyle:{fontFamily:family,fontSize:12},tooltip:{textStyle:{fontFamily:family,fontSize:12}},legend:{textStyle:{fontFamily:family,fontSize:12}},visualMap:{textStyle:{fontFamily:family,fontSize:12}},title:{textStyle:{fontFamily:family,fontSize:12},subtextStyle:{fontFamily:family,fontSize:11}}}, {renderer:'svg'});
@@ -804,10 +882,11 @@ function chartInit(id){
       return rawSet.apply(this,arguments);
     };
   }
+  bindChartResize(id,el,cur);
   return cur;
 }
-window.addEventListener('resize',function(){Object.keys(ECH).forEach(function(k){if(ECH[k]&&!ECH[k].isDisposed())ECH[k].resize();});});
-if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){Object.keys(ECH).forEach(function(k){if(ECH[k]&&!ECH[k].isDisposed())ECH[k].resize();});});}
+window.addEventListener('resize',function(){resizeVisibleCharts();});
+if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){requestAnimationFrame(resizeVisibleCharts);});}
 /* Category axis for vertical bars: style from axisStyle, but keep our own label rotation and interval. */
 function catAxis(p,axis,label){
   var base=axisStyle(p);
@@ -1374,15 +1453,20 @@ function renderMethod(){
 
 /* ---------- navigation ---------- */
 
-function renderAll(){
-  renderIndex(); renderChart(); renderModels(); renderCatalogInventory(); renderPriceCatalog(); renderBenchGrid(); renderBench(); renderProviders(); renderEfficiency();
+function renderAll(view){
+ if(view==='index'){renderIndex();renderChart();}
+ else if(view==='models'){renderModels();renderCatalogInventory();renderPriceCatalog();}
+ else if(view==='benchmarks'){renderBenchGrid();renderBench();}
+ else if(view==='providers')renderProviders();
+ else if(view==='efficiency')renderEfficiency();
+ else if(view==='methodology')renderMethod();
 }
 function show(view){
-  $$('[data-nav]').forEach(function(b){var on=b.dataset.nav===view;b.classList.toggle('active',on);if(on)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
-  $$('section.view').forEach(function(s){s.hidden=s.dataset.view!==view;});
-  renderAll();renderCompareDock();
-  Object.keys(ECH).forEach(function(k){if(ECH[k]&&!ECH[k].isDisposed())ECH[k].resize();});
-  window.scrollTo(0,0);
+ $('[data-nav]').forEach(function(b){var on=b.dataset.nav===view;b.classList.toggle('active',on);if(on)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
+ $('section.view').forEach(function(s){s.hidden=s.dataset.view!==view;});
+ renderAll(view);renderCompareDock();
+ requestAnimationFrame(function(){requestAnimationFrame(resizeVisibleCharts);});
+ window.scrollTo(0,0);
 }
 $$('[data-nav]').forEach(function(b){b.addEventListener('click',function(){location.hash=b.dataset.nav;show(b.dataset.nav);});});
 
