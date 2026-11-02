@@ -302,7 +302,7 @@ main.container-xl{padding-top:25px!important}.view{gap:16px;min-width:0}
 #chart-tabs .nav-link.active{background:var(--qb-surface)!important}
 #chart-suite-card>.card-body{padding:18px 20px 20px!important}
 .qb-chart-stage,#chart-main{width:100%;min-width:0;max-width:100%;position:relative}
-#chart-main-el,.qb-chart-stage [id$="-el"],#provider-chart,#efficiency-chart,#radar-el,[id^="bench-"][id$="-el"]{display:block;width:100%!important;max-width:100%;min-width:0;position:relative;contain:layout paint}
+#chart-main-el,.qb-chart-stage [id$="-el"],#provider-chart,#efficiency-chart,#radar-el,[id^="bench-"][id$="-el"]{display:block;width:100%!important;max-width:100%;min-width:0;position:relative}
 #chart-main-el{min-height:360px}.chart-legend{padding:8px 2px 0;border-top:1px solid var(--qb-border);gap:9px 16px;font-size:.68rem}
 .notice-qb{border-radius:8px;font-size:.7rem}#leaderboard-card .toolbar-qb{max-width:100%}
 #index-table-wrap{max-height:720px;min-width:0}#index-table{font-size:.76rem!important}#index-table th{font-size:.59rem!important}#index-table td{padding:11px 13px!important}
@@ -804,7 +804,7 @@ function renderIndex(){
 
 /* ---------- charts (ECharts) ---------- */
 
-var ECH={},ECH_OBS={},ECH_RESIZE_FRAME=0;
+var ECH={},ECH_OBS={};
 function bindChartResize(id,el,chart){
  if(!el||!chart||typeof ResizeObserver==='undefined')return;
  if(ECH_OBS[id]&&ECH_OBS[id].el===el)return;
@@ -812,8 +812,7 @@ function bindChartResize(id,el,chart){
  var observer=new ResizeObserver(function(entries){
   var box=entries&&entries[0]&&entries[0].contentRect;
   if(!box||box.width<16||box.height<16||chart.isDisposed())return;
-  if(ECH_RESIZE_FRAME)cancelAnimationFrame(ECH_RESIZE_FRAME);
-  ECH_RESIZE_FRAME=requestAnimationFrame(function(){if(!chart.isDisposed())chart.resize({width:Math.round(box.width),height:Math.round(box.height)});});
+  requestAnimationFrame(function(){if(!chart.isDisposed())chart.resize({width:Math.round(box.width),height:Math.round(box.height)});});
  });
  observer.observe(el);ECH_OBS[id]={el:el,observer:observer};
 }
