@@ -1583,7 +1583,7 @@ document.addEventListener('click',function(e){
  var rm=e.target.closest('[data-cmp-remove]');if(rm){S.selected=S.selected.filter(function(id){return id!==rm.getAttribute('data-cmp-remove');});renderModels();return;}
  var fl=e.target.closest('[data-cmp-filter]');if(fl){S.compareFilter=fl.getAttribute('data-cmp-filter');renderCompare();return;}
  var ch=e.target.closest('[data-cmp-chart]');if(ch){S.compareChart=ch.getAttribute('data-cmp-chart');renderCompare();return;}
- if(e.target.closest('#compare-top-five')){S.selected=RESULT.rows.filter(function(r){return r.ranked;}).slice(0,5).map(function(r){return r.variantId;});renderModels();$('#compare-status').textContent='Top 5 ranked variants added';return;}
+ if(e.target.closest('#compare-top-five')){RESULT.rows.filter(function(r){return r.ranked&&!S.selected.includes(r.variantId);}).slice(0,5-S.selected.length).forEach(function(r){S.selected.push(r.variantId);});renderModels();$('#compare-status').textContent='Added ranked variants where space was available';return;}
  if(e.target.closest('#compare-export')){comparisonCsv();return;}
  if(e.target.closest('#compare-share')){var status=$('#compare-status');if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(comparisonShareUrl()).then(function(){status.textContent='Share link copied';}).catch(function(){status.textContent='Clipboard unavailable · copy the address bar URL';});else status.textContent='Clipboard unavailable · copy the address bar URL';return;}
 });
