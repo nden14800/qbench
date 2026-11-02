@@ -291,6 +291,79 @@ footer.container-xl{padding-top:22px!important;padding-bottom:30px!important}
 }
 @media(prefers-reduced-motion:reduce){.view{animation:none!important}}
 
+
+/* AA-inspired information architecture: full-width top navigation, no side rail. */
+:root{--qb-rail:0px}
+body{background:var(--bs-body-bg);overflow-x:hidden}
+.navbar{position:sticky!important;inset:0 0 auto!important;width:100%!important;height:auto!important;z-index:1030;padding:0!important;border:0!important;border-bottom:1px solid var(--bs-border-color)!important;border-radius:0!important;background:var(--bs-body-bg)!important;box-shadow:0 2px 10px rgba(16,24,40,.035)!important}
+.navbar>.container-xl{width:100%;max-width:1480px!important;min-height:66px;height:auto!important;margin:0 auto!important;padding:0 clamp(16px,3vw,42px)!important;display:flex!important;flex-direction:row!important;align-items:center!important;flex-wrap:nowrap!important;gap:clamp(18px,3vw,44px)!important}
+.navbar-brand{flex:0 0 auto;font-size:1.15rem!important;letter-spacing:-.055em!important;padding:0!important;border:0!important;white-space:nowrap}
+.brand-mark{width:27px;height:27px}
+.navbar .nav{width:auto!important;flex:1 1 auto;display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:flex-start;flex-wrap:nowrap!important;gap:clamp(4px,1vw,15px)!important;overflow:visible!important;padding:0!important;margin:0!important}
+.navbar .nav-item{width:auto!important;flex:0 0 auto}
+.nav-pills .nav-link{width:auto!important;min-height:66px;display:inline-flex;align-items:center;gap:7px;padding:0 11px!important;border:0!important;border-bottom:2px solid transparent!important;border-radius:0!important;background:transparent!important;color:var(--bs-secondary-color)!important;font-size:.83rem!important;font-weight:600!important;white-space:nowrap;box-shadow:none!important}
+.nav-pills .nav-link .bi{display:none}
+.nav-pills .nav-link:hover{color:var(--bs-emphasis-color)!important;background:transparent!important}
+.nav-pills .nav-link.active{color:var(--bs-emphasis-color)!important;border-bottom-color:var(--qb-accent)!important;background:transparent!important;box-shadow:none!important}
+.navbar .ms-auto{flex:0 0 auto;margin:0 0 0 auto!important;padding:0!important;border:0!important;width:auto!important;display:flex;align-items:center}
+#theme{width:38px;min-height:38px;text-align:center;border-radius:8px!important}
+main.container-xl,footer.container-xl{width:100%;max-width:1480px!important;margin:0 auto!important;padding-left:clamp(16px,3vw,42px)!important;padding-right:clamp(16px,3vw,42px)!important}
+main.container-xl{padding-top:26px!important;padding-bottom:48px!important}
+footer.container-xl{padding-top:20px!important;padding-bottom:28px!important}
+.qb-hero{padding:25px 0 19px!important;margin:0 0 25px!important;border:0!important;border-bottom:1px solid var(--bs-border-color)!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;overflow:visible}
+.qb-hero:after{display:none!important}
+.qb-hero-top{display:flex;align-items:flex-end;justify-content:space-between;gap:30px}
+.qb-kicker{font-size:.67rem;letter-spacing:.12em;margin-bottom:9px}
+.hero-title{font-size:clamp(2rem,3.4vw,2.85rem)!important;letter-spacing:-.065em!important;margin-bottom:8px!important}
+.qb-hero-copy{font-size:.88rem;max-width:760px;line-height:1.65}
+.qb-hero-aside{min-width:210px;padding:4px 0 4px 20px;border-left:1px solid var(--bs-border-color)}
+#stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px!important;margin-top:21px!important}
+#stats>[class*="col"]{width:auto}
+.stat-card{border-radius:8px!important;padding:12px 15px!important;background:var(--bs-tertiary-bg)!important;border:1px solid var(--bs-border-color)!important}
+.stat-card:hover{transform:none!important;box-shadow:none!important}
+.stat-card .stat-v{font-size:1.55rem!important}
+.card{border-radius:10px!important;box-shadow:0 1px 3px rgba(16,24,40,.035)!important}
+.card:hover{transform:none!important;box-shadow:0 2px 8px rgba(16,24,40,.045)!important}
+.card-header{padding:16px 19px!important}
+.card-body{padding:19px!important}
+.card-title-qb{font-size:1rem!important;letter-spacing:-.025em!important}
+.view{display:grid;grid-template-columns:minmax(0,1fr)!important;gap:18px!important}
+.view[hidden]{display:none!important}
+.view>.card,.view>.card.mb-3,.view>.card.mt-3{margin:0!important}
+.view[data-view="benchmarks"]{grid-template-columns:minmax(0,1fr)!important}
+.view[data-view="benchmarks"]>.card:first-child{position:static!important}
+#chart-tabs{background:transparent!important;border-bottom:1px solid var(--bs-border-color)!important;padding:0 13px!important;gap:3px!important}
+#chart-tabs .nav-link{padding:12px 13px!important}
+#index-table-wrap{max-height:640px}
+.toolbar-qb{gap:8px!important}
+.notice-qb{border-radius:7px!important}
+@media(max-width:900px){
+ .navbar>.container-xl{gap:12px!important;flex-wrap:wrap!important;padding-top:9px!important;padding-bottom:0!important}
+ .navbar-brand{margin-right:auto!important}
+ .navbar .ms-auto{margin-left:0!important}
+ .navbar .nav{order:3;width:100%!important;flex:1 0 100%;overflow-x:auto!important;scrollbar-width:none;padding:0 0 1px!important;gap:5px!important}
+ .navbar .nav::-webkit-scrollbar{display:none}
+ .nav-pills .nav-link{min-height:43px;padding:0 10px!important;font-size:.78rem!important}
+}
+@media(max-width:767.98px){
+ main.container-xl{padding-top:13px!important}
+ .qb-hero{padding:17px 0 15px!important;margin-bottom:16px!important}
+ .qb-hero-top{display:block}
+ .qb-hero-aside{display:none}
+ .hero-title{font-size:2rem!important}
+ #stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px!important;margin-top:15px!important}
+ .stat-card{padding:9px!important}
+ .stat-card .stat-k{font-size:.56rem!important;letter-spacing:.025em}
+ .stat-card .stat-v{font-size:1.18rem!important}
+ .stat-card .stat-s{font-size:.62rem!important}
+ .card-header,.card-body{padding:13px!important}
+ #chart-tabs{padding:0 5px!important}
+ #chart-tabs .nav-link{padding:10px 9px!important;font-size:.71rem!important}
+ .toolbar-qb{width:100%}
+ .toolbar-qb>*{max-width:100%}
+ .choice{min-width:0;width:100%}
+}
+
 </style>
 </head>
 <body>
