@@ -88,8 +88,8 @@ footer.container-xl{padding-top:22px!important;padding-bottom:32px!important;bor
 .view-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin:0 0 3px}
 .view-heading h2{margin:0;color:var(--qb-ink);font-size:1.45rem;font-weight:850;letter-spacing:-.055em}
 .view-heading p{margin:6px 0 0;color:var(--qb-muted);font-size:.79rem}
-.view[data-view="index"]>.card:first-of-type{order:3}
-.view[data-view="index"]>.card:nth-of-type(2){order:2}
+#chart-suite-card{order:2}
+#leaderboard-card{order:3}
 .view[data-view="index"]>.page-heading{order:0}
 .view[data-view="index"]>#stats{order:1}
 .view[data-view="index"]>.card:nth-of-type(2) .card-header{padding:0!important}
@@ -263,7 +263,7 @@ footer{line-height:1.8}
  <div class="page-heading-aside"><div class="label">SCORING FRAMEWORK</div><strong>08 capability families</strong><small>Equal-weight observed family means<br>Exact reported effort variants<br>Missing scores are never imputed</small></div>
 </div>
 <div class="row row-cols-1 row-cols-md-3 g-3" id="stats"></div>
-    <div class="card mb-3">
+    <div class="card mb-3" id="leaderboard-card">
       <div class="card-header d-flex flex-wrap align-items-start justify-content-between gap-2 py-3">
         <div>
           <h2 class="card-title-qb">QBench Index 1.6 leaderboard</h2>
@@ -299,7 +299,7 @@ footer{line-height:1.8}
       <div class="card-body pt-2 notice-qb" id="index-note"></div>
     </div>
 
-    <div class="card">
+    <div class="card" id="chart-suite-card">
       <div class="card-header py-2">
         <ul class="nav nav-tabs card-header-tabs" id="chart-tabs" role="tablist">
           <li class="nav-item"><button class="nav-link active" type="button" data-chart="composition" role="tab">Composition</button></li>
@@ -1451,7 +1451,7 @@ document.getElementById('command-dialog').addEventListener('click',function(e){
 document.getElementById('command-dialog').addEventListener('close',function(){
  if(commandReturnFocus&&commandReturnFocus.isConnected)commandReturnFocus.focus();
 });
-document.getElementById('command-dialog').addEventListener('cancel',function(){commandReturnFocus=null;});
+
 function renderCompareDock(){
  var dock=document.getElementById('compare-dock');if(!dock)return;
  var count=S.selected.length;
