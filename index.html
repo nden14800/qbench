@@ -802,6 +802,22 @@ function renderIndex(){
 /* ---------- charts (ECharts) ---------- */
 
 var ECH={};
+function sharedScatterControls(el){
+ if(!el||el.id==='chart-main-el')return;
+ var host=el.parentElement;
+ if(!host||host.querySelector(':scope > .shared-scatter-controls'))return;
+ var box=document.createElement('div');box.className='scatter-options shared-scatter-controls mb-2';
+ function select(key,label,opts){return '<div class="col-6 col-md-2"><label class="form-label small mb-1">'+label+'</label><select class="form-select form-select-sm" data-scatter-setting="'+key+'">'+opts.map(function(o){return '<option value="'+o[0]+'"'+(S[key]===o[0]?' selected':'')+'>'+o[1]+'</option>';}).join('')+'</select></div>';}
+ function check(key,label){return '<div class="col-6 col-md-2"><div class="form-check"><input class="form-check-input" type="checkbox" data-scatter-setting="'+key+'"'+(S[key]?' checked':'')+'><label class="form-check-label small">'+label+'</label></div></div>';}
+ box.innerHTML='<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2"><strong class="small">Scatter plot settings</strong><button type="button" class="btn btn-sm btn-outline-secondary" data-scatter-reset>Reset</button></div><div class="row g-2 align-items-center">'+
+ select('scatterColor','Color by',[['provider','Provider'],['effort','Reasoning effort'],['evidence','Evidence tier']])+
+ select('scatterShape','Point shape',[['circle','Circle'],['diamond','Diamond'],['rect','Square'],['triangle','Triangle']])+
+ select('scatterSize','Point size',[['fixed','Fixed'],['coverage','Coverage']])+
+ select('scatterXScale','X-axis scale',[['auto','Auto'],['linear','Linear'],['log','Logarithmic']])+
+ select('scatterYScale','Y-axis scale',[['auto','Auto'],['linear','Linear'],['log','Logarithmic']])+
+ check('scatterLabels','Show point labels')+check('scatterZoom','Zoom controls')+'</div>';
+ host.insertBefore(box,el);
+}
 function chartInit(id){
   var el=document.getElementById(id);if(!el)return null;
   var cur=ECH[id];
@@ -819,6 +835,7 @@ function chartInit(id){
       }
       /* One shared scatter-plot preference layer for every scatter chart in QBench. */
       if(opt&&typeof opt==='object'&&Array.isArray(opt.series)&&opt.series.some(function(x){return x&&x.type==='scatter';})){
+        sharedScatterControls(el);
         opt.series.forEach(function(ser){
           if(!ser||ser.type!=='scatter')return;
           ser.symbol=S.scatterShape||ser.symbol||'circle';
@@ -1464,6 +1481,21 @@ $('#theme').addEventListener('click',function(){
   try{localStorage.setItem('qbench-theme',next);}catch(err){}
   $('#theme-icon').className='bi '+(next==='dark'?'bi-sun':'bi-moon-stars');
   renderAll(); renderCompare();
+});
+
+document.addEventListener('change',function(e){
+ var control=e.target.closest('[data-scatter-setting]');
+ if(!control)return;
+ var key=control.getAttribute('data-scatter-setting');
+ if(key==='scatterLabels'||key==='scatterZoom')S[key]=control.checked;
+ else S[key]=control.value;
+ renderAll();
+});
+document.addEventListener('click',function(e){
+ var reset=e.target.closest('[data-scatter-reset]');
+ if(!reset)return;
+ Object.assign(S,{scatterColor:'provider',scatterSize:'fixed',scatterShape:'circle',scatterXScale:'auto',scatterYScale:'auto',scatterLabels:false,scatterZoom:true});
+ renderAll();
 });
 
 /* ---------- boot ---------- */
