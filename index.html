@@ -1378,13 +1378,13 @@ function renderAll(){
   renderIndex(); renderChart(); renderModels(); renderCatalogInventory(); renderPriceCatalog(); renderBenchGrid(); renderBench(); renderProviders(); renderEfficiency();
 }
 function show(view){
-  $('[data-nav]').forEach(function(b){var on=b.dataset.nav===view;b.classList.toggle('active',on);if(on)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
+  $$('[data-nav]').forEach(function(b){var on=b.dataset.nav===view;b.classList.toggle('active',on);if(on)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
   $$('section.view').forEach(function(s){s.hidden=s.dataset.view!==view;});
   renderAll();renderCompareDock();
   Object.keys(ECH).forEach(function(k){if(ECH[k]&&!ECH[k].isDisposed())ECH[k].resize();});
   window.scrollTo(0,0);
 }
-$$('[data-nav]').forEach(function(b){b.addEventListener('click',function(){location.hash=b.dataset.nav;show(b.dataset.nav);});});
+$$$('[data-nav]').forEach(function(b){b.addEventListener('click',function(){location.hash=b.dataset.nav;show(b.dataset.nav);});});
 
 document.addEventListener('click',function(e){
   var th=e.target.closest('[data-sort]');
