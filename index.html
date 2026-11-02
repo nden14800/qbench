@@ -200,6 +200,97 @@ html{scroll-behavior:smooth}
 @media(max-width:767.98px){.bars-toolbar{align-items:flex-start!important}.bars-count{width:100%;margin-left:0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.view,.qb-hero{animation:none!important}.qb-kicker .qb-live-dot{animation:none!important}*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}}
 
+
+/* QBench 2.0 workspace redesign — structural layout, not a palette swap. */
+:root{--qb-rail:248px;--qb-surface:var(--bs-body-bg);--qb-canvas:var(--bs-tertiary-bg);--qb-line:color-mix(in srgb,var(--bs-border-color) 82%,transparent);--qb-radius:15px}
+html{scroll-behavior:smooth}
+body{min-height:100vh;background:var(--qb-canvas);font-size:14px;line-height:1.62;letter-spacing:-.012em}
+.navbar{position:fixed!important;inset:0 auto 0 0;width:var(--qb-rail);height:100dvh;z-index:1030;padding:26px 17px!important;border:0!important;border-right:1px solid var(--qb-line)!important;background:var(--qb-surface)!important;backdrop-filter:none!important;box-shadow:8px 0 30px rgba(18,28,45,.025)}
+.navbar>.container-xl{height:100%;max-width:none!important;padding:0!important;display:flex!important;flex-direction:column;align-items:stretch!important;flex-wrap:nowrap!important;gap:28px!important}
+.navbar-brand{font-size:1.3rem!important;padding:2px 9px 18px;border-bottom:1px solid var(--qb-line);letter-spacing:-.06em!important}
+.brand-mark{width:31px;height:31px}
+.navbar .nav{width:100%;display:flex;flex-direction:column;align-items:stretch;gap:5px!important;overflow:visible!important}
+.navbar .nav-item{width:100%}
+.nav-pills .nav-link{width:100%;min-height:44px;display:flex;align-items:center;gap:13px;padding:10px 13px!important;border:1px solid transparent!important;border-radius:10px!important;font-size:.84rem!important;font-weight:650!important;color:var(--qb-muted)}
+.nav-pills .nav-link .bi{width:19px;text-align:center;font-size:1.02rem}
+.nav-pills .nav-link.active{background:var(--qb-accent-soft)!important;border-color:color-mix(in srgb,var(--qb-accent) 19%,transparent)!important;color:var(--qb-accent)!important;box-shadow:inset 3px 0 0 var(--qb-accent)}
+.navbar .ms-auto{margin:auto 0 0!important;padding:14px 9px 0;border-top:1px solid var(--qb-line);width:100%;display:flex;justify-content:flex-start}
+#theme{width:100%;min-height:42px;text-align:left;border-radius:10px!important}
+main.container-xl,footer.container-xl{max-width:1660px!important;margin-left:var(--qb-rail)!important;margin-right:0!important;padding-left:clamp(24px,3vw,54px)!important;padding-right:clamp(24px,3vw,54px)!important}
+main.container-xl{padding-top:34px!important;padding-bottom:36px!important}
+footer.container-xl{padding-top:22px!important;padding-bottom:30px!important}
+.qb-hero{position:relative;padding:27px 30px 24px!important;margin:0 0 26px!important;border:1px solid var(--qb-line)!important;border-radius:18px!important;background:linear-gradient(115deg,color-mix(in srgb,var(--qb-accent-soft) 75%,var(--qb-surface)),var(--qb-surface) 58%)!important;overflow:hidden}
+.qb-hero:after{content:"";position:absolute;right:-100px;top:-170px;width:380px;height:380px;border:1px solid color-mix(in srgb,var(--qb-accent) 12%,transparent);border-radius:50%;box-shadow:0 0 0 34px color-mix(in srgb,var(--qb-accent) 3%,transparent),0 0 0 72px color-mix(in srgb,var(--qb-accent) 2%,transparent);pointer-events:none}
+.qb-hero-top{position:relative;z-index:1;align-items:center}
+.qb-kicker{font-size:.67rem;letter-spacing:.14em;margin-bottom:14px}
+.hero-title{font-size:clamp(2.35rem,4vw,3.45rem)!important;letter-spacing:-.075em!important;margin-bottom:13px!important}
+.qb-hero-copy{font-size:.91rem;max-width:720px}
+.qb-hero-aside{min-width:250px;padding:8px 0 8px 28px}
+#stats{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px!important;margin-top:25px!important}
+#stats>[class*="col"]{width:auto}
+.stat-card{border-radius:12px!important;padding:15px 17px!important;background:color-mix(in srgb,var(--qb-surface) 94%,transparent)!important}
+.stat-card .stat-v{font-size:1.75rem!important}
+.card{border:1px solid var(--qb-line)!important;border-radius:var(--qb-radius)!important;background:var(--qb-surface)!important;box-shadow:0 2px 7px rgba(18,28,45,.025)!important;overflow:hidden}
+.card:hover{border-color:var(--qb-line)!important;box-shadow:0 5px 18px rgba(18,28,45,.045)!important;transform:none!important}
+.card-header{padding:18px 21px!important;background:var(--qb-surface)!important;border-bottom:1px solid var(--qb-line)!important}
+.card-body{padding:21px!important}
+.card-title-qb{font-size:1.04rem!important;font-weight:760!important;letter-spacing:-.035em}
+.view{display:grid;gap:18px;animation:qb-view-in .25s ease both}
+.view>.card,.view>.card.mb-3,.view>.card.mt-3{margin:0!important}
+.view .card-header .text-muted-qb{line-height:1.6}
+.view[data-view="index"]>.card:first-child{border-color:color-mix(in srgb,var(--qb-accent) 20%,var(--qb-line))!important}
+#index-table-wrap{max-height:590px;border-top:1px solid var(--qb-line)}
+#index-table thead th{background:var(--bs-tertiary-bg)!important}
+#index-note{padding:13px 21px!important;margin:0!important;border-top:1px solid var(--qb-line)}
+.index-explainer{margin:0 20px 15px!important;border-radius:10px!important;background:var(--bs-tertiary-bg)!important}
+#chart-tabs{padding:0 16px!important;gap:4px!important;background:var(--bs-tertiary-bg);border-bottom:1px solid var(--qb-line)}
+#chart-tabs .nav-link{padding:13px 14px!important;font-size:.78rem!important}
+#chart-main{min-width:0}
+#chart-main-el,.view [id$="-chart"],.view [id$="-el"]{max-width:100%}
+.chart-legend{gap:10px 16px!important;font-size:.74rem!important}
+.notice-qb{border:1px solid var(--qb-line)!important;border-radius:9px!important;background:var(--bs-tertiary-bg)!important;padding:11px 14px!important}
+.toolbar-qb{align-items:center}
+.form-control,.form-select,.choice__trigger{min-height:41px!important;border-radius:9px!important;font-size:.82rem!important}
+.btn{min-height:39px;border-radius:9px!important}
+.bcard{border-radius:11px!important;padding:15px 16px!important;min-height:88px}
+.table{font-size:.82rem!important}
+.table thead th{font-size:.66rem!important;letter-spacing:.055em;padding:13px 15px!important}
+.table td{padding:12px 15px!important}
+.qb-dialog{border-radius:18px!important}
+@media(min-width:768px){
+ .view[data-view="index"]{grid-template-columns:minmax(0,1fr)}
+ .view[data-view="models"]{gap:18px}
+ .view[data-view="benchmarks"]{grid-template-columns:minmax(280px,.78fr) minmax(0,1.6fr);align-items:start}
+ .view[data-view="benchmarks"]>.card:first-child{position:sticky;top:24px}
+}
+@media(max-width:767.98px){
+ :root{--qb-rail:0px}
+ .navbar{position:sticky!important;inset:auto!important;width:100%;height:auto;padding:9px 0!important;border-right:0!important;border-bottom:1px solid var(--qb-line)!important}
+ .navbar>.container-xl{height:auto;display:flex!important;flex-direction:row;align-items:center!important;flex-wrap:wrap!important;gap:8px!important;padding:0 13px!important}
+ .navbar-brand{padding:2px 5px;border:0;font-size:1.08rem!important}
+ .navbar .nav{width:100%;order:3;display:flex;flex-direction:row;flex-wrap:nowrap;gap:4px!important;overflow-x:auto!important;padding:2px 0 5px;scrollbar-width:none}
+ .navbar .nav::-webkit-scrollbar{display:none}
+ .navbar .nav-item{width:auto;flex:0 0 auto}
+ .nav-pills .nav-link{width:auto;min-height:38px;padding:8px 10px!important;gap:7px;font-size:.75rem!important}
+ .navbar .ms-auto{width:auto;margin:0 0 0 auto!important;padding:0;border:0}
+ #theme{width:39px;min-height:38px;text-align:center}
+ main.container-xl,footer.container-xl{margin-left:0!important;padding-left:14px!important;padding-right:14px!important}
+ main.container-xl{padding-top:16px!important}
+ .qb-hero{padding:21px 18px!important;border-radius:14px!important}
+ .qb-hero-aside{display:none}
+ .hero-title{font-size:2.25rem!important}
+ #stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px!important}
+ .stat-card{padding:10px!important}
+ .stat-card .stat-v{font-size:1.25rem!important}
+ .card-header,.card-body{padding:14px!important}
+ #index-note{padding:12px 14px!important}
+ .view[data-view="benchmarks"]{display:grid;grid-template-columns:minmax(0,1fr)}
+ .view[data-view="benchmarks"]>.card:first-child{position:static}
+ #chart-tabs{padding:0 8px!important}
+ #chart-tabs .nav-link{padding:11px 10px!important;font-size:.72rem!important}
+}
+@media(prefers-reduced-motion:reduce){.view{animation:none!important}}
+
 </style>
 </head>
 <body>
@@ -775,7 +866,7 @@ function renderScatter(host){
   c.setOption({animation:false,grid:{left:76,right:34,top:52,bottom:76,containLabel:true},
     tooltip:{trigger:'item',confine:true,formatter:function(e){var d=e.value||e.data;if(!d||!Array.isArray(d))return esc(e.seriesName);var q=pts.find(function(x){return scatterLabel(x)===d[2]&&x.price===d[0]&&x.index===d[1];});return '<strong>'+esc(d[2]||e.seriesName)+'</strong><br>QBench Index 1.6: '+Number(d[1]).toFixed(2)+'<br>API price proxy: $'+Number(d[0]).toFixed(3)+' / 1M tokens'+(q?'<br>Effort: '+esc(q.effort)+'<br>Provider: '+esc(q.provider):'');}},
     xAxis:Object.assign({type:'log',name:'Official API price proxy · USD / 1M tokens',nameLocation:'middle',nameGap:40,nameTextStyle:{color:p.muted,fontSize:11},axisLabel:{hideOverlap:true}},axisStyle(p)),
-    yAxis:Object.assign({type:'value',min:0,name:'QBench Index 1.6',nameLocation:'middle',nameGap:50,nameTextStyle:{color:p.muted,fontSize:11}},axisStyle(p)),
+    yAxis:Object.assign({type:'value',scale:true,boundaryGap:['8%','12%'],name:'QBench Index 1.6',nameLocation:'middle',nameGap:50,nameTextStyle:{color:p.muted,fontSize:11}},axisStyle(p)),
     series:series
   },true);
   $('#scatter-legend').innerHTML=models.map(function(model){return '<span><i style="background:'+modelColor(model,(pts.filter(function(q){return q.model===model;})[0]||{}).provider)+'"></i>'+esc(model)+'</span>';}).join('');
@@ -841,8 +932,8 @@ function renderConsistency(host){
   var c=chartInit('chart-main-el');
   c.setOption({animation:false,grid:{left:70,right:30,top:24,bottom:64},
     tooltip:{trigger:'item',textStyle:{fontFamily:family},formatter:function(e){var r=e.data.row;return esc(r.variantLabel)+'<br>Index: '+fmt(r.index,1)+'<br>Benchmark spread: '+fmt(r.spread,1)+' pct points<br>Coverage: '+r.coverage+' / '+RESULT.evals.length+' evaluations';}},
-    xAxis:Object.assign({type:'value',name:'Across-benchmark spread (descriptive only)',nameLocation:'middle',nameGap:38},axisStyle(p)),
-    yAxis:Object.assign({type:'value',min:0,name:'QBench Index 1.6',nameTextStyle:{color:p.muted}},axisStyle(p)),
+    xAxis:Object.assign({type:'value',scale:true,boundaryGap:['8%','8%'],name:'Across-benchmark spread (descriptive only)',nameLocation:'middle',nameGap:38},axisStyle(p)),
+    yAxis:Object.assign({type:'value',scale:true,boundaryGap:['8%','12%'],name:'QBench Index 1.6',nameTextStyle:{color:p.muted}},axisStyle(p)),
     series:[{type:'scatter',symbolSize:11,itemStyle:{color:p.accent,opacity:.8},data:rows.map(function(r){return {value:[r.spread,r.index],row:r};})}]
   },true);
 }
@@ -937,7 +1028,7 @@ function renderEfficiency(){
   c.setOption({animation:false,grid:{left:78,right:28,top:40,bottom:66,containLabel:true},
    tooltip:{trigger:'item',confine:true,formatter:function(e){var d=e.data&&e.data.row;if(!d)return esc(e.seriesName);return '<strong>'+esc(d.model)+'</strong><br>'+esc(d.provider||'Unknown')+' · '+esc(effortOf(d))+'<br>Score: '+fmt(scoreOf(d),2)+'<br>'+esc(metric.label)+': '+fmt(e.value[0],metric.type==='currency'?4:0)+(metric.type==='currency'?' USD':'') ;}},
    xAxis:Object.assign({type:'value',name:metric.axis,nameLocation:'middle',nameGap:38},axisStyle(p)),
-   yAxis:Object.assign({type:'value',min:0,name:'Publisher-reported score',nameLocation:'middle',nameGap:48},axisStyle(p)),
+   yAxis:Object.assign({type:'value',scale:true,boundaryGap:['8%','12%'],name:'Publisher-reported score',nameLocation:'middle',nameGap:48},axisStyle(p)),
    series:series
   },true);
  }
@@ -1181,12 +1272,12 @@ function renderBench(){
   costRows.slice().sort(function(a,b){return a.costPerTestUSD-b.costPerTestUSD||scoreOf(b)-scoreOf(a);}).forEach(function(r){if(scoreOf(r)>best){front.push([r.costPerTestUSD,scoreOf(r)]);best=scoreOf(r);}});
   var cs=[{name:'Cost per test',type:'scatter',symbol:'circle',symbolSize:11,data:costRows.map(function(r){return {value:[r.costPerTestUSD,scoreOf(r),variantLabel({model:r.model,effort:effortOf(r)})],itemStyle:{color:modelColor(r.model,r.provider)}};})}];
   if(front.length>1)cs.push({name:'Pareto frontier',type:'line',symbol:'none',lineStyle:{type:'dashed',width:2,color:p.good},data:front,silent:true});
-  if(cc)cc.setOption({animation:false,grid:{left:72,right:28,top:20,bottom:52},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2]||e.seriesName)+'<br>Cost/test: $'+Number(e.data[0]).toFixed(3)+'<br>Score: '+Number(e.data[1]).toFixed(2);}},xAxis:Object.assign({type:'log',name:'Cost per test (USD)',nameLocation:'middle',nameGap:34},axisStyle(p)),yAxis:Object.assign({type:'value',name:b.unit||'Score'},axisStyle(p)),series:cs},true);
+  if(cc)cc.setOption({animation:false,grid:{left:72,right:28,top:20,bottom:52},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2]||e.seriesName)+'<br>Cost/test: $'+Number(e.data[0]).toFixed(3)+'<br>Score: '+Number(e.data[1]).toFixed(2);}},xAxis:Object.assign({type:'log',name:'Cost per test (USD)',nameLocation:'middle',nameGap:34},axisStyle(p)),yAxis:Object.assign({type:'value',scale:true,boundaryGap:['8%','12%'],name:b.unit||'Score'},axisStyle(p)),series:cs},true);
  }
- if(tokenRows.length>=3){var tc=chartInit('bench-token-el');if(tc)tc.setOption({animation:false,grid:{left:72,right:28,top:20,bottom:52},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2])+'<br>Tokens/test: '+Math.round(e.data[0]).toLocaleString()+'<br>Score: '+Number(e.data[1]).toFixed(2);}},xAxis:Object.assign({type:'log',name:'Output tokens per test',nameLocation:'middle',nameGap:34},axisStyle(p)),yAxis:Object.assign({type:'value',name:b.unit||'Score'},axisStyle(p)),series:[{type:'scatter',symbol:'circle',symbolSize:11,data:tokenRows.map(function(x){return {value:[x.v,scoreOf(x.r),variantLabel({model:x.r.model,effort:effortOf(x.r)})],itemStyle:{color:modelColor(x.r.model,x.r.provider)}};})}]},true);}
- if(timeRows.length>=3){var tm=chartInit('bench-time-el');if(tm)tm.setOption({animation:false,grid:{left:72,right:28,top:20,bottom:52},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2])+'<br>Seconds/test: '+Math.round(e.data[0])+'<br>Score: '+Number(e.data[1]).toFixed(2);}},xAxis:Object.assign({type:'log',name:'Duration per test (seconds)',nameLocation:'middle',nameGap:34},axisStyle(p)),yAxis:Object.assign({type:'value',name:b.unit||'Score'},axisStyle(p)),series:[{type:'scatter',symbol:'circle',symbolSize:11,data:timeRows.map(function(x){return {value:[x.v,scoreOf(x.r),variantLabel({model:x.r.model,effort:effortOf(x.r)})],itemStyle:{color:modelColor(x.r.model,x.r.provider)}};})}]},true);}
- if(releaseRows.length>=3){var rc=chartInit('bench-release-el');if(rc)rc.setOption({animation:false,grid:{left:72,right:28,top:20,bottom:52},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2])+'<br>Released: '+esc(e.data[0])+'<br>Score: '+Number(e.data[1]).toFixed(2);}},xAxis:Object.assign({type:'time',name:'Model release date',nameLocation:'middle',nameGap:34},axisStyle(p)),yAxis:Object.assign({type:'value',name:b.unit||'Score'},axisStyle(p)),series:[{type:'scatter',symbol:'circle',symbolSize:11,data:releaseRows.map(function(r){return {value:[r.releaseDate,scoreOf(r),variantLabel({model:r.model,effort:effortOf(r)})],itemStyle:{color:modelColor(r.model,r.provider)}};})}]},true);}
- if(effortSeries.length){var order={none:0,low:1,medium:2,high:3,xhigh:4,max:5},ec=chartInit('bench-effort-el');if(ec)ec.setOption({animation:false,grid:{left:70,right:25,top:20,bottom:55},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2])+'<br>Effort: '+esc(e.data[3])+'<br>Score: '+fmt(e.data[1],2);}},xAxis:Object.assign({},axisStyle(p),{type:'value',min:0,max:5,interval:1,name:'Reasoning effort (ordered)',nameLocation:'middle',nameGap:34,axisLabel:Object.assign({},axisStyle(p).axisLabel,{formatter:function(v){return ['None','Low','Medium','High','Xhigh','Max'][v]||'';}})}),yAxis:Object.assign({type:'value',name:b.unit||'Score'},axisStyle(p)),series:effortSeries.map(function(name){return {name:name,type:'line',symbol:'circle',symbolSize:8,connectNulls:false,data:effortGroups[name].map(function(x){return {value:[order[x.effort],x.score,name,x.effort]};}).sort(function(a,c){return a.value[0]-c.value[0];})};})},true);}
+ if(tokenRows.length>=3){var tc=chartInit('bench-token-el');if(tc)tc.setOption({animation:false,grid:{left:72,right:28,top:20,bottom:52},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2])+'<br>Tokens/test: '+Math.round(e.data[0]).toLocaleString()+'<br>Score: '+Number(e.data[1]).toFixed(2);}},xAxis:Object.assign({type:'log',name:'Output tokens per test',nameLocation:'middle',nameGap:34},axisStyle(p)),yAxis:Object.assign({type:'value',scale:true,boundaryGap:['8%','12%'],name:b.unit||'Score'},axisStyle(p)),series:[{type:'scatter',symbol:'circle',symbolSize:11,data:tokenRows.map(function(x){return {value:[x.v,scoreOf(x.r),variantLabel({model:x.r.model,effort:effortOf(x.r)})],itemStyle:{color:modelColor(x.r.model,x.r.provider)}};})}]},true);}
+ if(timeRows.length>=3){var tm=chartInit('bench-time-el');if(tm)tm.setOption({animation:false,grid:{left:72,right:28,top:20,bottom:52},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2])+'<br>Seconds/test: '+Math.round(e.data[0])+'<br>Score: '+Number(e.data[1]).toFixed(2);}},xAxis:Object.assign({type:'log',name:'Duration per test (seconds)',nameLocation:'middle',nameGap:34},axisStyle(p)),yAxis:Object.assign({type:'value',scale:true,boundaryGap:['8%','12%'],name:b.unit||'Score'},axisStyle(p)),series:[{type:'scatter',symbol:'circle',symbolSize:11,data:timeRows.map(function(x){return {value:[x.v,scoreOf(x.r),variantLabel({model:x.r.model,effort:effortOf(x.r)})],itemStyle:{color:modelColor(x.r.model,x.r.provider)}};})}]},true);}
+ if(releaseRows.length>=3){var rc=chartInit('bench-release-el');if(rc)rc.setOption({animation:false,grid:{left:72,right:28,top:20,bottom:52},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2])+'<br>Released: '+esc(e.data[0])+'<br>Score: '+Number(e.data[1]).toFixed(2);}},xAxis:Object.assign({type:'time',name:'Model release date',nameLocation:'middle',nameGap:34},axisStyle(p)),yAxis:Object.assign({type:'value',scale:true,boundaryGap:['8%','12%'],name:b.unit||'Score'},axisStyle(p)),series:[{type:'scatter',symbol:'circle',symbolSize:11,data:releaseRows.map(function(r){return {value:[r.releaseDate,scoreOf(r),variantLabel({model:r.model,effort:effortOf(r)})],itemStyle:{color:modelColor(r.model,r.provider)}};})}]},true);}
+ if(effortSeries.length){var order={none:0,low:1,medium:2,high:3,xhigh:4,max:5},ec=chartInit('bench-effort-el');if(ec)ec.setOption({animation:false,grid:{left:70,right:25,top:20,bottom:55},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2])+'<br>Effort: '+esc(e.data[3])+'<br>Score: '+fmt(e.data[1],2);}},xAxis:Object.assign({},axisStyle(p),{type:'value',min:0,max:5,interval:1,name:'Reasoning effort (ordered)',nameLocation:'middle',nameGap:34,axisLabel:Object.assign({},axisStyle(p).axisLabel,{formatter:function(v){return ['None','Low','Medium','High','Xhigh','Max'][v]||'';}})}),yAxis:Object.assign({type:'value',scale:true,boundaryGap:['8%','12%'],name:b.unit||'Score'},axisStyle(p)),series:effortSeries.map(function(name){return {name:name,type:'line',symbol:'circle',symbolSize:8,connectNulls:false,data:effortGroups[name].map(function(x){return {value:[order[x.effort],x.score,name,x.effort]};}).sort(function(a,c){return a.value[0]-c.value[0];})};})},true);}
 }
 
 
