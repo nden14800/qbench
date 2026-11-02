@@ -1384,7 +1384,7 @@ function show(view){
   Object.keys(ECH).forEach(function(k){if(ECH[k]&&!ECH[k].isDisposed())ECH[k].resize();});
   window.scrollTo(0,0);
 }
-$$$('[data-nav]').forEach(function(b){b.addEventListener('click',function(){location.hash=b.dataset.nav;show(b.dataset.nav);});});
+$('[data-nav]').forEach(function(b){b.addEventListener('click',function(){location.hash=b.dataset.nav;show(b.dataset.nav);});});
 
 document.addEventListener('click',function(e){
   var th=e.target.closest('[data-sort]');
