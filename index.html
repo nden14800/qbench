@@ -817,6 +817,28 @@ function chartInit(id){
         opt.toolbox={right:4,top:0,itemSize:14,iconStyle:{borderColor:pal().muted},
           feature:{saveAsImage:{title:'Save as PNG',icon:'path://M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z',name:'qbench-'+id,pixelRatio:2,backgroundColor:cssVar('--bs-body-bg')||'#ffffff'}}};
       }
+      /* One shared scatter-plot preference layer for every scatter chart in QBench. */
+      if(opt&&typeof opt==='object'&&Array.isArray(opt.series)&&opt.series.some(function(x){return x&&x.type==='scatter';})){
+        opt.series.forEach(function(ser){
+          if(!ser||ser.type!=='scatter')return;
+          ser.symbol=S.scatterShape||ser.symbol||'circle';
+          ser.symbolSize=S.scatterSize==='coverage'?function(v){return Math.max(7,Math.min(24,6+Number(v&&v[2]||0)*1.2));}:11;
+          ser.label=Object.assign({},ser.label||{},{show:!!S.scatterLabels,position:'top',color:pal().ink,fontSize:10});
+          if(Array.isArray(ser.data))ser.data.forEach(function(d){
+            var r=d&&d.row;if(!r)return;
+            var color;
+            if(S.scatterColor==='effort'){var e=r.effort||r.reasoningEffort||'not-reported';var ec={none:pal().c[0],low:pal().c[1],medium:pal().c[2],high:pal().c[3],xhigh:'#a45c9c',max:'#b85c5c','not-reported':pal().muted};color=ec[e]||pal().muted;}
+            else if(S.scatterColor==='evidence'){var tier=r.rankTier||'unranked';var tc={full:pal().good,broad:pal().c[1],limited:pal().c[2],insufficient:pal().muted};color=tc[tier]||pal().muted;}
+            else color=modelColor(r.model,r.provider);
+            d.itemStyle=Object.assign({},d.itemStyle||{},{color:color});
+          });
+        });
+        var xs=Array.isArray(opt.xAxis)?opt.xAxis:[opt.xAxis],ys=Array.isArray(opt.yAxis)?opt.yAxis:[opt.yAxis];
+        xs.forEach(function(a){if(!a||a.type==='time'||a.type==='category'||a.type==='log')return;if(S.scatterXScale==='log')a.type='log';else if(S.scatterXScale==='linear'||S.scatterXScale==='auto')a.type='value';});
+        ys.forEach(function(a){if(!a||a.type==='time'||a.type==='category'||a.type==='log')return;if(S.scatterYScale==='log')a.type='log';else if(S.scatterYScale==='linear'||S.scatterYScale==='auto')a.type='value';});
+        if(S.scatterZoom&&!opt.dataZoom)opt.dataZoom=[{type:'inside',filterMode:'none'},{type:'slider',xAxisIndex:0,height:16,bottom:8}];
+        if(!S.scatterZoom&&opt.dataZoom)opt.dataZoom=[];
+      }
       return rawSet.apply(this,arguments);
     };
   }
