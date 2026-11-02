@@ -434,7 +434,16 @@ footer.container-xl{padding-top:20px!important;padding-bottom:28px!important}
 
     <div class="card">
       <div class="card-header py-2">
-        <div class="px-3 py-2"><div class="fw-semibold">Scatter plot explorer</div><div class="small text-muted-qb">Explore model performance, price, evidence coverage and consistency on a common coordinate system.</div></div>
+        <ul class="nav nav-tabs card-header-tabs" id="chart-tabs" role="tablist">
+          <li class="nav-item"><button class="nav-link active" type="button" data-chart="composition" role="tab">Composition</button></li>
+          <li class="nav-item"><button class="nav-link" type="button" data-chart="bars" role="tab">Index bars</button></li>
+          <li class="nav-item"><button class="nav-link" type="button" data-chart="evalgrid" role="tab">Evaluation grid</button></li>
+          <li class="nav-item"><button class="nav-link" type="button" data-chart="scatter" role="tab">Index vs. API price proxy + Pareto</button></li>
+          <li class="nav-item"><button class="nav-link" type="button" data-chart="heatmap" role="tab">Heatmap</button></li>
+          <li class="nav-item"><button class="nav-link" type="button" data-chart="distribution" role="tab">Index distribution</button></li>
+          <li class="nav-item"><button class="nav-link" type="button" data-chart="coverage" role="tab">Evaluation coverage</button></li>
+          <li class="nav-item"><button class="nav-link" type="button" data-chart="consistency" role="tab">Consistency</button></li>
+        </ul>
       </div>
       <div class="card-body">
         <div id="chart-controls" class="scatter-options mb-3"><div class="row g-2 align-items-end">
@@ -695,7 +704,7 @@ function makeChoice(host,options,value,onChange,label){
 }
 
 /* ---------- state ---------- */
-var S={sort:'index',dir:-1,provider:'all',effort:'all',q:'',showUnranked:false,mq:'',mSort:'index',mDir:-1,selected:[],bench:null,pareto:true,quadrant:false,chart:'scatter',scatterX:'price',scatterY:'index',scatterColor:'provider',scatterSize:'fixed',scatterShape:'circle',scatterXScale:'log',scatterYScale:'linear',scatterLabels:false,scatterZoom:true,scatterMean:false,barsN:'20',barsValues:false,barsPick:[],famCols:false,priceCols:false,effBench:'',effQ:'',catalogQ:''};
+var S={sort:'index',dir:-1,provider:'all',effort:'all',q:'',showUnranked:false,mq:'',mSort:'index',mDir:-1,selected:[],bench:null,pareto:true,quadrant:false,chart:'composition',scatterX:'price',scatterY:'index',scatterColor:'provider',scatterSize:'fixed',scatterShape:'circle',scatterXScale:'log',scatterYScale:'linear',scatterLabels:false,scatterZoom:true,scatterMean:false,barsN:'20',barsValues:false,barsPick:[],famCols:false,priceCols:false,effBench:'',effQ:'',catalogQ:''};
 
 /* ---------- stats & static text ---------- */
 function renderStats(){
@@ -735,7 +744,14 @@ function renderSummaryCards(ranked,top,baseModels,full,broad,limited,unranked){
       '<div class="d-flex justify-content-between py-1"><span>Unranked</span><span class="fw-semibold">'+unranked+'</span></div></div>'+
     '</div></div></div>';
   var chart=chartInit('sum-top');
-  if(chart&&top5.length){chart.setOption({animation:false,grid:{left:48,right:14,top:20,bottom:34},tooltip:{trigger:'item',formatter:function(e){var r=top5[e.dataIndex];return esc(r.variantLabel)+'<br>Index '+fmt(r.index,1)+'<br>Coverage '+r.coverage+'/'+RESULT.evals.length;}},xAxis:Object.assign({type:'value',name:'Evaluation coverage',scale:true},axisStyle(p)),yAxis:Object.assign({type:'value',min:0,max:100,name:'Index 1.6'},axisStyle(p)),series:[{type:'scatter',symbolSize:13,data:top5.map(function(r){return {name:r.variantLabel,value:[r.coverage,r.index],itemStyle:{color:modelColor(r.model,r.provider)}};})}]});}
+  if(chart&&top5.length){
+    chart.setOption({animation:false,grid:{left:40,right:12,top:26,bottom:96},
+      tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(ps){var r=top5[ps[0].dataIndex];return esc(r.variantLabel)+'<br>Index '+fmt(r.index,1);}},
+      xAxis:catAxis(p,{type:'category',data:top5.map(scatterLabel)},{rotate:40,interval:0,fontSize:10,width:110,overflow:'truncate'}),
+      yAxis:Object.assign({type:'value',min:0},axisStyle(p)),
+      series:[{type:'bar',barWidth:'50%',data:top5.map(function(r){return {value:+Number(r.index).toFixed(1),itemStyle:{color:modelColor(r.model,r.provider),borderRadius:[5,5,0,0]}};}),
+        label:{show:true,position:'top',formatter:function(e){return fmt(e.value,1);},color:p.ink,fontSize:10}}]});
+  }
 }
 
 /* ---------- index table ---------- */
@@ -996,7 +1012,13 @@ document.addEventListener('change',function(e){
 document.addEventListener('click',function(e){
   if(e.target.id==='bars-clear'){S.barsPick=[];renderChart();}
 });
-function renderChart(){renderScatter($('#chart-main'));}
+function renderChart(){
+  var host=$('#chart-main');
+  $('#chart-controls').style.display=S.chart==='scatter'?'':'none';
+  $('#chart-tabs [data-chart]').forEach(function(b){var on=b.dataset.chart===S.chart;b.classList.toggle('active',on);b.setAttribute('aria-selected',String(on));});
+  var fn={composition:renderComposition,bars:renderBars,evalgrid:renderEvalGrid,scatter:renderScatter,heatmap:renderHeatmap,distribution:renderDistribution,coverage:renderCoverage,consistency:renderConsistency}[S.chart]||renderComposition;
+  fn(host);
+}
 
 /* ---------- provider analysis ---------- */
 function renderProviders(){
@@ -1022,9 +1044,9 @@ function renderProviders(){
   var p=pal(),c=chartInit('provider-chart');
   c.setOption({animation:false,grid:{left:150,right:54,top:22,bottom:42,containLabel:true},
    tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(items){var x=items[0],r=chartRows[x.dataIndex];return '<strong>'+esc(r.provider)+'</strong><br>Mean Index: '+fmt(r.mean,2)+'<br>Ranked variants: '+r.ranked+'<br>Distinct model names: '+r.models;}},
-   xAxis:Object.assign({type:'value',name:'Ranked model/effort variants',nameLocation:'middle',nameGap:28,scale:true},axisStyle(p)),
-   yAxis:Object.assign({type:'value',min:0,max:100,name:'Mean QBench Index',scale:true},axisStyle(p)),
-   series:[{type:'scatter',symbol:'circle',symbolSize:13,data:chartRows.map(function(r){return {name:r.provider,value:[r.ranked,r.mean],itemStyle:{color:providerColor(r.provider)}};})}]
+   xAxis:Object.assign({type:'value',min:0,max:100,name:'Mean QBench Index',nameLocation:'middle',nameGap:28},axisStyle(p)),
+   yAxis:Object.assign({type:'category',inverse:true,data:chartRows.map(function(r){return r.provider;}),axisLabel:{hideOverlap:true}},axisStyle(p)),
+   series:[{type:'bar',barMaxWidth:22,data:chartRows.map(function(r){return r.mean;}),itemStyle:{color:p.c[0],borderRadius:[0,4,4,0]},label:{show:true,position:'right',color:p.ink,formatter:function(x){return Number(x.value).toFixed(1);}}}]
   },true);
  }
  $('#providers-body').innerHTML=rows.map(function(r){return '<tr><td class="fw-semibold">'+esc(r.provider)+'</td><td class="text-end num">'+r.models+'</td><td class="text-end num">'+r.variants+'</td><td class="text-end num">'+r.ranked+'</td><td class="text-end num">'+fmt(r.mean,2)+'</td><td class="text-end num">'+r.priced+'</td></tr>';}).join('');
@@ -1306,8 +1328,8 @@ function renderBench(){
  var c=chartInit('bench-plot-el');
  var errorData=top.map(function(t,i){var u=t.scoreUncertainty;if(u==null&&t.uncertainty){var um=String(t.uncertainty).match(/([0-9]+(?:\\.[0-9]+)?)/);if(um)u=Number(um[1]);}return u==null?null:[i,scoreOf(t),Number(u)];}).filter(Boolean);
  if(c)c.setOption({animation:false,grid:{left:56,right:18,top:14,bottom:150},tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(items){var t=top[items[0].dataIndex],unc=t.scoreUncertainty;if(unc==null&&t.uncertainty){var um=String(t.uncertainty).match(/([0-9]+(?:\\.[0-9]+)?)/);if(um)unc=Number(um[1]);}return esc(variantLabel({model:t.model,effort:effortOf(t)}))+'<br>Score: '+fmt(scoreOf(t),2)+(unc!=null?' ± '+fmt(unc,2):'')+' '+esc(b.unit||'');}},
-  xAxis:Object.assign({type:'value',name:'Model position in score ranking',scale:true},axisStyle(p)),yAxis:Object.assign({type:'value',min:0,name:b.unit||'Score'},axisStyle(p)),
-  series:[{type:'scatter',symbol:'circle',symbolSize:12,data:top.map(function(t,i){return {name:variantLabel({model:t.model,effort:effortOf(t)}),value:[i+1,scoreOf(t)],itemStyle:{color:modelColor(t.model,t.provider)}};})}].concat(errorData.length?[{name:'Publisher-reported ±',type:'custom',silent:true,coordinateSystem:'cartesian2d',encode:{x:0,y:1},data:errorData,renderItem:function(params,api){var x=api.value(0),y=api.value(1),u=api.value(2),a=api.coord([x,Math.max(0,y-u)]),z=api.coord([x,y+u]),cap=5,style={stroke:p.ink,lineWidth:1.25};return {type:'group',children:[{type:'line',shape:{x1:a[0],y1:a[1],x2:z[0],y2:z[1]},style:style},{type:'line',shape:{x1:a[0]-cap,y1:a[1],x2:a[0]+cap,y2:a[1]},style:style},{type:'line',shape:{x1:z[0]-cap,y1:z[1],x2:z[0]+cap,y2:z[1]},style:style}]};}}]:[])},true);
+  xAxis:catAxis(p,{type:'category',data:top.map(function(t){return variantLabel({model:t.model,effort:effortOf(t)});})},{rotate:45,interval:0,fontSize:11,width:170,overflow:'truncate'}),yAxis:Object.assign({type:'value',min:0},axisStyle(p)),
+  series:[{type:'bar',barWidth:'50%',label:{show:true,position:'top',color:p.ink,fontSize:11,formatter:function(e){return Number(e.value).toFixed(1);}},data:top.map(function(t){return {value:scoreOf(t),itemStyle:{color:modelColor(t.model,t.provider),borderRadius:[4,4,0,0]}};})}].concat(errorData.length?[{name:'Publisher-reported ±',type:'custom',silent:true,coordinateSystem:'cartesian2d',encode:{x:0,y:1},data:errorData,renderItem:function(params,api){var x=api.value(0),y=api.value(1),u=api.value(2),a=api.coord([x,Math.max(0,y-u)]),z=api.coord([x,y+u]),cap=5,style={stroke:p.ink,lineWidth:1.25};return {type:'group',children:[{type:'line',shape:{x1:a[0],y1:a[1],x2:z[0],y2:z[1]},style:style},{type:'line',shape:{x1:a[0]-cap,y1:a[1],x2:a[0]+cap,y2:a[1]},style:style},{type:'line',shape:{x1:z[0]-cap,y1:z[1],x2:z[0]+cap,y2:z[1]},style:style}]};}}]:[])},true);
  if(costRows.length>=3){
   var cc=chartInit('bench-cost-el'),front=[],best=-1;
   costRows.slice().sort(function(a,b){return a.costPerTestUSD-b.costPerTestUSD||scoreOf(b)-scoreOf(a);}).forEach(function(r){if(scoreOf(r)>best){front.push([r.costPerTestUSD,scoreOf(r)]);best=scoreOf(r);}});
@@ -1318,7 +1340,7 @@ function renderBench(){
  if(tokenRows.length>=3){var tc=chartInit('bench-token-el');if(tc)tc.setOption({animation:false,grid:{left:72,right:28,top:20,bottom:52},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2])+'<br>Tokens/test: '+Math.round(e.data[0]).toLocaleString()+'<br>Score: '+Number(e.data[1]).toFixed(2);}},xAxis:Object.assign({type:'log',name:'Output tokens per test',nameLocation:'middle',nameGap:34},axisStyle(p)),yAxis:Object.assign({type:'value',scale:true,boundaryGap:['8%','12%'],name:b.unit||'Score'},axisStyle(p)),series:[{type:'scatter',symbol:'circle',symbolSize:11,data:tokenRows.map(function(x){return {value:[x.v,scoreOf(x.r),variantLabel({model:x.r.model,effort:effortOf(x.r)})],itemStyle:{color:modelColor(x.r.model,x.r.provider)}};})}]},true);}
  if(timeRows.length>=3){var tm=chartInit('bench-time-el');if(tm)tm.setOption({animation:false,grid:{left:72,right:28,top:20,bottom:52},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2])+'<br>Seconds/test: '+Math.round(e.data[0])+'<br>Score: '+Number(e.data[1]).toFixed(2);}},xAxis:Object.assign({type:'log',name:'Duration per test (seconds)',nameLocation:'middle',nameGap:34},axisStyle(p)),yAxis:Object.assign({type:'value',scale:true,boundaryGap:['8%','12%'],name:b.unit||'Score'},axisStyle(p)),series:[{type:'scatter',symbol:'circle',symbolSize:11,data:timeRows.map(function(x){return {value:[x.v,scoreOf(x.r),variantLabel({model:x.r.model,effort:effortOf(x.r)})],itemStyle:{color:modelColor(x.r.model,x.r.provider)}};})}]},true);}
  if(releaseRows.length>=3){var rc=chartInit('bench-release-el');if(rc)rc.setOption({animation:false,grid:{left:72,right:28,top:20,bottom:52},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2])+'<br>Released: '+esc(e.data[0])+'<br>Score: '+Number(e.data[1]).toFixed(2);}},xAxis:Object.assign({type:'time',name:'Model release date',nameLocation:'middle',nameGap:34},axisStyle(p)),yAxis:Object.assign({type:'value',scale:true,boundaryGap:['8%','12%'],name:b.unit||'Score'},axisStyle(p)),series:[{type:'scatter',symbol:'circle',symbolSize:11,data:releaseRows.map(function(r){return {value:[r.releaseDate,scoreOf(r),variantLabel({model:r.model,effort:effortOf(r)})],itemStyle:{color:modelColor(r.model,r.provider)}};})}]},true);}
- if(effortSeries.length){var order={none:0,low:1,medium:2,high:3,xhigh:4,max:5},ec=chartInit('bench-effort-el');if(ec)ec.setOption({animation:false,grid:{left:70,right:25,top:20,bottom:55},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2])+'<br>Effort: '+esc(e.data[3])+'<br>Score: '+fmt(e.data[1],2);}},xAxis:Object.assign({},axisStyle(p),{type:'value',min:0,max:5,interval:1,name:'Reasoning effort (ordered)',nameLocation:'middle',nameGap:34,axisLabel:Object.assign({},axisStyle(p).axisLabel,{formatter:function(v){return ['None','Low','Medium','High','Xhigh','Max'][v]||'';}})}),yAxis:Object.assign({type:'value',scale:true,boundaryGap:['8%','12%'],name:b.unit||'Score'},axisStyle(p)),series:effortSeries.map(function(name){return {name:name,type:'scatter',symbol:'circle',symbolSize:10,data:effortGroups[name].map(function(x){return {value:[order[x.effort],x.score,name,x.effort]};})};})},true);}
+ if(effortSeries.length){var order={none:0,low:1,medium:2,high:3,xhigh:4,max:5},ec=chartInit('bench-effort-el');if(ec)ec.setOption({animation:false,grid:{left:70,right:25,top:20,bottom:55},tooltip:{trigger:'item',formatter:function(e){return esc(e.data[2])+'<br>Effort: '+esc(e.data[3])+'<br>Score: '+fmt(e.data[1],2);}},xAxis:Object.assign({},axisStyle(p),{type:'value',min:0,max:5,interval:1,name:'Reasoning effort (ordered)',nameLocation:'middle',nameGap:34,axisLabel:Object.assign({},axisStyle(p).axisLabel,{formatter:function(v){return ['None','Low','Medium','High','Xhigh','Max'][v]||'';}})}),yAxis:Object.assign({type:'value',scale:true,boundaryGap:['8%','12%'],name:b.unit||'Score'},axisStyle(p)),series:effortSeries.map(function(name){return {name:name,type:'line',symbol:'circle',symbolSize:8,connectNulls:false,data:effortGroups[name].map(function(x){return {value:[order[x.effort],x.score,name,x.effort]};}).sort(function(a,c){return a.value[0]-c.value[0];})};})},true);}
 }
 
 
