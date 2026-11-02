@@ -834,8 +834,8 @@ function chartInit(id){
           });
         });
         var xs=Array.isArray(opt.xAxis)?opt.xAxis:[opt.xAxis],ys=Array.isArray(opt.yAxis)?opt.yAxis:[opt.yAxis];
-        xs.forEach(function(a){if(!a||a.type==='time'||a.type==='category'||a.type==='log')return;if(S.scatterXScale==='log')a.type='log';else if(S.scatterXScale==='linear'||S.scatterXScale==='auto')a.type='value';});
-        ys.forEach(function(a){if(!a||a.type==='time'||a.type==='category'||a.type==='log')return;if(S.scatterYScale==='log')a.type='log';else if(S.scatterYScale==='linear'||S.scatterYScale==='auto')a.type='value';});
+        xs.forEach(function(a){if(!a||a.type==='time'||a.type==='category')return;if(S.scatterXScale==='log')a.type='log';else if(S.scatterXScale==='linear')a.type='value';});
+        ys.forEach(function(a){if(!a||a.type==='time'||a.type==='category')return;if(S.scatterYScale==='log')a.type='log';else if(S.scatterYScale==='linear')a.type='value';});
         if(S.scatterZoom&&!opt.dataZoom)opt.dataZoom=[{type:'inside',filterMode:'none'},{type:'slider',xAxisIndex:0,height:16,bottom:8}];
         if(!S.scatterZoom&&opt.dataZoom)opt.dataZoom=[];
       }
