@@ -232,6 +232,41 @@ footer{line-height:1.8}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
+/* Page-specific compositions: each workspace gets a distinct information architecture. */
+.view[data-view="models"]{grid-template-columns:repeat(2,minmax(0,1fr))}
+.view[data-view="models"]>.page-heading,#model-results-card,#compare-card{grid-column:1/-1}
+#price-catalog-card{grid-column:1}
+#official-model-inventory{grid-column:2}
+.view[data-view="benchmarks"]{grid-template-columns:minmax(265px,.78fr) minmax(0,1.55fr);align-items:start}
+.view[data-view="benchmarks"]>.page-heading{grid-column:1/-1}
+.view[data-view="benchmarks"]>.card:first-of-type{position:sticky;top:128px;max-height:calc(100vh - 148px);overflow:auto}
+.view[data-view="benchmarks"] #bgrid{display:grid!important;grid-template-columns:1fr;gap:8px}
+.view[data-view="benchmarks"] #bgrid>.col{width:auto;max-width:none}
+.view[data-view="benchmarks"] .bcard{min-height:0;padding:13px 14px}
+.view[data-view="providers"]>.page-heading,.view[data-view="efficiency"]>.page-heading{grid-column:1/-1}
+.view[data-view="providers"],.view[data-view="efficiency"]{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);align-items:start}
+.view[data-view="providers"]>.card,.view[data-view="efficiency"]>.card{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);align-items:stretch}
+.view[data-view="providers"]>.card>.card-header,.view[data-view="efficiency"]>.card>.card-header{grid-column:1/-1}
+.view[data-view="providers"]>.card>.card-body,.view[data-view="efficiency"]>.card>.card-body{grid-column:1;grid-row:2}
+.view[data-view="providers"]>.card>.table-responsive,.view[data-view="efficiency"]>.card>.table-responsive{grid-column:2;grid-row:2;max-height:690px;overflow:auto;border-left:1px solid var(--qb-border)}
+.view[data-view="providers"]>.card>.table-responsive .table,.view[data-view="efficiency"]>.card>.table-responsive .table{min-width:650px}
+.view[data-view="providers"]>.card>.table-responsive thead th,.view[data-view="efficiency"]>.card>.table-responsive thead th{position:sticky;top:0}
+@media(max-width:1050px){
+ .view[data-view="providers"],.view[data-view="efficiency"]{grid-template-columns:minmax(0,1fr)}
+ .view[data-view="providers"]>.card,.view[data-view="efficiency"]>.card{grid-template-columns:minmax(0,1fr)}
+ .view[data-view="providers"]>.card>.card-body,.view[data-view="efficiency"]>.card>.card-body{grid-column:1;grid-row:2}
+ .view[data-view="providers"]>.card>.table-responsive,.view[data-view="efficiency"]>.card>.table-responsive{grid-column:1;grid-row:3;border-left:0;border-top:1px solid var(--qb-border)}
+}
+@media(max-width:767.98px){
+ .view[data-view="models"]{grid-template-columns:minmax(0,1fr)}
+ #price-catalog-card,#official-model-inventory,#model-results-card,#compare-card{grid-column:1}
+ .view[data-view="benchmarks"]{grid-template-columns:minmax(0,1fr)}
+ .view[data-view="benchmarks"]>.card:first-of-type{position:static;max-height:none}
+ .view[data-view="benchmarks"] #bgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .view[data-view="providers"]>.card,.view[data-view="efficiency"]>.card{display:block}
+ .view[data-view="providers"]>.card>.table-responsive,.view[data-view="efficiency"]>.card>.table-responsive{max-height:560px}
+}
+
 </style>
 </head>
 <body>
@@ -335,7 +370,7 @@ footer{line-height:1.8}
   <!-- MODELS -->
   <section class="view" data-view="models" aria-label="Models" hidden>
     <div class="page-heading"><div><div class="page-eyebrow">MODEL EXPLORER</div><h1 class="page-title">Model <span>catalog</span></h1><p class="page-description">Explore measured model and effort variants, compare evidence and inspect official API pricing and inventory without mixing unranked models into the Index.</p></div><div class="page-heading-aside"><div class="label">MODEL DATA</div><strong>Measured + catalogued</strong><small>Exact model/effort records<br>Source-separated API pricing</small></div></div>
-    <div class="card mb-3">
+    <div class="card mb-3" id="model-results-card">
       <div class="card-header d-flex flex-wrap align-items-center justify-content-between gap-2 py-3">
         <div>
           <h2 class="card-title-qb">Models</h2>
