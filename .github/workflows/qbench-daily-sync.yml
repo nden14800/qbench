@@ -1,0 +1,52 @@
+name: QBench daily benchmark data sync
+
+on:
+  schedule:
+    - cron: "15 0 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/qbench-daily-sync.yml"
+      - "scripts/sync_hf_benchmarks.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: qbench-daily-benchmark-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Refresh official benchmark registry and scores
+        run: python scripts/sync_hf_benchmarks.py
+
+      - name: Validate JSON
+        run: python -m json.tool data/external-benchmarks.json > /dev/null
+
+      - name: Commit refreshed data
+        run: |
+          if git diff --quiet -- data/external-benchmarks.json; then
+            echo "No benchmark data changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/external-benchmarks.json
+          git commit -m "Daily benchmark data refresh"
+          git push origin HEAD:main
