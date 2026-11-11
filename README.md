@@ -30,7 +30,7 @@ The latest official-source audit covers OpenAI, Anthropic, Google, xAI, DeepSeek
 
 ## Benchmark data refresh — 2026-11-11
 
-The dataset contains 145 benchmark and model-card result collections. The current Index calculation uses only complete, condition-compatible publisher evaluations that pass the quality gate.
+The dataset contains 145 benchmark and model-card result collections. CyberBench v1.1 was refreshed to its complete 48-row 2026-11-05 publisher table; two special-access configurations remain visible but are excluded from the Index. The current Index calculation uses only complete, condition-compatible publisher evaluations that pass the quality gate.
 
 - Terminal-Bench 4.0 — 63 models; 66 tasks; Mini-SWE-agent; avg@3 across three runs.
 - Terminal-Bench-Science 0.1 — 45 publisher rows; 70 tasks; harness retained per row; only Mini-SWE-agent rows enter the current Index.
