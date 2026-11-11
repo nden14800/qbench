@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.6",
-  "note": "QBench Index 1.6 rebuild, snapshot 2026-10-31. Eighteen source-audited evaluations across eight capability families contribute to Index 1.6. Mystery Game Puzzles is standalone because its visible table is partial. Partial mirrors, mixed-harness sets, ceiling-watch series and ambiguous metric tables remain standalone. Discovery update 2026-11-11: six official Hugging Face benchmark dataset candidates were added to the benchmark directory with zero imported model scores. They remain outside QBench Index 1.6 pending source-level leaderboard verification. Provider model-card evidence update 2026-11-11: Anthropic Fable/Mythos 5.2 launch evaluations and Google Gemini 4 Carbon model-card evaluations are retained as standalone benchmark snapshots. They do not enter Index 1.6.",
+  "note": "QBench Index 1.6 rebuild, snapshot 2026-10-31. Eighteen source-audited evaluations across eight capability families contribute to Index 1.6. Mystery Game Puzzles is standalone because its visible table is partial. Partial mirrors, mixed-harness sets, ceiling-watch series and ambiguous metric tables remain standalone. Discovery update 2026-11-11: six official Hugging Face benchmark dataset candidates were added to the benchmark directory with zero imported model scores. They remain outside QBench Index 1.6 pending source-level leaderboard verification. Provider model-card evidence update 2026-11-11: Anthropic Fable/Mythos 5.2 launch evaluations and Google Gemini 4 Carbon model-card evaluations are retained as standalone benchmark snapshots. They do not enter Index 1.6. 2026-11-11 update: added Claude Fable 5.2 to nine Index 1.6 eligible Vals AI evaluations using the publisher's 2026-11-09 leaderboard/model results. Gemini 4 Carbon Tax Agent Bench refreshed to the 2026-11-09 value. Index 1.6 methodology and eligibility gates are unchanged; Claude Mythos 5.2 remains standalone pending comparable multi-family evidence.",
   "benchmarks": [
     {
       "id": "livebench-2.0",
@@ -4608,10 +4608,10 @@
     {
       "id": "terminal-bench-4-0",
       "name": "Terminal-Bench 4.0",
-      "snapshotDate": "2026-10-29",
+      "snapshotDate": "2026-11-09",
       "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
       "unit": "% resolution rate",
-      "quality": "Vals AI's 2026-10-29 leaderboard lists 59 model runs using Mini-SWE-agent. Cost / Test, Tokens / Test and Duration / Test are copied as published; these are full benchmark-test metrics, not per-task prices.",
+      "quality": "Vals AI's 2026-10-29 leaderboard lists 59 model runs using Mini-SWE-agent. Cost / Test, Tokens / Test and Duration / Test are copied as published; these are full benchmark-test metrics, not per-task prices. New Claude Fable 5.2 row added from the publisher's 2026-11-09 evaluation; prior rows retained with their original row-level snapshot dates.",
       "models": [
         {
           "model": "Claude Opus 5.5",
@@ -5566,6 +5566,21 @@
           "durationPerTestDisplay": "14m56s",
           "costMetricSource": "Vals AI Terminal-Bench 4.0 leaderboard",
           "effort": "not-reported"
+        },
+        {
+          "model": "Claude Fable 5.2",
+          "provider": "Anthropic",
+          "score": 65.15,
+          "effort": "high",
+          "configuration": "Mini-SWE-agent; High effort",
+          "harness": "Mini-SWE-agent (vals.ai run)",
+          "evidence": "Vals AI official leaderboard/model evaluation, updated 2026-11-09; Claude Fable 5.2 profile reports High compute effort.",
+          "source": "https://www.vals.ai/benchmarks/terminal-bench-4",
+          "sourceType": "third-party-evaluator",
+          "snapshotDate": "2026-11-09",
+          "costPerTestUSD": 14.56,
+          "tokensPerTestDisplay": "20.62m",
+          "durationPerTestDisplay": "55m07s"
         }
       ],
       "indexEligible": true,
@@ -14458,7 +14473,7 @@
     {
       "id": "legal-research-bench",
       "name": "Legal Research Bench",
-      "snapshotDate": "2026-10-29",
+      "snapshotDate": "2026-11-09",
       "source": "https://www.vals.ai/benchmarks/legal_research",
       "unit": "% all-pass",
       "models": [
@@ -15715,12 +15730,24 @@
           "snapshotDate": "2026-10-29",
           "costPerTestUSD": 0.04,
           "durationPerTestDisplay": "3m32s"
+        },
+        {
+          "model": "Claude Fable 5.2",
+          "provider": "Anthropic",
+          "score": 46.15,
+          "effort": "high",
+          "configuration": "All-Pass, shared harness; High effort",
+          "harness": "Vals shared agent harness: courtlistener_search, web_search, retrieve_information, parse_html_page, submit_final_result; 3-hour limit per task; GPT 5.4 judge",
+          "evidence": "Vals AI official leaderboard/model evaluation, updated 2026-11-09; Claude Fable 5.2 profile reports High compute effort.",
+          "source": "https://www.vals.ai/benchmarks/legal_research",
+          "sourceType": "third-party-evaluator",
+          "snapshotDate": "2026-11-09"
         }
       ],
       "indexEligible": true,
       "indexDomain": null,
       "saturationStatus": "not saturated (top 55.8%)",
-      "quality": "Vals AI Legal Research Bench leaderboard, 2026-10-29: 89 rows, all visible. All-Pass metric (a question scores only if every rubric item passes). Provider is inferred from the model name because the table has no provider column; effort and per-row harness are not shown, so effort is recorded as not-reported.",
+      "quality": "Vals AI Legal Research Bench leaderboard, 2026-10-29: 89 rows, all visible. All-Pass metric (a question scores only if every rubric item passes). Provider is inferred from the model name because the table has no provider column; effort and per-row harness are not shown, so effort is recorded as not-reported. New Claude Fable 5.2 row added from the publisher's 2026-11-09 evaluation; prior rows retained with their original row-level snapshot dates.",
       "costMetric": "Cost / Test",
       "costMetricUnit": "USD per full benchmark test",
       "costMetricSource": "https://www.vals.ai/benchmarks/legal_research",
@@ -15735,7 +15762,7 @@
     {
       "id": "tax-agent-bench",
       "name": "Tax Agent Bench",
-      "snapshotDate": "2026-10-29",
+      "snapshotDate": "2026-11-09",
       "source": "https://www.vals.ai/benchmarks/tax_agent_bench",
       "unit": "% accuracy",
       "models": [
@@ -15771,14 +15798,14 @@
         {
           "model": "Gemini 4 Carbon",
           "provider": "Google",
-          "score": 48.86,
+          "score": 51.78,
           "effort": "not-reported",
           "configuration": "Accuracy, shared harness",
           "harness": "Vals shared agent harness: web_search, lookup_authority, fetch_document, retrieve_information, calculator; 3-hour limit per task; GPT 5.4 judge",
-          "evidence": "Vals AI leaderboard (https://www.vals.ai/benchmarks/tax_agent_bench, snapshot 2026-10-29); row extracted from the public table; top rows cross-checked by a second extraction",
+          "evidence": "Vals AI Gemini 4 Carbon model profile, updated 2026-11-09; current Tax Agent Bench result 51.78%.",
           "source": "https://www.vals.ai/benchmarks/tax_agent_bench",
           "sourceType": "third-party-evaluator",
-          "snapshotDate": "2026-10-29",
+          "snapshotDate": "2026-11-09",
           "costPerTestUSD": 6.34,
           "durationPerTestDisplay": "34m46s"
         },
@@ -16868,12 +16895,24 @@
           "snapshotDate": "2026-10-29",
           "costPerTestUSD": 0.02,
           "durationPerTestDisplay": "29.67s"
+        },
+        {
+          "model": "Claude Fable 5.2",
+          "provider": "Anthropic",
+          "score": 32.09,
+          "effort": "high",
+          "configuration": "Accuracy, shared harness; High effort",
+          "harness": "Vals shared agent harness: web_search, lookup_authority, fetch_document, retrieve_information, calculator; 3-hour limit per task; GPT 5.4 judge",
+          "evidence": "Vals AI official leaderboard/model evaluation, updated 2026-11-09; Claude Fable 5.2 profile reports High compute effort.",
+          "source": "https://www.vals.ai/benchmarks/tax_agent_bench",
+          "sourceType": "third-party-evaluator",
+          "snapshotDate": "2026-11-09"
         }
       ],
       "indexEligible": true,
       "indexDomain": null,
       "saturationStatus": "not saturated (top 49.7%)",
-      "quality": "Vals AI Tax Agent Bench leaderboard, 2026-10-29: 80 rows, all visible. Accuracy is citation-adjusted; the secondary Weighted Pass metric is not used. Effort is not shown and is recorded as not-reported.",
+      "quality": "Vals AI Tax Agent Bench leaderboard, 2026-10-29: 80 rows, all visible. Accuracy is citation-adjusted; the secondary Weighted Pass metric is not used. Effort is not shown and is recorded as not-reported. New Claude Fable 5.2 row added from the publisher's 2026-11-09 evaluation; prior rows retained with their original row-level snapshot dates.",
       "costMetric": "Cost / Test",
       "costMetricUnit": "USD per full benchmark test",
       "costMetricSource": "https://www.vals.ai/benchmarks/tax_agent_bench",
@@ -16888,7 +16927,7 @@
     {
       "id": "finance-agent-v2-1",
       "name": "Finance Agent v2.1",
-      "snapshotDate": "2026-10-29",
+      "snapshotDate": "2026-11-09",
       "source": "https://www.vals.ai/benchmarks/fabv2-1",
       "unit": "% accuracy",
       "models": [
@@ -17369,12 +17408,27 @@
           "snapshotDate": "2026-10-29",
           "costPerTestUSD": 0.21,
           "durationPerTestDisplay": "5m14s"
+        },
+        {
+          "model": "Claude Fable 5.2",
+          "provider": "Anthropic",
+          "score": 69.47,
+          "effort": "high",
+          "configuration": "Accuracy, shared harness; High effort",
+          "harness": "Vals shared agent harness: edgar_search, web_search, parse_html_page, retrieve_information, calculator, price_history; 2-hour limit per task; 3-judge jury",
+          "evidence": "Vals AI official leaderboard/model evaluation, updated 2026-11-09; Claude Fable 5.2 profile reports High compute effort.",
+          "source": "https://www.vals.ai/benchmarks/fabv2-1",
+          "sourceType": "third-party-evaluator",
+          "snapshotDate": "2026-11-09",
+          "costPerTestUSD": 4.83,
+          "tokensPerTestDisplay": "517.89k",
+          "durationPerTestDisplay": "3m28s"
         }
       ],
       "indexEligible": true,
       "indexDomain": null,
       "saturationStatus": "not saturated (top 67.8%)",
-      "quality": "Vals AI Finance Agent v2.1 leaderboard, 2026-10-29: 34 rows, all visible. The page's primary grading metric is Partial Credit; the table shows Accuracy, which is used here. Effort is not shown and is recorded as not-reported.",
+      "quality": "Vals AI Finance Agent v2.1 leaderboard, 2026-10-29: 34 rows, all visible. The page's primary grading metric is Partial Credit; the table shows Accuracy, which is used here. Effort is not shown and is recorded as not-reported. New Claude Fable 5.2 row added from the publisher's 2026-11-09 evaluation; prior rows retained with their original row-level snapshot dates.",
       "costMetric": "Cost / Test",
       "costMetricUnit": "USD per full benchmark test",
       "costMetricSource": "https://www.vals.ai/benchmarks/fabv2-1",
@@ -18709,7 +18763,7 @@
     {
       "id": "programbench",
       "name": "ProgramBench",
-      "snapshotDate": "2026-10-20",
+      "snapshotDate": "2026-11-09",
       "source": "https://www.vals.ai/benchmarks/programbench",
       "unit": "% accuracy",
       "models": [
@@ -19488,12 +19542,24 @@
           "source": "https://www.vals.ai/benchmarks/programbench",
           "sourceType": "source-documented",
           "snapshotDate": "2026-10-20"
+        },
+        {
+          "model": "Claude Fable 5.2",
+          "provider": "Anthropic",
+          "score": 19,
+          "effort": "high",
+          "configuration": "Mini-SWE-agent harness (Vals AI); High effort",
+          "harness": "Mini-SWE-agent (Valkyrie; 1,000 steps, 6-hour limit)",
+          "evidence": "Vals AI official leaderboard/model evaluation, updated 2026-11-09; Claude Fable 5.2 profile reports High compute effort.",
+          "source": "https://www.vals.ai/benchmarks/programbench",
+          "sourceType": "third-party-evaluator",
+          "snapshotDate": "2026-11-09"
         }
       ],
       "indexEligible": true,
       "indexDomain": "Software engineering",
       "saturationStatus": "not saturated (top 18.5%)",
-      "quality": "Vals AI ProgramBench leaderboard, updated 2026-10-20. Named mini-SWE-agent harness via Valkyrie. Table complete (ranks 1–64); extracted with an AI-assisted reader and the top rows re-checked. Many models score 0%; scores are kept as published.",
+      "quality": "Vals AI ProgramBench leaderboard, updated 2026-10-20. Named mini-SWE-agent harness via Valkyrie. Table complete (ranks 1–64); extracted with an AI-assisted reader and the top rows re-checked. Many models score 0%; scores are kept as published. New Claude Fable 5.2 row added from the publisher's 2026-11-09 evaluation; prior rows retained with their original row-level snapshot dates.",
       "costMetric": null,
       "scoreScale": {
         "minimum": 0,
@@ -20059,7 +20125,7 @@
     {
       "id": "emb-v1-1",
       "name": "Excel Modeling Benchmark v1.1",
-      "snapshotDate": "2026-10-29",
+      "snapshotDate": "2026-11-09",
       "source": "https://www.vals.ai/benchmarks/emb-v1-1",
       "unit": "% accuracy (category mean)",
       "models": [
@@ -20510,12 +20576,27 @@
           "source": "https://www.vals.ai/benchmarks/emb-v1-1",
           "sourceType": "source-documented",
           "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Claude Fable 5.2",
+          "provider": "Anthropic",
+          "score": 77.38,
+          "effort": "high",
+          "configuration": "Vals AI public leaderboard; High effort",
+          "harness": "Shared agent harness (bash, execute, submit)",
+          "evidence": "Vals AI official leaderboard/model evaluation, updated 2026-11-09; Claude Fable 5.2 profile reports High compute effort.",
+          "source": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "sourceType": "third-party-evaluator",
+          "snapshotDate": "2026-11-09",
+          "costPerTestUSD": 6.67,
+          "tokensPerTestDisplay": "4.12m",
+          "durationPerTestDisplay": "16m19s"
         }
       ],
       "indexEligible": true,
       "indexDomain": "Professional knowledge work",
       "saturationStatus": "not saturated (top 76.73%)",
-      "quality": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29. Named harness: Shared agent harness (bash, execute, submit). Table complete (37 rows). Extracted with an AI-assisted reader; rows verified against the page by a second pass. Scores kept as published.",
+      "quality": "Vals AI Excel Modeling Benchmark v1.1 leaderboard, updated 2026-10-29. Named harness: Shared agent harness (bash, execute, submit). Table complete (37 rows). Extracted with an AI-assisted reader; rows verified against the page by a second pass. Scores kept as published. New Claude Fable 5.2 row added from the publisher's 2026-11-09 evaluation; prior rows retained with their original row-level snapshot dates.",
       "costMetric": null,
       "scoreScale": {
         "minimum": 0,
@@ -20949,7 +21030,7 @@
     {
       "id": "code-migration-v1-1",
       "name": "Code Migration v1.1",
-      "snapshotDate": "2026-10-28",
+      "snapshotDate": "2026-11-09",
       "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
       "unit": "% accuracy (hidden-test pass rate)",
       "models": [
@@ -21302,12 +21383,24 @@
           "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
           "sourceType": "source-documented",
           "snapshotDate": "2026-10-28"
+        },
+        {
+          "model": "Claude Fable 5.2",
+          "provider": "Anthropic",
+          "score": 83.27,
+          "effort": "high",
+          "configuration": "Vals AI public leaderboard; High effort",
+          "harness": "Pi agent harness",
+          "evidence": "Vals AI official leaderboard/model evaluation, updated 2026-11-09; Claude Fable 5.2 profile reports High compute effort.",
+          "source": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "sourceType": "third-party-evaluator",
+          "snapshotDate": "2026-11-09"
         }
       ],
       "indexEligible": true,
       "indexDomain": "Software engineering",
       "saturationStatus": "not saturated (top 86.88%)",
-      "quality": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28. Named harness: Pi agent harness. Table complete (29 rows). Extracted with an AI-assisted reader; rows verified against the page by a second pass. Scores kept as published.",
+      "quality": "Vals AI Code Migration v1.1 leaderboard, updated 2026-10-28. Named harness: Pi agent harness. Table complete (29 rows). Extracted with an AI-assisted reader; rows verified against the page by a second pass. Scores kept as published. New Claude Fable 5.2 row added from the publisher's 2026-11-09 evaluation; prior rows retained with their original row-level snapshot dates.",
       "costMetric": null,
       "scoreScale": {
         "minimum": 0,
@@ -21656,7 +21749,7 @@
     {
       "id": "swebench-multimodal",
       "name": "SWE-bench Multimodal",
-      "snapshotDate": "2026-10-29",
+      "snapshotDate": "2026-11-09",
       "source": "https://www.vals.ai/benchmarks/swebench-multimodal",
       "unit": "% accuracy",
       "models": [
@@ -21901,12 +21994,27 @@
           "source": "https://www.vals.ai/benchmarks/swebench-multimodal",
           "sourceType": "source-documented",
           "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Claude Fable 5.2",
+          "provider": "Anthropic",
+          "score": 62.29,
+          "effort": "high",
+          "configuration": "Vals AI public leaderboard; High effort",
+          "harness": "mini-swe-agent (no internet)",
+          "evidence": "Vals AI official leaderboard/model evaluation, updated 2026-11-09; Claude Fable 5.2 profile reports High compute effort.",
+          "source": "https://www.vals.ai/benchmarks/swebench-multimodal",
+          "sourceType": "third-party-evaluator",
+          "snapshotDate": "2026-11-09",
+          "costPerTestUSD": 1.84,
+          "tokensPerTestDisplay": "1.27m",
+          "durationPerTestDisplay": "7m40s"
         }
       ],
       "indexEligible": true,
       "indexDomain": "Software engineering",
       "saturationStatus": "not saturated (top 70.21%)",
-      "quality": "Vals AI SWE-bench Multimodal leaderboard, updated 2026-10-29. Named harness: mini-swe-agent (no internet). Table complete (20 rows). Extracted with an AI-assisted reader; rows verified against the page by a second pass. Scores kept as published.",
+      "quality": "Vals AI SWE-bench Multimodal leaderboard, updated 2026-10-29. Named harness: mini-swe-agent (no internet). Table complete (20 rows). Extracted with an AI-assisted reader; rows verified against the page by a second pass. Scores kept as published. New Claude Fable 5.2 row added from the publisher's 2026-11-09 evaluation; prior rows retained with their original row-level snapshot dates.",
       "costMetric": null,
       "scoreScale": {
         "minimum": 0,
@@ -21918,7 +22026,7 @@
     {
       "id": "biomysterybench",
       "name": "BioMysteryBench",
-      "snapshotDate": "2026-10-29",
+      "snapshotDate": "2026-11-09",
       "source": "https://www.vals.ai/benchmarks/biomysterybench",
       "unit": "% accuracy (three-run average)",
       "models": [
@@ -22269,12 +22377,24 @@
           "source": "https://www.vals.ai/benchmarks/biomysterybench",
           "sourceType": "source-documented",
           "snapshotDate": "2026-10-29"
+        },
+        {
+          "model": "Claude Fable 5.2",
+          "provider": "Anthropic",
+          "score": 83.7,
+          "effort": "high",
+          "configuration": "Vals AI public leaderboard; High effort",
+          "harness": "Terminus 2 harness in bioinformatics sandboxes",
+          "evidence": "Vals AI official leaderboard/model evaluation, updated 2026-11-09; Claude Fable 5.2 profile reports High compute effort.",
+          "source": "https://www.vals.ai/benchmarks/biomysterybench",
+          "sourceType": "third-party-evaluator",
+          "snapshotDate": "2026-11-09"
         }
       ],
       "indexEligible": true,
       "indexDomain": "Scientific workflows",
       "saturationStatus": "not saturated (top 81.11%)",
-      "quality": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29. Named harness: Terminus 2 harness in bioinformatics sandboxes. Table complete (29 rows). Extracted with an AI-assisted reader; rows verified against the page by a second pass. Scores kept as published.",
+      "quality": "Vals AI BioMysteryBench leaderboard, updated 2026-10-29. Named harness: Terminus 2 harness in bioinformatics sandboxes. Table complete (29 rows). Extracted with an AI-assisted reader; rows verified against the page by a second pass. Scores kept as published. New Claude Fable 5.2 row added from the publisher's 2026-11-09 evaluation; prior rows retained with their original row-level snapshot dates.",
       "costMetric": null,
       "scoreScale": {
         "minimum": 0,
@@ -50128,7 +50248,7 @@
   "composite": {
     "name": "QBench Index",
     "version": "1.6",
-    "snapshotAsOf": "2026-10-31",
+    "snapshotAsOf": "2026-11-09",
     "basis": "Eighteen source-audited evaluations across eight capability families. Each contributing evaluation must be a complete publisher-reported table with at least 12 distinct model/effort variants, one stated harness, and a top score that is not ceiling-saturated. Scores are publisher-reported percentages, not within-cohort rank percentiles. Exact model/effort variants are separate. Partial mirrors, ambiguous metric tables and below-gate sources remain standalone.",
     "minimumModelsPerEvaluation": 12,
     "minimumCategoryCoverage": 2,
@@ -54076,7 +54196,7 @@
     {
       "provider": "Anthropic",
       "hostingProvider": null,
-      "benchmarkStatus": "unmeasured",
+      "benchmarkStatus": "evaluated",
       "identityStatus": "verified",
       "lifecycleStatus": "active_latest",
       "releaseDate": "2026-11-09",
@@ -54121,7 +54241,7 @@
       "id": "anthropic:claude-fable-5-2",
       "displayName": "Claude Fable 5.2",
       "apiModelId": "claude-fable-5-2",
-      "benchmarkEvidenceNote": "Official provider-reported benchmark results are stored as standalone evidence. They are not eligible for QBench Index 1.6 unless the full common-harness source leaderboard is independently verified."
+      "benchmarkEvidenceNote": "Vals AI source-reported High-effort scores added to nine QBench Index 1.6 eligible evaluations spanning Software engineering, Professional knowledge work, and Scientific workflows. This clears the three-evaluation/three-family ranking evidence gate; composite score is computed from the source scores and QBench's unchanged Index 1.6 method."
     },
     {
       "provider": "Anthropic",
@@ -54172,7 +54292,7 @@
       "displayName": "Claude Mythos 5.2",
       "apiModelId": "claude-mythos-5-2",
       "availability": "Only organizations approved through Anthropic verification programs; not generally available.",
-      "benchmarkEvidenceNote": "Official provider-reported benchmark results are stored as standalone evidence. They are not eligible for QBench Index 1.6 unless the full common-harness source leaderboard is independently verified."
+      "benchmarkEvidenceNote": "Anthropic provider-reported results are retained as standalone evidence. No independently comparable QBench Index 1.6 eligible evaluation rows were verified; Mythos 5.2 is access-restricted."
     },
     {
       "id": "google:gemini-4-carbon",
@@ -54180,7 +54300,7 @@
       "provider": "Google",
       "apiModelId": "gemini-4-carbon",
       "hostingProvider": null,
-      "benchmarkStatus": "unmeasured",
+      "benchmarkStatus": "evaluated",
       "identityStatus": "verified",
       "lifecycleStatus": "active_latest",
       "releaseDate": "2026-11-10",
@@ -54223,7 +54343,7 @@
         }
       ],
       "notes": "Google describes Carbon as its strongest model for advanced cybersecurity, long-horizon agentic workflows, complex software engineering and scientific reasoning. Context window and modality specifications were not added because the launch source did not establish them.",
-      "benchmarkEvidenceNote": "Official provider-reported benchmark results are stored as standalone evidence. They are not eligible for QBench Index 1.6 unless the full common-harness source leaderboard is independently verified."
+      "benchmarkEvidenceNote": "Has six source-reported scores across Terminal-Bench 4.0 and Professional knowledge-work evaluations. It currently covers only two QBench Index 1.6 capability families, so it remains below the three-family ranking gate; additional third-family evidence is needed."
     }
   ],
   "modelCatalogSchemaVersion": "1.0",
