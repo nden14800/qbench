@@ -1349,9 +1349,12 @@ function renderModelDetail(id){
   var catalogId=String(id).indexOf('catalog:')===0?String(id).slice(8):'';
   var catalogOnly=(DATA.modelCatalog||[]).filter(function(m){return m.id===catalogId;})[0];
   if(!catalogOnly)return;
+  var standalone=[];(DATA.benchmarks||[]).forEach(function(b){(b.models||[]).forEach(function(m){if(m.model===catalogOnly.displayName&&scoreOf(m)!==null)standalone.push({benchmark:b,row:m});});});
+  standalone.sort(function(a,b){return String(a.benchmark.name).localeCompare(String(b.benchmark.name),'en');});
   $('#model-detail-title').textContent=catalogOnly.displayName;
   $('#model-detail-sub').textContent=catalogOnly.provider+' · Official API inventory · Not ranked';
-  $('#model-detail-content').innerHTML='<div class="notice-qb mb-3">No exact eligible QBench benchmark result is linked to this catalog entry. It has no Composite Index score and is intentionally excluded from the leaderboard.</div>'+catalogMetadataHtml(catalogOnly);
+  var standaloneHtml=standalone.length?'<h3 class="card-title-qb mb-2">Standalone provider-reported benchmark results</h3><div class="table-responsive mb-3"><table class="table table-sm"><thead><tr><th>Benchmark</th><th class="text-end">Score</th><th>Effort</th><th>Evidence</th></tr></thead><tbody>'+standalone.map(function(x){return '<tr><td>'+esc(x.benchmark.name)+'<div class="small text-muted-qb">'+esc(x.benchmark.unit||'')+'</div></td><td class="text-end num">'+fmt(scoreOf(x.row),2)+'</td><td>'+esc(x.row.effort||'Not reported')+'</td><td><a href="'+esc(x.row.source||x.benchmark.source||'#')+'" target="_blank" rel="noopener">Source ↗</a><div class="small text-muted-qb">'+esc(x.row.snapshotDate||x.benchmark.snapshotDate||'')+'</div></td></tr>';}).join('')+'</tbody></table></div>':'<div class="notice-qb mb-3">No source-verified standalone benchmark rows are currently attached to this catalog entry.</div>';
+  $('#model-detail-content').innerHTML=standaloneHtml+'<div class="notice-qb mb-3">These are provider-reported standalone results, not independently audited QBench Index 1.6 results. This model has no Composite Index score and remains outside the leaderboard.</div>'+catalogMetadataHtml(catalogOnly);
   return;
  }
  var all=[];(DATA.benchmarks||[]).forEach(function(b){(b.models||[]).forEach(function(m){if(m.model===r.model&&scoreOf(m)!==null)all.push({benchmark:b,row:m,effort:effortOf(m)});});});

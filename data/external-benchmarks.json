@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.6",
-  "note": "QBench Index 1.6 rebuild, snapshot 2026-10-31. Eighteen source-audited evaluations across eight capability families contribute to Index 1.6. Mystery Game Puzzles is standalone because its visible table is partial. Partial mirrors, mixed-harness sets, ceiling-watch series and ambiguous metric tables remain standalone. Discovery update 2026-11-11: six official Hugging Face benchmark dataset candidates were added to the benchmark directory with zero imported model scores. They remain outside QBench Index 1.6 pending source-level leaderboard verification.",
+  "note": "QBench Index 1.6 rebuild, snapshot 2026-10-31. Eighteen source-audited evaluations across eight capability families contribute to Index 1.6. Mystery Game Puzzles is standalone because its visible table is partial. Partial mirrors, mixed-harness sets, ceiling-watch series and ambiguous metric tables remain standalone. Discovery update 2026-11-11: six official Hugging Face benchmark dataset candidates were added to the benchmark directory with zero imported model scores. They remain outside QBench Index 1.6 pending source-level leaderboard verification. Provider model-card evidence update 2026-11-11: Anthropic Fable/Mythos 5.2 launch evaluations and Google Gemini 4 Carbon model-card evaluations are retained as standalone benchmark snapshots. They do not enter Index 1.6.",
   "benchmarks": [
     {
       "id": "livebench-2.0",
@@ -47247,6 +47247,1552 @@
       "quality": "Scores synchronized from Hugging Face's official benchmark leaderboard API. Model IDs, publisher values, rank, verification flag and result-file metadata are retained. Not eligible for QBench Index 1.6; benchmark-specific scoring and evaluation conditions remain separate.",
       "description": "Asimov Locomotion Benchmark Can an Asimov-1 velocity-command locomotion policy stay on its feet? 65 short scenarios (walking across the trained command range, single pushes while standing and walking, sustained pushes, slippery floors, a 100 m lap and terrain: stairs, ramps, scattered boxes and rough tiles), each run several times with seeded actuator delay and joint noise. It is benchmarked through cyclotron, which",
       "datasetLastModified": "2026-10-30T15:10:54.000Z"
+    },
+    {
+      "id": "anthropic-report-frontiercode-2-0",
+      "name": "FrontierCode 2.0 — Anthropic model-card report",
+      "snapshotDate": "2026-11-09",
+      "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+      "sourceType": "official-provider-report",
+      "unit": "% maintainer-mergeable tasks",
+      "models": [
+        {
+          "model": "Claude Fable 5.2",
+          "provider": "Anthropic",
+          "score": 49.1,
+          "effort": "xhigh",
+          "configuration": "Xhigh effort",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-09",
+          "evidence": "Anthropic official Fable 5.2 launch evaluation table. Fable 5.2 uses Xhigh; Gemini 4 Carbon uses Medium; remaining effort settings are not individually stated. Provider-reported result, standalone."
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "provider": "Anthropic",
+          "score": 32.4,
+          "effort": "xhigh",
+          "configuration": "Xhigh effort",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-09",
+          "evidence": "Anthropic official Fable 5.2 launch evaluation table. Fable 5.2 uses Xhigh; Gemini 4 Carbon uses Medium; remaining effort settings are not individually stated. Provider-reported result, standalone."
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 45.5,
+          "effort": "not-reported",
+          "configuration": "Highest available effort; exact effort not stated",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-09",
+          "evidence": "Anthropic official Fable 5.2 launch evaluation table. Fable 5.2 uses Xhigh; Gemini 4 Carbon uses Medium; remaining effort settings are not individually stated. Provider-reported result, standalone."
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 42.8,
+          "effort": "not-reported",
+          "configuration": "Highest available effort; exact effort not stated",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-09",
+          "evidence": "Anthropic official Fable 5.2 launch evaluation table. Fable 5.2 uses Xhigh; Gemini 4 Carbon uses Medium; remaining effort settings are not individually stated. Provider-reported result, standalone."
+        },
+        {
+          "model": "Gemini 4 Carbon",
+          "provider": "Google",
+          "score": 41.1,
+          "effort": "medium",
+          "configuration": "Medium effort",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-09",
+          "evidence": "Anthropic official Fable 5.2 launch evaluation table. Fable 5.2 uses Xhigh; Gemini 4 Carbon uses Medium; remaining effort settings are not individually stated. Provider-reported result, standalone."
+        }
+      ],
+      "indexEligible": false,
+      "indexReason": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6.",
+      "notes": "Anthropic official Fable 5.2 launch evaluation table. Fable 5.2 uses Xhigh; Gemini 4 Carbon uses Medium; remaining effort settings are not individually stated. Provider-reported result, standalone."
+    },
+    {
+      "id": "anthropic-report-frontierswe-v2",
+      "name": "FrontierSWE v2 — Anthropic model-card report",
+      "snapshotDate": "2026-11-09",
+      "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+      "sourceType": "official-provider-report",
+      "unit": "% score",
+      "models": [
+        {
+          "model": "Claude Fable 5.2",
+          "provider": "Anthropic",
+          "score": 69.9,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-09",
+          "evidence": "Anthropic official model-card comparison; exact harness and effort are not specified in the comparison table."
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "provider": "Anthropic",
+          "score": 56.3,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-09",
+          "evidence": "Anthropic official model-card comparison; exact harness and effort are not specified in the comparison table."
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 62.3,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-09",
+          "evidence": "Anthropic official model-card comparison; exact harness and effort are not specified in the comparison table."
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 65.5,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-09",
+          "evidence": "Anthropic official model-card comparison; exact harness and effort are not specified in the comparison table."
+        },
+        {
+          "model": "Gemini 4 Carbon",
+          "provider": "Google",
+          "score": 61.2,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-09",
+          "evidence": "Anthropic official model-card comparison; exact harness and effort are not specified in the comparison table."
+        }
+      ],
+      "indexEligible": false,
+      "indexReason": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6.",
+      "notes": "Anthropic official model-card comparison; exact harness and effort are not specified in the comparison table."
+    },
+    {
+      "id": "anthropic-report-automationbench",
+      "name": "AutomationBench — Anthropic model-card report",
+      "snapshotDate": "2026-11-09",
+      "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+      "sourceType": "official-provider-report",
+      "unit": "% score",
+      "models": [
+        {
+          "model": "Claude Fable 5.2",
+          "provider": "Anthropic",
+          "score": 51.4,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-09",
+          "evidence": "Anthropic official model-card comparison; no shared execution harness details are disclosed in the table."
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "provider": "Anthropic",
+          "score": 31.4,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-09",
+          "evidence": "Anthropic official model-card comparison; no shared execution harness details are disclosed in the table."
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 42.5,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-09",
+          "evidence": "Anthropic official model-card comparison; no shared execution harness details are disclosed in the table."
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 41.4,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-09",
+          "evidence": "Anthropic official model-card comparison; no shared execution harness details are disclosed in the table."
+        },
+        {
+          "model": "Gemini 4 Carbon",
+          "provider": "Google",
+          "score": 53.9,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-09",
+          "evidence": "Anthropic official model-card comparison; no shared execution harness details are disclosed in the table."
+        }
+      ],
+      "indexEligible": false,
+      "indexReason": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6.",
+      "notes": "Anthropic official model-card comparison; no shared execution harness details are disclosed in the table."
+    },
+    {
+      "id": "anthropic-report-terminal-bench-science-0-1",
+      "name": "Terminal-Bench-Science 0.1 — Anthropic model-card report",
+      "snapshotDate": "2026-11-09",
+      "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+      "sourceType": "official-provider-report",
+      "unit": "% score",
+      "models": [
+        {
+          "model": "Claude Fable 5.2",
+          "provider": "Anthropic",
+          "score": 74.6,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-09",
+          "evidence": "Anthropic official model-card report. Mythos 5.2 is the restricted-safeguard variant and is kept distinct from Fable 5.2. These provider-reported values are not merged with Vals AI Mini-SWE-agent rows."
+        },
+        {
+          "model": "Claude Mythos 5.2",
+          "provider": "Anthropic",
+          "score": 75.3,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-09",
+          "evidence": "Anthropic official model-card report. Mythos 5.2 is the restricted-safeguard variant and is kept distinct from Fable 5.2. These provider-reported values are not merged with Vals AI Mini-SWE-agent rows."
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "provider": "Anthropic",
+          "score": 52.6,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-09",
+          "evidence": "Anthropic official model-card report. Mythos 5.2 is the restricted-safeguard variant and is kept distinct from Fable 5.2. These provider-reported values are not merged with Vals AI Mini-SWE-agent rows."
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 58.7,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-09",
+          "evidence": "Anthropic official model-card report. Mythos 5.2 is the restricted-safeguard variant and is kept distinct from Fable 5.2. These provider-reported values are not merged with Vals AI Mini-SWE-agent rows."
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 68.1,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-09",
+          "evidence": "Anthropic official model-card report. Mythos 5.2 is the restricted-safeguard variant and is kept distinct from Fable 5.2. These provider-reported values are not merged with Vals AI Mini-SWE-agent rows."
+        },
+        {
+          "model": "Gemini 4 Carbon",
+          "provider": "Google",
+          "score": 64.8,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-09",
+          "evidence": "Anthropic official model-card report. Mythos 5.2 is the restricted-safeguard variant and is kept distinct from Fable 5.2. These provider-reported values are not merged with Vals AI Mini-SWE-agent rows."
+        }
+      ],
+      "indexEligible": false,
+      "indexReason": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6.",
+      "notes": "Anthropic official model-card report. Mythos 5.2 is the restricted-safeguard variant and is kept distinct from Fable 5.2. These provider-reported values are not merged with Vals AI Mini-SWE-agent rows."
+    },
+    {
+      "id": "anthropic-report-hle-tools",
+      "name": "Humanity's Last Exam (with tools) — Anthropic model-card report",
+      "snapshotDate": "2026-11-09",
+      "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+      "sourceType": "official-provider-report",
+      "unit": "% score",
+      "models": [
+        {
+          "model": "Claude Fable 5.2",
+          "provider": "Anthropic",
+          "score": 74.2,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-09",
+          "evidence": "Anthropic official model-card report, HLE with tools; kept distinct from HLE-Diamond and without a claimed Gemini score."
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "provider": "Anthropic",
+          "score": 65.6,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-09",
+          "evidence": "Anthropic official model-card report, HLE with tools; kept distinct from HLE-Diamond and without a claimed Gemini score."
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 67.7,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-09",
+          "evidence": "Anthropic official model-card report, HLE with tools; kept distinct from HLE-Diamond and without a claimed Gemini score."
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 57.2,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-09",
+          "evidence": "Anthropic official model-card report, HLE with tools; kept distinct from HLE-Diamond and without a claimed Gemini score."
+        }
+      ],
+      "indexEligible": false,
+      "indexReason": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6.",
+      "notes": "Anthropic official model-card report, HLE with tools; kept distinct from HLE-Diamond and without a claimed Gemini score."
+    },
+    {
+      "id": "anthropic-report-chartography",
+      "name": "Chartography (no tools) — Anthropic model-card report",
+      "snapshotDate": "2026-11-09",
+      "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+      "sourceType": "official-provider-report",
+      "unit": "% score",
+      "models": [
+        {
+          "model": "Claude Fable 5.2",
+          "provider": "Anthropic",
+          "score": 73.4,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-09",
+          "evidence": "Anthropic official launch table; no-tools Chartography results. Google separately reports its own run; the two provider snapshots are not pooled."
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "provider": "Anthropic",
+          "score": 44.8,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-09",
+          "evidence": "Anthropic official launch table; no-tools Chartography results. Google separately reports its own run; the two provider snapshots are not pooled."
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 64.4,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-09",
+          "evidence": "Anthropic official launch table; no-tools Chartography results. Google separately reports its own run; the two provider snapshots are not pooled."
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 71,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-09",
+          "evidence": "Anthropic official launch table; no-tools Chartography results. Google separately reports its own run; the two provider snapshots are not pooled."
+        },
+        {
+          "model": "Gemini 4 Carbon",
+          "provider": "Google",
+          "score": 72.5,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-09",
+          "evidence": "Anthropic official launch table; no-tools Chartography results. Google separately reports its own run; the two provider snapshots are not pooled."
+        }
+      ],
+      "indexEligible": false,
+      "indexReason": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6.",
+      "notes": "Anthropic official launch table; no-tools Chartography results. Google separately reports its own run; the two provider snapshots are not pooled."
+    },
+    {
+      "id": "google-report-vals-index-v2-2",
+      "name": "Vals Index v2.2 — Google Gemini 4 Carbon model-card report",
+      "snapshotDate": "2026-11-10",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "sourceType": "official-provider-report",
+      "unit": "% score",
+      "models": [
+        {
+          "model": "Gemini 4 Carbon",
+          "provider": "Google",
+          "score": 70.4,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "provider": "Google",
+          "score": 69.2,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 65,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 70.2,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        }
+      ],
+      "indexEligible": false,
+      "indexReason": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6.",
+      "notes": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+    },
+    {
+      "id": "google-report-swe-sweep",
+      "name": "SWE-sweep — Google Gemini 4 Carbon model-card report",
+      "snapshotDate": "2026-11-10",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "sourceType": "official-provider-report",
+      "unit": "% score",
+      "models": [
+        {
+          "model": "Gemini 4 Carbon",
+          "provider": "Google",
+          "score": 9.6,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "provider": "Google",
+          "score": 4.3,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 9.5,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 3.6,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "provider": "Anthropic",
+          "score": 2.9,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        }
+      ],
+      "indexEligible": false,
+      "indexReason": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6.",
+      "notes": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+    },
+    {
+      "id": "google-report-frontierswe-2",
+      "name": "FrontierSWE 2 — Google Gemini 4 Carbon model-card report",
+      "snapshotDate": "2026-11-10",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "sourceType": "official-provider-report",
+      "unit": "% score",
+      "models": [
+        {
+          "model": "Gemini 4 Carbon",
+          "provider": "Google",
+          "score": 61.2,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "provider": "Google",
+          "score": 55,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 65.5,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 62.3,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "provider": "Anthropic",
+          "score": 56.3,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        }
+      ],
+      "indexEligible": false,
+      "indexReason": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6.",
+      "notes": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+    },
+    {
+      "id": "google-report-terminal-bench-4-0-aa",
+      "name": "Terminal-Bench 4.0 (AA) — Google Gemini 4 Carbon model-card report",
+      "snapshotDate": "2026-11-10",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "sourceType": "official-provider-report",
+      "unit": "% score",
+      "models": [
+        {
+          "model": "Gemini 4 Carbon",
+          "provider": "Google",
+          "score": 65.2,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "provider": "Google",
+          "score": 57.1,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 59.1,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 59.6,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "provider": "Anthropic",
+          "score": 52,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        }
+      ],
+      "indexEligible": false,
+      "indexReason": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6.",
+      "notes": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+    },
+    {
+      "id": "google-report-agents-last-exam-v1-1",
+      "name": "Agents' Last Exam v1.1 — Google Gemini 4 Carbon model-card report",
+      "snapshotDate": "2026-11-10",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "sourceType": "official-provider-report",
+      "unit": "% score",
+      "models": [
+        {
+          "model": "Gemini 4 Carbon",
+          "provider": "Google",
+          "score": 77.4,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "provider": "Google",
+          "score": 69,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 73.1,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 71.6,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        }
+      ],
+      "indexEligible": false,
+      "indexReason": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6.",
+      "notes": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+    },
+    {
+      "id": "google-report-osworld-2-1-offline-subset",
+      "name": "OSWorld 2.1 (Offline subset) — Google Gemini 4 Carbon model-card report",
+      "snapshotDate": "2026-11-10",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "sourceType": "official-provider-report",
+      "unit": "% score",
+      "models": [
+        {
+          "model": "Gemini 4 Carbon",
+          "provider": "Google",
+          "score": 81.5,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "provider": "Google",
+          "score": 74.7,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 80.9,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 87.2,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "provider": "Anthropic",
+          "score": 76.8,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        }
+      ],
+      "indexEligible": false,
+      "indexReason": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6.",
+      "notes": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+    },
+    {
+      "id": "google-report-automationbench-zapier",
+      "name": "AutomationBench (Zapier) — Google Gemini 4 Carbon model-card report",
+      "snapshotDate": "2026-11-10",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "sourceType": "official-provider-report",
+      "unit": "% score",
+      "models": [
+        {
+          "model": "Gemini 4 Carbon",
+          "provider": "Google",
+          "score": 53.9,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "provider": "Google",
+          "score": 51.3,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 41.4,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 42.5,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "provider": "Anthropic",
+          "score": 31.4,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        }
+      ],
+      "indexEligible": false,
+      "indexReason": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6.",
+      "notes": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+    },
+    {
+      "id": "google-report-chartography",
+      "name": "Chartography — Google Gemini 4 Carbon model-card report",
+      "snapshotDate": "2026-11-10",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "sourceType": "official-provider-report",
+      "unit": "% score",
+      "models": [
+        {
+          "model": "Gemini 4 Carbon",
+          "provider": "Google",
+          "score": 72.5,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "provider": "Google",
+          "score": 71.6,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 71,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 66.3,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "provider": "Anthropic",
+          "score": 46.2,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        }
+      ],
+      "indexEligible": false,
+      "indexReason": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6.",
+      "notes": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+    },
+    {
+      "id": "google-report-blueprint-bench-2",
+      "name": "Blueprint-Bench 2 — Google Gemini 4 Carbon model-card report",
+      "snapshotDate": "2026-11-10",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "sourceType": "official-provider-report",
+      "unit": "Similarity score (%)",
+      "models": [
+        {
+          "model": "Gemini 4 Carbon",
+          "provider": "Google",
+          "score": 58.6,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "provider": "Google",
+          "score": 54.4,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 49.7,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 51.2,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "provider": "Anthropic",
+          "score": 41.9,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        }
+      ],
+      "indexEligible": false,
+      "indexReason": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6.",
+      "notes": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+    },
+    {
+      "id": "google-report-graphwalks-256k-1m-bfs-f1",
+      "name": "GraphWalks (256k–1M, BFS F1) — Google Gemini 4 Carbon model-card report",
+      "snapshotDate": "2026-11-10",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "sourceType": "official-provider-report",
+      "unit": "F1 (%)",
+      "models": [
+        {
+          "model": "Gemini 4 Carbon",
+          "provider": "Google",
+          "score": 96.2,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "provider": "Google",
+          "score": 84.2,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 71.8,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 66.8,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "provider": "Anthropic",
+          "score": 65,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        }
+      ],
+      "indexEligible": false,
+      "indexReason": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6.",
+      "notes": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+    },
+    {
+      "id": "google-report-riemannbench",
+      "name": "RiemannBench — Google Gemini 4 Carbon model-card report",
+      "snapshotDate": "2026-11-10",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "sourceType": "official-provider-report",
+      "unit": "% score",
+      "models": [
+        {
+          "model": "Gemini 4 Carbon",
+          "provider": "Google",
+          "score": 80,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "provider": "Google",
+          "score": 76,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 72,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 69.6,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "provider": "Anthropic",
+          "score": 65.6,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        }
+      ],
+      "indexEligible": false,
+      "indexReason": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6.",
+      "notes": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+    },
+    {
+      "id": "google-report-terminal-bench-science-0-1-aa",
+      "name": "Terminal-Bench-Science 0.1 (AA) — Google Gemini 4 Carbon model-card report",
+      "snapshotDate": "2026-11-10",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "sourceType": "official-provider-report",
+      "unit": "% score",
+      "models": [
+        {
+          "model": "Gemini 4 Carbon",
+          "provider": "Google",
+          "score": 64.8,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "provider": "Google",
+          "score": 52.9,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 63.3,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 59,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "provider": "Anthropic",
+          "score": 43.3,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        }
+      ],
+      "indexEligible": false,
+      "indexReason": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6.",
+      "notes": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+    },
+    {
+      "id": "google-report-cwe-bench",
+      "name": "CWE-bench — Google Gemini 4 Carbon model-card report",
+      "snapshotDate": "2026-11-10",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "sourceType": "official-provider-report",
+      "unit": "% score",
+      "models": [
+        {
+          "model": "Gemini 4 Carbon",
+          "provider": "Google",
+          "score": 71,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "provider": "Google",
+          "score": 68,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 68,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 67,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "provider": "Anthropic",
+          "score": 58,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        }
+      ],
+      "indexEligible": false,
+      "indexReason": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6.",
+      "notes": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+    },
+    {
+      "id": "google-report-exploitgym",
+      "name": "ExploitGym — Google Gemini 4 Carbon model-card report",
+      "snapshotDate": "2026-11-10",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "sourceType": "official-provider-report",
+      "unit": "% score",
+      "models": [
+        {
+          "model": "Gemini 4 Carbon",
+          "provider": "Google",
+          "score": 54.8,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "provider": "Google",
+          "score": 42,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 42.4,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 34.5,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        }
+      ],
+      "indexEligible": false,
+      "indexReason": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6.",
+      "notes": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+    },
+    {
+      "id": "google-report-sec-bench-pro",
+      "name": "SEC-bench Pro — Google Gemini 4 Carbon model-card report",
+      "snapshotDate": "2026-11-10",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "sourceType": "official-provider-report",
+      "unit": "% score",
+      "models": [
+        {
+          "model": "Gemini 4 Carbon",
+          "provider": "Google",
+          "score": 88.2,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "provider": "Google",
+          "score": 83.4,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 85.4,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        }
+      ],
+      "indexEligible": false,
+      "indexReason": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6.",
+      "notes": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+    },
+    {
+      "id": "google-report-vending-bench-2-bank-balance",
+      "name": "Vending-Bench 2 (bank balance) — Google Gemini 4 Carbon model-card report",
+      "snapshotDate": "2026-11-10",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "sourceType": "official-provider-report",
+      "unit": "USD final bank balance",
+      "models": [
+        {
+          "model": "Gemini 4 Carbon",
+          "provider": "Google",
+          "score": 16484,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Gemini 4 Argon",
+          "provider": "Google",
+          "score": 13718,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "GPT-6 Astra",
+          "provider": "OpenAI",
+          "score": 15515,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "provider": "Anthropic",
+          "score": 9235,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "provider": "Anthropic",
+          "score": 5422,
+          "effort": "not-reported",
+          "configuration": "Effort not reported by publisher",
+          "harness": "Provider-reported model-card evaluation; full run configuration not disclosed",
+          "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+          "sourceType": "official-provider-report",
+          "snapshotDate": "2026-11-10",
+          "evidence": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
+        }
+      ],
+      "indexEligible": false,
+      "indexReason": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6.",
+      "notes": "Google DeepMind official Gemini 4 Carbon Model Card, results as of October 2026. Effort and full execution harness are not reported in the table. Provider-reported standalone result; not part of QBench Index 1.6."
     }
   ],
   "benchmarkCatalog": [
@@ -48401,6 +49947,182 @@
       "source": "https://huggingface.co/datasets/Menlo/asimov-locomotion-bench",
       "status": "research-pipeline",
       "note": "Daily sync: 0 leaderboard rows; 2026-10-30 dataset update. Excluded from QBench Index 1.6."
+    },
+    {
+      "id": "anthropic-report-frontiercode-2-0",
+      "name": "FrontierCode 2.0 — Anthropic model-card report",
+      "group": "Provider model-card evaluations",
+      "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+      "status": "standalone-provider-report",
+      "note": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6."
+    },
+    {
+      "id": "anthropic-report-frontierswe-v2",
+      "name": "FrontierSWE v2 — Anthropic model-card report",
+      "group": "Provider model-card evaluations",
+      "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+      "status": "standalone-provider-report",
+      "note": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6."
+    },
+    {
+      "id": "anthropic-report-automationbench",
+      "name": "AutomationBench — Anthropic model-card report",
+      "group": "Provider model-card evaluations",
+      "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+      "status": "standalone-provider-report",
+      "note": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6."
+    },
+    {
+      "id": "anthropic-report-terminal-bench-science-0-1",
+      "name": "Terminal-Bench-Science 0.1 — Anthropic model-card report",
+      "group": "Provider model-card evaluations",
+      "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+      "status": "standalone-provider-report",
+      "note": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6."
+    },
+    {
+      "id": "anthropic-report-hle-tools",
+      "name": "Humanity's Last Exam (with tools) — Anthropic model-card report",
+      "group": "Provider model-card evaluations",
+      "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+      "status": "standalone-provider-report",
+      "note": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6."
+    },
+    {
+      "id": "anthropic-report-chartography",
+      "name": "Chartography (no tools) — Anthropic model-card report",
+      "group": "Provider model-card evaluations",
+      "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+      "status": "standalone-provider-report",
+      "note": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6."
+    },
+    {
+      "id": "google-report-vals-index-v2-2",
+      "name": "Vals Index v2.2 — Google Gemini 4 Carbon model-card report",
+      "group": "Provider model-card evaluations",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "status": "standalone-provider-report",
+      "note": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6."
+    },
+    {
+      "id": "google-report-swe-sweep",
+      "name": "SWE-sweep — Google Gemini 4 Carbon model-card report",
+      "group": "Provider model-card evaluations",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "status": "standalone-provider-report",
+      "note": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6."
+    },
+    {
+      "id": "google-report-frontierswe-2",
+      "name": "FrontierSWE 2 — Google Gemini 4 Carbon model-card report",
+      "group": "Provider model-card evaluations",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "status": "standalone-provider-report",
+      "note": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6."
+    },
+    {
+      "id": "google-report-terminal-bench-4-0-aa",
+      "name": "Terminal-Bench 4.0 (AA) — Google Gemini 4 Carbon model-card report",
+      "group": "Provider model-card evaluations",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "status": "standalone-provider-report",
+      "note": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6."
+    },
+    {
+      "id": "google-report-agents-last-exam-v1-1",
+      "name": "Agents' Last Exam v1.1 — Google Gemini 4 Carbon model-card report",
+      "group": "Provider model-card evaluations",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "status": "standalone-provider-report",
+      "note": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6."
+    },
+    {
+      "id": "google-report-osworld-2-1-offline-subset",
+      "name": "OSWorld 2.1 (Offline subset) — Google Gemini 4 Carbon model-card report",
+      "group": "Provider model-card evaluations",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "status": "standalone-provider-report",
+      "note": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6."
+    },
+    {
+      "id": "google-report-automationbench-zapier",
+      "name": "AutomationBench (Zapier) — Google Gemini 4 Carbon model-card report",
+      "group": "Provider model-card evaluations",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "status": "standalone-provider-report",
+      "note": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6."
+    },
+    {
+      "id": "google-report-chartography",
+      "name": "Chartography — Google Gemini 4 Carbon model-card report",
+      "group": "Provider model-card evaluations",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "status": "standalone-provider-report",
+      "note": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6."
+    },
+    {
+      "id": "google-report-blueprint-bench-2",
+      "name": "Blueprint-Bench 2 — Google Gemini 4 Carbon model-card report",
+      "group": "Provider model-card evaluations",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "status": "standalone-provider-report",
+      "note": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6."
+    },
+    {
+      "id": "google-report-graphwalks-256k-1m-bfs-f1",
+      "name": "GraphWalks (256k–1M, BFS F1) — Google Gemini 4 Carbon model-card report",
+      "group": "Provider model-card evaluations",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "status": "standalone-provider-report",
+      "note": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6."
+    },
+    {
+      "id": "google-report-riemannbench",
+      "name": "RiemannBench — Google Gemini 4 Carbon model-card report",
+      "group": "Provider model-card evaluations",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "status": "standalone-provider-report",
+      "note": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6."
+    },
+    {
+      "id": "google-report-terminal-bench-science-0-1-aa",
+      "name": "Terminal-Bench-Science 0.1 (AA) — Google Gemini 4 Carbon model-card report",
+      "group": "Provider model-card evaluations",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "status": "standalone-provider-report",
+      "note": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6."
+    },
+    {
+      "id": "google-report-cwe-bench",
+      "name": "CWE-bench — Google Gemini 4 Carbon model-card report",
+      "group": "Provider model-card evaluations",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "status": "standalone-provider-report",
+      "note": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6."
+    },
+    {
+      "id": "google-report-exploitgym",
+      "name": "ExploitGym — Google Gemini 4 Carbon model-card report",
+      "group": "Provider model-card evaluations",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "status": "standalone-provider-report",
+      "note": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6."
+    },
+    {
+      "id": "google-report-sec-bench-pro",
+      "name": "SEC-bench Pro — Google Gemini 4 Carbon model-card report",
+      "group": "Provider model-card evaluations",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "status": "standalone-provider-report",
+      "note": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6."
+    },
+    {
+      "id": "google-report-vending-bench-2-bank-balance",
+      "name": "Vending-Bench 2 (bank balance) — Google Gemini 4 Carbon model-card report",
+      "group": "Provider model-card evaluations",
+      "source": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+      "status": "standalone-provider-report",
+      "note": "Provider model-card result; not an independently complete, common-harness publisher leaderboard. Retained as standalone evidence and excluded from QBench Index 1.6."
     }
   ],
   "composite": {
@@ -52398,7 +54120,8 @@
       ],
       "id": "anthropic:claude-fable-5-2",
       "displayName": "Claude Fable 5.2",
-      "apiModelId": "claude-fable-5-2"
+      "apiModelId": "claude-fable-5-2",
+      "benchmarkEvidenceNote": "Official provider-reported benchmark results are stored as standalone evidence. They are not eligible for QBench Index 1.6 unless the full common-harness source leaderboard is independently verified."
     },
     {
       "provider": "Anthropic",
@@ -52448,7 +54171,8 @@
       "id": "anthropic:claude-mythos-5-2",
       "displayName": "Claude Mythos 5.2",
       "apiModelId": "claude-mythos-5-2",
-      "availability": "Only organizations approved through Anthropic verification programs; not generally available."
+      "availability": "Only organizations approved through Anthropic verification programs; not generally available.",
+      "benchmarkEvidenceNote": "Official provider-reported benchmark results are stored as standalone evidence. They are not eligible for QBench Index 1.6 unless the full common-harness source leaderboard is independently verified."
     },
     {
       "id": "google:gemini-4-carbon",
@@ -52498,7 +54222,8 @@
           "url": "https://ai.google.dev/gemini-api/docs/pricing"
         }
       ],
-      "notes": "Google describes Carbon as its strongest model for advanced cybersecurity, long-horizon agentic workflows, complex software engineering and scientific reasoning. Context window and modality specifications were not added because the launch source did not establish them."
+      "notes": "Google describes Carbon as its strongest model for advanced cybersecurity, long-horizon agentic workflows, complex software engineering and scientific reasoning. Context window and modality specifications were not added because the launch source did not establish them.",
+      "benchmarkEvidenceNote": "Official provider-reported benchmark results are stored as standalone evidence. They are not eligible for QBench Index 1.6 unless the full common-harness source leaderboard is independently verified."
     }
   ],
   "modelCatalogSchemaVersion": "1.0",
