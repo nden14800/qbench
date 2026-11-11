@@ -24,13 +24,13 @@ Each base model contributes total weight 1 within an evaluation across its disti
 
 ## Model catalog and lifecycle
 
-The catalog includes distinct benchmark-reported names plus current official provider models. On 2026-11-11 it contains 841 catalog entries. Official API IDs and specifications are populated only when confirmed by primary provider documentation; benchmark-only identities remain explicitly source-reported and unknown metadata stays null. A benchmark result is not proof that a model has a public API.
+The catalog includes distinct benchmark-reported names plus current official provider models. On 2026-11-11 it contains 847 catalog entries. Official API IDs and specifications are populated only when confirmed by primary provider documentation; benchmark-only identities remain explicitly source-reported and unknown metadata stays null. A benchmark result is not proof that a model has a public API.
 
 The latest official-source audit covers OpenAI, Anthropic, Google, xAI, DeepSeek, Alibaba/Qwen, Mistral, Meta, Kimi and MiniMax. New verified entries include Qwen4 Max Preview, Qwen3.7 Plus and GPT-6 Sol. Qwen4 Max Preview is a temporary Token Plan-only preview, scheduled to end on 2026-11-25; it has no per-token API price in the catalog. Retired models remain visible with their retirement dates rather than being deleted.
 
 ## Benchmark data refresh — 2026-11-11
 
-The dataset contains 145 benchmark and model-card result collections. CyberBench v1.1 was refreshed to its complete 48-row 2026-11-05 publisher table; two special-access configurations remain visible but are excluded from the Index. The current Index calculation uses only complete, condition-compatible publisher evaluations that pass the quality gate.
+The dataset contains 147 benchmark and model-card result collections. CyberBench v1.1 was refreshed to its complete 48-row 2026-11-05 publisher table; two special-access configurations remain visible but are excluded from the Index. The current Index calculation uses only complete, condition-compatible publisher evaluations that pass the quality gate.
 
 - Terminal-Bench 4.0 — 63 models; 66 tasks; Mini-SWE-agent; avg@3 across three runs.
 - Terminal-Bench-Science 0.1 — 45 publisher rows; 70 tasks; harness retained per row; only Mini-SWE-agent rows enter the current Index.
@@ -45,6 +45,11 @@ The dataset contains 145 benchmark and model-card result collections. CyberBench
 - SWE-bench Multimodal — 22 rows.
 - HLE-Diamond — 20 entries from Scale AI's Performance Comparison; retrieval date is not represented as an evaluation date.
 - MCP Atlas — 37 entries from Scale AI's Performance Comparison; 1,000-task pass rate. The publisher footer's methodology date is distinct from the captured score snapshot date.
+
+## New independent evaluations — 2026-11-11
+
+- Artificial Analysis Multimodal Knowledge Agent (MKA): 200 private tasks across 10 verticals; 21 models on the publisher page. Three headline Climb WSR scores are captured; the leaderboard extraction is partial and is not Index-eligible.
+- Artificial Analysis Decision Index v2: separate calibrated Decision Score metric. Five headline scores from the launch article are captured; this is not an accuracy leaderboard and is not Index-eligible.
 
 ## Current Index coverage
 
