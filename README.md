@@ -10,17 +10,17 @@ Evidence-first AI model and benchmark explorer.
 
 ## QBench Index 2.0
 
-Index 2.0 replaces the cohort mean/standard-deviation T-score with a weighted midrank-percentile method. Publisher raw results, native units, evaluation versions, harnesses and sources remain unchanged and visible.
+Index 2.0 uses weighted midrank percentiles within each eligible evaluation, then applies an explicit neutral-evidence prior to prevent sparse cohort-relative results from reading like absolute capability percentages. Publisher raw results, native units, evaluation versions, harnesses and sources remain unchanged and visible.
 
 ```
 EvaluationPercentile = 100 × (weight_below + 0.5 × weight_tied) / total_reference_weight
 FamilyScore = mean(available evaluation percentiles in that family)
-Index = mean(observed family scores)
+RawComposite = mean(observed family scores)\nIndex = (RawComposite × observed_families + 50 × total_families) / (observed_families + total_families)
 ```
 
 Each base model contributes total reference weight 1 within an evaluation across its distinct effort variants. Ties receive the same midrank percentile. Metrics are ordered in their declared direction; existing Index-compatible score records retain the higher-is-better convention unless a benchmark explicitly declares a lower-is-better direction.
 
-A model/effort variant must have at least four eligible evaluations across at least three capability families to be ranked. Each included evaluation must have at least 12 distinct model/effort variants after condition and duplicate checks. Families are equally weighted when observed. Missing families are not imputed and are excluded from the observed-family mean; coverage is displayed separately.
+A model/effort variant must have at least four eligible evaluations across at least three capability families to be ranked. Each included evaluation must have at least 12 distinct model/effort variants after condition and duplicate checks. Families are equally weighted when observed. Missing families remain unobserved in the raw composite. The final displayed Index combines that raw composite with one neutral 50th-percentile prior equivalent to a complete family suite; coverage is displayed separately. This is a QBench-relative evidence-adjusted score, not an absolute percentage and not comparable to Artificial Analysis's Index.
 
 **Interpretation:** Index 2.0 is a cohort-relative percentile composite, not an absolute capability percentage, probability, or Artificial Analysis score. Scores can move when the evaluated cohort changes. It is designed for current model comparisons; historical trend analysis requires a separately calibrated, task-level longitudinal model such as IRT and is not claimed by this release.
 
@@ -56,7 +56,7 @@ The dataset contains 147 benchmark and model-card result collections. CyberBench
 
 ## Current Index coverage
 
-The 2026-11-11 calculation uses 17 eligible evaluations across 8 capability families, 232 model/effort variants, and 70 ranked variants. A ranked variant needs at least 4 evaluations across at least 3 families. Partial AA-Briefcase results, the GDP.pdf secondary partial mirror, and Finance Agent v2.1's mismatched metric are not included. Index 2.0 recomputes the ranking at runtime; the old Index 1.9 median, leader score and ranked-count figures are not comparable and are intentionally not carried forward.
+The last documented data audit (2026-11-11) used 17 eligible evaluations across 8 capability families, 232 model/effort variants, and 70 ranked variants. This count must be revalidated against the live dataset before being treated as current. A ranked variant needs at least 4 evaluations across at least 3 families. Partial AA-Briefcase results, the GDP.pdf secondary partial mirror, and Finance Agent v2.1's mismatched metric are not included. Index 2.0 recomputes the ranking at runtime; the old Index 1.9 median, leader score and ranked-count figures are not comparable and are intentionally not carried forward.
 
 ## Data integrity rules
 
