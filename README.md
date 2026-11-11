@@ -21,25 +21,18 @@ Each base model has total weight 1 across its distinct reasoning-effort variants
 
 **Interpretation:** 50 is the model-weighted mean of the evaluated cohort for an evaluation. The Index is relative to the models and evidence available in the current dataset; it is not an absolute capability percentage, probability, or Artificial Analysis score. Raw publisher scores remain intact and are displayed separately.
 
-### Partial-source exclusions
+## Model catalog and lifecycle
 
-- AA-Briefcase v1.1: 28 of 245 models published in a partial top-10 snapshot. Excluded from Index calculations until a complete official leaderboard is available.
-- GDP.pdf: 15 of 56 configurations imported from a secondary mirror. Excluded from Index calculations until a complete primary-source dataset is available.
+The catalog includes every distinct model name found in benchmark result tables, plus current official provider catalog entries. It distinguishes verified official model identities from source-reported benchmark-only names and unresolved identities. Unknown API IDs, context windows, output limits, release dates, pricing, and modalities remain null. A benchmark result is not proof that a model has a public API.
 
-Both remain in the benchmark data as separately identified source records; neither contributes to QBench Index 1.8.
-
-## Model catalog and identity
-
-The catalog includes every distinct model name found in benchmark result tables, not just the small set with complete API documentation. It distinguishes verified official model identities from source-reported benchmark-only names and unresolved identities. Unknown API IDs, context windows, output limits, release dates, pricing, and modalities remain null. A benchmark result is not proof that a model has a public API. Historical models are retained rather than silently deleted.
-
-Official model records added in this audit include Kimi K3.1 Pro and Highspeed, Muse Wonder and Wonder Full, Gemini Omni 1.2 Flash, and GPT-6 Rosalind. Muse Wonder and Gemini Omni model specs/API identifiers remain partial where primary docs do not publish exact values.
+The 2026-11-11 official-source audit added/promoted current models across Google Gemini, OpenAI GPT, Anthropic Claude, Mistral, DeepSeek, xAI Grok, Alibaba Qwen, MiniMax, Kimi, and Meta Muse. Google lifecycle data now explicitly marks Gemini 2.5 Pro/Flash/Flash Lite as retired (2026-10-20), and Gemini 3.6 Flash as scheduled for retirement (2026-11-19). Keep retired models visible with their retirement dates rather than deleting history.
 
 ## Benchmark data refresh — 2026-11-11
 
 Complete publisher tables refreshed from their 2026-11-09 pages:
 
 - Terminal-Bench 4.0 — 63 models; 66 tasks; Mini-SWE-agent; avg@3 across three runs.
-- Terminal-Bench-Science 0.1 — 45 rows; 70 tasks; harness retained per row, including the Terminus 2 run.
+- Terminal-Bench-Science 0.1 — 45 rows; 70 tasks; harness retained per row.
 - ProgramBench — 66 models; strict fully-resolved metric; 200 public tasks.
 - Code Migration v1.1 — 30 models; Pi agent harness.
 - BioMysteryBench — 31 models.
@@ -50,8 +43,6 @@ Complete publisher tables refreshed from their 2026-11-09 pages:
 - HLAB-Vals-1.1 — 37 rows.
 - SWE-bench Multimodal — 22 rows.
 - HLE-Diamond — 20 entries from Scale AI's current Performance Comparison. The publisher does not display an explicit update date, so 2026-11-11 is the retrieval date, not a claimed evaluation date.
-
-Other benchmarks retain their actual publisher snapshot dates. A later audit/check date does not rewrite an older evaluation date. In particular, MCP Atlas retains its 2026-04-08 result snapshot unless the publisher publishes a new evaluation.
 
 ## Data integrity rules
 
@@ -67,13 +58,15 @@ Other benchmarks retain their actual publisher snapshot dates. A later audit/che
 
 ## Sources
 
-- OpenAI models: https://developers.openai.com/api/docs/models
-- OpenAI pricing: https://developers.openai.com/api/docs/pricing
-- OpenAI release notes: https://help-lb.openai.com/en/articles/9624314-model-release-notes
-- Google Gemini lifecycle: https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions
+- OpenAI models and pricing: https://developers.openai.com/api/docs/models and https://developers.openai.com/api/docs/pricing
+- Google Gemini model lifecycle: https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions
 - Meta Muse Wonder launch: https://about.fb.com/news/2026/10/introducing-muse-wonder-models/
 - Kimi K3.1 Pro API guide: https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart
-- Kimi pricing: https://platform.kimi.ai/docs/pricing/chat
+- Mistral Large 4: https://docs.mistral.ai/models/mistral-large-4-0
+- DeepSeek model list/pricing: https://api-docs.deepseek.com/api/list-models/ and https://api-docs.deepseek.com/quick_start/pricing/
+- xAI Grok 4.7: https://docs.x.ai/developers/models/grok-4.7
+- Alibaba Qwen 3.8 Max: https://help.aliyun.com/en/model-studio/qwen3-8-max
+- MiniMax M3.1 Flash (Alibaba Cloud Model Studio): https://help.aliyun.com/en/model-studio/minimax-m3-1-flash
 - Vals AI leaderboards: https://www.vals.ai/benchmarks
 - Scale AI HLE-Diamond: https://labs.scale.com/leaderboard/hle-diamond
 - Artificial Analysis methodology: https://artificialanalysis.ai/methodology/intelligence-benchmarking
