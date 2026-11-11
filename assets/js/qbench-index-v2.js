@@ -103,7 +103,10 @@ function compute(data){
    if(domainScores[domain.name]!==null)domainCount++;
   });
   var observed=Object.keys(domainScores).map(function(name){return domainScores[name];}).filter(function(value){return value!==null;});
-  var index=observed.length?observed.reduce(function(a,b){return a+b;},0)/observed.length:null;
+  var rawIndex=observed.length?observed.reduce(function(a,b){return a+b;},0)/observed.length:null;
+  /* One neutral reference suite (50th percentile across all families) is used as a transparent prior. This prevents sparse/cohort-relative percentiles from masquerading as absolute capability scores. */
+  var priorFamilies=spec.domains.length;
+  var index=rawIndex===null?null:(rawIndex*domainCount+50*priorFamilies)/(domainCount+priorFamilies);
   var ranked=coverage>=spec.minimumEvaluationsPerModel&&domainCount>=spec.minimumDomainsPerModel,spread=null;
   if(allValues.length){
    var mean=allValues.reduce(function(a,b){return a+b;},0)/allValues.length;
@@ -117,13 +120,13 @@ function compute(data){
   rows.push({variantId:key,model:identity.model,effort:identity.effort,variantLabel:variantLabel(identity),provider:identity.provider||'Unknown',
    modelKind:kind.kind||'foundation-model',modelKindLabel:kind.label||'',domains:domainScores,coverage:coverage,domainCount:domainCount,ranked:ranked,
    rankTier:domainCount===spec.domains.length?'full':domainCount>=4&&domainCount<spec.domains.length?'broad':domainCount>=spec.minimumDomainsPerModel?'limited':'insufficient',
-   index:ranked?index:null,rawIndex:index,familyShare:domainCount/spec.domains.length,spread:spread,price:averagePrice,
+   index:ranked?index:null,rawIndex:rawIndex,priorFamilies:priorFamilies,familyShare:domainCount/spec.domains.length,spread:spread,price:averagePrice,
    priceInput:input==null?null:Number(input),priceOutput:output==null?null:Number(output),priceCurrency:currency,priceSource:price.source||null,
    priceSourceType:sourceType,priceSourceLabel:priceLabel,priceNote:price.note||'',detail:detail});
  });
  rows.sort(function(a,b){return(Number(b.ranked)-Number(a.ranked))||((b.index==null?-1:b.index)-(a.index==null?-1:a.index))||a.model.localeCompare(b.model)||a.effort.localeCompare(b.effort);});
  rows.filter(function(row){return row.ranked;}).forEach(function(row,index){row.rank=index+1;});
- return {evals:evals,rows:rows,domains:spec.domains.map(function(domain){return domain.name;}),spec:spec,byId:byId,scores:scores,method:'weighted-midrank-percentile'};
+ return {evals:evals,rows:rows,domains:spec.domains.map(function(domain){return domain.name;}),spec:spec,byId:byId,scores:scores,method:'coverage-adjusted-weighted-midrank-percentile'};
 }
 var api={compute:compute,weightedMidrankPercentiles:weightedMidrankPercentiles,variantId:variantId};
 if(typeof module!=='undefined'&&module.exports)module.exports=api;
