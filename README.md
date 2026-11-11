@@ -6,21 +6,24 @@ Evidence-first AI model and benchmark explorer.
 - Repository: https://github.com/nden14800/qbench
 - Deployment: Cloudflare Pages, production branch \`main\`
 - Data audit: 2026-11-11
-- Current composite: **QBench Index 1.9**
+- Current composite: **QBench Index 2.0**
 
-## QBench Index 1.9
+## QBench Index 2.0
 
-Index 1.9 keeps the publisher's raw result untouched and converts eligible results to a cohort-relative standardized score. To reduce exaggerated separation and prevent sparse evidence from being rewarded, the standardization uses five points per weighted standard deviation and missing capability families receive the cohort baseline of 50.
+Index 2.0 replaces the cohort mean/standard-deviation T-score with a weighted midrank-percentile method. Publisher raw results, native units, evaluation versions, harnesses and sources remain unchanged and visible.
 
-\`\`\`
-T = clamp(50 + 5 × (score − weighted_mean) / weighted_SD, 0, 100)
-FamilyMean = mean(eligible normalized scores in that family)
-Index = mean(all 8 family means; missing family = 50)
-\`\`\`
+```
+EvaluationPercentile = 100 × (weight_below + 0.5 × weight_tied) / total_reference_weight
+FamilyScore = mean(available evaluation percentiles in that family)
+Index = mean(observed family scores)
+```
 
-Each base model contributes total weight 1 within an evaluation across its distinct reasoning-effort variants. A model/effort variant must have at least four eligible evaluations across at least three capability families to be ranked. Each included evaluation must have at least 12 distinct model/effort variants. The eight families are equally weighted. A missing family is not represented as an observed score: it is explicitly assigned the cohort baseline of 50 for the composite only, while coverage remains visible.
+Each base model contributes total reference weight 1 within an evaluation across its distinct effort variants. Ties receive the same midrank percentile. Metrics are ordered in their declared direction; existing Index-compatible score records retain the higher-is-better convention unless a benchmark explicitly declares a lower-is-better direction.
 
-**Interpretation:** 50 is the evaluated cohort mean. One weighted standard deviation corresponds to five Index points. The Index is relative to the current eligible cohort; it is not an absolute capability percentage, probability, or Artificial Analysis score. Raw publisher scores, units, and evaluation conditions remain visible separately.
+A model/effort variant must have at least four eligible evaluations across at least three capability families to be ranked. Each included evaluation must have at least 12 distinct model/effort variants after condition and duplicate checks. Families are equally weighted when observed. Missing families are not imputed and are excluded from the observed-family mean; coverage is displayed separately.
+
+**Interpretation:** Index 2.0 is a cohort-relative percentile composite, not an absolute capability percentage, probability, or Artificial Analysis score. Scores can move when the evaluated cohort changes. It is designed for current model comparisons; historical trend analysis requires a separately calibrated, task-level longitudinal model such as IRT and is not claimed by this release.
+
 
 ## Model catalog and lifecycle
 
@@ -53,7 +56,7 @@ The dataset contains 147 benchmark and model-card result collections. CyberBench
 
 ## Current Index coverage
 
-The 2026-11-11 calculation uses 17 eligible evaluations across 8 capability families, 232 model/effort variants, and 70 ranked variants. A ranked variant needs at least 4 evaluations across at least 3 families. Partial AA-Briefcase results, the GDP.pdf secondary partial mirror, and Finance Agent v2.1's mismatched metric are not included. After the Index 1.9 calibration, the ranked cohort median is 50.0 and the leading score is 55.7 (Gemini 4 Argon, 7/8 families, 15 evaluations). The prior Index 1.8 maximum of 63.5 is not comparable because the scoring scale and missing-family rule changed.
+The 2026-11-11 calculation uses 17 eligible evaluations across 8 capability families, 232 model/effort variants, and 70 ranked variants. A ranked variant needs at least 4 evaluations across at least 3 families. Partial AA-Briefcase results, the GDP.pdf secondary partial mirror, and Finance Agent v2.1's mismatched metric are not included. Index 2.0 recomputes the ranking at runtime; the old Index 1.9 median, leader score and ranked-count figures are not comparable and are intentionally not carried forward.
 
 ## Data integrity rules
 
@@ -83,6 +86,7 @@ The 2026-11-11 calculation uses 17 eligible evaluations across 8 capability fami
 - Vals AI leaderboards: https://www.vals.ai/benchmarks
 - Scale AI HLE-Diamond: https://labs.scale.com/leaderboard/hle-diamond
 - Artificial Analysis methodology v5.0.1: https://artificialanalysis.ai/methodology/intelligence-benchmarking
+- Artificial Analysis Progress Index IRT methodology: https://artificialanalysis.ai/methodology/progress-index
 
 ## Technical
 
