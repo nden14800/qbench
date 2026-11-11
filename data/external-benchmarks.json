@@ -50663,7 +50663,7 @@
     }
   },
   "modelNameAudit": {
-    "snapshotDate": "2026-10-31",
+    "snapshotDate": "2026-11-11",
     "canonicalAliases": [
       {
         "from": "T Inkling",
@@ -50807,7 +50807,8 @@
       "NVIDIA Nemotron Super VL 3.5 is canonicalized to Nemotron 3.5 Super VL; the NVFP4 quantized variant remains distinct.",
       "2026-11-01 consistency pass: spelling variants (case, spaces vs hyphens, lowercase API IDs) are merged to one display name per model; originals kept in originalModelName. Exact duplicates after merging were dropped. Same model and effort with different scores inside one benchmark are kept and flagged duplicateConflict until the source is checked.",
       "2026-11-01: rows that shared model and effort but had different source configurations (FrontierMath v2, BFCL v4, HealthBench Professional; 9 rows) now use the source configuration as their effort label, so each source run is its own variant. Index evaluations are not affected.",
-      "2026-11-01 provider normalization: Mistral → Mistral AI and Zhipu → Z.ai. Original evaluator/provider labels are preserved in providerReported; the canonical display label is used for cross-benchmark provider grouping."
+      "2026-11-01 provider normalization: Mistral → Mistral AI and Zhipu → Z.ai. Original evaluator/provider labels are preserved in providerReported; the canonical display label is used for cross-benchmark provider grouping.",
+      "2026-11-11 official model refresh: added Claude Fable 5.2, restricted Claude Mythos 5.2, and Gemini 4 Carbon. Fable 5.1 retained as active historical version, no longer marked active_latest. Missing Gemini Carbon context/modality specs intentionally left null."
     ],
     "providerAliases": [
       {
@@ -51146,7 +51147,7 @@
       "hostingProvider": null,
       "benchmarkStatus": "evaluated",
       "identityStatus": "verified",
-      "lifecycleStatus": "active_latest",
+      "lifecycleStatus": "active",
       "releaseDate": "2026-09-01",
       "releaseDatePrecision": "day",
       "contextWindowTokens": 1000000,
@@ -52349,10 +52350,159 @@
         }
       ],
       "lastVerifiedAt": "2026-11-01"
+    },
+    {
+      "provider": "Anthropic",
+      "hostingProvider": null,
+      "benchmarkStatus": "unmeasured",
+      "identityStatus": "verified",
+      "lifecycleStatus": "active_latest",
+      "releaseDate": "2026-11-09",
+      "releaseDatePrecision": "day",
+      "contextWindowTokens": 1000000,
+      "maxOutputTokens": 128000,
+      "endpointContextWindowTokens": null,
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "reasoning": {
+        "supported": true,
+        "mode": "adaptive-always-on",
+        "efforts": null,
+        "defaultEffort": null
+      },
+      "weights": {
+        "openWeights": null,
+        "license": null,
+        "availability": null
+      },
+      "pricing": {
+        "currency": "USD",
+        "unit": "per 1M tokens",
+        "inputPerMillion": 8,
+        "outputPerMillion": 40,
+        "sourceStatus": "verified",
+        "sourceUrl": "https://platform.claude.com/docs/en/release-notes/overview"
+      },
+      "metadataStatus": "verified",
+      "lastVerifiedAt": "2026-11-11",
+      "sourceRefs": [
+        {
+          "label": "Official Claude Platform release notes (model IDs, availability, context, output and pricing)",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview"
+        }
+      ],
+      "id": "anthropic:claude-fable-5-2",
+      "displayName": "Claude Fable 5.2",
+      "apiModelId": "claude-fable-5-2"
+    },
+    {
+      "provider": "Anthropic",
+      "hostingProvider": null,
+      "benchmarkStatus": "unmeasured",
+      "identityStatus": "verified",
+      "lifecycleStatus": "restricted",
+      "releaseDate": "2026-11-09",
+      "releaseDatePrecision": "day",
+      "contextWindowTokens": 1000000,
+      "maxOutputTokens": 128000,
+      "endpointContextWindowTokens": null,
+      "inputModalities": [
+        "text",
+        "image"
+      ],
+      "outputModalities": [
+        "text"
+      ],
+      "reasoning": {
+        "supported": true,
+        "mode": "adaptive-always-on",
+        "efforts": null,
+        "defaultEffort": null
+      },
+      "weights": {
+        "openWeights": null,
+        "license": null,
+        "availability": null
+      },
+      "pricing": {
+        "currency": "USD",
+        "unit": "per 1M tokens",
+        "inputPerMillion": 8,
+        "outputPerMillion": 40,
+        "sourceStatus": "verified",
+        "sourceUrl": "https://platform.claude.com/docs/en/release-notes/overview"
+      },
+      "metadataStatus": "verified",
+      "lastVerifiedAt": "2026-11-11",
+      "sourceRefs": [
+        {
+          "label": "Official Claude Platform release notes (model IDs, availability, context, output and pricing)",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview"
+        }
+      ],
+      "id": "anthropic:claude-mythos-5-2",
+      "displayName": "Claude Mythos 5.2",
+      "apiModelId": "claude-mythos-5-2",
+      "availability": "Only organizations approved through Anthropic verification programs; not generally available."
+    },
+    {
+      "id": "google:gemini-4-carbon",
+      "displayName": "Gemini 4 Carbon",
+      "provider": "Google",
+      "apiModelId": "gemini-4-carbon",
+      "hostingProvider": null,
+      "benchmarkStatus": "unmeasured",
+      "identityStatus": "verified",
+      "lifecycleStatus": "active_latest",
+      "releaseDate": "2026-11-10",
+      "releaseDatePrecision": "day",
+      "contextWindowTokens": null,
+      "maxOutputTokens": null,
+      "endpointContextWindowTokens": null,
+      "inputModalities": null,
+      "outputModalities": null,
+      "reasoning": {
+        "supported": null,
+        "mode": null,
+        "efforts": null,
+        "defaultEffort": null
+      },
+      "weights": {
+        "openWeights": null,
+        "license": null,
+        "availability": null
+      },
+      "pricing": {
+        "currency": "USD",
+        "unit": "per 1M tokens",
+        "inputPerMillion": 2,
+        "outputPerMillion": 10,
+        "sourceStatus": "verified",
+        "sourceUrl": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/",
+        "note": "Introductory API price reported as the same as Gemini 4 Argon; model-specific future pricing changes not independently verified."
+      },
+      "metadataStatus": "partial",
+      "lastVerifiedAt": "2026-11-11",
+      "sourceRefs": [
+        {
+          "label": "Official Google launch announcement (model identifier, availability and introductory API price)",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/"
+        },
+        {
+          "label": "Official Gemini API pricing",
+          "url": "https://ai.google.dev/gemini-api/docs/pricing"
+        }
+      ],
+      "notes": "Google describes Carbon as its strongest model for advanced cybersecurity, long-horizon agentic workflows, complex software engineering and scientific reasoning. Context window and modality specifications were not added because the launch source did not establish them."
     }
   ],
   "modelCatalogSchemaVersion": "1.0",
-  "modelCatalogUpdatedAt": "2026-11-01",
+  "modelCatalogUpdatedAt": "2026-11-11",
   "modelIdentityAudit": [],
   "hfOfficialSync": {
     "provider": "Hugging Face official benchmark registry and leaderboard API",
@@ -52363,5 +52513,18 @@
     "leaderboardRows": 1391,
     "failedLeaderboards": [],
     "policy": "Imported rows remain outside QBench Index 1.6 until separately audited for compatible task, score direction, model variant, effort and harness."
+  },
+  "modelCatalogRefresh": {
+    "date": "2026-11-11",
+    "sources": [
+      "https://platform.claude.com/docs/en/release-notes/overview",
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/"
+    ],
+    "added": [
+      "anthropic:claude-fable-5-2",
+      "anthropic:claude-mythos-5-2",
+      "google:gemini-4-carbon"
+    ],
+    "policy": "Only primary-source-confirmed model identity and specifications populated; unknown fields remain null."
   }
 }
