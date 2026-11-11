@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.6",
-  "note": "QBench Index 1.6 rebuild, snapshot 2026-10-31. Eighteen source-audited evaluations across eight capability families contribute to Index 1.6. Mystery Game Puzzles is standalone because its visible table is partial. Partial mirrors, mixed-harness sets, ceiling-watch series and ambiguous metric tables remain standalone.",
+  "note": "QBench Index 1.6 rebuild, snapshot 2026-10-31. Eighteen source-audited evaluations across eight capability families contribute to Index 1.6. Mystery Game Puzzles is standalone because its visible table is partial. Partial mirrors, mixed-harness sets, ceiling-watch series and ambiguous metric tables remain standalone. Discovery update 2026-11-11: six official Hugging Face benchmark dataset candidates were added to the benchmark directory with zero imported model scores. They remain outside QBench Index 1.6 pending source-level leaderboard verification.",
   "benchmarks": [
     {
       "id": "livebench-2.0",
@@ -22331,6 +22331,78 @@
       ],
       "indexEligible": false,
       "valueNote": "Full CritPt v2 results are separate from the Hard Subset. These three published variants are not used in Index 1.6."
+    },
+    {
+      "id": "cwe-bench",
+      "name": "CWE-bench: Defensive Audit-and-Patch Tasks",
+      "domain": "Cybersecurity",
+      "version": "2026-10",
+      "snapshotDate": "2026-11-07",
+      "source": "https://huggingface.co/datasets/collinear-ai/cwe-bench",
+      "unit": "Not imported — leaderboard scores not verified",
+      "indexEligible": false,
+      "models": [],
+      "note": "Official Hugging Face benchmark dataset registry candidate. 100 defensive audit-and-patch tasks across 91 CWE types and eight languages. Dataset metadata only; no model scores imported."
+    },
+    {
+      "id": "physical-engineerings-last-exam",
+      "name": "Physical-Engineering’s Last Exam (Dev Set)",
+      "domain": "Science and engineering",
+      "version": "2026",
+      "snapshotDate": "2026-11-09",
+      "source": "https://huggingface.co/datasets/google/physical-engineerings-last-exam",
+      "unit": "Not imported — leaderboard scores not verified",
+      "indexEligible": false,
+      "models": [],
+      "note": "Official Hugging Face benchmark dataset registry candidate. Long-horizon engineering tasks authored by practicing engineers across four disciplines. Dataset metadata only; no model scores imported."
+    },
+    {
+      "id": "decision-index",
+      "name": "Jev Decision Index 0.4.1",
+      "domain": "Decision making",
+      "version": "0.4.1",
+      "snapshotDate": "2026-11-06",
+      "source": "https://huggingface.co/datasets/multimodalart/decision-index-leaderboard",
+      "unit": "Source-defined rating; inspect leaderboard methodology",
+      "indexEligible": false,
+      "models": [],
+      "note": "Official Hugging Face benchmark dataset registry candidate. Leaderboard distinguishes same-skills and new-domains tasks; retain those task conditions separately pending a full source audit."
+    },
+    {
+      "id": "real5-omnidocbench",
+      "name": "Real5-OmniDocBench",
+      "domain": "Document and multimodal",
+      "version": "2026",
+      "snapshotDate": "2026-11-02",
+      "source": "https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench",
+      "unit": "Not imported — leaderboard scores not verified",
+      "indexEligible": false,
+      "models": [],
+      "note": "Official Hugging Face benchmark dataset registry candidate. Document parsing robustness under scanning, warping, screen photography, illumination and skew. Dataset metadata only."
+    },
+    {
+      "id": "longshot-bench",
+      "name": "LongShOTBench",
+      "domain": "Video and multimodal",
+      "version": "2026",
+      "snapshotDate": "2026-11-09",
+      "source": "https://huggingface.co/datasets/MBZUAI/longshot-bench",
+      "unit": "Not imported — leaderboard scores not verified",
+      "indexEligible": false,
+      "models": [],
+      "note": "Official Hugging Face benchmark dataset registry candidate. Long-form omni-modal video understanding with speech and ambient audio. Dataset metadata only."
+    },
+    {
+      "id": "safeagents-judge-bench",
+      "name": "SafeAgents Judge Bench v0",
+      "domain": "Safety and tool use",
+      "version": "v0",
+      "snapshotDate": "2026-11-02",
+      "source": "https://huggingface.co/datasets/harness-hub/safeagents-judge-bench",
+      "unit": "Not imported — leaderboard scores not verified",
+      "indexEligible": false,
+      "models": [],
+      "note": "Official Hugging Face benchmark dataset registry candidate. Published real agent tool-call traces for safety evaluation. Dataset metadata only; inspect privacy/redaction and scoring methodology before importing results."
     }
   ],
   "benchmarkCatalog": [
@@ -23005,6 +23077,54 @@
       "source": "https://www.vals.ai/benchmarks/fabv2-1",
       "status": "results-imported",
       "note": "Vals AI public leaderboard; one shared agent harness; full table imported."
+    },
+    {
+      "id": "cwe-bench",
+      "name": "CWE-bench: Defensive Audit-and-Patch Tasks",
+      "group": "Cybersecurity",
+      "source": "https://huggingface.co/datasets/collinear-ai/cwe-bench",
+      "status": "research-pipeline",
+      "note": "Official Hugging Face benchmark dataset registry candidate. 100 defensive audit-and-patch tasks across 91 CWE types and eight languages. Dataset metadata only; no model scores imported."
+    },
+    {
+      "id": "physical-engineerings-last-exam",
+      "name": "Physical-Engineering’s Last Exam (Dev Set)",
+      "group": "Science and engineering",
+      "source": "https://huggingface.co/datasets/google/physical-engineerings-last-exam",
+      "status": "research-pipeline",
+      "note": "Official Hugging Face benchmark dataset registry candidate. Long-horizon engineering tasks authored by practicing engineers across four disciplines. Dataset metadata only; no model scores imported."
+    },
+    {
+      "id": "decision-index",
+      "name": "Jev Decision Index 0.4.1",
+      "group": "Decision making",
+      "source": "https://huggingface.co/datasets/multimodalart/decision-index-leaderboard",
+      "status": "research-pipeline",
+      "note": "Official Hugging Face benchmark dataset registry candidate. Leaderboard distinguishes same-skills and new-domains tasks; retain those task conditions separately pending a full source audit."
+    },
+    {
+      "id": "real5-omnidocbench",
+      "name": "Real5-OmniDocBench",
+      "group": "Document and multimodal",
+      "source": "https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench",
+      "status": "research-pipeline",
+      "note": "Official Hugging Face benchmark dataset registry candidate. Document parsing robustness under scanning, warping, screen photography, illumination and skew. Dataset metadata only."
+    },
+    {
+      "id": "longshot-bench",
+      "name": "LongShOTBench",
+      "group": "Video and multimodal",
+      "source": "https://huggingface.co/datasets/MBZUAI/longshot-bench",
+      "status": "research-pipeline",
+      "note": "Official Hugging Face benchmark dataset registry candidate. Long-form omni-modal video understanding with speech and ambient audio. Dataset metadata only."
+    },
+    {
+      "id": "safeagents-judge-bench",
+      "name": "SafeAgents Judge Bench v0",
+      "group": "Safety and tool use",
+      "source": "https://huggingface.co/datasets/harness-hub/safeagents-judge-bench",
+      "status": "research-pipeline",
+      "note": "Official Hugging Face benchmark dataset registry candidate. Published real agent tool-call traces for safety evaluation. Dataset metadata only; inspect privacy/redaction and scoring methodology before importing results."
     }
   ],
   "composite": {
