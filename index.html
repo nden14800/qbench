@@ -729,7 +729,7 @@ function renderStats(){
  renderSummaryCards(ranked,top,baseModels,full,broad,limited,unranked);
  $('#index-sub').textContent=ranked.length+' ranked model/effort variants · '+baseModels+' model names · '+RESULT.evals.length+' evaluations · '+(DATA.composite.snapshotAsOf||'—');
  var snaps=(DATA.benchmarks||[]).map(function(b){return b.snapshotDate;}).filter(function(d){return d&&/^\d{4}-/.test(d);}).sort();
- $('#footer').innerHTML='QBench Index '+esc(DATA.composite.version||'1.6')+' · data collected '+esc(DATA.composite.snapshotAsOf||snaps[snaps.length-1]||'—')+' (JST) · page updated 2026-11-01 (JST). '+RESULT.evals.length+' selected evaluations contribute to '+RESULT.domains.length+' equally weighted capability families. API token prices are not task-cost measurements.';
+ $('#footer').innerHTML='QBench Index '+esc(DATA.composite.version||'1.6')+' · data collected '+esc(DATA.composite.snapshotAsOf||snaps[snaps.length-1]||'—')+' (JST) · page updated 2026-11-11 (JST). '+RESULT.evals.length+' selected evaluations contribute to '+RESULT.domains.length+' equally weighted capability families. API token prices are not task-cost measurements.';
 }
 /* ---------- index table ---------- */
 

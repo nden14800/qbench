@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.6",
-  "note": "QBench Index 1.6 rebuild, snapshot 2026-10-31. Eighteen source-audited evaluations across eight capability families contribute to Index 1.6. Mystery Game Puzzles is standalone because its visible table is partial. Partial mirrors, mixed-harness sets, ceiling-watch series and ambiguous metric tables remain standalone. Discovery update 2026-11-11: six official Hugging Face benchmark dataset candidates were added to the benchmark directory with zero imported model scores. They remain outside QBench Index 1.6 pending source-level leaderboard verification. Provider model-card evidence update 2026-11-11: Anthropic Fable/Mythos 5.2 launch evaluations and Google Gemini 4 Carbon model-card evaluations are retained as standalone benchmark snapshots. They do not enter Index 1.6. 2026-11-11 update: added Claude Fable 5.2 to nine Index 1.6 eligible Vals AI evaluations using the publisher's 2026-11-09 leaderboard/model results. Gemini 4 Carbon Tax Agent Bench refreshed to the 2026-11-09 value. Index 1.6 methodology and eligibility gates are unchanged; Claude Mythos 5.2 remains standalone pending comparable multi-family evidence.",
+  "note": "QBench Index 1.7 snapshot 2026-11-11. Twenty source-audited evaluations across eight capability families; within-evaluation percentile normalization, equal-weight observed family means, four-evaluation/three-family ranking gate. Non-Index benchmark records are retained internally but are not displayed in the site UI.",
   "benchmarks": [
     {
       "id": "livebench-2.0",
@@ -51498,27 +51498,27 @@
       ],
       "method": "QBench Index 1.7 converts each eligible evaluation's source score into an average-rank percentile (0–100), averages evaluation percentiles within each family, then equally averages observed family means. A model/effort variant is ranked with at least four evaluations across at least three capability families.",
       "currentDiagnostics": {
-        "snapshotAsOf": "2026-10-31",
-        "eligibleEvaluationCount": 18,
+        "snapshotAsOf": "2026-11-11",
+        "eligibleEvaluationCount": 20,
         "capabilityFamilyCount": 8,
-        "modelsWithEligibleResults": 142,
-        "totalVariants": 200,
-        "rankedVariants": 73,
+        "modelsWithEligibleResults": 165,
+        "totalVariants": 253,
+        "rankedVariants": 69,
         "fullEvidenceVariants": 0,
         "broadEvidenceVariants": 48,
-        "limitedEvidenceVariants": 25,
-        "insufficientEvidenceVariants": 127,
+        "limitedEvidenceVariants": 21,
+        "insufficientEvidenceVariants": 184,
         "coverageByFamilyCount": {
-          "1": 108,
-          "2": 19,
-          "3": 25,
+          "1": 151,
+          "2": 27,
+          "3": 27,
           "4": 13,
           "5": 23,
           "6": 12
         },
-        "minimumEvaluationsPerModel": 3,
+        "minimumEvaluationsPerModel": 4,
         "minimumDomainsPerModel": 3,
-        "note": "Recomputed from the current indexEligible datasets using the runtime's model/effort deduplication, the Terminal-Bench-Science Mini-SWE-agent harness filter, and the 12-variant per-evaluation gate."
+        "note": "Recomputed from Index 1.7 eligible evaluation snapshots using exact model/effort deduplication and evaluation-specific filters."
       },
       "componentBenchmarks": [
         "terminal-bench-4-0",
@@ -54913,7 +54913,7 @@
       "id": "anthropic:claude-fable-5-2",
       "displayName": "Claude Fable 5.2",
       "apiModelId": "claude-fable-5-2",
-      "benchmarkEvidenceNote": "Has nine eligible Index 1.7 results across Software engineering, Professional knowledge work and Scientific workflows. Ranked only after meeting the four-evaluation/three-family evidence gate; scores are within-evaluation percentiles."
+      "benchmarkEvidenceNote": "Has ten eligible Index 1.7 results across Software engineering, Professional knowledge work and Scientific workflows. Ranked after meeting the four-evaluation/three-family evidence gate; scores are within-evaluation percentiles."
     },
     {
       "provider": "Anthropic",
