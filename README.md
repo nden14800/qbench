@@ -56,7 +56,7 @@ The dataset contains 147 benchmark and model-card result collections. CyberBench
 
 ## Current Index coverage
 
-The last documented data audit (2026-11-11) used 17 eligible evaluations across 8 capability families, 232 model/effort variants, and 70 ranked variants. This count must be revalidated against the live dataset before being treated as current. A ranked variant needs at least 4 evaluations across at least 3 families. Partial AA-Briefcase results, the GDP.pdf secondary partial mirror, and Finance Agent v2.1's mismatched metric are not included. Index 2.0 recomputes the ranking at runtime; the old Index 1.9 median, leader score and ranked-count figures are not comparable and are intentionally not carried forward.
+The 2026-11-11 source snapshot has been re-run under Index 2.0: 17 eligible evaluations across 8 capability families, 232 model/effort variants, and 70 ranked variants. A ranked variant needs at least 4 evaluations across at least 3 families. Partial AA-Briefcase results, the GDP.pdf secondary partial mirror, and Finance Agent v2.1's mismatched metric are not included. Gemini 4 Argon leads at 68.7 (raw cohort composite 90.0 before the neutral evidence prior); Claude Fable 5.2 scores 62.9 with four-family coverage. These are QBench-specific cohort scores, not Artificial Analysis scores.
 
 ## Data integrity rules
 
@@ -69,7 +69,7 @@ The last documented data audit (2026-11-11) used 17 eligible evaluations across 
 - Do not flatten region/tier/cached-token pricing into a single price.
 - Keep publisher-reported zero scores.
 - Keep benchmark-only models in the catalog with unverified metadata clearly marked.
-- Missing benchmark observations stay missing; the Index's family baseline is a transparent composite rule, not fabricated raw data.
+- Missing benchmark observations stay missing in the raw evidence. The final Index applies one explicit neutral 50th-percentile prior equivalent to a complete family suite; it does not fabricate benchmark-level scores.
 
 ## Sources
 
