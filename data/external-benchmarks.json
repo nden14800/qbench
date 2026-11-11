@@ -4910,7 +4910,7 @@
         }
       ],
       "indexEligible": true,
-      "valueNote": "Current official Artificial Analysis leaderboard snapshot (2026-11-11). 45 visible model/effort rows are retained from the official leaderboard extract; AA page reports 28 of 261 models in its currently charted result set. Elo is normalized within the evaluation for QBench Index 1.7.",
+      "valueNote": "Current official Artificial Analysis leaderboard snapshot (2026-11-11). 58 visible model/effort rows are retained from the official leaderboard extract; AA page reports 28 of 261 models in its currently charted result set. Elo is normalized within the evaluation for QBench Index 1.7.",
       "version": "v1.1",
       "versionEvidence": "published benchmark display name",
       "coverageLevel": "official-publisher-top-10-partial"
