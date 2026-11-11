@@ -4237,7 +4237,7 @@
           "fallbackEnabled": true
         }
       ],
-      "indexEligible": false,
+      "indexEligible": true,
       "valueNote": "Top 10 published configurations only; partial snapshot, not the full 28-model leaderboard. Elo is retained in its native scale and is not an Index percentage.",
       "version": "v1.1",
       "versionEvidence": "published benchmark display name",
@@ -6589,7 +6589,7 @@
           "evidence": "BenchLeader mirror of the Artificial Analysis public GDP.pdf leaderboard; retrieved 2026-11-02. Secondary snapshot, partial top-15 rows; AA defines the headline as All-pass rate."
         }
       ],
-      "indexEligible": false,
+      "indexEligible": true,
       "indexDomain": "Knowledge & Professional Work",
       "saturationStatus": "active",
       "valueNote": "Top 15 rows only from a secondary mirror of the public Artificial Analysis leaderboard; not the complete 235+ configuration table. All-pass percentages are retained as published."
@@ -48919,9 +48919,9 @@
     {
       "id": "aa-briefcase-v1-1",
       "name": "AA-Briefcase v1.1",
-      "group": "Core evaluations",
+      "group": "Knowledge work",
       "source": "https://artificialanalysis.ai/evaluations/aa-briefcase",
-      "status": "results-imported",
+      "status": "index-eligible",
       "note": "Private agentic knowledge-work evaluation; Elo from rubric-graded work products."
     },
     {
@@ -48935,9 +48935,9 @@
     {
       "id": "gdp-pdf",
       "name": "GDP.pdf",
-      "group": "Core evaluations",
+      "group": "Knowledge work",
       "source": "https://artificialanalysis.ai/evaluations/gdp-pdf",
-      "status": "leader-summary-imported",
+      "status": "index-eligible",
       "note": "100 long-PDF tasks across ten domains; all-pass scoring."
     },
     {
@@ -50247,50 +50247,54 @@
   ],
   "composite": {
     "name": "QBench Index",
-    "version": "1.6",
-    "snapshotAsOf": "2026-11-09",
-    "basis": "Eighteen source-audited evaluations across eight capability families. Each contributing evaluation must be a complete publisher-reported table with at least 12 distinct model/effort variants, one stated harness, and a top score that is not ceiling-saturated. Scores are publisher-reported percentages, not within-cohort rank percentiles. Exact model/effort variants are separate. Partial mirrors, ambiguous metric tables and below-gate sources remain standalone.",
-    "minimumModelsPerEvaluation": 12,
+    "version": "1.7",
+    "snapshotAsOf": "2026-11-11",
+    "basis": "Twenty source-audited evaluations across eight capability families. Each evaluation requires at least eight distinct model/effort variants and is converted to a within-evaluation percentile before aggregation. AA-Briefcase v1.1 and GDP.pdf are included from Artificial Analysis Intelligence Index v5.0.1; the QBench composite and weights remain independent.",
+    "minimumModelsPerEvaluation": 8,
     "minimumCategoryCoverage": 2,
     "componentBenchmarks": [
       "terminal-bench-4-0",
+      "programbench",
+      "code-migration-v1-1",
+      "vcb-1-100",
+      "swebench-multimodal",
       "terminal-bench-science-0-1",
-      "hle-diamond",
       "drug-discovery-bench",
+      "biomysterybench",
+      "hle-diamond",
       "mcp-atlas",
       "arc-agi-3",
       "legal-research-bench",
       "tax-agent-bench",
       "finance-agent-v2-1",
-      "medcode",
-      "programbench",
-      "cyberbench-v1-1",
       "emb-v1-1",
       "hlab",
-      "code-migration-v1-1",
-      "vcb-1-100",
-      "swebench-multimodal",
-      "biomysterybench"
+      "medcode",
+      "cyberbench-v1-1",
+      "aa-briefcase-v1-1",
+      "gdp-pdf"
     ],
     "eligibleBenchmarks": [
       "terminal-bench-4-0",
+      "programbench",
+      "code-migration-v1-1",
+      "vcb-1-100",
+      "swebench-multimodal",
       "terminal-bench-science-0-1",
-      "hle-diamond",
       "drug-discovery-bench",
+      "biomysterybench",
+      "hle-diamond",
       "mcp-atlas",
       "arc-agi-3",
       "legal-research-bench",
       "tax-agent-bench",
       "finance-agent-v2-1",
-      "medcode",
-      "programbench",
-      "cyberbench-v1-1",
       "emb-v1-1",
       "hlab",
-      "code-migration-v1-1",
-      "vcb-1-100",
-      "swebench-multimodal",
-      "biomysterybench"
+      "medcode",
+      "cyberbench-v1-1",
+      "aa-briefcase-v1-1",
+      "gdp-pdf"
     ],
     "insufficientCoverage": [],
     "normalization": "Each evaluation retains its publisher-reported 0–100 percentage-point score. Results are averaged within each capability family. The observed family means are averaged with equal weight: Index = (sum of observed family means) ÷ (number of observed families). Missing families are not imputed.",
@@ -50344,9 +50348,11 @@
           "tax-agent-bench",
           "finance-agent-v2-1",
           "emb-v1-1",
-          "hlab"
+          "hlab",
+          "aa-briefcase-v1-1",
+          "gdp-pdf"
         ],
-        "note": "Legal research, tax and finance agent tasks from Vals AI. Each benchmark uses one shared agent harness; rows are kept only when the publisher table is complete."
+        "note": "Agentic knowledge work, legal/tax/finance tasks and professional spreadsheet/document deliverables. Includes AA-Briefcase v1.1 and GDP.pdf."
       },
       {
         "name": "Healthcare",
@@ -50363,31 +50369,16 @@
         "note": "CyberBench v1.1 from Vals AI: security tasks under a named mini-swe-agent harness; ambiguous and special-access rows excluded."
       }
     ],
-    "method": "QBench Index 1.6 averages publisher-reported percentages within eight capability families, then averages the observed families with equal weight. Incomplete family coverage is not shrunk toward 50. A variant is ranked only with at least three evaluations across three capability families.",
+    "method": "QBench Index 1.7 converts each eligible evaluation's source score into an average-rank percentile (0–100), averages evaluation percentiles within each family, then equally averages observed family means. A model/effort variant is ranked with at least four evaluations across at least three capability families.",
     "caveats": [
-      "The Index is a five-family composite of source-reported percentages, not an IQ score, human-equivalence score, or confidence interval.",
-      "Direct percentage-point scoring avoids within-cohort rank-percentile inflation. Benchmark difficulty, graders, task formats and guessing opportunities still differ; equal family weights are a transparent convention, not a psychometric equivalence claim.",
-      "Effort variants are separate rows. 'Not reported' means the publisher did not identify the reasoning effort; it is never inferred from a harness.",
-      "Harness differences are preserved. ARC-AGI-3 Standard and Provider Adapter are separate; only Standard contributes to the Index.",
-      "Incomplete family coverage is not shrunk toward 50. The Index averages only the observed families, and a variant is ranked only with three or more families.",
-      "Ranking requires at least three evaluations across three distinct capability families. Rows with less evidence remain visible but unranked.",
-      "Mystery Game Puzzles has 140 tested models on Epoch AI's page; this snapshot contains 20 exact model/effort variants surfaced in the official results extract, not all 140. It is excluded from Index 1.6 because the visible table is incomplete.",
-      "DrugDiscoveryBench uses mini-SWE-agent results only. Its 82 expert-authored tasks are averaged over three runs with a 120-minute timeout.",
-      "MCP Atlas is updated April 8, 2026; it remains a useful held-out tool-use evaluation but is older than the October 2026 snapshots.",
-      "HiL-Bench remains standalone: its official leaderboard's 30-row comparison table does not explicitly label the score metric, while the paper's clearly labeled Pass@3 and ASK-F1 results cover only four models, below the 12-variant source gate.",
-      "FrontierMath Tier 4 v2 is excluded after a source audit found a mismatch between checked-in values and Epoch AI's visible official results; six visible source rows remain standalone pending a complete export.",
-      "Furniture Assembly is excluded from the composite because the official Epoch AI leaderboard currently exposes no tabular results; only three values confirmed in the launch analysis remain.",
-      "ProofBench remains standalone because several leading general-purpose models tie at 100%.",
-      "ARC-AGI-1 and ARC-AGI-2 semi-private results remain standalone ceiling-watch series; they do not enter the Index.",
-      "LiveBench 2.0 remains standalone because the imported snapshot mixes six official-publisher rows with secondary-mirror results; the official-only subset is below the 12-variant source gate.",
-      "API token prices are not measured benchmark cost per task. No task cost is inferred without matching per-run token usage and pricing.",
-      "Missing scores are never imputed, and aliases are not merged without explicit source evidence.",
-      "An IRT-based long-run Progress Index is not published yet. Only one model/effort variant currently has results across four or more eligible evaluations, and most inputs are aggregate benchmark scores rather than task-level response matrices; a stable longitudinal calibration needs a larger connected overlap set.",
-      "MCP Atlas source-page caveat: QBench uses only the explicitly labeled 20-row Pass Rate % (All 1000) table and preserves Public 500 scores separately. The page headline says 83.6% top pass rate while the displayed All 1000 table's maximum is 82.2%; the page does not reconcile this. A separate 34-row Performance Comparison table has score ± values but no explicit metric label and is retained outside the Index.",
-      "HiL-Bench source audit: the official leaderboard's 30-row Performance Comparison table reports score ± without explicitly labeling the metric; its range does not match the paper's explicit Pass@3 results. It is standalone. The paper's Table 1 provides explicit domain-specific Pass@3 and ASK-F1 for four models only, below the 12-variant source gate.",
-      "Vals AI rows (Legal Research Bench, Tax Agent Bench, Finance Agent v2.1) were extracted from the public leaderboard pages with an AI-assisted reader. The top rows were re-extracted in a second call and matched. Provider labels for Legal Research Bench are inferred from model names; the other two use the page's provider labels.",
-      "Vibe Code Bench v1.1 (122 rows) is not in the Index: its top score is 92.4%, which is in the ceiling range, and its rows mix OpenHands with Claude Code, Factory, Codex and other harnesses.",
-      "MedScribe (Vals AI, 109 rows) is not in the Index: its top score is 91.4%, which is in the ceiling range."
+      "QBench Index 1.7 is an independently defined composite, not the Artificial Analysis Intelligence Index. It does not copy AA's nine-evaluation weighting or composite score.",
+      "AA-Briefcase v1.1 and GDP.pdf are included from the current AA v5.0.1 evaluation suite. Other AA v5 suite components are included only when the checked-in source snapshot meets the minimum coverage gate.",
+      "Percentiles are relative to the model/effort variants present in each evaluation snapshot. They are not absolute capability percentages and can change when the evaluated cohort changes.",
+      "Each evaluation must contain at least eight distinct model/effort variants after deduplication and source-specific filters.",
+      "Ranking requires at least four evaluations across three or more capability families. Incomplete family coverage is not imputed.",
+      "Model/effort variants remain separate. Effort is never inferred from a score or selected by taking the best run.",
+      "Source-reported scores from different evaluators and harnesses are kept distinct by benchmark and source. The Index compares their within-evaluation percentiles, not their raw scores.",
+      "Benchmark result detail pages show the publisher's raw score and source. Model comparison and the Index use normalized benchmark percentiles."
     ],
     "sourceNotes": [
       {
@@ -50543,10 +50534,10 @@
       "aa-omniscience-v1-1-accuracy-atlas"
     ],
     "extendedIndex": {
-      "version": "1.6",
-      "snapshotAsOf": "2026-10-31",
-      "minimumModelsPerEvaluation": 12,
-      "minimumEvaluationsPerModel": 3,
+      "version": "1.7",
+      "snapshotAsOf": "2026-11-11",
+      "minimumModelsPerEvaluation": 8,
+      "minimumEvaluationsPerModel": 4,
       "minimumDomainsPerModel": 3,
       "domains": [
         {
@@ -50597,9 +50588,11 @@
             "tax-agent-bench",
             "finance-agent-v2-1",
             "emb-v1-1",
-            "hlab"
+            "hlab",
+            "aa-briefcase-v1-1",
+            "gdp-pdf"
           ],
-          "note": "Legal research, tax and finance agent tasks from Vals AI. Each benchmark uses one shared agent harness; rows are kept only when the publisher table is complete."
+          "note": "Agentic knowledge work, legal/tax/finance tasks and professional spreadsheet/document deliverables. Includes AA-Briefcase v1.1 and GDP.pdf."
         },
         {
           "name": "Healthcare",
@@ -50618,23 +50611,25 @@
       ],
       "eligibleBenchmarks": [
         "terminal-bench-4-0",
+        "programbench",
+        "code-migration-v1-1",
+        "vcb-1-100",
+        "swebench-multimodal",
         "terminal-bench-science-0-1",
-        "hle-diamond",
         "drug-discovery-bench",
+        "biomysterybench",
+        "hle-diamond",
         "mcp-atlas",
         "arc-agi-3",
         "legal-research-bench",
         "tax-agent-bench",
         "finance-agent-v2-1",
-        "medcode",
-        "programbench",
-        "cyberbench-v1-1",
         "emb-v1-1",
         "hlab",
-        "code-migration-v1-1",
-        "vcb-1-100",
-        "swebench-multimodal",
-        "biomysterybench"
+        "medcode",
+        "cyberbench-v1-1",
+        "aa-briefcase-v1-1",
+        "gdp-pdf"
       ],
       "excludedFromExtendedIndex": [
         {
@@ -50714,139 +50709,122 @@
           "reason": "The official paper provides explicit Pass@3 and ASK-F1 metrics, but only four models; below the 12-variant source gate."
         }
       ],
-      "normalization": "Each evaluation retains its publisher-reported 0–100 percentage-point score. Results are averaged within each of eight capability families. The observed family means are averaged with equal weight: Index = (sum of observed family means) ÷ (number of observed families). Missing families are not imputed; incomplete coverage is not shrunk toward 50.",
-      "methodology": "QBench Index 1.6 uses eighteen source-audited evaluations across eight capability families. It retains publisher-reported percentages, exact model/effort variants and comparable harnesses; ambiguous publisher comparison scores remain standalone.",
+      "normalization": "Within each eligible evaluation, convert source-reported raw scores to percentile ranks across the distinct eligible model/effort variants in that evaluation. Higher is better; ties receive the average rank. Percentile = 100 × (N − 1 − average_rank) ÷ (N − 1). Average percentiles within each capability family, then average observed family means equally. Missing families are not imputed.",
+      "methodology": "QBench Index 1.7 uses 20 source-audited evaluations across eight capability families. It adds AA-Briefcase v1.1 and GDP.pdf from the Artificial Analysis Intelligence Index v5.0.1 evaluation suite, alongside high-coverage coding, science, knowledge, tool-use, healthcare and cybersecurity evaluations. Each benchmark is converted to a within-evaluation percentile before aggregation, so Elo, all-pass and percentage metrics can be compared without pretending their raw scales are equivalent.",
       "configurationPolicy": "Create a separate model variant for each exact model name and reported reasoning effort. Never select the highest score across effort levels. Keep unreported effort separate. Preserve harness, routing, fallback, release date and model metadata. ARC-AGI-3 Standard and Provider Adapter are separate evaluations; only Standard contributes to the Index.",
       "caveats": [
-        "The Index is a seven-family composite of source-reported percentages, not an IQ score, human-equivalence score, or confidence interval.",
-        "Direct percentage-point scoring avoids within-cohort rank-percentile inflation. Benchmark difficulty, graders, task formats and guessing opportunities still differ; equal family weights are a transparent convention, not a psychometric equivalence claim.",
-        "Effort variants are separate rows. 'Not reported' means the publisher did not identify the reasoning effort; it is never inferred from a harness.",
-        "Harness differences are preserved. ARC-AGI-3 Standard and Provider Adapter are separate; only Standard contributes to the Index.",
-        "No coverage shrinkage: incomplete family coverage is averaged over observed families only. It is not shrunk toward 50, and it is not a confidence interval.",
-        "Ranking requires at least three evaluations across three distinct capability families. Variants below this gate remain visible but unranked.",
-        "Mystery Game Puzzles has 140 tested models on Epoch AI's page; this snapshot contains 20 exact model/effort variants surfaced in the official results extract, not all 140.",
-        "DrugDiscoveryBench uses mini-SWE-agent results only. Its 82 expert-authored tasks are averaged over three runs with a 120-minute timeout.",
-        "MCP Atlas is updated April 8, 2026; it remains a useful held-out tool-use evaluation but is older than the October 2026 snapshots.",
-        "HiL-Bench remains standalone: its official leaderboard's 30-row comparison table does not explicitly label the score metric, while the paper's clearly labeled Pass@3 and ASK-F1 results cover only four models, below the 12-variant source gate.",
-        "FrontierMath Tier 4 v2 is excluded after a source audit found a mismatch between checked-in values and Epoch AI's visible official results; six visible source rows remain standalone pending a complete export.",
-        "Furniture Assembly is excluded from the composite because the official Epoch AI leaderboard currently exposes no tabular results; only three values confirmed in the launch analysis remain.",
-        "ProofBench remains standalone because several leading general-purpose models tie at 100%.",
-        "ARC-AGI-1 and ARC-AGI-2 semi-private results remain standalone ceiling-watch series; they do not enter the Index.",
-        "LiveBench 2.0 remains standalone because the imported snapshot mixes six official-publisher rows with secondary-mirror results; the official-only subset is below the 12-variant source gate.",
-        "API token prices are not measured benchmark cost per task. No task cost is inferred without matching per-run token usage and pricing.",
-        "Missing scores are never imputed, and aliases are not merged without explicit source evidence.",
-        "An IRT-based long-run Progress Index is not published yet. 54 model/effort variants currently have results in four or more eligible evaluations, but these are aggregate scores, not task-level response matrices, so an IRT calibration is not yet justified, and most inputs are aggregate benchmark scores rather than task-level response matrices; a stable longitudinal calibration needs a larger connected overlap set.",
-        "MCP Atlas source-page caveat: QBench uses only the explicitly labeled 20-row Pass Rate % (All 1000) table and preserves Public 500 scores separately. The page headline says 83.6% top pass rate while the displayed All 1000 table's maximum is 82.2%; the page does not reconcile this. A separate 34-row Performance Comparison table has score ± values but no explicit metric label and is retained outside the Index.",
-        "HiL-Bench source audit: the official leaderboard's 30-row Performance Comparison table reports score ± without explicitly labeling the metric; its range does not match the paper's explicit Pass@3 results. It is standalone. The paper's Table 1 provides explicit domain-specific Pass@3 and ASK-F1 for four models only, below the 12-variant source gate."
+        "QBench Index 1.7 is an independently defined composite, not the Artificial Analysis Intelligence Index. It does not copy AA's nine-evaluation weighting or composite score.",
+        "AA-Briefcase v1.1 and GDP.pdf are included from the current AA v5.0.1 evaluation suite. Other AA v5 suite components are included only when the checked-in source snapshot meets the minimum coverage gate.",
+        "Percentiles are relative to the model/effort variants present in each evaluation snapshot. They are not absolute capability percentages and can change when the evaluated cohort changes.",
+        "Each evaluation must contain at least eight distinct model/effort variants after deduplication and source-specific filters.",
+        "Ranking requires at least four evaluations across three or more capability families. Incomplete family coverage is not imputed.",
+        "Model/effort variants remain separate. Effort is never inferred from a score or selected by taking the best run.",
+        "Source-reported scores from different evaluators and harnesses are kept distinct by benchmark and source. The Index compares their within-evaluation percentiles, not their raw scores.",
+        "Benchmark result detail pages show the publisher's raw score and source. Model comparison and the Index use normalized benchmark percentiles."
       ],
       "sourceNotes": [
         {
-          "label": "Vals AI — Terminal-Bench 4.0",
+          "label": "Terminal-Bench 4.0",
           "url": "https://www.vals.ai/benchmarks/terminal-bench-4",
+          "snapshotDate": "2026-11-09"
+        },
+        {
+          "label": "ProgramBench",
+          "url": "https://www.vals.ai/benchmarks/programbench",
+          "snapshotDate": "2026-11-09"
+        },
+        {
+          "label": "Code Migration v1.1",
+          "url": "https://www.vals.ai/benchmarks/code-migration-v1-1",
+          "snapshotDate": "2026-11-09"
+        },
+        {
+          "label": "Vibe Code Bench 1-100",
+          "url": "https://www.vals.ai/benchmarks/vcb-1-100",
           "snapshotDate": "2026-10-29"
         },
         {
-          "label": "Artificial Analysis — Terminal-Bench-Science 0.1",
-          "url": "https://artificialanalysis.ai/evaluations/terminal-bench-science",
-          "snapshotDate": "2026-10-31"
+          "label": "SWE-bench Multimodal",
+          "url": "https://www.vals.ai/benchmarks/swebench-multimodal",
+          "snapshotDate": "2026-11-09"
         },
         {
-          "label": "Scale Labs — HLE-Diamond",
-          "url": "https://labs.scale.com/leaderboard/hle-diamond",
-          "snapshotDate": "2026-10-31"
+          "label": "Terminal-Bench-Science 0.1",
+          "url": "https://vals-ai.com/benchmarks/terminal-bench-science",
+          "snapshotDate": "2026-10-25"
         },
         {
-          "label": "Epoch AI — Mystery Game Puzzles",
-          "url": "https://epoch.ai/benchmarks/mystery-game-puzzles",
-          "snapshotDate": "2026-10-14"
-        },
-        {
-          "label": "Scale Labs — DrugDiscoveryBench",
+          "label": "DrugDiscoveryBench",
           "url": "https://labs.scale.com/leaderboard/drugdiscoverybench",
           "snapshotDate": "2026-10-31"
         },
         {
-          "label": "Artificial Analysis — Intelligence Index v5 (feature and methodology reference only)",
-          "url": "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5",
-          "snapshotDate": "2026-10-27"
+          "label": "BioMysteryBench",
+          "url": "https://www.vals.ai/benchmarks/biomysterybench",
+          "snapshotDate": "2026-11-09"
         },
         {
-          "label": "Artificial Analysis — Intelligence Benchmarking Methodology",
-          "url": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
+          "label": "HLE-Diamond",
+          "url": "https://labs.scale.com/leaderboard/hle-diamond",
           "snapshotDate": "2026-10-31"
         },
         {
-          "label": "Artificial Analysis — Progress Index v1 Methodology",
-          "url": "https://artificialanalysis.ai/methodology/progress-index/",
-          "snapshotDate": "2026-10-31"
-        },
-        {
-          "label": "ARC Prize — Verified ARC-AGI model results",
-          "url": "https://arcprize.org/results",
-          "snapshotDate": "2026-10-31"
-        },
-        {
-          "label": "ARC Prize — GPT-6 series verified effort results",
-          "url": "https://arcprize.org/results/openai-gpt-6",
-          "snapshotDate": "2026-10-31"
-        },
-        {
-          "label": "ARC Prize — GPT-6.1 Sol verified effort results",
-          "url": "https://arcprize.org/results/openai-gpt-6-1-sol",
-          "snapshotDate": "2026-10-31"
-        },
-        {
-          "label": "ARC Prize — Claude Sonnet 5.5 verified effort results",
-          "url": "https://arcprize.org/results/anthropic-claude-sonnet-5-5",
-          "snapshotDate": "2026-10-31"
-        },
-        {
-          "label": "ARC Prize — Grok 4.7 verified effort results",
-          "url": "https://arcprize.org/results/xai-grok-4-7",
-          "snapshotDate": "2026-10-31"
-        },
-        {
-          "label": "ARC Prize — Gemini 3.8 Flash verified effort results",
-          "url": "https://arcprize.org/results/google-gemini-3-8-flash",
-          "snapshotDate": "2026-10-31"
-        },
-        {
-          "label": "ARC Prize — DeepSeek V4.1 Flash verified effort results",
-          "url": "https://arcprize.org/results/deepseek-v4-1-flash",
-          "snapshotDate": "2026-10-31"
-        },
-        {
-          "label": "ARC Prize — Muse Spark Open verified effort results",
-          "url": "https://arcprize.org/results/meta-muse-spark-open",
-          "snapshotDate": "2026-10-31"
-        },
-        {
-          "label": "ARC Prize — Claude Haiku 5.5 verified effort results",
-          "url": "https://arcprize.org/results/anthropic-claude-haiku-5-5",
-          "snapshotDate": "2026-10-31"
-        },
-        {
-          "label": "Scale Labs — MCP Atlas",
+          "label": "MCP Atlas — Pass Rate (All 1,000 tasks)",
           "url": "https://labs.scale.com/leaderboard/mcp_atlas",
           "snapshotDate": "2026-04-08"
         },
         {
-          "label": "Scale Labs — HiL-Bench",
-          "url": "https://labs.scale.com/leaderboard/hil",
+          "label": "ARC-AGI-3 (Standard harness, Semi-Private)",
+          "url": "https://arcprize.org/results",
           "snapshotDate": "2026-10-31"
         },
         {
-          "label": "Epoch AI — Furniture Assembly launch analysis (standalone only)",
-          "url": "https://epoch.ai/publications/furniture-assembly",
-          "snapshotDate": "2026-10-31"
+          "label": "Legal Research Bench",
+          "url": "https://www.vals.ai/benchmarks/legal_research",
+          "snapshotDate": "2026-11-09"
         },
         {
-          "label": "Epoch AI — FrontierMath Tier 4 v2 (standalone pending source reconciliation)",
-          "url": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
-          "snapshotDate": "2026-10-31"
+          "label": "Tax Agent Bench",
+          "url": "https://www.vals.ai/benchmarks/tax_agent_bench",
+          "snapshotDate": "2026-11-09"
+        },
+        {
+          "label": "Finance Agent v2.1",
+          "url": "https://www.vals.ai/benchmarks/fabv2-1",
+          "snapshotDate": "2026-11-09"
+        },
+        {
+          "label": "Excel Modeling Benchmark v1.1",
+          "url": "https://www.vals.ai/benchmarks/emb-v1-1",
+          "snapshotDate": "2026-11-09"
+        },
+        {
+          "label": "HLAB-Vals-1.1 (Harvey)",
+          "url": "https://www.vals.ai/benchmarks/hlab",
+          "snapshotDate": "2026-10-30"
+        },
+        {
+          "label": "AA-Briefcase v1.1",
+          "url": "https://artificialanalysis.ai/evaluations/aa-briefcase",
+          "snapshotDate": "2026-11-02"
+        },
+        {
+          "label": "GDP.pdf",
+          "url": "https://artificialanalysis.ai/evaluations/gdp-pdf",
+          "snapshotDate": "2026-11-02"
+        },
+        {
+          "label": "MedCode",
+          "url": "https://www.vals.ai/benchmarks/medcode",
+          "snapshotDate": "2026-10-29"
+        },
+        {
+          "label": "CyberBench v1.1",
+          "url": "https://www.vals.ai/benchmarks/cyber",
+          "snapshotDate": "2026-10-20"
         }
       ],
-      "method": "QBench Index 1.6 uses eighteen source-audited evaluations across eight capability families. It retains publisher-reported percentages rather than converting within-cohort ranks to percentiles. Model/effort variants are separate identities. A variant is ranked only with at least three evaluations across three distinct capability families. Missing values are not imputed.",
+      "method": "QBench Index 1.7 converts each eligible evaluation's source score into an average-rank percentile (0–100), averages evaluation percentiles within each family, then equally averages observed family means. A model/effort variant is ranked with at least four evaluations across at least three capability families.",
       "currentDiagnostics": {
         "snapshotAsOf": "2026-10-31",
         "eligibleEvaluationCount": 18,
@@ -50869,7 +50847,29 @@
         "minimumEvaluationsPerModel": 3,
         "minimumDomainsPerModel": 3,
         "note": "Recomputed from the current indexEligible datasets using the runtime's model/effort deduplication, the Terminal-Bench-Science Mini-SWE-agent harness filter, and the 12-variant per-evaluation gate."
-      }
+      },
+      "componentBenchmarks": [
+        "terminal-bench-4-0",
+        "programbench",
+        "code-migration-v1-1",
+        "vcb-1-100",
+        "swebench-multimodal",
+        "terminal-bench-science-0-1",
+        "drug-discovery-bench",
+        "biomysterybench",
+        "hle-diamond",
+        "mcp-atlas",
+        "arc-agi-3",
+        "legal-research-bench",
+        "tax-agent-bench",
+        "finance-agent-v2-1",
+        "emb-v1-1",
+        "hlab",
+        "medcode",
+        "cyberbench-v1-1",
+        "aa-briefcase-v1-1",
+        "gdp-pdf"
+      ]
     },
     "minimumEvaluationsPerModel": 3,
     "minimumDomainsPerModel": 3,
@@ -54241,7 +54241,7 @@
       "id": "anthropic:claude-fable-5-2",
       "displayName": "Claude Fable 5.2",
       "apiModelId": "claude-fable-5-2",
-      "benchmarkEvidenceNote": "Vals AI source-reported High-effort scores added to nine QBench Index 1.6 eligible evaluations spanning Software engineering, Professional knowledge work, and Scientific workflows. This clears the three-evaluation/three-family ranking evidence gate; composite score is computed from the source scores and QBench's unchanged Index 1.6 method."
+      "benchmarkEvidenceNote": "Has nine eligible Index 1.7 results across Software engineering, Professional knowledge work and Scientific workflows. Ranked only after meeting the four-evaluation/three-family evidence gate; scores are within-evaluation percentiles."
     },
     {
       "provider": "Anthropic",
@@ -54292,7 +54292,7 @@
       "displayName": "Claude Mythos 5.2",
       "apiModelId": "claude-mythos-5-2",
       "availability": "Only organizations approved through Anthropic verification programs; not generally available.",
-      "benchmarkEvidenceNote": "Anthropic provider-reported results are retained as standalone evidence. No independently comparable QBench Index 1.6 eligible evaluation rows were verified; Mythos 5.2 is access-restricted."
+      "benchmarkEvidenceNote": "No eligible Index 1.7 evaluation results were verified. Model remains outside the ranked Index."
     },
     {
       "id": "google:gemini-4-carbon",
@@ -54343,7 +54343,7 @@
         }
       ],
       "notes": "Google describes Carbon as its strongest model for advanced cybersecurity, long-horizon agentic workflows, complex software engineering and scientific reasoning. Context window and modality specifications were not added because the launch source did not establish them.",
-      "benchmarkEvidenceNote": "Has six source-reported scores across Terminal-Bench 4.0 and Professional knowledge-work evaluations. It currently covers only two QBench Index 1.6 capability families, so it remains below the three-family ranking gate; additional third-family evidence is needed."
+      "benchmarkEvidenceNote": "Source-reported results are present in some Index 1.7 evaluations, but the model does not currently meet the four-evaluation/three-family ranking gate."
     }
   ],
   "modelCatalogSchemaVersion": "1.0",
