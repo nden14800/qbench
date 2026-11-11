@@ -122,7 +122,8 @@ def main() -> int:
             }
             data["benchmarks"].append(record)
             added += 1
-        record["snapshotDate"] = last_modified
+        record["snapshotDate"] = TODAY
+        record["datasetLastModified"] = ds.get("lastModified")
         record["source"] = dataset_url
         record["models"] = rows
         record["indexEligible"] = False
