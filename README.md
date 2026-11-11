@@ -101,7 +101,7 @@ The composite is an average of benchmark percentages. It is not a confidence int
 
 Artificial Analysis Intelligence Index v5.0 averages nine evaluations in four categories (Knowledge Work, Coding, Science and General), each weighted 25% ([methodology](https://artificialanalysis.ai/methodology/intelligence-benchmarking)). Three of its nine evaluations (Terminal-Bench 4.0, HLE-Diamond and Terminal-Bench-Science 0.1) also appear in QBench. QBench Index 1.6 does not import the AA composite, its private evaluations, or any partial AA leaderboard mirror.
 
-**External reference snapshot (2026-11-11):** BenchLeader's daily transcription of the public Artificial Analysis leaderboard lists Claude Fable 5.2 (max) at 64.6, Fable 5.2 (xhigh) at 62.2, Fable 5.2 (high) at 61.8, and Gemini 4 Carbon (high) at 60.0. This is an external leaderboard reference, not a QBench result or a score imported into QBench Index 1.6. Verify the live publisher leaderboard before comparing versions or effort settings: [BenchLeader snapshot](https://www.benchleader.com/benchmarks/aa_intelligence_index_v5) · [Artificial Analysis v5 methodology](https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5).
+**Reference boundary:** Artificial Analysis results are not QBench data. Do not copy its composite score or ranking into QBench. Any cross-site comparison must be separately labeled, cite the publisher, and preserve model variant, effort and snapshot date.
 
 ### Standalone evaluations and exclusions
 
