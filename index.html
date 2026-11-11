@@ -1410,12 +1410,9 @@ function csvOut(){
 /* ---------- benchmarks ---------- */
 
 function benchStatus(id){
- var b=RESULT.byId[id]||{},rows=(b.models||[]).filter(function(m){return m.uncertain!==true&&scoreOf(m)!==null;});
- var n=new Set(rows.map(function(m){return variantId(m.model,effortOf(m));})).size;
- if(RESULT.evals.some(function(e){return e.id===id;}))return {t:'In Index 1.7',c:'text-bg-success',n:n};
- if(!n)return {t:'No verified results',c:'text-bg-warning',n:0};
- if(b.indexEligible!==true)return {t:'Standalone evaluation',c:'text-bg-secondary',n:n};
- return {t:'Below 12-variant minimum',c:'text-bg-warning',n:n};
+ var b=RESULT.byId[id];if(!b||!RESULT.evals.some(function(e){return e.id===id;}))return {t:'Not an Index component',c:'text-bg-secondary',n:0};
+ var n=new Set((b.models||[]).filter(function(m){return !!m.model&&scoreOf(m)!==null;}).map(function(m){return variantId(m.model,effortOf(m));})).size;
+ return {t:'Index component',c:'text-bg-success',n:n};
 }
 function renderBenchGrid(){
   var list=RESULT.evals.map(function(e){return RESULT.byId[e.id];}).filter(Boolean);
