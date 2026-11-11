@@ -48,7 +48,7 @@ The dataset contains 145 benchmark and model-card result collections. CyberBench
 
 ## Current Index coverage
 
-The 2026-11-11 calculation uses 17 eligible evaluations across 8 capability families, 226 model/effort variants, and 70 ranked variants. A ranked variant needs at least 4 evaluations across at least 3 families. Partial AA-Briefcase results, the GDP.pdf secondary partial mirror, and Finance Agent v2.1's mismatched metric are not included. After the Index 1.9 calibration, the ranked cohort median is 50.0 and the leading score is 55.7 (Gemini 4 Argon, 7/8 families, 15 evaluations). The prior Index 1.8 maximum of 63.5 is not comparable because the scoring scale and missing-family rule changed.
+The 2026-11-11 calculation uses 16 eligible evaluations across 8 capability families, 187 model/effort variants, and 70 ranked variants. A ranked variant needs at least 4 evaluations across at least 3 families. Partial AA-Briefcase results, the GDP.pdf secondary partial mirror, and Finance Agent v2.1's mismatched metric are not included. After the Index 1.9 calibration, the ranked cohort median is 50.0 and the leading score is 55.7 (Gemini 4 Argon, 7/8 families, 15 evaluations). The prior Index 1.8 maximum of 63.5 is not comparable because the scoring scale and missing-family rule changed.
 
 ## Data integrity rules
 
