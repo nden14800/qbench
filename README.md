@@ -30,28 +30,26 @@ Both remain in the benchmark data as separately identified source records; neith
 
 ## Model catalog and identity
 
-The catalog now includes every distinct model name found in benchmark result tables, not just the small set with complete API documentation. The catalog distinguishes:
+The catalog includes every distinct model name found in benchmark result tables, not just the small set with complete API documentation. It distinguishes verified official model identities from source-reported benchmark-only names and unresolved identities. Unknown API IDs, context windows, output limits, release dates, pricing, and modalities remain null. A benchmark result is not proof that a model has a public API. Historical models are retained rather than silently deleted.
 
-- **Verified:** model identity and available metadata are supported by official provider documentation.
-- **Source-reported:** a benchmark publisher reports the model name/provider, but official API ID or specifications have not been verified.
-- **Unresolved:** a result name exists but provider/model identity is not sufficiently established.
-
-Unknown API IDs, context windows, output limits, release dates, pricing, and modalities remain null. A benchmark result is not treated as proof that a model has a public API. Historical models are retained rather than silently deleted; lifecycle is only changed when supported by an official source.
-
-New official model records added in this audit include Kimi K3.1 Pro and Highspeed, Muse Wonder and Wonder Full, Gemini Omni 1.2 Flash, and GPT-6 Rosalind.
+Official model records added in this audit include Kimi K3.1 Pro and Highspeed, Muse Wonder and Wonder Full, Gemini Omni 1.2 Flash, and GPT-6 Rosalind. Muse Wonder and Gemini Omni model specs/API identifiers remain partial where primary docs do not publish exact values.
 
 ## Benchmark data refresh — 2026-11-11
 
-The following complete publisher tables were refreshed from their current 2026-11-09 pages:
+Complete publisher tables refreshed from their 2026-11-09 pages:
 
 - Terminal-Bench 4.0 — 63 models; 66 tasks; Mini-SWE-agent; avg@3 across three runs.
-- Terminal-Bench-Science 0.1 — 45 rows; 70 tasks; harness kept per row, including the one Terminus 2 run.
+- Terminal-Bench-Science 0.1 — 45 rows; 70 tasks; harness retained per row, including the Terminus 2 run.
 - ProgramBench — 66 models; strict fully-resolved metric; 200 public tasks.
 - Code Migration v1.1 — 30 models; Pi agent harness.
-- BioMysteryBench — 31 models; publisher-reported accuracy.
-- Finance Agent v2.1 — 39 models; the displayed Accuracy leaderboard metric is retained separately from the methodology's primary Partial Credit metric.
-- Legal Research Bench — full 90-row table synchronized to the 2026-11-09 publisher update.
-- HLE-Diamond — 20 entries from the current Scale AI Performance Comparison. The publisher does not display an explicit update date on that page, so 2026-11-11 is the retrieval date, not a claimed evaluation date.
+- BioMysteryBench — 31 models.
+- Finance Agent v2.1 — 39 models; displayed Accuracy metric kept separate from the methodology's primary Partial Credit metric.
+- Legal Research Bench — 90 rows.
+- Tax Agent Bench — 84 rows.
+- Excel Modeling Benchmark v1.1 — 41 rows.
+- HLAB-Vals-1.1 — 37 rows.
+- SWE-bench Multimodal — 22 rows.
+- HLE-Diamond — 20 entries from Scale AI's current Performance Comparison. The publisher does not display an explicit update date, so 2026-11-11 is the retrieval date, not a claimed evaluation date.
 
 Other benchmarks retain their actual publisher snapshot dates. A later audit/check date does not rewrite an older evaluation date. In particular, MCP Atlas retains its 2026-04-08 result snapshot unless the publisher publishes a new evaluation.
 
@@ -61,27 +59,25 @@ Other benchmarks retain their actual publisher snapshot dates. A later audit/che
 - Do not merge results from different harnesses, benchmark versions, or metric definitions.
 - Do not turn a retrieval date into a benchmark evaluation date.
 - Do not replace missing data with guesses or provider-wide defaults.
-- Do not treat a partial leaderboard or a secondary mirror as a complete comparison cohort.
+- Do not treat a partial leaderboard or secondary mirror as a complete comparison cohort.
 - Do not infer API model IDs from display names.
 - Do not flatten region/tier/cached-token pricing into a single price.
-- Keep zero scores when the publisher reports zero; never remove them to improve rankings.
+- Keep publisher-reported zero scores.
 - Keep benchmark-only models in the catalog with unverified metadata clearly marked.
 
 ## Sources
 
-Primary sources used for this update:
-
-- OpenAI model list: https://developers.openai.com/api/docs/models
+- OpenAI models: https://developers.openai.com/api/docs/models
 - OpenAI pricing: https://developers.openai.com/api/docs/pricing
-- OpenAI model release notes: https://help-lb.openai.com/en/articles/9624314-model-release-notes
-- Google Gemini model lifecycle: https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions
+- OpenAI release notes: https://help-lb.openai.com/en/articles/9624314-model-release-notes
+- Google Gemini lifecycle: https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions
 - Meta Muse Wonder launch: https://about.fb.com/news/2026/10/introducing-muse-wonder-models/
 - Kimi K3.1 Pro API guide: https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart
-- Kimi model pricing: https://platform.kimi.ai/docs/pricing/chat
-- Vals AI benchmark leaderboards: https://www.vals.ai/benchmarks
+- Kimi pricing: https://platform.kimi.ai/docs/pricing/chat
+- Vals AI leaderboards: https://www.vals.ai/benchmarks
 - Scale AI HLE-Diamond: https://labs.scale.com/leaderboard/hle-diamond
 - Artificial Analysis methodology: https://artificialanalysis.ai/methodology/intelligence-benchmarking
 
 ## Technical
 
-The site is a static HTML application. Benchmark data is loaded from `data/external-benchmarks.json`; charts use the vendored ECharts build. Production is deployed through Cloudflare Pages from `main`.
+The site is a static HTML application. Benchmark data is loaded from `data/external-benchmarks.json`; charts use the vendored ECharts build. Production deploys from `main` through Cloudflare Pages.
