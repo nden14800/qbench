@@ -46,7 +46,7 @@ Complete publisher tables refreshed from their 2026-11-09 pages:
 
 ## Current Index coverage
 
-The current 1.8 calculation uses 17 eligible evaluations across 8 capability families, 220 model/effort variants, and 70 ranked variants. A ranked variant needs at least 4 evaluations across at least 3 families. Finance Agent v2.1, AA-Briefcase partial results, and the GDP.pdf secondary partial mirror are not included in the composite.
+The current 1.8 calculation uses 17 eligible evaluations across 8 capability families, 225 model/effort variants, and 72 ranked variants. A ranked variant needs at least 4 evaluations across at least 3 families. Finance Agent v2.1, AA-Briefcase partial results, and the GDP.pdf secondary partial mirror are not included in the composite.
 
 ## Data integrity rules
 
