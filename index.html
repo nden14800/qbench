@@ -630,7 +630,7 @@ function compute(data){
  spec.domains.forEach(function(dom){dom.benchmarks.forEach(function(id){
   var b=byId[id];if(!b||b.indexEligible!==true)return;
   var evidenceText=[b.quality,b.valueNote,b.coverageLevel,b.note].join(' ').toLowerCase();
-  if(/partial|secondary mirror|incomplete|top[- ]?\\d+\\s+(?:rows|models|configurations)/i.test(evidenceText))return;
+  if(/partial|secondary mirror|incomplete|top[- ]?\d+\s+(?:rows|models|configurations)/i.test(evidenceText))return;
   var rows=new Map();
   (b.models||[]).forEach(function(r){
    var v=scoreOf(r),kind=kinds[r.model]||{};
