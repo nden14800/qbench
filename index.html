@@ -995,7 +995,7 @@ function renderComposition(host){
   var p=pal(),family=getComputedStyle(document.body).fontFamily||'DM Sans, Zen Kaku Gothic New, sans-serif';
   host.innerHTML='<div id="chart-main-el" style="height:460px"></div>'+
     '<div class="chart-legend">'+RESULT.domains.map(function(d,i){return '<span><i style="background:'+p.c[i]+'"></i>'+esc(d)+'</span>';}).join('')+'</div>'+
-    '<div class="notice-qb">Bar height = evidence-adjusted QBench Index. Family segments show observed family percentiles; missing families are not shown as measured results.</div>';
+    '<div class="notice-qb">Bar height = raw mean of observed family percentiles. The leaderboard Index applies a separate neutral-evidence adjustment; missing families are not shown as measured results.</div>';
   var c=chartInit('chart-main-el');
   c.setOption({animation:false,grid:{left:48,right:18,top:14,bottom:140},
     tooltip:{trigger:'axis',axisPointer:{type:'shadow'},valueFormatter:function(v){return fmt(v,1);}},
