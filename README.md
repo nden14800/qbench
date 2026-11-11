@@ -4,50 +4,51 @@ Evidence-first AI model and benchmark explorer.
 
 - Live site: https://qbench.pages.dev/
 - Repository: https://github.com/nden14800/qbench
-- Deployment: Cloudflare Pages, production branch `main`
+- Deployment: Cloudflare Pages, production branch \`main\`
 - Data audit: 2026-11-11
-- Current composite: **QBench Index 1.8**
+- Current composite: **QBench Index 1.9**
 
-## QBench Index 1.8
+## QBench Index 1.9
 
-QBench Index 1.8 standardizes each eligible publisher score within its own evaluation using a model-weighted z-score, then averages benchmark scores within capability families and weights observed families equally.
+Index 1.9 keeps the publisher's raw result untouched and converts eligible results to a cohort-relative standardized score. To reduce exaggerated separation and prevent sparse evidence from being rewarded, the standardization uses five points per weighted standard deviation and missing capability families receive the cohort baseline of 50.
 
-```
-T = clamp(50 + 10 × (score − weighted_mean) / weighted_SD, 0, 100)
-Index = mean(observed capability-family means)
-```
+\`\`\`
+T = clamp(50 + 5 × (score − weighted_mean) / weighted_SD, 0, 100)
+FamilyMean = mean(eligible normalized scores in that family)
+Index = mean(all 8 family means; missing family = 50)
+\`\`\`
 
-Each base model has total weight 1 across its distinct reasoning-effort variants. Missing families are not imputed. A model/effort variant must have at least four eligible evaluations across at least three capability families to be ranked. Each included evaluation must have at least 12 distinct model/effort variants.
+Each base model contributes total weight 1 within an evaluation across its distinct reasoning-effort variants. A model/effort variant must have at least four eligible evaluations across at least three capability families to be ranked. Each included evaluation must have at least 12 distinct model/effort variants. The eight families are equally weighted. A missing family is not represented as an observed score: it is explicitly assigned the cohort baseline of 50 for the composite only, while coverage remains visible.
 
-**Interpretation:** 50 is the model-weighted mean of the evaluated cohort for an evaluation. The Index is relative to the models and evidence available in the current dataset; it is not an absolute capability percentage, probability, or Artificial Analysis score. Raw publisher scores remain intact and are displayed separately.
+**Interpretation:** 50 is the evaluated cohort mean. One weighted standard deviation corresponds to five Index points. The Index is relative to the current eligible cohort; it is not an absolute capability percentage, probability, or Artificial Analysis score. Raw publisher scores, units, and evaluation conditions remain visible separately.
 
 ## Model catalog and lifecycle
 
-The catalog includes every distinct model name found in benchmark result tables, plus current official provider catalog entries. On 2026-11-11 it contains 840 catalog entries: 49 official-source verified identities and 791 benchmark-source-only identities whose API IDs/specs remain unverified. It distinguishes verified official model identities from source-reported benchmark-only names and unresolved identities. Unknown API IDs, context windows, output limits, release dates, pricing, and modalities remain null. A benchmark result is not proof that a model has a public API.
+The catalog includes distinct benchmark-reported names plus current official provider models. On 2026-11-11 it contains 841 catalog entries. Official API IDs and specifications are populated only when confirmed by primary provider documentation; benchmark-only identities remain explicitly source-reported and unknown metadata stays null. A benchmark result is not proof that a model has a public API.
 
-The 2026-11-11 official-source audit added/promoted current models across Google Gemini, OpenAI GPT, Anthropic Claude, Mistral, DeepSeek, xAI Grok, Alibaba Qwen, MiniMax, Kimi, and Meta Muse. Google lifecycle data now explicitly marks Gemini 2.5 Pro/Flash/Flash Lite as retired (2026-10-20), and Gemini 3.6 Flash as scheduled for retirement (2026-11-19). Keep retired models visible with their retirement dates rather than deleting history.
+The latest official-source audit covers OpenAI, Anthropic, Google, xAI, DeepSeek, Alibaba/Qwen, Mistral, Meta, Kimi and MiniMax. New verified entries include Qwen4 Max Preview, Qwen3.7 Plus and GPT-6 Sol. Qwen4 Max Preview is a temporary Token Plan-only preview, scheduled to end on 2026-11-25; it has no per-token API price in the catalog. Retired models remain visible with their retirement dates rather than being deleted.
 
 ## Benchmark data refresh — 2026-11-11
 
-Complete publisher tables refreshed from their 2026-11-09 pages:
+The dataset contains 145 benchmark and model-card result collections. The current Index calculation uses only complete, condition-compatible publisher evaluations that pass the quality gate.
 
 - Terminal-Bench 4.0 — 63 models; 66 tasks; Mini-SWE-agent; avg@3 across three runs.
-- Terminal-Bench-Science 0.1 — 45 rows; 70 tasks; harness retained per row.
+- Terminal-Bench-Science 0.1 — 45 publisher rows; 70 tasks; harness retained per row; only Mini-SWE-agent rows enter the current Index.
 - ProgramBench — 66 models; strict fully-resolved metric; 200 public tasks.
 - Code Migration v1.1 — 30 models; Pi agent harness.
 - BioMysteryBench — 31 models.
-- Finance Agent v2.1 — 39 models refreshed for standalone reference, but excluded from Index because the leaderboard's displayed Accuracy differs from the methodology's primary Partial Credit metric.
+- Finance Agent v2.1 — retained for reference, but excluded from Index because the visible Accuracy metric differs from the methodology's primary Partial Credit metric.
 - Legal Research Bench — 90 rows.
 - Tax Agent Bench — 84 rows.
 - Excel Modeling Benchmark v1.1 — 41 rows.
 - HLAB-Vals-1.1 — 37 rows.
 - SWE-bench Multimodal — 22 rows.
-- HLE-Diamond — 20 entries from Scale AI's current Performance Comparison.
-- MCP Atlas — 37 entries from Scale AI's current Performance Comparison; 1,000-task pass rate. The official page footer still says April 8 for the methodology; the 2026-11-06 snapshot date is cross-checked against an independent capture. The publisher does not display an explicit update date, so 2026-11-11 is the retrieval date, not a claimed evaluation date.
+- HLE-Diamond — 20 entries from Scale AI's Performance Comparison; retrieval date is not represented as an evaluation date.
+- MCP Atlas — 37 entries from Scale AI's Performance Comparison; 1,000-task pass rate. The publisher footer's methodology date is distinct from the captured score snapshot date.
 
 ## Current Index coverage
 
-The current 1.8 calculation uses 17 eligible evaluations across 8 capability families, 225 model/effort variants, and 72 ranked variants. A ranked variant needs at least 4 evaluations across at least 3 families. Finance Agent v2.1, AA-Briefcase partial results, and the GDP.pdf secondary partial mirror are not included in the composite.
+The 2026-11-11 calculation uses 17 eligible evaluations across 8 capability families, 225 model/effort variants, and 72 ranked variants. A ranked variant needs at least 4 evaluations across at least 3 families. Partial AA-Briefcase results, the GDP.pdf secondary partial mirror, and Finance Agent v2.1's mismatched metric are not included.
 
 ## Data integrity rules
 
@@ -60,22 +61,24 @@ The current 1.8 calculation uses 17 eligible evaluations across 8 capability fam
 - Do not flatten region/tier/cached-token pricing into a single price.
 - Keep publisher-reported zero scores.
 - Keep benchmark-only models in the catalog with unverified metadata clearly marked.
+- Missing benchmark observations stay missing; the Index's family baseline is a transparent composite rule, not fabricated raw data.
 
 ## Sources
 
-- OpenAI models and pricing: https://developers.openai.com/api/docs/models and https://developers.openai.com/api/docs/pricing
-- Google Gemini model lifecycle: https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions
+- OpenAI models, GPT-6 Sol, lifecycle and pricing: https://developers.openai.com/api/docs/models and https://developers.openai.com/api/docs/models/gpt-6-sol and https://developers.openai.com/api/docs/pricing
+- Google Gemini model cards and lifecycle: https://deepmind.google/models/model-cards/ and https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions
+- Anthropic Claude Fable/Mythos 5.2 and lifecycle: https://platform.claude.com/docs/en/models/fable-5-2/overview and https://platform.claude.com/docs/en/models/mythos-5-2/overview
 - Meta Muse Wonder launch: https://about.fb.com/news/2026/10/introducing-muse-wonder-models/
 - Kimi K3.1 Pro API guide: https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart
 - Mistral Large 4: https://docs.mistral.ai/models/mistral-large-4-0
 - DeepSeek model list/pricing: https://api-docs.deepseek.com/api/list-models/ and https://api-docs.deepseek.com/quick_start/pricing/
 - xAI Grok 4.7: https://docs.x.ai/developers/models/grok-4.7
-- Alibaba Qwen 3.8 Max: https://help.aliyun.com/en/model-studio/qwen3-8-max
+- Alibaba Qwen4 Max Preview, model list and pricing: https://help.aliyun.com/zh/model-studio/qwen4-max-preview and https://help.aliyun.com/en/model-studio/models and https://help.aliyun.com/en/model-studio/model-pricing
 - MiniMax M3.1 Flash (Alibaba Cloud Model Studio): https://help.aliyun.com/en/model-studio/minimax-m3-1-flash
 - Vals AI leaderboards: https://www.vals.ai/benchmarks
 - Scale AI HLE-Diamond: https://labs.scale.com/leaderboard/hle-diamond
-- Artificial Analysis methodology: https://artificialanalysis.ai/methodology/intelligence-benchmarking
+- Artificial Analysis methodology v5.0.1: https://artificialanalysis.ai/methodology/intelligence-benchmarking
 
 ## Technical
 
-The site is a static HTML application. Benchmark data is loaded from `data/external-benchmarks.json`; charts use the vendored ECharts build. Production deploys from `main` through Cloudflare Pages.
+The site is a static HTML application. Benchmark data is loaded from \`data/external-benchmarks.json\`; charts use the vendored ECharts build. Production deploys from \`main\` through Cloudflare Pages.
