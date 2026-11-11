@@ -23,7 +23,7 @@ Each base model has total weight 1 across its distinct reasoning-effort variants
 
 ## Model catalog and lifecycle
 
-The catalog includes every distinct model name found in benchmark result tables, plus current official provider catalog entries. On 2026-11-11 it contains 839 catalog entries: 49 official-source verified identities and 790 benchmark-source-only identities whose API IDs/specs remain unverified. It distinguishes verified official model identities from source-reported benchmark-only names and unresolved identities. Unknown API IDs, context windows, output limits, release dates, pricing, and modalities remain null. A benchmark result is not proof that a model has a public API.
+The catalog includes every distinct model name found in benchmark result tables, plus current official provider catalog entries. On 2026-11-11 it contains 840 catalog entries: 49 official-source verified identities and 791 benchmark-source-only identities whose API IDs/specs remain unverified. It distinguishes verified official model identities from source-reported benchmark-only names and unresolved identities. Unknown API IDs, context windows, output limits, release dates, pricing, and modalities remain null. A benchmark result is not proof that a model has a public API.
 
 The 2026-11-11 official-source audit added/promoted current models across Google Gemini, OpenAI GPT, Anthropic Claude, Mistral, DeepSeek, xAI Grok, Alibaba Qwen, MiniMax, Kimi, and Meta Muse. Google lifecycle data now explicitly marks Gemini 2.5 Pro/Flash/Flash Lite as retired (2026-10-20), and Gemini 3.6 Flash as scheduled for retirement (2026-11-19). Keep retired models visible with their retirement dates rather than deleting history.
 
@@ -42,7 +42,8 @@ Complete publisher tables refreshed from their 2026-11-09 pages:
 - Excel Modeling Benchmark v1.1 — 41 rows.
 - HLAB-Vals-1.1 — 37 rows.
 - SWE-bench Multimodal — 22 rows.
-- HLE-Diamond — 20 entries from Scale AI's current Performance Comparison. The publisher does not display an explicit update date, so 2026-11-11 is the retrieval date, not a claimed evaluation date.
+- HLE-Diamond — 20 entries from Scale AI's current Performance Comparison.
+- MCP Atlas — 37 entries from Scale AI's current Performance Comparison; 1,000-task pass rate. The official page footer still says April 8 for the methodology; the 2026-11-06 snapshot date is cross-checked against an independent capture. The publisher does not display an explicit update date, so 2026-11-11 is the retrieval date, not a claimed evaluation date.
 
 ## Current Index coverage
 
